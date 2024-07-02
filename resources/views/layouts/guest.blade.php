@@ -18,7 +18,20 @@
         </a>
       </div>
 
-      {{ $slot }}
+      <div class="px-2">
+        {{ $slot }}
+      </div>
+
+      <div>
+        <ul class="list">
+          <li class="mr-3 inline">
+            <x-link class="text-sm" href="{{ route('locale.update', ['locale' => 'en']) }}">{{ __('English') }}</x-link>
+          </li>
+          <li class="inline">
+            <x-link class="text-sm" href="{{ route('locale.update', ['locale' => 'fr']) }}">{{ __('French') }}</x-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
