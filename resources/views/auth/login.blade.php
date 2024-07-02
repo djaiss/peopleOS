@@ -6,6 +6,7 @@
     <img src="{{ $wallpaper }}" class="w-full sm:invisible sm:w-10/12 md:visible" alt="{{ __('Wallpaper') }}" />
 
     <div class="w-full">
+      <!-- title -->
       <div class="border-b border-gray-200 px-6 pb-6 pt-8 dark:border-gray-700">
         <h1 class="mb-4 text-center text-xl text-gray-800 dark:text-gray-200">
           <span class="me-2">👋</span>
@@ -13,13 +14,14 @@
         </h1>
       </div>
 
-      <form method="POST" action="{{ route('login') }}" class="px-6 pb-6 pt-8">
+      <!-- form -->
+      <form method="POST" action="{{ route('login') }}" class="border-b border-gray-200 px-6 pb-6 pt-8">
         @csrf
 
         <!-- Email Address -->
         <div>
           <x-input-label for="email" :value="__('Email')" />
-          <x-text-input id="email" class="mt-1 block w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+          <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
           <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -27,7 +29,7 @@
         <div class="mt-4">
           <x-input-label for="password" :value="__('Password')" />
 
-          <x-text-input id="password" class="mt-1 block w-full" type="password" name="password" required autocomplete="current-password" />
+          <x-text-input id="password" class="block w-full" type="password" name="password" required autocomplete="current-password" />
 
           <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -44,9 +46,7 @@
 
         <div class="mt-4 flex items-center justify-end">
           @if (Route::has('password.request'))
-            <a class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-              {{ __('Forgot your password?') }}
-            </a>
+            <x-link href="{{ route('password.request') }}" class="mr-3">{{ __('Forgot your password?') }}</x-link>
           @endif
 
           <x-primary-button class="ms-3">
@@ -54,6 +54,15 @@
           </x-primary-button>
         </div>
       </form>
+
+      <!-- register -->
+      <div class="px-6 py-6 text-sm dark:text-gray-50">
+        {{ __('New to Monica?') }}
+
+        <x-link :href="route('register')">
+          {{ __('Create an account') }}
+        </x-link>
+      </div>
     </div>
   </div>
 </x-guest-layout>

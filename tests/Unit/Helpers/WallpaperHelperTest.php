@@ -2,12 +2,13 @@
 
 namespace Tests\Unit\Helpers;
 
+use PHPUnit\Framework\Attributes\Test;
 use App\Helpers\WallpaperHelper;
 use Tests\TestCase;
 
 class WallpaperHelperTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_returns_a_random_wallpaper(): void
     {
         $this->assertStringStartsWith(
