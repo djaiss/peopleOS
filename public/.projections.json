@@ -1,0 +1,26 @@
+{
+    "app/Http/Controllers/Api/*.php": {
+        "alternate": "tests/Feature/Api/{}Test.php"
+    },
+    "app/Http/Controllers/*.php": {
+        "alternate": "tests/Feature/Controllers/{}Test.php"
+    },
+    "app/Http/ViewModels/*.php": {
+        "alternate": "tests/Unit/ViewModels/{}Test.php"
+    },
+    "app/*.php": {
+        "alternate": [
+            "tests/Unit/{}Test.php",
+            "tests/Feature/{}Test.php"
+        ]
+    },
+    "tests/Feature/*Test.php": {
+        "alternate": "app/{}.php"
+    },
+    "tests/Feature/Api/*Test.php": {
+        "alternate": "app/Http/Controllers/Api/{}.php"
+    },
+    "tests/Unit/*Test.php": {
+        "alternate": "app/{}.php"
+    }
+}
