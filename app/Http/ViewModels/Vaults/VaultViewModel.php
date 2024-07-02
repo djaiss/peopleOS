@@ -2,12 +2,8 @@
 
 namespace App\Http\ViewModels\Vaults;
 
-use App\Helpers\VaultHelper;
-use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 class VaultViewModel
 {

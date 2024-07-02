@@ -2,12 +2,8 @@
 
 namespace App\Services;
 
-use App\Jobs\SetupAccount;
-use App\Models\Account;
 use App\Models\User;
 use App\Models\Vault;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Hash;
 
 class CreateVault
 {
@@ -17,8 +13,7 @@ class CreateVault
         public User $user,
         public string $name,
         public ?string $description,
-    ) {
-    }
+    ) {}
 
     public function execute(): Vault
     {

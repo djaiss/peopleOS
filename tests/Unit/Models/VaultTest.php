@@ -17,10 +17,10 @@ use App\Models\Tag;
 use App\Models\Template;
 use App\Models\TimelineEvent;
 use App\Models\User;
-use PHPUnit\Framework\Attributes\Test;
 use App\Models\Vault;
 use App\Models\VaultQuickFactsTemplate;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class VaultTest extends TestCase
