@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Models;
 
-use PHPUnit\Framework\Attributes\Test;
 use App\Models\Account;
 use App\Models\AddressType;
 use App\Models\CallReasonType;
@@ -23,6 +22,7 @@ use App\Models\Template;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class AccountTest extends TestCase

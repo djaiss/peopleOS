@@ -2,12 +2,9 @@
 
 namespace App\Services;
 
-use App\Actions\Fortify\PasswordValidationRules;
-use App\Interfaces\ServiceInterface;
 use App\Jobs\SetupAccount;
 use App\Models\Account;
 use App\Models\User;
-use App\Services\BaseService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,8 +17,7 @@ class CreateAccount
         public string $password,
         public string $firstName,
         public string $lastName,
-    ) {
-    }
+    ) {}
 
     /**
      * Create an account.

@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Models\Account;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -19,8 +18,7 @@ class SetupAccount implements ShouldQueue
      */
     public function __construct(
         public User $user,
-    )
-    { }
+    ) {}
 
     /**
      * Execute the job.

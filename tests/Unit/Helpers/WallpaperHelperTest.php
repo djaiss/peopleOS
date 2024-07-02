@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Helpers;
 
-use PHPUnit\Framework\Attributes\Test;
 use App\Helpers\WallpaperHelper;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class WallpaperHelperTest extends TestCase

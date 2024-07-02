@@ -2,13 +2,12 @@
 
 namespace Tests\Unit\Services;
 
-use PHPUnit\Framework\Attributes\Test;
 use App\Jobs\SetupAccount;
 use App\Models\User;
 use App\Services\CreateAccount;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
-use Illuminate\Validation\ValidationException;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CreateAccountTest extends TestCase
