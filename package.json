@@ -3,20 +3,27 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "pretest": "php artisan migrate:fresh --database=testing",
+    "posttest": "composer update && php artisan scribe:generate && bun update",
+    "test": "./vendor/bin/phpunit && php artisan clear-compiled && php artisan ide-helper:models --nowrite && php artisan ide-helper:generate",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.2",
-    "alpinejs": "^3.4.2",
-    "autoprefixer": "^10.4.2",
-    "axios": "^1.6.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "alpinejs": "^3.14.1",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
     "htmx.org": "^1.9.12",
     "husky": "^9.0.11",
-    "laravel-vite-plugin": "^1.0",
+    "laravel-vite-plugin": "^1.0.4",
     "lint-staged": "^15.2.7",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.39",
     "prettier": "^3.3.2",
-    "tailwindcss": "^3.1.0",
-    "vite": "^5.0"
+    "prettier-plugin-blade": "^2.1.16",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.3.2"
   }
 }
