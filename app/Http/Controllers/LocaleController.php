@@ -8,7 +8,7 @@ class LocaleController extends Controller
 {
     public function update(string $locale): RedirectResponse
     {
-        if (!in_array($locale, ['en', 'fr'])) {
+        if (! in_array($locale, ['en', 'fr'])) {
             abort(400);
         }
 
