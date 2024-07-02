@@ -114,8 +114,6 @@ jobs:
 
       - name: Run migrations
         run: php artisan migrate --no-interaction -vvv
-      - name: Run seeds
-        run: php artisan db:seed --no-interaction -vvv
 
       # Test
       - name: Run tests
