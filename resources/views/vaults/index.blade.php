@@ -14,7 +14,7 @@
             {{ __('To start, you need to create a vault. This lets you store your contacts and all your information.') }}
           </p>
           <div class="mb-2 text-center">
-            <x-button.primary href="{{ route('vaults.new') }}">
+            <x-button.primary href="{{ route('vaults.new') }}" dusk="create-vault-no-vaults">
               {{ __('Create a vault') }}
             </x-button.primary>
           </div>

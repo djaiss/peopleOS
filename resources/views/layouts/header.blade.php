@@ -2,7 +2,7 @@
   <!-- main nav -->
   <nav class="max-w-8xl mx-auto flex h-10 items-center justify-between border-b bg-gray-50 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
     <div class="dark:highlight-white/5 items-center rounded-lg border border-gray-200 bg-white px-2 py-1 text-sm sm:flex dark:border-0 dark:border-gray-700 dark:bg-gray-400/20 dark:bg-gray-900">
-      <x-link href="''" class="flex-shrink-0 dark:text-sky-400">{{ auth()->user()->first_name }}</x-link>
+      <x-link href="{{ route('vaults.index') }}" class="flex-shrink-0 dark:text-sky-400">{{ auth()->user()->first_name }}</x-link>
 
       <!-- information about the current vault -->
       {{--
