@@ -2,14 +2,10 @@
 
 namespace Tests\Browser\Vaults;
 
-use App\Models\Channel;
-use App\Models\Topic;
 use App\Models\User;
-use App\Models\Vault;
-use DB;
 use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\DuskTestCase;
 
 class VaultTest extends DuskTestCase
 {
