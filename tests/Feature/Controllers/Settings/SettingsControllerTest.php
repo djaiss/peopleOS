@@ -4,10 +4,8 @@ namespace Tests\Feature\Controllers\Settings;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class SettingsControllerTest extends TestCase
 {
