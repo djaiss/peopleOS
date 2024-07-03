@@ -3,6 +3,7 @@
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Settings\SettingsController;
+use App\Http\Controllers\Settings\SettingsPasswordController;
 use App\Http\Controllers\Settings\SettingsProfileController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::middleware('auth', 'verified')->group(function () {
         // profile
         Route::get('profile', [SettingsProfileController::class, 'index'])->name('profile.index');
         Route::put('profile', [SettingsProfileController::class, 'update'])->name('profile.update');
+        Route::put('password', [SettingsPasswordController::class, 'update'])->name('password.update');
     });
 });
 
