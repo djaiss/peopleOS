@@ -3,12 +3,11 @@
 namespace Tests\Unit\ViewModels;
 
 use App\Http\ViewModels\Vaults\VaultViewModel;
-use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class VaultViewModelTest extends TestCase
 {
