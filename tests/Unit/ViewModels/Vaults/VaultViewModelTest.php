@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\ViewModels;
+namespace Tests\Unit\ViewModels\Vaults;
 
 use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Models\User;
