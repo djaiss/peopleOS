@@ -55,7 +55,7 @@
             {{ __('Cancel') }}
           </x-button.secondary>
 
-          <x-button.primary>
+          <x-button.primary dusk="submit-form-button">
             {{ __('Create') }}
           </x-button.primary>
         </div>
