@@ -1,13 +1,13 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <ul class="text-sm">
-      <li class="me-2 inline">
-        {{ __('You are here:') }}
-      </li>
-      <li class="inline">
-        {{ __('Settings') }}
-      </li>
-    </ul>
+    <div class="flex text-sm">
+      <p class="mr-2">{{ __('You are here:') }}</p>
+      <ul>
+        <li class="inline">
+          {{ __('Settings') }}
+        </li>
+      </ul>
+    </div>
   </x-slot>
 
   <main class="relative sm:mt-20">
@@ -33,7 +33,7 @@
           </li>
           <li class="mb-2 flex justify-start">
             <span class="me-2">🔐</span>
-            <x-link href="'route('profile.show')'" class="text-blue-500 hover:underline">
+            <x-link href="{{ route('settings.profile.index') }}" class="text-blue-500 hover:underline" dusk="profile-link">
               {{ __('Profile and security') }}
             </x-link>
           </li>

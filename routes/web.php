@@ -3,6 +3,7 @@
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Settings\SettingsController;
+use App\Http\Controllers\Settings\SettingsProfileController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +19,14 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('new', [VaultController::class, 'store'])->name('vaults.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('settings')->name('settings.')->group(function () {
-        Route::get('/', [SettingsController::class, 'index'])->name('index');
+        Route::get('', [SettingsController::class, 'index'])->name('index');
+
+        // profile
+        Route::get('profile', [SettingsProfileController::class, 'index'])->name('profile.index');
+        Route::put('profile', [SettingsProfileController::class, 'update'])->name('profile.update');
     });
 });
 
