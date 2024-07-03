@@ -67,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function vaults(): BelongsToMany
     {
         return $this->belongsToMany(Vault::class)
-            ->withPivot('permission', 'contact_id')
+            ->withPivot('permission')
             ->withTimestamps();
     }
 }

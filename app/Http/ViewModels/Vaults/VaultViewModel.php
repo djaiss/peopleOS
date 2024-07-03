@@ -7,7 +7,7 @@ use App\Models\Vault;
 
 class VaultViewModel
 {
-    public static function data(User $user): array
+    public static function index(User $user): array
     {
         $vaults = $user->vaults()
             ->where('account_id', $user->account_id)

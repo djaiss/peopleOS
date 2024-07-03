@@ -15,6 +15,7 @@ Route::get('locale/{locale}', [LocaleController::class, 'update'])->name('locale
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('', [VaultController::class, 'index'])->name('vaults.index');
     Route::get('new', [VaultController::class, 'new'])->name('vaults.new');
+    Route::post('new', [VaultController::class, 'store'])->name('vaults.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

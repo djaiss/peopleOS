@@ -44,3 +44,24 @@
   box-shadow: none;
   transform: translate(0, 0);
 }
+
+.breadcrumb li:not(:last-child)::after {
+  content: '>';
+  color: #aaa;
+}
+
+.vault-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vault-detail {
+  height: 250px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+@media (max-width: 480px) {
+  .vault-list {
+    grid-template-columns: 1fr;
+  }
+}
