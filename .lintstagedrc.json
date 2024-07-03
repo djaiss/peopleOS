@@ -1,8 +1,4 @@
 {
-  "*.css": [
-    "prettier --write"
-  ],
-  "*.blade.php": [
-    "prettier --write"
-  ]
+  "*.css": ["prettier --write"],
+  "*.blade.php": ["prettier --write"]
 }
