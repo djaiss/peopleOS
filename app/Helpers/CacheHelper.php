@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 abstract class CacheHelper
 {
     protected string $key;
+
     protected int $ttl = 60;
 
     public function getKey(): string

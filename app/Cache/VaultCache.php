@@ -3,7 +3,6 @@
 namespace App\Cache;
 
 use App\Helpers\CacheHelper;
-use App\Http\ViewModels\Message\MessageLayoutViewModel;
 use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Models\User;
 use App\Traits\CacheIdentifier;
@@ -14,6 +13,7 @@ final class VaultCache extends CacheHelper
     use CacheIdentifier;
 
     protected string $key = 'user.vaults:%s';
+
     protected int $ttl = 604800;
 
     public function __construct(

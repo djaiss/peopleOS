@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Vaults;
 
 use App\Cache\VaultCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Services\CreateVault;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
