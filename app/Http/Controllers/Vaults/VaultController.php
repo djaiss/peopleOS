@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vaults;
 
+use App\Cache\VaultCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Services\CreateVault;
@@ -13,8 +14,10 @@ class VaultController extends Controller
 {
     public function index(Request $request): View
     {
+        $vaults = VaultCache::make(auth()->user())->value();
+
         return view('vaults.index', [
-            'view' => VaultViewModel::index(auth()->user()),
+            'vaults' => $vaults,
         ]);
     }
 
@@ -35,6 +38,10 @@ class VaultController extends Controller
             name: $validated['name'],
             description: $validated['description'],
         ))->execute();
+
+        VaultCache::make(
+            user: auth()->user(),
+        )->forget();
 
         $request->session()->flash('status', __('The vault has been created'));
 

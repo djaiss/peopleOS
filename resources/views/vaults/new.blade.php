@@ -44,7 +44,7 @@
           <div class="relative pb-4 pt-2">
             <x-input-label for="description" :value="__('Description')" :optional="true" />
 
-            <x-textarea id="description" name="description" required :height="'min-h-[100px]'" class="mt-2 block w-full" type="text">{{ old('description') }}</x-textarea>
+            <x-textarea id="description" name="description" :height="'min-h-[100px]'" class="mt-2 block w-full" type="text">{{ old('description') }}</x-textarea>
 
             <x-input-error class="mt-2" :messages="$errors->get('description')" />
           </div>

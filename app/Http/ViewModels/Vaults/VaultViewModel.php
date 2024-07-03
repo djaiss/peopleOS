@@ -4,10 +4,11 @@ namespace App\Http\ViewModels\Vaults;
 
 use App\Models\User;
 use App\Models\Vault;
+use Illuminate\Support\Collection;
 
 class VaultViewModel
 {
-    public static function index(User $user): array
+    public static function index(User $user): Collection
     {
         $vaults = $user->vaults()
             ->where('account_id', $user->account_id)
@@ -20,8 +21,6 @@ class VaultViewModel
                 ];
             });
 
-        return [
-            'vaults' => $vaults,
-        ];
+        return $vaults;
     }
 }
