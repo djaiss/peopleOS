@@ -53,6 +53,8 @@ namespace App\Models{
  * @property-read \App\Models\Account $account
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vault> $vaults
+ * @property-read int|null $vaults_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -72,5 +74,46 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent implements \Illuminate\Contracts\Auth\MustVerifyEmail {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property string $name
+ * @property string|null $description
+ * @property bool $show_group_tab
+ * @property bool $show_tasks_tab
+ * @property bool $show_files_tab
+ * @property bool $show_journal_tab
+ * @property bool $show_companies_tab
+ * @property bool $show_reports_tab
+ * @property bool $show_calendar_tab
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Account $account
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Database\Factories\VaultFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowCalendarTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowCompaniesTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowFilesTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowGroupTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowJournalTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowReportsTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereShowTasksTab($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vault whereUpdatedAt($value)
+ */
+	class Vault extends \Eloquent {}
 }
 

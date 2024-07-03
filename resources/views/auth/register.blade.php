@@ -44,9 +44,9 @@
       </div>
 
       <div class="mb-4 flex items-center">
-        <x-primary-button class="w-full">
+        <x-button.primary class="w-full">
           {{ __('Register') }}
-        </x-primary-button>
+        </x-button.primary>
       </div>
     </form>
 

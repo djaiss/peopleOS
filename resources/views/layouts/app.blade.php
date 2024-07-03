@@ -11,13 +11,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-white dark:bg-gray-900">
       @include('layouts.header')
 
       {{-- @include('layouts.navigation') --}}
 
       @isset($breadcrumb)
-        <nav class="bg-white sm:border-b dark:bg-gray-900">
+        <nav class="breadcrumb bg-white sm:border-b dark:bg-gray-900">
           <div class="max-w-8xl mx-auto hidden px-4 py-2 sm:px-6 md:block">
             <div class="flex items-baseline justify-between space-x-6">
               {{ $breadcrumb }}

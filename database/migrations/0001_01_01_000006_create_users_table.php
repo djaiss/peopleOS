@@ -27,6 +27,15 @@ return new class extends Migration
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
 
+        Schema::create('user_vault', function (Blueprint $table) {
+            $table->unsignedBigInteger('vault_id');
+            $table->unsignedBigInteger('user_id');
+            $table->integer('permission');
+            $table->timestamps();
+            $table->foreign('vault_id')->references('id')->on('vaults')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
@@ -48,8 +57,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('user_vault');
+        Schema::dropIfExists('users');
     }
 };
