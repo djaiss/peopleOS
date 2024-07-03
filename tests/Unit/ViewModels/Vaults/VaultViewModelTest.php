@@ -24,21 +24,21 @@ class VaultViewModelTest extends TestCase
             'permission' => Vault::PERMISSION_MANAGE,
         ]]);
 
-        $array = VaultViewModel::index($user);
+        $collection = VaultViewModel::index($user);
 
-        $this->assertEquals(1, count($array));
+        $this->assertEquals(1, $collection->count());
 
         $this->assertEquals(
             $vault->id,
-            $array['vaults']->toArray()[0]['id']
+            $collection->toArray()[0]['id']
         );
         $this->assertEquals(
             $vault->name,
-            $array['vaults']->toArray()[0]['name']
+            $collection->toArray()[0]['name']
         );
         $this->assertEquals(
             $vault->description,
-            $array['vaults']->toArray()[0]['description']
+            $collection->toArray()[0]['description']
         );
     }
 }

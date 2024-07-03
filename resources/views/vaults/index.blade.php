@@ -1,5 +1,5 @@
 <x-app-layout>
-  @if (count($view['vaults']) == 0)
+  @if (count($vaults) == 0)
     <main class="relative mt-16 sm:mt-10">
       <div class="mx-auto mb-6 max-w-md px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
         <div class="rounded-t-lg border-x border-t border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
@@ -50,7 +50,7 @@
       </div>
 
       <div class="vault-list grid grid-cols-1 gap-6 sm:grid-cols-3">
-        @foreach ($view['vaults'] as $vault)
+        @foreach ($vaults as $vault)
           <div class="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
             <div class="vault-detail grid">
               <x-link href="'vault.url.show'" class="border-b border-gray-200 px-3 py-1 hover:rounded-t-lg hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-300 hover:dark:bg-slate-800">
