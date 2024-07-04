@@ -4,9 +4,7 @@ namespace Tests\Feature\Controllers\Vaults;
 
 use App\Models\User;
 use App\Models\Vault;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
