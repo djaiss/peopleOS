@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vault extends Model
 {
@@ -68,5 +69,13 @@ class Vault extends Model
         return $this->belongsToMany(User::class)
             ->withPivot('permission')
             ->withTimestamps();
+    }
+
+    /**
+     * Get the contact associated with the vault.
+     */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
     }
 }

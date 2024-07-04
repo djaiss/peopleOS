@@ -21,6 +21,8 @@ Route::middleware('auth', 'verified')->group(function () {
 
     Route::middleware(['vault'])->prefix('vaults')->group(function (): void {
         Route::get('{vault}', [VaultController::class, 'show'])->name('vaults.show');
+
+        Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
     });
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
