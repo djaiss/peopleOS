@@ -19,7 +19,7 @@ class VaultViewModel
                     'name' => $vault->name,
                     'description' => $vault->description,
                     'url' => [
-                        'show' => route('vaults.show', $vault)
+                        'show' => route('vaults.show', $vault),
                     ],
                 ];
             });
