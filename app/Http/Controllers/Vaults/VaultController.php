@@ -46,4 +46,9 @@ class VaultController extends Controller
 
         return redirect()->route('vaults.index');
     }
+
+    public function show(Request $request): View
+    {
+        return view('vaults.show');
+    }
 }
