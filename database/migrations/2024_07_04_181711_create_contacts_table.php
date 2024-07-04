@@ -1,15 +1,7 @@
 <?php
 
-use App\Models\Company;
-use App\Models\Contact;
-use App\Models\Gender;
-use App\Models\Pronoun;
-use App\Models\Template;
-use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class() extends Migration

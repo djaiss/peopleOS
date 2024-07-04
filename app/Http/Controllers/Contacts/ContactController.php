@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Contacts;
 
 use App\Cache\VaultCache;
 use App\Http\Controllers\Controller;
-use App\Services\CreateVault;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 

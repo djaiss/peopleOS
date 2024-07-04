@@ -5,8 +5,8 @@ namespace Tests\Unit\Helpers;
 use App\Helpers\NameHelper;
 use App\Models\Contact;
 use App\Models\User;
-use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class NameHelperTest extends TestCase

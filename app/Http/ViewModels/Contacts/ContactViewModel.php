@@ -3,7 +3,6 @@
 namespace App\Http\ViewModels\Contacts;
 
 use App\Models\Contact;
-use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Support\Collection;
 
@@ -15,15 +14,15 @@ class ContactViewModel
             ->get()
             ->map(function (Contact $contact) use ($vault): array {
                 return [
-                'id' => $contact->id,
-                'name' => $contact->name,
-                'avatar' => $contact->avatar,
-                'url' => [
-                    'show' => route('contact.show', [
-                        'vault' => $vault->id,
-                        'contact' => $contact->id,
-                    ]),
-                ],
+                    'id' => $contact->id,
+                    'name' => $contact->name,
+                    'avatar' => $contact->avatar,
+                    'url' => [
+                        'show' => route('contact.show', [
+                            'vault' => $vault->id,
+                            'contact' => $contact->id,
+                        ]),
+                    ],
                 ];
             });
 

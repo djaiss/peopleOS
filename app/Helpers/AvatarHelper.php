@@ -23,7 +23,7 @@ class AvatarHelper
         if (is_null($contact->first_name)) {
             $name = Faker::create()->name();
         } else {
-            $name = $contact->first_name . ' ' . $contact->last_name;
+            $name = $contact->first_name.' '.$contact->last_name;
         }
 
         return $multiavatar($name, null, null);

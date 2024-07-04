@@ -9,6 +9,7 @@ use App\Models\Vault;
 class CreateVault
 {
     private Vault $vault;
+
     private Contact $contact;
 
     public function __construct(

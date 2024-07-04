@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,7 +76,7 @@ class Contact extends Model
                 $lastName = Arr::get($attributes, 'last_name');
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName . $separator . $lastName;
+                return $firstName.$separator.$lastName;
             }
         );
     }
