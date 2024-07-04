@@ -5,7 +5,6 @@ namespace App\Http\ViewModels\Settings\Preferences;
 use App\Helpers\NameHelper;
 use App\Models\Contact;
 use App\Models\User;
-use Carbon\Carbon;
 
 class PreferencesIndexViewModel
 {

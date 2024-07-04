@@ -4,10 +4,9 @@ namespace Tests\Unit\Domains\Settings\ManageUserPreferences\Web\ViewHelpers;
 
 use App\Http\ViewModels\Settings\Preferences\PreferencesIndexViewModel;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PreferencesIndexViewModelTest extends TestCase
 {
@@ -45,5 +44,4 @@ class PreferencesIndexViewModelTest extends TestCase
             $array
         );
     }
-
 }
