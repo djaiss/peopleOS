@@ -19,7 +19,10 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('new', [VaultController::class, 'new'])->name('vaults.new');
     Route::post('new', [VaultController::class, 'store'])->name('vaults.store');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::middleware(['vault'])->prefix('vaults')->group(function (): void {
+        Route::get('{vault}', [VaultController::class, 'show'])->name('vaults.show');
+    });
+
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('settings')->name('settings.')->group(function () {

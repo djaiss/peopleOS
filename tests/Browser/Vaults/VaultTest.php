@@ -3,6 +3,7 @@
 namespace Tests\Browser\Vaults;
 
 use App\Models\User;
+use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
 use PHPUnit\Framework\Attributes\Test;
@@ -24,8 +25,7 @@ class VaultTest extends DuskTestCase
                 ->type('name', 'Accounting')
                 ->type('description', 'Accounting team')
                 ->click('@submit-form-button')
-                ->assertPathIs('/')
-                ->assertSee('Accounting');
+                ->assertPathIs('/vaults/'.Vault::first()->id);
         });
     }
 }

@@ -14,6 +14,10 @@
     <div class="min-h-screen bg-white dark:bg-gray-900">
       @include('layouts.header')
 
+      @if ($inVault)
+        @include('layouts.navigation')
+      @endif
+
       {{-- @include('layouts.navigation') --}}
 
       @isset($breadcrumb)

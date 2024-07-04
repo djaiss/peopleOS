@@ -32,7 +32,7 @@ class VaultController extends Controller
             'description' => 'nullable|string|max:255',
         ]);
 
-        (new CreateVault(
+        $vault = (new CreateVault(
             user: auth()->user(),
             name: $validated['name'],
             description: $validated['description'],
@@ -44,6 +44,11 @@ class VaultController extends Controller
 
         $request->session()->flash('status', __('The vault has been created'));
 
-        return redirect()->route('vaults.index');
+        return redirect()->route('vaults.show', $vault);
+    }
+
+    public function show(Request $request): View
+    {
+        return view('vaults.show');
     }
 }
