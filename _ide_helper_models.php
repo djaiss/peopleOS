@@ -37,13 +37,39 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $vault_id
+ * @property string|null $first_name
+ * @property string|null $middle_name
+ * @property string|null $last_name
+ * @property string|null $nickname
+ * @property string|null $maiden_name
+ * @property string|null $suffix
+ * @property string|null $prefix
+ * @property bool $can_be_deleted
+ * @property \Illuminate\Support\Carbon|null $last_updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $avatar
  * @property-read mixed $name
- * @property-read \App\Models\Vault|null $vault
+ * @property-read \App\Models\Vault $vault
  * @method static \Database\Factories\ContactFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Contact query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereCanBeDeleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereLastUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereMaidenName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereMiddleName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereNickname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact wherePrefix($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereSuffix($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereVaultId($value)
  */
 	class Contact extends \Eloquent {}
 }
@@ -59,6 +85,7 @@ namespace App\Models{
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property mixed $password
+ * @property string $name_order
  * @property string $locale
  * @property bool $is_account_administrator
  * @property string|null $timezone
@@ -83,6 +110,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereIsAccountAdministrator($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNameOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTimezone($value)

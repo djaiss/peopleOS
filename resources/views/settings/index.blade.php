@@ -21,7 +21,7 @@
         <ul>
           <li class="mb-2 flex justify-start">
             <span class="me-2">🥳</span>
-            <x-link href="'data.url.preferences.index'" class="text-blue-500 hover:underline">
+            <x-link href="{{ route('settings.preferences.index') }}" class="text-blue-500 hover:underline">
               {{ __('User preferences') }}
             </x-link>
           </li>

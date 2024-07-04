@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Controllers\Settings\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
