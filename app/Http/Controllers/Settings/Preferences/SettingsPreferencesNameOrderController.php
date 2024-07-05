@@ -10,13 +10,13 @@ use Illuminate\View\View;
 
 class SettingsPreferencesNameOrderController extends Controller
 {
-    public function index(): View
+    public function index(): string
     {
         $view = PreferencesIndexViewModel::data(auth()->user());
 
-        return view('settings.preferences.name_order.show', [
+        return view('settings.preferences.name_order.index', [
             'view' => $view,
-        ]);
+        ])->fragment('show');
     }
 
     public function edit(): View
@@ -28,7 +28,7 @@ class SettingsPreferencesNameOrderController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request): string
     {
         $validated = $request->validate([
             'name-order' => 'string|required',
@@ -41,8 +41,8 @@ class SettingsPreferencesNameOrderController extends Controller
 
         $view = PreferencesIndexViewModel::data(auth()->user());
 
-        return view('settings.preferences.name_order.show', [
+        return view('settings.preferences.name_order.index', [
             'view' => $view,
-        ]);
+        ])->fragment('show');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers\Settings;
+namespace Tests\Feature\Controllers\Settings\Profile;
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
