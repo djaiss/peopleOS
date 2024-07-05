@@ -52,24 +52,26 @@ class VaultTest extends TestCase
         $vault = Vault::factory()->create([
             'account_id' => $dwight->account_id,
         ]);
+        $contact = Contact::factory()->create();
 
         $vault->users()->sync([$dwight->id => [
+            'contact_id' => $contact->id,
             'permission' => Vault::PERMISSION_MANAGE,
         ]]);
 
         $this->assertTrue($vault->users()->exists());
     }
 
-    // #[Test]
-    // public function it_has_many_contacts(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     $contact = Contact::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
+    #[Test]
+    public function it_has_many_contacts(): void
+    {
+        $vault = Vault::factory()->create();
+        Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
 
-    //     $this->assertTrue($vault->contacts()->exists());
-    // }
+        $this->assertTrue($vault->contacts()->exists());
+    }
 
     // #[Test]
     // public function it_has_many_labels(): void

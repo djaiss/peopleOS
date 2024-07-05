@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services;
 
+use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateVault;
@@ -38,6 +39,8 @@ class CreateVaultTest extends TestCase
         $this->assertDatabaseHas('user_vault', [
             'vault_id' => $vault->id,
             'user_id' => $user->id,
+            'contact_id' => Contact::all()->first()->id,
+            'permission' => Vault::PERMISSION_MANAGE,
         ]);
 
         $this->assertInstanceOf(

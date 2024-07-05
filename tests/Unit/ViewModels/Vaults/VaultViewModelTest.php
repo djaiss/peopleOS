@@ -3,6 +3,7 @@
 namespace Tests\Unit\ViewModels\Vaults;
 
 use App\Http\ViewModels\Vaults\VaultViewModel;
+use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -20,8 +21,10 @@ class VaultViewModelTest extends TestCase
         $vault = Vault::factory()->create([
             'account_id' => $user->account_id,
         ]);
+        $contact = Contact::factory()->create();
         $user->vaults()->sync([$vault->id => [
             'permission' => Vault::PERMISSION_MANAGE,
+            'contact_id' => $contact->id,
         ]]);
 
         $collection = VaultViewModel::index($user);

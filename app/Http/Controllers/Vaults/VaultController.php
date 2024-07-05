@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class VaultController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
         $vaults = VaultCache::make(auth()->user())->value();
 

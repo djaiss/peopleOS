@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -27,9 +28,11 @@ class UserTest extends TestCase
         $vault = Vault::factory()->create([
             'account_id' => $regis->account_id,
         ]);
+        $contact = Contact::factory()->create();
 
         $regis->vaults()->sync([$vault->id => [
             'permission' => Vault::PERMISSION_MANAGE,
+            'contact_id' => $contact->id,
         ]]);
 
         $this->assertTrue($regis->vaults()->exists());

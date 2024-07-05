@@ -19,21 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('name_order')->default('%first_name% %last_name%');
             $table->string('locale')->default('en');
             $table->boolean('is_account_administrator')->default(false);
             $table->string('timezone')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-        });
-
-        Schema::create('user_vault', function (Blueprint $table) {
-            $table->unsignedBigInteger('vault_id');
-            $table->unsignedBigInteger('user_id');
-            $table->integer('permission');
-            $table->timestamps();
-            $table->foreign('vault_id')->references('id')->on('vaults')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -59,7 +51,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('user_vault');
         Schema::dropIfExists('users');
     }
 };
