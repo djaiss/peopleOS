@@ -1,6 +1,7 @@
 @props([
   'href',
   'type' => 'button',
+  'confirmDeletion' => false,
 ])
 
 @isset($href)
