@@ -19,7 +19,7 @@ class ContactTest extends TestCase
         $this->assertTrue($contact->vault()->exists());
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_the_name(): void
     {
         $user = User::factory()->create([

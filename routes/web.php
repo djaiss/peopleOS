@@ -38,7 +38,7 @@ Route::middleware('auth', 'verified')->group(function () {
         // update name order
         Route::get('preferences/name', [SettingsPreferencesNameOrderController::class, 'index'])->name('settings.preferences.name.index');
         Route::get('preferences/name/edit', [SettingsPreferencesNameOrderController::class, 'edit'])->name('settings.preferences.name.edit');
-        Route::post('preferences/name', [SettingsPreferencesNameOrderController::class, 'store'])->name('settings.preferences.name.store');
+        Route::put('preferences/name', [SettingsPreferencesNameOrderController::class, 'update'])->name('settings.preferences.name.update');
 
         // profile
         Route::get('profile', [SettingsProfileController::class, 'index'])->name('settings.profile.index');

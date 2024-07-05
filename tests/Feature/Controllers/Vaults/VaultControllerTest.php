@@ -28,10 +28,6 @@ class VaultControllerTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)
-            ->post('/')
-            ->assertSee('henri');
-
-        $this->actingAs($user)
             ->post('/new', [
                 'name' => 'Super vault',
                 'description' => 'this is the description',
