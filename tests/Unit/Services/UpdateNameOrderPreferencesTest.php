@@ -2,16 +2,12 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Account;
 use App\Models\User;
 use App\Services\UpdateNameOrderPreferences;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Validation\ValidationException;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class UpdateNameOrderPreferencesTest extends TestCase
 {

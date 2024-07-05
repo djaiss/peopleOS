@@ -2,17 +2,14 @@
 
 namespace App\Services;
 
-use App\Interfaces\ServiceInterface;
 use App\Models\User;
-use App\Services\BaseService;
 
 class UpdateNameOrderPreferences
 {
     public function __construct(
         public User $user,
         public string $nameOrder,
-    ) {
-    }
+    ) {}
 
     public function execute(): User
     {
