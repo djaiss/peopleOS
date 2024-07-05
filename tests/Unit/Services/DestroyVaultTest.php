@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\DestroyVault;

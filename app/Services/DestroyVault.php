@@ -2,11 +2,8 @@
 
 namespace App\Services;
 
-use App\Interfaces\ServiceInterface;
-use App\Models\File;
 use App\Models\User;
 use App\Models\Vault;
-use App\Services\BaseService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DestroyVault
@@ -14,8 +11,7 @@ class DestroyVault
     public function __construct(
         public User $user,
         public Vault $vault,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {
@@ -36,7 +32,7 @@ class DestroyVault
             ->wherePivot('permission', '<=', Vault::PERMISSION_MANAGE)
             ->exists();
 
-        if (!$exists) {
+        if (! $exists) {
             throw new ModelNotFoundException;
         }
     }
