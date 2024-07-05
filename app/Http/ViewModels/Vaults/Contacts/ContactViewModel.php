@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\ViewModels\Contacts;
+namespace App\Http\ViewModels\Vaults\Contacts;
 
 use App\Models\Contact;
 use App\Models\Vault;
@@ -18,7 +18,7 @@ class ContactViewModel
                     'name' => $contact->name,
                     'avatar' => $contact->avatar,
                     'url' => [
-                        'show' => route('contact.show', [
+                        'show' => route('contacts.show', [
                             'vault' => $vault->id,
                             'contact' => $contact->id,
                         ]),

@@ -8,13 +8,16 @@ use App\Models\User;
 use App\Traits\CacheIdentifier;
 use Illuminate\Support\Collection;
 
+/**
+ * All the vaults for the user.
+ */
 final class VaultCache extends CacheHelper
 {
     use CacheIdentifier;
 
     protected string $key = 'user.vaults:%s';
 
-    protected int $ttl = 604800;
+    protected int $ttl = 604800; // 1 week
 
     public function __construct(
         protected readonly User $user,

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Vaults\Contacts\ContactController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesController;
@@ -24,7 +25,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::middleware(['vault'])->prefix('vaults')->group(function (): void {
         Route::get('{vault}', [VaultController::class, 'show'])->name('vaults.show');
 
-        Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
+        Route::get('{vault}/contacts', [ContactController::class, 'index'])->name('contacts.index');
+        Route::get('{vault}/contacts/{contact}', [ContactController::class, 'index'])->name('contacts.show');
     });
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

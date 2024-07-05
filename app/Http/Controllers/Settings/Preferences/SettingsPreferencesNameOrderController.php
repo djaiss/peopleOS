@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Settings\Preferences;
 
+use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Settings\Preferences\PreferencesIndexViewModel;
 use App\Services\UpdateNameOrderPreferences;
@@ -38,6 +39,15 @@ class SettingsPreferencesNameOrderController extends Controller
             user: auth()->user(),
             nameOrder: $validated['name-order'],
         ))->execute();
+
+        // reset the cache that contains the contact list for the user to
+        // refresh the contact names
+        foreach (auth()->user()->vaults as $vault) {
+            ContactListCache::make(
+                user: auth()->user(),
+                vault: $vault,
+            )->forget();
+        }
 
         $view = PreferencesIndexViewModel::data(auth()->user());
 
