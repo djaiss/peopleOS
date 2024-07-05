@@ -49,6 +49,10 @@ class VaultController extends Controller
 
     public function show(Request $request): View
     {
-        return view('vaults.show');
+        $vault = $request->attributes->get('vault');
+
+        return view('vaults.show', [
+            'vault' => $vault,
+        ]);
     }
 }

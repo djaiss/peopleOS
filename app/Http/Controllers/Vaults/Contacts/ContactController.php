@@ -11,12 +11,14 @@ class ContactController extends Controller
 {
     public function index(Request $request): View
     {
+        $vault = $request->attributes->get('vault');
         $contacts = ContactListCache::make(
             user: auth()->user(),
-            vault: $request->attributes->get('vault'),
+            vault: $vault,
         )->value();
 
         return view('vaults.contacts.index', [
+            'vault' => $vault,
             'contacts' => $contacts,
         ]);
     }
