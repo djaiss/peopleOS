@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Vaults\Contacts\ContactController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesController;
@@ -8,6 +7,7 @@ use App\Http\Controllers\Settings\Preferences\SettingsPreferencesNameOrderContro
 use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\SettingsController;
+use App\Http\Controllers\Vaults\Contacts\ContactController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
 

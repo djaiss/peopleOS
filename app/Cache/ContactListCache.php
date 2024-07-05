@@ -4,7 +4,6 @@ namespace App\Cache;
 
 use App\Helpers\CacheHelper;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
-use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Models\User;
 use App\Models\Vault;
 use App\Traits\CacheIdentifier;

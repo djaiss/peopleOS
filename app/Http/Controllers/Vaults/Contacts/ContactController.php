@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactListCache;
-use App\Cache\VaultCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Contacts\ContactViewModel;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
