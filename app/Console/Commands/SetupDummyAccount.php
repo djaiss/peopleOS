@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Models\Vault;
 use App\Services\CreateAccount;
+use App\Services\CreateContact;
 use App\Services\CreateVault;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
@@ -48,6 +50,7 @@ class SetupDummyAccount extends Command
         $this->wipeAndMigrateDB();
         $this->createFirstUsers();
         $this->createVaults();
+        $this->createContacts();
         $this->stop();
     }
 
@@ -117,6 +120,30 @@ class SetupDummyAccount extends Command
                 name: $this->faker->firstName,
                 description: rand(1, 2) == 1 ? $this->faker->sentence() : null,
             ))->execute();
+        }
+    }
+
+    private function createContacts(): void
+    {
+        $this->info('☐ Create contacts');
+
+        foreach (Vault::all() as $vault) {
+            for ($i = 0; $i < rand(2, 201); $i++) {
+                $date = $this->faker->dateTimeThisCentury();
+                $birthDate = Carbon::parse($date);
+
+                $contact = (new CreateContact(
+                    vault: $vault,
+                    user: $this->firstUser,
+                    firstName: $this->faker->firstName(),
+                    lastName: $this->faker->lastName(),
+                    middleName: rand(1, 2) == 1 ? $this->faker->lastName() : null,
+                    nickname: null,
+                    maidenName: null,
+                    prefix: null,
+                    suffix: null,
+                ))->execute();
+            }
         }
     }
 
