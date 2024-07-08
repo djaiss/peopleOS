@@ -2,12 +2,9 @@
 
 namespace App\Services;
 
-use App\Interfaces\ServiceInterface;
 use App\Models\Contact;
-use App\Models\ContactFeedItem;
 use App\Models\User;
 use App\Models\Vault;
-use App\Services\BaseService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -25,8 +22,7 @@ class CreateContact
         public ?string $maidenName,
         public ?string $prefix,
         public ?string $suffix,
-    ) {
-    }
+    ) {}
 
     public function execute(): Contact
     {
@@ -49,7 +45,7 @@ class CreateContact
             ->wherePivot('permission', '<=', Vault::PERMISSION_EDIT)
             ->exists();
 
-        if (!$exists) {
+        if (! $exists) {
             throw new ModelNotFoundException;
         }
     }
