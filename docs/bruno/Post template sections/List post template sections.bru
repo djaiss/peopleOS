@@ -1,0 +1,19 @@
+meta {
+  name: List post template sections
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://{{URL}}/post-templates/4/sections
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

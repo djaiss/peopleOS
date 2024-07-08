@@ -1,0 +1,25 @@
+meta {
+  name: Update post template
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://{{URL}}/post-templates/2/sections/1?label=Super section name&position=1
+  body: none
+  auth: bearer
+}
+
+query {
+  label: Super section name
+  position: 1
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
