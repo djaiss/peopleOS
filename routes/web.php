@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Settings\Api\SettingsApiAccessController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesNameOrderController;
 use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
@@ -52,6 +53,12 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('profile', [SettingsProfileController::class, 'index'])->name('settings.profile.index');
         Route::put('profile', [SettingsProfileController::class, 'update'])->name('settings.profile.update');
         Route::put('password', [SettingsPasswordController::class, 'update'])->name('settings.password.update');
+
+        // api
+        Route::get('api', [SettingsApiAccessController::class, 'index'])->name('settings.api.index');
+        Route::get('api/new', [SettingsApiAccessController::class, 'new'])->name('settings.api.new');
+        Route::post('api', [SettingsApiAccessController::class, 'store'])->name('settings.api.store');
+        Route::delete('api/{key}', [SettingsApiAccessController::class, 'destroy'])->name('settings.api.destroy');
     });
 });
 

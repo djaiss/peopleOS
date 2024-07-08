@@ -39,7 +39,7 @@
           </li>
           <li class="flex justify-start">
             <span class="me-2">⚓</span>
-            <x-link href="'route('api-tokens.index')'" class="text-blue-500 hover:underline">
+            <x-link href="{{ route('settings.api.index') }}" class="text-blue-500 hover:underline" dusk="api-link">
               {{ __('API Tokens') }}
             </x-link>
           </li>
