@@ -19,34 +19,12 @@
     </div>
   </div>
 
-  <p class="mb-1 px-5 py-2 text-center">
-    <x-button.secondary x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-vault-deletion')" :class="'me-3 border-red-600 text-red-600 dark:border-red-400 dark:text-red-400'" dusk="delete-vault-cta">
+  <form action="{{ route('vaults.destroy', $vault) }}" method="POST" class="mb-1 px-5 py-2 text-center">
+    @csrf
+    @method('DELETE')
+
+    <x-button.secondary onclick="return confirm('{{ __('Are you sure? This can not be undone.') }}')" :class="'me-3 border-red-600 text-red-600 dark:border-red-400 dark:text-red-400'" dusk="delete-vault-cta">
       {{ __('Delete the vault') }}
     </x-button.secondary>
-  </p>
-
-  <x-modal name="confirm-vault-deletion" :show="false" focusable>
-    <form method="post" action="{{ route('vaults.destroy', $vault) }}" class="p-6">
-      @csrf
-      @method('delete')
-
-      <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-        {{ __('Are you sure you want to delete this vault?') }}
-      </h2>
-
-      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Once the vault is deleted, all of its resources and data will be permanently deleted.') }}
-      </p>
-
-      <div class="mt-6 flex justify-end">
-        <x-button.secondary x-on:click="$dispatch('close')">
-          {{ __('Cancel') }}
-        </x-button.secondary>
-
-        <x-button.primary class="ms-3" dusk="destroy-vault-cta">
-          {{ __('Delete') }}
-        </x-button.primary>
-      </div>
-    </form>
-  </x-modal>
+  </form>
 </div>

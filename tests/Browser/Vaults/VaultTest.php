@@ -29,9 +29,8 @@ class VaultTest extends DuskTestCase
 
             $browser->visit('/vaults/'.Vault::first()->id.'/settings')
                 ->click('@delete-vault-cta')
-                ->waitFor('@destroy-vault-cta')
-                ->click('@destroy-vault-cta')
-                ->assertPathIs('/vaults');
+                ->acceptDialog()
+                ->assertPathIs('/');
         });
     }
 }
