@@ -1,0 +1,24 @@
+meta {
+  name: Update journal
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://{{URL}}/journals/4?name=Magnifique
+  body: none
+  auth: bearer
+}
+
+query {
+  name: Magnifique
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

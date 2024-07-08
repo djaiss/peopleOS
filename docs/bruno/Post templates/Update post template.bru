@@ -1,0 +1,25 @@
+meta {
+  name: Update post template
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://{{URL}}/post-templates/1?label=Superb template&position=2
+  body: none
+  auth: bearer
+}
+
+query {
+  label: Superb template
+  position: 2
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
