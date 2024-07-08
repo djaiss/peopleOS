@@ -2,12 +2,11 @@
 
 namespace Tests\Feature\Api\Vaults;
 
-use App\Models\Journal;
 use App\Models\User;
 use App\Models\Vault;
-use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class VaultControllerTest extends TestCase
@@ -52,7 +51,7 @@ class VaultControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id);
 
         $response->assertStatus(200);
 
@@ -74,7 +73,7 @@ class VaultControllerTest extends TestCase
             'name' => 'Old vault',
         ]);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id);
 
         $response->assertStatus(401);
     }

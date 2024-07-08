@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Api\Vaults;
 
 use App\Http\Controllers\Controller;
-use App\Models\Journal;
 use App\Models\Vault;
-use App\Services\CreateJournal;
 use App\Services\CreateVault;
-use App\Services\DestroyJournal;
 use App\Services\DestroyVault;
-use App\Services\UpdateJournal;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
