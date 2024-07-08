@@ -3,7 +3,7 @@
     <div class="flex text-sm">
       <p class="mr-2">{{ __('You are here:') }}</p>
       <ul class="text-sm">
-        <li class="inline">
+        <li class="inline after:text-xs after:text-gray-500 after:content-['>']">
           <x-link href="{{ route('settings.index') }}">
             {{ __('Settings') }}
           </x-link>

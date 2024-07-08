@@ -4,7 +4,7 @@
     <div class="flex text-sm">
       <p class="mr-2">{{ __('You are here:') }}</p>
       <ul>
-        <li class="inline">
+        <li class="inline after:text-xs after:text-gray-500 after:content-['>']">
           <x-link href="{{ route('vaults.index') }}">
             {{ __('All the vaults') }}
           </x-link>
@@ -17,7 +17,7 @@
   </x-slot>
 
   <main class="relative mt-16 sm:mt-24">
-    <div class="mx-auto max-w-lg px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
+    <div class="mx-auto max-w-lg px-2 py-2 sm:py-6">
       <form method="post" action="{{ route('vaults.store') }}" class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
         @csrf
 
