@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Domains\Settings\ManageUserPreferences\Web\ViewHelpers;
+namespace Tests\Unit\ViewModels\Settings\Preferences;
 
 use App\Http\ViewModels\Settings\Preferences\PreferencesIndexViewModel;
 use App\Models\User;

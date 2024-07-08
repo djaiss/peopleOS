@@ -6,7 +6,6 @@
   </h3>
 </div>
 
-<!-- help text -->
 <div class="mb-6 rounded border text-sm">
   <div class="mb-2 flex rounded-t border-b border-gray-200 bg-slate-50 px-3 py-2 dark:border-gray-700 dark:bg-slate-900">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 grow pe-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,13 +20,13 @@
   </div>
 
   <p class="mb-1 px-5 py-2 text-center">
-    <x-button.secondary x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-vault-deletion')" :class="'me-3 border-red-600 text-red-600 dark:border-red-400 dark:text-red-400'">
+    <x-button.secondary x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-vault-deletion')" :class="'me-3 border-red-600 text-red-600 dark:border-red-400 dark:text-red-400'" dusk="delete-vault-cta">
       {{ __('Delete the vault') }}
     </x-button.secondary>
   </p>
 
-  <x-modal name="confirm-vault-deletion" focusable>
-    <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+  <x-modal name="confirm-vault-deletion" :show="false" focusable>
+    <form method="post" action="{{ route('vaults.destroy', $vault) }}" class="p-6">
       @csrf
       @method('delete')
 
@@ -44,7 +43,7 @@
           {{ __('Cancel') }}
         </x-button.secondary>
 
-        <x-button.primary class="ms-3">
+        <x-button.primary class="ms-3" dusk="destroy-vault-cta">
           {{ __('Delete') }}
         </x-button.primary>
       </div>

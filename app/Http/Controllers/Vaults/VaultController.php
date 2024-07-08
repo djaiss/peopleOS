@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Vaults;
 use App\Cache\VaultCache;
 use App\Http\Controllers\Controller;
 use App\Services\CreateVault;
+use App\Services\DestroyVault;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -54,5 +55,21 @@ class VaultController extends Controller
         return view('vaults.show', [
             'vault' => $vault,
         ]);
+    }
+
+    public function destroy(Request $request)
+    {
+        (new DestroyVault(
+            user: auth()->user(),
+            vault: $request->attributes->get('vault'),
+        ))->execute();
+
+        VaultCache::make(
+            user: auth()->user(),
+        )->forget();
+
+        $request->session()->flash('status', __('The vault has been deleted'));
+
+        return redirect()->route('vaults.index');
     }
 }

@@ -32,6 +32,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
         // settings
         Route::get('{vault}/settings', [VaultSettingsController::class, 'index'])->name('vaults.settings.index');
+        Route::delete('{vault}', [VaultController::class, 'destroy'])->name('vaults.destroy');
     });
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

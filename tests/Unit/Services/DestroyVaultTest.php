@@ -33,11 +33,5 @@ class DestroyVaultTest extends TestCase
         $this->assertDatabaseMissing('vaults', [
             'id' => $vault->id,
         ]);
-
-        // ca marche pas bordel
-        //  $this->assertDatabaseMissing('user_vault', [
-        //     'vault_id' => $vault->id,
-        //     'user_id' => $user->id,
-        // ]);
     }
 }
