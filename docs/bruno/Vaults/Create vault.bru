@@ -1,11 +1,11 @@
 meta {
-  name: Create journal
+  name: Create vault
   type: http
   seq: 2
 }
 
 post {
-  url: http://{{URL}}/journals?name=Personal&description=This is amazing
+  url: http://{{URL}}/vaults?name=Personal&description=This is amazing
   body: none
   auth: bearer
 }

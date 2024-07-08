@@ -1,18 +1,17 @@
 meta {
-  name: Delete journal
+  name: List vaults
   type: http
-  seq: 3
+  seq: 1
 }
 
-delete {
-  url: http://{{URL}}/journals/1
+get {
+  url: http://{{URL}}/vaults
   body: none
   auth: bearer
 }
 
 headers {
   Accept: application/json
-  Content-Type: application/json
 }
 
 auth:bearer {
