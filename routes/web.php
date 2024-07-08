@@ -8,6 +8,7 @@ use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
+use App\Http\Controllers\Vaults\Settings\VaultSettingsController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +26,13 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::middleware(['vault'])->prefix('vaults')->group(function (): void {
         Route::get('{vault}', [VaultController::class, 'show'])->name('vaults.show');
 
-        Route::get('{vault}/contacts', [ContactController::class, 'index'])->name('contacts.index');
+        // contacts
+        Route::get('{vault}/contacts', [ContactController::class, 'index'])->name('vaults.contacts.index');
         Route::get('{vault}/contacts/{contact}', [ContactController::class, 'index'])->name('contacts.show');
+
+        // settings
+        Route::get('{vault}/settings', [VaultSettingsController::class, 'index'])->name('vaults.settings.index');
+        Route::delete('{vault}', [VaultController::class, 'destroy'])->name('vaults.destroy');
     });
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

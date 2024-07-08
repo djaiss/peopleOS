@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\User;
+use App\Models\Vault;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+class DestroyVault
+{
+    public function __construct(
+        public User $user,
+        public Vault $vault,
+    ) {}
+
+    public function execute(): void
+    {
+        $this->validate();
+
+        $this->vault->delete();
+    }
+
+    public function validate(): void
+    {
+        if ($this->vault->account_id !== $this->user->account_id) {
+            throw new ModelNotFoundException;
+        }
+
+        // make sure the user has the permission to delete the vault
+        $exists = $this->user->vaults()
+            ->where('vaults.id', $this->vault->id)
+            ->wherePivot('permission', '<=', Vault::PERMISSION_MANAGE)
+            ->exists();
+
+        if (! $exists) {
+            throw new ModelNotFoundException;
+        }
+    }
+}

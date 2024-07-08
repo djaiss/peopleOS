@@ -14,7 +14,7 @@ class VaultTest extends DuskTestCase
     use DatabaseTruncation;
 
     #[Test]
-    public function a_user_can_create_a_vault(): void
+    public function a_user_can_manage_a_vault(): void
     {
         $user = User::factory()->create();
 
@@ -26,6 +26,11 @@ class VaultTest extends DuskTestCase
                 ->type('description', 'Accounting team')
                 ->click('@submit-form-button')
                 ->assertPathIs('/vaults/'.Vault::first()->id);
+
+            $browser->visit('/vaults/'.Vault::first()->id.'/settings')
+                ->click('@delete-vault-cta')
+                ->acceptDialog()
+                ->assertPathIs('/');
         });
     }
 }

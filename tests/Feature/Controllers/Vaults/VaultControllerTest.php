@@ -34,4 +34,16 @@ class VaultControllerTest extends TestCase
             ])
             ->assertRedirectToRoute('vaults.show', ['vault' => Vault::first()]);
     }
+
+    #[Test]
+    public function a_user_can_delete_a_vault(): void
+    {
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+
+        $this->actingAs($user)
+            ->delete('/vaults/'.$vault->id)
+            ->assertRedirectToRoute('vaults.index');
+    }
 }

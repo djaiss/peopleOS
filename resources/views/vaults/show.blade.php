@@ -1,1 +1,1 @@
-<x-app-layout :inVault="true">sdfs</x-app-layout>
+<x-app-layout :vault="$vault">sdfs</x-app-layout>

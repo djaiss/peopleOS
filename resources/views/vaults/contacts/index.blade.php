@@ -1,4 +1,4 @@
-<x-app-layout :inVault="true">
+<x-app-layout :vault="$vault">
   @foreach ($contacts as $contact)
     {{ $contact['name'] }}
   @endforeach
