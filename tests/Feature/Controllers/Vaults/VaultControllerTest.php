@@ -43,6 +43,7 @@ class VaultControllerTest extends TestCase
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
 
         $this->actingAs($user)
-            ->delete('/vaults/' . $vault->id)
+            ->delete('/vaults/'.$vault->id)
             ->assertRedirectToRoute('vaults.index');
-    }}
+    }
+}

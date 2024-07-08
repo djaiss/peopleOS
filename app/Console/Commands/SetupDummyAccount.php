@@ -2,19 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Exceptions\EntryAlreadyExistException;
-use App\Models\Contact;
-use App\Models\ContactImportantDate;
-use App\Models\PostTemplate;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\CreateAccount;
 use App\Services\CreateVault;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
-use Symfony\Component\Console\Attribute\AsCommand;
 
 class SetupDummyAccount extends Command
 {
@@ -59,7 +53,7 @@ class SetupDummyAccount extends Command
 
     private function start(): void
     {
-        if (!$this->confirmToProceed('Are you sure you want to proceed? This will delete ALL data in your environment.', true)) {
+        if (! $this->confirmToProceed('Are you sure you want to proceed? This will delete ALL data in your environment.', true)) {
             exit;
         }
 
@@ -93,7 +87,7 @@ class SetupDummyAccount extends Command
         $this->line('| username: blank@blank.com');
         $this->line('| password: blank123');
         $this->line('|----------------------------');
-        $this->line('| URL:      ' . config('app.url'));
+        $this->line('| URL:      '.config('app.url'));
         $this->line('-----------------------------');
 
         $this->info('Setup is done. Have fun.');
