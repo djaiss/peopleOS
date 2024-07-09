@@ -22,4 +22,13 @@ class ContactController extends Controller
             'contacts' => $contacts,
         ]);
     }
+
+    public function new(Request $request): View
+    {
+        $vault = $request->attributes->get('vault');
+
+        return view('vaults.contacts.new', [
+            'vault' => $vault,
+        ]);
+    }
 }

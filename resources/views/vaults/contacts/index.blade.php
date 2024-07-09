@@ -1,5 +1,5 @@
 <x-app-layout :vault="$vault">
-  <main class="relative sm:mt-20">
+  <main class="relative sm:mt-12">
     <div class="mx-auto max-w-7xl px-2 py-2 sm:px-0 sm:py-0">
       <div class="contact-vault-list grid grid-cols-3 gap-6">
         <!-- left -->
@@ -12,8 +12,15 @@
             )
           },
         }" class="flex flex-col overflow-hidden rounded-lg border border-gray-200">
+          <div class="border-b border-b-gray-200 px-2 py-2">
+            <x-button.primary href="{{ route('vaults.contacts.new', ['vault' => $vault]) }}" class="flex w-full items-center" dusk="create-contact-button">
+              <x-heroicon-o-plus class="mr-2 h-4 w-4" />
+              {{ __('Create a contact') }}
+            </x-button.primary>
+          </div>
+
           <div class="border-b border-b-gray-200 px-2 pb-1 pt-1">
-            <x-text-input x-model="search" type="text" placeholder="Search contacts" class="w-full" />
+            <x-text-input x-model="search" type="text" placeholder="Search contacts" class="w-full py-1 text-sm" />
           </div>
 
           <div class="flex-grow overflow-auto">
