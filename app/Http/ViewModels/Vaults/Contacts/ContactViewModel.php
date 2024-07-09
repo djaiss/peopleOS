@@ -24,7 +24,9 @@ class ContactViewModel
                         ]),
                     ],
                 ];
-            });
+            })
+            ->sortBy('name')
+            ->values();
 
         return $contacts;
     }

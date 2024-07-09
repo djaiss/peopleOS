@@ -128,7 +128,7 @@ class SetupDummyAccount extends Command
         $this->info('☐ Create contacts');
 
         foreach (Vault::all() as $vault) {
-            for ($i = 0; $i < rand(2, 201); $i++) {
+            for ($i = 0; $i < rand(300, 2010); $i++) {
                 $date = $this->faker->dateTimeThisCentury();
                 $birthDate = Carbon::parse($date);
 

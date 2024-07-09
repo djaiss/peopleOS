@@ -101,7 +101,8 @@ class VaultController extends Controller
                 'name' => $vault->name,
                 'description' => $vault->description,
             ])
-            ->sortBy('name');
+            ->sortBy('name')
+            ->values();
 
         return response()->json($vaults, 200);
     }
