@@ -15,80 +15,128 @@
     </div>
   </x-slot>
 
-  <main class="relative sm:mt-12">
-    <div class="mx-auto max-w-7xl px-2 py-2 sm:px-0 sm:py-0">
-      <form class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900" @submit.prevent="submit()">
+  <main class="relative mt-16 sm:mt-24">
+    <div class="mx-auto max-w-lg px-2 py-2 sm:py-6">
+      <form method="post" action="{{ route('vaults.contacts.store', ['vault' => $vault]) }}" class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+        @csrf
+
         <div class="section-head border-b border-gray-200 bg-blue-50 p-5 dark:border-gray-700 dark:bg-blue-900">
           <h1 class="text-center text-2xl font-medium">
-            {{ $t('Add a contact') }}
+            {{ __('Add a contact') }}
           </h1>
         </div>
-        <div class="border-b border-gray-200 p-5 dark:border-gray-700">
-          <errors :errors="form.errors" />
 
+        <!-- list of fields -->
+        <div class="border-b border-gray-200 p-5 dark:border-gray-700" x-data="{
+          showPrefix: false,
+          showMiddleName: false,
+          showSuffix: false,
+          showNickname: false,
+          showMaidenName: false,
+        }">
           <!-- prefix -->
-          <text-input v-if="showPrefixField" :id="'prefix'" v-model="form.prefix" :class="'mb-5'" :input-class="'block w-full'" :required="false" :maxlength="255" :label="$t('Prefix')" />
+          <div x-cloak x-show="showPrefix" x-transition class="relative mb-5">
+            <x-input-label for="prefix" :value="__('Prefix')" :optional="true" />
+            <x-text-input class="mt-1 block w-full" id="prefix" name="prefix" type="text" x-ref="prefix" />
+            <x-input-error class="mt-2" :messages="$errors->get('prefix')" />
+          </div>
 
           <!-- first name -->
-          <text-input v-model="form.first_name" :autofocus="true" :class="'mb-5'" :input-class="'block w-full'" :required="true" :maxlength="255" :label="$t('First name')" />
+          <div class="relative mb-5">
+            <x-input-label for="first_name" :value="__('First name')" />
+            <x-text-input class="mt-1 block w-full" id="first_name" name="first_name" type="text" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+          </div>
 
           <!-- last name -->
-          <text-input :id="'last_name'" v-model="form.last_name" :class="'mb-5'" :input-class="'block w-full'" :required="false" :maxlength="255" :label="$t('Last name')" />
+          <div class="relative mb-5">
+            <x-input-label for="last_name" :value="__('Last name')" />
+            <x-text-input class="mt-1 block w-full" id="last_name" name="last_name" type="text" required />
+            <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
+          </div>
 
           <!-- middle name -->
-          <text-input v-if="showMiddleNameField" :id="'middle_name'" v-model="form.middle_name" :class="'mb-5'" :input-class="'block w-full'" :required="false" :maxlength="255" :label="$t('Middle name')" />
+          <div x-cloak x-show="showMiddleName" x-transition class="relative mb-5">
+            <x-input-label for="middle_name" :value="__('Middle name')" :optional="true" />
+            <x-text-input class="mt-1 block w-full" id="middle_name" name="middle_name" type="text" x-ref="middlename" />
+            <x-input-error class="mt-2" :messages="$errors->get('middle_name')" />
+          </div>
 
           <!-- nickname -->
-          <text-input v-if="showNicknameField" :id="'nickname'" v-model="form.nickname" :class="'mb-5'" :input-class="'block w-full'" :required="false" :maxlength="255" :label="$t('Nickname')" />
+          <div x-cloak x-show="showNickname" x-transition class="relative mb-5">
+            <x-input-label for="nickname" :value="__('Nickname')" :optional="true" />
+            <x-text-input class="mt-1 block w-full" id="nickname" name="nickname" type="text" x-ref="nickname" />
+            <x-input-error class="mt-2" :messages="$errors->get('nickname')" />
+          </div>
 
           <!-- maiden name -->
-          <text-input v-if="showMaidenNameField" :id="'maiden_name'" v-model="form.maiden_name" :class="'mb-5'" :input-class="'block w-full'" :required="false" :maxlength="255" :label="$t('Maiden name')" />
+          <div x-cloak x-show="showMaidenName" x-transition class="relative mb-5">
+            <x-input-label for="maiden_name" :value="__('Maiden name')" :optional="true" />
+            <x-text-input class="mt-1 block w-full" id="maiden_name" name="maiden_name" type="text" x-ref="maidenname" />
+            <x-input-error class="mt-2" :messages="$errors->get('maiden_name')" />
+          </div>
 
           <!-- suffix -->
-          <text-input v-if="showSuffixField" :id="'suffix'" v-model="form.suffix" :class="'mb-5'" :input-class="'block w-full'" :required="false" :maxlength="255" :label="$t('Suffix')" />
-
-          <!-- genders -->
-          <dropdown v-if="showGenderField" v-model="form.gender_id" :data="data.genders" :required="false" :class="'mb-5'" :placeholder="$t('Choose a value')" :dropdown-class="'block w-full'" :label="$t('Gender')" />
-
-          <!-- pronouns -->
-          <dropdown v-if="showPronounField" v-model="form.pronoun_id" :data="data.pronouns" :required="false" :class="'mb-5'" :placeholder="$t('Choose a value')" :dropdown-class="'block w-full'" :label="$t('Pronoun')" />
-
-          <!-- templates -->
-          <dropdown v-if="showTemplateField" v-model="form.template_id" :data="data.templates" :required="false" :class="'mb-5'" :placeholder="$t('Choose a value')" :dropdown-class="'block w-full'" :label="$t('Use the following template for this contact')" />
+          <div x-cloak x-show="showSuffix" x-transition class="relative mb-5">
+            <x-input-label for="suffix" :value="__('Suffix')" :optional="true" />
+            <x-text-input class="mt-1 block w-full" id="suffix" name="suffix" type="text" x-ref="suffix" />
+            <x-input-error class="mt-2" :messages="$errors->get('suffix')" />
+          </div>
 
           <!-- other fields -->
           <div class="flex flex-wrap text-xs">
-            <span v-if="!showMiddleNameField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayMiddleNameField">
-              {{ $t('+ middle name') }}
+            <span x-cloak x-show="! showPrefix" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+              showPrefix = true
+              $nextTick(() => {
+                $refs.prefix.focus()
+              })
+            ">
+              {{ __('+ prefix') }}
             </span>
-            <span v-if="!showPrefixField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayPrefixField">
-              {{ $t('+ prefix') }}
+            <span x-cloak x-show="! showMiddleName" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+              showMiddleName = true
+              $nextTick(() => {
+                $refs.middlename.focus()
+              })
+            ">
+              {{ __('+ middle name') }}
             </span>
-            <span v-if="!showSuffixField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displaySuffixField">
-              {{ $t('+ suffix') }}
+            <span x-cloak x-show="! showSuffix" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+              showSuffix = true
+              $nextTick(() => {
+                $refs.suffix.focus()
+              })
+            ">
+              {{ __('+ suffix') }}
             </span>
-            <span v-if="!showNicknameField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayNicknameField">
-              {{ $t('+ nickname') }}
+            <span x-cloak x-show="! showNickname" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+              showNickname = true
+              $nextTick(() => {
+                $refs.nickname.focus()
+              })
+            ">
+              {{ __('+ nickname') }}
             </span>
-            <span v-if="!showMaidenNameField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayMaidenNameField">
-              {{ $t('+ maiden name') }}
-            </span>
-            <span v-if="data.genders.length > 0 && !showGenderField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayGenderField">
-              {{ $t('+ gender') }}
-            </span>
-            <span v-if="data.pronouns.length > 0 && !showPronounField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayPronounField">
-              {{ $t('+ pronoun') }}
-            </span>
-            <span v-if="data.templates.length > 0 && !showTemplateField" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500 dark:text-gray-900 dark:text-white" @click="displayTemplateField">
-              {{ $t('+ change template') }}
+            <span x-cloak x-show="! showMaidenName" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+              showMaidenName = true
+              $nextTick(() => {
+                $refs.maidenname.focus()
+              })
+            ">
+              {{ __('+ maiden name') }}
             </span>
           </div>
         </div>
 
         <!-- actions -->
         <div class="flex justify-between p-5">
-          <pretty-link :href="data.url.back" :text="$t('Cancel')" :class="'me-3'" />
-          <pretty-button :href="'data.url.vault.create'" :text="$t('Add')" :state="loadingState" :icon="'check'" :class="'save'" />
+          <x-button.secondary href="{{ route('vaults.contacts.index', ['vault' => $vault]) }}">
+            {{ __('Cancel') }}
+          </x-button.secondary>
+
+          <x-button.primary dusk="submit-form-button">
+            {{ __('Create') }}
+          </x-button.primary>
         </div>
       </form>
     </div>

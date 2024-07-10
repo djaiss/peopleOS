@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+  display: none !important;
+}
+
 .button {
   --tw-shadow: 2px 2px 0 #191a1b !important;
   border-radius: 0.25rem !important;

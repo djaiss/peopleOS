@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckContact;
 use App\Http\Middleware\CheckVault;
 use App\Http\Middleware\Locale;
 use Illuminate\Foundation\Application;
@@ -15,7 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(Locale::class);
-        $middleware->alias(['vault' => CheckVault::class]);
+        $middleware->alias([
+            'vault' => CheckVault::class,
+            'contact' => CheckContact::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

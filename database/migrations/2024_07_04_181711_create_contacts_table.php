@@ -14,13 +14,14 @@ return new class() extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vault_id');
-            $table->string('first_name')->nullable();
-            $table->string('middle_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('nickname')->nullable();
-            $table->string('maiden_name')->nullable();
-            $table->string('suffix')->nullable();
-            $table->string('prefix')->nullable();
+            $table->text('slug')->nullable();
+            $table->text('first_name')->nullable();
+            $table->text('middle_name')->nullable();
+            $table->text('last_name')->nullable();
+            $table->text('nickname')->nullable();
+            $table->text('maiden_name')->nullable();
+            $table->text('suffix')->nullable();
+            $table->text('prefix')->nullable();
             $table->boolean('can_be_deleted')->default(true);
             $table->datetime('last_updated_at')->nullable();
             $table->timestamps();

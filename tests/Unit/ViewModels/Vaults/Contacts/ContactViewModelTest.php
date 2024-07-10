@@ -33,9 +33,8 @@ class ContactViewModelTest extends TestCase
             [
                 'id' => $contact->id,
                 'name' => $contact->name,
-                'avatar' => $contact->avatar,
                 'url' => [
-                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->id,
+                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
                 ],
             ],
             $collection->toArray()[0]

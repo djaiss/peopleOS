@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -13,8 +14,8 @@ class CreateContact
     public Contact $contact;
 
     public function __construct(
-        public Vault $vault,
         public User $user,
+        public Vault $vault,
         public ?string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -22,12 +23,14 @@ class CreateContact
         public ?string $maidenName,
         public ?string $prefix,
         public ?string $suffix,
+        public bool $canBeDeleted = true,
     ) {}
 
     public function execute(): Contact
     {
         $this->validate();
         $this->createContact();
+        $this->generateSlug();
         $this->updateLastEditedDate();
 
         return $this->contact;
@@ -36,7 +39,7 @@ class CreateContact
     private function validate(): void
     {
         if ($this->vault->account_id !== $this->user->account_id) {
-            throw new ModelNotFoundException();
+            throw new ModelNotFoundException;
         }
 
         // make sure the user has the permission
@@ -61,7 +64,17 @@ class CreateContact
             'maiden_name' => $this->maidenName ?? null,
             'suffix' => $this->suffix ?? null,
             'prefix' => $this->prefix ?? null,
+            'can_be_deleted' => $this->canBeDeleted,
         ]);
+    }
+
+    private function generateSlug(): void
+    {
+        $name = $this->contact->first_name.' '.$this->contact->last_name;
+        $slug = $this->contact->id.'-'.Str::of($name)->slug('-');
+
+        $this->contact->slug = $slug;
+        $this->contact->save();
     }
 
     private function updateLastEditedDate(): void

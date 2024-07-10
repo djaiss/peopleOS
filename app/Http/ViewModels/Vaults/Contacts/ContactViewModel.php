@@ -16,11 +16,10 @@ class ContactViewModel
                 return [
                     'id' => $contact->id,
                     'name' => $contact->name,
-                    'avatar' => $contact->avatar,
                     'url' => [
-                        'show' => route('contacts.show', [
+                        'show' => route('vault.contacts.show', [
                             'vault' => $vault->id,
-                            'contact' => $contact->id,
+                            'slug' => $contact->slug,
                         ]),
                     ],
                 ];

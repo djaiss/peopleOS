@@ -29,8 +29,12 @@ Route::middleware('auth', 'verified')->group(function () {
 
         // contacts
         Route::get('{vault}/contacts', [ContactController::class, 'index'])->name('vaults.contacts.index');
-        Route::get('{vault}/new', [ContactController::class, 'new'])->name('vaults.contacts.new');
-        Route::get('{vault}/contacts/{contact}', [ContactController::class, 'index'])->name('contacts.show');
+        Route::get('{vault}/contacts/new', [ContactController::class, 'new'])->name('vaults.contacts.new');
+        Route::post('{vault}/contacts', [ContactController::class, 'store'])->name('vaults.contacts.store');
+
+        Route::middleware(['contact'])->group(function (): void {
+            Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vault.contacts.show');
+        });
 
         // settings
         Route::get('{vault}/settings', [VaultSettingsController::class, 'index'])->name('vaults.settings.index');
