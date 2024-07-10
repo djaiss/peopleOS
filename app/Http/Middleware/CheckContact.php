@@ -3,13 +3,11 @@
 namespace App\Http\Middleware;
 
 use App\Models\Contact;
-use App\Models\Vault;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 class CheckContact
 {

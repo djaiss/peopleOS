@@ -46,9 +46,8 @@ class CreateVault
             'can_be_deleted' => false,
         ]);
 
-        $name = $this->contact->first_name . ' ' . $this->contact->last_name;
-        $slug = $this->contact->id . '-' . Str::of($name)->slug('-');
-
+        $name = $this->contact->first_name.' '.$this->contact->last_name;
+        $slug = $this->contact->id.'-'.Str::of($name)->slug('-');
 
         $this->contact->slug = $slug;
         $this->contact->save();

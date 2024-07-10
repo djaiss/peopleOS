@@ -2,21 +2,13 @@
 
 namespace Tests\Unit\Services;
 
-use App\Exceptions\NotEnoughPermissionException;
-use App\Models\Account;
 use App\Models\Contact;
-use App\Models\ContactFeedItem;
-use App\Models\Gender;
-use App\Models\Pronoun;
-use App\Models\Template;
 use App\Models\User;
-use PHPUnit\Framework\Attributes\Test;
 use App\Models\Vault;
 use App\Services\CreateContact;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Validation\ValidationException;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CreateContactTest extends TestCase
