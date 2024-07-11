@@ -26,9 +26,8 @@
           <div class="flex-grow overflow-auto">
             <ul>
               <template x-for="item in filteredItems" :key="item.name">
-                {{-- <li x-text="item.name" class="border-b border-b-gray-200 px-3 py-1"></li> --}}
                 <li class="border-b border-b-gray-200 px-3 py-1">
-                  <x-link @click="window.location.href = item.url.show" x-text="item.name" class="block text-blue-500 hover:text-blue-700"></x-link>
+                  <x-link @click="window.location.href = item.url.show" x-text="item.name" class="block cursor-pointer text-blue-500 hover:text-blue-700"></x-link>
                 </li>
               </template>
             </ul>
