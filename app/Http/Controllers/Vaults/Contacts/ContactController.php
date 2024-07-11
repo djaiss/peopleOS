@@ -75,4 +75,13 @@ class ContactController extends Controller
 
         return redirect()->route('vaults.show', $vault);
     }
+
+    public function show(Request $request): View
+    {
+        $contact = $request->attributes->get('contact');
+
+        return view('vaults.contacts.show', [
+            'contact' => $contact,
+        ]);
+    }
 }
