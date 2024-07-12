@@ -7,8 +7,8 @@
 }
 
 .button {
-  --tw-shadow: 2px 2px 0 #191a1b !important;
-  border-radius: 0.25rem !important;
+  --tw-shadow: 2px 2px 0 #191a1b;
+  border-radius: 0.25rem;
   border-width: 1px !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow) !important;
   position: relative !important;
@@ -32,6 +32,11 @@
   padding-right: 9px;
   padding-top: 3px;
   padding-bottom: 3px;
+}
+
+.button.rounded {
+  border-radius: 9999px;
+  --tw-shadow: 2px 2px 0 #c6c4c4 !important;
 }
 
 .primary {
@@ -67,7 +72,11 @@
 
 /* Contact styles */
 .contact-vault-list {
-  grid-template-columns: 200px 300px 1fr;
+  grid-template-columns: 200px 1fr 250px;
+}
+
+.contact-note {
+  grid-template-columns: 250px 1fr;
 }
 
 .contact-vault-list > div:first-of-type {

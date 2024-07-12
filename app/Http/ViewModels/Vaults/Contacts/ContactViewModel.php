@@ -29,4 +29,13 @@ class ContactViewModel
 
         return $contacts;
     }
+
+    public static function show(Contact $contact): array
+    {
+        return [
+            'id' => $contact->id,
+            'name' => $contact->name,
+            'avatar' => $contact->avatar,
+        ];
+    }
 }
