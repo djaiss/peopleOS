@@ -17,7 +17,7 @@ class ContactViewModel
                     'id' => $contact->id,
                     'name' => $contact->name,
                     'url' => [
-                        'show' => route('vault.contacts.show', [
+                        'show' => route('vaults.contacts.show', [
                             'vault' => $vault->id,
                             'slug' => $contact->slug,
                         ]),

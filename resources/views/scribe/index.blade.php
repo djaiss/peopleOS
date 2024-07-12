@@ -31,7 +31,7 @@
       }
     </style>
 
-    <script src="{{ asset('/vendor/scribe/js/theme-default-4.37.0.js') }}"></script>
+    <script src="{{ asset('/vendor/scribe/js/theme-default-4.37.1.js') }}"></script>
   </head>
 
   <body data-languages='["bash","javascript","php"]'>
@@ -98,7 +98,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 10, 2024</li>
+        <li>Last updated: July 12, 2024</li>
       </ul>
     </div>
 

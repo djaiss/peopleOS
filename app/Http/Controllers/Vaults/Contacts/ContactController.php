@@ -74,7 +74,7 @@ class ContactController extends Controller
 
         $request->session()->flash('status', __('The contact has been created'));
 
-        return redirect()->route('vault.contacts.show', [
+        return redirect()->route('vaults.contacts.show', [
             'vault' => $vault,
             'slug' => $contact->slug,
         ]);

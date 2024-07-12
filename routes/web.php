@@ -33,7 +33,7 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::post('{vault}/contacts', [ContactController::class, 'store'])->name('vaults.contacts.store');
 
         Route::middleware(['contact'])->group(function (): void {
-            Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vault.contacts.show');
+            Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
         });
 
         // settings
