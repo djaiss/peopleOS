@@ -64,7 +64,7 @@
                         <path d="M11 3 8 9l4 13 4-13-3-6" />
                         <path d="M2 9h20" />
                       </svg>
-                      <div>Spouse</div>
+                      <div>Love</div>
                     </div>
 
                     <div class="button -left-6 flex cursor-pointer items-center rounded border bg-white text-sm">
