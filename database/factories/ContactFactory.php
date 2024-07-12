@@ -22,6 +22,7 @@ class ContactFactory extends Factory
     {
         return [
             'vault_id' => Vault::factory(),
+            'slug' => $this->faker->slug(),
             'first_name' => $this->faker->firstName(),
             'middle_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),

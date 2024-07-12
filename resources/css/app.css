@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+  display: none !important;
+}
+
 .button {
-  --tw-shadow: 2px 2px 0 #191a1b !important;
-  border-radius: 0.25rem !important;
+  --tw-shadow: 2px 2px 0 #191a1b;
+  border-radius: 0.25rem;
   border-width: 1px !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow) !important;
   position: relative !important;
@@ -30,6 +34,11 @@
   padding-bottom: 3px;
 }
 
+.button.rounded {
+  border-radius: 9999px;
+  --tw-shadow: 2px 2px 0 #c6c4c4 !important;
+}
+
 .primary {
   background-color: #fcf27e;
 }
@@ -44,6 +53,7 @@
   transform: translate(0, 0);
 }
 
+/* Vault styles */
 .vault-list {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -56,6 +66,29 @@
 
 @media (max-width: 480px) {
   .vault-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact styles */
+.contact-vault-list {
+  grid-template-columns: 200px 1fr 250px;
+}
+
+.contact-note {
+  grid-template-columns: 250px 1fr;
+}
+
+.contact-vault-list > div:first-of-type {
+  max-height: calc(100vh - 200px);
+}
+
+@media (max-width: 480px) {
+  .contact-vault-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-note {
     grid-template-columns: 1fr;
   }
 }

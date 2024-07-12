@@ -29,6 +29,7 @@ class Contact extends Model
      */
     protected $fillable = [
         'vault_id',
+        'slug',
         'first_name',
         'middle_name',
         'last_name',
@@ -49,6 +50,14 @@ class Contact extends Model
         'vault_id' => 'string',
         'can_be_deleted' => 'boolean',
         'last_updated_at' => 'datetime',
+        'slug' => 'encrypted',
+        'first_name' => 'encrypted',
+        'middle_name' => 'encrypted',
+        'last_name' => 'encrypted',
+        'nickname' => 'encrypted',
+        'maiden_name' => 'encrypted',
+        'suffix' => 'encrypted',
+        'prefix' => 'encrypted',
     ];
 
     /**

@@ -22,7 +22,8 @@ class VaultViewModel
                         'show' => route('vaults.show', $vault),
                     ],
                 ];
-            });
+            })
+            ->sortBy('name');
 
         return $vaults;
     }

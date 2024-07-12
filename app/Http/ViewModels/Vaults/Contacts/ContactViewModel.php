@@ -16,16 +16,26 @@ class ContactViewModel
                 return [
                     'id' => $contact->id,
                     'name' => $contact->name,
-                    'avatar' => $contact->avatar,
                     'url' => [
-                        'show' => route('contacts.show', [
+                        'show' => route('vaults.contacts.show', [
                             'vault' => $vault->id,
-                            'contact' => $contact->id,
+                            'slug' => $contact->slug,
                         ]),
                     ],
                 ];
-            });
+            })
+            ->sortBy('name')
+            ->values();
 
         return $contacts;
+    }
+
+    public static function show(Contact $contact): array
+    {
+        return [
+            'id' => $contact->id,
+            'name' => $contact->name,
+            'avatar' => $contact->avatar,
+        ];
     }
 }

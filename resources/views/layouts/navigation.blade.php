@@ -8,7 +8,7 @@
           </x-link>
         </li>
         <li class="inline">
-          <x-link href="{{ route('vaults.contacts.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300">
+          <x-link href="{{ route('vaults.contacts.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300 {{ Route::currentRouteName() == 'vaults.contacts.index' ? 'bg-gray-700 text-white no-underline' : '' }}">
             {{ __('Contacts') }}
           </x-link>
         </li>
@@ -48,7 +48,7 @@
           </x-link>
         </li>
         <li class="inline">
-          <x-link href="{{ route('vaults.settings.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300">
+          <x-link href="{{ route('vaults.settings.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300 {{ Route::currentRouteName() == 'vaults.settings.index' ? 'bg-gray-700 text-white no-underline' : '' }}">
             {{ __('Vault settings') }}
           </x-link>
         </li>

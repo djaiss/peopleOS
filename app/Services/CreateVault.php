@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
+use Illuminate\Support\Str;
 
 class CreateVault
 {
@@ -44,6 +45,12 @@ class CreateVault
             'last_name' => $this->user->last_name,
             'can_be_deleted' => false,
         ]);
+
+        $name = $this->contact->first_name.' '.$this->contact->last_name;
+        $slug = $this->contact->id.'-'.Str::of($name)->slug('-');
+
+        $this->contact->slug = $slug;
+        $this->contact->save();
     }
 
     private function associateUserToVault(): void
