@@ -87,4 +87,8 @@
   .contact-vault-list {
     grid-template-columns: 1fr;
   }
+
+  .contact-note {
+    grid-template-columns: 1fr;
+  }
 }
