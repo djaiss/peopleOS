@@ -32,7 +32,7 @@ class ContactControllerTest extends TestCase
             ])
             ->assertRedirectToRoute('vaults.contacts.show', [
                 'vault' => $vault,
-                'slug' => Contact::orderBy('id', 'desc')->first()->id. '-michael-scott',
+                'slug' => Contact::orderBy('id', 'desc')->first()->id.'-michael-scott',
             ]);
     }
 }
