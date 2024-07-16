@@ -4,7 +4,6 @@ namespace App\Http\ViewModels\Vaults\Contacts;
 
 use App\Models\Contact;
 use App\Models\Note;
-use App\Models\Vault;
 use Illuminate\Support\Collection;
 
 class ContactNotesViewModel

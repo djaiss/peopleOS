@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Vault;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Str;
 
 class CreateNote
 {
