@@ -132,12 +132,12 @@
               </div>
             </div>
 
+            <!-- notes -->
             <div class="p-3 sm:p-0">
               <!-- add note -->
-              <form hx-target="#notes-list" hx-post="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200">
+              <form hx-target="#notes-list" hx-post="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200" hx-on::after-request="this.reset()">
                 @csrf
 
-                <h2 class="mb-2 text-sm font-semibold">Add a note about Madeleine</h2>
                 <x-textarea id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="Add a note"></x-textarea>
                 <div class="mb-3 flex items-center justify-between">
                   <p class="text-xs">{{ __('Show options') }} (change date or add reminder)</p>

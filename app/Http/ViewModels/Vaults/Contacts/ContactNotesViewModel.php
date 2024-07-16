@@ -5,6 +5,7 @@ namespace App\Http\ViewModels\Vaults\Contacts;
 use App\Models\Contact;
 use App\Models\Note;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class ContactNotesViewModel
 {
@@ -19,8 +20,11 @@ class ContactNotesViewModel
             ->get()
             ->map(fn (Note $note) => [
                 'id' => $note->id,
-                'body' => $note->body,
-                'created_at' => $note->created_at->diffForHumans(),
+                'body' => Str::of($note->body)->markdown([
+                    'html_input' => 'strip',
+                ]),
+                'created_at' => $note->created_at->format('F d, Y (l)'),
+                'created_at_full_timestamp' => $note->created_at->format('Y-m-d H:i:s'),
                 'user' => [
                     'id' => $note->user_id,
                     'name' => $note->user->first_name,
