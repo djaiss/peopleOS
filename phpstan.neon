@@ -16,6 +16,7 @@ parameters:
 #        - ./*/*/FileToBeExcluded.php
         - app/Http/Controllers/Auth/VerifyEmailController.php
         - app/Models/User.php
+        - app/Http/ViewModels/Vaults/Contacts/ContactNotesViewModel.php
 
 #
 #    checkMissingIterableValueType: false

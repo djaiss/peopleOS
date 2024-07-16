@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
+use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Services\CreateContact;
 use Illuminate\Http\RedirectResponse;
@@ -90,12 +91,14 @@ class ContactController extends Controller
             vault: $vault,
         )->value();
 
+        $notes = ContactNotesViewModel::index($contact);
         $contact = ContactViewModel::show($contact);
 
         return view('vaults.contacts.show', [
             'vault' => $vault,
             'contact' => $contact,
             'contacts' => $contacts,
+            'notes' => $notes,
         ]);
     }
 }

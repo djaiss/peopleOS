@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Contact;
+use App\Models\Note;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -17,6 +18,17 @@ class ContactTest extends TestCase
     {
         $contact = Contact::factory()->create();
         $this->assertTrue($contact->vault()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_notes(): void
+    {
+        $contact = Contact::factory()->create();
+        Note::factory()->create([
+            'contact_id' => $contact->id,
+        ]);
+
+        $this->assertTrue($contact->notes()->exists());
     }
 
     #[Test]

@@ -20,10 +20,10 @@
     "laravel-vite-plugin": "^1.0.5",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.39",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "prettier-plugin-blade": "^2.1.16",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^3.4.5",
     "vite": "^5.3.3"
   }
 }

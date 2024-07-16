@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('contact_id');
-            $table->text('body');
+            $table->unsignedBigInteger('user_id');
+            $table->longText('body');
             $table->timestamps();
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

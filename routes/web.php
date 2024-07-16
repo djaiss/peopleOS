@@ -9,6 +9,7 @@ use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
+use App\Http\Controllers\Vaults\Contacts\ContactNoteController;
 use App\Http\Controllers\Vaults\Settings\VaultSettingsController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,9 @@ Route::middleware('auth', 'verified')->group(function () {
 
         Route::middleware(['contact'])->group(function (): void {
             Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
+
+            // notes
+            Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
         });
 
         // settings
