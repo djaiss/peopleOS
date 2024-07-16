@@ -7,9 +7,9 @@ use App\Models\Contact;
 use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
-use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
