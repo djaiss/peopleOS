@@ -30,7 +30,7 @@ class ContactNoteControllerTest extends TestCase
             ->assertSee('This is a note');
 
         $this->actingAs($user)
-            ->get('/vaults/'.$vault->id.'/contacts/' .$contact->slug)
+            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
             ->assertSee('This is a note');
     }
 }

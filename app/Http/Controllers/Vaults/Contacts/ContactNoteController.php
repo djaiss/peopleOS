@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactNoteCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Services\CreateNote;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

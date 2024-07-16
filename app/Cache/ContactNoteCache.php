@@ -4,10 +4,7 @@ namespace App\Cache;
 
 use App\Helpers\CacheHelper;
 use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
-use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Models\Contact;
-use App\Models\User;
-use App\Models\Vault;
 use App\Traits\CacheIdentifier;
 use Illuminate\Support\Collection;
 
