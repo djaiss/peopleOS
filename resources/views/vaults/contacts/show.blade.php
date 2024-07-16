@@ -134,7 +134,7 @@
 
             <div class="p-3 sm:p-0">
               <!-- add note -->
-              <form method="post" action="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200">
+              <form hx-target="#notes-list" hx-post="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200">
                 @csrf
 
                 <h2 class="mb-2 text-sm font-semibold">Add a note about Madeleine</h2>
@@ -149,23 +149,9 @@
               </form>
 
               <!-- notes -->
-              @fragment('notes-list')
-                @forelse ($notes as $note)
-                  <div class="mb-4 border-b border-gray-200 pb-4">
-                    <!-- date -->
-                    <div class="mb-2 flex text-sm">
-                      <p class="mr-2 font-bold">Feb 23, 2024 (Saturday)</p>
-                      <p class="text-gray-400">Note by Regis</p>
-                    </div>
-
-                    <div>
-                      <p>{{ $note['body'] }}</p>
-                    </div>
-                  </div>
-                @empty
-                  <p>No notes</p>
-                @endforelse
-              @endfragment
+              <div id="notes-list">
+                @include('vaults.contacts.partials.notes', ['notes' => $notes])
+              </div>
             </div>
           </div>
         </div>

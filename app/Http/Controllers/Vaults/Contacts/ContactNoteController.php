@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Services\CreateNote;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ContactNoteController extends Controller
 {
-    public function store(Request $request): string
+    public function store(Request $request): View
     {
         $vault = $request->attributes->get('vault');
         $contact = $request->attributes->get('contact');
@@ -24,9 +25,8 @@ class ContactNoteController extends Controller
             body: $validated['body'],
         ))->execute();
 
-        return view('vaults.contacts.show', [
-            'vault' => $vault,
+        return view('vaults.contacts.partials.notes', [
             'notes' => ContactNotesViewModel::index($contact),
-        ])->fragment('notes-list');
+        ]);
     }
 }

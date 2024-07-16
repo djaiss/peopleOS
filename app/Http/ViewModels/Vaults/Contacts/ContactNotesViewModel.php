@@ -15,18 +15,17 @@ class ContactNotesViewModel
     {
         $notes = $contact->notes()
             ->with('user')
-            ->orderBy('created_at')
+            ->orderBy('created_at', 'desc')
             ->get()
-            ->map(function (Note $note): array {
-                return [
-                    'id' => $note->id,
-                    'body' => $note->body,
-                    'user' => [
-                        'id' => $note->user_id,
-                        'name' => $note->user->name,
-                    ],
-                ];
-            });
+            ->map(fn (Note $note) => [
+                'id' => $note->id,
+                'body' => $note->body,
+                'created_at' => $note->created_at->diffForHumans(),
+                'user' => [
+                    'id' => $note->user_id,
+                    'name' => $note->user->first_name,
+                ],
+            ]);
 
         return $notes;
     }
