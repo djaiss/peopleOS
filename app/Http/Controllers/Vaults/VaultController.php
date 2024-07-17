@@ -67,12 +67,12 @@ class VaultController extends Controller
 
         VaultCache::make(
             user: auth()->user(),
-        )->forget();
+        )->refresh();
 
         ContactListCache::make(
             user: auth()->user(),
             vault: $request->attributes->get('vault'),
-        )->forget();
+        )->refresh();
 
         $request->session()->flash('status', __('The vault has been deleted'));
 

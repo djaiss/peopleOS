@@ -66,12 +66,7 @@ class ContactController extends Controller
         ContactListCache::make(
             user: auth()->user(),
             vault: $vault,
-        )->forget();
-
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $vault,
-        )->value();
+        )->refresh();
 
         $request->session()->flash('status', __('The contact has been created'));
 

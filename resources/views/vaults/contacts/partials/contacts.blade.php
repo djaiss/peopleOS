@@ -15,7 +15,7 @@
   </div>
 
   <div class="border-b border-b-gray-200 px-2 pb-1 pt-1">
-    <x-text-input x-model="search" type="text" placeholder="Search contacts" class="w-full py-1 text-sm" />
+    <x-text-input x-model="search" type="text" placeholder="{{ __('Search contacts') }}" class="w-full py-1 text-sm" />
   </div>
 
   <div class="flex-grow overflow-auto">

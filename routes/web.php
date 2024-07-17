@@ -30,14 +30,16 @@ Route::middleware('auth', 'verified')->group(function () {
 
         // contacts
         Route::get('{vault}/contacts', [ContactController::class, 'index'])->name('vaults.contacts.index');
-        Route::get('{vault}/contacts/new', [ContactController::class, 'new'])->name('vaults.contacts.new');
-        Route::post('{vault}/contacts', [ContactController::class, 'store'])->name('vaults.contacts.store');
+        Route::middleware(['is_at_least_editor'])->get('{vault}/contacts/new', [ContactController::class, 'new'])->name('vaults.contacts.new');
+        Route::middleware(['is_at_least_editor'])->post('{vault}/contacts', [ContactController::class, 'store'])->name('vaults.contacts.store');
 
         Route::middleware(['contact'])->group(function (): void {
             Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
 
-            // notes
-            Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
+            Route::middleware(['is_at_least_editor'])->group(function (): void {
+                // notes
+                Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
+            });
         });
 
         // settings

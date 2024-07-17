@@ -24,9 +24,12 @@ class CheckVault
         }
 
         try {
-            $vault = Vault::where('account_id', auth()->user()->account_id)
+            $vault = auth()->user()
+                ->vaults()
+                ->where('account_id', auth()->user()->account_id)
                 ->findOrFail($id);
 
+            $request->attributes->add(['permission' => $vault->pivot->permission]);
             $request->attributes->add(['vault' => $vault]);
 
             return $next($request);

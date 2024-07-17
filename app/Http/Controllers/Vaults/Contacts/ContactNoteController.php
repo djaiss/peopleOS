@@ -26,11 +26,7 @@ class ContactNoteController extends Controller
 
         $notes = ContactNoteCache::make(
             contact: $contact,
-        )->forget();
-
-        $notes = ContactNoteCache::make(
-            contact: $contact,
-        )->value();
+        )->refresh();
 
         return view('vaults.contacts.partials.notes', [
             'notes' => $notes,
