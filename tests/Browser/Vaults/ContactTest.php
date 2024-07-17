@@ -8,7 +8,6 @@ use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\Browser\Pages\ContactDetails;
 use Tests\DuskTestCase;
 
 class ContactTest extends DuskTestCase
@@ -27,13 +26,13 @@ class ContactTest extends DuskTestCase
                 ->type('name', 'Accounting')
                 ->type('description', 'Accounting team')
                 ->click('@submit-form-button')
-                ->assertPathIs('/vaults/' . Vault::first()->id)
+                ->assertPathIs('/vaults/'.Vault::first()->id)
                 ->click('@navigation-contact-link')
                 ->click('@create-contact-button')
                 ->type('first_name', 'John')
                 ->type('last_name', 'Doe')
                 ->click('@submit-form-button')
-                ->assertPathIs('/vaults/' . Vault::first()->id . '/contacts/' . Contact::first()->slug);
+                ->assertPathIs('/vaults/'.Vault::first()->id.'/contacts/'.Contact::first()->slug);
         });
     }
 }

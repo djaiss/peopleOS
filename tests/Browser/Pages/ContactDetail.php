@@ -3,7 +3,6 @@
 namespace Tests\Browser\Pages;
 
 use App\Models\Contact;
-use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page;
 
 class ContactDetails extends Page
@@ -15,6 +14,6 @@ class ContactDetails extends Page
      */
     public function url()
     {
-        return '/vaults/'.$this->contact->vault_id.'/contacts/' . $this->contact->slug;
+        return '/vaults/'.$this->contact->vault_id.'/contacts/'.$this->contact->slug;
     }
 }
