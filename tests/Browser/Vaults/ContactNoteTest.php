@@ -32,7 +32,7 @@ class ContactNoteTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->type('@note-body', 'this is a note')
                 ->click('@submit-note')
                 ->pause(130)

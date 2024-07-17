@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Vault;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;

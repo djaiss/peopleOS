@@ -31,7 +31,7 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id)
+                ->visit('/vaults/'.$vault->id)
                 ->click('@navigation-contact-link')
                 ->click('@create-contact-button')
                 ->type('first_name', 'John')
