@@ -32,7 +32,7 @@ class ContactTest extends DuskTestCase
                 ->type('first_name', 'John')
                 ->type('last_name', 'Doe')
                 ->click('@submit-form-button')
-                ->assertPathIs('/vaults/'.Vault::first()->id.'/contacts/'.Contact::first()->slug);
+                ->assertPathIs('/vaults/'.Vault::first()->id.'/contacts/'.Contact::latest()->first()->slug);
         });
     }
 }
