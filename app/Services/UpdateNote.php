@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\Contact;
+use App\Models\Note;
+use App\Models\User;
+use App\Models\Vault;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+class UpdateNote
+{
+    private Contact $contact;
+
+    public function __construct(
+        public User $user,
+        public Note $note,
+        public ?string $body,
+    ) {}
+
+    public function execute(): Note
+    {
+        $this->validate();
+        $this->update();
+        $this->updateLastEditedDate();
+
+        return $this->note;
+    }
+
+    private function validate(): void
+    {
+        $this->contact = $this->note->contact;
+
+        // make sure the user has the permission
+        $exists = $this->user->vaults()
+            ->where('vaults.id', $this->contact->vault_id)
+            ->wherePivot('permission', '<=', Vault::PERMISSION_EDIT)
+            ->exists();
+
+        if (! $exists) {
+            throw new ModelNotFoundException;
+        }
+    }
+
+    private function update(): void
+    {
+        $this->note->body = $this->body;
+        $this->note->save();
+    }
+
+    private function updateLastEditedDate(): void
+    {
+        $this->contact->last_updated_at = Carbon::now();
+        $this->contact->save();
+    }
+}

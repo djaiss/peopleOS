@@ -40,4 +40,30 @@ class ContactViewModelTest extends TestCase
             $collection->toArray()[0]
         );
     }
+
+    #[Test]
+    public function it_gets_the_data_needed_for_the_show_page(): void
+    {
+        $user = User::factory()->create();
+        $vault = Vault::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+            'first_name' => 'john',
+            'last_name' => 'doe',
+        ]);
+
+        $array = ContactViewModel::show($contact);
+
+        $this->assertEquals(
+            [
+                'id' => $contact->id,
+                'name' => $contact->name,
+                'avatar' => $contact->avatar,
+                'slug' => '1-john',
+            ],
+            $array
+        );
+    }
 }
