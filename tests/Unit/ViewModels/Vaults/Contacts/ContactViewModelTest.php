@@ -61,7 +61,7 @@ class ContactViewModelTest extends TestCase
                 'id' => $contact->id,
                 'name' => $contact->name,
                 'avatar' => $contact->avatar,
-                'slug' => '1-john',
+                'slug' => $contact->id.'-john',
             ],
             $array
         );
