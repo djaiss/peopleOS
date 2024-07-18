@@ -6,7 +6,6 @@ use App\Models\Contact;
 use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
-use App\Services\CreateNote;
 use App\Services\UpdateNote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
