@@ -25,9 +25,6 @@ class ContactNotesViewModel
 
     /**
      * Get the detail of a single note.
-     *
-     * @param Note $note
-     * @return array
      */
     public static function note(Note $note): array
     {
