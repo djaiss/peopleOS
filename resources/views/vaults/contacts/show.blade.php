@@ -150,7 +150,7 @@
 
               <!-- notes -->
               <div id="notes-list">
-                @include('vaults.contacts.partials.notes', ['notes' => $notes])
+                @include('vaults.contacts.partials.notes', ['contact' => $contact, 'notes' => $notes])
               </div>
             </div>
           </div>

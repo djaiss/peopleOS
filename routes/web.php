@@ -39,6 +39,7 @@ Route::middleware('auth', 'verified')->group(function () {
             Route::middleware(['is_at_least_editor'])->group(function (): void {
                 // notes
                 Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
+                Route::put('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'update'])->name('vaults.contacts.notes.update');
             });
         });
 

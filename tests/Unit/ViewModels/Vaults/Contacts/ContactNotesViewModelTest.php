@@ -44,6 +44,7 @@ class ContactNotesViewModelTest extends TestCase
             [
                 'id' => $note->id,
                 'body' => (string) Str::of('This is a note')->markdown(),
+                'body_raw' => 'This is a note',
                 'created_at' => 'January 01, 2018 (Monday)',
                 'created_at_full_timestamp' => '2018-01-01 00:00:00',
                 'user' => [
@@ -52,6 +53,45 @@ class ContactNotesViewModelTest extends TestCase
                 ],
             ],
             $collection->toArray()[0]
+        );
+    }
+
+    #[Test]
+    public function it_gets_a_single_note(): void
+    {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+        $user = User::factory()->create([
+            'first_name' => 'John',
+        ]);
+        $vault = Vault::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $note = Note::factory()->create([
+            'contact_id' => $contact->id,
+            'user_id' => $user->id,
+            'body' => 'This is a note',
+        ]);
+
+        $array = ContactNotesViewModel::note($note);
+
+        $this->assertEquals(6, count($array));
+
+        $this->assertEquals(
+            [
+                'id' => $note->id,
+                'body' => (string) Str::of('This is a note')->markdown(),
+                'body_raw' => 'This is a note',
+                'created_at' => 'January 01, 2018 (Monday)',
+                'created_at_full_timestamp' => '2018-01-01 00:00:00',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => 'John',
+                ],
+            ],
+            $array
         );
     }
 }
