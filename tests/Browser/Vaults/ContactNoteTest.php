@@ -92,9 +92,9 @@ class ContactNoteTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact, $note): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
-                ->mouseover('#note-' . $note->id)
-                ->click('@delete-note-' . $note->id)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+                ->mouseover('#note-'.$note->id)
+                ->click('@delete-note-'.$note->id)
                 ->acceptDialog()
                 ->pause(130)
                 ->assertDontSee('this is a great note');

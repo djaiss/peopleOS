@@ -75,7 +75,7 @@ class ContactNoteControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->delete('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/notes/' . $note->id)
+            ->delete('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/notes/'.$note->id)
             ->assertDontSee('This is a note');
     }
 }
