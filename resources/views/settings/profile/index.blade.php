@@ -51,7 +51,7 @@
         </div>
 
         <div class="flex justify-between p-5">
-          <x-button.secondary dusk="profile-submit-form-button">
+          <x-button.secondary type="submit" dusk="profile-submit-form-button">
             {{ __('Save') }}
           </x-button.secondary>
         </div>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="flex justify-between p-5">
-          <x-button.secondary dusk="password-submit-form-button">
+          <x-button.secondary type="submit" dusk="password-submit-form-button">
             {{ __('Save') }}
           </x-button.secondary>
         </div>

@@ -26,7 +26,7 @@ class VaultControllerTest extends TestCase
 
         $response->assertStatus(201);
 
-        $vault = Vault::latest('id')->first();
+        $vault = Vault::latest()->first();
 
         $this->assertEquals(
             [

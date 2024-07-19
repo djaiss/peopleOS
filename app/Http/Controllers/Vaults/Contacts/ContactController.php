@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactListCache;
+use App\Cache\ContactNoteCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Services\CreateContact;
@@ -65,12 +66,7 @@ class ContactController extends Controller
         ContactListCache::make(
             user: auth()->user(),
             vault: $vault,
-        )->forget();
-
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $vault,
-        )->value();
+        )->refresh();
 
         $request->session()->flash('status', __('The contact has been created'));
 
@@ -90,12 +86,17 @@ class ContactController extends Controller
             vault: $vault,
         )->value();
 
+        $notes = ContactNoteCache::make(
+            contact: $contact,
+        )->value();
+
         $contact = ContactViewModel::show($contact);
 
         return view('vaults.contacts.show', [
             'vault' => $vault,
             'contact' => $contact,
             'contacts' => $contacts,
+            'notes' => $notes,
         ]);
     }
 }

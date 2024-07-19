@@ -23,7 +23,7 @@
     @csrf
     @method('DELETE')
 
-    <x-button.secondary onclick="return confirm('{{ __('Are you sure? This can not be undone.') }}')" :class="'me-3 border-red-600 text-red-600 dark:border-red-400 dark:text-red-400'" dusk="delete-vault-cta">
+    <x-button.secondary type="submit" onclick="return confirm('{{ __('Are you sure? This can not be undone.') }}')" :class="'me-3 border-red-600 text-red-600 dark:border-red-400 dark:text-red-400'" dusk="delete-vault-cta">
       {{ __('Delete the vault') }}
     </x-button.secondary>
   </form>

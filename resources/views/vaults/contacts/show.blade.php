@@ -20,7 +20,7 @@
 
               <div class="">
                 <!-- name -->
-                <div class="mb-2 text-xl">
+                <div class="mb-1 text-xl">
                   {{ $contact['name'] }}
                   <span class="text-sm text-gray-500">29</span>
                 </div>
@@ -64,7 +64,7 @@
                         <path d="M11 3 8 9l4 13 4-13-3-6" />
                         <path d="M2 9h20" />
                       </svg>
-                      <div>Spouse</div>
+                      <div>Love</div>
                     </div>
 
                     <div class="button -left-6 flex cursor-pointer items-center rounded border bg-white text-sm">
@@ -132,56 +132,25 @@
               </div>
             </div>
 
+            <!-- notes -->
             <div class="p-3 sm:p-0">
               <!-- add note -->
-              <div class="mb-4 border-b border-gray-200">
-                <h2 class="mb-2 text-sm font-semibold">Add a note about Madeleine</h2>
-                <x-textarea class="mb-2 w-full" rows="3" placeholder="Add a note"></x-textarea>
-                <div class="mb-3 flex items-center justify-between">
-                  <p class="text-xs">{{ __('Show options') }} (change date or add reminder)</p>
+              <form hx-target="#notes-list" hx-post="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200" hx-on::after-request="this.reset()">
+                @csrf
 
-                  <x-button.secondary dusk="submit-form-button">
+                <x-textarea id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="note-body"></x-textarea>
+                <div class="mb-3 flex items-center justify-between">
+                  <p class="text-xs text-gray-500">{{ __('Show options') }} (change date or add reminder)</p>
+
+                  <x-button.secondary type="submit" dusk="submit-note">
                     {{ __('Add note') }}
                   </x-button.secondary>
                 </div>
-              </div>
+              </form>
 
               <!-- notes -->
-              <div>
-                <div class="mb-4 border-b border-gray-200 pb-4">
-                  <!-- date -->
-                  <div class="mb-2 flex text-sm">
-                    <p class="mr-2 font-bold">Feb 23, 2024 (Saturday)</p>
-                    <p class="text-gray-400">Note by Regis</p>
-                  </div>
-
-                  <div>
-                    <p>Dolor sit pariatur cupidatat in ut tempor reprehenderit elit laborum commodo. Commodo sint non duis consequat dolor amet esse quis voluptate est excepteur id sit culpa. Adipisicing sit occaecat mollit deserunt eiusmod. Culpa laboris incididunt esse officia ipsum deserunt esse nulla. Officia mollit magna irure in cillum amet dolore sit id elit minim qui aute. Cupidatat consequat sit Lorem consequat tempor ipsum. Irure qui magna anim qui eu.</p>
-                  </div>
-                </div>
-
-                <div class="mb-4 border-b border-gray-200 pb-4">
-                  <!-- date -->
-                  <div class="mb-2 flex text-sm">
-                    <p class="mr-2 font-bold">Feb 23, 2024 (Saturday)</p>
-                    <p class="text-gray-400">Note by Regis</p>
-                  </div>
-
-                  <div>
-                    <p>Dolor sit pariatur cupidatat in ut tempor reprehenderit elit laborum commodo. Commodo sint non duis consequat dolor amet esse quis voluptate est excepteur id sit culpa. Adipisicing sit occaecat mollit deserunt eiusmod. Culpa laboris incididunt esse officia ipsum deserunt esse nulla. Officia mollit magna irure in cillum amet dolore sit id elit minim qui aute. Cupidatat consequat sit Lorem consequat tempor ipsum. Irure qui magna anim qui eu.</p>
-                  </div>
-                </div>
-                <div class="mb-4 border-b border-gray-200 pb-4">
-                  <!-- date -->
-                  <div class="mb-2 flex text-sm">
-                    <p class="mr-2 font-bold">Feb 23, 2024 (Saturday)</p>
-                    <p class="text-gray-400">Note by Regis</p>
-                  </div>
-
-                  <div>
-                    <p>Dolor sit pariatur cupidatat in ut tempor reprehenderit elit laborum commodo. Commodo sint non duis consequat dolor amet esse quis voluptate est excepteur id sit culpa. Adipisicing sit occaecat mollit deserunt eiusmod. Culpa laboris incididunt esse officia ipsum deserunt esse nulla. Officia mollit magna irure in cillum amet dolore sit id elit minim qui aute. Cupidatat consequat sit Lorem consequat tempor ipsum. Irure qui magna anim qui eu.</p>
-                  </div>
-                </div>
+              <div id="notes-list">
+                @include('vaults.contacts.partials.notes', ['contact' => $contact, 'notes' => $notes])
               </div>
             </div>
           </div>

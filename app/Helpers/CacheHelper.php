@@ -29,5 +29,12 @@ abstract class CacheHelper
         return Cache::forget($this->getKey());
     }
 
+    public function refresh(): mixed
+    {
+        $this->forget();
+
+        return $this->value();
+    }
+
     abstract protected function generate(): mixed;
 }

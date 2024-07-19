@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +48,6 @@ class Contact extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'vault_id' => 'string',
         'can_be_deleted' => 'boolean',
         'last_updated_at' => 'datetime',
         'slug' => 'encrypted',
@@ -66,6 +66,14 @@ class Contact extends Model
     public function vault(): BelongsTo
     {
         return $this->belongsTo(Vault::class);
+    }
+
+    /**
+     * Get the note records associated with the contact.
+     */
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Note::class);
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
+use App\Http\Controllers\Vaults\Contacts\ContactNoteController;
 use App\Http\Controllers\Vaults\Settings\VaultSettingsController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +30,18 @@ Route::middleware('auth', 'verified')->group(function () {
 
         // contacts
         Route::get('{vault}/contacts', [ContactController::class, 'index'])->name('vaults.contacts.index');
-        Route::get('{vault}/contacts/new', [ContactController::class, 'new'])->name('vaults.contacts.new');
-        Route::post('{vault}/contacts', [ContactController::class, 'store'])->name('vaults.contacts.store');
+        Route::middleware(['is_at_least_editor'])->get('{vault}/contacts/new', [ContactController::class, 'new'])->name('vaults.contacts.new');
+        Route::middleware(['is_at_least_editor'])->post('{vault}/contacts', [ContactController::class, 'store'])->name('vaults.contacts.store');
 
         Route::middleware(['contact'])->group(function (): void {
             Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
+
+            Route::middleware(['is_at_least_editor'])->group(function (): void {
+                // notes
+                Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
+                Route::put('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'update'])->name('vaults.contacts.notes.update');
+                Route::delete('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'destroy'])->name('vaults.contacts.notes.destroy');
+            });
         });
 
         // settings

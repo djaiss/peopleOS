@@ -2,6 +2,9 @@
 
 namespace Tests;
 
+use App\Models\Contact;
+use App\Models\User;
+use App\Models\Vault;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -42,5 +45,21 @@ abstract class DuskTestCase extends BaseTestCase
                 ChromeOptions::CAPABILITY, $options
             )
         );
+    }
+
+    protected function setupVaultAndContact(User $user): Contact
+    {
+        $vault = Vault::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $vault->users()->save($user, [
+            'permission' => Vault::PERMISSION_MANAGE,
+            'contact_id' => $contact->id,
+        ]);
+
+        return $contact;
     }
 }

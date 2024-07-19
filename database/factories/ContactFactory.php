@@ -22,7 +22,6 @@ class ContactFactory extends Factory
     {
         return [
             'vault_id' => Vault::factory(),
-            'slug' => $this->faker->slug(),
             'first_name' => $this->faker->firstName(),
             'middle_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
@@ -31,5 +30,13 @@ class ContactFactory extends Factory
             'can_be_deleted' => $this->faker->boolean(),
             'last_updated_at' => $this->faker->dateTime(),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (Contact $contact) {
+            $contact->slug = $contact->id.'-'.$contact->first_name;
+            $contact->save();
+        });
     }
 }

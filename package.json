@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "pretest": "php artisan migrate:fresh --database=testing",
-    "posttest": "composer update && php artisan scribe:generate && bun update",
+    "posttest": "composer update && php artisan scribe:generate && bun update && npx prettier --write resources/",
     "test": "./vendor/bin/phpunit && php artisan clear-compiled && php artisan ide-helper:models --nowrite && php artisan ide-helper:generate",
     "prepare": "husky",
     "lint-staged": "lint-staged"
@@ -16,14 +16,14 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
     "htmx.org": "^1.9.12",
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "laravel-vite-plugin": "^1.0.5",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.39",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "prettier-plugin-blade": "^2.1.16",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.4",
-    "vite": "^5.3.3"
+    "tailwindcss": "^3.4.6",
+    "vite": "^5.3.4"
   }
 }
