@@ -14,6 +14,7 @@ return new class() extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vault_id');
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->text('slug')->nullable();
             $table->text('first_name')->nullable();
             $table->text('middle_name')->nullable();
@@ -23,10 +24,12 @@ return new class() extends Migration
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
             $table->text('background_information')->nullable();
+            $table->text('job_title')->nullable();
             $table->boolean('can_be_deleted')->default(true);
             $table->datetime('last_updated_at')->nullable();
             $table->timestamps();
             $table->foreign('vault_id')->references('id')->on('vaults')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');
         });
 
         Schema::create('user_vault', function (Blueprint $table) {

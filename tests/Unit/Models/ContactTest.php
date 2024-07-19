@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Note;
 use App\Models\User;
@@ -18,6 +19,15 @@ class ContactTest extends TestCase
     {
         $contact = Contact::factory()->create();
         $this->assertTrue($contact->vault()->exists());
+    }
+
+    #[Test]
+    public function it_belongs_to_a_company()
+    {
+        $contact = Contact::factory()->create([
+            'company_id' => Company::factory()->create()->id,
+        ]);
+        $this->assertTrue($contact->company()->exists());
     }
 
     #[Test]

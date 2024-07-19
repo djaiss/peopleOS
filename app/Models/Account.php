@@ -11,6 +11,8 @@ class Account extends Model
 {
     use HasFactory;
 
+    protected $table = 'accounts';
+
     /**
      * The attributes that are mass assignable.
      *

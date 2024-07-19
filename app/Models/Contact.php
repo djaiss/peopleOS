@@ -16,6 +16,8 @@ class Contact extends Model
 {
     use HasFactory;
 
+    protected $table = 'contacts';
+
     /**
      * Possible avatar types.
      */
@@ -30,6 +32,7 @@ class Contact extends Model
      */
     protected $fillable = [
         'vault_id',
+        'company_id',
         'slug',
         'first_name',
         'middle_name',
@@ -39,6 +42,7 @@ class Contact extends Model
         'suffix',
         'prefix',
         'background_information',
+        'job_title',
         'can_be_deleted',
         'last_updated_at',
     ];
@@ -60,6 +64,7 @@ class Contact extends Model
         'suffix' => 'encrypted',
         'prefix' => 'encrypted',
         'background_information' => 'encrypted',
+        'job_title' => 'encrypted',
     ];
 
     /**
@@ -68,6 +73,14 @@ class Contact extends Model
     public function vault(): BelongsTo
     {
         return $this->belongsTo(Vault::class);
+    }
+
+    /**
+     * Get the company associated with the contact.
+     */
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 
     /**

@@ -73,16 +73,16 @@ class VaultTest extends TestCase
         $this->assertTrue($vault->contacts()->exists());
     }
 
-    // #[Test]
-    // public function it_has_many_labels(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     $label = Label::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
+    #[Test]
+    public function it_has_many_companies(): void
+    {
+        $vault = Vault::factory()->create();
+        Company::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
 
-    //     $this->assertTrue($vault->labels()->exists());
-    // }
+        $this->assertTrue($vault->companies()->exists());
+    }
 
     // #[Test]
     // public function it_has_many_important_date_types(): void
