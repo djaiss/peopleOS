@@ -58,7 +58,7 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->click('@blank-background-information')
                 ->type('information', 'this is a background information')
                 ->click('@update-background-information')
