@@ -38,6 +38,8 @@ class ContactViewModel
             'avatar' => $contact->avatar,
             'slug' => $contact->slug,
             'background_information' => $contact->background_information,
+            'job_title' => $contact->job_title,
+            'company' => $contact->company?->name,
         ];
     }
 }

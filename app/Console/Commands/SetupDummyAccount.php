@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateAccount;
+use App\Services\CreateCompany;
 use App\Services\CreateContact;
 use App\Services\CreateVault;
 use Carbon\Carbon;
@@ -50,6 +51,7 @@ class SetupDummyAccount extends Command
         $this->wipeAndMigrateDB();
         $this->createFirstUsers();
         $this->createVaults();
+        $this->createCompanies();
         $this->createContacts();
         $this->stop();
     }
@@ -123,6 +125,21 @@ class SetupDummyAccount extends Command
         }
     }
 
+    private function createCompanies(): void
+    {
+        $this->info('☐ Create companies');
+
+        foreach (Vault::all() as $vault) {
+            for ($i = 0; $i < rand(10, 50); $i++) {
+                (new CreateCompany(
+                    vault: $vault,
+                    user: $this->firstUser,
+                    name: $this->faker->company,
+                ))->execute();
+            }
+        }
+    }
+
     private function createContacts(): void
     {
         $this->info('☐ Create contacts');
@@ -143,6 +160,12 @@ class SetupDummyAccount extends Command
                     prefix: null,
                     suffix: null,
                 ))->execute();
+
+                if (rand(1, 3) == 1) {
+                    $contact->company_id = $vault->companies->random()->id;
+                    $contact->job_title = $this->faker->jobTitle;
+                    $contact->save();
+                }
             }
         }
     }

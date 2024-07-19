@@ -12,7 +12,7 @@
             <!-- name and avatar -->
             <div class="flex">
               <!-- avatar -->
-              <div class="flex justify-center p-3">
+              <div class="flex justify-center px-3">
                 <div class="h-12 w-12 rounded-full">
                   {!! $contact['avatar']['content'] !!}
                 </div>
@@ -20,16 +20,13 @@
 
               <div class="flex-grow">
                 <!-- name -->
-                <div class="mb-1 text-xl">
+                <div class="mb-3 text-xl">
                   {{ $contact['name'] }}
                   <span class="text-sm text-gray-500">29</span>
                 </div>
 
                 <!-- work information -->
-                <div class="mb-2 flex items-center">
-                  <x-heroicon-o-briefcase class="mr-2 h-4 w-4 flex-shrink-0 text-gray-500" />
-                  <p>Software developer (Basecamp)</p>
-                </div>
+                @include('vaults.contacts.partials.job_information', ['contact' => $contact])
 
                 <!-- background info -->
                 @include('vaults.contacts.partials.background_information', ['contact' => $contact])

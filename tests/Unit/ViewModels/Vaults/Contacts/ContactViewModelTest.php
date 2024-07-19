@@ -3,6 +3,7 @@
 namespace Tests\Unit\ViewModels\Vaults\Contacts;
 
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
@@ -53,7 +54,14 @@ class ContactViewModelTest extends TestCase
             'first_name' => 'john',
             'last_name' => 'doe',
             'background_information' => 'background information',
+            'job_title' => 'Paper salesman',
         ]);
+        $company = Company::factory()->create([
+            'vault_id' => $vault->id,
+            'name' => 'Dunder Mifflin',
+        ]);
+        $contact->company_id = $company->id;
+        $contact->save();
 
         $array = ContactViewModel::show($contact);
 
@@ -64,6 +72,8 @@ class ContactViewModelTest extends TestCase
                 'avatar' => $contact->avatar,
                 'slug' => $contact->id.'-john',
                 'background_information' => 'background information',
+                'job_title' => 'Paper salesman',
+                'company' => 'Dunder Mifflin',
             ],
             $array
         );
