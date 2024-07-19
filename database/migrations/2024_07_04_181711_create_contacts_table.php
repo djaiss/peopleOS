@@ -22,6 +22,7 @@ return new class() extends Migration
             $table->text('maiden_name')->nullable();
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
+            $table->text('background_information')->nullable();
             $table->boolean('can_be_deleted')->default(true);
             $table->datetime('last_updated_at')->nullable();
             $table->timestamps();

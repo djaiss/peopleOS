@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Controllers\Vaults\Contacts;
+
+use App\Cache\ContactNoteCache;
+use App\Http\Controllers\Controller;
+use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
+use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
+use App\Services\CreateNote;
+use App\Services\DestroyNote;
+use App\Services\UpdateBackgroundInformation;
+use App\Services\UpdateNote;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class ContactBackgroundInformationController extends Controller
+{
+    public function update(Request $request): View
+    {
+        $contact = $request->attributes->get('contact');
+
+        $validated = $request->validate([
+            'information' => 'required|string|max:1000',
+        ]);
+
+        (new UpdateBackgroundInformation(
+            user: auth()->user(),
+            contact: $contact,
+            information: $validated['information'],
+        ))->execute();
+
+        $vault = $request->attributes->get('vault');
+        $contact = ContactViewModel::show($contact);
+
+        return view('vaults.contacts.partials.background_information', [
+            'vault' => $vault,
+            'contact' => $contact,
+        ]);
+    }
+}

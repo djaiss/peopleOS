@@ -52,6 +52,7 @@ class ContactViewModelTest extends TestCase
             'vault_id' => $vault->id,
             'first_name' => 'john',
             'last_name' => 'doe',
+            'background_information' => 'background information',
         ]);
 
         $array = ContactViewModel::show($contact);
@@ -62,6 +63,7 @@ class ContactViewModelTest extends TestCase
                 'name' => $contact->name,
                 'avatar' => $contact->avatar,
                 'slug' => $contact->id.'-john',
+                'background_information' => 'background information',
             ],
             $array
         );

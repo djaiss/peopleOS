@@ -6,7 +6,7 @@
  */
 ?>
 
-<div id="note-{{ $note['id'] }}" x-data="{ editMode: false }" class="group mb-4 border-b border-gray-200 pb-4">
+<div id="note-{{ $note['id'] }}" x-data="{ editMode: false }" class="group mb-4 border-b border-gray-200 pb-4 hover:bg-slate-50">
   <div x-show="! editMode">
     <div class="mb-2 flex justify-between text-xs">
       <div class="flex">

@@ -18,7 +18,7 @@
                 </div>
               </div>
 
-              <div class="">
+              <div class="flex-grow">
                 <!-- name -->
                 <div class="mb-1 text-xl">
                   {{ $contact['name'] }}
@@ -26,16 +26,13 @@
                 </div>
 
                 <!-- work information -->
-                <div class="mb-1 flex items-center">
-                  <x-heroicon-o-briefcase class="mr-2 h-4 w-4 text-gray-500" />
+                <div class="mb-2 flex items-center">
+                  <x-heroicon-o-briefcase class="mr-2 h-4 w-4 flex-shrink-0 text-gray-500" />
                   <p>Software developer (Basecamp)</p>
                 </div>
 
-                <!-- where did you meet -->
-                <div class="mb-2 flex items-center">
-                  <x-heroicon-o-fire class="mr-2 h-4 w-4 text-gray-500" />
-                  <p>Background information</p>
-                </div>
+                <!-- background info -->
+                @include('vaults.contacts.partials.background_information', ['contact' => $contact])
 
                 <!-- tags -->
                 <div>
