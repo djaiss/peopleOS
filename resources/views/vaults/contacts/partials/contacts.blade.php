@@ -20,7 +20,7 @@
 
   <div class="flex-grow overflow-auto">
     <ul>
-      <template x-for="item in filteredItems" :key="item.name">
+      <template x-for="item in filteredItems" :key="item.id">
         <li class="border-b border-b-gray-200 px-3 py-1">
           <x-link @click="window.location.href = item.url.show" x-text="item.name" x-bind:href="item.url.show" class="block cursor-pointer text-blue-500 hover:text-blue-700"></x-link>
         </li>

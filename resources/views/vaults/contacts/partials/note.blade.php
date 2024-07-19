@@ -6,7 +6,7 @@
  */
 ?>
 
-<div id="note" x-data="{ editMode: false }" class="group mb-4 border-b border-gray-200 pb-4">
+<div id="note-{{ $note['id'] }}" x-data="{ editMode: false }" class="group mb-4 border-b border-gray-200 pb-4">
   <div x-show="! editMode">
     <div class="mb-2 flex justify-between text-xs">
       <div class="flex">
@@ -17,7 +17,7 @@
         <p class="text-gray-400">{{ __('Note by :user', ['user' => $note['user']['name']]) }}</p>
       </div>
 
-      <x-link x-on:click="editMode = true, $nextTick(() => {$refs.noteBody.focus()})" class="hidden cursor-pointer group-hover:inline">{{ __('Edit') }}</x-link>
+      <x-link x-on:click="editMode = true, $nextTick(() => {$refs.noteBody.focus()})" class="hidden cursor-pointer group-hover:inline" dusk="edit-cta-note-{{ $note['id'] }}">{{ __('Edit') }}</x-link>
     </div>
 
     <!-- body -->
@@ -27,16 +27,16 @@
   </div>
 
   <!-- edit form -->
-  <div x-cloak x-show="editMode" id="editMode">
-    <form hx-target="#note" hx-put="{{ route('vaults.contacts.notes.update', ['vault' => $vault, 'slug' => $contact['slug'], 'note' => $note['id']]) }}" class="mb-4 border-b border-gray-200" hx-on::after-request="this.reset()">
+  <div x-cloak x-show="editMode">
+    <form hx-target="#note-{{ $note['id'] }}" hx-swap="outerHTML" hx-put="{{ route('vaults.contacts.notes.update', ['vault' => $vault, 'slug' => $contact['slug'], 'note' => $note['id']]) }}" class="" hx-on::after-request="this.reset()">
       @csrf
       @method('PUT')
 
-      <x-textarea :xRef="'noteBody'" id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="update-note-body">{{ $note['body_raw'] }}</x-textarea>
+      <x-textarea :xRef="'noteBody'" id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="update-note-body-{{ $note['id'] }}">{{ $note['body_raw'] }}</x-textarea>
       <div class="mb-3 flex items-center justify-between">
         <p class="text-xs">{{ __('Show options') }} (change date or add reminder)</p>
 
-        <x-button.secondary type="submit" dusk="update-note">
+        <x-button.secondary type="submit" dusk="update-note-{{ $note['id'] }}">
           {{ __('Save') }}
         </x-button.secondary>
       </div>

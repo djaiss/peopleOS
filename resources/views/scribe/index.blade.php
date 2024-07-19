@@ -98,7 +98,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 18, 2024</li>
+        <li>Last updated: July 19, 2024</li>
       </ul>
     </div>
 

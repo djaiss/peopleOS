@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Vaults\Contacts;
 use App\Cache\ContactNoteCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
+use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Services\CreateNote;
 use App\Services\UpdateNote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -31,7 +32,12 @@ class ContactNoteController extends Controller
             contact: $contact,
         )->refresh();
 
+        $vault = $request->attributes->get('vault');
+        $contact = ContactViewModel::show($contact);
+
         return view('vaults.contacts.partials.notes', [
+            'vault' => $vault,
+            'contact' => $contact,
             'notes' => $notes,
         ]);
     }
@@ -61,7 +67,12 @@ class ContactNoteController extends Controller
             contact: $contact,
         )->refresh();
 
+        $vault = $request->attributes->get('vault');
+        $contact = ContactViewModel::show($contact);
+
         return view('vaults.contacts.partials.note', [
+            'vault' => $vault,
+            'contact' => $contact,
             'note' => ContactNotesViewModel::note($note),
         ]);
     }
