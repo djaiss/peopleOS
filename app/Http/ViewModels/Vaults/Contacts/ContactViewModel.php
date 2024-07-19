@@ -37,6 +37,7 @@ class ContactViewModel
             'name' => $contact->name,
             'avatar' => $contact->avatar,
             'slug' => $contact->slug,
+            'background_information' => $contact->background_information,
         ];
     }
 }

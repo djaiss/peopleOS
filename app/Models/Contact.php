@@ -38,6 +38,7 @@ class Contact extends Model
         'maiden_name',
         'suffix',
         'prefix',
+        'background_information',
         'can_be_deleted',
         'last_updated_at',
     ];
@@ -58,6 +59,7 @@ class Contact extends Model
         'maiden_name' => 'encrypted',
         'suffix' => 'encrypted',
         'prefix' => 'encrypted',
+        'background_information' => 'encrypted',
     ];
 
     /**
