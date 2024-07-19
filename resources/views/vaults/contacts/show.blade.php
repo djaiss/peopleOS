@@ -140,7 +140,7 @@
 
                 <x-textarea id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="note-body"></x-textarea>
                 <div class="mb-3 flex items-center justify-between">
-                  <p class="text-xs">{{ __('Show options') }} (change date or add reminder)</p>
+                  <p class="text-xs text-gray-500">{{ __('Show options') }} (change date or add reminder)</p>
 
                   <x-button.secondary type="submit" dusk="submit-note">
                     {{ __('Add note') }}

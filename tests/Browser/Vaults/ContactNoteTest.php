@@ -70,4 +70,34 @@ class ContactNoteTest extends DuskTestCase
                 ->assertSeeIn('@note-body-'.$note->id, 'this is a great note');
         });
     }
+
+    #[Test]
+    public function a_user_can_delete_a_note(): void
+    {
+        $user = User::factory()->create();
+        $vault = Vault::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $vault->users()->save($user, [
+            'permission' => Vault::PERMISSION_MANAGE,
+            'contact_id' => $contact->id,
+        ]);
+        $note = Note::factory()->create([
+            'contact_id' => $contact->id,
+            'body' => 'this is a great note',
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $vault, $contact, $note): void {
+            $browser->loginAs($user)
+                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->mouseover('#note-' . $note->id)
+                ->click('@delete-note-' . $note->id)
+                ->acceptDialog()
+                ->pause(130)
+                ->assertDontSee('this is a great note');
+        });
+    }
 }

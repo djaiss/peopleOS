@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Services\CreateNote;
+use App\Services\DestroyNote;
 use App\Services\UpdateNote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -75,5 +76,26 @@ class ContactNoteController extends Controller
             'contact' => $contact,
             'note' => ContactNotesViewModel::note($note),
         ]);
+    }
+
+    public function destroy(Request $request): void
+    {
+        $contact = $request->attributes->get('contact');
+        $note = $request->route()->parameter('note');
+
+        try {
+            $note = $contact->notes()->findOrFail($note);
+        } catch (ModelNotFoundException) {
+            abort(404);
+        }
+
+        (new DestroyNote(
+            user: auth()->user(),
+            note: $note,
+        ))->execute();
+
+        ContactNoteCache::make(
+            contact: $contact,
+        )->refresh();
     }
 }

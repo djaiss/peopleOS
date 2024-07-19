@@ -59,4 +59,23 @@ class ContactNoteControllerTest extends TestCase
             ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
             ->assertSee('This is a super note');
     }
+
+    #[Test]
+    public function a_user_can_destroy_a_note(): void
+    {
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $note = Note::factory()->create([
+            'contact_id' => $contact->id,
+            'body' => 'This is a note',
+        ]);
+
+        $this->actingAs($user)
+            ->delete('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/notes/' . $note->id)
+            ->assertDontSee('This is a note');
+    }
 }

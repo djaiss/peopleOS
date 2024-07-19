@@ -17,7 +17,10 @@
         <p class="text-gray-400">{{ __('Note by :user', ['user' => $note['user']['name']]) }}</p>
       </div>
 
-      <x-link x-on:click="editMode = true, $nextTick(() => {$refs.noteBody.focus()})" class="hidden cursor-pointer group-hover:inline" dusk="edit-cta-note-{{ $note['id'] }}">{{ __('Edit') }}</x-link>
+      <div>
+        <x-link x-on:click="editMode = true, $nextTick(() => {$refs.noteBody.focus()})" class="mr-2 hidden cursor-pointer group-hover:inline" dusk="edit-cta-note-{{ $note['id'] }}">{{ __('Edit') }}</x-link>
+        <x-link hx-delete="{{ route('vaults.contacts.notes.destroy', ['vault' => $vault, 'slug' => $contact['slug'], 'note' => $note['id']]) }}" hx-confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" hx-target="#note-{{ $note['id'] }}" hx-swap="delete" class="hidden cursor-pointer group-hover:inline" dusk="delete-note-{{ $note['id'] }}">{{ __('Delete') }}</x-link>
+      </div>
     </div>
 
     <!-- body -->
@@ -32,13 +35,19 @@
       @csrf
       @method('PUT')
 
-      <x-textarea :xRef="'noteBody'" id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="update-note-body-{{ $note['id'] }}">{{ $note['body_raw'] }}</x-textarea>
-      <div class="mb-3 flex items-center justify-between">
-        <p class="text-xs">{{ __('Show options') }} (change date or add reminder)</p>
+      <x-textarea :xRef="'noteBody'" @keyup.escape="editMode = false" id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="update-note-body-{{ $note['id'] }}">{{ $note['body_raw'] }}</x-textarea>
+      <div class="flex items-center justify-between">
+        <p class="text-xs text-gray-500">{{ __('Show options') }} (change date or add reminder)</p>
 
-        <x-button.secondary type="submit" dusk="update-note-{{ $note['id'] }}">
-          {{ __('Save') }}
-        </x-button.secondary>
+        <div class="flex">
+          <x-button.secondary x-on:click="editMode = false" class="mr-2">
+            {{ __('Cancel') }}
+          </x-button.secondary>
+
+          <x-button.primary type="submit" dusk="update-note-{{ $note['id'] }}">
+            {{ __('Save') }}
+          </x-button.primary>
+        </div>
       </div>
     </form>
   </div>

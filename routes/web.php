@@ -40,6 +40,7 @@ Route::middleware('auth', 'verified')->group(function () {
                 // notes
                 Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
                 Route::put('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'update'])->name('vaults.contacts.notes.update');
+                Route::delete('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'destroy'])->name('vaults.contacts.notes.destroy');
             });
         });
 
