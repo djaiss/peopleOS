@@ -50,13 +50,13 @@ class ContactNoteControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->put('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/notes/'.$note->id, [
+            ->put('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/notes/'.$note->id, [
                 'body' => 'This is a super note',
             ])
             ->assertSee('This is a super note');
 
         $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
             ->assertSee('This is a super note');
     }
 }
