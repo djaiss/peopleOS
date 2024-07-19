@@ -4,8 +4,6 @@ namespace Tests\Unit\Models;
 
 use App\Models\Company;
 use App\Models\Contact;
-use App\Models\Note;
-use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;

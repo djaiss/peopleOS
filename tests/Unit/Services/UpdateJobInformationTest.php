@@ -16,7 +16,6 @@ class UpdateJobInformationTest extends TestCase
 {
     use DatabaseTransactions;
 
-
     public function it_updates_the_job_information_with_a_new_company(): void
     {
         $user = User::factory()->create();

@@ -3,12 +3,9 @@
 namespace Tests\Unit\Services;
 
 use App\Models\Company;
-use App\Models\Contact;
-use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateCompany;
-use App\Services\CreateNote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;

@@ -3,8 +3,6 @@
 namespace Tests\Unit\Services;
 
 use App\Models\Company;
-use App\Models\Contact;
-use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\UpdateCompany;
@@ -75,7 +73,7 @@ class UpdateCompanyTest extends TestCase
             name: 'Dunder Mifflin 2',
         ))->execute();
 
-                $this->assertInstanceOf(
+        $this->assertInstanceOf(
             Company::class,
             $company
         );

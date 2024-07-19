@@ -9,7 +9,6 @@ use App\Models\ContactImportantDateType;
 use App\Models\File;
 use App\Models\Group;
 use App\Models\Journal;
-use App\Models\Label;
 use App\Models\LifeEventCategory;
 use App\Models\LifeMetric;
 use App\Models\MoodTrackingParameter;

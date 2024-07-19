@@ -3,11 +3,8 @@
 namespace App\Services;
 
 use App\Models\Company;
-use App\Models\Contact;
-use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateCompany
