@@ -44,9 +44,14 @@ class ContactViewModel
                 'name' => $contact->company?->name,
                 'url' => '',
             ],
+            'existing_companies' => self::companies($contact->vault) ?? collect(),
         ];
     }
 
+    /**
+     * List all the companies in the vault. This is used to populate the
+     * dropdown in the edit job information form.
+     */
     public static function companies(Vault $vault): Collection
     {
         return $vault->companies()

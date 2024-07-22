@@ -26,10 +26,10 @@
                 </div>
 
                 <!-- work information -->
-                @include('vaults.contacts.partials.job_information', ['contact' => $contact])
+                @include('vaults.contacts.partials.job_information', ['vault' => $vault, 'contact' => $contact, 'companies' => $companies])
 
                 <!-- background info -->
-                @include('vaults.contacts.partials.background_information', ['contact' => $contact])
+                @include('vaults.contacts.partials.background_information', ['vault' => $vault, 'contact' => $contact])
 
                 <!-- tags -->
                 <div>
@@ -144,7 +144,7 @@
 
               <!-- notes -->
               <div id="notes-list">
-                @include('vaults.contacts.partials.notes', ['contact' => $contact, 'notes' => $notes])
+                @include('vaults.contacts.partials.notes', ['vault' => $vault, 'contact' => $contact, 'notes' => $notes])
               </div>
             </div>
           </div>

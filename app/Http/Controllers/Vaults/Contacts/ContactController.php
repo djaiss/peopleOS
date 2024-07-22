@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vaults\Contacts;
 
+use App\Cache\ContactInformationCache;
 use App\Cache\ContactListCache;
 use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
@@ -90,13 +91,17 @@ class ContactController extends Controller
             contact: $contact,
         )->value();
 
-        $contact = ContactViewModel::show($contact);
+        $contact = ContactInformationCache::make(
+            user: auth()->user(),
+            contact: $contact,
+        )->value();
 
         return view('vaults.contacts.show', [
             'vault' => $vault,
             'contact' => $contact,
             'contacts' => $contacts,
             'notes' => $notes,
+            'companies' => $contact['existing_companies'],
         ]);
     }
 }
