@@ -4,24 +4,26 @@ namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactInformationCache;
 use App\Http\Controllers\Controller;
-use App\Services\UpdateBackgroundInformation;
+use App\Services\UpdateJobInformation;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ContactBackgroundInformationController extends Controller
+class ContactJobInformationController extends Controller
 {
     public function update(Request $request): View
     {
         $contact = $request->attributes->get('contact');
 
         $validated = $request->validate([
-            'information' => 'required|string|max:1000',
+            'job_title' => 'required|string|max:1000',
+            'company_name' => 'required|string|max:1000',
         ]);
 
-        (new UpdateBackgroundInformation(
+        (new UpdateJobInformation(
             user: auth()->user(),
             contact: $contact,
-            information: $validated['information'],
+            companyName: $validated['company_name'],
+            jobTitle: $validated['job_title'],
         ))->execute();
 
         $vault = $request->attributes->get('vault');
@@ -31,9 +33,10 @@ class ContactBackgroundInformationController extends Controller
             contact: $contact,
         )->refresh();
 
-        return view('vaults.contacts.partials.background_information', [
+        return view('vaults.contacts.partials.job_information', [
             'vault' => $vault,
             'contact' => $contact,
+            'companies' => $contact['existing_companies'],
         ]);
     }
 }

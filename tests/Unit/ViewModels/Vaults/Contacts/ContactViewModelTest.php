@@ -3,6 +3,7 @@
 namespace Tests\Unit\ViewModels\Vaults\Contacts;
 
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
@@ -53,19 +54,59 @@ class ContactViewModelTest extends TestCase
             'first_name' => 'john',
             'last_name' => 'doe',
             'background_information' => 'background information',
+            'job_title' => 'Paper salesman',
         ]);
+        $company = Company::factory()->create([
+            'vault_id' => $vault->id,
+            'name' => 'Dunder Mifflin',
+        ]);
+        $contact->company_id = $company->id;
+        $contact->save();
 
         $array = ContactViewModel::show($contact);
 
+        $this->assertEquals(8, count($array));
+
+        $this->assertEquals(
+            $contact->id,
+            $array['id']
+        );
+        $this->assertEquals(
+            $contact->name,
+            $array['name']
+        );
+        $this->assertEquals(
+            $contact->avatar,
+            $array['avatar']
+        );
+        $this->assertEquals(
+            $contact->id.'-john',
+            $array['slug']
+        );
+        $this->assertEquals(
+            'background information',
+            $array['background_information']
+        );
+        $this->assertEquals(
+            'Paper salesman',
+            $array['job_title']
+        );
+        $this->assertEquals(
+            'Dunder Mifflin',
+            $array['company']['name']
+        );
+        $this->assertEquals(
+            '',
+            $array['company']['url']
+        );
         $this->assertEquals(
             [
-                'id' => $contact->id,
-                'name' => $contact->name,
-                'avatar' => $contact->avatar,
-                'slug' => $contact->id.'-john',
-                'background_information' => 'background information',
+                0 => [
+                    'id' => $company->id,
+                    'name' => 'Dunder Mifflin',
+                ],
             ],
-            $array
+            $array['existing_companies']->toArray()
         );
     }
 }

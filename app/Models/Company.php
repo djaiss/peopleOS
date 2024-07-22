@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Note extends Model
+class Company extends Model
 {
     use HasFactory;
 
-    protected $table = 'notes';
+    protected $table = 'companies';
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +19,8 @@ class Note extends Model
      * @var array<int,string>
      */
     protected $fillable = [
-        'contact_id',
-        'user_id',
-        'body',
+        'vault_id',
+        'name',
     ];
 
     /**
@@ -29,22 +29,22 @@ class Note extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'body' => 'encrypted',
+        'name' => 'encrypted',
     ];
 
     /**
-     * Get the contact record associated with the note.
+     * Get the vault record associated with the company.
      */
-    public function contact(): BelongsTo
+    public function vault(): BelongsTo
     {
-        return $this->belongsTo(Contact::class);
+        return $this->belongsTo(Vault::class);
     }
 
     /**
-     * Get the user record associated with the note.
+     * Get the contact associated with the vault.
      */
-    public function user(): BelongsTo
+    public function contacts(): HasMany
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Contact::class);
     }
 }

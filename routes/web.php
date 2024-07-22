@@ -10,6 +10,7 @@ use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Vaults\Contacts\ContactBackgroundInformationController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
+use App\Http\Controllers\Vaults\Contacts\ContactJobInformationController;
 use App\Http\Controllers\Vaults\Contacts\ContactNoteController;
 use App\Http\Controllers\Vaults\Settings\VaultSettingsController;
 use App\Http\Controllers\Vaults\VaultController;
@@ -43,7 +44,8 @@ Route::middleware('auth', 'verified')->group(function () {
                 Route::put('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'update'])->name('vaults.contacts.notes.update');
                 Route::delete('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'destroy'])->name('vaults.contacts.notes.destroy');
 
-                // background information
+                // job & background information
+                Route::put('{vault}/contacts/{slug}/job-information', [ContactJobInformationController::class, 'update'])->name('vaults.contacts.job-information.update');
                 Route::put('{vault}/contacts/{slug}/background-information', [ContactBackgroundInformationController::class, 'update'])->name('vaults.contacts.background-information.update');
             });
         });

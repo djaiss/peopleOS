@@ -12,6 +12,8 @@ class Vault extends Model
 {
     use HasFactory;
 
+    protected $table = 'vaults';
+
     /**
      * Possible vault permissions.
      */
@@ -77,5 +79,13 @@ class Vault extends Model
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class);
+    }
+
+    /**
+     * Get the companies associated with the vault.
+     */
+    public function companies(): HasMany
+    {
+        return $this->hasMany(Company::class);
     }
 }
