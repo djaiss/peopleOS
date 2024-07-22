@@ -162,14 +162,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/neque/contacts" \
+    --get "http://peopleos.test/api/vaults/mollitia/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/neque/contacts"
+    "http://peopleos.test/api/vaults/mollitia/contacts"
 );
 
 const headers = {
@@ -185,7 +185,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/neque/contacts';
+$url = 'http://peopleos.test/api/vaults/mollitia/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -283,11 +283,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="neque" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="mollitia" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>neque</code>
+              <code>mollitia</code>
             </p>
           </div>
         </form>
@@ -581,14 +581,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/autem" \
+    "http://peopleos.test/api/vaults/1/contacts/dolores" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/autem"
+    "http://peopleos.test/api/vaults/1/contacts/dolores"
 );
 
 const headers = {
@@ -604,7 +604,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/autem';
+$url = 'http://peopleos.test/api/vaults/1/contacts/dolores';
 $response = $client-&gt;delete(
     $url,
     [
@@ -692,11 +692,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="autem" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="dolores" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>autem</code>
+              <code>dolores</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

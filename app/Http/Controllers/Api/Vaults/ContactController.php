@@ -81,7 +81,7 @@ class ContactController extends Controller
         ))->execute();
 
         return response()->json([
-            'id' => $vault->id,
+            'id' => $contact->id,
             'object' => 'contact',
             'name' => $contact->name,
             'first_name' => $contact->first_name,
@@ -159,7 +159,7 @@ class ContactController extends Controller
         $contacts = $vault->contacts()
             ->get()
             ->map(fn (Contact $contact) => [
-                'id' => $vault->id,
+                'id' => $contact->id,
                 'object' => 'contact',
                 'name' => $contact->name,
                 'first_name' => $contact->first_name,

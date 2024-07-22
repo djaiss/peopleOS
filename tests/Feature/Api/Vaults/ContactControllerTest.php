@@ -35,7 +35,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $response->assertStatus(201);
-        $contact = Contact::orderBy('id', 'asc')->first();
+        $contact = Contact::orderBy('id', 'desc')->first();
 
         $this->assertEquals(
             [
