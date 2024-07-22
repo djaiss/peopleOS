@@ -3,13 +3,10 @@
 namespace App\Cache;
 
 use App\Helpers\CacheHelper;
-use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Models\Contact;
 use App\Models\User;
-use App\Models\Vault;
 use App\Traits\CacheIdentifier;
-use Illuminate\Support\Collection;
 
 /**
  * All the information about a contact: name, job info, background info.
@@ -26,7 +23,7 @@ final class ContactInformationCache extends CacheHelper
         protected readonly User $user,
         protected readonly Contact $contact,
     ) {
-        $this->identifier = $user->id . '_' . $contact->id;
+        $this->identifier = $user->id.'_'.$contact->id;
     }
 
     public static function make(User $user, Contact $contact): static

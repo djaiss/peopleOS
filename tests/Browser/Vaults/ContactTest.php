@@ -84,7 +84,7 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->click('@blank-job-information')
                 ->type('job_title', 'software developer')
                 ->type('company_name', 'Dunder Mifflin')

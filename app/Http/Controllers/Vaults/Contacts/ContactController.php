@@ -6,7 +6,6 @@ use App\Cache\ContactInformationCache;
 use App\Cache\ContactListCache;
 use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Services\CreateContact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

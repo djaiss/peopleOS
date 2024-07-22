@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactInformationCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
-use App\Services\UpdateBackgroundInformation;
 use App\Services\UpdateJobInformation;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
