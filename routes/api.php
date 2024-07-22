@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Settings\MeController;
+use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\VaultController;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Support\Facades\Route;
@@ -14,5 +15,16 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::middleware(CheckVault::class)->prefix('vaults/{vault}')->group(function () {
         Route::delete('', [VaultController::class, 'destroy']);
+
+        // manage contacts
+        Route::get('contacts', [ContactController::class, 'index']);
+        Route::post('contacts', [ContactController::class, 'create']);
+        Route::middleware(['contact'])->group(function (): void {
+            //Route::get('contacts/{slug}', [ContactController::class, 'show']);
+
+            Route::middleware(['is_at_least_editor'])->group(function (): void {
+                Route::delete('contacts/{slug}', [ContactController::class, 'destroy']);
+            });
+        });
     });
 });

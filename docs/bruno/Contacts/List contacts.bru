@@ -1,18 +1,17 @@
 meta {
-  name: Delete post templates
+  name: List contacts
   type: http
-  seq: 3
+  seq: 1
 }
 
-delete {
-  url: http://{{URL}}/post-templates/1
+get {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts
   body: none
   auth: bearer
 }
 
 headers {
   Accept: application/json
-  Content-Type: application/json
 }
 
 auth:bearer {

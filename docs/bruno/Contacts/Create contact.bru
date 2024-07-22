@@ -1,0 +1,29 @@
+meta {
+  name: Create contact
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts?first_name=Dwight&last_name=Schrute&middle_name&maiden_name&prefix&sufix&can_be_deleted=0
+  body: none
+  auth: bearer
+}
+
+params:query {
+  first_name: Dwight
+  last_name: Schrute
+  middle_name: 
+  maiden_name: 
+  prefix: 
+  sufix: 
+  can_be_deleted: 0
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
