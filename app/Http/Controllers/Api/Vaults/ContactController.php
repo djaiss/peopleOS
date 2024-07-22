@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Vault;
 use App\Services\CreateContact;
-use App\Services\CreateVault;
 use App\Services\DestroyContact;
-use App\Services\DestroyVault;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
