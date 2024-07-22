@@ -162,14 +162,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/sed/contacts" \
+    --get "http://peopleos.test/api/vaults/neque/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/sed/contacts"
+    "http://peopleos.test/api/vaults/neque/contacts"
 );
 
 const headers = {
@@ -185,7 +185,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/sed/contacts';
+$url = 'http://peopleos.test/api/vaults/neque/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -217,7 +217,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;maiden_name&quot;: &quot;Johnson&quot;,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Jr.&quot;,
- &quot;can_be_deleted&quot;: true
+ &quot;can_be_deleted&quot;: 1
 }, {
  &quot;id&quot;: 5
  &quot;object&quot;: &quot;contact&quot;,
@@ -229,7 +229,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;maiden_name&quot;: &quot;Schrute&quot;,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Sr.&quot;,
- &quot;can_be_deleted&quot;: true
+ &quot;can_be_deleted&quot;: 1
 }]</code>
  </pre>
         </span>
@@ -283,11 +283,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="sed" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="neque" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>sed</code>
+              <code>neque</code>
             </p>
           </div>
         </form>
@@ -393,7 +393,7 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;maiden_name&quot;: &quot;Johnson&quot;,
     &quot;prefix&quot;: &quot;Mr.&quot;,
     &quot;suffix&quot;: &quot;Jr.&quot;,
-    &quot;can_be_deleted&quot;: true
+    &quot;can_be_deleted&quot;: 1
 }</code>
  </pre>
         </span>
@@ -581,14 +581,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/porro" \
+    "http://peopleos.test/api/vaults/1/contacts/autem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/porro"
+    "http://peopleos.test/api/vaults/1/contacts/autem"
 );
 
 const headers = {
@@ -604,7 +604,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/porro';
+$url = 'http://peopleos.test/api/vaults/1/contacts/autem';
 $response = $client-&gt;delete(
     $url,
     [
@@ -692,11 +692,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="porro" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="autem" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>porro</code>
+              <code>autem</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

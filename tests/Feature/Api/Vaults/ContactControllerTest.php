@@ -35,7 +35,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $response->assertStatus(201);
-        $contact = Contact::latest()->first();
+        $contact = Contact::orderBy('id', 'asc')->first();
 
         $this->assertEquals(
             [
@@ -100,7 +100,7 @@ class ContactControllerTest extends TestCase
         $user = User::factory()->create();
         $vault = $this->createVault($user->account);
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
-        $contact = Contact::factory()->create([
+        Contact::factory()->create([
             'vault_id' => $vault->id,
             'first_name' => 'Michael',
             'last_name' => 'Scott',
@@ -111,7 +111,7 @@ class ContactControllerTest extends TestCase
             'suffix' => 'Jr.',
             'can_be_deleted' => true,
         ]);
-        $secondContact = Contact::factory()->create([
+        Contact::factory()->create([
             'vault_id' => $vault->id,
             'first_name' => 'Dwight',
             'last_name' => 'Schrute',
