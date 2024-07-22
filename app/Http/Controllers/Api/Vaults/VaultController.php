@@ -57,11 +57,9 @@ class VaultController extends Controller
      *  "status": "success"
      * }
      */
-    public function destroy(Request $request, int $vaultId): JsonResponse
+    public function destroy(Request $request): JsonResponse
     {
-        $vault = auth()->user()->vaults()
-            ->wherePivot('permission', '<=', Vault::PERMISSION_MANAGE)
-            ->findOrFail($vaultId);
+        $vault = $request->attributes->get('vault');
 
         (new DestroyVault(
             user: auth()->user(),
