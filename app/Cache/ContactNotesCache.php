@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 /**
  * All the notes of the contact.
  */
-final class ContactNoteCache extends CacheHelper
+final class ContactNotesCache extends CacheHelper
 {
     use CacheIdentifier;
 

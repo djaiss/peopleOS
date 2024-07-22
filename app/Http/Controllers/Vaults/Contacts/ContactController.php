@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Cache\ContactListCache;
-use App\Cache\ContactNoteCache;
+use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Services\CreateContact;
@@ -86,7 +86,7 @@ class ContactController extends Controller
             vault: $vault,
         )->value();
 
-        $notes = ContactNoteCache::make(
+        $notes = ContactNotesCache::make(
             contact: $contact,
         )->value();
 

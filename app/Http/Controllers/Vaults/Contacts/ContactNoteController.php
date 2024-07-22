@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Vaults\Contacts;
 
-use App\Cache\ContactNoteCache;
+use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
@@ -29,7 +29,7 @@ class ContactNoteController extends Controller
             body: $validated['body'],
         ))->execute();
 
-        $notes = ContactNoteCache::make(
+        $notes = ContactNotesCache::make(
             contact: $contact,
         )->refresh();
 
@@ -64,7 +64,7 @@ class ContactNoteController extends Controller
             body: $validated['body'],
         ))->execute();
 
-        ContactNoteCache::make(
+        ContactNotesCache::make(
             contact: $contact,
         )->refresh();
 
@@ -94,7 +94,7 @@ class ContactNoteController extends Controller
             note: $note,
         ))->execute();
 
-        ContactNoteCache::make(
+        ContactNotesCache::make(
             contact: $contact,
         )->refresh();
     }

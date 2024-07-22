@@ -5,18 +5,24 @@
  */
 ?>
 
-<div id="job-information" class="mb-2 flex w-full items-start">
+<div id="job-information" class="mb-2 flex w-full items-center">
   <x-heroicon-o-briefcase class="mr-2 h-4 w-4 flex-shrink-0 text-gray-500" />
 
   <div class="w-full" x-data="{ editMode: false }">
     <div x-show="! editMode">
       @if ($contact['job_title'] && $contact['company'])
-        <span x-on:click="
-          (editMode = true),
-            $nextTick(() => {
-              $refs.backgroundInformation.focus()
-            })
-        " class="cursor-pointer hover:bg-yellow-300" dusk="job-information">{{ $contact['job_title'] }} ({{ $contact['company'] }})</span>
+        <span>
+          <span x-on:click="
+            (editMode = true),
+              $nextTick(() => {
+                $refs.backgroundInformation.focus()
+              })
+          " dusk="job-information" class="cursor-pointer hover:bg-yellow-300">{{ $contact['job_title'] }}</span>
+
+          @if ($contact['company']['name'])
+            ({{ $contact['company']['name'] }})
+          @endif
+        </span>
       @else
         <span x-on:click="
           (editMode = true),
@@ -32,7 +38,24 @@
         @csrf
         @method('PUT')
 
-        <x-textarea :xRef="'backgroundInformation'" @keyup.escape="editMode = false" id="information" name="information" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add any details about this person') }}" dusk="contact-job-information">{{ $contact['background_information'] }}</x-textarea>
+        <!-- job title -->
+        <div class="relative mb-2">
+          <x-input-label for="job_title" :value="__('Job title')" />
+
+          <x-text-input :value="old('job_title', $contact['job_title'])" @keyup.escape="editMode = false" class="mt-1 block w-full" id="job_title" name="job_title" type="text" required autofocus />
+
+          <x-input-error class="mt-2" :messages="$errors->get('job_title')" />
+        </div>
+
+        <!-- company -->
+        <div class="relative mb-2">
+          <x-input-label for="company_name" :value="__('Company name')" />
+
+          <x-text-input :value="old('company_name', $contact['company']['name'])" @keyup.escape="editMode = false" class="mt-1 block w-full" id="company_name" name="company_name" type="text" required autofocus />
+
+          <x-input-error class="mt-2" :messages="$errors->get('company_name')" />
+        </div>
+
         <div class="flex justify-end">
           <div class="flex items-center">
             <x-button.secondary x-on:click="editMode = false" class="mr-2">

@@ -16,16 +16,21 @@ class UpdateJobInformation
     public function __construct(
         public User $user,
         public Contact $contact,
-        public string $companyName,
+        public ?string $companyName,
         public string $jobTitle,
     ) {}
 
-    public function execute(): void
+    public function execute(): Company
     {
         $this->validate();
-        $this->checkCompany();
+
+        if ($this->companyName) {
+            $this->checkCompany();
+        }
         $this->update();
         $this->updateLastEditedDate();
+
+        return $this->company;
     }
 
     private function validate(): void
@@ -47,6 +52,7 @@ class UpdateJobInformation
         // But don´t forget that the data is encrypted in the database.
         // We can´t search for the company by name. We need to iterate on each
         // company and decrypt the name to compare.
+        $this->company = null;
         $companies = Company::where('vault_id', $this->contact->vault_id)->get();
         foreach ($companies as $company) {
             if (strtolower($company->name) === strtolower($this->companyName)) {

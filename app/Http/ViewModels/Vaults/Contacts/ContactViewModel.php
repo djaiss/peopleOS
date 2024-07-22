@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewModels\Vaults\Contacts;
 
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Vault;
 use Illuminate\Support\Collection;
@@ -39,7 +40,22 @@ class ContactViewModel
             'slug' => $contact->slug,
             'background_information' => $contact->background_information,
             'job_title' => $contact->job_title,
-            'company' => $contact->company?->name,
+            'company' => [
+                'name' => $contact->company?->name,
+                'url' => '',
+            ],
         ];
+    }
+
+    public static function companies(Vault $vault): Collection
+    {
+        return $vault->companies()
+            ->get()
+            ->map(fn (Company $company) => [
+                'id' => $company->id,
+                'name' => $company->name,
+            ])
+            ->sortBy('name')
+            ->values();
     }
 }

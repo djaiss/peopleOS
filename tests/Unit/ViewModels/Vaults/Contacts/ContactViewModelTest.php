@@ -73,7 +73,10 @@ class ContactViewModelTest extends TestCase
                 'slug' => $contact->id.'-john',
                 'background_information' => 'background information',
                 'job_title' => 'Paper salesman',
-                'company' => 'Dunder Mifflin',
+                'company' => [
+                    'name' => 'Dunder Mifflin',
+                    'url' => '',
+                ],
             ],
             $array
         );

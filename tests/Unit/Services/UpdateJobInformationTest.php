@@ -48,7 +48,7 @@ class UpdateJobInformationTest extends TestCase
             'name' => 'Dunder Mifflin',
         ]);
 
-        $this->executeService($user, $contact);
+        $company = $this->executeService($user, $contact);
 
         $contact = $contact->fresh();
 
@@ -60,6 +60,11 @@ class UpdateJobInformationTest extends TestCase
         $this->assertEquals(
             'Paper salesman',
             $contact->job_title
+        );
+
+        $this->assertInstanceOf(
+            Company::class,
+            $company
         );
     }
 
@@ -103,9 +108,9 @@ class UpdateJobInformationTest extends TestCase
         $this->executeService($user, $contact);
     }
 
-    private function executeService(User $user, Contact $contact): void
+    private function executeService(User $user, Contact $contact): Company
     {
-        (new UpdateJobInformation(
+        return (new UpdateJobInformation(
             user: $user,
             contact: $contact,
             companyName: 'Dunder Mifflin',
