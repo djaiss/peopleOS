@@ -6,8 +6,6 @@ use App\Cache\ContactInformationCache;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Vault;
-use App\Services\CreateContact;
-use App\Services\DestroyContact;
 use App\Services\UpdateJobInformation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
