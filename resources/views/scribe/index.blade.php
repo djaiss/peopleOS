@@ -74,6 +74,9 @@
             <li class="tocify-item level-2" data-unique="contacts-POSTapi-vaults--vault--contacts">
               <a href="#contacts-POSTapi-vaults--vault--contacts">Create a contact</a>
             </li>
+            <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--slug--job">
+              <a href="#contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact's job information</a>
+            </li>
             <li class="tocify-item level-2" data-unique="contacts-DELETEapi-vaults--vault--contacts--slug-">
               <a href="#contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact</a>
             </li>
@@ -114,7 +117,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 22, 2024</li>
+        <li>Last updated: July 23, 2024</li>
       </ul>
     </div>
 
@@ -162,14 +165,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/mollitia/contacts" \
+    --get "http://peopleos.test/api/vaults/vero/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/mollitia/contacts"
+    "http://peopleos.test/api/vaults/vero/contacts"
 );
 
 const headers = {
@@ -185,7 +188,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/mollitia/contacts';
+$url = 'http://peopleos.test/api/vaults/vero/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -283,11 +286,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="mollitia" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="vero" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>mollitia</code>
+              <code>vero</code>
             </p>
           </div>
         </form>
@@ -572,6 +575,197 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact&#039;s job information</h2>
+
+        <p></p>
+
+        <p>A contact can have one job, linked to a company. You don't need to manually create the company, it will be created if it doesn't exist. This check is done based on the company name.</p>
+        <p>If you want a more granular control over the company itself, you can use the dedicated company endpoints.</p>
+
+        <span id="example-requests-PUTapi-vaults--vault--contacts--slug--job">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/vaults/1/contacts/voluptas/job" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"job_title\": \"CEO\",
+    \"company_name\": \"Dunder Mifflin\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/voluptas/job"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "job_title": "CEO",
+    "company_name": "Dunder Mifflin"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/voluptas/job';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'job_title' =&gt; 'CEO',
+            'company_name' =&gt; 'Dunder Mifflin',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-vaults--vault--contacts--slug--job">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 4,
+    &quot;object&quot;: &quot;contact&quot;,
+    &quot;name&quot;: &quot;Michael Scott&quot;,
+    &quot;job_title&quot;: &quot;CEO&quot;,
+    &quot;company&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Dunder Mifflin&quot;
+    }
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-vaults--vault--contacts--slug--job" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-vaults--vault--contacts--slug--job"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-vaults--vault--contacts--slug--job"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-vaults--vault--contacts--slug--job" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-vaults--vault--contacts--slug--job">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-vaults--vault--contacts--slug--job" data-method="PUT" data-path="api/vaults/{vault}/contacts/{slug}/job" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-vaults--vault--contacts--slug--job', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/vaults/{vault}/contacts/{slug}/job</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>slug</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="voluptas" data-component="url" />
+            <br />
+            <p>
+              The slug of the contact. Example:
+              <code>voluptas</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>job_title</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="job_title" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="CEO" data-component="body" />
+            <br />
+            <p>
+              The job title of the contact. Max 255 characters. Example:
+              <code>CEO</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>company_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="company_name" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="Dunder Mifflin" data-component="body" />
+            <br />
+            <p>
+              The name of the company. Max 255 characters. Example:
+              <code>Dunder Mifflin</code>
+            </p>
+          </div>
+        </form>
+
         <h2 id="contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact</h2>
 
         <p></p>
@@ -581,14 +775,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/dolores" \
+    "http://peopleos.test/api/vaults/1/contacts/esse" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/dolores"
+    "http://peopleos.test/api/vaults/1/contacts/esse"
 );
 
 const headers = {
@@ -604,7 +798,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/dolores';
+$url = 'http://peopleos.test/api/vaults/1/contacts/esse';
 $response = $client-&gt;delete(
     $url,
     [
@@ -692,11 +886,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="dolores" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="esse" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>dolores</code>
+              <code>esse</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

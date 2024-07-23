@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Settings\MeController;
 use App\Http\Controllers\Api\Vaults\ContactController;
+use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
 use App\Http\Controllers\Api\Vaults\VaultController;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
             //Route::get('contacts/{slug}', [ContactController::class, 'show']);
 
             Route::middleware(['is_at_least_editor'])->group(function (): void {
+                Route::put('contacts/{slug}/job', [ContactJobInformationController::class, 'update']);
                 Route::delete('contacts/{slug}', [ContactController::class, 'destroy']);
             });
         });

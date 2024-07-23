@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Vaults;
 
+use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Vault;
@@ -80,6 +81,11 @@ class ContactController extends Controller
             canBeDeleted: $validated['can_be_deleted'],
         ))->execute();
 
+        ContactListCache::make(
+            user: auth()->user(),
+            vault: $request->attributes->get('vault'),
+        )->refresh();
+
         return response()->json([
             'id' => $contact->id,
             'object' => 'contact',
@@ -115,6 +121,11 @@ class ContactController extends Controller
             vault: $vault,
             contact: $contact,
         ))->execute();
+
+        ContactListCache::make(
+            user: auth()->user(),
+            vault: $request->attributes->get('vault'),
+        )->refresh();
 
         return response()->json([
             'status' => 'success',
