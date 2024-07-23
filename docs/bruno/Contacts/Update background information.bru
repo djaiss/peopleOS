@@ -1,0 +1,23 @@
+meta {
+  name: Update background information
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts/74/background?information=Gym
+  body: none
+  auth: bearer
+}
+
+query {
+  information: Gym
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

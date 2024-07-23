@@ -77,6 +77,9 @@
             <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--slug--job">
               <a href="#contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact's job information</a>
             </li>
+            <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--slug--background">
+              <a href="#contacts-PUTapi-vaults--vault--contacts--slug--background">Update a contact's background information</a>
+            </li>
             <li class="tocify-item level-2" data-unique="contacts-DELETEapi-vaults--vault--contacts--slug-">
               <a href="#contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact</a>
             </li>
@@ -165,14 +168,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/vero/contacts" \
+    --get "http://peopleos.test/api/vaults/odio/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/vero/contacts"
+    "http://peopleos.test/api/vaults/odio/contacts"
 );
 
 const headers = {
@@ -188,7 +191,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/vero/contacts';
+$url = 'http://peopleos.test/api/vaults/odio/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -286,11 +289,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="vero" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="odio" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>vero</code>
+              <code>odio</code>
             </p>
           </div>
         </form>
@@ -587,7 +590,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/voluptas/job" \
+    "http://peopleos.test/api/vaults/1/contacts/eos/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -599,7 +602,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/voluptas/job"
+    "http://peopleos.test/api/vaults/1/contacts/eos/job"
 );
 
 const headers = {
@@ -621,7 +624,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/voluptas/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/eos/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -720,11 +723,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="voluptas" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="eos" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>voluptas</code>
+              <code>eos</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -766,6 +769,175 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--slug--background">Update a contact&#039;s background information</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-vaults--vault--contacts--slug--background">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/vaults/1/contacts/deserunt/background" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"information\": \"CEO\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/deserunt/background"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "information": "CEO"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/deserunt/background';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'information' =&gt; 'CEO',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-vaults--vault--contacts--slug--background">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;contact&quot;,
+ &quot;name&quot;: &quot;Michael Scott&quot;,
+ &quot;background_information&quot;: &quot;Met him at a conference.&quot;,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-vaults--vault--contacts--slug--background" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-vaults--vault--contacts--slug--background"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-vaults--vault--contacts--slug--background"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-vaults--vault--contacts--slug--background" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-vaults--vault--contacts--slug--background">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-vaults--vault--contacts--slug--background" data-method="PUT" data-path="api/vaults/{vault}/contacts/{slug}/background" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-vaults--vault--contacts--slug--background', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/vaults/{vault}/contacts/{slug}/background</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>slug</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="deserunt" data-component="url" />
+            <br />
+            <p>
+              The slug of the contact. Example:
+              <code>deserunt</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>information</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="information" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="CEO" data-component="body" />
+            <br />
+            <p>
+              The background information about the contact. Can be anything, really. Max 255 characters. Example:
+              <code>CEO</code>
+            </p>
+          </div>
+        </form>
+
         <h2 id="contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact</h2>
 
         <p></p>
@@ -775,14 +947,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/esse" \
+    "http://peopleos.test/api/vaults/1/contacts/iusto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/esse"
+    "http://peopleos.test/api/vaults/1/contacts/iusto"
 );
 
 const headers = {
@@ -798,7 +970,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/esse';
+$url = 'http://peopleos.test/api/vaults/1/contacts/iusto';
 $response = $client-&gt;delete(
     $url,
     [
@@ -886,11 +1058,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="esse" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="iusto" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>esse</code>
+              <code>iusto</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
