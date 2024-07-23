@@ -213,7 +213,6 @@
               </li>
             </ul>
           </div>
-
           <!-- delete contact -->
         </div>
       </div>
