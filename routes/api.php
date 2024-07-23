@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Settings\MeController;
+use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
 use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
 use App\Http\Controllers\Api\Vaults\VaultController;
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
             Route::middleware(['is_at_least_editor'])->group(function (): void {
                 Route::put('contacts/{slug}/job', [ContactJobInformationController::class, 'update']);
+                Route::put('contacts/{slug}/background', [ContactBackgroundInformationController::class, 'update']);
                 Route::delete('contacts/{slug}', [ContactController::class, 'destroy']);
             });
         });
