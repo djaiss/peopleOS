@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Settings\MeController;
+use App\Http\Controllers\Api\Vaults\CompanyController;
 use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
 use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
@@ -29,6 +30,14 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::put('contacts/{slug}/background', [ContactBackgroundInformationController::class, 'update']);
                 Route::delete('contacts/{slug}', [ContactController::class, 'destroy']);
             });
+        });
+
+        // manage companies
+        Route::get('companies', [CompanyController::class, 'index']);
+        Route::middleware(['is_at_least_editor'])->group(function (): void {
+            Route::post('companies', [CompanyController::class, 'create']);
+            Route::put('companies/{company}', [CompanyController::class, 'update']);
+            Route::delete('companies/{company}', [CompanyController::class, 'destroy']);
         });
     });
 });
