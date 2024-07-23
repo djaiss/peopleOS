@@ -39,8 +39,6 @@ Route::middleware('auth', 'verified')->group(function () {
             Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
 
             Route::middleware(['is_at_least_editor'])->group(function (): void {
-                Route::delete('{vault}/contacts/{slug}', [ContactController::class, 'destroy'])->name('vaults.contacts.destroy');
-
                 // notes
                 Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
                 Route::put('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'update'])->name('vaults.contacts.notes.update');
@@ -49,12 +47,16 @@ Route::middleware('auth', 'verified')->group(function () {
                 // job & background information
                 Route::put('{vault}/contacts/{slug}/job-information', [ContactJobInformationController::class, 'update'])->name('vaults.contacts.job-information.update');
                 Route::put('{vault}/contacts/{slug}/background-information', [ContactBackgroundInformationController::class, 'update'])->name('vaults.contacts.background-information.update');
+
+                Route::delete('{vault}/contacts/{slug}', [ContactController::class, 'destroy'])->name('vaults.contacts.destroy');
             });
         });
 
         // settings
-        Route::get('{vault}/settings', [VaultSettingsController::class, 'index'])->name('vaults.settings.index');
-        Route::delete('{vault}', [VaultController::class, 'destroy'])->name('vaults.destroy');
+        Route::middleware(['is_at_least_editor'])->group(function (): void {
+            Route::get('{vault}/settings', [VaultSettingsController::class, 'index'])->name('vaults.settings.index');
+            Route::delete('{vault}', [VaultController::class, 'destroy'])->name('vaults.destroy');
+        });
     });
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

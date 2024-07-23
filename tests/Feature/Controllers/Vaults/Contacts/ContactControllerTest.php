@@ -35,4 +35,21 @@ class ContactControllerTest extends TestCase
                 'slug' => Contact::orderBy('id', 'desc')->first()->id.'-michael-scott',
             ]);
     }
+
+    #[Test]
+    public function a_user_can_delete_a_contact(): void
+    {
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+
+        $this->actingAs($user)
+            ->delete('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+            ->assertRedirectToRoute('vaults.show', [
+                'vault' => $vault,
+            ]);
+    }
 }

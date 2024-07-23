@@ -105,7 +105,7 @@ class ContactController extends Controller
         ]);
     }
 
-    public function delete(Request $request): RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
         $vault = $request->attributes->get('vault');
         $contact = $request->attributes->get('contact');
