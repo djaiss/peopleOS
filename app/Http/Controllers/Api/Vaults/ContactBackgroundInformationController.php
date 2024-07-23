@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Vault;
 use App\Services\UpdateBackgroundInformation;
-use App\Services\UpdateJobInformation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
