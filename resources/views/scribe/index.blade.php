@@ -63,6 +63,25 @@
             <a href="#authenticating-requests">Authenticating requests</a>
           </li>
         </ul>
+        <ul id="tocify-header-companies" class="tocify-header">
+          <li class="tocify-item level-1" data-unique="companies">
+            <a href="#companies">Companies</a>
+          </li>
+          <ul id="tocify-subheader-companies" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="companies-GETapi-vaults--vault--companies">
+              <a href="#companies-GETapi-vaults--vault--companies">List all companies</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="companies-POSTapi-vaults--vault--companies">
+              <a href="#companies-POSTapi-vaults--vault--companies">Create a company</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="companies-PUTapi-vaults--vault--companies--company-">
+              <a href="#companies-PUTapi-vaults--vault--companies--company-">Update a company</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="companies-DELETEapi-vaults--vault--companies--company-">
+              <a href="#companies-DELETEapi-vaults--vault--companies--company-">Delete a company</a>
+            </li>
+          </ul>
+        </ul>
         <ul id="tocify-header-contacts" class="tocify-header">
           <li class="tocify-item level-1" data-unique="contacts">
             <a href="#contacts">Contacts</a>
@@ -155,27 +174,27 @@
           .
         </p>
 
-        <h1 id="contacts">Contacts</h1>
+        <h1 id="companies">Companies</h1>
 
-        <h2 id="contacts-GETapi-vaults--vault--contacts">List all contacts</h2>
+        <h2 id="companies-GETapi-vaults--vault--companies">List all companies</h2>
 
         <p></p>
 
-        <p>This will list all the contacts, sorted alphabetically.</p>
+        <p>This will list all the companies, sorted alphabetically.</p>
 
-        <span id="example-requests-GETapi-vaults--vault--contacts">
+        <span id="example-requests-GETapi-vaults--vault--companies">
           <blockquote>Example request:</blockquote>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/odio/contacts" \
+    --get "http://peopleos.test/api/vaults/1/companies" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/odio/contacts"
+    "http://peopleos.test/api/vaults/1/companies"
 );
 
 const headers = {
@@ -191,7 +210,563 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/odio/contacts';
+$url = 'http://peopleos.test/api/vaults/1/companies';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--companies">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">[{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;company&quot;,
+ &quot;name&quot;: &quot;Dunder Mifflin&quot;,
+}, {
+ &quot;id&quot;: 5,
+ &quot;object&quot;: &quot;company&quot;,
+ &quot;name&quot;: &quot;Wayne Enterprises&quot;,
+}]</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--companies" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--companies"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--companies"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--companies" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--companies">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--companies" data-method="GET" data-path="api/vaults/{vault}/companies" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--companies', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/companies</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--companies" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--companies" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--companies" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="companies-POSTapi-vaults--vault--companies">Create a company</h2>
+
+        <p></p>
+
+        <span id="example-requests-POSTapi-vaults--vault--companies">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://peopleos.test/api/vaults/1/companies" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Dunder Mifflin\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/companies"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Dunder Mifflin"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/companies';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Dunder Mifflin',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-vaults--vault--companies">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;company&quot;,
+ &quot;name&quot;: &quot;Dunder Mifflin&quot;,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-vaults--vault--companies" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-vaults--vault--companies"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-vaults--vault--companies"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-vaults--vault--companies" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-vaults--vault--companies">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-vaults--vault--companies" data-method="POST" data-path="api/vaults/{vault}/companies" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-vaults--vault--companies', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/vaults/{vault}/companies</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-vaults--vault--companies" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-vaults--vault--companies" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="POSTapi-vaults--vault--companies" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="POSTapi-vaults--vault--companies" value="Dunder Mifflin" data-component="body" />
+            <br />
+            <p>
+              The name of the company. Max 255 characters. Example:
+              <code>Dunder Mifflin</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="companies-PUTapi-vaults--vault--companies--company-">Update a company</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-vaults--vault--companies--company-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/vaults/1/companies/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Dunder Mifflin\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/companies/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Dunder Mifflin"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/companies/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Dunder Mifflin',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-vaults--vault--companies--company-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;company&quot;,
+ &quot;name&quot;: &quot;Dunder Mifflin&quot;,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-vaults--vault--companies--company-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-vaults--vault--companies--company-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-vaults--vault--companies--company-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-vaults--vault--companies--company-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-vaults--vault--companies--company-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-vaults--vault--companies--company-" data-method="PUT" data-path="api/vaults/{vault}/companies/{company}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-vaults--vault--companies--company-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/vaults/{vault}/companies/{company}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-vaults--vault--companies--company-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-vaults--vault--companies--company-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="PUTapi-vaults--vault--companies--company-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>company</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="company" data-endpoint="PUTapi-vaults--vault--companies--company-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the company. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-vaults--vault--companies--company-" value="Dunder Mifflin" data-component="body" />
+            <br />
+            <p>
+              The name of the company. Max 255 characters. Example:
+              <code>Dunder Mifflin</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="companies-DELETEapi-vaults--vault--companies--company-">Delete a company</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-vaults--vault--companies--company-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://peopleos.test/api/vaults/1/companies/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/companies/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/companies/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-vaults--vault--companies--company-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-vaults--vault--companies--company-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-vaults--vault--companies--company-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-vaults--vault--companies--company-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-vaults--vault--companies--company-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-vaults--vault--companies--company-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-vaults--vault--companies--company-" data-method="DELETE" data-path="api/vaults/{vault}/companies/{company}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-vaults--vault--companies--company-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/vaults/{vault}/companies/{company}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-vaults--vault--companies--company-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-vaults--vault--companies--company-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--companies--company-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>company</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="company" data-endpoint="DELETEapi-vaults--vault--companies--company-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the company. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h1 id="contacts">Contacts</h1>
+
+        <h2 id="contacts-GETapi-vaults--vault--contacts">List all contacts</h2>
+
+        <p></p>
+
+        <p>This will list all the contacts, sorted alphabetically.</p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/vaults/voluptates/contacts" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/voluptates/contacts"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/voluptates/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -289,11 +864,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="odio" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="voluptates" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>odio</code>
+              <code>voluptates</code>
             </p>
           </div>
         </form>
@@ -590,7 +1165,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/eos/job" \
+    "http://peopleos.test/api/vaults/1/contacts/quaerat/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -602,7 +1177,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/eos/job"
+    "http://peopleos.test/api/vaults/1/contacts/quaerat/job"
 );
 
 const headers = {
@@ -624,7 +1199,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/eos/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/quaerat/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -723,11 +1298,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="eos" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="quaerat" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>eos</code>
+              <code>quaerat</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -778,7 +1353,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/deserunt/background" \
+    "http://peopleos.test/api/vaults/1/contacts/eum/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -789,7 +1364,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/deserunt/background"
+    "http://peopleos.test/api/vaults/1/contacts/eum/background"
 );
 
 const headers = {
@@ -810,7 +1385,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/deserunt/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/eum/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -904,11 +1479,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="deserunt" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="eum" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>deserunt</code>
+              <code>eum</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -947,14 +1522,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/iusto" \
+    "http://peopleos.test/api/vaults/1/contacts/architecto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/iusto"
+    "http://peopleos.test/api/vaults/1/contacts/architecto"
 );
 
 const headers = {
@@ -970,7 +1545,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/iusto';
+$url = 'http://peopleos.test/api/vaults/1/contacts/architecto';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1058,11 +1633,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="iusto" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="architecto" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>iusto</code>
+              <code>architecto</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
