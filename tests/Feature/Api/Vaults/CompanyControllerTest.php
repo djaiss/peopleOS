@@ -3,7 +3,6 @@
 namespace Tests\Feature\Api\Vaults;
 
 use App\Models\Company;
-use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,7 +23,7 @@ class CompanyControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/vaults/' . $vault->id . '/companies', [
+        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/companies', [
             'name' => 'Dunder Mifflin',
         ]);
 
@@ -54,7 +53,7 @@ class CompanyControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/companies/' . $company->id, [
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/companies/'.$company->id, [
             'name' => 'Dunder Mifflin',
         ]);
 
@@ -82,7 +81,7 @@ class CompanyControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/companies/' . $company->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/companies/'.$company->id);
 
         $response->assertStatus(200);
 
@@ -104,7 +103,7 @@ class CompanyControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/companies/' . $company->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/companies/'.$company->id);
 
         $response->assertStatus(401);
     }
@@ -126,7 +125,7 @@ class CompanyControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/companies');
+        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/companies');
 
         $response->assertStatus(200);
 
