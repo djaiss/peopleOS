@@ -48,7 +48,7 @@ class ContactControllerTest extends TestCase
 
         $this->actingAs($user)
             ->delete('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
-            ->assertRedirectToRoute('vaults.show', [
+            ->assertRedirectToRoute('vaults.contacts.index', [
                 'vault' => $vault,
             ]);
     }

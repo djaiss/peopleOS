@@ -124,7 +124,7 @@ class ContactController extends Controller
 
         $request->session()->flash('status', __('The contact has been deleted'));
 
-        return redirect()->route('vaults.show', [
+        return redirect()->route('vaults.contacts.index', [
             'vault' => $vault,
         ]);
     }

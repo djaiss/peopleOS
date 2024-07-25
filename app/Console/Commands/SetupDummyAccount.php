@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateAccount;
 use App\Services\CreateCompany;
 use App\Services\CreateContact;
+use App\Services\CreateNote;
 use App\Services\CreateVault;
 use App\Services\UpdateJobInformation;
 use Carbon\Carbon;
@@ -755,6 +757,19 @@ class SetupDummyAccount extends Command
             companyName: $character['company'],
             jobTitle: $character['profession'],
         ))->execute();
+
+        $this->createNotes($contact);
+    }
+
+    private function createNotes(Contact $contact): void
+    {
+        for ($i = 0; $i < rand(0, 93); $i++) {
+            $note = (new CreateNote(
+                user: $this->firstUser,
+                contact: $contact,
+                body: $this->faker->paragraphs(rand(1, 3), true)
+            ))->execute();
+        }
     }
 
     private function artisan(string $message, string $command, array $arguments = []): void

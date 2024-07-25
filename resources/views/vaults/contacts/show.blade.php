@@ -220,7 +220,7 @@
             @method('DELETE')
 
             <span onclick="event.preventDefault(); if(confirm('{{ __('Are you sure? This can not be undone.') }}')) document.getElementById('deleteContactForm').submit();" class="cursor-pointer text-sm text-red-600 underline hover:no-underline" dusk="link-delete-contact">
-              {{ __('Delete') }}
+              {{ __('Delete contact') }}
             </span>
           </form>
         </div>
