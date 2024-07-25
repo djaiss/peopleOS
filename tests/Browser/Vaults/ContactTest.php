@@ -115,7 +115,7 @@ class ContactTest extends DuskTestCase
                 ->click('@link-delete-contact')
                 ->assertDialogOpened('Are you sure? This can not be undone.')
                 ->acceptDialog()
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug);
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug);
         });
     }
 }
