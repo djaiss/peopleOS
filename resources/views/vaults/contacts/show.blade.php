@@ -183,7 +183,7 @@
           </div>
 
           <!-- information -->
-          <div class="relative mb-8 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
+          <div class="relative mb-3 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
             <div class="absolute -top-4 w-full">
               <div class="flex justify-between">
                 <div class="flex items-center rounded-full border bg-white py-1 pl-2 pr-3 text-sm">
@@ -213,6 +213,16 @@
               </li>
             </ul>
           </div>
+
+          <!-- delete contact -->
+          <form id="deleteContactForm" action="{{ route('vaults.contacts.destroy', ['vault' => $vault, 'slug' => $contact['slug']]) }}" method="POST" class="mb-1 px-5 py-2 text-center">
+            @csrf
+            @method('DELETE')
+
+            <a onclick="event.preventDefault(); if(confirm('{{ __('Are you sure? This can not be undone.') }}')) document.getElementById('deleteContactForm').submit();" class="cursor-pointer text-sm text-red-600 underline hover:no-underline" dusk="link-delete-contact">
+              {{ __('Delete contact') }}
+            </a>
+          </form>
         </div>
       </div>
     </div>

@@ -67,5 +67,9 @@ class DestroyContactTest extends TestCase
         $this->assertDatabaseMissing('contacts', [
             'id' => $contact->id,
         ]);
+
+        $this->assertDatabaseHas('vaults', [
+            'id' => $vault->id,
+        ]);
     }
 }

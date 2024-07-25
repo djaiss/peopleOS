@@ -7,6 +7,7 @@ use App\Cache\ContactListCache;
 use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
 use App\Services\CreateContact;
+use App\Services\DestroyContact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -101,6 +102,30 @@ class ContactController extends Controller
             'contacts' => $contacts,
             'notes' => $notes,
             'companies' => $contact['existing_companies'],
+        ]);
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        $vault = $request->attributes->get('vault');
+        $contact = $request->attributes->get('contact');
+
+        (new DestroyContact(
+            user: auth()->user(),
+            vault: $vault,
+            contact: $contact,
+        ))->execute();
+
+        // regenerate the cache
+        ContactListCache::make(
+            user: auth()->user(),
+            vault: $vault,
+        )->refresh();
+
+        $request->session()->flash('status', __('The contact has been deleted'));
+
+        return redirect()->route('vaults.contacts.index', [
+            'vault' => $vault,
         ]);
     }
 }
