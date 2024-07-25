@@ -93,4 +93,29 @@ class ContactTest extends DuskTestCase
                 ->assertSeeIn('@job-information', 'software developer');
         });
     }
+
+    #[Test]
+    public function a_user_can_delete_a_contact(): void
+    {
+        $user = User::factory()->create();
+        $vault = Vault::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $vault->users()->save($user, [
+            'permission' => Vault::PERMISSION_EDIT,
+            'contact_id' => $contact->id,
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
+            $browser->loginAs($user)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+                ->click('@link-delete-contact')
+                ->assertDialogOpened('Are you sure? This can not be undone.')
+                ->acceptDialog()
+                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug);
+        });
+    }
 }
