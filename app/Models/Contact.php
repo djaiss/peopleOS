@@ -26,6 +26,15 @@ class Contact extends Model
     public const AVATAR_TYPE_URL = 'url';
 
     /**
+     * Possible genders.
+     */
+    public const GENDER_MALE = 'male';
+
+    public const GENDER_FEMALE = 'female';
+
+    public const GENDER_OTHER = 'other';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int,string>

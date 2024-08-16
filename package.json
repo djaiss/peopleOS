@@ -14,16 +14,16 @@
     "@tailwindcss/forms": "^0.5.7",
     "alpinejs": "^3.14.1",
     "autoprefixer": "^10.4.20",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "htmx.org": "^1.9.12",
     "husky": "^9.1.4",
     "laravel-vite-plugin": "^1.0.5",
-    "lint-staged": "^15.2.8",
-    "postcss": "^8.4.40",
+    "lint-staged": "^15.2.9",
+    "postcss": "^8.4.41",
     "prettier": "^3.3.3",
-    "prettier-plugin-blade": "^2.1.16",
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.7",
-    "vite": "^5.3.5"
+    "prettier-plugin-blade": "^2.1.19",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.1"
   }
 }
