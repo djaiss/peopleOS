@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Child;
 use App\Models\Contact;
-use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
 use Carbon\Carbon;
