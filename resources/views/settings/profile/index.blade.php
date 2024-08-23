@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var User $user
+ * @var array $contact
+ */
+?>
+
 <x-app-layout>
   <x-slot name="breadcrumb">
     <div class="flex text-sm">
@@ -15,9 +22,9 @@
     </div>
   </x-slot>
 
-  <main class="relative sm:mt-20">
+  <main class="relative sm:mt-12">
     <!-- profile information -->
-    <div class="mx-auto max-w-3xl px-2 py-2 sm:px-0 sm:py-6">
+    <div class="mx-auto max-w-xl px-2 py-2 sm:px-0 sm:py-6">
       <!-- title + cta -->
       <div class="mb-3 mt-8 items-center justify-between sm:mt-0 sm:flex">
         <h3 class="mb-4 flex font-semibold sm:mb-0">
@@ -59,9 +66,9 @@
     </div>
 
     <!-- password change -->
-    <div class="mx-auto max-w-3xl px-2 py-2 sm:px-0 sm:py-6">
+    <div class="mx-auto max-w-xl px-2 py-2 sm:px-0 sm:py-4">
       <!-- title + cta -->
-      <div class="mb-3 mt-8 items-center justify-between sm:mt-0 sm:flex">
+      <div class="mb-3 mt-4 items-center justify-between sm:mt-0 sm:flex">
         <h3 class="mb-4 flex font-semibold sm:mb-0">
           {{ __('Update password') }}
         </h3>
@@ -98,5 +105,8 @@
         </div>
       </form>
     </div>
+
+    <!-- add 2FA -->
+    @include('settings.profile.partials.2fa')
   </main>
 </x-app-layout>

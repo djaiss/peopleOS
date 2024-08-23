@@ -5,8 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Settings\Api\SettingsApiAccessController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesNameOrderController;
+use App\Http\Controllers\Settings\Profile\Settings2FAController;
 use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
+use App\Http\Controllers\Settings\Profile\SettingsRecoveryCodeController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Vaults\Contacts\ContactBackgroundInformationController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
@@ -76,6 +78,15 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('profile', [SettingsProfileController::class, 'index'])->name('settings.profile.index');
         Route::put('profile', [SettingsProfileController::class, 'update'])->name('settings.profile.update');
         Route::put('password', [SettingsPasswordController::class, 'update'])->name('settings.password.update');
+
+        // 2fa
+        Route::get('2fa', [Settings2FAController::class, 'new'])->name('settings.profile.2fa.new');
+        Route::get('2fa/details', [Settings2FAController::class, 'show'])->name('settings.profile.2fa.show');
+        Route::post('2fa', [Settings2FAController::class, 'store'])->name('settings.profile.2fa.store');
+        Route::delete('2fa', [Settings2FAController::class, 'destroy'])->name('settings.profile.2fa.destroy');
+
+        // recovery codes
+        Route::get('recovery-codes', [SettingsRecoveryCodeController::class, 'show'])->name('settings.profile.recovery-code.show');
 
         // api
         Route::get('api', [SettingsApiAccessController::class, 'index'])->name('settings.api.index');
