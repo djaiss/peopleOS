@@ -32,6 +32,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'locale',
         'is_account_administrator',
         'timezone',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'two_factor_confirmed_at',
     ];
 
     /**
@@ -55,6 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_account_administrator' => 'boolean',
+            'two_factor_confirmed_at' => 'datetime',
         ];
     }
 

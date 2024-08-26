@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Laravel Documentation</title>
+    <title>PeopleOS Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 
@@ -139,7 +139,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 16, 2024</li>
+        <li>Last updated: August 26, 2024</li>
       </ul>
     </div>
 
@@ -743,14 +743,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/aut/contacts" \
+    --get "http://peopleos.test/api/vaults/blanditiis/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/aut/contacts"
+    "http://peopleos.test/api/vaults/blanditiis/contacts"
 );
 
 const headers = {
@@ -766,7 +766,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/aut/contacts';
+$url = 'http://peopleos.test/api/vaults/blanditiis/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -864,11 +864,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="aut" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="blanditiis" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>aut</code>
+              <code>blanditiis</code>
             </p>
           </div>
         </form>
@@ -1165,7 +1165,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/porro/job" \
+    "http://peopleos.test/api/vaults/1/contacts/in/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1177,7 +1177,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/porro/job"
+    "http://peopleos.test/api/vaults/1/contacts/in/job"
 );
 
 const headers = {
@@ -1199,7 +1199,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/porro/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/in/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -1298,11 +1298,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="porro" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="in" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>porro</code>
+              <code>in</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1353,7 +1353,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/sed/background" \
+    "http://peopleos.test/api/vaults/1/contacts/quia/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1364,7 +1364,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/sed/background"
+    "http://peopleos.test/api/vaults/1/contacts/quia/background"
 );
 
 const headers = {
@@ -1385,7 +1385,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/sed/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/quia/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -1479,11 +1479,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="sed" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="quia" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>sed</code>
+              <code>quia</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1522,14 +1522,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/quae" \
+    "http://peopleos.test/api/vaults/1/contacts/tenetur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/quae"
+    "http://peopleos.test/api/vaults/1/contacts/tenetur"
 );
 
 const headers = {
@@ -1545,7 +1545,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/quae';
+$url = 'http://peopleos.test/api/vaults/1/contacts/tenetur';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1633,11 +1633,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="quae" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="tenetur" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>quae</code>
+              <code>tenetur</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
