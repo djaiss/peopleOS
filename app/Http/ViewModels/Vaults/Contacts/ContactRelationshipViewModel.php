@@ -4,7 +4,6 @@ namespace App\Http\ViewModels\Vaults\Contacts;
 
 use App\Models\Child;
 use App\Models\Contact;
-use Illuminate\Support\Collection;
 
 class ContactRelationshipViewModel
 {
