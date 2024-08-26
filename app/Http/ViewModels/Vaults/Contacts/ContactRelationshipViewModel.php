@@ -6,20 +6,21 @@ use App\Models\Child;
 use App\Models\Contact;
 use Illuminate\Support\Collection;
 
-class ContactChildrenViewModel
+class ContactRelationshipViewModel
 {
     /**
      * Get all the children of a given contact.
      */
-    public static function index(Contact $contact): Collection
+    public static function index(Contact $contact): array
     {
-        $notes = $contact->notes()
-            ->with('user')
+        $children = $contact->children()
             ->orderBy('created_at', 'desc')
             ->get()
             ->map(fn (Child $child) => self::child($child));
 
-        return $notes;
+        return [
+            'children' => $children,
+        ];
     }
 
     /**
@@ -30,6 +31,7 @@ class ContactChildrenViewModel
         return [
             'id' => $child->id,
             'name' => $child->name,
+            'gender' => $child->gender,
         ];
     }
 }
