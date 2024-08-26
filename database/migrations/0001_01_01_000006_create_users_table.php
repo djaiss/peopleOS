@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('locale')->default('en');
             $table->boolean('is_account_administrator')->default(false);
             $table->string('timezone')->nullable();
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
