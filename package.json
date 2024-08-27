@@ -14,7 +14,7 @@
     "@tailwindcss/forms": "^0.5.7",
     "alpinejs": "^3.14.1",
     "autoprefixer": "^10.4.20",
-    "axios": "^1.7.4",
+    "axios": "^1.7.5",
     "htmx.org": "^1.9.12",
     "husky": "^9.1.5",
     "laravel-vite-plugin": "^1.0.5",
