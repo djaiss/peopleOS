@@ -37,7 +37,7 @@ class Gender extends Model
      * Gender entries have a default label that can be translated.
      * Howerer, if a label is already set, it will be used instead of the default.
      *
-     * @return Attribute<string,never>
+     * @return Attribute<string, string>
      */
     protected function label(): Attribute
     {
@@ -48,7 +48,8 @@ class Gender extends Model
                 }
 
                 return $value;
-            }
+            },
+            set: fn (?string $value) => $value,
         );
     }
 }
