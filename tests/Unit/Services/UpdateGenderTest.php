@@ -2,11 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Company;
 use App\Models\Gender;
 use App\Models\User;
-use App\Models\Vault;
-use App\Services\CreateCompany;
 use App\Services\UpdateGender;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

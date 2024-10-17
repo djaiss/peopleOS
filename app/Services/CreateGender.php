@@ -2,11 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Company;
 use App\Models\Gender;
 use App\Models\User;
-use App\Models\Vault;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CreateGender
 {
