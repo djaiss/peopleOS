@@ -6,6 +6,7 @@ use App\Cache\ContactInformationCache;
 use App\Cache\ContactListCache;
 use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
+use App\Http\ViewModels\Vaults\Contacts\ContactRelationshipViewModel;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
 use Illuminate\Http\RedirectResponse;
@@ -96,12 +97,15 @@ class ContactController extends Controller
             contact: $contact,
         )->value();
 
+        $children = ContactRelationshipViewModel::index($contact)['children'];
+
         return view('vaults.contacts.show', [
             'vault' => $vault,
             'contact' => $contact,
             'contacts' => $contacts,
             'notes' => $notes,
             'companies' => $contact['existing_companies'],
+            'children' => $children,
         ]);
     }
 

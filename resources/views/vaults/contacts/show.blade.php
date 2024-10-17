@@ -80,36 +80,7 @@
               </div>
 
               <!-- kids -->
-              <div class="relative mb-8 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
-                <div class="absolute -top-4 w-full">
-                  <div class="flex justify-between">
-                    <div class="flex items-center rounded-full border bg-white py-1 pl-2 pr-3 text-sm">
-                      <svg class="mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 12h.01" />
-                        <path d="M15 12h.01" />
-                        <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5" />
-                        <path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1" />
-                      </svg>
-                      <div>Kids</div>
-                    </div>
-
-                    <div class="button -left-6 flex cursor-pointer items-center rounded border bg-white text-sm">
-                      <x-heroicon-o-plus class="h-4 w-4" />
-                    </div>
-                  </div>
-                </div>
-
-                <ul class="mt-2">
-                  <li>
-                    Regis
-                    <span class="text-xs text-gray-600">(8)</span>
-                  </li>
-                  <li>
-                    Lorraine
-                    <span class="text-xs text-gray-600">(8)</span>
-                  </li>
-                </ul>
-              </div>
+              @include('vaults.contacts.partials.kids')
 
               <!-- extended family -->
               <div class="group mb-8 flex items-center rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
