@@ -51,7 +51,7 @@
           <!-- last name -->
           <div class="relative mb-5">
             <x-input-label for="last_name" :value="__('Last name')" />
-            <x-text-input class="mt-1 block w-full" id="last_name" name="last_name" type="text" required />
+            <x-text-input class="mt-1 block w-full" id="last_name" name="last_name" type="text" />
             <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
           </div>
 

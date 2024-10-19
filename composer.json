@@ -16,6 +16,7 @@
     "laravel/framework": "^11.9",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
+    "livewire/livewire": "^3.5",
     "pragmarx/google2fa": "^8.0",
     "stichoza/google-translate-php": "^5.1"
   },

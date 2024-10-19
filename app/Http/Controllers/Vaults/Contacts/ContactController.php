@@ -44,7 +44,7 @@ class ContactController extends Controller
 
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'maiden_name' => 'nullable|string|max:255',
@@ -97,7 +97,7 @@ class ContactController extends Controller
             contact: $contact,
         )->value();
 
-        $children = ContactRelationshipViewModel::index($contact)['children'];
+        //$children = ContactRelationshipViewModel::index($contact)['children'];
 
         return view('vaults.contacts.show', [
             'vault' => $vault,
@@ -105,7 +105,7 @@ class ContactController extends Controller
             'contacts' => $contacts,
             'notes' => $notes,
             'companies' => $contact['existing_companies'],
-            'children' => $children,
+            //'children' => $children,
         ]);
     }
 
