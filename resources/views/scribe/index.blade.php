@@ -119,6 +119,9 @@
             <a href="#genders">Genders</a>
           </li>
           <ul id="tocify-subheader-genders" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="genders-GETapi-genders">
+              <a href="#genders-GETapi-genders">List all genders</a>
+            </li>
             <li class="tocify-item level-2" data-unique="genders-POSTapi-genders">
               <a href="#genders-POSTapi-genders">Create a gender</a>
             </li>
@@ -759,14 +762,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/harum/contacts" \
+    --get "http://peopleos.test/api/vaults/et/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/harum/contacts"
+    "http://peopleos.test/api/vaults/et/contacts"
 );
 
 const headers = {
@@ -782,7 +785,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/harum/contacts';
+$url = 'http://peopleos.test/api/vaults/et/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -880,11 +883,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="harum" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="et" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>harum</code>
+              <code>et</code>
             </p>
           </div>
         </form>
@@ -1181,7 +1184,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/ex/job" \
+    "http://peopleos.test/api/vaults/1/contacts/iste/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1193,7 +1196,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/ex/job"
+    "http://peopleos.test/api/vaults/1/contacts/iste/job"
 );
 
 const headers = {
@@ -1215,7 +1218,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/ex/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/iste/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -1314,11 +1317,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="ex" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="iste" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>ex</code>
+              <code>iste</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1369,7 +1372,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/mollitia/background" \
+    "http://peopleos.test/api/vaults/1/contacts/eveniet/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1380,7 +1383,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/mollitia/background"
+    "http://peopleos.test/api/vaults/1/contacts/eveniet/background"
 );
 
 const headers = {
@@ -1401,7 +1404,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/mollitia/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/eveniet/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -1495,11 +1498,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="mollitia" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="eveniet" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>mollitia</code>
+              <code>eveniet</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1538,14 +1541,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/recusandae" \
+    "http://peopleos.test/api/vaults/1/contacts/tenetur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/recusandae"
+    "http://peopleos.test/api/vaults/1/contacts/tenetur"
 );
 
 const headers = {
@@ -1561,7 +1564,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/recusandae';
+$url = 'http://peopleos.test/api/vaults/1/contacts/tenetur';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1649,11 +1652,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="recusandae" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="tenetur" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>recusandae</code>
+              <code>tenetur</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1786,6 +1789,148 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <p>Gender for a human refers to the roles, behaviors, activities, expectations, and societal norms that cultures and societies consider appropriate for men, women, and other gender identities.</p>
         <p>Genders are defined at the account level and shared by all users in the account. If you delete a gender it will be removed from all the contacts that are using it.</p>
 
+        <h2 id="genders-GETapi-genders">List all genders</h2>
+
+        <p></p>
+
+        <p>This API call returns a paginated collection of genders that contains 15 items per page.</p>
+
+        <span id="example-requests-GETapi-genders">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/genders" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/genders"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/genders';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-genders">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">[{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;gender&quot;,
+ &quot;label&quot;: &quot;Male&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}, {
+ &quot;id&quot;: 2,
+ &quot;object&quot;: &quot;gender&quot;,
+ &quot;label&quot;: &quot;Female&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}]</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-genders" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-genders"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-genders"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-genders" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-genders">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-genders" data-method="GET" data-path="api/genders" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-genders', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/genders</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-genders" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-genders" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the gender.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
         <h2 id="genders-POSTapi-genders">Create a gender</h2>
 
         <p></p>

@@ -61,7 +61,22 @@
       "@php artisan key:generate --ansi",
       "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
       "@php artisan migrate --graceful --ansi"
-    ]
+    ],
+    "test:static": "./vendor/bin/phpstan analyse",
+    "test:unit": "php artisan migrate:fresh --database=testing && ./vendor/bin/phpunit",
+    "test": [
+      "@test:unit",
+      "@test:static"
+    ],
+    "precommit": [
+      "@style:pint",
+      "@peopleos:docs",
+      "@style:prettier"
+    ],
+    "style:pint": "./vendor/bin/pint",
+    "style:prettier": "npx prettier --write resources/",
+    "peopleos:docs": "php artisan scribe:generate",
+    "peopleos:update": "composer update && bun update && bun upgrade"
   },
   "extra": {
     "laravel": {
