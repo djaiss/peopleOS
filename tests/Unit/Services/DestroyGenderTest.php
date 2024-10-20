@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\ClearCacheForAllContacts;
+use App\Jobs\ClearCacheForAllContactsInAccount;
 use App\Models\Gender;
 use App\Models\User;
 use App\Services\DestroyGender;
@@ -50,7 +50,7 @@ class DestroyGenderTest extends TestCase
         ]);
 
         Queue::assertPushed(
-            ClearCacheForAllContacts::class
+            ClearCacheForAllContactsInAccount::class
         );
     }
 }

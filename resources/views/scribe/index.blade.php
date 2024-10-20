@@ -762,14 +762,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/et/contacts" \
+    --get "http://peopleos.test/api/vaults/cupiditate/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/et/contacts"
+    "http://peopleos.test/api/vaults/cupiditate/contacts"
 );
 
 const headers = {
@@ -785,7 +785,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/et/contacts';
+$url = 'http://peopleos.test/api/vaults/cupiditate/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -883,11 +883,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="et" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="cupiditate" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>et</code>
+              <code>cupiditate</code>
             </p>
           </div>
         </form>
@@ -1184,7 +1184,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/iste/job" \
+    "http://peopleos.test/api/vaults/1/contacts/sunt/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1196,7 +1196,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/iste/job"
+    "http://peopleos.test/api/vaults/1/contacts/sunt/job"
 );
 
 const headers = {
@@ -1218,7 +1218,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/iste/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/sunt/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -1317,11 +1317,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="iste" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="sunt" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>iste</code>
+              <code>sunt</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1372,7 +1372,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/eveniet/background" \
+    "http://peopleos.test/api/vaults/1/contacts/aliquam/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1383,7 +1383,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/eveniet/background"
+    "http://peopleos.test/api/vaults/1/contacts/aliquam/background"
 );
 
 const headers = {
@@ -1404,7 +1404,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/eveniet/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/aliquam/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -1498,11 +1498,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="eveniet" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="aliquam" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>eveniet</code>
+              <code>aliquam</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1541,14 +1541,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/tenetur" \
+    "http://peopleos.test/api/vaults/1/contacts/dolor" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/tenetur"
+    "http://peopleos.test/api/vaults/1/contacts/dolor"
 );
 
 const headers = {
@@ -1564,7 +1564,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/tenetur';
+$url = 'http://peopleos.test/api/vaults/1/contacts/dolor';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1652,11 +1652,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="tenetur" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="dolor" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>tenetur</code>
+              <code>dolor</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1844,7 +1844,7 @@ print_r(json_decode((string) $body));</code></pre>
           </blockquote>
           <pre>
 
-<code class="language-json" style="max-height: 300px;">[{
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
  &quot;id&quot;: 1,
  &quot;object&quot;: &quot;gender&quot;,
  &quot;label&quot;: &quot;Male&quot;,
@@ -1856,7 +1856,39 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;label&quot;: &quot;Female&quot;,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
-}]</code>
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/genders?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/genders?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/genders?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/genders&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
  </pre>
         </span>
         <span id="execution-results-GETapi-genders" hidden>
@@ -2381,11 +2413,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <h1 id="vaults">Vaults</h1>
 
+        <p>Vaults are used to store contacts and all the related data. You can create as many vaults as you need. To access a vault, you need to have the permissions to do so. There are three permissions: view, edit, and manage.</p>
+
         <h2 id="vaults-GETapi-vaults">List all vaults</h2>
 
         <p></p>
 
-        <p>This will list all the vaults, sorted alphabetically.</p>
+        <p>This will list all the vaults, sorted alphabetically, that the user has access to. This API call returns a paginated collection of genders that contains 15 items per page. This will not return the vaults that the user does not have access to.</p>
 
         <span id="example-requests-GETapi-vaults">
           <blockquote>Example request:</blockquote>
@@ -2436,20 +2470,53 @@ print_r(json_decode((string) $body));</code></pre>
           </blockquote>
           <pre>
 
-<code class="language-json" style="max-height: 300px;">[
-    {
-        &quot;id&quot;: 4,
-        &quot;object&quot;: &quot;vault&quot;,
-        &quot;name&quot;: &quot;New vault&quot;,
-        &quot;description&quot;: &quot;This is a new vault&quot;
-    },
-    {
-        &quot;id&quot;: 5,
-        &quot;object&quot;: &quot;vault&quot;,
-        &quot;name&quot;: &quot;Old vault&quot;,
-        &quot;description&quot;: &quot;This is an old vault&quot;
-    }
-]</code>
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;vault&quot;,
+ &quot;name&quot;: &quot;New vault&quot;,
+ &quot;description&quot;: &quot;This is a new vault&quot;
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+}, {
+ &quot;id&quot;: 5,
+ &quot;object&quot;: &quot;vault&quot;,
+ &quot;name&quot;: &quot;Old vault&quot;,
+ &quot;description&quot;: &quot;This is an old vault&quot;
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/genders?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/genders?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/genders?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/genders&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
  </pre>
         </span>
         <span id="execution-results-GETapi-vaults" hidden>
@@ -2498,9 +2565,43 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the vault.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>description</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The description of the vault.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
         <h2 id="vaults-POSTapi-vaults">Create a vault</h2>
 
         <p></p>
+
+        <p>A vault is a place where you can store contacts and all the related data. When you create a vault, your user will be associated with it with the Manage permission. Also, a contact representing you will be created automatically. You will not be able to delete this contact–only another manager of the vault can do so.</p>
 
         <span id="example-requests-POSTapi-vaults">
           <blockquote>Example request:</blockquote>
@@ -2567,10 +2668,12 @@ print_r(json_decode((string) $body));</code></pre>
           <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 4,
-    &quot;object&quot;: &quot;vault&quot;,
-    &quot;name&quot;: &quot;New vault&quot;,
-    &quot;description&quot;: &quot;This is a new vault&quot;
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;vault&quot;,
+ &quot;name&quot;: &quot;New vault&quot;,
+ &quot;description&quot;: &quot;This is a new vault&quot;
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
 }</code>
  </pre>
         </span>
@@ -2647,6 +2750,38 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the vault.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>description</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The description of the vault.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
         <h2 id="vaults-DELETEapi-vaults--vault-">Delete a vault</h2>
 
         <p></p>

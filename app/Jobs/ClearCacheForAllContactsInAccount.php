@@ -18,7 +18,7 @@ use Illuminate\Queue\SerializesModels;
  * cache there, the user would hit the caches about the contacts and encounter
  * the old data.
  */
-class ClearCacheForAllContacts implements ShouldQueue
+class ClearCacheForAllContactsInAccount implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

@@ -69,11 +69,11 @@
       "@test:static"
     ],
     "precommit": [
-      "@style:pint",
+      "@lint",
       "@peopleos:docs",
       "@style:prettier"
     ],
-    "style:pint": "./vendor/bin/pint",
+    "lint": "./vendor/bin/pint",
     "style:prettier": "npx prettier --write resources/",
     "peopleos:docs": "php artisan scribe:generate",
     "peopleos:update": "composer update && bun update && bun upgrade"
