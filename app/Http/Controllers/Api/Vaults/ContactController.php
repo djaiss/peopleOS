@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Vaults;
 use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Gender;
 use App\Models\Vault;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
@@ -30,6 +31,7 @@ class ContactController extends Controller
      *
      * @urlParam vault required The id of the vault. Example: 1
      *
+     * @bodyParam gender_id integer required The gender object associated with the contact. This object must be a valid Gender object. Example: 1
      * @bodyParam first_name string required The first name of the contact. Max 255 characters. Example: Michael
      * @bodyParam last_name string required The last name of the contact. Max 255 characters. Example: Scott
      * @bodyParam middle_name string The middle name of the contact. Max 255 characters. Example: Gary
@@ -58,6 +60,7 @@ class ContactController extends Controller
         $vault = $request->attributes->get('vault');
 
         $validated = $request->validate([
+            'gender_id' => 'required|exists:genders,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
@@ -71,6 +74,7 @@ class ContactController extends Controller
         $contact = (new CreateContact(
             user: auth()->user(),
             vault: $vault,
+            gender: Gender::find($validated['gender_id']),
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             middleName: $validated['middle_name'],

@@ -3,6 +3,7 @@
 namespace Tests\Unit\Services;
 
 use App\Models\Contact;
+use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateContact;
@@ -21,7 +22,10 @@ class CreateContactTest extends TestCase
         $user = User::factory()->create();
         $vault = $this->createVault($user->account);
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
-        $this->executeService($user, $vault);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender);
     }
 
     #[Test]
@@ -31,7 +35,10 @@ class CreateContactTest extends TestCase
 
         $vault = Vault::factory()->create();
         $user = User::factory()->create();
-        $this->executeService($user, $vault);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender);
     }
 
     #[Test]
@@ -42,14 +49,30 @@ class CreateContactTest extends TestCase
         $user = User::factory()->create();
         $vault = $this->createVault($user->account);
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
-        $this->executeService($user, $vault);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender);
     }
 
-    private function executeService(User $user, Vault $vault): void
+    #[Test]
+    public function it_fails_if_gender_doesnt_belong_to_account(): void
+    {
+        $this->expectException(ModelNotFoundException::class);
+
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
+        $gender = Gender::factory()->create();
+        $this->executeService($user, $vault, $gender);
+    }
+
+    private function executeService(User $user, Vault $vault, Gender $gender): void
     {
         $contact = (new CreateContact(
             vault: $vault,
             user: $user,
+            gender: $gender,
             firstName: 'Ross',
             lastName: 'Geller',
             middleName: '',
@@ -63,6 +86,7 @@ class CreateContactTest extends TestCase
         $this->assertDatabaseHas('contacts', [
             'id' => $contact->id,
             'vault_id' => $vault->id,
+            'gender_id' => $gender->id,
             'can_be_deleted' => true,
         ]);
 

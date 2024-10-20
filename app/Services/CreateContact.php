@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Contact;
+use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
 use Carbon\Carbon;
@@ -16,6 +17,7 @@ class CreateContact
     public function __construct(
         public User $user,
         public Vault $vault,
+        public Gender $gender,
         public ?string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -51,12 +53,17 @@ class CreateContact
         if (! $exists) {
             throw new ModelNotFoundException;
         }
+
+        // make sure the gender exists and belongs to the account
+        Gender::where('account_id', $this->user->account_id)
+            ->findOrFail($this->gender->id);
     }
 
     private function createContact(): void
     {
         $this->contact = Contact::create([
             'vault_id' => $this->vault->id,
+            'gender_id' => $this->gender->id,
             'first_name' => $this->firstName ?? null,
             'last_name' => $this->lastName ?? null,
             'middle_name' => $this->middleName ?? null,
