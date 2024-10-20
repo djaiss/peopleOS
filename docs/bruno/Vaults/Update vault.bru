@@ -1,0 +1,24 @@
+meta {
+  name: Update vault
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://{{URL}}/vaults?name=Personal&description=This is amazing
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: Personal
+  description: This is amazing
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,3 +1,2 @@
-php artisan monica:localize
 npx prettier --write resources/
 npm run lint-staged

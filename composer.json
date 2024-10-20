@@ -71,12 +71,14 @@
     "precommit": [
       "@lint",
       "@peopleos:docs",
+      "@peopleos:translate",
       "@style:prettier"
     ],
     "lint": "./vendor/bin/pint",
     "style:prettier": "npx prettier --write resources/",
     "peopleos:docs": "php artisan scribe:generate",
-    "peopleos:update": "composer update && bun update && bun upgrade"
+    "peopleos:update": "composer update && bun update && bun upgrade",
+    "peopleos:translate": "php artisan monica:localize"
   },
   "extra": {
     "laravel": {

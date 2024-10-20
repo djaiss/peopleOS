@@ -44,6 +44,57 @@ class VaultControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_updates_a_vault(): void
+    {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+
+        $vault->name = 'Old vault';
+        $vault->save();
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id, [
+            'name' => 'New vault',
+            'description' => 'This is a new vault',
+        ]);
+
+        $response->assertStatus(200);
+
+        $this->assertEquals(
+            [
+                'id' => $vault->id,
+                'object' => 'vault',
+                'name' => 'New vault',
+                'description' => 'This is a new vault',
+                'created_at' => 1514764800,
+                'updated_at' => 1514764800,
+            ],
+            $response->json()['data']
+        );
+    }
+
+    #[Test]
+    public function it_cant_update_a_vault(): void
+    {
+        $user = User::factory()->create();
+        Sanctum::actingAs($user);
+
+        $vault = Vault::factory()->create([
+            'name' => 'Old vault',
+        ]);
+
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id, [
+            'name' => 'New vault',
+            'description' => 'This is a new vault',
+        ]);
+
+        $response->assertStatus(401);
+    }
+
+    #[Test]
     public function it_deletes_a_vault(): void
     {
         $user = User::factory()->create();

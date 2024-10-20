@@ -8,6 +8,7 @@ use App\Http\Resources\VaultResource;
 use App\Models\Vault;
 use App\Services\CreateVault;
 use App\Services\DestroyVault;
+use App\Services\UpdateVault;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -56,6 +57,48 @@ class VaultController extends Controller
 
         $vault = (new CreateVault(
             user: auth()->user(),
+            name: $validated['name'],
+            description: $validated['description'],
+        ))->execute();
+
+        return new VaultResource($vault);
+    }
+
+    /**
+     * Update a vault
+     *
+     * @urlParam vault required The id of the vault. Example: 1
+     *
+     * @bodyParam name string required The name of the vault. Max 255 characters. Example: New vault
+     * @bodyParam description string The description of the vault. Max 255 characters. Example: This is a new vault
+     *
+     * @response 200 {
+     *  "id": 4,
+     *  "object": "vault",
+     *  "name": "New vault",
+     *  "description": "This is a new vault"
+     *  "created_at": 1514764800,
+     *  "updated_at": 1514764800
+     * }
+     *
+     * @responseField id Unique identifier for the object.
+     * @responseField label The name of the vault.
+     * @responseField description The description of the vault.
+     * @responseField created_at The date the object was created. Represented as a Unix timestamp.
+     * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
+     */
+    public function update(Request $request)
+    {
+        $vault = $request->attributes->get('vault');
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+        ]);
+
+        $vault = (new UpdateVault(
+            user: auth()->user(),
+            vault: $vault,
             name: $validated['name'],
             description: $validated['description'],
         ))->execute();
