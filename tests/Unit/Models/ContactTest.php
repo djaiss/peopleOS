@@ -5,6 +5,7 @@ namespace Tests\Unit\Models;
 use App\Models\Child;
 use App\Models\Company;
 use App\Models\Contact;
+use App\Models\Gender;
 use App\Models\Note;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -29,6 +30,15 @@ class ContactTest extends TestCase
             'company_id' => Company::factory()->create()->id,
         ]);
         $this->assertTrue($contact->company()->exists());
+    }
+
+    #[Test]
+    public function it_belongs_to_a_gender()
+    {
+        $contact = Contact::factory()->create([
+            'gender_id' => Gender::factory()->create()->id,
+        ]);
+        $this->assertTrue($contact->gender()->exists());
     }
 
     #[Test]

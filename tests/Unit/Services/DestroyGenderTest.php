@@ -2,11 +2,13 @@
 
 namespace Tests\Unit\Services;
 
+use App\Jobs\ClearCacheForAllContacts;
 use App\Models\Gender;
 use App\Models\User;
 use App\Services\DestroyGender;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -36,6 +38,8 @@ class DestroyGenderTest extends TestCase
 
     private function executeService(User $user, Gender $gender): void
     {
+        Queue::fake();
+
         (new DestroyGender(
             user: $user,
             gender: $gender,
@@ -44,5 +48,9 @@ class DestroyGenderTest extends TestCase
         $this->assertDatabaseMissing('genders', [
             'id' => $gender->id,
         ]);
+
+        Queue::assertPushed(
+            ClearCacheForAllContacts::class
+        );
     }
 }

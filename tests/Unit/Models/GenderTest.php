@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Contact;
 use App\Models\Gender;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -19,6 +20,17 @@ class GenderTest extends TestCase
     }
 
     #[Test]
+    public function it_has_many_contacts(): void
+    {
+        $gender = Gender::factory()->create();
+        Contact::factory()->create([
+            'gender_id' => $gender->id,
+        ]);
+
+        $this->assertTrue($gender->contacts()->exists());
+    }
+
+    #[Test]
     public function it_gets_the_default_label()
     {
         $gender = Gender::factory()->create([
@@ -28,7 +40,7 @@ class GenderTest extends TestCase
 
         $this->assertEquals(
             'this is a default label',
-            $gender->label
+            $gender->getLabel()
         );
     }
 
@@ -42,7 +54,7 @@ class GenderTest extends TestCase
 
         $this->assertEquals(
             'this is the real label',
-            $gender->label
+            $gender->getLabel()
         );
     }
 }

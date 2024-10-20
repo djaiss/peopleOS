@@ -84,16 +84,16 @@ class AccountTest extends TestCase
     //     $this->assertTrue($account->relationshipGroupTypes()->exists());
     // }
 
-    // #[Test]
-    // public function it_has_many_genders()
-    // {
-    //     $account = Account::factory()->create();
-    //     Gender::factory(2)->create([
-    //         'account_id' => $account->id,
-    //     ]);
+    #[Test]
+    public function it_has_many_genders()
+    {
+        $account = Account::factory()->create();
+        Gender::factory(2)->create([
+            'account_id' => $account->id,
+        ]);
 
-    //     $this->assertTrue($account->genders()->exists());
-    // }
+        $this->assertTrue($account->genders()->exists());
+    }
 
     // #[Test]
     // public function it_has_many_pronouns()

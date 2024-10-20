@@ -2,11 +2,13 @@
 
 namespace Tests\Unit\Services;
 
+use App\Jobs\ClearCacheForAllContacts;
 use App\Models\Gender;
 use App\Models\User;
 use App\Services\UpdateGender;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -36,6 +38,8 @@ class UpdateGenderTest extends TestCase
 
     private function executeService(User $user, Gender $gender): void
     {
+        Queue::fake();
+
         $gender = (new UpdateGender(
             user: $user,
             gender: $gender,
@@ -55,6 +59,10 @@ class UpdateGenderTest extends TestCase
         $this->assertEquals(
             'Male',
             $gender->label
+        );
+
+        Queue::assertPushed(
+            ClearCacheForAllContacts::class
         );
     }
 }

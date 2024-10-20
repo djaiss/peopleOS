@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('vault_id');
             $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('gender_id')->nullable();
             $table->text('slug')->nullable();
             $table->text('first_name')->nullable();
             $table->text('middle_name')->nullable();
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('vault_id')->references('id')->on('vaults')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
         });
 
         Schema::create('user_vault', function (Blueprint $table) {
