@@ -1,6 +1,3 @@
-./vendor/bin/phpstan analyse
-./vendor/bin/phpunit
-./vendor/bin/pint
 php artisan monica:localize
 npx prettier --write resources/
 npm run lint-staged

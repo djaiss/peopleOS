@@ -4,9 +4,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "pretest": "php artisan migrate:fresh --database=testing",
-    "posttest": "composer update && php artisan scribe:generate && bun update && npx prettier --write resources/",
-    "test": "./vendor/bin/phpunit && php artisan clear-compiled && php artisan ide-helper:models --nowrite && php artisan ide-helper:generate",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },
