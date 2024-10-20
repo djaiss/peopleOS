@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ClearCacheForAllContacts;
 use App\Models\Gender;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -17,6 +18,7 @@ class DestroyGender
     {
         $this->validate();
         $this->destroy();
+        $this->clearCache();
     }
 
     private function validate(): void
@@ -30,5 +32,10 @@ class DestroyGender
     private function destroy(): void
     {
         $this->gender->delete();
+    }
+
+    private function clearCache(): void
+    {
+        ClearCacheForAllContacts::dispatch($this->user->account);
     }
 }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('genders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->string('label')->nullable();
-            $table->string('label_translation_key')->nullable();
+            $table->text('label')->nullable();
+            $table->text('label_translation_key')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });

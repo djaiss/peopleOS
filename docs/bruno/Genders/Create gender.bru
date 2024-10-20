@@ -1,0 +1,23 @@
+meta {
+  name: Create gender
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://{{URL}}/genders?label=Male
+  body: none
+  auth: bearer
+}
+
+params:query {
+  label: Male
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

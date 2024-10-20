@@ -1,0 +1,20 @@
+meta {
+  name: Delete gender
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://{{URL}}/genders/1
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -64,13 +64,13 @@ class Account extends Model
     //     return $this->hasMany(RelationshipGroupType::class);
     // }
 
-    // /**
-    //  * Get the genders associated with the account.
-    //  */
-    // public function genders(): HasMany
-    // {
-    //     return $this->hasMany(Gender::class);
-    // }
+    /**
+     * Get the genders associated with the account.
+     */
+    public function genders(): HasMany
+    {
+        return $this->hasMany(Gender::class);
+    }
 
     // /**
     //  * Get the pronouns associated with the account.
@@ -146,13 +146,13 @@ class Account extends Model
     //     return $this->hasMany(GiftState::class);
     // }
 
-    // /**
-    //  * Get the vaults associated with the account.
-    //  */
-    // public function vaults(): HasMany
-    // {
-    //     return $this->hasMany(Vault::class);
-    // }
+    /**
+     * Get the vaults associated with the account.
+     */
+    public function vaults(): HasMany
+    {
+        return $this->hasMany(Vault::class);
+    }
 
     // /**
     //  * Get the post templates associated with the account.

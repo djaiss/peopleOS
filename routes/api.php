@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Settings\GenderController;
 use App\Http\Controllers\Api\Settings\MeController;
 use App\Http\Controllers\Api\Vaults\CompanyController;
 use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
@@ -11,6 +12,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('me', [MeController::class, 'show'])->name('me');
+
+    // manage genders
+    Route::get('genders', [GenderController::class, 'index']);
+    Route::post('genders', [GenderController::class, 'create']);
+    Route::put('genders/{gender}', [GenderController::class, 'update']);
+    Route::delete('genders/{gender}', [GenderController::class, 'destroy']);
 
     // manage vaults
     Route::get('vaults', [VaultController::class, 'index']);

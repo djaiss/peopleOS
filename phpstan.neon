@@ -11,12 +11,11 @@ parameters:
         #- '#Access to an undefined property App\\Models\\[^:]*::\$pivot\.#'
         #- '#Method\s.+?\sreturn type has no value type specified in iterable type array\.#'
 
-#
     excludePaths:
-#        - ./*/*/FileToBeExcluded.php
         - app/Http/Controllers/Auth/VerifyEmailController.php
         - app/Models/User.php
         - app/Http/Middleware/CheckVault.php
+        - app/Http/Resources/*.php
 
 #
 #    checkMissingIterableValueType: false

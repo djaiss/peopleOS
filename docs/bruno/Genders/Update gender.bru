@@ -1,0 +1,23 @@
+meta {
+  name: Update gender
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://{{URL}}/genders/1?label=Female
+  body: none
+  auth: bearer
+}
+
+params:query {
+  label: Female
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

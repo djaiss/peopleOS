@@ -42,6 +42,7 @@ class Contact extends Model
     protected $fillable = [
         'vault_id',
         'company_id',
+        'gender_id',
         'slug',
         'first_name',
         'middle_name',
@@ -90,6 +91,14 @@ class Contact extends Model
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get the gender associated with the contact.
+     */
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class);
     }
 
     /**

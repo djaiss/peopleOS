@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ClearCacheForAllContacts;
 use App\Models\Gender;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -18,6 +19,7 @@ class UpdateGender
     {
         $this->validate();
         $this->update();
+        $this->clearCache();
 
         return $this->gender;
     }
@@ -34,5 +36,10 @@ class UpdateGender
     {
         $this->gender->label = $this->label;
         $this->gender->save();
+    }
+
+    private function clearCache(): void
+    {
+        ClearCacheForAllContacts::dispatch($this->user->account);
     }
 }
