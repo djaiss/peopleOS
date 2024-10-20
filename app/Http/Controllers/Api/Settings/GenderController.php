@@ -27,7 +27,7 @@ use Illuminate\Http\Request;
 class GenderController extends Controller
 {
     /**
-     * Create a gender
+     * Create a gender.
      *
      * @bodyParam label string required The label of the gender. Max 255 characters. Example: Male
      *
@@ -59,7 +59,7 @@ class GenderController extends Controller
     }
 
     /**
-     * Update a gender
+     * Update a gender.
      *
      * @urlParam gender required The id of the gender. Example: 1
      *
@@ -103,7 +103,7 @@ class GenderController extends Controller
     }
 
     /**
-     * Delete a gender
+     * Delete a gender.
      *
      * @urlParam gender required The id of the gender. Example: 1
      *
@@ -133,7 +133,7 @@ class GenderController extends Controller
     }
 
     /**
-     * List all genders
+     * List all genders.
      *
      * This API call returns a paginated collection of genders that contains
      * 15 items per page.

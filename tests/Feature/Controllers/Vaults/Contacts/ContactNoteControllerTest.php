@@ -25,13 +25,13 @@ class ContactNoteControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/notes', [
+            ->post('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/notes', [
                 'body' => 'This is a note',
             ])
             ->assertSee('This is a note');
 
         $this->actingAs($user)
-            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+            ->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
             ->assertSee('This is a note');
     }
 
@@ -50,13 +50,13 @@ class ContactNoteControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->put('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/notes/'.$note->id, [
+            ->put('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/notes/' . $note->id, [
                 'body' => 'This is a super note',
             ])
             ->assertSee('This is a super note');
 
         $this->actingAs($user)
-            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+            ->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
             ->assertSee('This is a super note');
     }
 
@@ -75,7 +75,7 @@ class ContactNoteControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->delete('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/notes/'.$note->id)
+            ->delete('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/notes/' . $note->id)
             ->assertDontSee('This is a note');
     }
 }

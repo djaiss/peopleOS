@@ -18,7 +18,8 @@ class CreateChild
         public Contact $contact,
         public ?string $gender,
         public ?string $name,
-    ) {}
+    ) {
+    }
 
     public function execute(): Child
     {

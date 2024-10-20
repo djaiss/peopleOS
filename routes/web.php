@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('locale/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 
-Route::middleware('auth', 'verified')->group(function () {
+Route::middleware('auth', 'verified')->group(function (): void {
     Route::get('', [VaultController::class, 'index'])->name('vaults.index');
     Route::get('new', [VaultController::class, 'new'])->name('vaults.new');
     Route::post('new', [VaultController::class, 'store'])->name('vaults.store');
@@ -63,7 +63,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::prefix('settings')->group(function () {
+    Route::prefix('settings')->group(function (): void {
         Route::get('', [SettingsController::class, 'index'])->name('settings.index');
 
         // preferences
@@ -96,4 +96,4 @@ Route::middleware('auth', 'verified')->group(function () {
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

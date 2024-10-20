@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MeController extends Controller
 {
     /**
-     * Get the information about the logged user
+     * Get the information about the logged user.
      *
      * This endpoint gets the information about the logged user.
      *

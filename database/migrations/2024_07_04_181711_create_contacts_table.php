@@ -9,9 +9,9 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('vault_id');
             $table->unsignedBigInteger('company_id')->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
         });
 
-        Schema::create('user_vault', function (Blueprint $table) {
+        Schema::create('user_vault', function (Blueprint $table): void {
             $table->unsignedBigInteger('vault_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('contact_id');
@@ -49,7 +49,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('user_vault');
         Schema::dropIfExists('contacts');

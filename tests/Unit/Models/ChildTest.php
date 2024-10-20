@@ -13,14 +13,14 @@ class ChildTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_belongs_to_a_contact()
+    public function it_belongs_to_a_contact(): void
     {
         $child = Child::factory()->create();
         $this->assertTrue($child->contact()->exists());
     }
 
     #[Test]
-    public function it_returns_name_if_set()
+    public function it_returns_name_if_set(): void
     {
         $child = Child::factory()->create([
             'name' => 'John',
@@ -33,7 +33,7 @@ class ChildTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_gender_if_name_not_set()
+    public function it_returns_gender_if_name_not_set(): void
     {
         $child = Child::factory()->create([
             'name' => null,

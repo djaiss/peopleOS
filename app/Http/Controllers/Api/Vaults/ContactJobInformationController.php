@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class ContactJobInformationController extends Controller
 {
     /**
-     * Update a contact's job information
+     * Update a contact's job information.
      *
      * A contact can have one job, linked to a company. You don't need to
      * manually create the company, it will be created if it doesn't exist. This

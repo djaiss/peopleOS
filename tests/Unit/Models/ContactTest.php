@@ -17,14 +17,14 @@ class ContactTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_belongs_to_a_vault()
+    public function it_belongs_to_a_vault(): void
     {
         $contact = Contact::factory()->create();
         $this->assertTrue($contact->vault()->exists());
     }
 
     #[Test]
-    public function it_belongs_to_a_company()
+    public function it_belongs_to_a_company(): void
     {
         $contact = Contact::factory()->create([
             'company_id' => Company::factory()->create()->id,
@@ -33,7 +33,7 @@ class ContactTest extends TestCase
     }
 
     #[Test]
-    public function it_belongs_to_a_gender()
+    public function it_belongs_to_a_gender(): void
     {
         $contact = Contact::factory()->create([
             'gender_id' => Gender::factory()->create()->id,

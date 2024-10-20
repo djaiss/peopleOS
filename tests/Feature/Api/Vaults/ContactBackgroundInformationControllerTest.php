@@ -28,7 +28,7 @@ class ContactBackgroundInformationControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/background', [
+        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/background', [
             'information' => 'Met him at a conference.',
         ]);
 

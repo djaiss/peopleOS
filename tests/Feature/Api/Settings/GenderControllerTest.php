@@ -52,7 +52,7 @@ class GenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/genders/'.$gender->id, [
+        $response = $this->json('PUT', '/api/genders/' . $gender->id, [
             'label' => 'Male',
         ]);
 
@@ -81,7 +81,7 @@ class GenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/genders/'.$gender->id, [
+        $response = $this->json('PUT', '/api/genders/' . $gender->id, [
             'label' => 'Male',
         ]);
 
@@ -99,7 +99,7 @@ class GenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/genders/'.$gender->id);
+        $response = $this->json('DELETE', '/api/genders/' . $gender->id);
 
         $response->assertStatus(200);
 
@@ -121,7 +121,7 @@ class GenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/genders/'.$gender->id);
+        $response = $this->json('DELETE', '/api/genders/' . $gender->id);
 
         $response->assertStatus(401);
     }

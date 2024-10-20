@@ -23,7 +23,7 @@ class ContactControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts', [
+        $response = $this->json('POST', '/api/vaults/' . $vault->id . '/contacts', [
             'first_name' => 'Michael',
             'last_name' => 'Scott',
             'middle_name' => 'Gary',
@@ -67,7 +67,7 @@ class ContactControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->slug);
+        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->slug);
 
         $response->assertStatus(200);
 
@@ -89,7 +89,7 @@ class ContactControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->slug);
+        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->slug);
 
         $response->assertStatus(401);
     }
@@ -125,7 +125,7 @@ class ContactControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts');
+        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/contacts');
 
         $response->assertStatus(200);
 

@@ -27,7 +27,7 @@ class VaultTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_belongs_to_an_account()
+    public function it_belongs_to_an_account(): void
     {
         $vault = Vault::factory()->create();
         $this->assertTrue($vault->account()->exists());

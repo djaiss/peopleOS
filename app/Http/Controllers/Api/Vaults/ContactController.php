@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
-     * Create a contact
+     * Create a contact.
      *
      * This will create a new contact in the vault. To be able to create a
      * contact, the user must have the permission to edit the vault.
@@ -106,7 +106,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Delete a contact
+     * Delete a contact.
      *
      * @urlParam vault required The id of the vault. Example: 1
      * @urlParam contact required The id of the contact. Example: 1
@@ -137,7 +137,7 @@ class ContactController extends Controller
     }
 
     /**
-     * List all contacts
+     * List all contacts.
      *
      * This will list all the contacts, sorted alphabetically.
      *

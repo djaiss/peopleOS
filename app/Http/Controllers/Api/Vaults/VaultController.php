@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
 class VaultController extends Controller
 {
     /**
-     * Create a vault
+     * Create a vault.
      *
      * A vault is a place where you can store contacts and all the related data.
      * When you create a vault, your user will be associated with it with the
@@ -65,7 +65,7 @@ class VaultController extends Controller
     }
 
     /**
-     * Update a vault
+     * Update a vault.
      *
      * @urlParam vault required The id of the vault. Example: 1
      *
@@ -107,7 +107,7 @@ class VaultController extends Controller
     }
 
     /**
-     * Delete a vault
+     * Delete a vault.
      *
      * @urlParam vault required The id of the vault. Example: 1
      *
@@ -130,7 +130,7 @@ class VaultController extends Controller
     }
 
     /**
-     * List all vaults
+     * List all vaults.
      *
      * This will list all the vaults, sorted alphabetically, that the user has
      * access to. This API call returns a paginated collection of genders that

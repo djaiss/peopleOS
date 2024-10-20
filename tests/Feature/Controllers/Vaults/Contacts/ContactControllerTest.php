@@ -21,7 +21,7 @@ class ContactControllerTest extends TestCase
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
 
         $this->actingAs($user)
-            ->post('/vaults/'.$vault->id.'/contacts', [
+            ->post('/vaults/' . $vault->id . '/contacts', [
                 'first_name' => 'Michael',
                 'last_name' => 'Scott',
                 'nickname' => '',
@@ -32,7 +32,7 @@ class ContactControllerTest extends TestCase
             ])
             ->assertRedirectToRoute('vaults.contacts.show', [
                 'vault' => $vault,
-                'slug' => Contact::orderBy('id', 'desc')->first()->id.'-michael-scott',
+                'slug' => Contact::orderBy('id', 'desc')->first()->id . '-michael-scott',
             ]);
     }
 
@@ -47,7 +47,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->delete('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+            ->delete('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
             ->assertRedirectToRoute('vaults.contacts.index', [
                 'vault' => $vault,
             ]);

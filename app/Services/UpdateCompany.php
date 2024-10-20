@@ -13,7 +13,8 @@ class UpdateCompany
         public User $user,
         public Company $company,
         public string $name,
-    ) {}
+    ) {
+    }
 
     public function execute(): Company
     {

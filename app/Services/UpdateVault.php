@@ -14,7 +14,8 @@ class UpdateVault
         public Vault $vault,
         public string $name,
         public ?string $description,
-    ) {}
+    ) {
+    }
 
     public function execute(): Vault
     {

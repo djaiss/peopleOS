@@ -18,7 +18,8 @@ class UpdateJobInformation
         public Contact $contact,
         public ?string $companyName,
         public string $jobTitle,
-    ) {}
+    ) {
+    }
 
     public function execute(): Company
     {
