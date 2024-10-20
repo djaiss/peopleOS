@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('vaults', [VaultController::class, 'create']);
 
     Route::middleware(CheckVault::class)->group(function () {
+        Route::put('vaults/{vault}', [VaultController::class, 'update']);
         Route::delete('vaults/{vault}', [VaultController::class, 'destroy']);
 
         // manage contacts
