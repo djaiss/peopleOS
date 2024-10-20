@@ -4,6 +4,7 @@ namespace Tests\Feature\Api\Vaults;
 
 use App\Models\User;
 use App\Models\Vault;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
@@ -16,6 +17,7 @@ class VaultControllerTest extends TestCase
     #[Test]
     public function it_creates_a_vault(): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
         Sanctum::actingAs($user);
 
@@ -34,8 +36,10 @@ class VaultControllerTest extends TestCase
                 'object' => 'vault',
                 'name' => 'New vault',
                 'description' => 'This is a new vault',
+                'created_at' => 1514764800,
+                'updated_at' => 1514764800,
             ],
-            $response->json()
+            $response->json()['data']
         );
     }
 
@@ -81,6 +85,7 @@ class VaultControllerTest extends TestCase
     #[Test]
     public function it_lists_all_the_vaults(): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
         $vault = $this->createVault($user->account);
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
@@ -101,19 +106,23 @@ class VaultControllerTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertEquals(
-            $response->json(),
+            $response->json()['data'],
             [
                 0 => [
                     'id' => $vault->id,
                     'object' => 'vault',
                     'name' => 'New vault',
                     'description' => 'This is a new vault',
+                    'created_at' => 1514764800,
+                    'updated_at' => 1514764800,
                 ],
                 1 => [
                     'id' => $secondVault->id,
                     'object' => 'vault',
                     'name' => 'Old vault',
                     'description' => 'This is an old vault',
+                    'created_at' => 1514764800,
+                    'updated_at' => 1514764800,
                 ],
             ]
         );

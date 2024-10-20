@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ClearCacheOfAllVaultsInAccount;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
@@ -24,6 +25,7 @@ class CreateVault
         $this->create();
         $this->createUserContact();
         $this->associateUserToVault();
+        $this->clearCache();
 
         return $this->vault;
     }
@@ -59,5 +61,10 @@ class CreateVault
             'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $this->contact->id,
         ]);
+    }
+
+    private function clearCache(): void
+    {
+        ClearCacheOfAllVaultsInAccount::dispatch($this->user->account);
     }
 }

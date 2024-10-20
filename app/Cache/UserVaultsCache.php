@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 /**
  * All the vaults for the user.
  */
-final class VaultCache extends CacheHelper
+final class UserVaultsCache extends CacheHelper
 {
     use CacheIdentifier;
 

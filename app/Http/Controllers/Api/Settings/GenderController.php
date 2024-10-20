@@ -138,7 +138,7 @@ class GenderController extends Controller
      * This API call returns a paginated collection of genders that contains
      * 15 items per page.
      *
-     * @response 200 [{
+     * @response 200 {"data": [{
      *  "id": 1,
      *  "object": "gender",
      *  "label": "Male",
@@ -150,7 +150,39 @@ class GenderController extends Controller
      *  "label": "Female",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
-     * }]
+     * }],
+     * "links": {
+     *   "first": "http://peopleos.test/api/genders?page=1",
+     *   "last": "http://peopleos.test/api/genders?page=1",
+     *   "prev": null,
+     *   "next": null
+     *  },
+     *  "meta": {
+     *    "current_page": 1,
+     *    "from": 1,
+     *    "last_page": 1,
+     *    "links": [
+     *      {
+     *        "url": null,
+     *        "label": "&laquo; Previous",
+     *        "active": false
+     *      },
+     *      {
+     *        "url": "http://peopleos.test/api/genders?page=1",
+     *        "label": "1",
+     *        "active": true
+     *      },
+     *      {
+     *        "url": null,
+     *        "label": "Next &raquo;",
+     *        "active": false
+     *      }
+     *    ],
+     *    "path": "http://peopleos.test/api/genders",
+     *    "per_page": 15,
+     *    "to": 1,
+     *    "total": 1
+     *  }
      *
      * @responseField id Unique identifier for the object.
      * @responseField label The name of the gender.

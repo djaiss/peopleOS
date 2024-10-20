@@ -2,11 +2,13 @@
 
 namespace Tests\Unit\Services;
 
+use App\Jobs\ClearCacheOfAllVaultsInAccount;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateVault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -22,6 +24,7 @@ class CreateVaultTest extends TestCase
 
     private function executeService(): void
     {
+        Queue::fake();
         $user = User::factory()->create();
 
         $vault = (new CreateVault(
@@ -47,5 +50,9 @@ class CreateVaultTest extends TestCase
             Vault::class,
             $vault
         );
+
+        Queue::assertPushed(ClearCacheOfAllVaultsInAccount::class, function ($job) use ($user) {
+            return $job->account->is($user->account);
+        });
     }
 }

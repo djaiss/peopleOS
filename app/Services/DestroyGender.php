@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Jobs\ClearCacheForAllContacts;
+use App\Jobs\ClearCacheForAllContactsInAccount;
 use App\Models\Gender;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -36,6 +36,6 @@ class DestroyGender
 
     private function clearCache(): void
     {
-        ClearCacheForAllContacts::dispatch($this->user->account);
+        ClearCacheForAllContactsInAccount::dispatch($this->user->account);
     }
 }

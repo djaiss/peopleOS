@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Vaults;
 
 use App\Cache\ContactListCache;
-use App\Cache\VaultCache;
+use App\Cache\UserVaultsCache;
 use App\Http\Controllers\Controller;
 use App\Services\CreateVault;
 use App\Services\DestroyVault;
@@ -15,7 +15,7 @@ class VaultController extends Controller
 {
     public function index(): View
     {
-        $vaults = VaultCache::make(auth()->user())->value();
+        $vaults = UserVaultsCache::make(auth()->user())->value();
 
         return view('vaults.index', [
             'vaults' => $vaults,
@@ -40,7 +40,7 @@ class VaultController extends Controller
             description: $validated['description'],
         ))->execute();
 
-        VaultCache::make(
+        UserVaultsCache::make(
             user: auth()->user(),
         )->forget();
 
@@ -65,7 +65,7 @@ class VaultController extends Controller
             vault: $request->attributes->get('vault'),
         ))->execute();
 
-        VaultCache::make(
+        UserVaultsCache::make(
             user: auth()->user(),
         )->refresh();
 
