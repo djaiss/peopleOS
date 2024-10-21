@@ -146,6 +146,58 @@ class ContactController extends Controller
     }
 
     /**
+     * Retrieve a contact.
+     *
+     * @urlParam vault required The id of the vault. Example: 1
+     * @urlParam contact required The id of the contact. Example: 1
+     *
+     * @response 200 {
+     *   "id": 1,
+     *   "object": "contact",
+     *   "gender": {
+     *     "id": 1,
+     *     "object": "gender",
+     *     "label": "Male",
+     *     "created_at": 1514764800,
+     *     "updated_at": 1514764800
+     *   },
+     *   "name": "John Doe",
+     *   "first_name": "John",
+     *   "last_name": "Doe",
+     *   "middle_name": null,
+     *   "nickname": null,
+     *   "maiden_name": null,
+     *   "prefix": null,
+     *   "suffix": null,
+     *   "can_be_deleted": true,
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800
+     * }
+     *
+     * @responseField id Unique identifier for the contact.
+     * @responseField object The object type. Always "contact".
+     * @responseField gender The gender of the contact.
+     * @responseField name The full name of the contact.
+     * @responseField first_name The first name of the contact.
+     * @responseField last_name The last name of the contact.
+     * @responseField middle_name The middle name of the contact.
+     * @responseField nickname The nickname of the contact.
+     * @responseField maiden_name The maiden name of the contact.
+     * @responseField prefix The prefix of the contact's name.
+     * @responseField suffix The suffix of the contact's name.
+     * @responseField can_be_deleted Whether the contact can be deleted.
+     * @responseField created_at The date the contact was created. Represented as a Unix timestamp.
+     * @responseField updated_at The date the contact was last updated. Represented as a Unix timestamp.
+     */
+    public function show(Request $request)
+    {
+        $vault = $request->attributes->get('vault');
+        $contact = $request->attributes->get('contact');
+
+        return new ContactResource($contact);
+    }
+
+    /**
      * List all contacts.
      *
      * This API call returns a paginated collection of contacts that contains

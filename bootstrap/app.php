@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckAPIContact;
 use App\Http\Middleware\CheckContact;
 use App\Http\Middleware\CheckUserPermissionAtLeastEditor;
 use App\Http\Middleware\CheckVault;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'vault' => CheckVault::class,
             'contact' => CheckContact::class,
+            'api_contact' => CheckAPIContact::class,
             'is_at_least_editor' => CheckUserPermissionAtLeastEditor::class,
         ]);
     })

@@ -135,6 +135,42 @@ class GenderController extends Controller
     }
 
     /**
+     * Retrieve a gender.
+     *
+     * @urlParam gender required The id of the gender. Example: 1
+     *
+     * @response 200 {
+     *   "id": 1,
+     *   "object": "gender",
+     *   "label": "Male",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800
+     * }
+     * @response 401 {
+     *   "message": "There is no gender with this id in your account."
+     * }
+     *
+     * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
+     * @responseField label The name of the gender.
+     * @responseField created_at The date the object was created. Represented as a Unix timestamp.
+     * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
+     */
+    public function show(Request $request)
+    {
+        $id = $request->route()->parameter('gender');
+
+        try {
+            $gender = Gender::where('account_id', auth()->user()->account_id)
+                ->findOrFail($id);
+        } catch (ModelNotFoundException) {
+            abort(401, 'There is no gender with this id in your account.');
+        }
+
+        return new GenderResource($gender);
+    }
+
+    /**
      * List all genders.
      *
      * This API call returns a paginated collection of genders that contains

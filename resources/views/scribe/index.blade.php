@@ -122,6 +122,9 @@
             <li class="tocify-item level-2" data-unique="genders-GETapi-genders">
               <a href="#genders-GETapi-genders">List all genders.</a>
             </li>
+            <li class="tocify-item level-2" data-unique="genders-GETapi-genders--gender-">
+              <a href="#genders-GETapi-genders--gender-">Retrieve a gender.</a>
+            </li>
             <li class="tocify-item level-2" data-unique="genders-POSTapi-genders">
               <a href="#genders-POSTapi-genders">Create a gender.</a>
             </li>
@@ -143,6 +146,9 @@
             </li>
             <li class="tocify-item level-2" data-unique="vaults-POSTapi-vaults">
               <a href="#vaults-POSTapi-vaults">Create a vault.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="vaults-GETapi-vaults--vault-">
+              <a href="#vaults-GETapi-vaults--vault-">Retrieve a vault.</a>
             </li>
             <li class="tocify-item level-2" data-unique="vaults-PUTapi-vaults--vault-">
               <a href="#vaults-PUTapi-vaults--vault-">Update a vault.</a>
@@ -1429,7 +1435,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/praesentium/job" \
+    "http://peopleos.test/api/vaults/1/contacts/aut/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1441,7 +1447,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/praesentium/job"
+    "http://peopleos.test/api/vaults/1/contacts/aut/job"
 );
 
 const headers = {
@@ -1463,7 +1469,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/praesentium/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/aut/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -1562,11 +1568,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="praesentium" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="aut" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>praesentium</code>
+              <code>aut</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1617,7 +1623,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/quasi/background" \
+    "http://peopleos.test/api/vaults/1/contacts/vel/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1628,7 +1634,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/quasi/background"
+    "http://peopleos.test/api/vaults/1/contacts/vel/background"
 );
 
 const headers = {
@@ -1649,7 +1655,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/quasi/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/vel/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -1743,11 +1749,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="quasi" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="vel" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>quasi</code>
+              <code>vel</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1786,14 +1792,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/eligendi" \
+    "http://peopleos.test/api/vaults/1/contacts/repudiandae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/eligendi"
+    "http://peopleos.test/api/vaults/1/contacts/repudiandae"
 );
 
 const headers = {
@@ -1809,7 +1815,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/eligendi';
+$url = 'http://peopleos.test/api/vaults/1/contacts/repudiandae';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1897,11 +1903,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="eligendi" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="repudiandae" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>eligendi</code>
+              <code>repudiandae</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2211,6 +2217,178 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>updated_at</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="genders-GETapi-genders--gender-">Retrieve a gender.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-genders--gender-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/genders/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/genders/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/genders/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-genders--gender-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;object&quot;: &quot;gender&quot;,
+    &quot;label&quot;: &quot;Male&quot;,
+    &quot;created_at&quot;: 1514764800,
+    &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+          <blockquote>
+            <p>Example response (401):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;There is no gender with this id in your account.&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-genders--gender-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-genders--gender-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-genders--gender-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-genders--gender-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-genders--gender-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-genders--gender-" data-method="GET" data-path="api/genders/{gender}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-genders--gender-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/genders/{gender}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-genders--gender-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-genders--gender-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="gender" data-endpoint="GETapi-genders--gender-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the gender. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;gender&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The name of the gender.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
@@ -3009,6 +3187,160 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <p>
               The description of the vault. Max 255 characters. Example:
               <code>This is a new vault</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the vault.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>description</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The description of the vault.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="vaults-GETapi-vaults--vault-">Retrieve a vault.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-vaults--vault-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/vaults/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;vault&quot;,
+ &quot;name&quot;: &quot;New vault&quot;,
+ &quot;description&quot;: &quot;This is a new vault&quot;
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault-" data-method="GET" data-path="api/vaults/{vault}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
             </p>
           </div>
         </form>
