@@ -50,6 +50,10 @@ class ContactController extends Controller
             'nickname' => 'nullable|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'maiden_name' => 'nullable|string|max:255',
+            'patronymic_name' => 'nullable|string|max:255',
+            'tribal_name' => 'nullable|string|max:255',
+            'generation_name' => 'nullable|string|max:255',
+            'romanized_name' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
         ]);
@@ -63,6 +67,10 @@ class ContactController extends Controller
             nickname: $validated['nickname'],
             middleName: $validated['middle_name'],
             maidenName: $validated['maiden_name'],
+            patronymicName: $validated['patronymic_name'],
+            tribalName: $validated['tribal_name'],
+            generationName: $validated['generation_name'],
+            romanizedName: $validated['romanized_name'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
         ))->execute();

@@ -38,7 +38,11 @@ class ContactController extends Controller
      * @bodyParam last_name string required The last name of the contact. Max 255 characters. Example: Scott
      * @bodyParam middle_name string The middle name of the contact. Max 255 characters. Example: Gary
      * @bodyParam nickname string The nickname of the contact. Max 255 characters. Example: Mike
-     * @bodyParam maiden_name string The maiden name of the contact. Max 255 characters. Example: Johnson
+     * @bodyParam maiden_name string The maiden name of the contact, important in some cultures, where a woman’s surname changes after marriage. Max 255 characters. Example: Johnson
+     * @bodyParam patronymic_name string The patronymic name of the contact, which is the name derived from a parent’s name (common in Icelandic, Russian, and some Arabic cultures). Max 255 characters. Example: Einarsdóttir
+     * @bodyParam tribal_name string The tribal name of the contact, used in various African and Indigenous cultures (e.g., Zulu clan names). Max 255 characters. Example: Zulu
+     * @bodyParam generation_name string The generation name of the contact, often used in Japanese, Chinese, Korean, and Vietnamese culture where part of the name is shared by siblings or cousins to signify their generation. Max 255 characters. Example: 俊
+     * @bodyParam romanized_name string The romanized name of the contact, which is the Latin alphabet transliteration of a non-Latin name. Max 255 characters. Example: Wang Junjie
      * @bodyParam prefix string The prefix of the contact. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the contact. Max 255 characters. Example: Jr.
      * @bodyParam can_be_deleted boolean Whether the contact can be deleted. 0 for false, 1 for true. Example: 1
@@ -59,6 +63,7 @@ class ContactController extends Controller
      *  "middle_name": "Gary",
      *  "nickname": "Mike",
      *  "maiden_name": "Johnson",
+     *  "patronymic_name": "Einarsdóttir",
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
@@ -75,6 +80,10 @@ class ContactController extends Controller
      * @responseField middle_name The middle name of the contact.
      * @responseField nickname The nickname of the contact.
      * @responseField maiden_name The maiden name of the contact.
+     * @responseField patronymic_name The patronymic name of the contact.
+     * @responseField tribal_name The tribal name of the contact.
+     * @responseField generation_name The generation name of the contact.
+     * @responseField romanized_name The romanized name of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -92,6 +101,10 @@ class ContactController extends Controller
             'middle_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
             'maiden_name' => 'nullable|string|max:255',
+            'patronymic_name' => 'nullable|string|max:255',
+            'tribal_name' => 'nullable|string|max:255',
+            'generation_name' => 'nullable|string|max:255',
+            'romanized_name' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
             'can_be_deleted' => 'boolean',
@@ -106,6 +119,10 @@ class ContactController extends Controller
             middleName: $validated['middle_name'],
             nickname: $validated['nickname'],
             maidenName: $validated['maiden_name'],
+            patronymicName: $validated['patronymic_name'],
+            tribalName: $validated['tribal_name'],
+            generationName: $validated['generation_name'],
+            romanizedName: $validated['romanized_name'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
             canBeDeleted: $validated['can_be_deleted'],
@@ -167,6 +184,7 @@ class ContactController extends Controller
      *   "middle_name": null,
      *   "nickname": null,
      *   "maiden_name": null,
+     *   "patronymic_name": null,
      *   "prefix": null,
      *   "suffix": null,
      *   "can_be_deleted": true,
@@ -183,6 +201,10 @@ class ContactController extends Controller
      * @responseField middle_name The middle name of the contact.
      * @responseField nickname The nickname of the contact.
      * @responseField maiden_name The maiden name of the contact.
+     * @responseField patronymic_name The patronymic name of the contact.
+     * @responseField tribal_name The tribal name of the contact.
+     * @responseField generation_name The generation name of the contact.
+     * @responseField romanized_name The romanized name of the contact.
      * @responseField prefix The prefix of the contact's name.
      * @responseField suffix The suffix of the contact's name.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -219,6 +241,10 @@ class ContactController extends Controller
      *  "middle_name": "Gary",
      *  "nickname": "Mike",
      *  "maiden_name": "Johnson",
+     *  "patronymic_name": null,
+     *  "tribal_name": null,
+     *  "generation_name": null,
+     *  "romanized_name": null,
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1
@@ -238,6 +264,10 @@ class ContactController extends Controller
      *  "middle_name": "Kurt",
      *  "nickname": "Dwight",
      *  "maiden_name": "Schrute",
+     *  "patronymic_name": null,
+     *  "tribal_name": null,
+     *  "generation_name": null,
+     *  "romanized_name": null,
      *  "prefix": "Mr.",
      *  "suffix": "Sr.",
      *  "can_be_deleted": 1
@@ -284,6 +314,10 @@ class ContactController extends Controller
      * @responseField middle_name The middle name of the contact.
      * @responseField nickname The nickname of the contact.
      * @responseField maiden_name The maiden name of the contact.
+     * @responseField patronymic_name The patronymic name of the contact.
+     * @responseField tribal_name The tribal name of the contact.
+     * @responseField generation_name The generation name of the contact.
+     * @responseField romanized_name The romanized name of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.

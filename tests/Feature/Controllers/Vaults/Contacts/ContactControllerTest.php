@@ -32,6 +32,10 @@ class ContactControllerTest extends TestCase
                 'nickname' => '',
                 'middle_name' => '',
                 'maiden_name' => '',
+                'patronymic_name' => '',
+                'tribal_name' => '',
+                'generation_name' => '',
+                'romanized_name' => '',
                 'prefix' => '',
                 'suffix' => '',
             ])

@@ -143,7 +143,7 @@ class VaultControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/' . $vault->id);
+        $response = $this->json('GET', '/api/vaults/'.$vault->id);
         $this->assertEquals(
             [
                 'id' => $vault->id,
