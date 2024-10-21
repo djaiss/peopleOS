@@ -127,6 +127,34 @@ class GenderControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_shows_a_gender(): void
+    {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+        $user = User::factory()->create();
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account_id,
+            'label' => 'Female',
+        ]);
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('GET', '/api/genders/'.$gender->id);
+
+        $response->assertStatus(200);
+
+        $this->assertEquals(
+            [
+                'id' => $gender->id,
+                'object' => 'gender',
+                'label' => 'Female',
+                'created_at' => '1514764800',
+                'updated_at' => '1514764800',
+            ],
+            $response->json()['data']
+        );
+    }
+
+    #[Test]
     public function it_lists_all_the_genders(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));

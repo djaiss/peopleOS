@@ -15,6 +15,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
     // manage genders
     Route::get('genders', [GenderController::class, 'index']);
+    Route::get('genders/{gender}', [GenderController::class, 'show']);
     Route::post('genders', [GenderController::class, 'create']);
     Route::put('genders/{gender}', [GenderController::class, 'update']);
     Route::delete('genders/{gender}', [GenderController::class, 'destroy']);
@@ -24,19 +25,20 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::post('vaults', [VaultController::class, 'create']);
 
     Route::middleware(CheckVault::class)->group(function (): void {
+        Route::get('vaults/{vault}', [VaultController::class, 'show']);
         Route::put('vaults/{vault}', [VaultController::class, 'update']);
         Route::delete('vaults/{vault}', [VaultController::class, 'destroy']);
 
         // manage contacts
         Route::get('vaults/{vault}/contacts', [ContactController::class, 'index']);
         Route::post('vaults/{vault}/contacts', [ContactController::class, 'create']);
-        Route::middleware(['contact'])->group(function (): void {
-            //Route::get('contacts/{slug}', [ContactController::class, 'show']);
+        Route::middleware(['api_contact'])->group(function (): void {
+            Route::get('vaults/{vault}/contacts/{contact}', [ContactController::class, 'show']);
 
             Route::middleware(['is_at_least_editor'])->group(function (): void {
-                Route::put('vaults/{vault}/contacts/{slug}/job', [ContactJobInformationController::class, 'update']);
-                Route::put('vaults/{vault}/contacts/{slug}/background', [ContactBackgroundInformationController::class, 'update']);
-                Route::delete('vaults/{vault}/contacts/{slug}', [ContactController::class, 'destroy']);
+                Route::put('vaults/{vault}/contacts/{contact}/job', [ContactJobInformationController::class, 'update']);
+                Route::put('vaults/{vault}/contacts/{contact}/background', [ContactBackgroundInformationController::class, 'update']);
+                Route::delete('vaults/{vault}/contacts/{contact}', [ContactController::class, 'destroy']);
             });
         });
 

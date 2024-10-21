@@ -134,6 +134,30 @@ class VaultControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_shows_a_vault(): void
+    {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('GET', '/api/vaults/' . $vault->id);
+        $this->assertEquals(
+            [
+                'id' => $vault->id,
+                'object' => 'vault',
+                'name' => $vault->name,
+                'description' => $vault->description,
+                'created_at' => 1514764800,
+                'updated_at' => 1514764800,
+            ],
+            $response->json()['data']
+        );
+    }
+
+    #[Test]
     public function it_lists_all_the_vaults(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));

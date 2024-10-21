@@ -1,17 +1,13 @@
 meta {
-  name: Update gender
+  name: Retrieve a vault
   type: http
-  seq: 4
+  seq: 2
 }
 
-put {
-  url: http://{{URL}}/genders/1?label=Female
+get {
+  url: http://{{URL}}/vaults
   body: none
   auth: bearer
-}
-
-params:query {
-  label: Female
 }
 
 headers {

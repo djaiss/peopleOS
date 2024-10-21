@@ -130,6 +130,33 @@ class VaultController extends Controller
     }
 
     /**
+     * Retrieve a vault.
+     *
+     * @urlParam vault required The id of the vault. Example: 1
+     *
+     * @response 200 {
+     *  "id": 4,
+     *  "object": "vault",
+     *  "name": "New vault",
+     *  "description": "This is a new vault"
+     *  "created_at": 1514764800,
+     *  "updated_at": 1514764800
+     * }
+     *
+     * @responseField id Unique identifier for the object.
+     * @responseField label The name of the vault.
+     * @responseField description The description of the vault.
+     * @responseField created_at The date the object was created. Represented as a Unix timestamp.
+     * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
+     */
+    public function show(Request $request)
+    {
+        $vault = $request->attributes->get('vault');
+
+        return new VaultResource($vault);
+    }
+
+    /**
      * List all vaults.
      *
      * This will list all the vaults, sorted alphabetically, that the user has

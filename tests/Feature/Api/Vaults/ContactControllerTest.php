@@ -84,7 +84,7 @@ class ContactControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->slug);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id);
 
         $response->assertStatus(200);
 
