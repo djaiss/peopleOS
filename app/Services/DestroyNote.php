@@ -47,7 +47,7 @@ class DestroyNote
 
     private function updateLastEditedDate(): void
     {
-        $this->contact->last_updated_at = Carbon::now();
+        $this->contact->updated_at = Carbon::now();
         $this->contact->save();
     }
 }

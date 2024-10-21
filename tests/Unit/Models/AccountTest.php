@@ -30,7 +30,7 @@ class AccountTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_has_many_users()
+    public function it_has_many_users(): void
     {
         $account = Account::factory()->create();
         User::factory()->count(2)->create([
@@ -85,7 +85,7 @@ class AccountTest extends TestCase
     // }
 
     #[Test]
-    public function it_has_many_genders()
+    public function it_has_many_genders(): void
     {
         $account = Account::factory()->create();
         Gender::factory(2)->create([

@@ -13,7 +13,7 @@ class DisableTwoFactorAuthenticationTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_disables_two_factor_authentication_for_a_user()
+    public function it_disables_two_factor_authentication_for_a_user(): void
     {
         $user = User::factory()->create([
             'two_factor_secret' => 'secret',

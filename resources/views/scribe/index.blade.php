@@ -69,16 +69,16 @@
           </li>
           <ul id="tocify-subheader-companies" class="tocify-subheader">
             <li class="tocify-item level-2" data-unique="companies-GETapi-vaults--vault--companies">
-              <a href="#companies-GETapi-vaults--vault--companies">List all companies</a>
+              <a href="#companies-GETapi-vaults--vault--companies">List all companies.</a>
             </li>
             <li class="tocify-item level-2" data-unique="companies-POSTapi-vaults--vault--companies">
-              <a href="#companies-POSTapi-vaults--vault--companies">Create a company</a>
+              <a href="#companies-POSTapi-vaults--vault--companies">Create a company.</a>
             </li>
             <li class="tocify-item level-2" data-unique="companies-PUTapi-vaults--vault--companies--company-">
-              <a href="#companies-PUTapi-vaults--vault--companies--company-">Update a company</a>
+              <a href="#companies-PUTapi-vaults--vault--companies--company-">Update a company.</a>
             </li>
             <li class="tocify-item level-2" data-unique="companies-DELETEapi-vaults--vault--companies--company-">
-              <a href="#companies-DELETEapi-vaults--vault--companies--company-">Delete a company</a>
+              <a href="#companies-DELETEapi-vaults--vault--companies--company-">Delete a company.</a>
             </li>
           </ul>
         </ul>
@@ -88,19 +88,19 @@
           </li>
           <ul id="tocify-subheader-contacts" class="tocify-subheader">
             <li class="tocify-item level-2" data-unique="contacts-GETapi-vaults--vault--contacts">
-              <a href="#contacts-GETapi-vaults--vault--contacts">List all contacts</a>
+              <a href="#contacts-GETapi-vaults--vault--contacts">List all contacts.</a>
             </li>
             <li class="tocify-item level-2" data-unique="contacts-POSTapi-vaults--vault--contacts">
-              <a href="#contacts-POSTapi-vaults--vault--contacts">Create a contact</a>
+              <a href="#contacts-POSTapi-vaults--vault--contacts">Create a contact.</a>
             </li>
             <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--slug--job">
-              <a href="#contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact's job information</a>
+              <a href="#contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact's job information.</a>
             </li>
             <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--slug--background">
-              <a href="#contacts-PUTapi-vaults--vault--contacts--slug--background">Update a contact's background information</a>
+              <a href="#contacts-PUTapi-vaults--vault--contacts--slug--background">Update a contact's background information.</a>
             </li>
             <li class="tocify-item level-2" data-unique="contacts-DELETEapi-vaults--vault--contacts--slug-">
-              <a href="#contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact</a>
+              <a href="#contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact.</a>
             </li>
           </ul>
         </ul>
@@ -110,7 +110,7 @@
           </li>
           <ul id="tocify-subheader-endpoints" class="tocify-subheader">
             <li class="tocify-item level-2" data-unique="endpoints-GETapi-me">
-              <a href="#endpoints-GETapi-me">Get the information about the logged user</a>
+              <a href="#endpoints-GETapi-me">Get the information about the logged user.</a>
             </li>
           </ul>
         </ul>
@@ -120,16 +120,16 @@
           </li>
           <ul id="tocify-subheader-genders" class="tocify-subheader">
             <li class="tocify-item level-2" data-unique="genders-GETapi-genders">
-              <a href="#genders-GETapi-genders">List all genders</a>
+              <a href="#genders-GETapi-genders">List all genders.</a>
             </li>
             <li class="tocify-item level-2" data-unique="genders-POSTapi-genders">
-              <a href="#genders-POSTapi-genders">Create a gender</a>
+              <a href="#genders-POSTapi-genders">Create a gender.</a>
             </li>
             <li class="tocify-item level-2" data-unique="genders-PUTapi-genders--gender-">
-              <a href="#genders-PUTapi-genders--gender-">Update a gender</a>
+              <a href="#genders-PUTapi-genders--gender-">Update a gender.</a>
             </li>
             <li class="tocify-item level-2" data-unique="genders-DELETEapi-genders--gender-">
-              <a href="#genders-DELETEapi-genders--gender-">Delete a gender</a>
+              <a href="#genders-DELETEapi-genders--gender-">Delete a gender.</a>
             </li>
           </ul>
         </ul>
@@ -139,16 +139,16 @@
           </li>
           <ul id="tocify-subheader-vaults" class="tocify-subheader">
             <li class="tocify-item level-2" data-unique="vaults-GETapi-vaults">
-              <a href="#vaults-GETapi-vaults">List all vaults</a>
+              <a href="#vaults-GETapi-vaults">List all vaults.</a>
             </li>
             <li class="tocify-item level-2" data-unique="vaults-POSTapi-vaults">
-              <a href="#vaults-POSTapi-vaults">Create a vault</a>
+              <a href="#vaults-POSTapi-vaults">Create a vault.</a>
             </li>
             <li class="tocify-item level-2" data-unique="vaults-PUTapi-vaults--vault-">
-              <a href="#vaults-PUTapi-vaults--vault-">Update a vault</a>
+              <a href="#vaults-PUTapi-vaults--vault-">Update a vault.</a>
             </li>
             <li class="tocify-item level-2" data-unique="vaults-DELETEapi-vaults--vault-">
-              <a href="#vaults-DELETEapi-vaults--vault-">Delete a vault</a>
+              <a href="#vaults-DELETEapi-vaults--vault-">Delete a vault.</a>
             </li>
           </ul>
         </ul>
@@ -161,7 +161,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 20, 2024</li>
+        <li>Last updated: October 21, 2024</li>
       </ul>
     </div>
 
@@ -198,7 +198,7 @@
 
         <h1 id="companies">Companies</h1>
 
-        <h2 id="companies-GETapi-vaults--vault--companies">List all companies</h2>
+        <h2 id="companies-GETapi-vaults--vault--companies">List all companies.</h2>
 
         <p></p>
 
@@ -323,7 +323,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
-        <h2 id="companies-POSTapi-vaults--vault--companies">Create a company</h2>
+        <h2 id="companies-POSTapi-vaults--vault--companies">Create a company.</h2>
 
         <p></p>
 
@@ -467,7 +467,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
-        <h2 id="companies-PUTapi-vaults--vault--companies--company-">Update a company</h2>
+        <h2 id="companies-PUTapi-vaults--vault--companies--company-">Update a company.</h2>
 
         <p></p>
 
@@ -623,7 +623,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
-        <h2 id="companies-DELETEapi-vaults--vault--companies--company-">Delete a company</h2>
+        <h2 id="companies-DELETEapi-vaults--vault--companies--company-">Delete a company.</h2>
 
         <p></p>
 
@@ -754,25 +754,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <h1 id="contacts">Contacts</h1>
 
-        <h2 id="contacts-GETapi-vaults--vault--contacts">List all contacts</h2>
+        <h2 id="contacts-GETapi-vaults--vault--contacts">List all contacts.</h2>
 
         <p></p>
 
-        <p>This will list all the contacts, sorted alphabetically.</p>
+        <p>This API call returns a paginated collection of contacts that contains 15 items per page.</p>
 
         <span id="example-requests-GETapi-vaults--vault--contacts">
           <blockquote>Example request:</blockquote>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/hic/contacts" \
+    --get "http://peopleos.test/api/vaults/qui/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/hic/contacts"
+    "http://peopleos.test/api/vaults/qui/contacts"
 );
 
 const headers = {
@@ -788,7 +788,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/hic/contacts';
+$url = 'http://peopleos.test/api/vaults/qui/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -809,9 +809,16 @@ print_r(json_decode((string) $body));</code></pre>
           </blockquote>
           <pre>
 
-<code class="language-json" style="max-height: 300px;">[{
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
  &quot;id&quot;: 4,
  &quot;object&quot;: &quot;contact&quot;,
+ &quot;gender&quot;: {
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;gender&quot;,
+  &quot;label&quot;: &quot;Male&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800,
+ },
  &quot;name&quot;: &quot;Michael Scott&quot;,
  &quot;first_name&quot;: &quot;Michael&quot;,
  &quot;last_name&quot;: &quot;Scott&quot;,
@@ -824,6 +831,13 @@ print_r(json_decode((string) $body));</code></pre>
 }, {
  &quot;id&quot;: 5
  &quot;object&quot;: &quot;contact&quot;,
+ &quot;gender&quot;: {
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;gender&quot;,
+  &quot;label&quot;: &quot;Male&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800,
+ },
  &quot;name&quot;: &quot;Dwight Schrute&quot;,
  &quot;first_name&quot;: &quot;Dwight&quot;,
  &quot;last_name&quot;: &quot;Schrute&quot;,
@@ -833,7 +847,39 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Sr.&quot;,
  &quot;can_be_deleted&quot;: 1
-}]</code>
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/vaults/1/contacts?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/vaults/1/contacts?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/vaults/1/contacts?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/vaults/1/contacts&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
  </pre>
         </span>
         <span id="execution-results-GETapi-vaults--vault--contacts" hidden>
@@ -886,20 +932,106 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="hic" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="qui" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>hic</code>
+              <code>qui</code>
             </p>
           </div>
         </form>
 
-        <h2 id="contacts-POSTapi-vaults--vault--contacts">Create a contact</h2>
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;contact&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>gender</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The gender object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The display name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>first_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The first name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>last_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The last name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>middle_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The middle name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nickname</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nickname of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>maiden_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The maiden name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>prefix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The prefix of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>suffix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The suffix of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>can_be_deleted</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Whether the contact can be deleted.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-POSTapi-vaults--vault--contacts">Create a contact.</h2>
 
         <p></p>
 
-        <p>This will create a new contact in the vault. To be able to create a contact, the user must have the permission to edit the vault.</p>
+        <p>Creates a new contact in the vault. For this to happen, the user must have the permission to edit the vault.</p>
         <p>You can choose to mark a contact as deletable or not.</p>
         <p>Once created, the contact will be returned in the response, as well as the display name of the contact. This name's format depends on the user settings.</p>
 
@@ -912,6 +1044,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
+    \"gender_id\": 1,
     \"first_name\": \"Michael\",
     \"last_name\": \"Scott\",
     \"middle_name\": \"Gary\",
@@ -935,6 +1068,7 @@ const headers = {
 };
 
 let body = {
+    "gender_id": 1,
     "first_name": "Michael",
     "last_name": "Scott",
     "middle_name": "Gary",
@@ -963,6 +1097,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
+            'gender_id' =&gt; 1,
             'first_name' =&gt; 'Michael',
             'last_name' =&gt; 'Scott',
             'middle_name' =&gt; 'Gary',
@@ -986,17 +1121,26 @@ print_r(json_decode((string) $body));</code></pre>
           <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 4,
-    &quot;object&quot;: &quot;contact&quot;,
-    &quot;name&quot;: &quot;Michael Scott&quot;,
-    &quot;first_name&quot;: &quot;Michael&quot;,
-    &quot;last_name&quot;: &quot;Scott&quot;,
-    &quot;middle_name&quot;: &quot;Gary&quot;,
-    &quot;nickname&quot;: &quot;Mike&quot;,
-    &quot;maiden_name&quot;: &quot;Johnson&quot;,
-    &quot;prefix&quot;: &quot;Mr.&quot;,
-    &quot;suffix&quot;: &quot;Jr.&quot;,
-    &quot;can_be_deleted&quot;: 1
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;contact&quot;,
+ &quot;gender&quot;: {
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;gender&quot;,
+  &quot;label&quot;: &quot;Male&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800,
+ },
+ &quot;name&quot;: &quot;Michael Scott&quot;,
+ &quot;first_name&quot;: &quot;Michael&quot;,
+ &quot;last_name&quot;: &quot;Scott&quot;,
+ &quot;middle_name&quot;: &quot;Gary&quot;,
+ &quot;nickname&quot;: &quot;Mike&quot;,
+ &quot;maiden_name&quot;: &quot;Johnson&quot;,
+ &quot;prefix&quot;: &quot;Mr.&quot;,
+ &quot;suffix&quot;: &quot;Jr.&quot;,
+ &quot;can_be_deleted&quot;: 1,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
 }</code>
  </pre>
         </span>
@@ -1058,6 +1202,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="gender_id" data-endpoint="POSTapi-vaults--vault--contacts" value="1" data-component="body" />
+            <br />
+            <p>
+              The gender object associated with the contact. This object must be a valid Gender object. Example:
+              <code>1</code>
+            </p>
+          </div>
           <div style="padding-left: 28px; clear: unset">
             <b style="line-height: 2"><code>first_name</code></b>
             &nbsp;&nbsp;
@@ -1169,13 +1325,99 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </label>
             <br />
             <p>
-              Whether the contact can be deleted. Example:
+              Whether the contact can be deleted. 0 for false, 1 for true. Example:
               <code>true</code>
             </p>
           </div>
         </form>
 
-        <h2 id="contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact&#039;s job information</h2>
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;contact&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>gender</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The gender object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The display name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>first_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The first name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>last_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The last name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>middle_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The middle name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nickname</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nickname of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>maiden_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The maiden name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>prefix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The prefix of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>suffix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The suffix of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>can_be_deleted</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Whether the contact can be deleted.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--slug--job">Update a contact&#039;s job information.</h2>
 
         <p></p>
 
@@ -1187,7 +1429,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/autem/job" \
+    "http://peopleos.test/api/vaults/1/contacts/praesentium/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1199,7 +1441,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/autem/job"
+    "http://peopleos.test/api/vaults/1/contacts/praesentium/job"
 );
 
 const headers = {
@@ -1221,7 +1463,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/autem/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/praesentium/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -1320,11 +1562,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="autem" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--job" value="praesentium" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>autem</code>
+              <code>praesentium</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1366,7 +1608,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
-        <h2 id="contacts-PUTapi-vaults--vault--contacts--slug--background">Update a contact&#039;s background information</h2>
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--slug--background">Update a contact&#039;s background information.</h2>
 
         <p></p>
 
@@ -1375,7 +1617,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/qui/background" \
+    "http://peopleos.test/api/vaults/1/contacts/quasi/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1386,7 +1628,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/qui/background"
+    "http://peopleos.test/api/vaults/1/contacts/quasi/background"
 );
 
 const headers = {
@@ -1407,7 +1649,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/qui/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/quasi/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -1501,11 +1743,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="qui" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="PUTapi-vaults--vault--contacts--slug--background" value="quasi" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>qui</code>
+              <code>quasi</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1535,7 +1777,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
-        <h2 id="contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact</h2>
+        <h2 id="contacts-DELETEapi-vaults--vault--contacts--slug-">Delete a contact.</h2>
 
         <p></p>
 
@@ -1544,14 +1786,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/qui" \
+    "http://peopleos.test/api/vaults/1/contacts/eligendi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/qui"
+    "http://peopleos.test/api/vaults/1/contacts/eligendi"
 );
 
 const headers = {
@@ -1567,7 +1809,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/qui';
+$url = 'http://peopleos.test/api/vaults/1/contacts/eligendi';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1655,11 +1897,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="qui" data-component="url" />
+            <input type="text" style="display: none" name="slug" data-endpoint="DELETEapi-vaults--vault--contacts--slug-" value="eligendi" data-component="url" />
             <br />
             <p>
               The slug of the contact. Example:
-              <code>qui</code>
+              <code>eligendi</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1678,7 +1920,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <h1 id="endpoints">Endpoints</h1>
 
-        <h2 id="endpoints-GETapi-me">Get the information about the logged user</h2>
+        <h2 id="endpoints-GETapi-me">Get the information about the logged user.</h2>
 
         <p></p>
 
@@ -1792,7 +2034,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <p>Gender for a human refers to the roles, behaviors, activities, expectations, and societal norms that cultures and societies consider appropriate for men, women, and other gender identities.</p>
         <p>Genders are defined at the account level and shared by all users in the account. If you delete a gender it will be removed from all the contacts that are using it.</p>
 
-        <h2 id="genders-GETapi-genders">List all genders</h2>
+        <h2 id="genders-GETapi-genders">List all genders.</h2>
 
         <p></p>
 
@@ -1949,6 +2191,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>Unique identifier for the object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;gender&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>label</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -1966,7 +2214,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
-        <h2 id="genders-POSTapi-genders">Create a gender</h2>
+        <h2 id="genders-POSTapi-genders">Create a gender.</h2>
 
         <p></p>
 
@@ -2108,6 +2356,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>Unique identifier for the object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;gender&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>label</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -2125,7 +2379,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
-        <h2 id="genders-PUTapi-genders--gender-">Update a gender</h2>
+        <h2 id="genders-PUTapi-genders--gender-">Update a gender.</h2>
 
         <p></p>
 
@@ -2280,6 +2534,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>Unique identifier for the object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;gender&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>label</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -2297,7 +2557,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
-        <h2 id="genders-DELETEapi-genders--gender-">Delete a gender</h2>
+        <h2 id="genders-DELETEapi-genders--gender-">Delete a gender.</h2>
 
         <p></p>
 
@@ -2418,7 +2678,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <p>Vaults are used to store contacts and all the related data. You can create as many vaults as you need. To access a vault, you need to have the permissions to do so. There are three permissions: view, edit, and manage.</p>
 
-        <h2 id="vaults-GETapi-vaults">List all vaults</h2>
+        <h2 id="vaults-GETapi-vaults">List all vaults.</h2>
 
         <p></p>
 
@@ -2600,7 +2860,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
-        <h2 id="vaults-POSTapi-vaults">Create a vault</h2>
+        <h2 id="vaults-POSTapi-vaults">Create a vault.</h2>
 
         <p></p>
 
@@ -2785,7 +3045,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
-        <h2 id="vaults-PUTapi-vaults--vault-">Update a vault</h2>
+        <h2 id="vaults-PUTapi-vaults--vault-">Update a vault.</h2>
 
         <p></p>
 
@@ -2981,7 +3241,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the object was last updated. Represented as a Unix timestamp.</p>
         </div>
-        <h2 id="vaults-DELETEapi-vaults--vault-">Delete a vault</h2>
+        <h2 id="vaults-DELETEapi-vaults--vault-">Delete a vault.</h2>
 
         <p></p>
 

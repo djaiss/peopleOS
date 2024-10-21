@@ -28,7 +28,7 @@ class CreateAccount
             'storage_limit_in_mb' => config('monica.default_storage_limit_in_mb'),
         ]);
 
-        return tap($this->addFirstUser(), function ($user) {
+        return tap($this->addFirstUser(), function ($user): void {
             $this->setupAccount($user);
         });
     }

@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Models\Contact;
+use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
@@ -16,6 +16,7 @@ class CreateContact
     public function __construct(
         public User $user,
         public Vault $vault,
+        public Gender $gender,
         public ?string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -31,7 +32,6 @@ class CreateContact
         $this->validate();
         $this->createContact();
         $this->generateSlug();
-        $this->updateLastEditedDate();
 
         return $this->contact;
     }
@@ -51,12 +51,17 @@ class CreateContact
         if (! $exists) {
             throw new ModelNotFoundException;
         }
+
+        // make sure the gender exists and belongs to the account
+        Gender::where('account_id', $this->user->account_id)
+            ->findOrFail($this->gender->id);
     }
 
     private function createContact(): void
     {
         $this->contact = Contact::create([
             'vault_id' => $this->vault->id,
+            'gender_id' => $this->gender->id,
             'first_name' => $this->firstName ?? null,
             'last_name' => $this->lastName ?? null,
             'middle_name' => $this->middleName ?? null,
@@ -74,12 +79,6 @@ class CreateContact
         $slug = $this->contact->id.'-'.Str::of($name)->slug('-');
 
         $this->contact->slug = $slug;
-        $this->contact->save();
-    }
-
-    private function updateLastEditedDate(): void
-    {
-        $this->contact->last_updated_at = Carbon::now();
         $this->contact->save();
     }
 }

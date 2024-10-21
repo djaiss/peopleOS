@@ -27,7 +27,7 @@ use Illuminate\Http\Request;
 class GenderController extends Controller
 {
     /**
-     * Create a gender
+     * Create a gender.
      *
      * @bodyParam label string required The label of the gender. Max 255 characters. Example: Male
      *
@@ -40,6 +40,7 @@ class GenderController extends Controller
      * }
      *
      * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
@@ -59,7 +60,7 @@ class GenderController extends Controller
     }
 
     /**
-     * Update a gender
+     * Update a gender.
      *
      * @urlParam gender required The id of the gender. Example: 1
      *
@@ -74,6 +75,7 @@ class GenderController extends Controller
      * }
      *
      * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
@@ -103,7 +105,7 @@ class GenderController extends Controller
     }
 
     /**
-     * Delete a gender
+     * Delete a gender.
      *
      * @urlParam gender required The id of the gender. Example: 1
      *
@@ -133,7 +135,7 @@ class GenderController extends Controller
     }
 
     /**
-     * List all genders
+     * List all genders.
      *
      * This API call returns a paginated collection of genders that contains
      * 15 items per page.
@@ -185,6 +187,7 @@ class GenderController extends Controller
      *  }
      *
      * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.

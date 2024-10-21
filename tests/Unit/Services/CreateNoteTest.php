@@ -7,6 +7,7 @@ use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateNote;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -57,6 +58,7 @@ class CreateNoteTest extends TestCase
 
     private function executeService(User $user, Vault $vault, Contact $contact): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $note = (new CreateNote(
             user: $user,
             contact: $contact,
@@ -66,6 +68,11 @@ class CreateNoteTest extends TestCase
         $this->assertDatabaseHas('notes', [
             'id' => $note->id,
             'contact_id' => $contact->id,
+        ]);
+
+        $this->assertDatabaseHas('contacts', [
+            'id' => $contact->id,
+            'updated_at' => '2018-01-01 00:00:00',
         ]);
 
         $this->assertInstanceOf(

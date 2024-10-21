@@ -13,7 +13,7 @@ class CompanyTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_belongs_to_a_vault()
+    public function it_belongs_to_a_vault(): void
     {
         $company = Company::factory()->create();
         $this->assertTrue($company->vault()->exists());

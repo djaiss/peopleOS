@@ -14,7 +14,7 @@ class UserTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_has_one_account()
+    public function it_has_one_account(): void
     {
         $regis = User::factory()->create();
 

@@ -28,13 +28,12 @@ class ContactFactory extends Factory
             'nickname' => $this->faker->firstName(),
             'maiden_name' => $this->faker->lastName(),
             'can_be_deleted' => $this->faker->boolean(),
-            'last_updated_at' => $this->faker->dateTime(),
         ];
     }
 
     public function configure(): static
     {
-        return $this->afterCreating(function (Contact $contact) {
+        return $this->afterCreating(function (Contact $contact): void {
             $contact->slug = $contact->id.'-'.$contact->first_name;
             $contact->save();
         });

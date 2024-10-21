@@ -13,7 +13,7 @@ class GenderTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_belongs_to_an_account()
+    public function it_belongs_to_an_account(): void
     {
         $gender = Gender::factory()->create();
         $this->assertTrue($gender->account()->exists());
@@ -31,7 +31,7 @@ class GenderTest extends TestCase
     }
 
     #[Test]
-    public function it_gets_the_default_label()
+    public function it_gets_the_default_label(): void
     {
         $gender = Gender::factory()->create([
             'label' => null,
@@ -45,7 +45,7 @@ class GenderTest extends TestCase
     }
 
     #[Test]
-    public function it_gets_the_custom_label_if_defined()
+    public function it_gets_the_custom_label_if_defined(): void
     {
         $gender = Gender::factory()->create([
             'label' => 'this is the real label',

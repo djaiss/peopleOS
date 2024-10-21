@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class ContactBackgroundInformationController extends Controller
 {
     /**
-     * Update a contact's background information
+     * Update a contact's background information.
      *
      * @urlParam vault required The id of the vault. Example: 1
      * @urlParam contact required The id of the contact. Example: 1

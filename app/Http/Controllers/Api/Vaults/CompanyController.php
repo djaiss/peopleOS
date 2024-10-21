@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     /**
-     * Create a company
+     * Create a company.
      *
      * @urlParam vault required The id of the vault. Example: 1
      *
@@ -52,7 +52,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Update a company
+     * Update a company.
      *
      * @urlParam vault required The id of the vault. Example: 1
      * @urlParam company required The id of the company. Example: 1
@@ -95,7 +95,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Delete a company
+     * Delete a company.
      *
      * @urlParam vault required The id of the vault. Example: 1
      * @urlParam company required The id of the company. Example: 1
@@ -127,7 +127,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * List all companies
+     * List all companies.
      *
      * This will list all the companies, sorted alphabetically.
      *

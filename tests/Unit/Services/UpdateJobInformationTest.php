@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\UpdateJobInformation;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -110,11 +111,18 @@ class UpdateJobInformationTest extends TestCase
 
     private function executeService(User $user, Contact $contact): Company
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+
         return (new UpdateJobInformation(
             user: $user,
             contact: $contact,
             companyName: 'Dunder Mifflin',
             jobTitle: 'Paper salesman',
         ))->execute();
+
+        $this->assertDatabaseHas('contacts', [
+            'id' => $contact->id,
+            'updated_at' => '2018-01-01 00:00:00',
+        ]);
     }
 }
