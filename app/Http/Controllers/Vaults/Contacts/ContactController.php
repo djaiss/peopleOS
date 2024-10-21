@@ -7,6 +7,7 @@ use App\Cache\ContactListCache;
 use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactRelationshipViewModel;
+use App\Models\Gender;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
 use Illuminate\Http\RedirectResponse;
@@ -43,6 +44,7 @@ class ContactController extends Controller
         $vault = $request->attributes->get('vault');
 
         $validated = $request->validate([
+            'gender_id' => 'required|exists:genders,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
@@ -55,6 +57,7 @@ class ContactController extends Controller
         $contact = (new CreateContact(
             user: auth()->user(),
             vault: $vault,
+            gender: Gender::find($validated['gender_id']),
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],

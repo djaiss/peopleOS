@@ -17,8 +17,7 @@ class CreateNote
         public User $user,
         public Contact $contact,
         public ?string $body,
-    ) {
-    }
+    ) {}
 
     public function execute(): Note
     {
@@ -53,7 +52,7 @@ class CreateNote
 
     private function updateLastEditedDate(): void
     {
-        $this->contact->last_updated_at = Carbon::now();
+        $this->contact->updated_at = Carbon::now();
         $this->contact->save();
     }
 }

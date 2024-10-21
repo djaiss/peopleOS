@@ -25,28 +25,28 @@ class NameHelper
         $completeName = '';
 
         if ($contact->prefix) {
-            $completeName = $contact->prefix . ' ';
+            $completeName = $contact->prefix.' ';
         }
 
         foreach ($allCharacters as $char) {
             if ($char === '%' && ! $variableFound) {
                 // a variable has been found
                 $variableFound = true;
-                $variableName = $variableName . $char;
+                $variableName = $variableName.$char;
             } elseif ($char !== '%' && $variableFound) {
-                $variableName = $variableName . $char;
+                $variableName = $variableName.$char;
             } elseif ($char === '%') {
                 // the variable has ended
                 // get rid of the first %
                 $variableName = substr($variableName, 1);
-                $completeName = $completeName . $contact->{$variableName};
+                $completeName = $completeName.$contact->{$variableName};
 
                 // reset the variable
                 $variableFound = false;
                 $variableName = '';
             } else {
                 // this is a normal character
-                $completeName = $completeName . $char;
+                $completeName = $completeName.$char;
             }
         }
 
@@ -57,7 +57,7 @@ class NameHelper
         $completeName = Str::of($completeName)->rtrim();
 
         if ($contact->suffix) {
-            $completeName = $completeName . ' ' . $contact->suffix;
+            $completeName = $completeName.' '.$contact->suffix;
         }
 
         if (trim($completeName) === '') {

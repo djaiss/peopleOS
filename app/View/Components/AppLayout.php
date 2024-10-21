@@ -10,8 +10,7 @@ class AppLayout extends Component
 {
     public function __construct(
         public ?Vault $vault = null,
-    ) {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represents the component.

@@ -27,7 +27,6 @@ return new class extends Migration
             $table->text('background_information')->nullable();
             $table->text('job_title')->nullable();
             $table->boolean('can_be_deleted')->default(true);
-            $table->datetime('last_updated_at')->nullable();
             $table->timestamps();
             $table->foreign('vault_id')->references('id')->on('vaults')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');

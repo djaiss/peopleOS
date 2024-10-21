@@ -96,4 +96,4 @@ Route::middleware('auth', 'verified')->group(function (): void {
     });
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

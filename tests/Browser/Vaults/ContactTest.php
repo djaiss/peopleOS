@@ -31,7 +31,7 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id)
+                ->visit('/vaults/'.$vault->id)
                 ->click('@navigation-contact-link')
                 ->click('@create-contact-button')
                 ->type('first_name', 'John')
@@ -58,7 +58,7 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->click('@blank-background-information')
                 ->type('information', 'this is a background information')
                 ->click('@update-background-information')
@@ -84,7 +84,7 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->click('@blank-job-information')
                 ->type('job_title', 'software developer')
                 ->type('company_name', 'Dunder Mifflin')
@@ -111,11 +111,11 @@ class ContactTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->click('@link-delete-contact')
                 ->assertDialogOpened('Are you sure? This can not be undone.')
                 ->acceptDialog()
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug);
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug);
         });
     }
 }

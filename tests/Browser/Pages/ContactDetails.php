@@ -14,6 +14,6 @@ class ContactDetails extends Page
      */
     public function url()
     {
-        return '/vaults/' . $this->contact->vault_id . '/contacts/' . $this->contact->slug;
+        return '/vaults/'.$this->contact->vault_id.'/contacts/'.$this->contact->slug;
     }
 }

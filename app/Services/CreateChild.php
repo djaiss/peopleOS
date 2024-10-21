@@ -18,14 +18,12 @@ class CreateChild
         public Contact $contact,
         public ?string $gender,
         public ?string $name,
-    ) {
-    }
+    ) {}
 
     public function execute(): Child
     {
         $this->validate();
         $this->createChild();
-        $this->updateLastEditedDate();
 
         return $this->child;
     }
@@ -54,7 +52,7 @@ class CreateChild
 
     private function updateLastEditedDate(): void
     {
-        $this->contact->last_updated_at = Carbon::now();
+        $this->contact->updated_at = Carbon::now();
         $this->contact->save();
     }
 }

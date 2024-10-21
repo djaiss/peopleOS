@@ -15,8 +15,7 @@ class GetTwoFactorAuthenticationSettings
 {
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 
     public function execute(): array
     {
@@ -53,7 +52,7 @@ class GetTwoFactorAuthenticationSettings
 
         return app(Google2FA::class)->getQRCodeUrl(
             config('app.name'),
-            $this->user->first_name . ' ' . $this->user->last_name,
+            $this->user->first_name.' '.$this->user->last_name,
             decrypt($this->user->two_factor_secret)
         );
     }

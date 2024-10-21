@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\Vaults;
 
 use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ContactCollection;
+use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use App\Models\Gender;
 use App\Models\Vault;
@@ -20,8 +22,8 @@ class ContactController extends Controller
     /**
      * Create a contact.
      *
-     * This will create a new contact in the vault. To be able to create a
-     * contact, the user must have the permission to edit the vault.
+     * Creates a new contact in the vault. For this to happen, the user must
+     * have the permission to edit the vault.
      *
      * You can choose to mark a contact as deletable or not.
      *
@@ -39,11 +41,18 @@ class ContactController extends Controller
      * @bodyParam maiden_name string The maiden name of the contact. Max 255 characters. Example: Johnson
      * @bodyParam prefix string The prefix of the contact. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the contact. Max 255 characters. Example: Jr.
-     * @bodyParam can_be_deleted boolean Whether the contact can be deleted. Example: 1
+     * @bodyParam can_be_deleted boolean Whether the contact can be deleted. 0 for false, 1 for true. Example: 1
      *
      * @response 201 {
      *  "id": 4,
      *  "object": "contact",
+     *  "gender": {
+     *   "id": 1,
+     *   "object": "gender",
+     *   "label": "Male",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800,
+     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -52,10 +61,27 @@ class ContactController extends Controller
      *  "maiden_name": "Johnson",
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
-     *  "can_be_deleted": 1
+     *  "can_be_deleted": 1,
+     *  "created_at": 1514764800,
+     *  "updated_at": 1514764800,
      * }
+     *
+     * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "contact".
+     * @responseField gender The gender object.
+     * @responseField name The display name of the contact.
+     * @responseField first_name The first name of the contact.
+     * @responseField last_name The last name of the contact.
+     * @responseField middle_name The middle name of the contact.
+     * @responseField nickname The nickname of the contact.
+     * @responseField maiden_name The maiden name of the contact.
+     * @responseField prefix The prefix of the contact.
+     * @responseField suffix The suffix of the contact.
+     * @responseField can_be_deleted Whether the contact can be deleted.
+     * @responseField created_at The date the object was created. Represented as a Unix timestamp.
+     * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
-    public function create(Request $request): JsonResponse
+    public function create(Request $request)
     {
         $vault = $request->attributes->get('vault');
 
@@ -85,24 +111,7 @@ class ContactController extends Controller
             canBeDeleted: $validated['can_be_deleted'],
         ))->execute();
 
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $request->attributes->get('vault'),
-        )->refresh();
-
-        return response()->json([
-            'id' => $contact->id,
-            'object' => 'contact',
-            'name' => $contact->name,
-            'first_name' => $contact->first_name,
-            'last_name' => $contact->last_name,
-            'middle_name' => $contact->middle_name,
-            'nickname' => $contact->nickname,
-            'maiden_name' => $contact->maiden_name,
-            'prefix' => $contact->prefix,
-            'suffix' => $contact->suffix,
-            'can_be_deleted' => $contact->can_be_deleted,
-        ], 201);
+        return new ContactResource($contact);
     }
 
     /**
@@ -139,11 +148,19 @@ class ContactController extends Controller
     /**
      * List all contacts.
      *
-     * This will list all the contacts, sorted alphabetically.
+     * This API call returns a paginated collection of contacts that contains
+     * 15 items per page.
      *
-     * @response 200 [{
+     * @response 200 {"data": [{
      *  "id": 4,
      *  "object": "contact",
+     *  "gender": {
+     *   "id": 1,
+     *   "object": "gender",
+     *   "label": "Male",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800,
+     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -156,6 +173,13 @@ class ContactController extends Controller
      * }, {
      *  "id": 5
      *  "object": "contact",
+     *  "gender": {
+     *   "id": 1,
+     *   "object": "gender",
+     *   "label": "Male",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800,
+     *  },
      *  "name": "Dwight Schrute",
      *  "first_name": "Dwight",
      *  "last_name": "Schrute",
@@ -165,30 +189,63 @@ class ContactController extends Controller
      *  "prefix": "Mr.",
      *  "suffix": "Sr.",
      *  "can_be_deleted": 1
-     * }]
+     * }],
+     * "links": {
+     *   "first": "http://peopleos.test/api/vaults/1/contacts?page=1",
+     *   "last": "http://peopleos.test/api/vaults/1/contacts?page=1",
+     *   "prev": null,
+     *   "next": null
+     *  },
+     *  "meta": {
+     *    "current_page": 1,
+     *    "from": 1,
+     *    "last_page": 1,
+     *    "links": [
+     *      {
+     *        "url": null,
+     *        "label": "&laquo; Previous",
+     *        "active": false
+     *      },
+     *      {
+     *        "url": "http://peopleos.test/api/vaults/1/contacts?page=1",
+     *        "label": "1",
+     *        "active": true
+     *      },
+     *      {
+     *        "url": null,
+     *        "label": "Next &raquo;",
+     *        "active": false
+     *      }
+     *    ],
+     *    "path": "http://peopleos.test/api/vaults/1/contacts",
+     *    "per_page": 15,
+     *    "to": 1,
+     *    "total": 1
+     *  }
+     *
+     * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "contact".
+     * @responseField gender The gender object.
+     * @responseField name The display name of the contact.
+     * @responseField first_name The first name of the contact.
+     * @responseField last_name The last name of the contact.
+     * @responseField middle_name The middle name of the contact.
+     * @responseField nickname The nickname of the contact.
+     * @responseField maiden_name The maiden name of the contact.
+     * @responseField prefix The prefix of the contact.
+     * @responseField suffix The suffix of the contact.
+     * @responseField can_be_deleted Whether the contact can be deleted.
+     * @responseField created_at The date the object was created. Represented as a Unix timestamp.
+     * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
-    public function index(Request $request): JsonResponse
+    public function index(Request $request)
     {
         $vault = $request->attributes->get('vault');
 
         $contacts = $vault->contacts()
-            ->get()
-            ->map(fn (Contact $contact) => [
-                'id' => $contact->id,
-                'object' => 'contact',
-                'name' => $contact->name,
-                'first_name' => $contact->first_name,
-                'last_name' => $contact->last_name,
-                'middle_name' => $contact->middle_name,
-                'nickname' => $contact->nickname,
-                'maiden_name' => $contact->maiden_name,
-                'prefix' => $contact->prefix,
-                'suffix' => $contact->suffix,
-                'can_be_deleted' => $contact->can_be_deleted,
-            ])
-            ->sortBy('name')
-            ->values();
+            ->with('gender')
+            ->paginate();
 
-        return response()->json($contacts, 200);
+        return new ContactCollection($contacts);
     }
 }

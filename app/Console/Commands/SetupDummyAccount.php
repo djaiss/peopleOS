@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Contact;
+use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateAccount;
@@ -31,7 +32,7 @@ class SetupDummyAccount extends Command
      *
      * @var string
      */
-    protected $signature = 'monica:dummy
+    protected $signature = 'peopleos:dummy
                             {--migrate : Use migrate command instead of migrate:fresh.}
                             {--force : Force the operation to run.}';
 
@@ -95,7 +96,7 @@ class SetupDummyAccount extends Command
         $this->line('| username: blank@blank.com');
         $this->line('| password: blank123');
         $this->line('|----------------------------');
-        $this->line('| URL:      ' . config('app.url'));
+        $this->line('| URL:      '.config('app.url'));
         $this->line('-----------------------------');
 
         $this->info('Setup is done. Have fun.');
@@ -742,6 +743,7 @@ class SetupDummyAccount extends Command
         $contact = (new CreateContact(
             vault: $vault,
             user: $this->firstUser,
+            gender: Gender::inRandomOrder()->first(),
             firstName: $character['first_name'],
             lastName: $character['last_name'],
             middleName: null,

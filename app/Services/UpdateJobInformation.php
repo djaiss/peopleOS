@@ -18,8 +18,7 @@ class UpdateJobInformation
         public Contact $contact,
         public ?string $companyName,
         public string $jobTitle,
-    ) {
-    }
+    ) {}
 
     public function execute(): Company
     {
@@ -80,7 +79,7 @@ class UpdateJobInformation
 
     private function updateLastEditedDate(): void
     {
-        $this->contact->last_updated_at = Carbon::now();
+        $this->contact->updated_at = Carbon::now();
         $this->contact->save();
     }
 }

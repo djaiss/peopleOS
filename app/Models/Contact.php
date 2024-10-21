@@ -54,7 +54,6 @@ class Contact extends Model
         'background_information',
         'job_title',
         'can_be_deleted',
-        'last_updated_at',
     ];
 
     /**
@@ -64,7 +63,6 @@ class Contact extends Model
      */
     protected $casts = [
         'can_be_deleted' => 'boolean',
-        'last_updated_at' => 'datetime',
         'slug' => 'encrypted',
         'first_name' => 'encrypted',
         'middle_name' => 'encrypted',
@@ -134,7 +132,7 @@ class Contact extends Model
                 $lastName = Arr::get($attributes, 'last_name');
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName . $separator . $lastName;
+                return $firstName.$separator.$lastName;
             }
         );
     }

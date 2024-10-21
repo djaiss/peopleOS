@@ -40,6 +40,7 @@ class GenderController extends Controller
      * }
      *
      * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
@@ -74,6 +75,7 @@ class GenderController extends Controller
      * }
      *
      * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
@@ -185,6 +187,7 @@ class GenderController extends Controller
      *  }
      *
      * @responseField id Unique identifier for the object.
+     * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.

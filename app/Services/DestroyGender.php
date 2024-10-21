@@ -12,8 +12,7 @@ class DestroyGender
     public function __construct(
         public User $user,
         public Gender $gender,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

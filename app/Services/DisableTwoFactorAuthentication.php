@@ -8,8 +8,7 @@ class DisableTwoFactorAuthentication
 {
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 
     public function execute(): User
     {

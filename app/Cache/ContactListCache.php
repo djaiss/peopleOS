@@ -24,7 +24,7 @@ final class ContactListCache extends CacheHelper
         protected readonly User $user,
         protected readonly Vault $vault,
     ) {
-        $this->identifier = $user->id . '_' . $vault->id;
+        $this->identifier = $user->id.'_'.$vault->id;
     }
 
     public static function make(User $user, Vault $vault): static

@@ -16,8 +16,7 @@ class DestroyChild
     public function __construct(
         public User $user,
         public Child $child,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {
@@ -48,7 +47,7 @@ class DestroyChild
 
     private function updateLastEditedDate(): void
     {
-        $this->contact->last_updated_at = Carbon::now();
+        $this->contact->updated_at = Carbon::now();
         $this->contact->save();
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\UpdateBackgroundInformation;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -69,6 +70,8 @@ class UpdateBackgroundInformationTest extends TestCase
 
     private function executeService(User $user, Contact $contact): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+
         (new UpdateBackgroundInformation(
             user: $user,
             contact: $contact,
@@ -81,5 +84,10 @@ class UpdateBackgroundInformationTest extends TestCase
             'This is awesome',
             $contact->background_information
         );
+
+        $this->assertDatabaseHas('contacts', [
+            'id' => $contact->id,
+            'updated_at' => '2018-01-01 00:00:00',
+        ]);
     }
 }

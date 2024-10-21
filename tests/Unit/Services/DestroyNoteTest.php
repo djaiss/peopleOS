@@ -7,6 +7,7 @@ use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\DestroyNote;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -96,6 +97,8 @@ class DestroyNoteTest extends TestCase
 
     private function executeService(User $user, Note $note): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+
         (new DestroyNote(
             user: $user,
             note: $note,
@@ -103,6 +106,11 @@ class DestroyNoteTest extends TestCase
 
         $this->assertDatabaseMissing('notes', [
             'id' => $note->id,
+        ]);
+
+        $this->assertDatabaseHas('contacts', [
+            'id' => $note->contact->id,
+            'updated_at' => '2018-01-01 00:00:00',
         ]);
     }
 }

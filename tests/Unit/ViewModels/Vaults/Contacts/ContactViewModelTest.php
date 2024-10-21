@@ -35,7 +35,7 @@ class ContactViewModelTest extends TestCase
                 'id' => $contact->id,
                 'name' => $contact->name,
                 'url' => [
-                    'show' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/' . $contact->slug,
+                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
                 ],
             ],
             $collection->toArray()[0]
@@ -80,7 +80,7 @@ class ContactViewModelTest extends TestCase
             $array['avatar']
         );
         $this->assertEquals(
-            $contact->id . '-john',
+            $contact->id.'-john',
             $array['slug']
         );
         $this->assertEquals(

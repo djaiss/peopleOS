@@ -6,7 +6,6 @@ use App\Models\Contact;
 use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
@@ -26,15 +25,13 @@ class CreateContact
         public ?string $prefix,
         public ?string $suffix,
         public bool $canBeDeleted = true,
-    ) {
-    }
+    ) {}
 
     public function execute(): Contact
     {
         $this->validate();
         $this->createContact();
         $this->generateSlug();
-        $this->updateLastEditedDate();
 
         return $this->contact;
     }
@@ -78,16 +75,10 @@ class CreateContact
 
     private function generateSlug(): void
     {
-        $name = $this->contact->first_name . ' ' . $this->contact->last_name;
-        $slug = $this->contact->id . '-' . Str::of($name)->slug('-');
+        $name = $this->contact->first_name.' '.$this->contact->last_name;
+        $slug = $this->contact->id.'-'.Str::of($name)->slug('-');
 
         $this->contact->slug = $slug;
-        $this->contact->save();
-    }
-
-    private function updateLastEditedDate(): void
-    {
-        $this->contact->last_updated_at = Carbon::now();
         $this->contact->save();
     }
 }

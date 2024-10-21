@@ -22,8 +22,7 @@ class ClearCacheOfAllVaultsInAccount implements ShouldQueue
      */
     public function __construct(
         public Account $account,
-    ) {
-    }
+    ) {}
 
     /**
      * Execute the job.

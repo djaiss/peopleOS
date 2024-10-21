@@ -56,7 +56,7 @@ class VaultControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/' . $vault->id, [
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id, [
             'name' => 'New vault',
             'description' => 'This is a new vault',
         ]);
@@ -86,7 +86,7 @@ class VaultControllerTest extends TestCase
             'name' => 'Old vault',
         ]);
 
-        $response = $this->json('PUT', '/api/vaults/' . $vault->id, [
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id, [
             'name' => 'New vault',
             'description' => 'This is a new vault',
         ]);
@@ -106,7 +106,7 @@ class VaultControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id);
 
         $response->assertStatus(200);
 
@@ -128,7 +128,7 @@ class VaultControllerTest extends TestCase
             'name' => 'Old vault',
         ]);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id);
 
         $response->assertStatus(401);
     }

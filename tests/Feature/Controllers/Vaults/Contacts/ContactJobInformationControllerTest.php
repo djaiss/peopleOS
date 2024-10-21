@@ -24,7 +24,7 @@ class ContactJobInformationControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/job-information', [
+            ->post('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/job-information', [
                 'job_title' => 'software engineer',
                 'company_id' => 'Dunder Mifflin',
             ])

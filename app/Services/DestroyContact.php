@@ -13,8 +13,7 @@ class DestroyContact
         public User $user,
         public Vault $vault,
         public Contact $contact,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {
