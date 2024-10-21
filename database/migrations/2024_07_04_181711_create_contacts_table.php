@@ -22,6 +22,10 @@ return new class extends Migration
             $table->text('last_name')->nullable();
             $table->text('nickname')->nullable();
             $table->text('maiden_name')->nullable();
+            $table->text('patronymic_name')->nullable();
+            $table->text('tribal_name')->nullable();
+            $table->text('generation_name')->nullable();
+            $table->text('romanized_name')->nullable();
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
             $table->text('background_information')->nullable();

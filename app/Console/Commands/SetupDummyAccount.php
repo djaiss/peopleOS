@@ -749,6 +749,10 @@ class SetupDummyAccount extends Command
             middleName: null,
             nickname: null,
             maidenName: null,
+            patronymicName: null,
+            tribalName: null,
+            generationName: null,
+            romanizedName: null,
             prefix: null,
             suffix: null,
         ))->execute();
