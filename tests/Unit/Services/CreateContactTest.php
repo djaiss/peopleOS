@@ -102,6 +102,7 @@ class CreateContactTest extends TestCase
             user: $user,
             gender: $gender,
             ethnicity: $ethnicity,
+            nationality: 'American',
             firstName: 'Ross',
             lastName: 'Geller',
             middleName: '',

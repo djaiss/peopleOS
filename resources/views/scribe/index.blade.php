@@ -796,14 +796,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/dolorem/contacts" \
+    --get "http://peopleos.test/api/vaults/ut/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/dolorem/contacts"
+    "http://peopleos.test/api/vaults/ut/contacts"
 );
 
 const headers = {
@@ -819,7 +819,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/dolorem/contacts';
+$url = 'http://peopleos.test/api/vaults/ut/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -867,6 +867,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;tribal_name&quot;: null,
  &quot;generation_name&quot;: null,
  &quot;romanized_name&quot;: null,
+ &quot;nationality&quot;: &quot;American&quot;,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Jr.&quot;,
  &quot;can_be_deleted&quot;: 1
@@ -897,6 +898,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;tribal_name&quot;: null,
  &quot;generation_name&quot;: null,
  &quot;romanized_name&quot;: null,
+ &quot;nationality&quot;: &quot;American&quot;,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Sr.&quot;,
  &quot;can_be_deleted&quot;: 1
@@ -985,11 +987,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="dolorem" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="ut" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>dolorem</code>
+              <code>ut</code>
             </p>
           </div>
         </form>
@@ -1081,6 +1083,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The romanized name of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nationality</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nationality of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>prefix</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -1138,6 +1146,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"tribal_name\": \"Zulu\",
     \"generation_name\": \"俊\",
     \"romanized_name\": \"Wang Junjie\",
+    \"nationality\": \"American\",
     \"prefix\": \"Mr.\",
     \"suffix\": \"Jr.\",
     \"can_be_deleted\": true
@@ -1167,6 +1176,7 @@ let body = {
     "tribal_name": "Zulu",
     "generation_name": "俊",
     "romanized_name": "Wang Junjie",
+    "nationality": "American",
     "prefix": "Mr.",
     "suffix": "Jr.",
     "can_be_deleted": true
@@ -1201,6 +1211,7 @@ $response = $client-&gt;post(
             'tribal_name' =&gt; 'Zulu',
             'generation_name' =&gt; '俊',
             'romanized_name' =&gt; 'Wang Junjie',
+            'nationality' =&gt; 'American',
             'prefix' =&gt; 'Mr.',
             'suffix' =&gt; 'Jr.',
             'can_be_deleted' =&gt; true,
@@ -1242,6 +1253,10 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;nickname&quot;: &quot;Mike&quot;,
  &quot;maiden_name&quot;: &quot;Johnson&quot;,
  &quot;patronymic_name&quot;: &quot;Einarsd&oacute;ttir&quot;,
+ &quot;tribal_name&quot;: &quot;Zulu&quot;,
+ &quot;generation_name&quot;: &quot;俊&quot;,
+ &quot;romanized_name&quot;: &quot;Wang Junjie&quot;,
+ &quot;nationality&quot;: &quot;American&quot;,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Jr.&quot;,
  &quot;can_be_deleted&quot;: 1,
@@ -1455,6 +1470,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>nationality</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="nationality" data-endpoint="POSTapi-vaults--vault--contacts" value="American" data-component="body" />
+            <br />
+            <p>
+              The nationality of the contact. Max 255 characters. Example:
+              <code>American</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
             <b style="line-height: 2"><code>prefix</code></b>
             &nbsp;&nbsp;
             <small>string</small>
@@ -1592,6 +1621,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The romanized name of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nationality</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nationality of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>prefix</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -1698,6 +1733,10 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;nickname&quot;: null,
     &quot;maiden_name&quot;: null,
     &quot;patronymic_name&quot;: null,
+    &quot;tribal_name&quot;: null,
+    &quot;generation_name&quot;: null,
+    &quot;romanized_name&quot;: null,
+    &quot;nationality&quot;: &quot;American&quot;,
     &quot;prefix&quot;: null,
     &quot;suffix&quot;: null,
     &quot;can_be_deleted&quot;: true,
@@ -1876,6 +1915,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The romanized name of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nationality</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The nationality of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>prefix</code></b>
