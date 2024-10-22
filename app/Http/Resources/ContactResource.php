@@ -30,6 +30,7 @@ class ContactResource extends JsonResource
             'generation_name' => $this->generation_name,
             'romanized_name' => $this->romanized_name,
             'nationality' => $this->nationality,
+            'marital_status' => $this->marital_status,
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,
             'can_be_deleted' => $this->can_be_deleted,

@@ -42,6 +42,7 @@ class ContactControllerTest extends TestCase
                 'generation_name' => '',
                 'romanized_name' => '',
                 'nationality' => '',
+                'marital_status' => '',
                 'prefix' => '',
                 'suffix' => '',
             ])

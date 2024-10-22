@@ -44,6 +44,7 @@ class ContactController extends Controller
      * @bodyParam generation_name string The generation name of the contact, often used in Japanese, Chinese, Korean, and Vietnamese culture where part of the name is shared by siblings or cousins to signify their generation. Max 255 characters. Example: 俊
      * @bodyParam romanized_name string The romanized name of the contact, which is the Latin alphabet transliteration of a non-Latin name. Max 255 characters. Example: Wang Junjie
      * @bodyParam nationality string The nationality of the contact. Max 255 characters. Example: American
+     * @bodyParam marital_status string The marital status of the contact. Max 255 characters. Example: Married
      * @bodyParam prefix string The prefix of the contact. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the contact. Max 255 characters. Example: Jr.
      * @bodyParam can_be_deleted boolean Whether the contact can be deleted. 0 for false, 1 for true. Example: 1
@@ -76,6 +77,7 @@ class ContactController extends Controller
      *  "generation_name": "俊",
      *  "romanized_name": "Wang Junjie",
      *  "nationality": "American",
+     *  "marital_status": "Married",
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
@@ -98,6 +100,7 @@ class ContactController extends Controller
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
      * @responseField nationality The nationality of the contact.
+     * @responseField marital_status The marital status of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -121,6 +124,7 @@ class ContactController extends Controller
             'generation_name' => 'nullable|string|max:255',
             'romanized_name' => 'nullable|string|max:255',
             'nationality' => 'nullable|string|max:255',
+            'marital_status' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
             'can_be_deleted' => 'boolean',
@@ -141,6 +145,7 @@ class ContactController extends Controller
             generationName: $validated['generation_name'],
             romanizedName: $validated['romanized_name'],
             nationality: $validated['nationality'],
+            maritalStatus: $validated['marital_status'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
             canBeDeleted: $validated['can_be_deleted'],
@@ -214,6 +219,7 @@ class ContactController extends Controller
      *   "generation_name": null,
      *   "romanized_name": null,
      *   "nationality": "American",
+     *   "marital_status": null,
      *   "prefix": null,
      *   "suffix": null,
      *   "can_be_deleted": true,
@@ -236,6 +242,7 @@ class ContactController extends Controller
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
      * @responseField nationality The nationality of the contact.
+     * @responseField marital_status The marital status of the contact.
      * @responseField prefix The prefix of the contact's name.
      * @responseField suffix The suffix of the contact's name.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -284,6 +291,7 @@ class ContactController extends Controller
      *  "generation_name": null,
      *  "romanized_name": null,
      *  "nationality": "American",
+     *  "marital_status": null,
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1
@@ -315,6 +323,7 @@ class ContactController extends Controller
      *  "generation_name": null,
      *  "romanized_name": null,
      *  "nationality": "American",
+     *  "marital_status": null,
      *  "prefix": "Mr.",
      *  "suffix": "Sr.",
      *  "can_be_deleted": 1
@@ -367,6 +376,7 @@ class ContactController extends Controller
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
      * @responseField nationality The nationality of the contact.
+     * @responseField marital_status The marital status of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.

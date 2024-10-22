@@ -112,6 +112,7 @@ class CreateContactTest extends TestCase
             tribalName: '',
             generationName: '',
             romanizedName: '',
+            maritalStatus: '',
             prefix: '',
             suffix: '',
             canBeDeleted: true,

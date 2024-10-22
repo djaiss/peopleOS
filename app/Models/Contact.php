@@ -55,6 +55,7 @@ class Contact extends Model
         'generation_name',
         'romanized_name',
         'nationality',
+        'marital_status',
         'suffix',
         'prefix',
         'background_information',
@@ -82,6 +83,7 @@ class Contact extends Model
         'generation_name' => 'encrypted',
         'romanized_name' => 'encrypted',
         'nationality' => 'encrypted',
+        'marital_status' => 'encrypted',
         'background_information' => 'encrypted',
         'job_title' => 'encrypted',
     ];
