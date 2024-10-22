@@ -4,7 +4,6 @@ namespace Tests\Unit\Services;
 
 use App\Models\Gender;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\CreateGender;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,8 +17,6 @@ class CreateGenderTest extends TestCase
     public function it_creates_a_gender(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
         $this->executeService($user);
     }
 

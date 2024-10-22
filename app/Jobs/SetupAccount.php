@@ -27,6 +27,7 @@ class SetupAccount implements ShouldQueue
     public function handle(): void
     {
         $this->createGenders();
+        $this->createEthnicities();
     }
 
     private function createGenders(): void
@@ -43,6 +44,84 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'label_translation_key' => trans_key('Other'),
+            ],
+        ]);
+    }
+
+    private function createEthnicities(): void
+    {
+        DB::table('ethnicities')->insert([
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Sub-Saharan African'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('North African'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('West African'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('East African'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('East Asian'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Southeast Asian'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('South Asian'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Central Asian'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Western European'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Eastern European'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Northern European'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Southern European'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Jewish'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Arab'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Latino'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Caribbean'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Indigenous Peoples'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Polynesian'),
             ],
         ]);
     }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Contact;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
@@ -17,6 +18,7 @@ class CreateContact
         public User $user,
         public Vault $vault,
         public Gender $gender,
+        public ?Ethnicity $ethnicity,
         public ?string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -59,6 +61,12 @@ class CreateContact
         // make sure the gender exists and belongs to the account
         Gender::where('account_id', $this->user->account_id)
             ->findOrFail($this->gender->id);
+
+        // make sure the ethnicity exists and belongs to the account
+        if ($this->ethnicity) {
+            Ethnicity::where('account_id', $this->user->account_id)
+                ->findOrFail($this->ethnicity->id);
+        }
     }
 
     private function createContact(): void
@@ -66,6 +74,7 @@ class CreateContact
         $this->contact = Contact::create([
             'vault_id' => $this->vault->id,
             'gender_id' => $this->gender->id,
+            'ethnicity_id' => $this->ethnicity?->id,
             'first_name' => $this->firstName ?? null,
             'last_name' => $this->lastName ?? null,
             'middle_name' => $this->middleName ?? null,

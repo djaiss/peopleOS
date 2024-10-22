@@ -18,6 +18,7 @@ class ContactResource extends JsonResource
             'id' => $this->id,
             'object' => 'contact',
             'gender' => new GenderResource($this->gender),
+            'ethnicity' => new EthnicityResource($this->ethnicity),
             'name' => $this->name,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,

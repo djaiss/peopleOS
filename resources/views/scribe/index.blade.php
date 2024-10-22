@@ -117,6 +117,28 @@
             </li>
           </ul>
         </ul>
+        <ul id="tocify-header-ethnicities" class="tocify-header">
+          <li class="tocify-item level-1" data-unique="ethnicities">
+            <a href="#ethnicities">Ethnicities</a>
+          </li>
+          <ul id="tocify-subheader-ethnicities" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="ethnicities-GETapi-ethnicities">
+              <a href="#ethnicities-GETapi-ethnicities">List all ethnicities.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="ethnicities-GETapi-ethnicities--ethnicity-">
+              <a href="#ethnicities-GETapi-ethnicities--ethnicity-">Retrieve an ethnicity.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="ethnicities-POSTapi-ethnicities">
+              <a href="#ethnicities-POSTapi-ethnicities">Create an ethnicity.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="ethnicities-PUTapi-ethnicities--ethnicity-">
+              <a href="#ethnicities-PUTapi-ethnicities--ethnicity-">Update an ethnicity.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="ethnicities-DELETEapi-ethnicities--ethnicity-">
+              <a href="#ethnicities-DELETEapi-ethnicities--ethnicity-">Delete an ethnicity.</a>
+            </li>
+          </ul>
+        </ul>
         <ul id="tocify-header-genders" class="tocify-header">
           <li class="tocify-item level-1" data-unique="genders">
             <a href="#genders">Genders</a>
@@ -170,7 +192,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 21, 2024</li>
+        <li>Last updated: October 22, 2024</li>
       </ul>
     </div>
 
@@ -774,14 +796,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/neque/contacts" \
+    --get "http://peopleos.test/api/vaults/dolorem/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/neque/contacts"
+    "http://peopleos.test/api/vaults/dolorem/contacts"
 );
 
 const headers = {
@@ -797,7 +819,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/neque/contacts';
+$url = 'http://peopleos.test/api/vaults/dolorem/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -828,6 +850,13 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800,
  },
+ &quot;ethnicity&quot;: {
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;ethnicity&quot;,
+  &quot;label&quot;: &quot;Asian&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800
+ },
  &quot;name&quot;: &quot;Michael Scott&quot;,
  &quot;first_name&quot;: &quot;Michael&quot;,
  &quot;last_name&quot;: &quot;Scott&quot;,
@@ -850,6 +879,13 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;label&quot;: &quot;Male&quot;,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800,
+ },
+ &quot;ethnicity&quot;: {
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;ethnicity&quot;,
+  &quot;label&quot;: &quot;Asian&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800
  },
  &quot;name&quot;: &quot;Dwight Schrute&quot;,
  &quot;first_name&quot;: &quot;Dwight&quot;,
@@ -949,11 +985,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="neque" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="dolorem" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>neque</code>
+              <code>dolorem</code>
             </p>
           </div>
         </form>
@@ -977,6 +1013,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The gender object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>ethnicity</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The ethnicity object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>name</code></b>
@@ -1086,6 +1128,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"gender_id\": 1,
+    \"ethnicity_id\": 1,
     \"first_name\": \"Michael\",
     \"last_name\": \"Scott\",
     \"middle_name\": \"Gary\",
@@ -1114,6 +1157,7 @@ const headers = {
 
 let body = {
     "gender_id": 1,
+    "ethnicity_id": 1,
     "first_name": "Michael",
     "last_name": "Scott",
     "middle_name": "Gary",
@@ -1147,6 +1191,7 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'gender_id' =&gt; 1,
+            'ethnicity_id' =&gt; 1,
             'first_name' =&gt; 'Michael',
             'last_name' =&gt; 'Scott',
             'middle_name' =&gt; 'Gary',
@@ -1180,6 +1225,13 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;id&quot;: 1,
   &quot;object&quot;: &quot;gender&quot;,
   &quot;label&quot;: &quot;Male&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800,
+ },
+ &quot;ethnicity&quot;: {
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;ethnicity&quot;,
+  &quot;label&quot;: &quot;Asian&quot;,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800,
  },
@@ -1269,6 +1321,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>ethnicity_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="ethnicity_id" data-endpoint="POSTapi-vaults--vault--contacts" value="1" data-component="body" />
+            <br />
+            <p>
+              The ethnicity object associated with the contact. This object must be a valid Ethnicity object. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
             <b style="line-height: 2"><code>first_name</code></b>
             &nbsp;&nbsp;
             <small>string</small>
@@ -1330,7 +1394,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <input type="text" style="display: none" name="maiden_name" data-endpoint="POSTapi-vaults--vault--contacts" value="Johnson" data-component="body" />
             <br />
             <p>
-              The maiden name of the contact. Max 255 characters. Example:
+              The maiden name of the contact, important in some cultures, where a woman’s surname changes after marriage. Max 255 characters. Example:
               <code>Johnson</code>
             </p>
           </div>
@@ -1460,6 +1524,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The gender object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>ethnicity</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The ethnicity object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>name</code></b>
@@ -1614,6 +1684,13 @@ print_r(json_decode((string) $body));</code></pre>
         &quot;created_at&quot;: 1514764800,
         &quot;updated_at&quot;: 1514764800
     },
+    &quot;ethnicity&quot;: {
+        &quot;id&quot;: 1,
+        &quot;object&quot;: &quot;ethnicity&quot;,
+        &quot;label&quot;: &quot;Asian&quot;,
+        &quot;created_at&quot;: 1514764800,
+        &quot;updated_at&quot;: 1514764800
+    },
     &quot;name&quot;: &quot;John Doe&quot;,
     &quot;first_name&quot;: &quot;John&quot;,
     &quot;last_name&quot;: &quot;Doe&quot;,
@@ -1725,6 +1802,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp; &nbsp;
           <br />
           <p>The gender of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>ethnicity</code></b>
+          &nbsp;&nbsp;
+          <small>object</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The ethnicity of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>name</code></b>
@@ -2400,6 +2485,823 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <p>
               Example:
               <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h1 id="ethnicities">Ethnicities</h1>
+
+        <p>Ethnicity refers to a person's identification with a group based on common ancestry, language, cultural heritage, or national origin.</p>
+        <p>Ethnicities are defined at the account level and shared by all users in the account. If you delete an ethnicity it will be removed from all the contacts that are using it.</p>
+
+        <h2 id="ethnicities-GETapi-ethnicities">List all ethnicities.</h2>
+
+        <p></p>
+
+        <p>This API call returns a paginated collection of ethnicities that contains 15 items per page.</p>
+
+        <span id="example-requests-GETapi-ethnicities">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/ethnicities" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/ethnicities"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/ethnicities';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-ethnicities">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;ethnicity&quot;,
+ &quot;label&quot;: &quot;Hispanic&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}, {
+ &quot;id&quot;: 2,
+ &quot;object&quot;: &quot;ethnicity&quot;,
+ &quot;label&quot;: &quot;Asian&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/ethnicities?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/ethnicities?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/ethnicities?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/ethnicities&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 2,
+   &quot;total&quot;: 2
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-ethnicities" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-ethnicities"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-ethnicities"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-ethnicities" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-ethnicities">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-ethnicities" data-method="GET" data-path="api/ethnicities" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-ethnicities', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ethnicities</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-ethnicities" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-ethnicities" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;ethnicity&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the ethnicity.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="ethnicities-GETapi-ethnicities--ethnicity-">Retrieve an ethnicity.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-ethnicities--ethnicity-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/ethnicities/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/ethnicities/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/ethnicities/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-ethnicities--ethnicity-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;object&quot;: &quot;ethnicity&quot;,
+    &quot;label&quot;: &quot;Hispanic&quot;,
+    &quot;created_at&quot;: 1514764800,
+    &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+          <blockquote>
+            <p>Example response (401):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;There is no ethnicity with this id in your account.&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-ethnicities--ethnicity-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-ethnicities--ethnicity-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-ethnicities--ethnicity-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-ethnicities--ethnicity-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-ethnicities--ethnicity-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-ethnicities--ethnicity-" data-method="GET" data-path="api/ethnicities/{ethnicity}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-ethnicities--ethnicity-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ethnicities/{ethnicity}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-ethnicities--ethnicity-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-ethnicities--ethnicity-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>ethnicity</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="ethnicity" data-endpoint="GETapi-ethnicities--ethnicity-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the ethnicity. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;ethnicity&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The name of the ethnicity.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="ethnicities-POSTapi-ethnicities">Create an ethnicity.</h2>
+
+        <p></p>
+
+        <span id="example-requests-POSTapi-ethnicities">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://peopleos.test/api/ethnicities" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"Hispanic\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/ethnicities"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "Hispanic"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/ethnicities';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'Hispanic',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-ethnicities">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;ethnicity&quot;,
+ &quot;label&quot;: &quot;Hispanic&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-ethnicities" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-ethnicities"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-ethnicities"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-ethnicities" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-ethnicities">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-ethnicities" data-method="POST" data-path="api/ethnicities" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-ethnicities', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ethnicities</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-ethnicities" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-ethnicities" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>label</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-ethnicities" value="Hispanic" data-component="body" />
+            <br />
+            <p>
+              The name of the ethnicity. Max 255 characters. Example:
+              <code>Hispanic</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;ethnicity&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The label of the ethnicity.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="ethnicities-PUTapi-ethnicities--ethnicity-">Update an ethnicity.</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-ethnicities--ethnicity-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/ethnicities/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"Latino\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/ethnicities/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "Latino"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/ethnicities/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'Latino',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-ethnicities--ethnicity-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;ethnicity&quot;,
+ &quot;label&quot;: &quot;Latino&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-ethnicities--ethnicity-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-ethnicities--ethnicity-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-ethnicities--ethnicity-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-ethnicities--ethnicity-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-ethnicities--ethnicity-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-ethnicities--ethnicity-" data-method="PUT" data-path="api/ethnicities/{ethnicity}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-ethnicities--ethnicity-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/ethnicities/{ethnicity}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-ethnicities--ethnicity-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-ethnicities--ethnicity-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>ethnicity</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="ethnicity" data-endpoint="PUTapi-ethnicities--ethnicity-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the ethnicity. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>label</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-ethnicities--ethnicity-" value="Latino" data-component="body" />
+            <br />
+            <p>
+              The label of the ethnicity. Max 255 characters. Example:
+              <code>Latino</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;ethnicity&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the ethnicity.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="ethnicities-DELETEapi-ethnicities--ethnicity-">Delete an ethnicity.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-ethnicities--ethnicity-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://peopleos.test/api/ethnicities/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/ethnicities/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/ethnicities/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-ethnicities--ethnicity-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-ethnicities--ethnicity-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-ethnicities--ethnicity-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-ethnicities--ethnicity-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-ethnicities--ethnicity-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-ethnicities--ethnicity-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-ethnicities--ethnicity-" data-method="DELETE" data-path="api/ethnicities/{ethnicity}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-ethnicities--ethnicity-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/ethnicities/{ethnicity}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-ethnicities--ethnicity-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-ethnicities--ethnicity-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>ethnicity</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="ethnicity" data-endpoint="DELETEapi-ethnicities--ethnicity-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the ethnicity. Example:
+              <code>1</code>
             </p>
           </div>
         </form>

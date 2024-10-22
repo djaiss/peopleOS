@@ -22,5 +22,9 @@ class SetupAccountTest extends TestCase
             3,
             DB::table('genders')->count()
         );
+        $this->assertEquals(
+            18,
+            DB::table('ethnicities')->count()
+        );
     }
 }

@@ -1,17 +1,18 @@
 meta {
-  name: List contacts
+  name: Delete ethnicity
   type: http
-  seq: 4
+  seq: 5
 }
 
-get {
-  url: http://{{URL}}/vaults/1/contacts
+delete {
+  url: http://{{URL}}/ethnicities/1
   body: none
   auth: bearer
 }
 
 headers {
   Accept: application/json
+  Content-Type: application/json
 }
 
 auth:bearer {

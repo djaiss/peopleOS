@@ -72,6 +72,14 @@ class Account extends Model
         return $this->hasMany(Gender::class);
     }
 
+    /**
+     * Get the ethnicities associated with the account.
+     */
+    public function ethnicities(): HasMany
+    {
+        return $this->hasMany(Ethnicity::class);
+    }
+
     // /**
     //  * Get the pronouns associated with the account.
     //  */

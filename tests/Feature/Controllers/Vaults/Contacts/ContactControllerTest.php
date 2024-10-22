@@ -3,6 +3,7 @@
 namespace Tests\Feature\Controllers\Vaults\Contacts;
 
 use App\Models\Contact;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
@@ -23,12 +24,16 @@ class ContactControllerTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
 
         $this->actingAs($user)
             ->post('/vaults/'.$vault->id.'/contacts', [
                 'first_name' => 'Michael',
                 'last_name' => 'Scott',
                 'gender_id' => $gender->id,
+                'ethnicity_id' => $ethnicity->id,
                 'nickname' => '',
                 'middle_name' => '',
                 'maiden_name' => '',

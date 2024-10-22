@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Contact;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
@@ -744,6 +745,7 @@ class SetupDummyAccount extends Command
             vault: $vault,
             user: $this->firstUser,
             gender: Gender::inRandomOrder()->first(),
+            ethnicity: Ethnicity::inRandomOrder()->first(),
             firstName: $character['first_name'],
             lastName: $character['last_name'],
             middleName: null,
