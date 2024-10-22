@@ -54,6 +54,7 @@ class Contact extends Model
         'tribal_name',
         'generation_name',
         'romanized_name',
+        'nationality',
         'suffix',
         'prefix',
         'background_information',
@@ -80,6 +81,7 @@ class Contact extends Model
         'tribal_name' => 'encrypted',
         'generation_name' => 'encrypted',
         'romanized_name' => 'encrypted',
+        'nationality' => 'encrypted',
         'background_information' => 'encrypted',
         'job_title' => 'encrypted',
     ];

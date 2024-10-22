@@ -29,6 +29,7 @@ class ContactResource extends JsonResource
             'tribal_name' => $this->tribal_name,
             'generation_name' => $this->generation_name,
             'romanized_name' => $this->romanized_name,
+            'nationality' => $this->nationality,
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,
             'can_be_deleted' => $this->can_be_deleted,

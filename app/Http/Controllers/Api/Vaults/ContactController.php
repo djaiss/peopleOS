@@ -43,6 +43,7 @@ class ContactController extends Controller
      * @bodyParam tribal_name string The tribal name of the contact, used in various African and Indigenous cultures (e.g., Zulu clan names). Max 255 characters. Example: Zulu
      * @bodyParam generation_name string The generation name of the contact, often used in Japanese, Chinese, Korean, and Vietnamese culture where part of the name is shared by siblings or cousins to signify their generation. Max 255 characters. Example: 俊
      * @bodyParam romanized_name string The romanized name of the contact, which is the Latin alphabet transliteration of a non-Latin name. Max 255 characters. Example: Wang Junjie
+     * @bodyParam nationality string The nationality of the contact. Max 255 characters. Example: American
      * @bodyParam prefix string The prefix of the contact. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the contact. Max 255 characters. Example: Jr.
      * @bodyParam can_be_deleted boolean Whether the contact can be deleted. 0 for false, 1 for true. Example: 1
@@ -71,6 +72,10 @@ class ContactController extends Controller
      *  "nickname": "Mike",
      *  "maiden_name": "Johnson",
      *  "patronymic_name": "Einarsdóttir",
+     *  "tribal_name": "Zulu",
+     *  "generation_name": "俊",
+     *  "romanized_name": "Wang Junjie",
+     *  "nationality": "American",
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
@@ -92,6 +97,7 @@ class ContactController extends Controller
      * @responseField tribal_name The tribal name of the contact.
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
+     * @responseField nationality The nationality of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -114,6 +120,7 @@ class ContactController extends Controller
             'tribal_name' => 'nullable|string|max:255',
             'generation_name' => 'nullable|string|max:255',
             'romanized_name' => 'nullable|string|max:255',
+            'nationality' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
             'can_be_deleted' => 'boolean',
@@ -133,6 +140,7 @@ class ContactController extends Controller
             tribalName: $validated['tribal_name'],
             generationName: $validated['generation_name'],
             romanizedName: $validated['romanized_name'],
+            nationality: $validated['nationality'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
             canBeDeleted: $validated['can_be_deleted'],
@@ -202,6 +210,10 @@ class ContactController extends Controller
      *   "nickname": null,
      *   "maiden_name": null,
      *   "patronymic_name": null,
+     *   "tribal_name": null,
+     *   "generation_name": null,
+     *   "romanized_name": null,
+     *   "nationality": "American",
      *   "prefix": null,
      *   "suffix": null,
      *   "can_be_deleted": true,
@@ -223,6 +235,7 @@ class ContactController extends Controller
      * @responseField tribal_name The tribal name of the contact.
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
+     * @responseField nationality The nationality of the contact.
      * @responseField prefix The prefix of the contact's name.
      * @responseField suffix The suffix of the contact's name.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -270,6 +283,7 @@ class ContactController extends Controller
      *  "tribal_name": null,
      *  "generation_name": null,
      *  "romanized_name": null,
+     *  "nationality": "American",
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1
@@ -300,6 +314,7 @@ class ContactController extends Controller
      *  "tribal_name": null,
      *  "generation_name": null,
      *  "romanized_name": null,
+     *  "nationality": "American",
      *  "prefix": "Mr.",
      *  "suffix": "Sr.",
      *  "can_be_deleted": 1
@@ -351,6 +366,7 @@ class ContactController extends Controller
      * @responseField tribal_name The tribal name of the contact.
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
+     * @responseField nationality The nationality of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.
