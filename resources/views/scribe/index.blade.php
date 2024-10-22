@@ -796,14 +796,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/ut/contacts" \
+    --get "http://peopleos.test/api/vaults/ullam/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/ut/contacts"
+    "http://peopleos.test/api/vaults/ullam/contacts"
 );
 
 const headers = {
@@ -819,7 +819,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/ut/contacts';
+$url = 'http://peopleos.test/api/vaults/ullam/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -868,6 +868,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;generation_name&quot;: null,
  &quot;romanized_name&quot;: null,
  &quot;nationality&quot;: &quot;American&quot;,
+ &quot;marital_status&quot;: null,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Jr.&quot;,
  &quot;can_be_deleted&quot;: 1
@@ -899,6 +900,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;generation_name&quot;: null,
  &quot;romanized_name&quot;: null,
  &quot;nationality&quot;: &quot;American&quot;,
+ &quot;marital_status&quot;: null,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Sr.&quot;,
  &quot;can_be_deleted&quot;: 1
@@ -987,11 +989,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="ut" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="ullam" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>ut</code>
+              <code>ullam</code>
             </p>
           </div>
         </form>
@@ -1089,6 +1091,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The nationality of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>prefix</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -1147,6 +1155,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"generation_name\": \"俊\",
     \"romanized_name\": \"Wang Junjie\",
     \"nationality\": \"American\",
+    \"marital_status\": \"Married\",
     \"prefix\": \"Mr.\",
     \"suffix\": \"Jr.\",
     \"can_be_deleted\": true
@@ -1177,6 +1186,7 @@ let body = {
     "generation_name": "俊",
     "romanized_name": "Wang Junjie",
     "nationality": "American",
+    "marital_status": "Married",
     "prefix": "Mr.",
     "suffix": "Jr.",
     "can_be_deleted": true
@@ -1212,6 +1222,7 @@ $response = $client-&gt;post(
             'generation_name' =&gt; '俊',
             'romanized_name' =&gt; 'Wang Junjie',
             'nationality' =&gt; 'American',
+            'marital_status' =&gt; 'Married',
             'prefix' =&gt; 'Mr.',
             'suffix' =&gt; 'Jr.',
             'can_be_deleted' =&gt; true,
@@ -1257,6 +1268,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;generation_name&quot;: &quot;俊&quot;,
  &quot;romanized_name&quot;: &quot;Wang Junjie&quot;,
  &quot;nationality&quot;: &quot;American&quot;,
+ &quot;marital_status&quot;: &quot;Married&quot;,
  &quot;prefix&quot;: &quot;Mr.&quot;,
  &quot;suffix&quot;: &quot;Jr.&quot;,
  &quot;can_be_deleted&quot;: 1,
@@ -1484,6 +1496,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>marital_status</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="marital_status" data-endpoint="POSTapi-vaults--vault--contacts" value="Married" data-component="body" />
+            <br />
+            <p>
+              The marital status of the contact. Max 255 characters. Example:
+              <code>Married</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
             <b style="line-height: 2"><code>prefix</code></b>
             &nbsp;&nbsp;
             <small>string</small>
@@ -1627,6 +1653,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The nationality of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>prefix</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -1737,6 +1769,7 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;generation_name&quot;: null,
     &quot;romanized_name&quot;: null,
     &quot;nationality&quot;: &quot;American&quot;,
+    &quot;marital_status&quot;: null,
     &quot;prefix&quot;: null,
     &quot;suffix&quot;: null,
     &quot;can_be_deleted&quot;: true,
@@ -1923,6 +1956,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp; &nbsp;
           <br />
           <p>The nationality of the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>prefix</code></b>

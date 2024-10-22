@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('generation_name')->nullable();
             $table->text('romanized_name')->nullable();
             $table->text('nationality')->nullable();
+            $table->text('marital_status')->nullable();
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
             $table->text('background_information')->nullable();

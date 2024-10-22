@@ -57,6 +57,7 @@ class ContactController extends Controller
             'generation_name' => 'nullable|string|max:255',
             'romanized_name' => 'nullable|string|max:255',
             'nationality' => 'nullable|string|max:255',
+            'marital_status' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
         ]);
@@ -76,6 +77,7 @@ class ContactController extends Controller
             generationName: $validated['generation_name'],
             romanizedName: $validated['romanized_name'],
             nationality: $validated['nationality'],
+            maritalStatus: $validated['marital_status'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
         ))->execute();
