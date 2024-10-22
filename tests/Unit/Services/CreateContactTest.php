@@ -3,6 +3,7 @@
 namespace Tests\Unit\Services;
 
 use App\Models\Contact;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\User;
 use App\Models\Vault;
@@ -25,7 +26,10 @@ class CreateContactTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $this->executeService($user, $vault, $gender);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity);
     }
 
     #[Test]
@@ -38,7 +42,10 @@ class CreateContactTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $this->executeService($user, $vault, $gender);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity);
     }
 
     #[Test]
@@ -52,7 +59,10 @@ class CreateContactTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $this->executeService($user, $vault, $gender);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity);
     }
 
     #[Test]
@@ -64,15 +74,34 @@ class CreateContactTest extends TestCase
         $vault = $this->createVault($user->account);
         $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
         $gender = Gender::factory()->create();
-        $this->executeService($user, $vault, $gender);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity);
     }
 
-    private function executeService(User $user, Vault $vault, Gender $gender): void
+    #[Test]
+    public function it_fails_if_ethnicity_doesnt_belong_to_account(): void
+    {
+        $this->expectException(ModelNotFoundException::class);
+
+        $user = User::factory()->create();
+        $vault = $this->createVault($user->account);
+        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $ethnicity = Ethnicity::factory()->create();
+        $this->executeService($user, $vault, $gender, $ethnicity);
+    }
+
+    private function executeService(User $user, Vault $vault, Gender $gender, ?Ethnicity $ethnicity = null): void
     {
         $contact = (new CreateContact(
             vault: $vault,
             user: $user,
             gender: $gender,
+            ethnicity: $ethnicity,
             firstName: 'Ross',
             lastName: 'Geller',
             middleName: '',
@@ -91,6 +120,7 @@ class CreateContactTest extends TestCase
             'id' => $contact->id,
             'vault_id' => $vault->id,
             'gender_id' => $gender->id,
+            'ethnicity_id' => $ethnicity?->id,
             'can_be_deleted' => true,
         ]);
 

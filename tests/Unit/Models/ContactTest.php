@@ -5,6 +5,7 @@ namespace Tests\Unit\Models;
 use App\Models\Child;
 use App\Models\Company;
 use App\Models\Contact;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\Note;
 use App\Models\User;
@@ -39,6 +40,15 @@ class ContactTest extends TestCase
             'gender_id' => Gender::factory()->create()->id,
         ]);
         $this->assertTrue($contact->gender()->exists());
+    }
+
+    #[Test]
+    public function it_belongs_to_an_ethnicity(): void
+    {
+        $contact = Contact::factory()->create([
+            'ethnicity_id' => Ethnicity::factory()->create()->id,
+        ]);
+        $this->assertTrue($contact->ethnicity()->exists());
     }
 
     #[Test]

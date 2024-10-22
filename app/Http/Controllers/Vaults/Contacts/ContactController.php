@@ -7,6 +7,7 @@ use App\Cache\ContactListCache;
 use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactRelationshipViewModel;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
@@ -45,6 +46,7 @@ class ContactController extends Controller
 
         $validated = $request->validate([
             'gender_id' => 'required|exists:genders,id',
+            'ethnicity_id' => 'nullable|exists:ethnicities,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
@@ -62,6 +64,7 @@ class ContactController extends Controller
             user: auth()->user(),
             vault: $vault,
             gender: Gender::find($validated['gender_id']),
+            ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],

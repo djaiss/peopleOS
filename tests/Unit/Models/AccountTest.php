@@ -8,6 +8,7 @@ use App\Models\CallReasonType;
 use App\Models\ContactInformationType;
 use App\Models\Currency;
 use App\Models\Emotion;
+use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\GiftOccasion;
 use App\Models\GiftState;
@@ -93,6 +94,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->genders()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_ethnicities(): void
+    {
+        $account = Account::factory()->create();
+        Ethnicity::factory(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->ethnicities()->exists());
     }
 
     // #[Test]

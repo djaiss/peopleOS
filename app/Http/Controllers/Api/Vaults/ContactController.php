@@ -6,9 +6,8 @@ use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContactCollection;
 use App\Http\Resources\ContactResource;
-use App\Models\Contact;
+use App\Models\Ethnicity;
 use App\Models\Gender;
-use App\Models\Vault;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
 use Illuminate\Http\JsonResponse;
@@ -34,6 +33,7 @@ class ContactController extends Controller
      * @urlParam vault required The id of the vault. Example: 1
      *
      * @bodyParam gender_id integer required The gender object associated with the contact. This object must be a valid Gender object. Example: 1
+     * @bodyParam ethnicity_id integer required The ethnicity object associated with the contact. This object must be a valid Ethnicity object. Example: 1
      * @bodyParam first_name string required The first name of the contact. Max 255 characters. Example: Michael
      * @bodyParam last_name string required The last name of the contact. Max 255 characters. Example: Scott
      * @bodyParam middle_name string The middle name of the contact. Max 255 characters. Example: Gary
@@ -57,6 +57,13 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
      *  },
+     *  "ethnicity": {
+     *   "id": 1,
+     *   "object": "ethnicity",
+     *   "label": "Asian",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800,
+     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -74,6 +81,7 @@ class ContactController extends Controller
      * @responseField id Unique identifier for the object.
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender object.
+     * @responseField ethnicity The ethnicity object.
      * @responseField name The display name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -96,6 +104,7 @@ class ContactController extends Controller
 
         $validated = $request->validate([
             'gender_id' => 'required|exists:genders,id',
+            'ethnicity_id' => 'nullable|exists:ethnicities,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
@@ -114,6 +123,7 @@ class ContactController extends Controller
             user: auth()->user(),
             vault: $vault,
             gender: Gender::find($validated['gender_id']),
+            ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             middleName: $validated['middle_name'],
@@ -178,6 +188,13 @@ class ContactController extends Controller
      *     "created_at": 1514764800,
      *     "updated_at": 1514764800
      *   },
+     *   "ethnicity": {
+     *     "id": 1,
+     *     "object": "ethnicity",
+     *     "label": "Asian",
+     *     "created_at": 1514764800,
+     *     "updated_at": 1514764800
+     *   },
      *   "name": "John Doe",
      *   "first_name": "John",
      *   "last_name": "Doe",
@@ -195,6 +212,7 @@ class ContactController extends Controller
      * @responseField id Unique identifier for the contact.
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender of the contact.
+     * @responseField ethnicity The ethnicity of the contact.
      * @responseField name The full name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -235,6 +253,13 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
      *  },
+     *  "ethnicity": {
+     *   "id": 1,
+     *   "object": "ethnicity",
+     *   "label": "Asian",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800
+     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -257,6 +282,13 @@ class ContactController extends Controller
      *   "label": "Male",
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
+     *  },
+     *  "ethnicity": {
+     *   "id": 1,
+     *   "object": "ethnicity",
+     *   "label": "Asian",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800
      *  },
      *  "name": "Dwight Schrute",
      *  "first_name": "Dwight",
@@ -308,6 +340,7 @@ class ContactController extends Controller
      * @responseField id Unique identifier for the object.
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender object.
+     * @responseField ethnicity The ethnicity object.
      * @responseField name The display name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -330,6 +363,7 @@ class ContactController extends Controller
 
         $contacts = $vault->contacts()
             ->with('gender')
+            ->with('ethnicity')
             ->paginate();
 
         return new ContactCollection($contacts);

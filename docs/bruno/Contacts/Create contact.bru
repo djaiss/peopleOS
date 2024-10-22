@@ -1,22 +1,24 @@
 meta {
   name: Create contact
   type: http
-  seq: 3
+  seq: 1
 }
 
 post {
-  url: http://{{URL}}/vaults/{{vault_id}}/contacts?first_name=Dwight&last_name=Schrute&middle_name&maiden_name&prefix&sufix&can_be_deleted=0
+  url: http://{{URL}}/vaults/1/contacts?gender_id=1&first_name=Dwight&last_name=Schrute&nickname&middle_name&maiden_name&prefix&suffix&can_be_deleted=0
   body: none
   auth: bearer
 }
 
 params:query {
+  gender_id: 1
   first_name: Dwight
   last_name: Schrute
+  nickname: 
   middle_name: 
   maiden_name: 
   prefix: 
-  sufix: 
+  suffix: 
   can_be_deleted: 0
 }
 

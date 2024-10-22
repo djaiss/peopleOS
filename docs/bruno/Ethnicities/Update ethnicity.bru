@@ -1,13 +1,17 @@
 meta {
-  name: List contacts
+  name: Update ethnicity
   type: http
   seq: 4
 }
 
-get {
-  url: http://{{URL}}/vaults/1/contacts
+put {
+  url: http://{{URL}}/ethnicities/1?label=Asian
   body: none
   auth: bearer
+}
+
+params:query {
+  label: Asian
 }
 
 headers {

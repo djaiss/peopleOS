@@ -1,13 +1,17 @@
 meta {
-  name: List contacts
+  name: Create ethnicity
   type: http
-  seq: 4
+  seq: 3
 }
 
-get {
-  url: http://{{URL}}/vaults/1/contacts
+post {
+  url: http://{{URL}}/ethnicities?label=Asian
   body: none
   auth: bearer
+}
+
+params:query {
+  label: Asian
 }
 
 headers {

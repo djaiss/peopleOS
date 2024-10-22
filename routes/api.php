@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Settings\EthnicityController;
 use App\Http\Controllers\Api\Settings\GenderController;
 use App\Http\Controllers\Api\Settings\MeController;
 use App\Http\Controllers\Api\Vaults\CompanyController;
@@ -19,6 +20,13 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::post('genders', [GenderController::class, 'create']);
     Route::put('genders/{gender}', [GenderController::class, 'update']);
     Route::delete('genders/{gender}', [GenderController::class, 'destroy']);
+
+    // manage ethnicities
+    Route::get('ethnicities', [EthnicityController::class, 'index']);
+    Route::get('ethnicities/{ethnicity}', [EthnicityController::class, 'show']);
+    Route::post('ethnicities', [EthnicityController::class, 'create']);
+    Route::put('ethnicities/{ethnicity}', [EthnicityController::class, 'update']);
+    Route::delete('ethnicities/{ethnicity}', [EthnicityController::class, 'destroy']);
 
     // manage vaults
     Route::get('vaults', [VaultController::class, 'index']);

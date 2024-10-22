@@ -43,6 +43,7 @@ class Contact extends Model
         'vault_id',
         'company_id',
         'gender_id',
+        'ethnicity_id',
         'slug',
         'first_name',
         'middle_name',
@@ -105,6 +106,14 @@ class Contact extends Model
     public function gender(): BelongsTo
     {
         return $this->belongsTo(Gender::class);
+    }
+
+    /**
+     * Get the ethnicity associated with the contact.
+     */
+    public function ethnicity(): BelongsTo
+    {
+        return $this->belongsTo(Ethnicity::class);
     }
 
     /**
