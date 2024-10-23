@@ -87,24 +87,46 @@
             <a href="#contacts">Contacts</a>
           </li>
           <ul id="tocify-subheader-contacts" class="tocify-subheader">
-            <li class="tocify-item level-2" data-unique="contacts-GETapi-vaults--vault--contacts">
-              <a href="#contacts-GETapi-vaults--vault--contacts">List all contacts.</a>
+            <li class="tocify-item level-2" data-unique="contacts-contacts">
+              <a href="#contacts-contacts">Contacts</a>
             </li>
-            <li class="tocify-item level-2" data-unique="contacts-POSTapi-vaults--vault--contacts">
-              <a href="#contacts-POSTapi-vaults--vault--contacts">Create a contact.</a>
-            </li>
-            <li class="tocify-item level-2" data-unique="contacts-GETapi-vaults--vault--contacts--contact-">
-              <a href="#contacts-GETapi-vaults--vault--contacts--contact-">Retrieve a contact.</a>
-            </li>
+            <ul id="tocify-subheader-contacts-contacts" class="tocify-subheader">
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts">
+                <a href="#contacts-GETapi-vaults--vault--contacts">List all contacts.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-POSTapi-vaults--vault--contacts">
+                <a href="#contacts-POSTapi-vaults--vault--contacts">Create a contact.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts--contact-">
+                <a href="#contacts-GETapi-vaults--vault--contacts--contact-">Retrieve a contact.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-DELETEapi-vaults--vault--contacts--contact-">
+                <a href="#contacts-DELETEapi-vaults--vault--contacts--contact-">Delete a contact.</a>
+              </li>
+            </ul>
             <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--contact--job">
               <a href="#contacts-PUTapi-vaults--vault--contacts--contact--job">Update a contact's job information.</a>
             </li>
             <li class="tocify-item level-2" data-unique="contacts-PUTapi-vaults--vault--contacts--contact--background">
               <a href="#contacts-PUTapi-vaults--vault--contacts--contact--background">Update a contact's background information.</a>
             </li>
-            <li class="tocify-item level-2" data-unique="contacts-DELETEapi-vaults--vault--contacts--contact-">
-              <a href="#contacts-DELETEapi-vaults--vault--contacts--contact-">Delete a contact.</a>
+            <li class="tocify-item level-2" data-unique="contacts-phone-numbers">
+              <a href="#contacts-phone-numbers">Phone Numbers</a>
             </li>
+            <ul id="tocify-subheader-contacts-phone-numbers" class="tocify-subheader">
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts--contact--phone-numbers">
+                <a href="#contacts-GETapi-vaults--vault--contacts--contact--phone-numbers">List all phone numbers of a contact.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+                <a href="#contacts-POSTapi-vaults--vault--contacts--contact--phone-numbers">Create a contact phone number.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
+                <a href="#contacts-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">Update a contact phone number.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
+                <a href="#contacts-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">Delete a contact phone number.</a>
+              </li>
+            </ul>
           </ul>
         </ul>
         <ul id="tocify-header-endpoints" class="tocify-header">
@@ -192,7 +214,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 22, 2024</li>
+        <li>Last updated: October 23, 2024</li>
       </ul>
     </div>
 
@@ -785,6 +807,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <h1 id="contacts">Contacts</h1>
 
+        <h2 id="contacts-contacts">Contacts</h2>
         <h2 id="contacts-GETapi-vaults--vault--contacts">List all contacts.</h2>
 
         <p></p>
@@ -796,14 +819,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/ullam/contacts" \
+    --get "http://peopleos.test/api/vaults/soluta/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/ullam/contacts"
+    "http://peopleos.test/api/vaults/soluta/contacts"
 );
 
 const headers = {
@@ -819,7 +842,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/ullam/contacts';
+$url = 'http://peopleos.test/api/vaults/soluta/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -989,11 +1012,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="ullam" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="soluta" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>ullam</code>
+              <code>soluta</code>
             </p>
           </div>
         </form>
@@ -1999,6 +2022,135 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The date the contact was last updated. Represented as a Unix timestamp.</p>
         </div>
+        <h2 id="contacts-DELETEapi-vaults--vault--contacts--contact-">Delete a contact.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-vaults--vault--contacts--contact-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://peopleos.test/api/vaults/1/contacts/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-vaults--vault--contacts--contact-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-vaults--vault--contacts--contact-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-vaults--vault--contacts--contact-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-vaults--vault--contacts--contact-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-vaults--vault--contacts--contact-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-vaults--vault--contacts--contact-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-vaults--vault--contacts--contact-" data-method="DELETE" data-path="api/vaults/{vault}/contacts/{contact}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-vaults--vault--contacts--contact-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
         <h2 id="contacts-PUTapi-vaults--vault--contacts--contact--job">Update a contact&#039;s job information.</h2>
 
         <p></p>
@@ -2335,23 +2487,623 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
-        <h2 id="contacts-DELETEapi-vaults--vault--contacts--contact-">Delete a contact.</h2>
+        <h2 id="contacts-phone-numbers">Phone Numbers</h2>
+        <h2 id="contacts-GETapi-vaults--vault--contacts--contact--phone-numbers">List all phone numbers of a contact.</h2>
 
         <p></p>
 
-        <span id="example-requests-DELETEapi-vaults--vault--contacts--contact-">
+        <p>This API call returns a paginated collection of phone numbers that contains 15 items per page.</p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts--contact--phone-numbers">
           <blockquote>Example request:</blockquote>
 
           <div class="bash-example">
-            <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/1" \
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/vaults/neque/contacts/et/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1"
+    "http://peopleos.test/api/vaults/neque/contacts/et/phone-numbers"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/neque/contacts/et/phone-numbers';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--contacts--contact--phone-numbers">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;contact_phone_number&quot;,
+ &quot;contact&quot;: {
+  &quot;id&quot;: 1,
+  &quot;name&quot;: &quot;Michael Scott&quot;
+ },
+ &quot;label&quot;: &quot;mobile&quot;,
+ &quot;phone_number&quot;: &quot;+1234567890&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+}],
+}, {
+ &quot;id&quot;: 5
+ &quot;object&quot;: &quot;contact_phone_number&quot;,
+ &quot;contact&quot;: {
+  &quot;id&quot;: 1,
+  &quot;name&quot;: &quot;Michael Scott&quot;
+ },
+ &quot;label&quot;: &quot;mobile&quot;,
+ &quot;phone_number&quot;: &quot;+1234567890&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+ },
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/phone-numbers?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/phone-numbers?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/phone-numbers?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/phone-numbers&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--contacts--contact--phone-numbers" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--contacts--contact--phone-numbers"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--contacts--contact--phone-numbers"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--contacts--contact--phone-numbers" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--contacts--contact--phone-numbers">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--contacts--contact--phone-numbers" data-method="GET" data-path="api/vaults/{vault}/contacts/{contact}/phone-numbers" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--contacts--contact--phone-numbers', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/phone-numbers</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="neque" data-component="url" />
+            <br />
+            <p>
+              The vault. Example:
+              <code>neque</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="et" data-component="url" />
+            <br />
+            <p>
+              The contact. Example:
+              <code>et</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;contact_phone_number&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>label</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The label of the phone number.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>phone_number</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The phone number.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-POSTapi-vaults--vault--contacts--contact--phone-numbers">Create a contact phone number.</h2>
+
+        <p></p>
+
+        <p>A contact can have multiple phone numbers, as many as needed. This number can be a mobile, home, work, fax, etc.</p>
+
+        <span id="example-requests-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"neque\",
+    \"phone_number\": \"+1234567890\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "neque",
+    "phone_number": "+1234567890"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/phone-numbers';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'neque',
+            'phone_number' =&gt; '+1234567890',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 4,
+    &quot;object&quot;: &quot;contact_phone_number&quot;,
+    &quot;contact&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Michael Scott&quot;
+    },
+    &quot;label&quot;: &quot;mobile&quot;,
+    &quot;phone_number&quot;: &quot;+1234567890&quot;,
+    &quot;created_at&quot;: 1724320000,
+    &quot;updated_at&quot;: 1724320000
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-vaults--vault--contacts--contact--phone-numbers" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-vaults--vault--contacts--contact--phone-numbers"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-vaults--vault--contacts--contact--phone-numbers"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-vaults--vault--contacts--contact--phone-numbers" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-vaults--vault--contacts--contact--phone-numbers" data-method="POST" data-path="api/vaults/{vault}/contacts/{contact}/phone-numbers" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-vaults--vault--contacts--contact--phone-numbers', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/phone-numbers</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>label</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="neque" data-component="body" />
+            <br />
+            <p>
+              The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
+              <code>neque</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>phone_number</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="phone_number" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="+1234567890" data-component="body" />
+            <br />
+            <p>
+              The phone number. Max 255 characters. Example:
+              <code>+1234567890</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">Update a contact phone number.</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"reprehenderit\",
+    \"phone_number\": \"+1234567890\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "reprehenderit",
+    "phone_number": "+1234567890"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'reprehenderit',
+            'phone_number' =&gt; '+1234567890',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 4,
+    &quot;object&quot;: &quot;contact_phone_number&quot;,
+    &quot;contact&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Michael Scott&quot;
+    },
+    &quot;label&quot;: &quot;mobile&quot;,
+    &quot;phone_number&quot;: &quot;+1234567890&quot;,
+    &quot;created_at&quot;: 1724320000,
+    &quot;updated_at&quot;: 1724320000
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" data-method="PUT" data-path="api/vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contactPhoneNumber</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="contactPhoneNumber" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact phone number. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>label</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="reprehenderit" data-component="body" />
+            <br />
+            <p>
+              The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
+              <code>reprehenderit</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>phone_number</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="phone_number" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="+1234567890" data-component="body" />
+            <br />
+            <p>
+              The phone number. Max 255 characters. Example:
+              <code>+1234567890</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="contacts-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">Delete a contact phone number.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://peopleos.test/api/vaults/doloremque/contacts/1/phone-numbers/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/doloremque/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -2367,7 +3119,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1';
+$url = 'http://peopleos.test/api/vaults/doloremque/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2382,7 +3134,7 @@ print_r(json_decode((string) $body));</code></pre>
           </div>
         </span>
 
-        <span id="example-responses-DELETEapi-vaults--vault--contacts--contact-">
+        <span id="example-responses-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
           <blockquote>
             <p>Example response (200):</p>
           </blockquote>
@@ -2393,34 +3145,34 @@ print_r(json_decode((string) $body));</code></pre>
 }</code>
  </pre>
         </span>
-        <span id="execution-results-DELETEapi-vaults--vault--contacts--contact-" hidden>
+        <span id="execution-results-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" hidden>
           <blockquote>
             Received response
-            <span id="execution-response-status-DELETEapi-vaults--vault--contacts--contact-"></span>
+            <span id="execution-response-status-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-"></span>
             :
           </blockquote>
-          <pre class="json"><code id="execution-response-content-DELETEapi-vaults--vault--contacts--contact-"
+          <pre class="json"><code id="execution-response-content-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
         </span>
-        <span id="execution-error-DELETEapi-vaults--vault--contacts--contact-" hidden>
+        <span id="execution-error-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" hidden>
           <blockquote>Request failed with error:</blockquote>
-          <pre><code id="execution-error-message-DELETEapi-vaults--vault--contacts--contact-">
+          <pre><code id="execution-error-message-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
         </span>
-        <form id="form-DELETEapi-vaults--vault--contacts--contact-" data-method="DELETE" data-path="api/vaults/{vault}/contacts/{contact}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-vaults--vault--contacts--contact-', this);">
+        <form id="form-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" data-method="DELETE" data-path="api/vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-', this);">
           <h3>Request&nbsp;&nbsp;&nbsp;</h3>
           <p>
             <small class="badge badge-red">DELETE</small>
-            <b><code>api/vaults/{vault}/contacts/{contact}</code></b>
+            <b><code>api/vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}</code></b>
           </p>
           <h4 class="fancy-heading-panel"><b>Headers</b></h4>
           <div style="padding-left: 28px; clear: unset">
             <b style="line-height: 2"><code>Content-Type</code></b>
             &nbsp;&nbsp; &nbsp; &nbsp;
-            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="application/json" data-component="header" />
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="application/json" data-component="header" />
             <br />
             <p>
               Example:
@@ -2430,7 +3182,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <div style="padding-left: 28px; clear: unset">
             <b style="line-height: 2"><code>Accept</code></b>
             &nbsp;&nbsp; &nbsp; &nbsp;
-            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="application/json" data-component="header" />
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="application/json" data-component="header" />
             <br />
             <p>
               Example:
@@ -2443,11 +3195,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="1" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="doloremque" data-component="url" />
             <br />
             <p>
-              The id of the vault. Example:
-              <code>1</code>
+              The vault. Example:
+              <code>doloremque</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2455,10 +3207,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="DELETEapi-vaults--vault--contacts--contact-" value="1" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="1" data-component="url" />
             <br />
             <p>
               The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contactPhoneNumber</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="contactPhoneNumber" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact phone number. Example:
               <code>1</code>
             </p>
           </div>

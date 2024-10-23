@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Vaults\CompanyController;
 use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
 use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
+use App\Http\Controllers\Api\Vaults\ContactPhoneNumberController;
 use App\Http\Controllers\Api\Vaults\VaultController;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
                 Route::put('vaults/{vault}/contacts/{contact}/job', [ContactJobInformationController::class, 'update']);
                 Route::put('vaults/{vault}/contacts/{contact}/background', [ContactBackgroundInformationController::class, 'update']);
                 Route::delete('vaults/{vault}/contacts/{contact}', [ContactController::class, 'destroy']);
+
+                // manage contact phone numbers
+                Route::get('vaults/{vault}/contacts/{contact}/phone-numbers', [ContactPhoneNumberController::class, 'index']);
+                Route::post('vaults/{vault}/contacts/{contact}/phone-numbers', [ContactPhoneNumberController::class, 'create']);
+                Route::put('vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}', [ContactPhoneNumberController::class, 'update']);
+                Route::delete('vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}', [ContactPhoneNumberController::class, 'destroy']);
             });
         });
 

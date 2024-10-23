@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Vaults;
 
-use App\Cache\ContactInformationCache;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Vault;
@@ -43,11 +42,6 @@ class ContactBackgroundInformationController extends Controller
             contact: $contact,
             information: $validated['information'],
         ))->execute();
-
-        ContactInformationCache::make(
-            user: auth()->user(),
-            contact: $contact,
-        )->refresh();
 
         return response()->json([
             'id' => $contact->id,

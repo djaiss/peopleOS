@@ -1,0 +1,20 @@
+meta {
+  name: Delete contact phone number
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts/{{contact_id}}/phone-numbers/{{contact_phone_number_id}}
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
