@@ -105,6 +105,9 @@
             <li class="tocify-item level-2" data-unique="contacts-DELETEapi-vaults--vault--contacts--contact-">
               <a href="#contacts-DELETEapi-vaults--vault--contacts--contact-">Delete a contact.</a>
             </li>
+            <li class="tocify-item level-2" data-unique="contacts-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+              <a href="#contacts-POSTapi-vaults--vault--contacts--contact--phone-numbers">Create a contact phone number.</a>
+            </li>
           </ul>
         </ul>
         <ul id="tocify-header-endpoints" class="tocify-header">
@@ -796,14 +799,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/sint/contacts" \
+    --get "http://localhost/api/vaults/eum/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/sint/contacts"
+    "http://localhost/api/vaults/eum/contacts"
 );
 
 const headers = {
@@ -819,7 +822,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/sint/contacts';
+$url = 'http://localhost/api/vaults/eum/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -989,11 +992,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="sint" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="eum" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>sint</code>
+              <code>eum</code>
             </p>
           </div>
         </form>
@@ -2460,6 +2463,186 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <p>
               The id of the contact. Example:
               <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="contacts-POSTapi-vaults--vault--contacts--contact--phone-numbers">Create a contact phone number.</h2>
+
+        <p></p>
+
+        <p>A contact can have multiple phone numbers, as many as needed. This number can be a mobile, home, work, fax, etc.</p>
+
+        <span id="example-requests-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/vaults/1/contacts/1/phone-numbers" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"soluta\",
+    \"phone_number\": \"+1234567890\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/1/contacts/1/phone-numbers"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "soluta",
+    "phone_number": "+1234567890"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/1/contacts/1/phone-numbers';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'soluta',
+            'phone_number' =&gt; '+1234567890',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 4,
+    &quot;object&quot;: &quot;contact_phone_number&quot;,
+    &quot;contact&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Michael Scott&quot;
+    },
+    &quot;label&quot;: &quot;mobile&quot;,
+    &quot;phone_number&quot;: &quot;+1234567890&quot;,
+    &quot;created_at&quot;: 1724320000,
+    &quot;updated_at&quot;: 1724320000
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-vaults--vault--contacts--contact--phone-numbers" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-vaults--vault--contacts--contact--phone-numbers"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-vaults--vault--contacts--contact--phone-numbers"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-vaults--vault--contacts--contact--phone-numbers" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-vaults--vault--contacts--contact--phone-numbers">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-vaults--vault--contacts--contact--phone-numbers" data-method="POST" data-path="api/vaults/{vault}/contacts/{contact}/phone-numbers" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-vaults--vault--contacts--contact--phone-numbers', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/phone-numbers</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>label</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="soluta" data-component="body" />
+            <br />
+            <p>
+              The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
+              <code>soluta</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>phone_number</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="phone_number" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="+1234567890" data-component="body" />
+            <br />
+            <p>
+              The phone number. Max 255 characters. Example:
+              <code>+1234567890</code>
             </p>
           </div>
         </form>

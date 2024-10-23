@@ -8,13 +8,13 @@ use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class CreateContactPhoneNumber
+class UpdateContactPhoneNumber
 {
-    private ContactPhoneNumber $contactPhoneNumber;
+    private Contact $contact;
 
     public function __construct(
         public User $user,
-        public Contact $contact,
+        public ContactPhoneNumber $contactPhoneNumber,
         public string $label,
         public string $phoneNumber,
     ) {}
@@ -22,13 +22,15 @@ class CreateContactPhoneNumber
     public function execute(): ContactPhoneNumber
     {
         $this->validate();
-        $this->create();
+        $this->update();
 
         return $this->contactPhoneNumber;
     }
 
     private function validate(): void
     {
+        $this->contact = $this->contactPhoneNumber->contact;
+
         // make sure the user has the permission
         $exists = $this->user->vaults()
             ->where('vaults.id', $this->contact->vault_id)
@@ -40,12 +42,10 @@ class CreateContactPhoneNumber
         }
     }
 
-    private function create(): void
+    private function update(): void
     {
-        $this->contactPhoneNumber = ContactPhoneNumber::create([
-            'contact_id' => $this->contact->id,
-            'label' => $this->label,
-            'phone_number' => $this->phoneNumber,
-        ]);
+        $this->contactPhoneNumber->label = $this->label;
+        $this->contactPhoneNumber->phone_number = $this->phoneNumber;
+        $this->contactPhoneNumber->save();
     }
 }

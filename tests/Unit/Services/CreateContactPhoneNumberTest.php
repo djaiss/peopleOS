@@ -2,16 +2,15 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Account;
 use App\Models\Contact;
 use App\Models\ContactPhoneNumber;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateContactPhoneNumber;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class CreateContactPhoneNumberTest extends TestCase
 {
