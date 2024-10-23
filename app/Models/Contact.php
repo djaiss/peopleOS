@@ -121,6 +121,14 @@ class Contact extends Model
     }
 
     /**
+     * Get the contact phone number records associated with the contact.
+     */
+    public function contactPhoneNumbers(): HasMany
+    {
+        return $this->hasMany(ContactPhoneNumber::class);
+    }
+
+    /**
      * Get the note records associated with the contact.
      */
     public function notes(): HasMany

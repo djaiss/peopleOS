@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Vaults;
 
-use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContactCollection;
 use App\Http\Resources\ContactResource;
@@ -15,6 +14,7 @@ use Illuminate\Http\Request;
 
 /**
  * @group Contacts
+ * @subgroup Contacts
  */
 class ContactController extends Controller
 {
@@ -175,11 +175,6 @@ class ContactController extends Controller
             contact: $contact,
         ))->execute();
 
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $request->attributes->get('vault'),
-        )->refresh();
-
         return response()->json([
             'status' => 'success',
         ], 200);
@@ -251,7 +246,6 @@ class ContactController extends Controller
      */
     public function show(Request $request)
     {
-        $vault = $request->attributes->get('vault');
         $contact = $request->attributes->get('contact');
 
         return new ContactResource($contact);

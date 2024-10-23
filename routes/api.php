@@ -52,6 +52,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
                 // manage contact phone numbers
                 Route::get('vaults/{vault}/contacts/{contact}/phone-numbers', [ContactPhoneNumberController::class, 'index']);
                 Route::post('vaults/{vault}/contacts/{contact}/phone-numbers', [ContactPhoneNumberController::class, 'create']);
+                Route::put('vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}', [ContactPhoneNumberController::class, 'update']);
                 Route::delete('vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}', [ContactPhoneNumberController::class, 'destroy']);
             });
         });

@@ -5,6 +5,7 @@ namespace Tests\Unit\Models;
 use App\Models\Child;
 use App\Models\Company;
 use App\Models\Contact;
+use App\Models\ContactPhoneNumber;
 use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\Note;
@@ -49,6 +50,17 @@ class ContactTest extends TestCase
             'ethnicity_id' => Ethnicity::factory()->create()->id,
         ]);
         $this->assertTrue($contact->ethnicity()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_contact_phone_numbers(): void
+    {
+        $contact = Contact::factory()->create();
+        ContactPhoneNumber::factory()->create([
+            'contact_id' => $contact->id,
+        ]);
+
+        $this->assertTrue($contact->contactPhoneNumbers()->exists());
     }
 
     #[Test]
