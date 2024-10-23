@@ -2,11 +2,7 @@
 
 namespace App\Enums;
 
-use App\Models\Contact;
-use App\Models\MultiAvatar;
-use Faker\Factory as Faker;
-
-enum MaritalStatus:string
+enum MaritalStatus: string
 {
     case SINGLE = 'single';
     case MARRIED = 'married';
