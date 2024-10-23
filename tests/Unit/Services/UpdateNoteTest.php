@@ -118,10 +118,5 @@ class UpdateNoteTest extends TestCase
             'This is awesome',
             $note->body
         );
-
-        $this->assertDatabaseHas('contacts', [
-            'id' => $note->contact->id,
-            'updated_at' => '2018-01-01 00:00:00',
-        ]);
     }
 }

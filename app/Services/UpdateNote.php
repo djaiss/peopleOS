@@ -6,7 +6,6 @@ use App\Models\Contact;
 use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateNote
@@ -16,14 +15,13 @@ class UpdateNote
     public function __construct(
         public User $user,
         public Note $note,
-        public ?string $body,
+        public string $body,
     ) {}
 
     public function execute(): Note
     {
         $this->validate();
         $this->update();
-        $this->updateLastEditedDate();
 
         return $this->note;
     }
@@ -47,11 +45,5 @@ class UpdateNote
     {
         $this->note->body = $this->body;
         $this->note->save();
-    }
-
-    private function updateLastEditedDate(): void
-    {
-        $this->contact->updated_at = Carbon::now();
-        $this->contact->save();
     }
 }

@@ -70,11 +70,6 @@ class CreateNoteTest extends TestCase
             'contact_id' => $contact->id,
         ]);
 
-        $this->assertDatabaseHas('contacts', [
-            'id' => $contact->id,
-            'updated_at' => '2018-01-01 00:00:00',
-        ]);
-
         $this->assertInstanceOf(
             Note::class,
             $note

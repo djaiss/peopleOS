@@ -6,7 +6,6 @@ use App\Models\Contact;
 use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DestroyNote
@@ -22,7 +21,6 @@ class DestroyNote
     {
         $this->validate();
         $this->destroy();
-        $this->updateLastEditedDate();
     }
 
     private function validate(): void
@@ -43,11 +41,5 @@ class DestroyNote
     private function destroy(): void
     {
         $this->note->delete();
-    }
-
-    private function updateLastEditedDate(): void
-    {
-        $this->contact->updated_at = Carbon::now();
-        $this->contact->save();
     }
 }

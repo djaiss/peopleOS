@@ -1,0 +1,24 @@
+meta {
+  name: Update contact phone number
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts/{{contact_id}}/phone-numbers/{{contact_phone_number_id}}
+  body: json
+  auth: bearer
+}
+
+params:query {
+  phone_number: 1234567890
+  label: Home
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
