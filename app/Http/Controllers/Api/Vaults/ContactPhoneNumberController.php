@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 
 /**
  * @group Contacts
+ *
  * @subgroup Phone Numbers
  */
 class ContactPhoneNumberController extends Controller

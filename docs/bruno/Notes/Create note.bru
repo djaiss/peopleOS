@@ -1,0 +1,23 @@
+meta {
+  name: Create note
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts/{{contact_id}}/notes
+  body: json
+  auth: bearer
+}
+
+params:query {
+  body: This is a note.
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
 use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
 use App\Http\Controllers\Api\Vaults\ContactPhoneNumberController;
+use App\Http\Controllers\Api\Vaults\NoteController;
 use App\Http\Controllers\Api\Vaults\VaultController;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
                 Route::post('vaults/{vault}/contacts/{contact}/phone-numbers', [ContactPhoneNumberController::class, 'create']);
                 Route::put('vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}', [ContactPhoneNumberController::class, 'update']);
                 Route::delete('vaults/{vault}/contacts/{contact}/phone-numbers/{contactPhoneNumber}', [ContactPhoneNumberController::class, 'destroy']);
+
+                // manage notes
+                Route::get('vaults/{vault}/contacts/{contact}/notes', [NoteController::class, 'index']);
+                Route::post('vaults/{vault}/contacts/{contact}/notes', [NoteController::class, 'create']);
+                Route::put('vaults/{vault}/contacts/{contact}/notes/{note}', [NoteController::class, 'update']);
+                Route::delete('vaults/{vault}/contacts/{contact}/notes/{note}', [NoteController::class, 'destroy']);
             });
         });
 

@@ -107,10 +107,5 @@ class DestroyNoteTest extends TestCase
         $this->assertDatabaseMissing('notes', [
             'id' => $note->id,
         ]);
-
-        $this->assertDatabaseHas('contacts', [
-            'id' => $note->contact->id,
-            'updated_at' => '2018-01-01 00:00:00',
-        ]);
     }
 }

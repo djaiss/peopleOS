@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 
 /**
  * @group Contacts
+ *
  * @subgroup Contacts
  */
 class ContactController extends Controller

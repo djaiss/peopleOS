@@ -1,0 +1,19 @@
+meta {
+  name: List notes
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts/{{contact_id}}/notes
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
