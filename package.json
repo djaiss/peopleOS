@@ -34,6 +34,7 @@
     "lucide-vue-next": "^0.453.0",
     "radix-vue": "^1.9.7",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tiny-emitter": "^2.1.0"
   }
 }
