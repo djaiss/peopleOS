@@ -11,18 +11,17 @@
     "php": "^8.2",
     "amirami/localizator": "^0.13.0@alpha",
     "bacon/bacon-qr-code": "^3.0",
-    "blade-ui-kit/blade-heroicons": "^2.3",
     "codezero/laravel-localizer": "^3.0",
+    "inertiajs/inertia-laravel": "2.x-dev",
     "laravel/framework": "^11.9",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
-    "livewire/livewire": "^3.5",
     "pragmarx/google2fa": "^8.0",
-    "stichoza/google-translate-php": "^5.1"
+    "stichoza/google-translate-php": "^5.1",
+    "tightenco/ziggy": "^2.0"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.13",
-    "barryvdh/laravel-ide-helper": "^3.0",
     "fakerphp/faker": "^1.23",
     "knuckleswtf/scribe": "^4.37",
     "larastan/larastan": "^2.9",

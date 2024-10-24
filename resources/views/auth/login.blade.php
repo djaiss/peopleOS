@@ -2,7 +2,7 @@
   <!-- Session Status -->
   <x-auth-session-status class="mb-4" :status="session('status')" />
 
-  <div class="mb-12 mt-6 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md sm:max-w-4xl md:flex-row dark:bg-gray-800">
+  <div class="mb-12 mt-6 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md dark:bg-gray-800 sm:max-w-4xl md:flex-row">
     <img src="{{ $wallpaper }}" class="w-full sm:invisible sm:w-10/12 md:visible" alt="{{ __('Wallpaper') }}" />
 
     <div class="w-full">

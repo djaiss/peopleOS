@@ -6,7 +6,7 @@
         @include('vaults.contacts.partials.contacts', ['contacts' => $contacts])
 
         <!-- middle -->
-        <div class="rounded-lg border border-gray-200 bg-gray-50 p-3 sm:px-3 sm:py-0 dark:border-gray-700 dark:bg-gray-900">sda</div>
+        <div class="rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900 sm:px-3 sm:py-0">sda</div>
 
         <!-- right -->
         <div class="p-3 sm:px-3 sm:py-0">we</div>
