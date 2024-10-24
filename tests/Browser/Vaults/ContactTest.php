@@ -25,7 +25,6 @@ class ContactTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_EDIT,
             'contact_id' => $contact->id,
         ]);
 
@@ -52,7 +51,6 @@ class ContactTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_EDIT,
             'contact_id' => $contact->id,
         ]);
 
@@ -78,7 +76,6 @@ class ContactTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_EDIT,
             'contact_id' => $contact->id,
         ]);
 
@@ -105,7 +102,6 @@ class ContactTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_EDIT,
             'contact_id' => $contact->id,
         ]);
 

@@ -6,7 +6,6 @@ use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\User;
-use App\Models\Vault;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -22,8 +21,7 @@ class ContactControllerTest extends TestCase
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
             'label' => 'Male',
@@ -101,8 +99,7 @@ class ContactControllerTest extends TestCase
     public function it_deletes_a_contact(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
@@ -125,8 +122,7 @@ class ContactControllerTest extends TestCase
     public function it_cant_delete_a_contact(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create();
 
         Sanctum::actingAs($user);
@@ -140,8 +136,7 @@ class ContactControllerTest extends TestCase
     public function it_lists_all_the_contacts(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         Contact::factory()->create([
             'vault_id' => $vault->id,
             'first_name' => 'Michael',

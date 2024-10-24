@@ -20,8 +20,7 @@ class DestroyVaultTest extends TestCase
     public function it_destroys_a_vault(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
 
         $this->executeService($user, $vault);
     }
@@ -31,7 +30,6 @@ class DestroyVaultTest extends TestCase
     {
         $user = User::factory()->create();
         $vault = Vault::factory()->create();
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
 
         $this->expectException(ModelNotFoundException::class);
         $this->executeService($user, $vault);
