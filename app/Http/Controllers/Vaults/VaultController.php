@@ -44,12 +44,15 @@ class VaultController extends Controller
         return redirect()->route('vaults.show', $vault);
     }
 
-    public function show(Request $request): View
+    public function show(Request $request): Response
     {
         $vault = $request->attributes->get('vault');
 
-        return view('vaults.show', [
+        return Inertia::render('Vault/Show', [
             'vault' => $vault,
+            'routes' => [
+                'store_vault' => route('vaults.store'),
+            ],
         ]);
     }
 

@@ -13,7 +13,6 @@ import { ref } from 'vue';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { reactive } from 'vue';
 import { router } from '@inertiajs/vue3';
-import { flash } from '@/methods';
 
 const props = defineProps({
   vaults: Object,
