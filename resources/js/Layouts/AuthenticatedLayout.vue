@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import UserNav from '@/components/navigation/UserNav.vue'
+import Search from '@/components/navigation/Search.vue'
+import MainNav from '@/components/navigation/MainNav.vue'
+</script>
 
 <template>
   <div class="hidden flex-col md:flex">
@@ -12,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="flex-1 space-y-4 p-8 pt-6">
+    <div class="flex-1 space-y-4 ">
       <slot />
     </div>
   </div>

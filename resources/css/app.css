@@ -76,3 +76,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+.vault-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vault-detail {
+  height: 250px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Vaults;
 use App\Cache\ContactListCache;
 use App\Cache\UserVaultsCache;
 use App\Http\Controllers\Controller;
+use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Services\CreateVault;
 use App\Services\DestroyVault;
 use Illuminate\Http\RedirectResponse;
@@ -17,9 +18,11 @@ class VaultController extends Controller
 {
     public function index(): Response
     {
-        $vaults = UserVaultsCache::make(auth()->user())->value();
+        $vaults = VaultViewModel::index(auth()->user());
 
-        return Inertia::render('Vault/Index');
+        return Inertia::render('Vault/Index', [
+            'vaults' => $vaults,
+        ]);
     }
 
     public function new(): View
