@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import UserNav from '@/components/navigation/UserNav.vue'
-import Search from '@/components/navigation/Search.vue'
-import MainNav from '@/components/navigation/MainNav.vue'
+import UserNav from '@/components/navigation/UserNav.vue';
+import Search from '@/components/navigation/Search.vue';
+import MainNav from '@/components/navigation/MainNav.vue';
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import MainNav from '@/components/navigation/MainNav.vue'
         </div>
       </div>
     </div>
-    <div class="flex-1 space-y-4 ">
+    <div class="flex-1 space-y-4">
       <slot />
     </div>
   </div>
