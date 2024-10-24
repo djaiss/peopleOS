@@ -41,8 +41,7 @@ class VaultController extends Controller
             description: $validated['description'],
         ))->execute();
 
-        //return redirect()->route('vaults.show', $vault);
-        return redirect()->route('vaults.index');
+        return redirect()->route('vaults.show', $vault);
     }
 
     public function show(Request $request): View
