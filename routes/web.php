@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('locale/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 
 Route::middleware('auth', 'verified')->group(function (): void {
-    Route::get('', [VaultController::class, 'index'])->name('vaults.index');
+    Route::get('vaults', [VaultController::class, 'index'])->name('vaults.index');
     Route::get('new', [VaultController::class, 'new'])->name('vaults.new');
     Route::post('new', [VaultController::class, 'store'])->name('vaults.store');
 

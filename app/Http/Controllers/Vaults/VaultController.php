@@ -10,16 +10,16 @@ use App\Services\DestroyVault;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class VaultController extends Controller
 {
-    public function index(): View
+    public function index(): Response
     {
         $vaults = UserVaultsCache::make(auth()->user())->value();
 
-        return view('vaults.index', [
-            'vaults' => $vaults,
-        ]);
+        return Inertia::render('Vault/Index');
     }
 
     public function new(): View
