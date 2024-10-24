@@ -11,8 +11,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { ref } from 'vue';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { reactive } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { reactive } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { flash } from '@/methods';
 
 const props = defineProps({
@@ -32,7 +32,7 @@ function submit() {
       form.description = null;
       localStorage.success = 'Vault created successfully';
     },
-  })
+  });
 }
 
 const isDialogOpen = ref(false);
@@ -43,7 +43,6 @@ const closeDialog = () => {
 </script>
 
 <template>
-
   <Head title="Dashboard" />
 
   <AuthenticatedLayout>
@@ -75,9 +74,7 @@ const closeDialog = () => {
                   <div>
                     <Label for="description" class="text-right">Description</Label>
                     <Textarea id="description" v-model="form.description" class="col-span-3 mb-2" />
-                    <p class="text-sm text-muted-foreground">
-                      This field is optional.
-                    </p>
+                    <p class="text-sm text-muted-foreground">This field is optional.</p>
                   </div>
                 </div>
                 <DialogFooter>
@@ -89,15 +86,33 @@ const closeDialog = () => {
           </Dialog>
         </div>
 
-        <div class="vault-list grid grid-cols-1 gap-6 sm:grid-cols-3">
-          <!-- vault list -->
-          <div v-for="vault in vaults" :key="vault.id"
-            class="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+        <!-- blank state -->
+        <main v-if="vaults && vaults.length === 0" class="relative mt-16 sm:mt-10">
+          <div class="mx-auto mb-6 max-w-md px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
+            <div class="rounded-t-lg border-x border-t border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
+              <p class="mb-2 text-center text-xl">👋</p>
+              <h2 class="mb-6 text-center text-lg font-semibold">Thanks for giving PeopleOS a try.</h2>
+              <p class="mb-3">PeopleOS was made to help you document what you know about your contacts.</p>
+              <p>To start, you need to create a vault. This lets you store your contacts and all your information.</p>
+            </div>
+
+            <div class="rounded-b-lg border border-gray-200 bg-slate-50 p-5 dark:border-gray-700 dark:bg-slate-900">
+              <p class="mb-3">PeopleOS is open source, and is the labour of lots of love.</p>
+              <p class="mb-3">I hope you will like what we’ve done.</p>
+              <p class="mb-3">All the best,</p>
+              <p>
+                <a href="https://phpc.social/@regis" rel="noopener noreferrer" target="_blank" class="text-blue-500 hover:underline">Régis</a>
+              </p>
+            </div>
+          </div>
+        </main>
+        <!-- vault list -->
+        <div v-if="vaults && vaults.length > 0" class="vault-list grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div v-for="vault in vaults" :key="vault.id" class="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
             <div class="vault-detail grid">
               <!-- vault name -->
-              <Link :href="vault.url.show"
-                class="border-b border-gray-200 px-3 py-1 text-lg font-medium hover:rounded-t-lg hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-300 hover:dark:bg-slate-800">
-              {{ vault.name }}
+              <Link :href="vault.url.show" class="border-b border-gray-200 px-3 py-1 text-lg font-medium hover:rounded-t-lg hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-300 hover:dark:bg-slate-800">
+                {{ vault.name }}
               </Link>
 
               <!-- vault description -->
@@ -111,13 +126,11 @@ const closeDialog = () => {
               <!-- actions -->
               <div class="flex items-center justify-between border-t border-gray-200 px-3 py-2 dark:border-gray-700">
                 <Link href="">
-                <Cog
-                  class="pointer h-5 w-5 text-gray-400 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-100" />
+                  <Cog class="pointer h-5 w-5 text-gray-400 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-100" />
                 </Link>
 
                 <Link href="">
-                <ArrowRight
-                  class="pointer h-5 w-5 text-gray-400 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-100" />
+                  <ArrowRight class="pointer h-5 w-5 text-gray-400 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-100" />
                 </Link>
               </div>
             </div>

@@ -12,7 +12,6 @@ onMounted(() => {
     localStorage.removeItem('success');
   }
 });
-
 </script>
 
 <template>
