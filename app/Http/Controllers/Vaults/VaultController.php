@@ -22,12 +22,10 @@ class VaultController extends Controller
 
         return Inertia::render('Vault/Index', [
             'vaults' => $vaults,
+            'routes' => [
+                'store_vault' => route('vaults.store'),
+            ],
         ]);
-    }
-
-    public function new(): View
-    {
-        return view('vaults.new');
     }
 
     public function store(Request $request): RedirectResponse
@@ -43,13 +41,8 @@ class VaultController extends Controller
             description: $validated['description'],
         ))->execute();
 
-        UserVaultsCache::make(
-            user: auth()->user(),
-        )->forget();
-
-        $request->session()->flash('status', __('The vault has been created'));
-
-        return redirect()->route('vaults.show', $vault);
+        //return redirect()->route('vaults.show', $vault);
+        return redirect()->route('vaults.index');
     }
 
     public function show(Request $request): View
