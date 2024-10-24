@@ -219,7 +219,6 @@ class VaultController extends Controller
     public function index()
     {
         $vaults = auth()->user()->vaults()
-            ->orderBy('name', 'asc')
             ->paginate();
 
         return new VaultCollection($vaults);
