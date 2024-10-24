@@ -31,7 +31,6 @@ class UserTest extends TestCase
         $contact = Contact::factory()->create();
 
         $regis->vaults()->sync([$vault->id => [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $contact->id,
         ]]);
 

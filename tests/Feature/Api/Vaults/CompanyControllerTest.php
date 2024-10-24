@@ -4,7 +4,6 @@ namespace Tests\Feature\Api\Vaults;
 
 use App\Models\Company;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,8 +17,7 @@ class CompanyControllerTest extends TestCase
     public function it_creates_a_company(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
 
         Sanctum::actingAs($user);
 
@@ -44,8 +42,7 @@ class CompanyControllerTest extends TestCase
     public function it_updates_a_company(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $company = Company::factory()->create([
             'vault_id' => $vault->id,
             'name' => 'Park & Sons',
@@ -73,8 +70,7 @@ class CompanyControllerTest extends TestCase
     public function it_deletes_a_company(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $company = Company::factory()->create([
             'vault_id' => $vault->id,
         ]);
@@ -97,8 +93,7 @@ class CompanyControllerTest extends TestCase
     public function it_cant_delete_a_company(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $company = Company::factory()->create();
 
         Sanctum::actingAs($user);
@@ -112,8 +107,7 @@ class CompanyControllerTest extends TestCase
     public function it_lists_all_the_companies(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         Company::factory()->create([
             'vault_id' => $vault->id,
             'name' => 'Dunder Mifflin',

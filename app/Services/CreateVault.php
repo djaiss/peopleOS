@@ -58,7 +58,6 @@ class CreateVault
     private function associateUserToVault(): void
     {
         $this->vault->users()->save($this->user, [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $this->contact->id,
         ]);
     }

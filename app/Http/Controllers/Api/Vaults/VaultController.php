@@ -16,8 +16,7 @@ use Illuminate\Http\Request;
  * @group Vaults
  *
  * Vaults are used to store contacts and all the related data. You can create
- * as many vaults as you need. To access a vault, you need to have the permissions
- * to do so. There are three permissions: view, edit, and manage.
+ * as many vaults as you need.
  */
 class VaultController extends Controller
 {
@@ -25,8 +24,7 @@ class VaultController extends Controller
      * Create a vault.
      *
      * A vault is a place where you can store contacts and all the related data.
-     * When you create a vault, your user will be associated with it with the
-     * Manage permission. Also, a contact representing you will be created
+     * When you create a vault, a contact representing you will be created
      * automatically. You will not be able to delete this contact–only another
      * manager of the vault can do so.
      *
@@ -221,7 +219,6 @@ class VaultController extends Controller
     public function index()
     {
         $vaults = auth()->user()->vaults()
-            ->orderBy('name', 'asc')
             ->paginate();
 
         return new VaultCollection($vaults);

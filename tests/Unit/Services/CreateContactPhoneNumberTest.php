@@ -5,7 +5,6 @@ namespace Tests\Unit\Services;
 use App\Models\Contact;
 use App\Models\ContactPhoneNumber;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\CreateContactPhoneNumber;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -20,8 +19,7 @@ class CreateContactPhoneNumberTest extends TestCase
     public function it_creates_a_contact_phone_number()
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);

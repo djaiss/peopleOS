@@ -22,8 +22,7 @@ class ContactController extends Controller
     /**
      * Create a contact.
      *
-     * Creates a new contact in the vault. For this to happen, the user must
-     * have the permission to edit the vault.
+     * Creates a new contact in the vault.
      *
      * You can choose to mark a contact as deletable or not.
      *

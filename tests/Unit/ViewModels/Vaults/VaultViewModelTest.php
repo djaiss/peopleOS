@@ -23,7 +23,6 @@ class VaultViewModelTest extends TestCase
         ]);
         $contact = Contact::factory()->create();
         $user->vaults()->sync([$vault->id => [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $contact->id,
         ]]);
 

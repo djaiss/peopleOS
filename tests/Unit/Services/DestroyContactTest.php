@@ -19,8 +19,7 @@ class DestroyContactTest extends TestCase
     public function it_destroys_a_contact(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
@@ -33,7 +32,6 @@ class DestroyContactTest extends TestCase
     {
         $user = User::factory()->create();
         $vault = Vault::factory()->create();
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
@@ -49,7 +47,6 @@ class DestroyContactTest extends TestCase
         $vault = Vault::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
         $contact = Contact::factory()->create();
 
         $this->expectException(ModelNotFoundException::class);

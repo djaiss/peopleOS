@@ -4,7 +4,6 @@ namespace Tests\Feature\Api\Vaults;
 
 use App\Models\Contact;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,8 +17,7 @@ class ContactBackgroundInformationControllerTest extends TestCase
     public function it_updates_the_contact_background_information(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
             'first_name' => 'Michael',

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Vaults;
 
-use App\Cache\ContactInformationCache;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Vault;
@@ -58,11 +57,6 @@ class ContactJobInformationController extends Controller
             companyName: $validated['company_name'],
             jobTitle: $validated['job_title'],
         ))->execute();
-
-        ContactInformationCache::make(
-            user: auth()->user(),
-            contact: $contact,
-        )->refresh();
 
         return response()->json([
             'id' => $contact->id,

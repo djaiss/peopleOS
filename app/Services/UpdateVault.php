@@ -34,7 +34,6 @@ class UpdateVault
         // make sure the user has the permission to delete the vault
         $exists = $this->user->vaults()
             ->where('vaults.id', $this->vault->id)
-            ->wherePivot('permission', '<=', Vault::PERMISSION_MANAGE)
             ->exists();
 
         if (! $exists) {
