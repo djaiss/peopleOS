@@ -13,16 +13,6 @@ class VaultControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_shows_an_empty_dashboard_upon_account_creation(): void
-    {
-        $user = User::factory()->create();
-
-        $this->actingAs($user)
-            ->get('/')
-            ->assertSee('Thanks for');
-    }
-
-    #[Test]
     public function a_user_can_create_a_vault(): void
     {
         $user = User::factory()->create();

@@ -33,7 +33,7 @@ const props = defineProps({
           <div v-for="vault in vaults" :key="vault.id" class="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
             <div class="vault-detail grid">
               <!-- vault name -->
-              <Link href="/logout" class="border-b border-gray-200 px-3 py-1 text-lg font-medium hover:rounded-t-lg hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-300 hover:dark:bg-slate-800">
+              <Link :href="vault.url.show" class="border-b border-gray-200 px-3 py-1 text-lg font-medium hover:rounded-t-lg hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-300 hover:dark:bg-slate-800">
                 {{ vault.name }}
               </Link>
 
