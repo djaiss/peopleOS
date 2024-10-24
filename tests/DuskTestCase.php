@@ -56,7 +56,6 @@ abstract class DuskTestCase extends BaseTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $contact->id,
         ]);
 

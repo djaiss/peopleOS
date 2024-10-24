@@ -15,15 +15,6 @@ class Vault extends Model
     protected $table = 'vaults';
 
     /**
-     * Possible vault permissions.
-     */
-    public const PERMISSION_VIEW = 300;
-
-    public const PERMISSION_EDIT = 200;
-
-    public const PERMISSION_MANAGE = 100;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array<int,string>
@@ -32,12 +23,6 @@ class Vault extends Model
         'account_id',
         'name',
         'description',
-        'show_group_tab',
-        'show_tasks_tab',
-        'show_files_tab',
-        'show_journal_tab',
-        'show_companies_tab',
-        'show_calendar_tab',
     ];
 
     /**
@@ -46,13 +31,8 @@ class Vault extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'show_group_tab' => 'boolean',
-        'show_calendar_tab' => 'boolean',
-        'show_tasks_tab' => 'boolean',
-        'show_files_tab' => 'boolean',
-        'show_journal_tab' => 'boolean',
-        'show_companies_tab' => 'boolean',
-        'show_reports_tab' => 'boolean',
+        'name' => 'encrypted',
+        'description' => 'encrypted',
     ];
 
     /**
@@ -69,7 +49,6 @@ class Vault extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)
-            ->withPivot('permission')
             ->withTimestamps();
     }
 

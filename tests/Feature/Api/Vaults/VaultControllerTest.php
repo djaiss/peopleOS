@@ -48,8 +48,7 @@ class VaultControllerTest extends TestCase
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
 
         $vault->name = 'Old vault';
         $vault->save();
@@ -98,8 +97,7 @@ class VaultControllerTest extends TestCase
     public function it_deletes_a_vault(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
 
         $vault->name = 'Old vault';
         $vault->save();
@@ -138,8 +136,7 @@ class VaultControllerTest extends TestCase
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
 
         Sanctum::actingAs($user);
 
@@ -162,10 +159,8 @@ class VaultControllerTest extends TestCase
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
-        $secondVault = $this->createVault($user->account);
-        $secondVault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $secondVault);
+        $vault = $this->createVault($user);
+        $secondVault = $this->createVault($user);
 
         $vault->name = 'New vault';
         $vault->description = 'This is a new vault';

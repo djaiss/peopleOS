@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\User;
-use App\Models\Vault;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -38,7 +37,6 @@ class UpdateJobInformation
         // make sure the user has the permission
         $exists = $this->user->vaults()
             ->where('vaults.id', $this->contact->vault_id)
-            ->wherePivot('permission', '<=', Vault::PERMISSION_EDIT)
             ->exists();
 
         if (! $exists) {

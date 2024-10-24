@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Contact;
 use App\Models\Note;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CreateNote
@@ -31,7 +30,6 @@ class CreateNote
         // make sure the user has the permission
         $exists = $this->user->vaults()
             ->where('vaults.id', $this->contact->vault_id)
-            ->wherePivot('permission', '<=', Vault::PERMISSION_EDIT)
             ->exists();
 
         if (! $exists) {

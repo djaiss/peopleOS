@@ -55,7 +55,6 @@ class VaultTest extends TestCase
 
         $vault->users()->sync([$dwight->id => [
             'contact_id' => $contact->id,
-            'permission' => Vault::PERMISSION_MANAGE,
         ]]);
 
         $this->assertTrue($vault->users()->exists());

@@ -21,8 +21,7 @@ class CreateContactTest extends TestCase
     public function it_creates_a_contact(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);
@@ -49,30 +48,12 @@ class CreateContactTest extends TestCase
     }
 
     #[Test]
-    public function it_fails_if_user_doesnt_have_right_permission_in_vault(): void
-    {
-        $this->expectException(ModelNotFoundException::class);
-
-        $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
-        $gender = Gender::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $ethnicity = Ethnicity::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $this->executeService($user, $vault, $gender, $ethnicity);
-    }
-
-    #[Test]
     public function it_fails_if_gender_doesnt_belong_to_account(): void
     {
         $this->expectException(ModelNotFoundException::class);
 
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
+        $vault = $this->createVault($user);
         $gender = Gender::factory()->create();
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
@@ -86,8 +67,7 @@ class CreateContactTest extends TestCase
         $this->expectException(ModelNotFoundException::class);
 
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
+        $vault = $this->createVault($user);
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);

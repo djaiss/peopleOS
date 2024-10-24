@@ -2,7 +2,6 @@
 
 use App\Http\Middleware\CheckAPIContact;
 use App\Http\Middleware\CheckContact;
-use App\Http\Middleware\CheckUserPermissionAtLeastEditor;
 use App\Http\Middleware\CheckVault;
 use App\Http\Middleware\Locale;
 use Illuminate\Foundation\Application;
@@ -22,7 +21,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'vault' => CheckVault::class,
             'contact' => CheckContact::class,
             'api_contact' => CheckAPIContact::class,
-            'is_at_least_editor' => CheckUserPermissionAtLeastEditor::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

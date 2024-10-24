@@ -6,7 +6,6 @@ use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -19,8 +18,7 @@ class ContactControllerTest extends TestCase
     public function a_user_can_create_a_contact(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $gender = Gender::factory()->create([
             'account_id' => $user->account->id,
         ]);
@@ -56,8 +54,7 @@ class ContactControllerTest extends TestCase
     public function a_user_can_delete_a_contact(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);

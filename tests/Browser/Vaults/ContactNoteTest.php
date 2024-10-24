@@ -26,7 +26,6 @@ class ContactNoteTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $contact->id,
         ]);
 
@@ -51,7 +50,6 @@ class ContactNoteTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $contact->id,
         ]);
         $note = Note::factory()->create([
@@ -82,7 +80,6 @@ class ContactNoteTest extends DuskTestCase
             'vault_id' => $vault->id,
         ]);
         $vault->users()->save($user, [
-            'permission' => Vault::PERMISSION_MANAGE,
             'contact_id' => $contact->id,
         ]);
         $note = Note::factory()->create([

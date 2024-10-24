@@ -35,7 +35,6 @@ class CreateVaultTest extends TestCase
 
         $this->assertDatabaseHas('vaults', [
             'id' => $vault->id,
-            'name' => 'Dunder mifflin',
             'description' => null,
         ]);
 
@@ -43,7 +42,6 @@ class CreateVaultTest extends TestCase
             'vault_id' => $vault->id,
             'user_id' => $user->id,
             'contact_id' => Contact::all()->first()->id,
-            'permission' => Vault::PERMISSION_MANAGE,
         ]);
 
         $this->assertInstanceOf(

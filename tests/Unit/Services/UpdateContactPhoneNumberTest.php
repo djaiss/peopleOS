@@ -20,25 +20,7 @@ class UpdateContactPhoneNumberTest extends TestCase
     public function it_updates_a_contact_phone_number(): void
     {
         $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_MANAGE, $vault);
-        $contact = Contact::factory()->create([
-            'vault_id' => $vault->id,
-        ]);
-        $contactPhoneNumber = ContactPhoneNumber::factory()->create([
-            'contact_id' => $contact->id,
-        ]);
-        $this->executeService($user, $contactPhoneNumber);
-    }
-
-    #[Test]
-    public function it_fails_if_user_doesnt_have_right_permission_in_vault(): void
-    {
-        $this->expectException(ModelNotFoundException::class);
-
-        $user = User::factory()->create();
-        $vault = $this->createVault($user->account);
-        $vault = $this->setPermissionInVault($user, Vault::PERMISSION_VIEW, $vault);
+        $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
