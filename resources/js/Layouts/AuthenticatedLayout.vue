@@ -2,6 +2,17 @@
 import UserNav from '@/components/navigation/UserNav.vue';
 import Search from '@/components/navigation/Search.vue';
 import MainNav from '@/components/navigation/MainNav.vue';
+import Toaster from '@/components/Toaster.vue';
+import { onMounted } from 'vue';
+import { flash } from '@/methods';
+
+onMounted(() => {
+  if (localStorage.success) {
+    flash(localStorage.success, 'success');
+    localStorage.removeItem('success');
+  }
+});
+
 </script>
 
 <template>
@@ -19,5 +30,7 @@ import MainNav from '@/components/navigation/MainNav.vue';
     <div class="flex-1 space-y-4">
       <slot />
     </div>
+
+    <Toaster />
   </div>
 </template>
