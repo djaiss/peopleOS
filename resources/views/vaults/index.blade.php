@@ -41,7 +41,7 @@
   @else
     <div class="mx-auto max-w-4xl px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
       <div class="mb-10 items-center justify-between sm:mb-6 sm:flex">
-        <h3 class="mb-3 sm:mb-0 dark:text-slate-200">
+        <h3 class="mb-3 dark:text-slate-200 sm:mb-0">
           {{ __('All the vaults in the account') }}
         </h3>
         <x-button.secondary href="{{ route('vaults.new') }}">

@@ -21,7 +21,7 @@
       @endif
 
       @isset($breadcrumb)
-        <nav class="breadcrumb bg-white sm:border-b dark:bg-gray-900">
+        <nav class="breadcrumb bg-white dark:bg-gray-900 sm:border-b">
           <div class="max-w-8xl mx-auto hidden px-4 py-2 sm:px-6 md:block">
             <div class="flex items-baseline justify-between space-x-6">
               {{ $breadcrumb }}

@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <div class="mb-12 mt-6 w-full overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-900">
+  <div class="mb-12 mt-6 w-full overflow-hidden bg-white shadow-md dark:bg-gray-900 sm:max-w-md sm:rounded-lg">
     <div class="px-6 pt-6">
       <p class="mb-2 text-lg font-bold">{{ __('Sign up for an account') }}</p>
       <p class="text-sm text-gray-500">{{ __('Your name here will be used to add yourself as a contact.') }}</p>

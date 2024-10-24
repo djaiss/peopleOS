@@ -21,7 +21,7 @@
       <form method="post" action="{{ route('vaults.store') }}" class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
         @csrf
 
-        <div class="rounded-t-lg border-b border-gray-200 bg-blue-50 p-3 sm:p-5 dark:border-gray-700 dark:bg-blue-900">
+        <div class="rounded-t-lg border-b border-gray-200 bg-blue-50 p-3 dark:border-gray-700 dark:bg-blue-900 sm:p-5">
           <h1 class="mb-1 flex justify-center text-2xl font-medium">
             <span>{{ __('Create a vault') }}</span>
           </h1>
