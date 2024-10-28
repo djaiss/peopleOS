@@ -7,6 +7,7 @@ use App\Http\Resources\ContactCollection;
 use App\Http\Resources\ContactResource;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
 use Illuminate\Http\JsonResponse;
@@ -32,10 +33,11 @@ class ContactController extends Controller
      *
      * @urlParam vault required The id of the vault. Example: 1
      *
-     * @bodyParam gender_id integer required The gender object associated with the contact. This object must be a valid Gender object. Example: 1
-     * @bodyParam ethnicity_id integer required The ethnicity object associated with the contact. This object must be a valid Ethnicity object. Example: 1
+     * @bodyParam gender_id integer The gender object associated with the contact. This object must be a valid Gender object. Example: 1
+     * @bodyParam ethnicity_id integer The ethnicity object associated with the contact. This object must be a valid Ethnicity object. Example: 1
+     * @bodyParam marital_status_id integer The marital status of the contact. This object must be a valid MaritalStatus object. Example: 1
      * @bodyParam first_name string required The first name of the contact. Max 255 characters. Example: Michael
-     * @bodyParam last_name string required The last name of the contact. Max 255 characters. Example: Scott
+     * @bodyParam last_name string The last name of the contact. Max 255 characters. Example: Scott
      * @bodyParam middle_name string The middle name of the contact. Max 255 characters. Example: Gary
      * @bodyParam nickname string The nickname of the contact. Max 255 characters. Example: Mike
      * @bodyParam maiden_name string The maiden name of the contact, important in some cultures, where a woman’s surname changes after marriage. Max 255 characters. Example: Johnson
@@ -44,7 +46,6 @@ class ContactController extends Controller
      * @bodyParam generation_name string The generation name of the contact, often used in Japanese, Chinese, Korean, and Vietnamese culture where part of the name is shared by siblings or cousins to signify their generation. Max 255 characters. Example: 俊
      * @bodyParam romanized_name string The romanized name of the contact, which is the Latin alphabet transliteration of a non-Latin name. Max 255 characters. Example: Wang Junjie
      * @bodyParam nationality string The nationality of the contact. Max 255 characters. Example: American
-     * @bodyParam marital_status string The marital status of the contact. Max 255 characters. Example: Married
      * @bodyParam prefix string The prefix of the contact. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the contact. Max 255 characters. Example: Jr.
      * @bodyParam can_be_deleted boolean Whether the contact can be deleted. 0 for false, 1 for true. Example: 1
@@ -66,6 +67,13 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
      *  },
+     *  "marital_status": {
+     *   "id": 1,
+     *   "object": "marital_status",
+     *   "label": "Married",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800,
+     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -77,7 +85,6 @@ class ContactController extends Controller
      *  "generation_name": "俊",
      *  "romanized_name": "Wang Junjie",
      *  "nationality": "American",
-     *  "marital_status": "Married",
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
@@ -89,6 +96,7 @@ class ContactController extends Controller
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender object.
      * @responseField ethnicity The ethnicity object.
+     * @responseField marital_status The marital status object.
      * @responseField name The display name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -100,7 +108,6 @@ class ContactController extends Controller
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
      * @responseField nationality The nationality of the contact.
-     * @responseField marital_status The marital status of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -112,8 +119,9 @@ class ContactController extends Controller
         $vault = $request->attributes->get('vault');
 
         $validated = $request->validate([
-            'gender_id' => 'required|exists:genders,id',
+            'gender_id' => 'nullable|exists:genders,id',
             'ethnicity_id' => 'nullable|exists:ethnicities,id',
+            'marital_status_id' => 'nullable|exists:marital_statuses,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
@@ -124,7 +132,6 @@ class ContactController extends Controller
             'generation_name' => 'nullable|string|max:255',
             'romanized_name' => 'nullable|string|max:255',
             'nationality' => 'nullable|string|max:255',
-            'marital_status' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
             'can_be_deleted' => 'boolean',
@@ -133,8 +140,9 @@ class ContactController extends Controller
         $contact = (new CreateContact(
             user: auth()->user(),
             vault: $vault,
-            gender: Gender::find($validated['gender_id']),
+            gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
             ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
+            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             middleName: $validated['middle_name'],
@@ -145,7 +153,6 @@ class ContactController extends Controller
             generationName: $validated['generation_name'],
             romanizedName: $validated['romanized_name'],
             nationality: $validated['nationality'],
-            maritalStatus: $validated['marital_status'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
             canBeDeleted: $validated['can_be_deleted'],
@@ -203,6 +210,13 @@ class ContactController extends Controller
      *     "created_at": 1514764800,
      *     "updated_at": 1514764800
      *   },
+     *   "marital_status": {
+     *     "id": 1,
+     *     "object": "marital_status",
+     *     "label": "Married",
+     *     "created_at": 1514764800,
+     *     "updated_at": 1514764800
+     *   },
      *   "name": "John Doe",
      *   "first_name": "John",
      *   "last_name": "Doe",
@@ -214,7 +228,6 @@ class ContactController extends Controller
      *   "generation_name": null,
      *   "romanized_name": null,
      *   "nationality": "American",
-     *   "marital_status": null,
      *   "prefix": null,
      *   "suffix": null,
      *   "can_be_deleted": true,
@@ -226,6 +239,7 @@ class ContactController extends Controller
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender of the contact.
      * @responseField ethnicity The ethnicity of the contact.
+     * @responseField marital_status The marital status of the contact.
      * @responseField name The full name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -237,7 +251,6 @@ class ContactController extends Controller
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
      * @responseField nationality The nationality of the contact.
-     * @responseField marital_status The marital status of the contact.
      * @responseField prefix The prefix of the contact's name.
      * @responseField suffix The suffix of the contact's name.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -274,6 +287,7 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      *  },
+     *  "marital_status": {
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -285,7 +299,6 @@ class ContactController extends Controller
      *  "generation_name": null,
      *  "romanized_name": null,
      *  "nationality": "American",
-     *  "marital_status": null,
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1
@@ -306,6 +319,13 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      *  },
+     *  "marital_status": {
+     *   "id": 1,
+     *   "object": "marital_status",
+     *   "label": "Married",
+     *   "created_at": 1514764800,
+     *   "updated_at": 1514764800
+     *  },
      *  "name": "Dwight Schrute",
      *  "first_name": "Dwight",
      *  "last_name": "Schrute",
@@ -317,7 +337,6 @@ class ContactController extends Controller
      *  "generation_name": null,
      *  "romanized_name": null,
      *  "nationality": "American",
-     *  "marital_status": null,
      *  "prefix": "Mr.",
      *  "suffix": "Sr.",
      *  "can_be_deleted": 1
@@ -359,6 +378,7 @@ class ContactController extends Controller
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender object.
      * @responseField ethnicity The ethnicity object.
+     * @responseField marital_status The marital status object.
      * @responseField name The display name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -370,7 +390,6 @@ class ContactController extends Controller
      * @responseField generation_name The generation name of the contact.
      * @responseField romanized_name The romanized name of the contact.
      * @responseField nationality The nationality of the contact.
-     * @responseField marital_status The marital status of the contact.
      * @responseField prefix The prefix of the contact.
      * @responseField suffix The suffix of the contact.
      * @responseField can_be_deleted Whether the contact can be deleted.
@@ -384,6 +403,7 @@ class ContactController extends Controller
         $contacts = $vault->contacts()
             ->with('gender')
             ->with('ethnicity')
+            ->with('maritalStatus')
             ->paginate();
 
         return new ContactCollection($contacts);

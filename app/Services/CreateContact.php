@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -17,8 +18,9 @@ class CreateContact
     public function __construct(
         public User $user,
         public Vault $vault,
-        public Gender $gender,
+        public ?Gender $gender,
         public ?Ethnicity $ethnicity,
+        public ?MaritalStatus $maritalStatus,
         public ?string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -29,7 +31,6 @@ class CreateContact
         public ?string $generationName,
         public ?string $romanizedName,
         public ?string $nationality,
-        public ?string $maritalStatus,
         public ?string $prefix,
         public ?string $suffix,
         public bool $canBeDeleted = true,
@@ -60,13 +61,21 @@ class CreateContact
         }
 
         // make sure the gender exists and belongs to the account
-        Gender::where('account_id', $this->user->account_id)
-            ->findOrFail($this->gender->id);
+        if ($this->gender) {
+            Gender::where('account_id', $this->user->account_id)
+                ->findOrFail($this->gender->id);
+        }
 
         // make sure the ethnicity exists and belongs to the account
         if ($this->ethnicity) {
             Ethnicity::where('account_id', $this->user->account_id)
                 ->findOrFail($this->ethnicity->id);
+        }
+
+        // make sure the marital status exists and belongs to the account
+        if ($this->maritalStatus) {
+            MaritalStatus::where('account_id', $this->user->account_id)
+                ->findOrFail($this->maritalStatus->id);
         }
     }
 
@@ -76,6 +85,7 @@ class CreateContact
             'vault_id' => $this->vault->id,
             'gender_id' => $this->gender->id,
             'ethnicity_id' => $this->ethnicity?->id,
+            'marital_status_id' => $this->maritalStatus?->id,
             'first_name' => $this->firstName ?? null,
             'last_name' => $this->lastName ?? null,
             'middle_name' => $this->middleName ?? null,
@@ -86,7 +96,6 @@ class CreateContact
             'generation_name' => $this->generationName ?? null,
             'romanized_name' => $this->romanizedName ?? null,
             'nationality' => $this->nationality ?? null,
-            'marital_status' => $this->maritalStatus ?? null,
             'suffix' => $this->suffix ?? null,
             'prefix' => $this->prefix ?? null,
             'can_be_deleted' => $this->canBeDeleted,

@@ -13,6 +13,7 @@ use App\Models\Gender;
 use App\Models\GiftOccasion;
 use App\Models\GiftState;
 use App\Models\GroupType;
+use App\Models\MaritalStatus;
 use App\Models\Module;
 use App\Models\PetCategory;
 use App\Models\PostTemplate;
@@ -105,6 +106,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->ethnicities()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_marital_statuses(): void
+    {
+        $account = Account::factory()->create();
+        MaritalStatus::factory(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->maritalStatuses()->exists());
     }
 
     // #[Test]

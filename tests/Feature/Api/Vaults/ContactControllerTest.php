@@ -5,6 +5,7 @@ namespace Tests\Feature\Api\Vaults;
 use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -30,12 +31,17 @@ class ContactControllerTest extends TestCase
             'account_id' => $user->account->id,
             'label' => 'Asian',
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+            'label' => 'Married',
+        ]);
 
         Sanctum::actingAs($user);
 
         $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts', [
             'gender_id' => $gender->id,
             'ethnicity_id' => $ethnicity->id,
+            'marital_status_id' => $maritalStatus->id,
             'first_name' => 'Michael',
             'last_name' => 'Scott',
             'middle_name' => 'Gary',
@@ -46,7 +52,6 @@ class ContactControllerTest extends TestCase
             'generation_name' => 'Generation',
             'romanized_name' => 'Romanized',
             'nationality' => 'American',
-            'marital_status' => 'Married',
             'prefix' => 'Mr.',
             'suffix' => 'Jr.',
             'can_be_deleted' => true,
@@ -73,6 +78,13 @@ class ContactControllerTest extends TestCase
                     'created_at' => 1514764800,
                     'updated_at' => 1514764800,
                 ],
+                'marital_status' => [
+                    'id' => $maritalStatus->id,
+                    'object' => 'marital_status',
+                    'label' => 'Married',
+                    'created_at' => 1514764800,
+                    'updated_at' => 1514764800,
+                ],
                 'name' => 'Mr. Michael Scott Jr.',
                 'first_name' => 'Michael',
                 'last_name' => 'Scott',
@@ -84,7 +96,6 @@ class ContactControllerTest extends TestCase
                 'generation_name' => 'Generation',
                 'romanized_name' => 'Romanized',
                 'nationality' => 'American',
-                'marital_status' => 'Married',
                 'prefix' => 'Mr.',
                 'suffix' => 'Jr.',
                 'can_be_deleted' => true,
@@ -149,7 +160,6 @@ class ContactControllerTest extends TestCase
             'generation_name' => 'Generation',
             'romanized_name' => 'Romanized',
             'nationality' => 'American',
-            'marital_status' => 'Married',
             'prefix' => 'Mr.',
             'suffix' => 'Jr.',
             'can_be_deleted' => true,
@@ -166,7 +176,6 @@ class ContactControllerTest extends TestCase
             'generation_name' => 'Generation',
             'romanized_name' => 'Romanized',
             'nationality' => 'American',
-            'marital_status' => 'Married',
             'prefix' => 'Mr.',
             'suffix' => 'Sr.',
             'can_be_deleted' => false,

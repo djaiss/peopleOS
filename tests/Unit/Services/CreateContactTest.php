@@ -5,6 +5,7 @@ namespace Tests\Unit\Services;
 use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\CreateContact;
@@ -28,7 +29,10 @@ class CreateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $this->executeService($user, $vault, $gender, $ethnicity);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity, $maritalStatus);
     }
 
     #[Test]
@@ -44,7 +48,10 @@ class CreateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $this->executeService($user, $vault, $gender, $ethnicity);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity, $maritalStatus);
     }
 
     #[Test]
@@ -58,7 +65,10 @@ class CreateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $this->executeService($user, $vault, $gender, $ethnicity);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity, $maritalStatus);
     }
 
     #[Test]
@@ -72,16 +82,37 @@ class CreateContactTest extends TestCase
             'account_id' => $user->account->id,
         ]);
         $ethnicity = Ethnicity::factory()->create();
-        $this->executeService($user, $vault, $gender, $ethnicity);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $this->executeService($user, $vault, $gender, $ethnicity, $maritalStatus);
     }
 
-    private function executeService(User $user, Vault $vault, Gender $gender, ?Ethnicity $ethnicity = null): void
+    #[Test]
+    public function it_fails_if_marital_status_doesnt_belong_to_account(): void
+    {
+        $this->expectException(ModelNotFoundException::class);
+
+        $user = User::factory()->create();
+        $vault = $this->createVault($user);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $maritalStatus = MaritalStatus::factory()->create();
+        $this->executeService($user, $vault, $gender, $ethnicity, $maritalStatus);
+    }
+
+    private function executeService(User $user, Vault $vault, Gender $gender, ?Ethnicity $ethnicity = null, ?MaritalStatus $maritalStatus = null): void
     {
         $contact = (new CreateContact(
             vault: $vault,
             user: $user,
             gender: $gender,
             ethnicity: $ethnicity,
+            maritalStatus: $maritalStatus,
             nationality: 'American',
             firstName: 'Ross',
             lastName: 'Geller',
@@ -92,7 +123,6 @@ class CreateContactTest extends TestCase
             tribalName: '',
             generationName: '',
             romanizedName: '',
-            maritalStatus: '',
             prefix: '',
             suffix: '',
             canBeDeleted: true,

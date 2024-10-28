@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactRelationshipViewModel;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Services\CreateContact;
 use App\Services\DestroyContact;
 use Illuminate\Http\RedirectResponse;
@@ -45,8 +46,9 @@ class ContactController extends Controller
         $vault = $request->attributes->get('vault');
 
         $validated = $request->validate([
-            'gender_id' => 'required|exists:genders,id',
+            'gender_id' => 'nullable|exists:genders,id',
             'ethnicity_id' => 'nullable|exists:ethnicities,id',
+            'marital_status_id' => 'nullable|exists:marital_statuses,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
@@ -57,7 +59,6 @@ class ContactController extends Controller
             'generation_name' => 'nullable|string|max:255',
             'romanized_name' => 'nullable|string|max:255',
             'nationality' => 'nullable|string|max:255',
-            'marital_status' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
         ]);
@@ -65,7 +66,7 @@ class ContactController extends Controller
         $contact = (new CreateContact(
             user: auth()->user(),
             vault: $vault,
-            gender: Gender::find($validated['gender_id']),
+            gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
             ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
@@ -77,7 +78,7 @@ class ContactController extends Controller
             generationName: $validated['generation_name'],
             romanizedName: $validated['romanized_name'],
             nationality: $validated['nationality'],
-            maritalStatus: $validated['marital_status'],
+            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
         ))->execute();
