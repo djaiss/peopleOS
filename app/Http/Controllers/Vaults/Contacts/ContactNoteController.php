@@ -32,6 +32,7 @@ class ContactNoteController extends Controller
         $vault = $request->attributes->get('vault');
         $notes = ContactNotesViewModel::index($contact);
         $contact = ContactViewModel::show($contact);
+
         return view('vaults.contacts.partials.notes', [
             'vault' => $vault,
             'contact' => $contact,

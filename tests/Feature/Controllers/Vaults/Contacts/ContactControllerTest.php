@@ -71,9 +71,13 @@ class ContactControllerTest extends TestCase
             'account_id' => $user->account->id,
             'label' => 'Male',
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+            'label' => 'Single',
+        ]);
 
         $response = $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/contacts/new')
+            ->get('/vaults/'.$vault->id.'/contacts/new')
             ->assertSee('Add a contact')
             ->assertOk();
 
@@ -81,13 +85,14 @@ class ContactControllerTest extends TestCase
         $this->assertArrayHasKey('routes', $response);
         $this->assertArrayHasKey('ethnicities', $response);
         $this->assertArrayHasKey('genders', $response);
+        $this->assertArrayHasKey('maritalStatuses', $response);
 
         $this->assertCount(1, $response['routes']);
         $this->assertEquals(
             [
                 'contact' => [
-                    'index' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts',
-                    'store' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts',
+                    'index' => env('APP_URL').'/vaults/'.$vault->id.'/contacts',
+                    'store' => env('APP_URL').'/vaults/'.$vault->id.'/contacts',
                 ],
             ],
             $response['routes']
@@ -95,7 +100,7 @@ class ContactControllerTest extends TestCase
 
         $this->assertCount(1, $response['ethnicities']);
         $this->assertCount(1, $response['genders']);
-
+        $this->assertCount(1, $response['maritalStatuses']);
         $this->assertEquals(
             [
                 'id' => $ethnicity->id,
@@ -109,6 +114,13 @@ class ContactControllerTest extends TestCase
                 'name' => 'Male',
             ],
             $response['genders']->toArray()[0]
+        );
+        $this->assertEquals(
+            [
+                'id' => $maritalStatus->id,
+                'name' => 'Single',
+            ],
+            $response['maritalStatuses']->toArray()[0]
         );
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Vaults\Contacts;
 
-use App\Cache\ContactListCache;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
@@ -52,10 +51,18 @@ class ContactController extends Controller
                 'name' => $gender->getLabel(),
             ]);
 
+        $maritalStatuses = MaritalStatus::where('account_id', $account->id)
+            ->get()
+            ->map(fn (MaritalStatus $maritalStatus) => [
+                'id' => $maritalStatus->id,
+                'name' => trans($maritalStatus->getLabel()),
+            ]);
+
         return view('vaults.contacts.new', [
             'vault' => $vault,
             'ethnicities' => $ethnicities,
             'genders' => $genders,
+            'maritalStatuses' => $maritalStatuses,
             'routes' => [
                 'contact' => [
                     'index' => route('vaults.contacts.index', $vault),
@@ -92,6 +99,7 @@ class ContactController extends Controller
             vault: $vault,
             gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
             ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
+            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],
@@ -102,7 +110,6 @@ class ContactController extends Controller
             generationName: $validated['generation_name'],
             romanizedName: $validated['romanized_name'],
             nationality: $validated['nationality'],
-            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
         ))->execute();
