@@ -16,7 +16,7 @@
     <!-- 2fa -->
     @fragment('2fa-show-state')
       <div id="define-two-factor" class="flex items-center p-3">
-        <x-heroicon-o-device-phone-mobile class="mr-3 h-5 w-5 flex-shrink-0 text-gray-400" />
+        {{-- <x-heroicon-o-device-phone-mobile class="mr-3 h-5 w-5 flex-shrink-0 text-gray-400" /> --}}
 
         <div>
           <div class="flex items-center">
@@ -43,7 +43,7 @@
       <!-- recovery codes -->
       @if ($user->two_factor_confirmed_at)
         <div id="recovery-code-show-state" class="flex items-center border-t p-3">
-          <x-heroicon-o-document-text class="mr-3 h-5 w-5 flex-shrink-0 text-gray-400" />
+          {{-- <x-heroicon-o-document-text class="mr-3 h-5 w-5 flex-shrink-0 text-gray-400" /> --}}
 
           <div>
             <div class="flex items-center">

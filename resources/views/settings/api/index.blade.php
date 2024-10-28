@@ -27,7 +27,6 @@
         </h3>
 
         <x-button.secondary href="{{ route('settings.api.new') }}" dusk="add-key" class="flex items-center text-sm">
-          <x-heroicon-c-plus class="mr-1 h-4 w-4" />
           <span>{{ __('Add key') }}</span>
         </x-button.secondary>
       </div>
@@ -59,7 +58,7 @@
             @forelse ($tokens as $token)
               <div class="flex flex-col border border-l-2 border-transparent border-b-gray-200 py-2 last:border-b-0 hover:border-l-2 hover:border-l-blue-300 hover:bg-blue-50 sm:flex-row sm:items-center sm:justify-between sm:border-b-0 sm:px-2 dark:hover:bg-gray-600">
                 <div class="mb-2 flex items-center sm:mb-0">
-                  <x-heroicon-o-key class="mr-1 h-4 w-4 text-gray-400 dark:text-gray-500" />
+                  <x-lucide-key class="mr-1 h-4 w-4 text-gray-400 dark:text-gray-500" />
                   <span class="font-mono text-sm">{{ $token['name'] }}</span>
                 </div>
 

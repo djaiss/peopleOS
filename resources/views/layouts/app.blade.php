@@ -42,9 +42,7 @@
       @if (session('status'))
         <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => (show = false), 3000)" class="absolute bottom-12 right-10 mx-auto max-w-xl px-2 pt-6 sm:px-6 lg:px-8">
           <div class="flex items-center overflow-hidden rounded border border-green-600 bg-white px-5 py-2.5 shadow-sm shadow-gray-400 dark:bg-gray-800">
-            <div class="mr-2 bg-green-100 px-2 py-2">
-              <x-heroicon-o-light-bulb class="h-5 w-5 text-green-500" />
-            </div>
+            <div class="mr-2 bg-green-100 px-2 py-2"></div>
 
             <p>{{ session('status') }}</p>
           </div>

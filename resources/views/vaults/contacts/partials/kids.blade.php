@@ -14,7 +14,7 @@
         </div>
 
         <div x-on:click="addMode = true" class="button -left-6 flex cursor-pointer items-center rounded border bg-white text-sm">
-          <x-heroicon-o-plus class="h-4 w-4" />
+          {{-- <x-heroicon-o-plus class="h-4 w-4" /> --}}
         </div>
       </div>
     </div>

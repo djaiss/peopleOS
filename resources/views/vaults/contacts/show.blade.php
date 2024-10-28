@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="button -left-6 flex cursor-pointer items-center rounded border bg-white text-sm">
-                      <x-heroicon-o-plus class="h-4 w-4" />
+                      <x-lucide-plus class="h-4 w-4" />
                     </div>
                   </div>
                 </div>
@@ -128,7 +128,7 @@
             <div class="absolute -top-4 w-full">
               <div class="flex justify-between">
                 <div class="flex items-center rounded-full border bg-white py-1 pl-2 pr-3 text-sm">
-                  <x-heroicon-o-clipboard-document-check class="mr-2 h-4 w-4 text-gray-500" />
+                  {{-- <x-heroicon-o-clipboard-document-check class="mr-2 h-4 w-4 text-gray-500" /> --}}
                   <div>Tasks</div>
                 </div>
 
@@ -158,7 +158,7 @@
             <div class="absolute -top-4 w-full">
               <div class="flex justify-between">
                 <div class="flex items-center rounded-full border bg-white py-1 pl-2 pr-3 text-sm">
-                  <x-heroicon-o-clipboard-document-check class="mr-2 h-4 w-4 text-gray-500" />
+                  {{-- <x-lucide-clipboard-document-check class="mr-2 h-4 w-4 text-gray-500" /> --}}
                   <div>Personal info</div>
                 </div>
 
