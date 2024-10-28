@@ -1,12 +1,14 @@
 @props([
   'href',
   'type' => 'button',
+  'navigate' => false,
+  'hover' => false,
 ])
 
 @isset($href)
-  <a href="{{ $href }}" {{ $attributes->merge(['class' => 'button dark:box-s primary relative border-zinc-900 bg-white dark:border-zinc-100 dark:bg-gray-800 dark:text-gray-100']) }}>{{ $slot }}</a>
+  <a href="{{ $href }}" @if($navigate) wire:navigate @endif @if($hover) wire:navigate.hover @endif {{ $attributes->merge(['class' => 'rounded-md border border-indigo-700 bg-indigo-500 px-3 py-1 font-semibold text-white shadow-sm hover:bg-indigo-700']) }}>{{ $slot }}</a>
 @else
-  <button {{ $attributes->merge(['type' => 'submit', 'class' => 'button dark:box-s primary relative border-zinc-900 bg-white dark:border-zinc-100 dark:bg-gray-800 dark:text-gray-100']) }}>
+  <button {{ $attributes->merge(['type' => 'submit', 'class' => 'rounded-md border border-indigo-700 bg-indigo-500 px-3 py-1 font-semibold text-white shadow-sm hover:bg-indigo-700']) }}>
     {{ $slot }}
   </button>
 @endif

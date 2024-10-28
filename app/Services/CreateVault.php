@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Jobs\ClearCacheOfAllVaultsInAccount;
+use App\Cache\AccountVaultsCache;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\Vault;
@@ -64,6 +64,8 @@ class CreateVault
 
     private function clearCache(): void
     {
-        ClearCacheOfAllVaultsInAccount::dispatch($this->user->account);
+        AccountVaultsCache::make(
+            account: $this->user->account,
+        )->refresh();
     }
 }

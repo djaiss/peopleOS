@@ -18,10 +18,11 @@
 
   <main class="relative mt-16 sm:mt-24">
     <div class="mx-auto max-w-lg px-2 py-2 sm:py-6">
-      <form method="post" action="{{ route('vaults.store') }}" class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+      <form action="{{ route('vaults.store') }}" method="post" class="mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
         @csrf
+        @method('post')
 
-        <div class="rounded-t-lg border-b border-gray-200 bg-blue-50 p-3 dark:border-gray-700 dark:bg-blue-900 sm:p-5">
+        <div class="rounded-t-lg border-b border-gray-200 bg-slate-200 p-3 sm:p-5 dark:border-gray-700 dark:bg-blue-900">
           <h1 class="mb-1 flex justify-center text-2xl font-medium">
             <span>{{ __('Create a vault') }}</span>
           </h1>
@@ -50,8 +51,8 @@
           </div>
         </div>
 
-        <div class="flex justify-between p-5">
-          <x-button.secondary href="{{ route('vaults.index') }}">
+        <div class="flex items-center justify-between rounded-b-lg bg-gray-50 px-6 py-4">
+          <x-button.secondary hover href="{{ route('vaults.index') }}">
             {{ __('Cancel') }}
           </x-button.secondary>
 

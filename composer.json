@@ -12,13 +12,13 @@
     "amirami/localizator": "^0.13.0@alpha",
     "bacon/bacon-qr-code": "^3.0",
     "codezero/laravel-localizer": "^3.0",
-    "inertiajs/inertia-laravel": "2.x-dev",
     "laravel/framework": "^11.9",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
+    "livewire/livewire": "^3.5",
+    "mallardduck/blade-lucide-icons": "^1.23",
     "pragmarx/google2fa": "^8.0",
-    "stichoza/google-translate-php": "^5.1",
-    "tightenco/ziggy": "^2.0"
+    "stichoza/google-translate-php": "^5.1"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.13",

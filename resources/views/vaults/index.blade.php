@@ -41,77 +41,45 @@
   @else
     <div class="mx-auto max-w-4xl px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
       <div class="mb-10 items-center justify-between sm:mb-6 sm:flex">
-        <h3 class="mb-3 dark:text-slate-200 sm:mb-0">
+        <h3 class="mb-3 sm:mb-0 dark:text-slate-200">
           {{ __('All the vaults in the account') }}
         </h3>
-        <x-button.secondary href="{{ route('vaults.new') }}">
-          {{ __('Create a vault') }}
-        </x-button.secondary>
+        <x-button.primary href="{{ route('vaults.new') }}" hover dusk="">
+          {{ __('New vault') }}
+        </x-button.primary>
       </div>
 
-      <div class="vault-list grid grid-cols-1 gap-6 sm:grid-cols-3">
-        @foreach ($vaults as $vault)
-          <div class="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-            <div class="vault-detail grid">
-              <x-link href="{{ $vault['url']['show'] }}" class="border-b border-gray-200 px-3 py-1 hover:rounded-t-lg hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-300 hover:dark:bg-slate-800">
-                {{ $vault['name'] }}
-              </x-link>
+      <div class="flex bg-white shadow sm:rounded-lg">
+        <ul class="w-full">
+          @foreach ($vaults as $vault)
+            <li class="border-b border-gray-200 px-6 py-4 last:border-b-0 hover:bg-slate-50 first:hover:rounded-t-lg last:hover:rounded-b-lg">
+              <div class="flex items-center justify-between">
+                <div class="mr-6 flex flex-col">
+                  <div class="flex items-center">
+                    <x-link href="{{ $vault['url']['show'] }}">{{ $vault['name'] }}</x-link>
+                  </div>
+                  <div class="mt-2 flex items-center">
+                    <div class="mr-5 flex">
+                      <x-lucide-activity class="mr-1 w-3 text-gray-500" />
 
-              <!-- description -->
-              <div>
-                @if ($vault['description'])
-                  <p class="p-3 dark:text-gray-300">
-                    {{ $vault['description'] }}
-                  </p>
-                @else
-                  <p class="p-3 text-gray-500">
-                    {{ __('No description yet.') }}
-                  </p>
-                @endif
-              </div>
+                      <p class="text-sm text-gray-600">
+                        {{ $vault['updated_at'] }}
+                      </p>
+                    </div>
 
-              <!-- actions -->
-              <div class="flex items-center justify-between border-t border-gray-200 px-3 py-2 dark:border-gray-700">
-                {{--
-                  <InertiaLink :href="vault.url.settings">
-                  <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="pointer h-5 w-5 text-gray-400 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-100"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  </InertiaLink>
-                  
-                  <InertiaLink :href="vault.url.show">
-                  <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="pointer h-5 w-5 text-gray-400 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-100"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                  </InertiaLink>
-                --}}
+                    <p class="mr-4 text-sm text-gray-600">
+                      @if ($vault['description'])
+                        {{ $vault['description'] }}
+                      @else
+                        {{ __('No description yet.') }}
+                      @endif
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        @endforeach
+            </li>
+          @endforeach
+        </ul>
       </div>
     </div>
   @endif

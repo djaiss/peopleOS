@@ -43,7 +43,7 @@
         </p>
       </div>
 
-      <div class="rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-4">
+      <div class="rounded-lg bg-white p-4 shadow sm:p-4 dark:bg-gray-800">
         <!-- new key added, only displayed once -->
         @if (session('key'))
           <div class="mb-3 rounded-lg border-l-2 border-green-300 bg-green-50 p-4 dark:border-green-500 dark:bg-green-900">
@@ -57,7 +57,7 @@
         <div hx-target="this" hx-swap="innerHTML" hx-get="{{ route('settings.api.index') }}" hx-trigger="loadTokens from:body">
           @fragment('tokens-list')
             @forelse ($tokens as $token)
-              <div class="flex flex-col border border-l-2 border-transparent border-b-gray-200 py-2 last:border-b-0 hover:border-l-2 hover:border-l-blue-300 hover:bg-blue-50 dark:hover:bg-gray-600 sm:flex-row sm:items-center sm:justify-between sm:border-b-0 sm:px-2">
+              <div class="flex flex-col border border-l-2 border-transparent border-b-gray-200 py-2 last:border-b-0 hover:border-l-2 hover:border-l-blue-300 hover:bg-blue-50 sm:flex-row sm:items-center sm:justify-between sm:border-b-0 sm:px-2 dark:hover:bg-gray-600">
                 <div class="mb-2 flex items-center sm:mb-0">
                   <x-heroicon-o-key class="mr-1 h-4 w-4 text-gray-400 dark:text-gray-500" />
                   <span class="font-mono text-sm">{{ $token['name'] }}</span>
