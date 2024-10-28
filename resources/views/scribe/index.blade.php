@@ -838,14 +838,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/repellendus/contacts" \
+    --get "http://peopleos.test/api/vaults/ea/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/repellendus/contacts"
+    "http://peopleos.test/api/vaults/ea/contacts"
 );
 
 const headers = {
@@ -861,7 +861,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/repellendus/contacts';
+$url = 'http://peopleos.test/api/vaults/ea/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -1031,11 +1031,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="repellendus" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="ea" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>repellendus</code>
+              <code>ea</code>
             </p>
           </div>
         </form>
@@ -2518,14 +2518,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/maxime/contacts/impedit/phone-numbers" \
+    --get "http://peopleos.test/api/vaults/nobis/contacts/maxime/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/maxime/contacts/impedit/phone-numbers"
+    "http://peopleos.test/api/vaults/nobis/contacts/maxime/phone-numbers"
 );
 
 const headers = {
@@ -2541,7 +2541,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/maxime/contacts/impedit/phone-numbers';
+$url = 'http://peopleos.test/api/vaults/nobis/contacts/maxime/phone-numbers';
 $response = $client-&gt;get(
     $url,
     [
@@ -2671,11 +2671,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="maxime" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="nobis" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>maxime</code>
+              <code>nobis</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2683,11 +2683,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="impedit" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="maxime" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>impedit</code>
+              <code>maxime</code>
             </p>
           </div>
         </form>
@@ -2751,7 +2751,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"laboriosam\",
+    \"label\": \"odit\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -2768,7 +2768,7 @@ const headers = {
 };
 
 let body = {
-    "label": "laboriosam",
+    "label": "odit",
     "phone_number": "+1234567890"
 };
 
@@ -2790,7 +2790,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'laboriosam',
+            'label' =&gt; 'odit',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -2895,11 +2895,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="laboriosam" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="odit" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>laboriosam</code>
+              <code>odit</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2929,7 +2929,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"vero\",
+    \"label\": \"eligendi\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -2946,7 +2946,7 @@ const headers = {
 };
 
 let body = {
-    "label": "vero",
+    "label": "eligendi",
     "phone_number": "+1234567890"
 };
 
@@ -2968,7 +2968,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'vero',
+            'label' =&gt; 'eligendi',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3085,11 +3085,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="vero" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="eligendi" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>vero</code>
+              <code>eligendi</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3115,14 +3115,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/laudantium/contacts/1/phone-numbers/1" \
+    "http://peopleos.test/api/vaults/animi/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/laudantium/contacts/1/phone-numbers/1"
+    "http://peopleos.test/api/vaults/animi/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3138,7 +3138,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/laudantium/contacts/1/phone-numbers/1';
+$url = 'http://peopleos.test/api/vaults/animi/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3214,11 +3214,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="laudantium" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="animi" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>laudantium</code>
+              <code>animi</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5005,14 +5005,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/1/contacts/eius/notes" \
+    --get "http://peopleos.test/api/vaults/1/contacts/et/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/eius/notes"
+    "http://peopleos.test/api/vaults/1/contacts/et/notes"
 );
 
 const headers = {
@@ -5028,7 +5028,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/eius/notes';
+$url = 'http://peopleos.test/api/vaults/1/contacts/et/notes';
 $response = $client-&gt;get(
     $url,
     [
@@ -5133,11 +5133,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="eius" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="et" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>eius</code>
+              <code>et</code>
             </p>
           </div>
         </form>
@@ -5151,7 +5151,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/vaults/1/contacts/assumenda/notes" \
+    "http://peopleos.test/api/vaults/1/contacts/sint/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5162,7 +5162,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/assumenda/notes"
+    "http://peopleos.test/api/vaults/1/contacts/sint/notes"
 );
 
 const headers = {
@@ -5183,7 +5183,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/assumenda/notes';
+$url = 'http://peopleos.test/api/vaults/1/contacts/sint/notes';
 $response = $client-&gt;post(
     $url,
     [
@@ -5282,11 +5282,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="assumenda" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="sint" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>assumenda</code>
+              <code>sint</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>

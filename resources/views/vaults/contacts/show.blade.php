@@ -100,18 +100,20 @@
             <!-- notes -->
             <div class="p-3 sm:p-0">
               <!-- add note -->
-              <form hx-target="#notes-list" hx-post="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200" hx-on::after-request="this.reset()">
-                @csrf
+              <div class="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-md">
+                <form hx-target="#notes-list" hx-post="{{ route('vaults.contacts.notes.store', ['vault' => $vault, 'slug' => $contact['slug']]) }}" class="mb-4 border-b border-gray-200" hx-on::after-request="this.reset()">
+                  @csrf
 
-                <x-textarea id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="note-body"></x-textarea>
-                <div class="mb-3 flex items-center justify-between">
-                  <p class="text-xs text-gray-500">{{ __('Show options') }} (change date or add reminder)</p>
+                  <x-textarea id="body" name="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="note-body"></x-textarea>
+                  <div class="mb-3 flex items-center justify-between">
+                    <p class="text-xs text-gray-500">{{ __('Show options') }} (change date or add reminder)</p>
 
-                  <x-button.secondary type="submit" dusk="submit-note">
-                    {{ __('Add note') }}
-                  </x-button.secondary>
-                </div>
-              </form>
+                    <x-button.secondary type="submit" dusk="submit-note">
+                      {{ __('Add note') }}
+                    </x-button.secondary>
+                  </div>
+                </form>
+              </div>
 
               <!-- notes -->
               <div id="notes-list">

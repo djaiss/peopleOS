@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Vaults\Contacts;
 
-use App\Cache\ContactInformationCache;
 use App\Cache\ContactListCache;
-use App\Cache\ContactNotesCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\Contacts\ContactRelationshipViewModel;
+use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
+use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Services\CreateContact;
@@ -20,23 +19,48 @@ class ContactController extends Controller
     public function index(Request $request): View
     {
         $vault = $request->attributes->get('vault');
-        $contacts = ContactListCache::make(
-            user: auth()->user(),
-            vault: $vault,
-        )->value();
+        $contacts = ContactViewModel::index($vault);
 
         return view('vaults.contacts.index', [
             'vault' => $vault,
             'contacts' => $contacts,
+            'routes' => [
+                'contact' => [
+                    'new' => route('vaults.contacts.new', $vault),
+                ],
+            ],
         ]);
     }
 
     public function new(Request $request): View
     {
+        $account = $request->attributes->get('account');
         $vault = $request->attributes->get('vault');
+
+        $ethnicities = Ethnicity::where('account_id', $account->id)
+            ->get()
+            ->map(fn (Ethnicity $ethnicity) => [
+                'id' => $ethnicity->id,
+                'name' => trans($ethnicity->getLabel()),
+            ]);
+
+        $genders = Gender::where('account_id', $account->id)
+            ->get()
+            ->map(fn (Gender $gender) => [
+                'id' => $gender->id,
+                'name' => $gender->getLabel(),
+            ]);
 
         return view('vaults.contacts.new', [
             'vault' => $vault,
+            'ethnicities' => $ethnicities,
+            'genders' => $genders,
+            'routes' => [
+                'contact' => [
+                    'index' => route('vaults.contacts.index', $vault),
+                    'store' => route('vaults.contacts.store', $vault),
+                ],
+            ],
         ]);
     }
 
@@ -82,18 +106,10 @@ class ContactController extends Controller
             suffix: $validated['suffix'],
         ))->execute();
 
-        // regenerate the cache
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $vault,
-        )->refresh();
-
-        $request->session()->flash('status', __('The contact has been created'));
-
         return redirect()->route('vaults.contacts.show', [
             'vault' => $vault,
             'slug' => $contact->slug,
-        ]);
+        ])->success(trans('The contact has been created'));
     }
 
     public function show(Request $request): View
@@ -101,21 +117,9 @@ class ContactController extends Controller
         $vault = $request->attributes->get('vault');
         $contact = $request->attributes->get('contact');
 
-        $contacts = ContactListCache::make(
-            user: auth()->user(),
-            vault: $vault,
-        )->value();
-
-        $notes = ContactNotesCache::make(
-            contact: $contact,
-        )->value();
-
-        $contact = ContactInformationCache::make(
-            user: auth()->user(),
-            contact: $contact,
-        )->value();
-
-        //$children = ContactRelationshipViewModel::index($contact)['children'];
+        $contacts = ContactViewModel::index($vault);
+        $notes = ContactNotesViewModel::index($contact);
+        $contact = ContactViewModel::show($contact);
 
         return view('vaults.contacts.show', [
             'vault' => $vault,
@@ -123,7 +127,11 @@ class ContactController extends Controller
             'contacts' => $contacts,
             'notes' => $notes,
             'companies' => $contact['existing_companies'],
-            //'children' => $children,
+            'routes' => [
+                'contact' => [
+                    'new' => route('vaults.contacts.new', $vault),
+                ],
+            ],
         ]);
     }
 
@@ -137,14 +145,6 @@ class ContactController extends Controller
             vault: $vault,
             contact: $contact,
         ))->execute();
-
-        // regenerate the cache
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $vault,
-        )->refresh();
-
-        $request->session()->flash('status', __('The contact has been deleted'));
 
         return redirect()->route('vaults.contacts.index', [
             'vault' => $vault,

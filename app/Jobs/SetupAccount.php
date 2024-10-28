@@ -53,6 +53,14 @@ class SetupAccount implements ShouldQueue
         DB::table('ethnicities')->insert([
             [
                 'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Americas - European Descent'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Americas - African American'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
                 'label_translation_key' => trans_key('Sub-Saharan African'),
             ],
             [
@@ -122,6 +130,10 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'label_translation_key' => trans_key('Polynesian'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Indigenous Peoples'),
             ],
         ]);
     }
