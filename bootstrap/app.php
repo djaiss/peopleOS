@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Middleware\CheckAccount;
 use App\Http\Middleware\CheckAPIContact;
 use App\Http\Middleware\CheckContact;
 use App\Http\Middleware\CheckVault;
-use App\Http\Middleware\Locale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,8 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->append(Locale::class);
         $middleware->alias([
+            'account' => CheckAccount::class,
             'vault' => CheckVault::class,
             'contact' => CheckContact::class,
             'api_contact' => CheckAPIContact::class,

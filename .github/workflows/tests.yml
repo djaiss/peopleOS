@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: ['8.3']
+        php-version: ['8.3', '8.4']
         connection: [sqlite, mysql]
         testsuite: [Unit]
         coverage: [true] # run test with coverage, if 'coverage-with' match with the connection

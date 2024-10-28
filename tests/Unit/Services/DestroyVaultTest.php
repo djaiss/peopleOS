@@ -2,13 +2,11 @@
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\ClearCacheOfAllVaultsInAccount;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\DestroyVault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -37,8 +35,6 @@ class DestroyVaultTest extends TestCase
 
     private function executeService(User $user, Vault $vault): void
     {
-        Queue::fake();
-
         (new DestroyVault(
             user: $user,
             vault: $vault,
@@ -47,9 +43,5 @@ class DestroyVaultTest extends TestCase
         $this->assertDatabaseMissing('vaults', [
             'id' => $vault->id,
         ]);
-
-        Queue::assertPushed(ClearCacheOfAllVaultsInAccount::class, function ($job) use ($user) {
-            return $job->account->is($user->account);
-        });
     }
 }

@@ -2,30 +2,35 @@
 
 namespace App\Http\Controllers\Vaults;
 
-use App\Cache\ContactListCache;
-use App\Cache\UserVaultsCache;
+use App\Cache\AccountVaultsCache;
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\VaultViewModel;
 use App\Services\CreateVault;
 use App\Services\DestroyVault;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class VaultController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): View
     {
-        $vaults = VaultViewModel::index(auth()->user());
+        $account = $request->attributes->get('account');
 
-        return Inertia::render('Vault/Index', [
+        $vaults = AccountVaultsCache::make(
+            account: $account,
+        )->value();
+
+        return view('vaults.index', [
             'vaults' => $vaults,
             'routes' => [
                 'store_vault' => route('vaults.store'),
             ],
         ]);
+    }
+
+    public function new(): View
+    {
+        return view('vaults.new');
     }
 
     public function store(Request $request): RedirectResponse
@@ -59,15 +64,6 @@ class VaultController extends Controller
             user: auth()->user(),
             vault: $request->attributes->get('vault'),
         ))->execute();
-
-        UserVaultsCache::make(
-            user: auth()->user(),
-        )->refresh();
-
-        ContactListCache::make(
-            user: auth()->user(),
-            vault: $request->attributes->get('vault'),
-        )->refresh();
 
         $request->session()->flash('status', __('The vault has been deleted'));
 

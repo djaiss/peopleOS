@@ -1,8 +1,8 @@
 <div class="w-full">
   <!-- main nav -->
-  <nav class="max-w-8xl mx-auto flex h-10 items-center justify-between border-b bg-gray-50 px-3 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200 sm:px-6">
-    <div class="dark:highlight-white/5 items-center rounded-lg border border-gray-200 bg-white px-2 py-1 text-sm dark:border-0 dark:border-gray-700 dark:bg-gray-400/20 dark:bg-gray-900 sm:flex">
-      <x-link href="{{ route('vaults.index') }}" class="flex-shrink-0 dark:text-sky-400">{{ auth()->user()->first_name }}</x-link>
+  <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b bg-slate-900 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
+    <div class="dark:highlight-white/5 items-center rounded-lg border border-slate-600 bg-slate-700 px-2 py-1 text-sm sm:flex dark:border-0 dark:border-gray-700 dark:bg-gray-400/20 dark:bg-gray-900">
+      <x-link href="{{ route('vaults.index') }}" class="flex-shrink-0 text-slate-400 hover:text-white dark:text-sky-400">{{ auth()->user()->first_name }}</x-link>
 
       <!-- information about the current vault -->
       {{--
@@ -46,50 +46,18 @@
     --}}
 
     <!-- icons -->
-    <div class="flew-grow">
-      <ul class="relative">
-        <li class="relative top-[3px] me-4 inline">
-          <label for="dark-mode-toggle" class="relative inline-flex cursor-pointer">
-            <input id="dark-mode-toggle" v-model="style.checked" type="checkbox" class="peer hidden" />
-            <div class="peer me-2 h-4 w-7 rounded-full bg-gray-200 after:absolute after:left-[2px] after:right-[14px] after:top-[2px] after:h-3 after:w-3 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:peer-focus:ring-blue-800" />
-            <svg v-if="!style.checked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" height="15" width="15">
-              <g>
-                <circle cx="7" cy="7" r="2.5" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></circle>
-                <line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round"></line>
-              </g>
-            </svg>
-            <svg v-if="style.checked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" height="15" width="15">
-              <path d="M12,10.48A6.55,6.55,0,0,1,6.46.5a6.55,6.55,0,0,0,1,13A6.46,6.46,0,0,0,13,10.39,6.79,6.79,0,0,1,12,10.48Z" fill="none" stroke="#e5e7eb" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </label>
-        </li>
-        <li class="me-4 inline">
-          <x-link href="{{ route('settings.index') }}" class="relative inline">
-            <svg xmlns="http://www.w3.org/2000/svg" class="relative -top-px me-1 inline-block h-4 w-4 cursor-pointer text-gray-600 dark:text-gray-300 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
+    <div class="flex items-center">
+      <x-link href="{{ route('settings.index') }}" navigate class="group mr-5 flex">
+        <x-lucide-settings class="mr-1 w-4 text-slate-400 group-hover:text-white" />
 
-            <span class="text-sm dark:text-sky-400">{{ __('Settings') }}</span>
-          </x-link>
-        </li>
-        <li class="inline">
-          <x-link class="inline" href="{{ route('logout') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" class="me-1 inline-block h-4 w-4 cursor-pointer text-gray-600 dark:text-gray-300 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
+        <span class="text-sm text-slate-400 group-hover:text-white group-hover:no-underline dark:text-sky-400">{{ __('Settings') }}</span>
+      </x-link>
 
-            <span class="text-sm dark:text-sky-400">{{ __('Logout') }}</span>
-          </x-link>
-        </li>
-      </ul>
+      <x-link class="group flex" href="{{ route('logout') }}">
+        <x-lucide-log-out class="mr-1 w-4 text-slate-400 group-hover:text-white" />
+
+        <span class="text-sm text-slate-400 hover:text-white hover:no-underline dark:text-sky-400">{{ __('Logout') }}</span>
+      </x-link>
     </div>
   </nav>
 

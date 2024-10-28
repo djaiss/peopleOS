@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Jobs\ClearCacheOfAllVaultsInAccount;
+use App\Cache\AccountVaultsCache;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -39,6 +39,8 @@ class DestroyVault
 
     private function clearCache(): void
     {
-        ClearCacheOfAllVaultsInAccount::dispatch($this->user->account);
+        AccountVaultsCache::make(
+            account: $this->user->account,
+        )->refresh();
     }
 }

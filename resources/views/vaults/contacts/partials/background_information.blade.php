@@ -6,7 +6,7 @@
 ?>
 
 <div id="background-information" class="mb-2 flex w-full items-center">
-  <x-heroicon-o-fire class="mr-2 h-4 w-4 flex-shrink-0 text-gray-500" />
+  {{-- <x-heroicon-o-fire class="mr-2 h-4 w-4 flex-shrink-0 text-gray-500" /> --}}
 
   <div class="w-full" x-data="{ editMode: false }">
     <div x-show="! editMode">

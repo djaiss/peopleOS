@@ -1,4 +1,4 @@
-<nav class="bg-white dark:border-slate-300/10 dark:bg-gray-900 sm:border-b">
+<nav class="bg-white sm:border-b dark:border-slate-300/10 dark:bg-gray-900">
   <div class="max-w-8xl mx-auto hidden px-4 py-2 sm:px-6 md:block">
     <div class="flex items-baseline justify-between space-x-6">
       <ul class="list-none text-sm font-medium">
@@ -8,7 +8,7 @@
           </x-link>
         </li>
         <li class="inline">
-          <x-link href="{{ route('vaults.contacts.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300 {{ Route::currentRouteName() == 'vaults.contacts.index' ? 'bg-gray-700 text-white no-underline' : '' }}" dusk="navigation-contact-link">
+          <x-link href="{{ route('vaults.contacts.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-30 {{ request()->routeIs('vaults.contacts.*') ? 'bg-gray-700 text-white no-underline' : '' }}" dusk="navigation-contact-link">
             {{ __('Contacts') }}
           </x-link>
         </li>
@@ -48,7 +48,7 @@
           </x-link>
         </li>
         <li class="inline">
-          <x-link href="{{ route('vaults.settings.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300 {{ Route::currentRouteName() == 'vaults.settings.index' ? 'bg-gray-700 text-white no-underline' : '' }}">
+          <x-link navigate href="{{ route('vaults.settings.index', $vault->id) }}" class="rounded-md px-2 py-1 hover:bg-gray-700 hover:text-white hover:no-underline dark:bg-sky-400/20 dark:text-slate-400 hover:dark:text-slate-300 {{ request()->routeIs('vaults.settings.index') ? 'bg-gray-700 text-white no-underline' : '' }}" dusk="navigation-contact-link">
             {{ __('Vault settings') }}
           </x-link>
         </li>

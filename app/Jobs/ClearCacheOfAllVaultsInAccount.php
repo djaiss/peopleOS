@@ -34,7 +34,7 @@ class ClearCacheOfAllVaultsInAccount implements ShouldQueue
         foreach ($vaults as $vault) {
             $users = $vault->users()->get();
             foreach ($users as $user) {
-                UserVaultsCache::make($user)->forget();
+                //UserVaultsCache::make($user)->forget();
             }
         }
     }

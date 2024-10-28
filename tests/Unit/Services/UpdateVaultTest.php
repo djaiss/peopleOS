@@ -2,13 +2,11 @@
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\ClearCacheOfAllVaultsInAccount;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\UpdateVault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -37,8 +35,6 @@ class UpdateVaultTest extends TestCase
 
     private function executeService(User $user, Vault $vault): void
     {
-        Queue::fake();
-
         $vault = (new UpdateVault(
             user: $user,
             vault: $vault,
@@ -55,9 +51,5 @@ class UpdateVaultTest extends TestCase
             Vault::class,
             $vault
         );
-
-        Queue::assertPushed(ClearCacheOfAllVaultsInAccount::class, function ($job) use ($user) {
-            return $job->account->is($user->account);
-        });
     }
 }

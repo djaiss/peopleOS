@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <div class="mb-12 mt-6 w-full overflow-hidden bg-white px-6 py-6 shadow-md dark:bg-gray-900 sm:max-w-md sm:rounded-lg">
+  <div class="mb-12 mt-6 w-full overflow-hidden bg-white px-6 py-6 shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-900">
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
       {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
     </div>
