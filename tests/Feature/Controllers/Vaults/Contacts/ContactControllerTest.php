@@ -5,6 +5,7 @@ namespace Tests\Feature\Controllers\Vaults\Contacts;
 use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -25,6 +26,9 @@ class ContactControllerTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
 
         $this->actingAs($user)
             ->post('/vaults/'.$vault->id.'/contacts', [
@@ -32,6 +36,7 @@ class ContactControllerTest extends TestCase
                 'last_name' => 'Scott',
                 'gender_id' => $gender->id,
                 'ethnicity_id' => $ethnicity->id,
+                'marital_status_id' => $maritalStatus->id,
                 'nickname' => '',
                 'middle_name' => '',
                 'maiden_name' => '',
@@ -40,7 +45,6 @@ class ContactControllerTest extends TestCase
                 'generation_name' => '',
                 'romanized_name' => '',
                 'nationality' => '',
-                'marital_status' => '',
                 'prefix' => '',
                 'suffix' => '',
             ])

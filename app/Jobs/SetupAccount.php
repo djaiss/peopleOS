@@ -28,6 +28,7 @@ class SetupAccount implements ShouldQueue
     {
         $this->createGenders();
         $this->createEthnicities();
+        $this->createMaritalStatuses();
     }
 
     private function createGenders(): void
@@ -122,6 +123,52 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'label_translation_key' => trans_key('Polynesian'),
+            ],
+        ]);
+    }
+
+    private function createMaritalStatuses(): void
+    {
+        DB::table('marital_statuses')->insert([
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Single'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Married'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Divorced'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Civil Union'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Widowed'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Separated'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Cohabiting'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Engaged'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('In a Relationship'),
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'label_translation_key' => trans_key('Complicated'),
             ],
         ]);
     }
