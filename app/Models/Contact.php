@@ -26,15 +26,6 @@ class Contact extends Model
     public const AVATAR_TYPE_URL = 'url';
 
     /**
-     * Possible genders.
-     */
-    public const GENDER_MALE = 'male';
-
-    public const GENDER_FEMALE = 'female';
-
-    public const GENDER_OTHER = 'other';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array<int,string>
@@ -44,6 +35,7 @@ class Contact extends Model
         'company_id',
         'gender_id',
         'ethnicity_id',
+        'marital_status_id',
         'slug',
         'first_name',
         'middle_name',
@@ -55,7 +47,6 @@ class Contact extends Model
         'generation_name',
         'romanized_name',
         'nationality',
-        'marital_status',
         'suffix',
         'prefix',
         'background_information',
@@ -83,7 +74,6 @@ class Contact extends Model
         'generation_name' => 'encrypted',
         'romanized_name' => 'encrypted',
         'nationality' => 'encrypted',
-        'marital_status' => 'encrypted',
         'background_information' => 'encrypted',
         'job_title' => 'encrypted',
     ];
@@ -118,6 +108,14 @@ class Contact extends Model
     public function ethnicity(): BelongsTo
     {
         return $this->belongsTo(Ethnicity::class);
+    }
+
+    /**
+     * Get the marital status associated with the contact.
+     */
+    public function maritalStatus(): BelongsTo
+    {
+        return $this->belongsTo(MaritalStatus::class);
     }
 
     /**

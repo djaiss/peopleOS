@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\ContactPhoneNumber;
 use App\Models\Ethnicity;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Note;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -49,6 +50,15 @@ class ContactTest extends TestCase
             'ethnicity_id' => Ethnicity::factory()->create()->id,
         ]);
         $this->assertTrue($contact->ethnicity()->exists());
+    }
+
+    #[Test]
+    public function it_belongs_to_a_marital_status(): void
+    {
+        $contact = Contact::factory()->create([
+            'marital_status_id' => MaritalStatus::factory()->create()->id,
+        ]);
+        $this->assertTrue($contact->maritalStatus()->exists());
     }
 
     #[Test]

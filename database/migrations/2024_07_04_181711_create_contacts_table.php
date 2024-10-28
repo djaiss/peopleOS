@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('gender_id')->nullable();
             $table->unsignedBigInteger('ethnicity_id')->nullable();
+            $table->unsignedBigInteger('marital_status_id')->nullable();
             $table->text('slug')->nullable();
             $table->text('first_name')->nullable();
             $table->text('middle_name')->nullable();
@@ -28,7 +29,6 @@ return new class extends Migration
             $table->text('generation_name')->nullable();
             $table->text('romanized_name')->nullable();
             $table->text('nationality')->nullable();
-            $table->text('marital_status')->nullable();
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
             $table->text('background_information')->nullable();
@@ -39,6 +39,7 @@ return new class extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
             $table->foreign('ethnicity_id')->references('id')->on('ethnicities')->onDelete('set null');
+            $table->foreign('marital_status_id')->references('id')->on('marital_statuses')->onDelete('set null');
         });
 
         Schema::create('user_vault', function (Blueprint $table): void {

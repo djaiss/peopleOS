@@ -80,6 +80,14 @@ class Account extends Model
         return $this->hasMany(Ethnicity::class);
     }
 
+    /**
+     * Get the marital statuses associated with the account.
+     */
+    public function maritalStatuses(): HasMany
+    {
+        return $this->hasMany(MaritalStatus::class);
+    }
+
     // /**
     //  * Get the pronouns associated with the account.
     //  */
