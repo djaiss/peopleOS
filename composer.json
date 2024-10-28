@@ -17,6 +17,7 @@
     "laravel/tinker": "^2.9",
     "livewire/livewire": "^3.5",
     "mallardduck/blade-lucide-icons": "^1.23",
+    "masmerise/livewire-toaster": "^2.3",
     "pragmarx/google2fa": "^8.0",
     "stichoza/google-translate-php": "^5.1"
   },

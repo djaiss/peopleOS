@@ -5,6 +5,7 @@ namespace Tests\Feature\Controllers\Vaults;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Masmerise\Toaster\Toaster;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -57,6 +58,7 @@ class VaultControllerTest extends TestCase
     #[Test]
     public function a_user_can_create_a_vault(): void
     {
+        Toaster::fake();
         $user = User::factory()->create();
 
         $this->actingAs($user)
@@ -65,6 +67,8 @@ class VaultControllerTest extends TestCase
                 'description' => 'this is the description',
             ])
             ->assertRedirectToRoute('vaults.show', ['vault' => Vault::first()]);
+
+        Toaster::assertDispatched('The vault has been created');
     }
 
     #[Test]
@@ -93,11 +97,14 @@ class VaultControllerTest extends TestCase
     #[Test]
     public function a_user_can_delete_a_vault(): void
     {
+        Toaster::fake();
         $user = User::factory()->create();
         $vault = $this->createVault($user);
 
         $this->actingAs($user)
             ->delete('/vaults/'.$vault->id)
             ->assertRedirectToRoute('vaults.index');
+
+        Toaster::assertDispatched('The vault has been deleted');
     }
 }

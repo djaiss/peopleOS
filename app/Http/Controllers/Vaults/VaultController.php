@@ -46,7 +46,8 @@ class VaultController extends Controller
             description: $validated['description'],
         ))->execute();
 
-        return redirect()->route('vaults.show', $vault);
+        return redirect()->route('vaults.show', $vault)
+            ->success(trans('The vault has been created'));
     }
 
     public function show(Request $request): View
@@ -67,6 +68,7 @@ class VaultController extends Controller
 
         $request->session()->flash('status', __('The vault has been deleted'));
 
-        return redirect()->route('vaults.index');
+        return redirect()->route('vaults.index')
+            ->success(trans('The vault has been deleted'));
     }
 }
