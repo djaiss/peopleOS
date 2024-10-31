@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>PeopleOS Documentation</title>
+    <title>Laravel Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 
@@ -233,7 +233,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 30, 2024</li>
+        <li>Last updated: October 31, 2024</li>
       </ul>
     </div>
 
@@ -244,7 +244,7 @@
         <aside>
           <strong>Base URL</strong>
           :
-          <code>http://peopleos.test</code>
+          <code>http://localhost</code>
         </aside>
         <p>This documentation aims to provide all the information you need to work with our API.</p>
         <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile). You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
@@ -281,14 +281,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/1/companies" \
+    --get "http://localhost/api/vaults/1/companies" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/companies"
+    "http://localhost/api/vaults/1/companies"
 );
 
 const headers = {
@@ -304,7 +304,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/companies';
+$url = 'http://localhost/api/vaults/1/companies';
 $response = $client-&gt;get(
     $url,
     [
@@ -404,7 +404,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/vaults/1/companies" \
+    "http://localhost/api/vaults/1/companies" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -415,7 +415,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/companies"
+    "http://localhost/api/vaults/1/companies"
 );
 
 const headers = {
@@ -436,7 +436,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/companies';
+$url = 'http://localhost/api/vaults/1/companies';
 $response = $client-&gt;post(
     $url,
     [
@@ -548,7 +548,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/companies/1" \
+    "http://localhost/api/vaults/1/companies/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -559,7 +559,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/companies/1"
+    "http://localhost/api/vaults/1/companies/1"
 );
 
 const headers = {
@@ -580,7 +580,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/companies/1';
+$url = 'http://localhost/api/vaults/1/companies/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -704,14 +704,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/companies/1" \
+    "http://localhost/api/vaults/1/companies/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/companies/1"
+    "http://localhost/api/vaults/1/companies/1"
 );
 
 const headers = {
@@ -727,7 +727,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/companies/1';
+$url = 'http://localhost/api/vaults/1/companies/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -838,14 +838,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/voluptatem/contacts" \
+    --get "http://localhost/api/vaults/voluptatem/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/voluptatem/contacts"
+    "http://localhost/api/vaults/voluptatem/contacts"
 );
 
 const headers = {
@@ -861,7 +861,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/voluptatem/contacts';
+$url = 'http://localhost/api/vaults/voluptatem/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -1187,7 +1187,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/vaults/1/contacts" \
+    "http://localhost/api/vaults/1/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1213,7 +1213,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts"
+    "http://localhost/api/vaults/1/contacts"
 );
 
 const headers = {
@@ -1249,7 +1249,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts';
+$url = 'http://localhost/api/vaults/1/contacts';
 $response = $client-&gt;post(
     $url,
     [
@@ -1757,14 +1757,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/1/contacts/1" \
+    --get "http://localhost/api/vaults/1/contacts/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1"
+    "http://localhost/api/vaults/1/contacts/1"
 );
 
 const headers = {
@@ -1780,7 +1780,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1';
+$url = 'http://localhost/api/vaults/1/contacts/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -2076,14 +2076,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/1" \
+    "http://localhost/api/vaults/1/contacts/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1"
+    "http://localhost/api/vaults/1/contacts/1"
 );
 
 const headers = {
@@ -2099,7 +2099,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1';
+$url = 'http://localhost/api/vaults/1/contacts/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2208,7 +2208,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/1/job" \
+    "http://localhost/api/vaults/1/contacts/1/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2220,7 +2220,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1/job"
+    "http://localhost/api/vaults/1/contacts/1/job"
 );
 
 const headers = {
@@ -2242,7 +2242,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1/job';
+$url = 'http://localhost/api/vaults/1/contacts/1/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -2384,7 +2384,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/1/background" \
+    "http://localhost/api/vaults/1/contacts/1/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2395,7 +2395,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1/background"
+    "http://localhost/api/vaults/1/contacts/1/background"
 );
 
 const headers = {
@@ -2416,7 +2416,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1/background';
+$url = 'http://localhost/api/vaults/1/contacts/1/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -2544,14 +2544,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/autem/contacts/adipisci/phone-numbers" \
+    --get "http://localhost/api/vaults/voluptatem/contacts/ut/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/autem/contacts/adipisci/phone-numbers"
+    "http://localhost/api/vaults/voluptatem/contacts/ut/phone-numbers"
 );
 
 const headers = {
@@ -2567,7 +2567,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/autem/contacts/adipisci/phone-numbers';
+$url = 'http://localhost/api/vaults/voluptatem/contacts/ut/phone-numbers';
 $response = $client-&gt;get(
     $url,
     [
@@ -2697,11 +2697,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="autem" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="voluptatem" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>autem</code>
+              <code>voluptatem</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2709,11 +2709,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="adipisci" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="ut" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>adipisci</code>
+              <code>ut</code>
             </p>
           </div>
         </form>
@@ -2773,11 +2773,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers" \
+    "http://localhost/api/vaults/1/contacts/1/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"deleniti\",
+    \"label\": \"blanditiis\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -2785,7 +2785,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers"
+    "http://localhost/api/vaults/1/contacts/1/phone-numbers"
 );
 
 const headers = {
@@ -2794,7 +2794,7 @@ const headers = {
 };
 
 let body = {
-    "label": "deleniti",
+    "label": "blanditiis",
     "phone_number": "+1234567890"
 };
 
@@ -2807,7 +2807,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1/phone-numbers';
+$url = 'http://localhost/api/vaults/1/contacts/1/phone-numbers';
 $response = $client-&gt;post(
     $url,
     [
@@ -2816,7 +2816,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'deleniti',
+            'label' =&gt; 'blanditiis',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -2921,11 +2921,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="deleniti" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="blanditiis" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>deleniti</code>
+              <code>blanditiis</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2951,11 +2951,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1" \
+    "http://localhost/api/vaults/1/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"commodi\",
+    \"label\": \"id\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -2963,7 +2963,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1"
+    "http://localhost/api/vaults/1/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -2972,7 +2972,7 @@ const headers = {
 };
 
 let body = {
-    "label": "commodi",
+    "label": "id",
     "phone_number": "+1234567890"
 };
 
@@ -2985,7 +2985,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1';
+$url = 'http://localhost/api/vaults/1/contacts/1/phone-numbers/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -2994,7 +2994,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'commodi',
+            'label' =&gt; 'id',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3111,11 +3111,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="commodi" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="id" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>commodi</code>
+              <code>id</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3141,14 +3141,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/ex/contacts/1/phone-numbers/1" \
+    "http://localhost/api/vaults/sequi/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/ex/contacts/1/phone-numbers/1"
+    "http://localhost/api/vaults/sequi/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3164,7 +3164,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/ex/contacts/1/phone-numbers/1';
+$url = 'http://localhost/api/vaults/sequi/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3240,11 +3240,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="ex" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="sequi" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>ex</code>
+              <code>sequi</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3286,14 +3286,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/me" \
+    --get "http://localhost/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/me"
+    "http://localhost/api/me"
 );
 
 const headers = {
@@ -3309,7 +3309,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/me';
+$url = 'http://localhost/api/me';
 $response = $client-&gt;get(
     $url,
     [
@@ -3400,14 +3400,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/ethnicities" \
+    --get "http://localhost/api/ethnicities" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/ethnicities"
+    "http://localhost/api/ethnicities"
 );
 
 const headers = {
@@ -3423,7 +3423,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/ethnicities';
+$url = 'http://localhost/api/ethnicities';
 $response = $client-&gt;get(
     $url,
     [
@@ -3578,14 +3578,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/ethnicities/1" \
+    --get "http://localhost/api/ethnicities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/ethnicities/1"
+    "http://localhost/api/ethnicities/1"
 );
 
 const headers = {
@@ -3601,7 +3601,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/ethnicities/1';
+$url = 'http://localhost/api/ethnicities/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -3750,7 +3750,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/ethnicities" \
+    "http://localhost/api/ethnicities" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3761,7 +3761,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/ethnicities"
+    "http://localhost/api/ethnicities"
 );
 
 const headers = {
@@ -3782,7 +3782,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/ethnicities';
+$url = 'http://localhost/api/ethnicities';
 $response = $client-&gt;post(
     $url,
     [
@@ -3915,7 +3915,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/ethnicities/1" \
+    "http://localhost/api/ethnicities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3926,7 +3926,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/ethnicities/1"
+    "http://localhost/api/ethnicities/1"
 );
 
 const headers = {
@@ -3947,7 +3947,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/ethnicities/1';
+$url = 'http://localhost/api/ethnicities/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -4093,14 +4093,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/ethnicities/1" \
+    "http://localhost/api/ethnicities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/ethnicities/1"
+    "http://localhost/api/ethnicities/1"
 );
 
 const headers = {
@@ -4116,7 +4116,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/ethnicities/1';
+$url = 'http://localhost/api/ethnicities/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -4217,14 +4217,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/genders" \
+    --get "http://localhost/api/genders" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/genders"
+    "http://localhost/api/genders"
 );
 
 const headers = {
@@ -4240,7 +4240,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/genders';
+$url = 'http://localhost/api/genders';
 $response = $client-&gt;get(
     $url,
     [
@@ -4395,14 +4395,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/genders/1" \
+    --get "http://localhost/api/genders/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/genders/1"
+    "http://localhost/api/genders/1"
 );
 
 const headers = {
@@ -4418,7 +4418,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/genders/1';
+$url = 'http://localhost/api/genders/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -4567,7 +4567,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/genders" \
+    "http://localhost/api/genders" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4578,7 +4578,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/genders"
+    "http://localhost/api/genders"
 );
 
 const headers = {
@@ -4599,7 +4599,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/genders';
+$url = 'http://localhost/api/genders';
 $response = $client-&gt;post(
     $url,
     [
@@ -4732,7 +4732,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/genders/1" \
+    "http://localhost/api/genders/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4743,7 +4743,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/genders/1"
+    "http://localhost/api/genders/1"
 );
 
 const headers = {
@@ -4764,7 +4764,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/genders/1';
+$url = 'http://localhost/api/genders/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -4910,14 +4910,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/genders/1" \
+    "http://localhost/api/genders/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/genders/1"
+    "http://localhost/api/genders/1"
 );
 
 const headers = {
@@ -4933,7 +4933,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/genders/1';
+$url = 'http://localhost/api/genders/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5031,14 +5031,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/1/contacts/et/notes" \
+    --get "http://localhost/api/vaults/1/contacts/reiciendis/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/et/notes"
+    "http://localhost/api/vaults/1/contacts/reiciendis/notes"
 );
 
 const headers = {
@@ -5054,7 +5054,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/et/notes';
+$url = 'http://localhost/api/vaults/1/contacts/reiciendis/notes';
 $response = $client-&gt;get(
     $url,
     [
@@ -5159,11 +5159,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="et" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="reiciendis" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>et</code>
+              <code>reiciendis</code>
             </p>
           </div>
         </form>
@@ -5177,7 +5177,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/vaults/1/contacts/voluptatem/notes" \
+    "http://localhost/api/vaults/1/contacts/nam/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5188,7 +5188,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/voluptatem/notes"
+    "http://localhost/api/vaults/1/contacts/nam/notes"
 );
 
 const headers = {
@@ -5209,7 +5209,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/voluptatem/notes';
+$url = 'http://localhost/api/vaults/1/contacts/nam/notes';
 $response = $client-&gt;post(
     $url,
     [
@@ -5308,11 +5308,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="voluptatem" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="nam" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>voluptatem</code>
+              <code>nam</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -5339,7 +5339,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1/contacts/1/notes/1" \
+    "http://localhost/api/vaults/1/contacts/1/notes/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5350,7 +5350,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1/notes/1"
+    "http://localhost/api/vaults/1/contacts/1/notes/1"
 );
 
 const headers = {
@@ -5371,7 +5371,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes/1';
+$url = 'http://localhost/api/vaults/1/contacts/1/notes/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -5513,14 +5513,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1/contacts/1/notes/1" \
+    "http://localhost/api/vaults/1/contacts/1/notes/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1/contacts/1/notes/1"
+    "http://localhost/api/vaults/1/contacts/1/notes/1"
 );
 
 const headers = {
@@ -5536,7 +5536,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes/1';
+$url = 'http://localhost/api/vaults/1/contacts/1/notes/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5660,14 +5660,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults" \
+    --get "http://localhost/api/vaults" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults"
+    "http://localhost/api/vaults"
 );
 
 const headers = {
@@ -5683,7 +5683,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults';
+$url = 'http://localhost/api/vaults';
 $response = $client-&gt;get(
     $url,
     [
@@ -5842,7 +5842,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://peopleos.test/api/vaults" \
+    "http://localhost/api/vaults" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5854,7 +5854,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults"
+    "http://localhost/api/vaults"
 );
 
 const headers = {
@@ -5876,7 +5876,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults';
+$url = 'http://localhost/api/vaults';
 $response = $client-&gt;post(
     $url,
     [
@@ -6025,14 +6025,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/1" \
+    --get "http://localhost/api/vaults/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1"
+    "http://localhost/api/vaults/1"
 );
 
 const headers = {
@@ -6048,7 +6048,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1';
+$url = 'http://localhost/api/vaults/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -6179,7 +6179,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://peopleos.test/api/vaults/1" \
+    "http://localhost/api/vaults/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -6191,7 +6191,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1"
+    "http://localhost/api/vaults/1"
 );
 
 const headers = {
@@ -6213,7 +6213,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1';
+$url = 'http://localhost/api/vaults/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -6375,14 +6375,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/1" \
+    "http://localhost/api/vaults/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/1"
+    "http://localhost/api/vaults/1"
 );
 
 const headers = {
@@ -6398,7 +6398,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/1';
+$url = 'http://localhost/api/vaults/1';
 $response = $client-&gt;delete(
     $url,
     [

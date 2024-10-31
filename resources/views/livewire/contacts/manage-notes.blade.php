@@ -67,9 +67,9 @@
       @endif
     </div>
   @empty
-    <div class="bg-gray-50 p-3 text-center">
-      <x-lucide-notebook-pen class="mb-2 h-6 w-6" />
-      <p>{{ __('There are no notes yet.') }}</p>
+    <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+      <x-lucide-notebook-pen class="mb-5 h-6 w-6 text-gray-500" />
+      <p class="text-center">{{ __('You can add notes to document what you know about this contact.') }}</p>
     </div>
   @endforelse
 </div>

@@ -71,7 +71,9 @@ class ManageNotes extends Component
 
     public function store(): void
     {
-        $this->validate();
+        $this->validate([
+            'body' => 'required|string|min:3|max:100000',
+        ]);
 
         $note = (new CreateNote(
             user: auth()->user(),
