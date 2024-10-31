@@ -1,9 +1,17 @@
+<?php
+/**
+ * @var \App\Models\Vault $vault
+ * @var array $routes
+ * @var array $contacts
+ */
+?>
+
 <x-app-layout :vault="$vault">
   <main class="relative sm:mt-12">
     <div class="mx-auto max-w-7xl px-2 py-2 sm:px-0 sm:py-0">
       <div class="contact-vault-list grid grid-cols-3 gap-6">
         <!-- left -->
-        @include('vaults.contacts.partials.contacts', ['contacts' => $contacts])
+        @include('vaults.contacts.partials.contacts', ['routes' => $routes, 'contacts' => $contacts])
 
         <!-- middle -->
         <div class="rounded-lg border border-gray-200 bg-gray-50 p-3 sm:px-3 sm:py-0 dark:border-gray-700 dark:bg-gray-900">sda</div>

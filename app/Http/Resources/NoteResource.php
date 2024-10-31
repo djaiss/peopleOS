@@ -17,10 +17,10 @@ class NoteResource extends JsonResource
         return [
             'id' => $this->id,
             'object' => 'note',
-            'contact' => [
+            'contact' => $this->contact ? [
                 'id' => $this->contact->id,
                 'name' => $this->contact->name,
-            ],
+            ] : null,
             'body' => $this->body,
             'created_at' => $this->created_at->timestamp,
             'updated_at' => $this->updated_at->timestamp,

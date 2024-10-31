@@ -2,14 +2,11 @@
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\ClearCacheForAllContactsInAccount;
 use App\Models\MaritalStatus;
 use App\Models\User;
-use App\Services\DestroyEthnicity;
 use App\Services\DestroyMaritalStatus;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 

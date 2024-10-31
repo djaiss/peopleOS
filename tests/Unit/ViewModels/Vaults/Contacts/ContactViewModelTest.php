@@ -34,7 +34,7 @@ class ContactViewModelTest extends TestCase
             [
                 'id' => $contact->id,
                 'name' => $contact->name,
-                'url' => [
+                'routes' => [
                     'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
                 ],
             ],

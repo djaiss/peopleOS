@@ -41,7 +41,7 @@ class Note extends Model
     }
 
     /**
-     * Get the user record associated with the note.
+     * Get the author who wrote the note. This is a User object.
      */
     public function user(): BelongsTo
     {

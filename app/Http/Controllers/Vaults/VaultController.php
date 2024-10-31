@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Vaults;
 
-use App\Cache\AccountVaultsCache;
 use App\Http\Controllers\Controller;
+use App\Models\Vault;
 use App\Services\CreateVault;
 use App\Services\DestroyVault;
 use Illuminate\Http\RedirectResponse;
@@ -16,14 +16,27 @@ class VaultController extends Controller
     {
         $account = $request->attributes->get('account');
 
-        $vaults = AccountVaultsCache::make(
-            account: $account,
-        )->value();
+        $vaults = $account->vaults()
+            ->get()
+            ->map(fn (Vault $vault): array => [
+                'id' => $vault->id,
+                'name' => $vault->name,
+                'description' => $vault->description,
+                'updated_at' => $vault->updated_at->diffForHumans(),
+                'routes' => [
+                    'vault' => [
+                        'show' => route('vaults.show', $vault),
+                    ],
+                ],
+            ])
+            ->sortBy('name');
 
         return view('vaults.index', [
             'vaults' => $vaults,
             'routes' => [
-                'store_vault' => route('vaults.store'),
+                'vault' => [
+                    'new' => route('vaults.new'),
+                ],
             ],
         ]);
     }

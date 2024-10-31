@@ -23,7 +23,7 @@ class SetupAccountTest extends TestCase
             DB::table('genders')->count()
         );
         $this->assertEquals(
-            18,
+            21,
             DB::table('ethnicities')->count()
         );
         $this->assertEquals(

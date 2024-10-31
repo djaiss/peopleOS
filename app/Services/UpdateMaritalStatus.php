@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Jobs\ClearCacheForAllContactsInAccount;
-use App\Models\Ethnicity;
 use App\Models\MaritalStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

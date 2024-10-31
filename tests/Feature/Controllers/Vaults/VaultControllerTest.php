@@ -4,6 +4,7 @@ namespace Tests\Feature\Controllers\Vaults;
 
 use App\Models\User;
 use App\Models\Vault;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Masmerise\Toaster\Toaster;
 use PHPUnit\Framework\Attributes\Test;
@@ -16,6 +17,7 @@ class VaultControllerTest extends TestCase
     #[Test]
     public function the_vault_index_page_contains_all_the_necessary_data(): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
         $vault = $this->createVault($user);
 
@@ -23,25 +25,30 @@ class VaultControllerTest extends TestCase
             ->get('/vaults')
             ->assertOk();
 
+        $this->assertArrayHasKey('vaults', $response);
+        $this->assertArrayHasKey('routes', $response);
+
         $this->assertCount(1, $response['routes']);
         $this->assertCount(1, $response['vaults']);
 
         $this->assertEquals(
-            $vault->id,
-            $response['vaults']->toArray()[0]['id']
-        );
-        $this->assertEquals(
-            $vault->name,
-            $response['vaults']->toArray()[0]['name']
-        );
-        $this->assertEquals(
-            $vault->description,
-            $response['vaults']->toArray()[0]['description']
+            [
+                'id' => $vault->id,
+                'name' => $vault->name,
+                'description' => $vault->description,
+                'updated_at' => '0 seconds ago',
+                'routes' => [
+                    'vault' => [
+                        'show' => env('APP_URL').'/vaults/'.$vault->id,
+                    ],
+                ],
+            ],
+            $response['vaults']->toArray()[0]
         );
 
         $this->assertEquals(
             env('APP_URL').'/new',
-            $response['routes']['store_vault']
+            $response['routes']['vault']['new']
         );
     }
 
@@ -77,9 +84,12 @@ class VaultControllerTest extends TestCase
         $user = User::factory()->create();
         $vault = $this->createVault($user);
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->get('/vaults/'.$vault->id)
             ->assertOk();
+
+        $this->assertArrayHasKey('vault', $response);
+        $this->assertEquals($vault->id, $response['vault']['id']);
     }
 
     #[Test]

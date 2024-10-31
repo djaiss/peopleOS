@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var array $vaults
+ * @var array $routes
+ */
+?>
+
 <x-app-layout>
   @if (count($vaults) == 0)
     <main class="relative mt-16 sm:mt-10">
@@ -14,7 +21,7 @@
             {{ __('To start, you need to create a vault. This lets you store your contacts and all your information.') }}
           </p>
           <div class="mb-2 text-center">
-            <x-button.primary href="{{ route('vaults.new') }}" dusk="create-vault-no-vaults">
+            <x-button.primary href="{{ $routes['vault']['new'] }}" dusk="create-vault-no-vaults">
               {{ __('Create a vault') }}
             </x-button.primary>
           </div>
@@ -44,7 +51,7 @@
         <h3 class="mb-3 sm:mb-0 dark:text-slate-200">
           {{ __('All the vaults in the account') }}
         </h3>
-        <x-button.primary href="{{ route('vaults.new') }}" hover dusk="">
+        <x-button.primary href="{{ $routes['vault']['new'] }}" hover dusk="">
           {{ __('New vault') }}
         </x-button.primary>
       </div>
@@ -56,7 +63,7 @@
               <div class="flex items-center justify-between">
                 <div class="mr-6 flex flex-col">
                   <div class="flex items-center">
-                    <x-link href="{{ $vault['url']['show'] }}">{{ $vault['name'] }}</x-link>
+                    <x-link href="{{ $vault['routes']['vault']['show'] }}">{{ $vault['name'] }}</x-link>
                   </div>
                   <div class="mt-2 flex items-center">
                     <div class="mr-5 flex">
