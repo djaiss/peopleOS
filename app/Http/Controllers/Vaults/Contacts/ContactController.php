@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Vaults\Contacts;
 
 use App\Http\Controllers\Controller;
-use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Models\Ethnicity;
 use App\Models\Gender;
@@ -126,14 +125,12 @@ class ContactController extends Controller
         $contact = $request->attributes->get('contact');
 
         $contacts = ContactViewModel::index($vault);
-        $notes = ContactNotesViewModel::index($contact);
         $contact = ContactViewModel::show($contact);
 
         return view('vaults.contacts.show', [
             'vault' => $vault,
             'contact' => $contact,
             'contacts' => $contacts,
-            'notes' => $notes,
             'companies' => $contact['existing_companies'],
             'routes' => [
                 'contact' => [

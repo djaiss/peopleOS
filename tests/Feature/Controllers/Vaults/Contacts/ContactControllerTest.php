@@ -185,7 +185,6 @@ class ContactControllerTest extends TestCase
         $this->assertArrayHasKey('vault', $response);
         $this->assertArrayHasKey('contact', $response);
         $this->assertArrayHasKey('contacts', $response);
-        $this->assertArrayHasKey('notes', $response);
         $this->assertArrayHasKey('routes', $response);
         $this->assertArrayHasKey('companies', $response);
 
