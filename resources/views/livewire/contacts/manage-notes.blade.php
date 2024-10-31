@@ -67,7 +67,7 @@
       @endif
     </div>
   @empty
-    <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+    <div id="blank-state" class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-6 shadow-md">
       <x-lucide-notebook-pen class="mb-5 h-6 w-6 text-gray-500" />
       <p class="text-center">{{ __('You can add notes to document what you know about this contact.') }}</p>
     </div>

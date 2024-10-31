@@ -40,11 +40,6 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
         Route::middleware(['contact'])->group(function (): void {
             Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
 
-            // notes
-            Route::post('{vault}/contacts/{slug}/notes', [ContactNoteController::class, 'store'])->name('vaults.contacts.notes.store');
-            Route::put('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'update'])->name('vaults.contacts.notes.update');
-            Route::delete('{vault}/contacts/{slug}/notes/{note}', [ContactNoteController::class, 'destroy'])->name('vaults.contacts.notes.destroy');
-
             // job & background information
             Route::put('{vault}/contacts/{slug}/job-information', [ContactJobInformationController::class, 'update'])->name('vaults.contacts.job-information.update');
             Route::put('{vault}/contacts/{slug}/background-information', [ContactBackgroundInformationController::class, 'update'])->name('vaults.contacts.background-information.update');
