@@ -17,6 +17,10 @@ class SettingsPasswordControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $this->actingAs($user)
+            ->get('/settings/password')
+            ->assertSee('Current password');
+
         $response = $this
             ->actingAs($user)
             ->put('/settings/password', [
@@ -27,8 +31,22 @@ class SettingsPasswordControllerTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/settings/profile');
+            ->assertRedirect('/settings/password');
 
         $this->assertTrue(Hash::check('new-password', $user->refresh()->password));
+    }
+
+    #[Test]
+    public function it_requires_the_current_password_to_be_correct(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->put('/settings/password', [
+                'current_password' => 'wrong-password',
+                'password' => 'new-password',
+                'password_confirmation' => 'new-password',
+            ])
+            ->assertSessionHasErrors();
     }
 }
