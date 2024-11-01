@@ -48,6 +48,10 @@ class NoteControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('notes', [
+            'id' => $note->id,
+        ]);
     }
 
     #[Test]
@@ -85,6 +89,10 @@ class NoteControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('notes', [
+            'id' => $note->id,
+        ]);
     }
 
     #[Test]
@@ -130,6 +138,10 @@ class NoteControllerTest extends TestCase
             ],
             $response->json()
         );
+
+        $this->assertDatabaseMissing('notes', [
+            'id' => $note->id,
+        ]);
     }
 
     #[Test]

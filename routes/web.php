@@ -56,6 +56,7 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
     Route::prefix('settings')->group(function (): void {
         Route::get('', [SettingsController::class, 'index'])->name('settings.index');
+        Route::put('profile', [SettingsProfileController::class, 'update'])->name('settings.profile.update');
 
         // preferences
         Route::get('preferences', [SettingsPreferencesController::class, 'index'])->name('settings.preferences.index');
@@ -67,7 +68,6 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
         // profile
         Route::get('profile', [SettingsProfileController::class, 'index'])->name('settings.profile.index');
-        Route::put('profile', [SettingsProfileController::class, 'update'])->name('settings.profile.update');
         Route::put('password', [SettingsPasswordController::class, 'update'])->name('settings.password.update');
 
         // 2fa

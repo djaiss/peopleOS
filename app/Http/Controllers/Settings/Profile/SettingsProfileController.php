@@ -14,13 +14,6 @@ use Illuminate\View\View;
 
 class SettingsProfileController extends Controller
 {
-    public function index(Request $request): View
-    {
-        return view('settings.profile.index', [
-            'user' => $request->user(),
-        ]);
-    }
-
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -38,9 +31,8 @@ class SettingsProfileController extends Controller
 
         $request->user()->save();
 
-        $request->session()->flash('status', __('Changes saved'));
-
-        return redirect()->route('settings.profile.index');
+        return redirect()->route('settings.index')
+            ->success(trans('Changes saved'));
     }
 
     /**

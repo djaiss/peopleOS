@@ -38,6 +38,10 @@ class EthinicityControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('ethnicities', [
+            'id' => $ethnicity->id,
+        ]);
     }
 
     #[Test]
@@ -68,6 +72,10 @@ class EthinicityControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('ethnicities', [
+            'id' => $ethnicity->id,
+        ]);
     }
 
     #[Test]
@@ -109,6 +117,10 @@ class EthinicityControllerTest extends TestCase
             ],
             $response->json()
         );
+
+        $this->assertDatabaseMissing('ethnicities', [
+            'id' => $ethnicity->id,
+        ]);
     }
 
     #[Test]

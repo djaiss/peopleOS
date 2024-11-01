@@ -38,6 +38,10 @@ class GenderControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('genders', [
+            'id' => $gender->id,
+        ]);
     }
 
     #[Test]
@@ -68,6 +72,10 @@ class GenderControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('genders', [
+            'id' => $gender->id,
+        ]);
     }
 
     #[Test]
@@ -109,6 +117,10 @@ class GenderControllerTest extends TestCase
             ],
             $response->json()
         );
+
+        $this->assertDatabaseMissing('genders', [
+            'id' => $gender->id,
+        ]);
     }
 
     #[Test]

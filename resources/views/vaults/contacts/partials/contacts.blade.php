@@ -30,7 +30,7 @@
     <ul>
       <template x-for="item in filteredItems" :key="item.id">
         <li class="border-b border-b-gray-100 px-3 py-1 hover:bg-gray-50">
-          <x-link @click="window.location.href = item.routes.show" x-text="item.name" x-bind:href="item.routes.show" class="block cursor-pointer text-blue-500 hover:text-blue-700"></x-link>
+          <x-link navigate @click="window.location.href = item.routes.show" x-text="item.name" x-bind:href="item.routes.show" class="block cursor-pointer text-blue-500 hover:text-blue-700"></x-link>
         </li>
       </template>
     </ul>
