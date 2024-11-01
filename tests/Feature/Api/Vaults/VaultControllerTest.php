@@ -41,6 +41,10 @@ class VaultControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('vaults', [
+            'id' => $vault->id,
+        ]);
     }
 
     #[Test]
@@ -73,6 +77,10 @@ class VaultControllerTest extends TestCase
             ],
             $response->json()['data']
         );
+
+        $this->assertDatabaseHas('vaults', [
+            'id' => $vault->id,
+        ]);
     }
 
     #[Test]
@@ -114,6 +122,10 @@ class VaultControllerTest extends TestCase
             ],
             $response->json()
         );
+
+        $this->assertDatabaseMissing('vaults', [
+            'id' => $vault->id,
+        ]);
     }
 
     #[Test]

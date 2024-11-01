@@ -23,7 +23,7 @@ class SettingsProfileControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/settings/profile')
+            ->get('/settings')
             ->assertSee('henri');
 
         $this->actingAs($user)
@@ -32,7 +32,7 @@ class SettingsProfileControllerTest extends TestCase
                 'last_name' => 'troyat',
                 'email' => 'henri@troyat.com',
             ])
-            ->assertRedirectToRoute('settings.profile.index');
+            ->assertRedirectToRoute('settings.index');
 
         $this->actingAs($user)
             ->get('/settings/profile')
@@ -51,7 +51,7 @@ class SettingsProfileControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/settings/profile')
+            ->get('/settings')
             ->assertSee('henri');
 
         $this->actingAs($user)
@@ -60,7 +60,7 @@ class SettingsProfileControllerTest extends TestCase
                 'last_name' => 'troyat',
                 'email' => 'henri@dunder.com',
             ])
-            ->assertRedirectToRoute('settings.profile.index');
+            ->assertRedirectToRoute('settings.index');
 
         Event::assertDispatched(Registered::class);
     }

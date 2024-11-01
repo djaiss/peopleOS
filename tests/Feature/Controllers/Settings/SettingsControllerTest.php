@@ -18,6 +18,6 @@ class SettingsControllerTest extends TestCase
 
         $this->actingAs($user)
             ->get('/settings')
-            ->assertSee('User settings');
+            ->assertSee('Profile information');
     }
 }
