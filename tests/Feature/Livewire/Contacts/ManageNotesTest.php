@@ -5,7 +5,6 @@ namespace Tests\Feature\Livewire\Contacts;
 use App\Livewire\Contacts\ManageNotes;
 use App\Models\Contact;
 use App\Models\Note;
-use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
