@@ -15,7 +15,7 @@
       <div class="hidden space-y-6 pb-16 md:block">
         <div class="space-y-0.5">
           <h2 class="text-2xl font-bold tracking-tight">{{ __('Settings') }}</h2>
-          <p class="">{{ __('Manage your account settings and set e-mail preferences.') }}</p>
+          <p class="">{{ __('Manage your account settings.') }}</p>
         </div>
 
         <div class="flex flex-col space-y-8 bg-white shadow sm:rounded-lg lg:flex-row lg:space-x-12 lg:space-y-0">

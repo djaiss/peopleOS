@@ -55,6 +55,7 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
     Route::prefix('settings')->group(function (): void {
         Route::get('', [SettingsController::class, 'index'])->name('settings.index');
+        Route::put('profile', [SettingsProfileController::class, 'update'])->name('settings.profile.update');
 
         // preferences
         Route::get('preferences', [SettingsPreferencesController::class, 'index'])->name('settings.preferences.index');
@@ -65,9 +66,7 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
         Route::put('preferences/name', [SettingsPreferencesNameOrderController::class, 'update'])->name('settings.preferences.name.update');
 
         // profile
-        Route::put('profile', [SettingsProfileController::class, 'update'])->name('settings.profile.update');
-
-        // password
+        Route::get('profile', [SettingsProfileController::class, 'index'])->name('settings.profile.index');
         Route::get('password', [SettingsPasswordController::class, 'index'])->name('settings.password.index');
         Route::put('password', [SettingsPasswordController::class, 'update'])->name('settings.password.update');
 

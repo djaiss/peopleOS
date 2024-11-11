@@ -19,7 +19,7 @@ class EthnicityResource extends JsonResource
             'object' => 'ethnicity',
             'label' => $this->getLabel(),
             'created_at' => $this->created_at->timestamp,
-            'updated_at' => $this->updated_at->timestamp,
+            'updated_at' => $this->updated_at?->timestamp,
         ];
     }
 }
