@@ -67,6 +67,7 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
         // profile
         Route::get('profile', [SettingsProfileController::class, 'index'])->name('settings.profile.index');
+        Route::get('password', [SettingsPasswordController::class, 'index'])->name('settings.password.index');
         Route::put('password', [SettingsPasswordController::class, 'update'])->name('settings.password.update');
 
         // 2fa

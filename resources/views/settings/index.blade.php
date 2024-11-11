@@ -15,18 +15,12 @@
       <div class="hidden space-y-6 pb-16 md:block">
         <div class="space-y-0.5">
           <h2 class="text-2xl font-bold tracking-tight">{{ __('Settings') }}</h2>
-          <p class="">{{ __('Manage your account settings and set e-mail preferences.') }}</p>
+          <p class="">{{ __('Manage your account settings.') }}</p>
         </div>
 
         <div class="flex flex-col space-y-8 bg-white shadow sm:rounded-lg lg:flex-row lg:space-x-12 lg:space-y-0">
           <aside class="px-4 lg:w-1/5">
-            <nav class="flex space-x-2 py-3 lg:flex-col lg:space-x-0 lg:space-y-1">
-              <x-link class="bg-muted inline-flex h-9 w-full items-center rounded-md bg-slate-200 px-4 py-2 text-left text-sm font-medium text-gray-900 transition-colors hover:bg-slate-50 hover:no-underline disabled:opacity-50" href="/examples/forms">{{ __('Profile and security') }}</x-link>
-              <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50" href="/examples/forms/account">{{ __('User preferences') }}</a>
-              <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50" href="/examples/forms/appearance">{{ __('API tokens') }}</a>
-              <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50" href="/examples/forms/notifications">Notifications</a>
-              <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50" href="/examples/forms/display">Display</a>
-            </nav>
+            @include('settings.partials.navigation')
           </aside>
           <div class="flex-1 py-3 lg:max-w-2xl">
             <div class="space-y-6">

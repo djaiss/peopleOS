@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Event;
 use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Event;
+
 class MeControllerTest extends TestCase
 {
     use RefreshDatabase;

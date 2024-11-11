@@ -47,7 +47,7 @@
 
     <!-- icons -->
     <div class="flex items-center">
-      <x-link href="{{ route('settings.index') }}" navigate class="group mr-5 flex">
+      <x-link hover href="{{ route('settings.index') }}" navigate class="group mr-5 flex">
         <x-lucide-settings class="mr-1 w-4 text-slate-400 group-hover:text-white" />
 
         <span class="text-sm text-slate-400 group-hover:text-white group-hover:no-underline dark:text-sky-400">{{ __('Settings') }}</span>
