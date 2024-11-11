@@ -14,12 +14,6 @@ class SettingsApiAccessController extends Controller
 {
     public function index(Request $request): View|string
     {
-        if ($request->header('hx-request')) {
-            return view('settings.api.index', [
-                'tokens' => ApiIndexViewModel::data(),
-            ])->fragment('tokens-list');
-        }
-
         return view('settings.api.index', [
             'tokens' => ApiIndexViewModel::data(),
         ]);
@@ -38,9 +32,9 @@ class SettingsApiAccessController extends Controller
 
         $token = $request->user()->createToken($validated['token_name']);
 
-        $request->session()->flash('status', __('The key has been created'));
-
-        return Redirect::route('settings.api.index')->with('key', $token->plainTextToken);
+        return Redirect::route('settings.api.index')
+            ->with('key', $token->plainTextToken)
+            ->success(__('The key has been created'));
     }
 
     public function destroy(Request $request, int $id): Response
