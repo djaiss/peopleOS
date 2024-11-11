@@ -28,6 +28,6 @@ class SettingsApiAccessControllerTest extends TestCase
 
         $this->actingAs($user)
             ->delete('/settings/api/1')
-            ->assertStatus(200);
+            ->assertRedirect('/settings/api');
     }
 }

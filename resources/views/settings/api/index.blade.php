@@ -80,9 +80,15 @@
                       <div class="flex text-sm">
                         <div class="mr-2 text-gray-400">{{ $token['last_used'] }}</div>
 
-                        <div>
-                          <span id="bar" class="cursor-pointer text-red-600 underline hover:no-underline">{{ __('Revoke') }}</span>
-                        </div>
+                        <!-- revoke key -->
+                        <form id="revokeKeyForm" action="{{ route('settings.api.destroy', ['key' => $token['id']]) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+
+                          <a onclick="event.preventDefault(); if(confirm('{{ __('Are you sure? This can not be undone.') }}')) document.getElementById('revokeKeyForm').submit();" class="cursor-pointer text-sm text-red-600 underline hover:no-underline">
+                            {{ __('Revoke key') }}
+                          </a>
+                        </form>
                       </div>
                     </div>
                   @empty
