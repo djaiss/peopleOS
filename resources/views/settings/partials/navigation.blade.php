@@ -1,7 +1,0 @@
-<nav class="flex space-x-2 py-3 lg:flex-col lg:space-x-0 lg:space-y-1">
-  <x-link hover href="{{ route('settings.index') }}" class="{{ request()->routeIs('settings.index') ? 'bg-slate-200' : '' }} inline-flex h-9 w-full items-center rounded-md px-4 py-2 text-left text-sm font-medium text-gray-900 transition-colors hover:bg-slate-200 hover:no-underline disabled:opacity-50">{{ __('Profile and security') }}</x-link>
-  <x-link navigate href="{{ route('settings.password.index') }}" class="{{ request()->routeIs('settings.password.index') ? 'bg-slate-200' : '' }} inline-flex h-9 w-full items-center rounded-md px-4 py-2 text-left text-sm font-medium text-gray-900 transition-colors hover:bg-slate-200 hover:no-underline disabled:opacity-50">{{ __('Change password') }}</x-link>
-  <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50">{{ __('API tokens') }}</a>
-  <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50">Notifications</a>
-  <a class="inline-flex h-9 w-full items-center justify-start rounded-md px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-slate-200 disabled:opacity-50">Display</a>
-</nav>
