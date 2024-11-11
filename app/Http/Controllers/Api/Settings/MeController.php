@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -46,6 +48,9 @@ class MeController extends Controller
      * This lets you update the profile of the logged user. Only the logged user
      * can update their profile. If you change your email, you will need to verify
      * it again.
+     *
+     * Please note that your password can not be changed through the API at
+     * the moment.
      *
      * @bodyParam first_name string required The first name of the user. Max 255 characters. Example: Jessica
      * @bodyParam last_name string required The last name of the user. Max 255 characters. Example: Jones

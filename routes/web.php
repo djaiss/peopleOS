@@ -13,7 +13,6 @@ use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Vaults\Contacts\ContactBackgroundInformationController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
 use App\Http\Controllers\Vaults\Contacts\ContactJobInformationController;
-use App\Http\Controllers\Vaults\Contacts\ContactNoteController;
 use App\Http\Controllers\Vaults\Settings\VaultSettingsController;
 use App\Http\Controllers\Vaults\VaultController;
 use Illuminate\Support\Facades\Route;
