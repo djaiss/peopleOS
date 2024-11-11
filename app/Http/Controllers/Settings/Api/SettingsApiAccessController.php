@@ -14,12 +14,6 @@ class SettingsApiAccessController extends Controller
 {
     public function index(Request $request): View|string
     {
-        if ($request->header('hx-request')) {
-            return view('settings.api.index', [
-                'tokens' => ApiIndexViewModel::data(),
-            ])->fragment('tokens-list');
-        }
-
         return view('settings.api.index', [
             'tokens' => ApiIndexViewModel::data(),
         ]);
