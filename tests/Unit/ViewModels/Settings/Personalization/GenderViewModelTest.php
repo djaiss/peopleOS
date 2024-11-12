@@ -3,14 +3,9 @@
 namespace Tests\Unit\ViewModels\Settings\Personalization;
 
 use App\Http\ViewModels\Settings\Personalization\GenderViewModel;
-use App\Models\Contact;
 use App\Models\Gender;
-use App\Models\Note;
-use App\Models\User;
-use App\Models\Vault;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 

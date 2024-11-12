@@ -3,11 +3,8 @@
 namespace App\Http\ViewModels\Settings\Personalization;
 
 use App\Models\Account;
-use App\Models\Contact;
 use App\Models\Gender;
-use App\Models\Note;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class GenderViewModel
 {
@@ -19,7 +16,7 @@ class GenderViewModel
         $genders = $account->genders()
             ->orderBy('position', 'asc')
             ->get()
-            ->map(fn(Gender $gender) => self::gender($gender));
+            ->map(fn (Gender $gender) => self::gender($gender));
 
         return $genders;
     }

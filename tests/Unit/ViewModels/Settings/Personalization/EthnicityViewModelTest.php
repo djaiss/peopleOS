@@ -3,16 +3,9 @@
 namespace Tests\Unit\ViewModels\Settings\Personalization;
 
 use App\Http\ViewModels\Settings\Personalization\EthnicityViewModel;
-use App\Http\ViewModels\Settings\Personalization\GenderViewModel;
-use App\Models\Contact;
 use App\Models\Ethnicity;
-use App\Models\Gender;
-use App\Models\Note;
-use App\Models\User;
-use App\Models\Vault;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -51,7 +44,7 @@ class EthnicityViewModelTest extends TestCase
 
         $array = EthnicityViewModel::ethnicity($ethnicity);
 
-        $this->assertEquals(3, count($array));
+        $this->assertEquals(2, count($array));
 
         $this->assertEquals(
             [

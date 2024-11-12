@@ -3,22 +3,16 @@
 namespace App\Livewire\Settings;
 
 use App\Http\ViewModels\Settings\Personalization\EthnicityViewModel;
-use Livewire\Component;
-use Livewire\Attributes\Locked;
-use Illuminate\Support\Collection;
-use App\Http\ViewModels\Settings\Personalization\GenderViewModel;
 use App\Models\Account;
 use App\Models\Ethnicity;
-use App\Models\Gender;
-use App\Services\CreateGender;
-use App\Models\User;
 use App\Services\CreateEthnicity;
 use App\Services\DestroyEthnicity;
-use App\Services\DestroyGender;
 use App\Services\UpdateEthnicity;
-use App\Services\UpdateGender;
-use Masmerise\Toaster\Toaster;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class ManageEthnicities extends Component
 {
@@ -70,7 +64,7 @@ class ManageEthnicities extends Component
 
     public function toggleAddMode()
     {
-        $this->addMode = !$this->addMode;
+        $this->addMode = ! $this->addMode;
     }
 
     public function toggleEditMode(int $ethnicityId): void
@@ -123,7 +117,7 @@ class ManageEthnicities extends Component
 
         $ethnicity = EthnicityViewModel::ethnicity($ethnicity);
 
-        $this->ethnicities = $this->ethnicities->map(fn(array $existingEthnicity) => $existingEthnicity['id'] === $ethnicityId ? $ethnicity : $existingEthnicity);
+        $this->ethnicities = $this->ethnicities->map(fn (array $existingEthnicity) => $existingEthnicity['id'] === $ethnicityId ? $ethnicity : $existingEthnicity);
     }
 
     public function resetEdit(): void
@@ -145,6 +139,6 @@ class ManageEthnicities extends Component
 
         Toaster::success(__('Ethnicity deleted'));
 
-        $this->ethnicities = $this->ethnicities->reject(fn(array $ethnicity) => $ethnicity['id'] === $ethnicityId);
+        $this->ethnicities = $this->ethnicities->reject(fn (array $ethnicity) => $ethnicity['id'] === $ethnicityId);
     }
 }

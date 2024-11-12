@@ -2,13 +2,13 @@
 
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Settings\SettingsApiAccessController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesNameOrderController;
 use App\Http\Controllers\Settings\Profile\Settings2FAController;
 use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\Profile\SettingsRecoveryCodeController;
+use App\Http\Controllers\Settings\SettingsApiAccessController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Settings\SettingsPersonalizationController;
 use App\Http\Controllers\Vaults\Contacts\ContactBackgroundInformationController;

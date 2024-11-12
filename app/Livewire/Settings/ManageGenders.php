@@ -2,18 +2,17 @@
 
 namespace App\Livewire\Settings;
 
-use Livewire\Component;
-use Livewire\Attributes\Locked;
-use Illuminate\Support\Collection;
 use App\Http\ViewModels\Settings\Personalization\GenderViewModel;
 use App\Models\Account;
 use App\Models\Gender;
 use App\Services\CreateGender;
-use App\Models\User;
 use App\Services\DestroyGender;
 use App\Services\UpdateGender;
-use Masmerise\Toaster\Toaster;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class ManageGenders extends Component
 {
@@ -65,7 +64,7 @@ class ManageGenders extends Component
 
     public function toggleAddMode()
     {
-        $this->addMode = !$this->addMode;
+        $this->addMode = ! $this->addMode;
     }
 
     public function toggleEditMode(int $genderId): void
@@ -119,7 +118,7 @@ class ManageGenders extends Component
 
         $gender = GenderViewModel::gender($gender);
 
-        $this->genders = $this->genders->map(fn(array $existingGender) => $existingGender['id'] === $genderId ? $gender : $existingGender);
+        $this->genders = $this->genders->map(fn (array $existingGender) => $existingGender['id'] === $genderId ? $gender : $existingGender);
     }
 
     public function resetEdit(): void
@@ -141,6 +140,6 @@ class ManageGenders extends Component
 
         Toaster::success(__('Gender deleted'));
 
-        $this->genders = $this->genders->reject(fn(array $gender) => $gender['id'] === $genderId);
+        $this->genders = $this->genders->reject(fn (array $gender) => $gender['id'] === $genderId);
     }
 }
