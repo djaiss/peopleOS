@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Settings\Api;
+namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Settings\Api\ApiIndexViewModel;
@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class SettingsApiAccessController extends Controller
 {
-    public function index(Request $request): View|string
+    public function index(): View|string
     {
         return view('settings.api.index', [
             'tokens' => ApiIndexViewModel::data(),

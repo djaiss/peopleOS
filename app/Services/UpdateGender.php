@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Jobs\ClearCacheForAllContactsInAccount;
 use App\Models\Gender;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -13,13 +12,14 @@ class UpdateGender
         public User $user,
         public Gender $gender,
         public string $label,
+        public int $position,
     ) {}
 
     public function execute(): Gender
     {
         $this->validate();
         $this->update();
-        $this->clearCache();
+        $this->updatePosition();
 
         return $this->gender;
     }
@@ -38,8 +38,30 @@ class UpdateGender
         $this->gender->save();
     }
 
-    private function clearCache(): void
+    private function updatePosition(): void
     {
-        ClearCacheForAllContactsInAccount::dispatch($this->user->account);
+        if ($this->position > $this->gender->position) {
+            $this->updateAscendingPosition();
+        } else {
+            $this->updateDescendingPosition();
+        }
+
+        $this->gender->update([
+            'position' => $this->position,
+        ]);
+    }
+
+    private function updateAscendingPosition(): void
+    {
+        $this->gender->where('position', '>', $this->gender->position)
+            ->where('position', '<=', $this->position)
+            ->decrement('position');
+    }
+
+    private function updateDescendingPosition(): void
+    {
+        $this->gender->where('position', '>=', $this->position)
+            ->where('position', '<', $this->gender->position)
+            ->increment('position');
     }
 }

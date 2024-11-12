@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Settings\Api\SettingsApiAccessController;
+use App\Http\Controllers\Settings\SettingsApiAccessController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesController;
 use App\Http\Controllers\Settings\Preferences\SettingsPreferencesNameOrderController;
 use App\Http\Controllers\Settings\Profile\Settings2FAController;
@@ -10,6 +10,7 @@ use App\Http\Controllers\Settings\Profile\SettingsPasswordController;
 use App\Http\Controllers\Settings\Profile\SettingsProfileController;
 use App\Http\Controllers\Settings\Profile\SettingsRecoveryCodeController;
 use App\Http\Controllers\Settings\SettingsController;
+use App\Http\Controllers\Settings\SettingsPersonalizationController;
 use App\Http\Controllers\Vaults\Contacts\ContactBackgroundInformationController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
 use App\Http\Controllers\Vaults\Contacts\ContactJobInformationController;
@@ -59,6 +60,9 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
         // preferences
         Route::get('preferences', [SettingsPreferencesController::class, 'index'])->name('settings.preferences.index');
+
+        // personalization
+        Route::get('personalization', [SettingsPersonalizationController::class, 'index'])->name('settings.personalization.index');
 
         // update name order
         Route::get('preferences/name', [SettingsPreferencesNameOrderController::class, 'index'])->name('settings.preferences.name.index');

@@ -36,14 +36,17 @@ class SetupAccount implements ShouldQueue
         DB::table('genders')->insert([
             [
                 'account_id' => $this->user->account_id,
+                'position' => 1,
                 'label_translation_key' => trans_key('Male'),
             ],
             [
                 'account_id' => $this->user->account_id,
+                'position' => 2,
                 'label_translation_key' => trans_key('Female'),
             ],
             [
                 'account_id' => $this->user->account_id,
+                'position' => 3,
                 'label_translation_key' => trans_key('Other'),
             ],
         ]);

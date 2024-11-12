@@ -21,6 +21,7 @@ class Gender extends Model
      */
     protected $fillable = [
         'account_id',
+        'position',
         'label',
         'label_translation_key',
     ];

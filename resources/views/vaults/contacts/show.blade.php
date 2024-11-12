@@ -111,8 +111,10 @@
           </div>
 
           <!-- right -->
-          <!-- notes -->
-          <livewire:contacts.manage-notes lazy :contact-id="$contact['id']" />
+          <div>
+            <!-- notes -->
+            <livewire:contacts.manage-notes lazy :contact-id="$contact['id']" />
+          </div>
         </div>
 
         <!-- right -->

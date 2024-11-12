@@ -238,9 +238,13 @@
             <span x-cloak x-show="! showNationality" x-on:click="showNationality = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
               {{ __('+ nationality') }}
             </span>
-            <span x-cloak x-show="! showGender" x-on:click="showGender = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
-              {{ __('+ gender') }}
-            </span>
+
+            @if (count($genders) > 0)
+              <span x-cloak x-show="! showGender" x-on:click="showGender = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
+                {{ __('+ gender') }}
+              </span>
+            @endif
+
             <span x-cloak x-show="! showMaritalStatus" x-on:click="showMaritalStatus = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
               {{ __('+ marital status') }}
             </span>

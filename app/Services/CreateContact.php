@@ -83,7 +83,7 @@ class CreateContact
     {
         $this->contact = Contact::create([
             'vault_id' => $this->vault->id,
-            'gender_id' => $this->gender->id,
+            'gender_id' => $this->gender?->id,
             'ethnicity_id' => $this->ethnicity?->id,
             'marital_status_id' => $this->maritalStatus?->id,
             'first_name' => $this->firstName ?? null,
