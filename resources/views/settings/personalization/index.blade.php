@@ -35,6 +35,9 @@
               </div>
               <div>
                 <livewire:settings.manage-genders lazy :account-id="auth()->user()->account_id" />
+                <livewire:settings.manage-genders lazy :account-id="auth()->user()->account_id" />
+                <livewire:settings.manage-genders lazy :account-id="auth()->user()->account_id" />
+                <livewire:settings.manage-genders lazy :account-id="auth()->user()->account_id" />
               </div>
             </div>
           </div>
