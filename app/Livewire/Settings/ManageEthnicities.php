@@ -2,19 +2,19 @@
 
 namespace App\Livewire\Settings;
 
-use App\Http\ViewModels\Settings\Personalization\GenderViewModel;
+use App\Http\ViewModels\Settings\Personalization\EthnicityViewModel;
 use App\Models\Account;
-use App\Models\Gender;
-use App\Services\CreateGender;
-use App\Services\DestroyGender;
-use App\Services\UpdateGender;
+use App\Models\Ethnicity;
+use App\Services\CreateEthnicity;
+use App\Services\DestroyEthnicity;
+use App\Services\UpdateEthnicity;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class ManageGenders extends Component
+class ManageEthnicities extends Component
 {
     #[Locked]
     public Account $account;
@@ -23,10 +23,10 @@ class ManageGenders extends Component
     public int $accountId;
 
     #[Locked]
-    public Collection $genders;
+    public Collection $ethnicities;
 
     #[Locked]
-    public int $editedGenderId = 0;
+    public int $editedEthnicityId = 0;
 
     public bool $addMode = false;
 
@@ -39,13 +39,13 @@ class ManageGenders extends Component
     public function mount()
     {
         $this->account = Account::find($this->accountId);
-        $this->genders = collect(GenderViewModel::index($this->account));
+        $this->ethnicities = collect(EthnicityViewModel::index($this->account));
     }
 
     public function render()
     {
-        return view('livewire.settings.manage-genders', [
-            'genders' => $this->genders,
+        return view('livewire.settings.manage-ethnicities', [
+            'ethnicities' => $this->ethnicities,
         ]);
     }
 
@@ -67,12 +67,12 @@ class ManageGenders extends Component
         $this->addMode = ! $this->addMode;
     }
 
-    public function toggleEditMode(int $genderId): void
+    public function toggleEditMode(int $ethnicityId): void
     {
-        $this->editedGenderId = $genderId;
+        $this->editedEthnicityId = $ethnicityId;
 
-        $gender = $this->genders->firstWhere('id', $genderId);
-        $this->editedName = $gender['label'];
+        $ethnicity = $this->ethnicities->firstWhere('id', $ethnicityId);
+        $this->editedName = $ethnicity['label'];
     }
 
     public function store(): void
@@ -81,65 +81,64 @@ class ManageGenders extends Component
             'name' => 'required|string|min:3|max:100000',
         ]);
 
-        $gender = (new CreateGender(
+        $ethnicity = (new CreateEthnicity(
             user: auth()->user(),
             label: $this->name,
         ))->execute();
 
         $this->toggleAddMode();
 
-        Toaster::success(__('Gender created'));
+        Toaster::success(__('Ethnicity created'));
 
-        $gender = GenderViewModel::gender($gender);
+        $ethnicity = EthnicityViewModel::ethnicity($ethnicity);
 
-        $this->genders = $this->genders->push($gender);
+        $this->ethnicities = $this->ethnicities->push($ethnicity);
         $this->name = '';
     }
 
-    public function update(int $genderId): void
+    public function update(int $ethnicityId): void
     {
         $this->validate([
             'editedName' => 'required|string|min:3|max:100000',
         ]);
 
-        $gender = Gender::where('account_id', $this->account->id)
-            ->findOrFail($genderId);
+        $ethnicity = Ethnicity::where('account_id', $this->account->id)
+            ->findOrFail($ethnicityId);
 
-        $gender = (new UpdateGender(
+        $ethnicity = (new UpdateEthnicity(
             user: auth()->user(),
-            gender: $gender,
+            ethnicity: $ethnicity,
             label: $this->editedName,
-            position: $gender['position'],
         ))->execute();
 
         $this->resetEdit();
 
-        Toaster::success(__('Gender updated'));
+        Toaster::success(__('Ethnicity updated'));
 
-        $gender = GenderViewModel::gender($gender);
+        $ethnicity = EthnicityViewModel::ethnicity($ethnicity);
 
-        $this->genders = $this->genders->map(fn (array $existingGender) => $existingGender['id'] === $genderId ? $gender : $existingGender);
+        $this->ethnicities = $this->ethnicities->map(fn (array $existingEthnicity) => $existingEthnicity['id'] === $ethnicityId ? $ethnicity : $existingEthnicity);
     }
 
     public function resetEdit(): void
     {
-        $this->editedGenderId = 0;
+        $this->editedEthnicityId = 0;
         $this->editedName = '';
         $this->resetErrorBag();
     }
 
-    public function delete(int $genderId): void
+    public function delete(int $ethnicityId): void
     {
-        $gender = Gender::where('account_id', $this->account->id)
-            ->findOrFail($genderId);
+        $ethnicity = Ethnicity::where('account_id', $this->account->id)
+            ->findOrFail($ethnicityId);
 
-        (new DestroyGender(
+        (new DestroyEthnicity(
             user: auth()->user(),
-            gender: $gender,
+            ethnicity: $ethnicity,
         ))->execute();
 
-        Toaster::success(__('Gender deleted'));
+        Toaster::success(__('Ethnicity deleted'));
 
-        $this->genders = $this->genders->reject(fn (array $gender) => $gender['id'] === $genderId);
+        $this->ethnicities = $this->ethnicities->reject(fn (array $ethnicity) => $ethnicity['id'] === $ethnicityId);
     }
 }
