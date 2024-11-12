@@ -17,6 +17,7 @@ class CreateGender
     public function execute(): Gender
     {
         $this->create();
+        $this->setPosition();
 
         return $this->gender;
     }
@@ -27,5 +28,14 @@ class CreateGender
             'account_id' => $this->user->account_id,
             'label' => $this->label,
         ]);
+    }
+
+    private function setPosition(): void
+    {
+        $maxPosition = Gender::where('account_id', $this->user->account_id)
+            ->max('position');
+
+        $this->gender->position = $maxPosition + 1;
+        $this->gender->save();
     }
 }

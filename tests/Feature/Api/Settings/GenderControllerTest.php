@@ -33,6 +33,7 @@ class GenderControllerTest extends TestCase
                 'id' => $gender->id,
                 'object' => 'gender',
                 'label' => 'Male',
+                'position' => 1,
                 'created_at' => '1514764800',
                 'updated_at' => '1514764800',
             ],
@@ -58,6 +59,7 @@ class GenderControllerTest extends TestCase
 
         $response = $this->json('PUT', '/api/genders/'.$gender->id, [
             'label' => 'Male',
+            'position' => 2,
         ]);
 
         $response->assertStatus(200);
@@ -67,6 +69,7 @@ class GenderControllerTest extends TestCase
                 'id' => $gender->id,
                 'object' => 'gender',
                 'label' => 'Male',
+                'position' => 2,
                 'created_at' => '1514764800',
                 'updated_at' => '1514764800',
             ],
@@ -75,6 +78,7 @@ class GenderControllerTest extends TestCase
 
         $this->assertDatabaseHas('genders', [
             'id' => $gender->id,
+            'position' => 2,
         ]);
     }
 
@@ -159,6 +163,7 @@ class GenderControllerTest extends TestCase
                 'id' => $gender->id,
                 'object' => 'gender',
                 'label' => 'Female',
+                'position' => 1,
                 'created_at' => '1514764800',
                 'updated_at' => '1514764800',
             ],

@@ -96,9 +96,9 @@ class ContactController extends Controller
         $contact = (new CreateContact(
             user: auth()->user(),
             vault: $vault,
-            gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
-            ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
-            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
+            gender: isset($validated['gender_id']) ? Gender::find($validated['gender_id']) : null,
+            ethnicity: isset($validated['ethnicity_id']) ? Ethnicity::find($validated['ethnicity_id']) : null,
+            maritalStatus: isset($validated['marital_status_id']) ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],

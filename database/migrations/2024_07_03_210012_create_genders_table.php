@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('genders', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->integer('position')->default(0);
             $table->text('label')->nullable();
             $table->text('label_translation_key')->nullable();
             $table->timestamps();

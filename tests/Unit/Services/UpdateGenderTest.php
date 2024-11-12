@@ -22,6 +22,7 @@ class UpdateGenderTest extends TestCase
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
+            'position' => 1,
         ]);
         $this->executeService($user, $gender);
     }
@@ -38,17 +39,26 @@ class UpdateGenderTest extends TestCase
 
     private function executeService(User $user, Gender $gender): void
     {
-        Queue::fake();
+        $gender2 = Gender::factory()->create([
+            'account_id' => $user->account_id,
+            'position' => 2,
+        ]);
+        $gender3 = Gender::factory()->create([
+            'account_id' => $user->account_id,
+            'position' => 3,
+        ]);
 
         $gender = (new UpdateGender(
             user: $user,
             gender: $gender,
             label: 'Male',
+            position: 2,
         ))->execute();
 
         $this->assertDatabaseHas('genders', [
             'id' => $gender->id,
             'account_id' => $user->account_id,
+            'position' => 2,
         ]);
 
         $this->assertInstanceOf(
@@ -61,8 +71,16 @@ class UpdateGenderTest extends TestCase
             $gender->label
         );
 
-        Queue::assertPushed(
-            ClearCacheForAllContactsInAccount::class
-        );
+        $this->assertDatabaseHas('genders', [
+            'id' => $gender2->id,
+            'account_id' => $user->account_id,
+            'position' => 1,
+        ]);
+
+        $this->assertDatabaseHas('genders', [
+            'id' => $gender3->id,
+            'account_id' => $user->account_id,
+            'position' => 3,
+        ]);
     }
 }

@@ -68,6 +68,7 @@ class ContactControllerTest extends TestCase
                     'id' => $gender->id,
                     'object' => 'gender',
                     'label' => 'Male',
+                    'position' => 1,
                     'created_at' => 1514764800,
                     'updated_at' => 1514764800,
                 ],

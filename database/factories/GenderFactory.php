@@ -22,6 +22,7 @@ class GenderFactory extends Factory
     {
         return [
             'account_id' => Account::factory(),
+            'position' => 1,
             'label' => $this->faker->word(),
             'label_translation_key' => $this->faker->word(),
         ];

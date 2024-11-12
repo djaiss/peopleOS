@@ -30,6 +30,7 @@ class CreateGenderTest extends TestCase
         $this->assertDatabaseHas('genders', [
             'id' => $gender->id,
             'account_id' => $user->account_id,
+            'position' => 1,
         ]);
 
         $this->assertInstanceOf(

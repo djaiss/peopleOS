@@ -23,6 +23,8 @@ use Illuminate\Http\Request;
  * Genders are defined at the account level and shared by all users in the
  * account. If you delete a gender it will be removed from all the contacts
  * that are using it.
+ *
+ * Genders are ordered by their position. The first gender has a position of 1.
  */
 class GenderController extends Controller
 {
@@ -35,6 +37,7 @@ class GenderController extends Controller
      *  "id": 1,
      *  "object": "gender",
      *  "label": "Male",
+     *  "position": 1,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -42,6 +45,7 @@ class GenderController extends Controller
      * @responseField id Unique identifier for the object.
      * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
+     * @responseField position The position of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -65,11 +69,13 @@ class GenderController extends Controller
      * @urlParam gender required The id of the gender. Example: 1
      *
      * @bodyParam label string required The label of the gender. Max 255 characters. Example: Male
+     * @bodyParam position int required The position of the gender. Example: 1
      *
      * @response 200 {
      *  "id": 1,
      *  "object": "gender",
      *  "label": "Male",
+     *  "position": 1,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -77,6 +83,7 @@ class GenderController extends Controller
      * @responseField id Unique identifier for the object.
      * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
+     * @responseField position The position of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -93,12 +100,14 @@ class GenderController extends Controller
 
         $validated = $request->validate([
             'label' => 'required|string|max:255',
+            'position' => 'required|integer|min:1|max:255',
         ]);
 
         $gender = (new UpdateGender(
             user: auth()->user(),
             gender: $gender,
             label: $validated['label'],
+            position: $validated['position'],
         ))->execute();
 
         return new GenderResource($gender);
@@ -143,6 +152,7 @@ class GenderController extends Controller
      *   "id": 1,
      *   "object": "gender",
      *   "label": "Male",
+     *   "position": 1,
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      * }
@@ -153,6 +163,7 @@ class GenderController extends Controller
      * @responseField id Unique identifier for the object.
      * @responseField object The object type. Always "gender".
      * @responseField label The name of the gender.
+     * @responseField position The position of the gender.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -180,12 +191,14 @@ class GenderController extends Controller
      *  "id": 1,
      *  "object": "gender",
      *  "label": "Male",
+     *  "position": 1,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }, {
      *  "id": 2,
      *  "object": "gender",
      *  "label": "Female",
+     *  "position": 2,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }],
