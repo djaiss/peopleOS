@@ -1,4 +1,4 @@
-<div>
+<div class="mb-6">
   <h2 class="mb-2 font-bold">{{ __('Genders') }}</h2>
 
   <div class="mb-4 flex items-center justify-between">
