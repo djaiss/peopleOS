@@ -39,7 +39,6 @@
       <div class="flex border-b border-b-gray-200 py-2 last:border-b-0 hover:bg-blue-50 first:hover:rounded-t-lg last:hover:rounded-b-lg sm:flex-row sm:items-center sm:justify-between sm:px-3 dark:hover:bg-gray-600">
         @if ($editedGenderId !== $gender['id'])
           <div class="flex items-center">
-            <x-lucide-grip class="mr-2 h-4 w-4 cursor-move text-gray-400 dark:text-gray-500" />
             <p>{{ $gender['label'] }}</p>
           </div>
 
