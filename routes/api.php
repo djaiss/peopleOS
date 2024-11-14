@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Settings\EthnicityController;
 use App\Http\Controllers\Api\Settings\GenderController;
 use App\Http\Controllers\Api\Settings\MeController;
+use App\Http\Controllers\Api\Vaults\ChildController;
 use App\Http\Controllers\Api\Vaults\CompanyController;
 use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
 use App\Http\Controllers\Api\Vaults\ContactController;
@@ -58,9 +59,17 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
 
             // manage notes
             Route::get('vaults/{vault}/contacts/{contact}/notes', [NoteController::class, 'index']);
+            Route::get('vaults/{vault}/contacts/{contact}/notes/{note}', [NoteController::class, 'show']);
             Route::post('vaults/{vault}/contacts/{contact}/notes', [NoteController::class, 'create']);
             Route::put('vaults/{vault}/contacts/{contact}/notes/{note}', [NoteController::class, 'update']);
             Route::delete('vaults/{vault}/contacts/{contact}/notes/{note}', [NoteController::class, 'destroy']);
+
+            // manage children
+            Route::get('vaults/{vault}/contacts/{contact}/children', [ChildController::class, 'index']);
+            Route::get('vaults/{vault}/contacts/{contact}/children/{child}', [ChildController::class, 'show']);
+            Route::post('vaults/{vault}/contacts/{contact}/children', [ChildController::class, 'create']);
+            Route::put('vaults/{vault}/contacts/{contact}/children/{child}', [ChildController::class, 'update']);
+            Route::delete('vaults/{vault}/contacts/{contact}/children/{child}', [ChildController::class, 'destroy']);
         });
 
         // manage companies

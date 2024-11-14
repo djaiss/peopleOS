@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ChildGender;
 use App\Models\Child;
 use App\Models\Contact;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,7 +24,7 @@ class ChildFactory extends Factory
         return [
             'contact_id' => Contact::factory(),
             'name' => $this->faker->text(),
-            'gender' => $this->faker->text(),
+            'gender' => $this->faker->randomElement(ChildGender::cases())->value,
         ];
     }
 }

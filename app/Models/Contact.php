@@ -135,6 +135,14 @@ class Contact extends Model
     }
 
     /**
+     * Get the children associated with the contact.
+     */
+    public function children(): HasMany
+    {
+        return $this->hasMany(Child::class);
+    }
+
+    /**
      * Get the name of the contact, according to the user preference.
      *
      * @return Attribute<string,never>

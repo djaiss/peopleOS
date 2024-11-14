@@ -1,4 +1,12 @@
 <div class="relative mb-8 space-y-1 rounded-lg border border-gray-200 bg-white px-3 py-3 shadow-md">
+  <div class="absolute -top-4 w-full">
+    <div class="flex justify-between">
+      <div class="flex items-center rounded-full border bg-white py-1 pl-2 pr-3 text-sm">
+        <div>{{ __('Personal info') }}</div>
+      </div>
+    </div>
+  </div>
+
   @if ($contact['first_name'])
     <div class="flex items-end">
       <span class="font-mono text-xs uppercase tracking-tighter text-gray-600">{{ __('first name') }}</span>

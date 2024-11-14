@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Child;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\ContactPhoneNumber;
@@ -81,6 +82,17 @@ class ContactTest extends TestCase
         ]);
 
         $this->assertTrue($contact->notes()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_children(): void
+    {
+        $contact = Contact::factory()->create();
+        Child::factory()->create([
+            'contact_id' => $contact->id,
+        ]);
+
+        $this->assertTrue($contact->children()->exists());
     }
 
     #[Test]

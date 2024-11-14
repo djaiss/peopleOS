@@ -37,12 +37,12 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'position' => 1,
-                'label_translation_key' => trans_key('Male'),
+                'label_translation_key' => trans_key('Man'),
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 2,
-                'label_translation_key' => trans_key('Female'),
+                'label_translation_key' => trans_key('Woman'),
             ],
             [
                 'account_id' => $this->user->account_id,
