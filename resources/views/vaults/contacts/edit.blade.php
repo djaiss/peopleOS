@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \App\Models\Vault $vault
+ * @var \App\Models\Contact $contact
  * @var array $ethnicities
  * @var array $genders
  * @var array $maritalStatuses
@@ -18,8 +19,13 @@
             {{ __('All the contacts') }}
           </x-link>
         </li>
+        <li class="inline after:text-xs after:text-gray-500 after:content-['>']">
+          <x-link href="{{ $routes['contact']['show'] }}">
+            {{ $contact['name'] }}
+          </x-link>
+        </li>
         <li class="inline">
-          {{ __('Add a contact') }}
+          {{ __('Edit contact') }}
         </li>
       </ul>
     </div>
@@ -27,9 +33,9 @@
 
   <main class="relative mt-16 sm:mt-24">
     <div class="mx-auto max-w-lg px-2 py-2 sm:py-6">
-      <form method="post" action="{{ $routes['contact']['store'] }}" class="mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
+      <form method="post" action="{{ $routes['contact']['update'] }}" class="mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
         @csrf
-        @method('post')
+        @method('put')
 
         <div class="rounded-t-lg border-b border-gray-200 bg-slate-200 p-3 sm:p-5 dark:border-gray-700 dark:bg-blue-900">
           <h1 class="text-center text-2xl font-medium">
@@ -38,25 +44,31 @@
         </div>
 
         <!-- list of fields -->
-        <div class="border-b border-gray-200 p-5 dark:border-gray-700" x-data="{
-          showPrefix: false,
-          showMiddleName: false,
-          showSuffix: false,
-          showNickname: false,
-          showMaidenName: false,
-          showEthnicity: false,
-          showGender: false,
-          showPatronymicName: false,
-          showTribalName: false,
-          showGenerationName: false,
-          showRomanizedName: false,
-          showNationality: false,
-          showMaritalStatus: false,
-        }">
+        <div
+          class="border-b border-gray-200 p-5 dark:border-gray-700"
+          x-data="{
+            showPrefix: {{ ! empty($contact['prefix']) ? 'true' : 'false' }},
+            showMiddleName: {{ ! empty($contact['middle_name']) ? 'true' : 'false' }},
+            showSuffix: {{ ! empty($contact['suffix']) ? 'true' : 'false' }},
+            showNickname: {{ ! empty($contact['nickname']) ? 'true' : 'false' }},
+            showMaidenName: {{ ! empty($contact['maiden_name']) ? 'true' : 'false' }},
+            showEthnicity: {{ ! empty($contact['ethnicity_id']) ? 'true' : 'false' }},
+            showGender: {{ ! empty($contact['gender_id']) ? 'true' : 'false' }},
+            showPatronymicName:
+              {{ ! empty($contact['patronymic_name']) ? 'true' : 'false' }},
+            showTribalName: {{ ! empty($contact['tribal_name']) ? 'true' : 'false' }},
+            showGenerationName:
+              {{ ! empty($contact['generation_name']) ? 'true' : 'false' }},
+            showRomanizedName:
+              {{ ! empty($contact['romanized_name']) ? 'true' : 'false' }},
+            showNationality: {{ ! empty($contact['nationality']) ? 'true' : 'false' }},
+            showMaritalStatus:
+              {{ ! empty($contact['marital_status_id']) ? 'true' : 'false' }},
+          }">
           <!-- prefix -->
           <div x-cloak x-show="showPrefix" x-transition class="relative mb-5">
             <x-input-label for="prefix" :value="__('Prefix')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="prefix" name="prefix" type="text" x-ref="prefix" />
+            <x-text-input class="mt-1 block w-full" id="prefix" name="prefix" type="text" x-ref="prefix" :value="$contact['prefix']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Prefix is a title or honorific that precedes a name, like Mr., Mrs., Dr., etc.') }}
             </p>
@@ -66,35 +78,35 @@
           <!-- first name -->
           <div class="relative mb-5">
             <x-input-label for="first_name" :value="__('First name')" />
-            <x-text-input class="mt-1 block w-full" id="first_name" name="first_name" type="text" required autofocus />
+            <x-text-input class="mt-1 block w-full" id="first_name" name="first_name" type="text" required autofocus :value="$contact['first_name']" />
             <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
           </div>
 
           <!-- last name -->
           <div class="relative mb-5">
             <x-input-label for="last_name" :value="__('Last name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="last_name" name="last_name" type="text" />
+            <x-text-input class="mt-1 block w-full" id="last_name" name="last_name" type="text" :value="$contact['last_name']" />
             <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
           </div>
 
           <!-- middle name -->
           <div x-cloak x-show="showMiddleName" x-transition class="relative mb-5">
             <x-input-label for="middle_name" :value="__('Middle name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="middle_name" name="middle_name" type="text" x-ref="middlename" />
+            <x-text-input class="mt-1 block w-full" id="middle_name" name="middle_name" type="text" x-ref="middlename" :value="$contact['middle_name']" />
             <x-input-error class="mt-2" :messages="$errors->get('middle_name')" />
           </div>
 
           <!-- nickname -->
           <div x-cloak x-show="showNickname" x-transition class="relative mb-5">
             <x-input-label for="nickname" :value="__('Nickname')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="nickname" name="nickname" type="text" x-ref="nickname" />
+            <x-text-input class="mt-1 block w-full" id="nickname" name="nickname" type="text" x-ref="nickname" :value="$contact['nickname']" />
             <x-input-error class="mt-2" :messages="$errors->get('nickname')" />
           </div>
 
           <!-- maiden name -->
           <div x-cloak x-show="showMaidenName" x-transition class="relative mb-5">
             <x-input-label for="maiden_name" :value="__('Maiden name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="maiden_name" name="maiden_name" type="text" x-ref="maidenname" />
+            <x-text-input class="mt-1 block w-full" id="maiden_name" name="maiden_name" type="text" x-ref="maidenname" :value="$contact['maiden_name']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Maiden name is the name a woman uses before she was married.') }}
             </p>
@@ -104,7 +116,7 @@
           <!-- suffix -->
           <div x-cloak x-show="showSuffix" x-transition class="relative mb-5">
             <x-input-label for="suffix" :value="__('Suffix')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="suffix" name="suffix" type="text" x-ref="suffix" />
+            <x-text-input class="mt-1 block w-full" id="suffix" name="suffix" type="text" x-ref="suffix" :value="$contact['suffix']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Suffix is a term that follows a name, like Jr., Sr., III, etc.') }}
             </p>
@@ -114,7 +126,7 @@
           <!-- nationality -->
           <div x-cloak x-show="showNationality" x-transition class="relative mb-5">
             <x-input-label for="nationality" :value="__('Nationality')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="nationality" name="nationality" type="text" x-ref="nationality" />
+            <x-text-input class="mt-1 block w-full" id="nationality" name="nationality" type="text" x-ref="nationality" :value="$contact['nationality']" />
             <x-input-error class="mt-2" :messages="$errors->get('nationality')" />
           </div>
 
@@ -123,7 +135,7 @@
             <x-input-label for="gender_id" :value="__('Gender')" />
             <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="gender_id" name="gender_id">
               @foreach ($genders as $gender)
-                <option :value="{{ $gender['id'] }}">{{ $gender['name'] }}</option>
+                <option :value="{{ $gender['id'] }}" :selected="$contact['gender_id'] === $gender['id']">{{ $gender['name'] }}</option>
               @endforeach
             </select>
             <p class="mt-1 text-xs text-gray-500">
@@ -136,7 +148,7 @@
             <x-input-label for="marital_status_id" :value="__('Marital status')" />
             <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="marital_status_id" name="marital_status_id">
               @foreach ($maritalStatuses as $maritalStatus)
-                <option :value="{{ $maritalStatus['id'] }}">{{ $maritalStatus['name'] }}</option>
+                <option :value="{{ $maritalStatus['id'] }}" :selected="$contact['marital_status_id'] === $maritalStatus['id']">{{ $maritalStatus['name'] }}</option>
               @endforeach
             </select>
           </div>
@@ -146,7 +158,7 @@
             <x-input-label for="ethnicity_id" :value="__('Ethnicity')" />
             <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="ethnicity_id" name="ethnicity_id">
               @foreach ($ethnicities as $ethnicity)
-                <option :value="{{ $ethnicity['id'] }}">{{ $ethnicity['name'] }}</option>
+                <option :value="{{ $ethnicity['id'] }}" :selected="$contact['ethnicity_id'] === $ethnicity['id']">{{ $ethnicity['name'] }}</option>
               @endforeach
             </select>
             <p class="mt-1 text-xs text-gray-500">
@@ -157,7 +169,7 @@
           <!-- patronymic name -->
           <div x-cloak x-show="showPatronymicName" x-transition class="relative mb-5">
             <x-input-label for="patronymic_name" :value="__('Patronymic name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="patronymic_name" name="patronymic_name" type="text" x-ref="patronymicname" />
+            <x-text-input class="mt-1 block w-full" id="patronymic_name" name="patronymic_name" type="text" x-ref="patronymicname" :value="$contact['patronymic_name']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Patronymic name is a name derived from a parent’s name, common in Icelandic, Russian, and some Arabic cultures.') }}
             </p>
@@ -167,7 +179,7 @@
           <!-- tribal name -->
           <div x-cloak x-show="showTribalName" x-transition class="relative mb-5">
             <x-input-label for="tribal_name" :value="__('Tribal name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="tribal_name" name="tribal_name" type="text" x-ref="tribalname" />
+            <x-text-input class="mt-1 block w-full" id="tribal_name" name="tribal_name" type="text" x-ref="tribalname" :value="$contact['tribal_name']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Tribal name is a name used in various African and Indigenous cultures, like Zulu clan names.') }}
             </p>
@@ -177,7 +189,7 @@
           <!-- generation name -->
           <div x-cloak x-show="showGenerationName" x-transition class="relative mb-5">
             <x-input-label for="generation_name" :value="__('Generation name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="generation_name" name="generation_name" type="text" x-ref="generationname" />
+            <x-text-input class="mt-1 block w-full" id="generation_name" name="generation_name" type="text" x-ref="generationname" :value="$contact['generation_name']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Generation name is a name used in Japanese, Chinese, Korean, and Vietnamese culture where part of the name is shared by siblings or cousins to signify their generation.') }}
             </p>
@@ -187,7 +199,7 @@
           <!-- romanized name -->
           <div x-cloak x-show="showRomanizedName" x-transition class="relative mb-5">
             <x-input-label for="romanized_name" :value="__('Romanized name')" :optional="true" />
-            <x-text-input class="mt-1 block w-full" id="romanized_name" name="romanized_name" type="text" x-ref="romanizedname" />
+            <x-text-input class="mt-1 block w-full" id="romanized_name" name="romanized_name" type="text" x-ref="romanizedname" :value="$contact['romanized_name']" />
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Romanized name is the Latin alphabet transliteration of a non-Latin name.') }}
             </p>
@@ -269,12 +281,12 @@
 
         <!-- actions -->
         <div class="flex justify-between p-5">
-          <x-button.secondary navigate href="{{ $routes['contact']['index'] }}">
+          <x-button.secondary navigate href="{{ $routes['contact']['show'] }}">
             {{ __('Cancel') }}
           </x-button.secondary>
 
-          <x-button.primary dusk="submit-form-button">
-            {{ __('Create') }}
+          <x-button.primary>
+            {{ __('Save') }}
           </x-button.primary>
         </div>
       </form>

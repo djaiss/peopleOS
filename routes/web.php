@@ -39,6 +39,8 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
         Route::middleware(['contact'])->group(function (): void {
             Route::get('{vault}/contacts/{slug}', [ContactController::class, 'show'])->name('vaults.contacts.show');
+            Route::get('{vault}/contacts/{slug}/edit', [ContactController::class, 'edit'])->name('vaults.contacts.edit');
+            Route::put('{vault}/contacts/{slug}', [ContactController::class, 'update'])->name('vaults.contacts.update');
 
             // job & background information
             Route::put('{vault}/contacts/{slug}/job-information', [ContactJobInformationController::class, 'update'])->name('vaults.contacts.job-information.update');

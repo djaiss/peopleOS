@@ -45,7 +45,7 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
         Route::post('vaults/{vault}/contacts', [ContactController::class, 'create']);
         Route::middleware(['api_contact'])->group(function (): void {
             Route::get('vaults/{vault}/contacts/{contact}', [ContactController::class, 'show']);
-
+            Route::put('vaults/{vault}/contacts/{contact}', [ContactController::class, 'update']);
             Route::put('vaults/{vault}/contacts/{contact}/job', [ContactJobInformationController::class, 'update']);
             Route::put('vaults/{vault}/contacts/{contact}/background', [ContactBackgroundInformationController::class, 'update']);
             Route::delete('vaults/{vault}/contacts/{contact}', [ContactController::class, 'destroy']);

@@ -1,3 +1,13 @@
+<?php
+/**
+ * @var \App\Models\Vault $vault
+ * @var \App\Models\Contact $contact
+ * @var array $contacts
+ * @var array $companies
+ * @var array $routes
+ */
+?>
+
 <x-app-layout :vault="$vault">
   <main class="relative sm:mt-12">
     <div class="mx-auto max-w-7xl px-2 py-2 sm:px-0 sm:py-0">
@@ -12,14 +22,16 @@
             <!-- name and avatar -->
             <div class="relative mb-8 rounded-lg border border-gray-200 bg-white px-3 py-3 shadow-md">
               <div class="absolute -top-4 right-2 cursor-pointer rounded-full border border-gray-300 bg-white p-2 hover:bg-gray-100">
-                <x-lucide-pencil class="h-4 w-4 text-gray-500" />
+                <x-link hover :href="$routes['contact']['edit']">
+                  <x-lucide-pencil class="h-4 w-4 text-gray-500" />
+                </x-link>
               </div>
               <div class="flex flex-col items-center justify-center px-3">
                 <div class="mb-3 h-12 w-12 rounded-full">
                   {!! $contact['avatar']['content'] !!}
                 </div>
 
-                <div class="text-xl">
+                <div class="text-center text-xl">
                   {{ $contact['name'] }}
                 </div>
               </div>
@@ -148,6 +160,9 @@
               </div>
             </div>
           </div>
+
+          <!-- personal information -->
+          @include('vaults.contacts.partials.personal_information')
 
           <!-- information -->
           <div class="relative mb-3 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">

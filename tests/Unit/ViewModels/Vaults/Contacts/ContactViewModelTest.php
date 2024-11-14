@@ -53,6 +53,16 @@ class ContactViewModelTest extends TestCase
             'vault_id' => $vault->id,
             'first_name' => 'john',
             'last_name' => 'doe',
+            'middle_name' => 'michael',
+            'nickname' => 'mike',
+            'maiden_name' => 'maiden',
+            'patronymic_name' => 'doeaetio',
+            'tribal_name' => 'doeska',
+            'generation_name' => 'doekasm',
+            'romanized_name' => 'doekznaew',
+            'nationality' => 'american',
+            'prefix' => 'mr',
+            'suffix' => 'jr',
             'background_information' => 'background information',
             'job_title' => 'Paper salesman',
         ]);
@@ -65,7 +75,7 @@ class ContactViewModelTest extends TestCase
 
         $array = ContactViewModel::show($contact);
 
-        $this->assertEquals(8, count($array));
+        $this->assertEquals(20, count($array));
 
         $this->assertEquals(
             $contact->id,
@@ -76,8 +86,44 @@ class ContactViewModelTest extends TestCase
             $array['name']
         );
         $this->assertEquals(
-            $contact->avatar,
-            $array['avatar']
+            'john',
+            $array['first_name']
+        );
+        $this->assertEquals(
+            'doe',
+            $array['last_name']
+        );
+        $this->assertEquals(
+            'michael',
+            $array['middle_name']
+        );
+        $this->assertEquals(
+            'mike',
+            $array['nickname']
+        );
+        $this->assertEquals(
+            'maiden',
+            $array['maiden_name']
+        );
+        $this->assertEquals(
+            'doeaetio',
+            $array['patronymic_name']
+        );
+        $this->assertEquals(
+            'doeska',
+            $array['tribal_name']
+        );
+        $this->assertEquals(
+            'doekasm',
+            $array['generation_name']
+        );
+        $this->assertEquals(
+            'doekznaew',
+            $array['romanized_name']
+        );
+        $this->assertEquals(
+            'american',
+            $array['nationality']
         );
         $this->assertEquals(
             $contact->id.'-john',

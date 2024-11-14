@@ -108,6 +108,99 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_updates_a_contact(): void
+    {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+        $user = User::factory()->create();
+        $vault = $this->createVault($user);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+            'label' => 'Male',
+        ]);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+            'label' => 'Asian',
+        ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+            'label' => 'Married',
+        ]);
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id, [
+            'gender_id' => $gender->id,
+            'ethnicity_id' => $ethnicity->id,
+            'marital_status_id' => $maritalStatus->id,
+            'first_name' => 'Michael',
+            'last_name' => 'Scott',
+            'middle_name' => 'Gary',
+            'nickname' => 'Mike',
+            'maiden_name' => 'Johnson',
+            'patronymic_name' => 'Patronymic',
+            'tribal_name' => 'Tribal',
+            'generation_name' => 'Generation',
+            'romanized_name' => 'Romanized',
+            'nationality' => 'American',
+            'prefix' => 'Mr.',
+            'suffix' => 'Jr.',
+            'can_be_deleted' => true,
+        ]);
+
+        $response->assertStatus(200);
+        $contact = Contact::orderBy('id', 'desc')->first();
+
+        $this->assertEquals(
+            [
+                'id' => $contact->id,
+                'object' => 'contact',
+                'gender' => [
+                    'id' => $gender->id,
+                    'object' => 'gender',
+                    'label' => 'Male',
+                    'position' => 1,
+                    'created_at' => 1514764800,
+                    'updated_at' => 1514764800,
+                ],
+                'ethnicity' => [
+                    'id' => $ethnicity->id,
+                    'object' => 'ethnicity',
+                    'label' => 'Asian',
+                    'created_at' => 1514764800,
+                    'updated_at' => 1514764800,
+                ],
+                'marital_status' => [
+                    'id' => $maritalStatus->id,
+                    'object' => 'marital_status',
+                    'label' => 'Married',
+                    'created_at' => 1514764800,
+                    'updated_at' => 1514764800,
+                ],
+                'name' => 'Mr. Michael Scott Jr.',
+                'first_name' => 'Michael',
+                'last_name' => 'Scott',
+                'middle_name' => 'Gary',
+                'nickname' => 'Mike',
+                'maiden_name' => 'Johnson',
+                'patronymic_name' => 'Patronymic',
+                'tribal_name' => 'Tribal',
+                'generation_name' => 'Generation',
+                'romanized_name' => 'Romanized',
+                'nationality' => 'American',
+                'prefix' => 'Mr.',
+                'suffix' => 'Jr.',
+                'can_be_deleted' => true,
+                'created_at' => 1514764800,
+                'updated_at' => 1514764800,
+            ],
+            $response->json()['data']
+        );
+    }
+
+    #[Test]
     public function it_deletes_a_contact(): void
     {
         $user = User::factory()->create();
