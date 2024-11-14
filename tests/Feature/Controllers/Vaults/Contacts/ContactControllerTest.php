@@ -204,10 +204,89 @@ class ContactControllerTest extends TestCase
             [
                 'contact' => [
                     'new' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/new',
+                    'edit' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/edit',
                 ],
             ],
             $response['routes']
         );
+    }
+
+    #[Test]
+    public function a_user_can_visit_the_contact_edit_page(): void
+    {
+        $user = User::factory()->create();
+        $vault = $this->createVault($user);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+            'first_name' => 'Michael',
+            'last_name' => 'Scott',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/edit')
+            ->assertSee('Michael Scott')
+            ->assertOk();
+
+        $this->assertArrayHasKey('vault', $response);
+        $this->assertArrayHasKey('contact', $response);
+        $this->assertArrayHasKey('ethnicities', $response);
+        $this->assertArrayHasKey('genders', $response);
+        $this->assertArrayHasKey('maritalStatuses', $response);
+        $this->assertArrayHasKey('routes', $response);
+
+        $this->assertCount(1, $response['routes']);
+        $this->assertEquals(
+            [
+                'contact' => [
+                    'index' => env('APP_URL').'/vaults/'.$vault->id.'/contacts',
+                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
+                    'update' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
+                ],
+            ],
+            $response['routes']
+        );
+    }
+
+    #[Test]
+    public function a_user_can_update_a_contact(): void
+    {
+        $user = User::factory()->create();
+        $vault = $this->createVault($user);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $ethnicity = Ethnicity::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account->id,
+        ]);
+
+        $this->actingAs($user)
+            ->put('/vaults/'.$vault->id.'/contacts/'.$contact->slug, [
+                'first_name' => 'Michael',
+                'last_name' => 'Scott',
+                'gender_id' => $gender->id,
+                'ethnicity_id' => $ethnicity->id,
+                'marital_status_id' => $maritalStatus->id,
+                'nickname' => '',
+                'middle_name' => '',
+                'maiden_name' => '',
+                'patronymic_name' => '',
+                'tribal_name' => '',
+                'generation_name' => '',
+                'romanized_name' => '',
+                'nationality' => '',
+                'prefix' => '',
+                'suffix' => '',
+            ])
+            ->assertRedirectToRoute('vaults.contacts.show', [
+                'vault' => $vault,
+                'slug' => $contact->slug,
+            ]);
     }
 
     #[Test]

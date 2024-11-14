@@ -7,17 +7,13 @@ use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\MaritalStatus;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Str;
 
-class CreateContact
+class UpdateContact
 {
-    public Contact $contact;
-
     public function __construct(
         public User $user,
-        public Vault $vault,
+        public Contact $contact,
         public ?Gender $gender,
         public ?Ethnicity $ethnicity,
         public ?MaritalStatus $maritalStatus,
@@ -39,21 +35,20 @@ class CreateContact
     public function execute(): Contact
     {
         $this->validate();
-        $this->createContact();
-        $this->generateSlug();
+        $this->update();
 
         return $this->contact;
     }
 
     private function validate(): void
     {
-        if ($this->vault->account_id !== $this->user->account_id) {
+        if ($this->contact->vault->account_id !== $this->user->account_id) {
             throw new ModelNotFoundException;
         }
 
         // make sure the user has the permission
         $exists = $this->user->vaults()
-            ->where('vaults.id', $this->vault->id)
+            ->where('vaults.id', $this->contact->vault->id)
             ->exists();
 
         if (! $exists) {
@@ -79,35 +74,24 @@ class CreateContact
         }
     }
 
-    private function createContact(): void
+    private function update(): void
     {
-        $this->contact = Contact::create([
-            'vault_id' => $this->vault->id,
-            'gender_id' => $this->gender?->id,
-            'ethnicity_id' => $this->ethnicity?->id,
-            'marital_status_id' => $this->maritalStatus?->id,
-            'first_name' => $this->firstName,
-            'last_name' => $this->lastName ?? null,
-            'middle_name' => $this->middleName ?? null,
-            'nickname' => $this->nickname ?? null,
-            'maiden_name' => $this->maidenName ?? null,
-            'patronymic_name' => $this->patronymicName ?? null,
-            'tribal_name' => $this->tribalName ?? null,
-            'generation_name' => $this->generationName ?? null,
-            'romanized_name' => $this->romanizedName ?? null,
-            'nationality' => $this->nationality ?? null,
-            'suffix' => $this->suffix ?? null,
-            'prefix' => $this->prefix ?? null,
-            'can_be_deleted' => $this->canBeDeleted,
-        ]);
-    }
-
-    private function generateSlug(): void
-    {
-        $name = $this->contact->first_name.' '.$this->contact->last_name;
-        $slug = $this->contact->id.'-'.Str::of($name)->slug('-');
-
-        $this->contact->slug = $slug;
+        $this->contact->gender_id = $this->gender?->id;
+        $this->contact->ethnicity_id = $this->ethnicity?->id;
+        $this->contact->marital_status_id = $this->maritalStatus?->id;
+        $this->contact->first_name = $this->firstName;
+        $this->contact->last_name = $this->lastName ?? null;
+        $this->contact->middle_name = $this->middleName ?? null;
+        $this->contact->nickname = $this->nickname ?? null;
+        $this->contact->maiden_name = $this->maidenName ?? null;
+        $this->contact->patronymic_name = $this->patronymicName ?? null;
+        $this->contact->tribal_name = $this->tribalName ?? null;
+        $this->contact->generation_name = $this->generationName ?? null;
+        $this->contact->romanized_name = $this->romanizedName ?? null;
+        $this->contact->nationality = $this->nationality ?? null;
+        $this->contact->prefix = $this->prefix ?? null;
+        $this->contact->suffix = $this->suffix ?? null;
+        $this->contact->can_be_deleted = $this->canBeDeleted;
         $this->contact->save();
     }
 }
