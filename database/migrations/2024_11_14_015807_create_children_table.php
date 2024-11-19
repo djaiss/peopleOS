@@ -16,6 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('contact_id');
             $table->text('name')->nullable();
             $table->text('gender');
+            $table->integer('age')->nullable();
+            $table->text('grade_level')->nullable();
+            $table->text('school')->nullable();
             $table->timestamps();
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
         });

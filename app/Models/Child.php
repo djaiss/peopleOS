@@ -25,6 +25,9 @@ class Child extends Model
         'contact_id',
         'gender',
         'name',
+        'age',
+        'grade_level',
+        'school',
     ];
 
     /**
@@ -35,6 +38,9 @@ class Child extends Model
     protected $casts = [
         'name' => 'encrypted',
         'gender' => 'encrypted',
+        'age' => 'integer',
+        'grade_level' => 'encrypted',
+        'school' => 'encrypted',
     ];
 
     /**

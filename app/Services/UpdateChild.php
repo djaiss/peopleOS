@@ -13,6 +13,9 @@ class UpdateChild
         public Child $child,
         public ?string $name,
         public string $gender,
+        public ?int $age,
+        public ?string $gradeLevel,
+        public ?string $school,
     ) {}
 
     public function execute(): Child
@@ -41,6 +44,9 @@ class UpdateChild
     {
         $this->child->name = $this->name ?? null;
         $this->child->gender = $this->gender;
+        $this->child->age = $this->age ?? null;
+        $this->child->grade_level = $this->gradeLevel ?? null;
+        $this->child->school = $this->school ?? null;
         $this->child->save();
     }
 }

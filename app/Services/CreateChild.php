@@ -15,7 +15,10 @@ class CreateChild
         public User $user,
         public Contact $contact,
         public ?string $name,
-        public string $gender
+        public string $gender,
+        public ?string $age,
+        public ?string $gradeLevel,
+        public ?string $school,
     ) {}
 
     public function execute(): Child
@@ -44,6 +47,9 @@ class CreateChild
             'contact_id' => $this->contact->id,
             'name' => $this->name ?? null,
             'gender' => $this->gender,
+            'age' => $this->age ?? null,
+            'grade_level' => $this->gradeLevel ?? null,
+            'school' => $this->school ?? null,
         ]);
     }
 }

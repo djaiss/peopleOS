@@ -23,6 +23,9 @@ class ChildResource extends JsonResource
             ] : null,
             'gender' => $this->gender,
             'name' => $this->name,
+            'age' => $this->age,
+            'grade_level' => $this->grade_level,
+            'school' => $this->school,
             'created_at' => $this->created_at->timestamp,
             'updated_at' => $this->updated_at->timestamp,
         ];

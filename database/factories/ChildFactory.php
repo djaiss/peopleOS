@@ -25,6 +25,9 @@ class ChildFactory extends Factory
             'contact_id' => Contact::factory(),
             'name' => $this->faker->text(),
             'gender' => $this->faker->randomElement(ChildGender::cases())->value,
+            'age' => $this->faker->numberBetween(0, 18),
+            'grade_level' => $this->faker->text(),
+            'school' => $this->faker->text(),
         ];
     }
 }

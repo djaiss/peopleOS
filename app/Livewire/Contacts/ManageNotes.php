@@ -9,6 +9,7 @@ use App\Services\CreateNote;
 use App\Services\DestroyNote;
 use App\Services\UpdateNote;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -76,7 +77,7 @@ class ManageNotes extends Component
         ]);
 
         $note = (new CreateNote(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $this->contact,
             body: $this->body,
         ))->execute();

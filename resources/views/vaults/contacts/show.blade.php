@@ -37,6 +37,9 @@
               </div>
             </div>
 
+            <!-- kids -->
+            <livewire:contacts.manage-children :contact-id="$contact['id']" />
+
             <!-- name and avatar -->
             <div class="flex">
               <!-- avatar -->
@@ -103,9 +106,6 @@
                 </li>
               </ul>
             </div>
-
-            <!-- kids -->
-            @include('vaults.contacts.partials.kids')
 
             <!-- extended family -->
             <div class="group mb-8 flex items-center rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">

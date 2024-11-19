@@ -30,6 +30,9 @@ class ChildControllerTest extends TestCase
         $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children', [
             'gender' => 'boy',
             'name' => 'John Doe',
+            'age' => 10,
+            'grade_level' => '10th',
+            'school' => 'Saint Junior High School',
         ]);
 
         $response->assertStatus(201);
@@ -45,6 +48,9 @@ class ChildControllerTest extends TestCase
                 ],
                 'gender' => 'boy',
                 'name' => 'John Doe',
+                'age' => 10,
+                'grade_level' => '10th',
+                'school' => 'Saint Junior High School',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
@@ -74,6 +80,9 @@ class ChildControllerTest extends TestCase
         $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children/'.$child->id, [
             'gender' => 'girl',
             'name' => 'Jane Doe',
+            'age' => 10,
+            'grade_level' => '10th',
+            'school' => 'Saint Junior High School',
         ]);
 
         $response->assertStatus(200);
@@ -88,6 +97,9 @@ class ChildControllerTest extends TestCase
                 ],
                 'gender' => 'girl',
                 'name' => 'Jane Doe',
+                'age' => 10,
+                'grade_level' => '10th',
+                'school' => 'Saint Junior High School',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
@@ -179,6 +191,9 @@ class ChildControllerTest extends TestCase
             'contact_id' => $contact->id,
             'gender' => 'boy',
             'name' => 'John Doe',
+            'age' => 10,
+            'grade_level' => '10th',
+            'school' => 'Saint Junior High School',
         ]);
 
         Sanctum::actingAs($user);
@@ -197,6 +212,9 @@ class ChildControllerTest extends TestCase
                 ],
                 'gender' => 'boy',
                 'name' => 'John Doe',
+                'age' => 10,
+                'grade_level' => '10th',
+                'school' => 'Saint Junior High School',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],

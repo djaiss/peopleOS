@@ -36,6 +36,9 @@ class ChildController extends Controller
      *
      * @bodyParam gender string required The gender of the child. Only three values are accepted for this field: 'boy', 'girl', 'other'. Any other value will be rejected. Example: boy
      * @bodyParam name string The name of the child. Max 255 characters. Example: Michael
+     * @bodyParam age int The age of the child. Example: 10
+     * @bodyParam grade_level string The grade level of the child. Example: 10th
+     * @bodyParam school string The school of the child. Example: Saint Junior High School
      *
      * @response 201 {
      *  "id": 4,
@@ -46,6 +49,9 @@ class ChildController extends Controller
      *  },
      *  "gender": "boy",
      *  "name": "Michael",
+     *  "age": 10,
+     *  "grade_level": "10th",
+     *  "school": "Saint Junior High School",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -55,6 +61,9 @@ class ChildController extends Controller
      * @responseField contact The contact object who represents the parent.
      * @responseField gender The gender of the child.
      * @responseField name The name of the child.
+     * @responseField age The age of the child.
+     * @responseField grade_level The grade level of the child.
+     * @responseField school The school of the child.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -66,6 +75,9 @@ class ChildController extends Controller
         $validated = $request->validate([
             'gender' => 'required|string|in:boy,girl,other',
             'name' => 'nullable|string|max:255',
+            'age' => 'nullable|integer',
+            'grade_level' => 'nullable|string|max:255',
+            'school' => 'nullable|string|max:255',
         ]);
 
         $child = (new CreateChild(
@@ -73,6 +85,9 @@ class ChildController extends Controller
             contact: $contact,
             name: $validated['name'],
             gender: $validated['gender'],
+            age: $validated['age'],
+            gradeLevel: $validated['grade_level'],
+            school: $validated['school'],
         ))->execute();
 
         return new ChildResource($child);
@@ -91,6 +106,9 @@ class ChildController extends Controller
      *
      * @bodyParam gender string required The gender of the child. Only three values are accepted for this field: 'boy', 'girl', 'other'. Any other value will be rejected. Example: boy
      * @bodyParam name string The name of the child. Max 255 characters. Example: Michael
+     * @bodyParam age int The age of the child. Example: 10
+     * @bodyParam grade_level string The grade level of the child. Example: 10th
+     * @bodyParam school string The school of the child. Example: Saint Junior High School
      *
      * @response 200 {
      *  "id": 4,
@@ -101,6 +119,9 @@ class ChildController extends Controller
      *  },
      *  "gender": "boy",
      *  "name": "Michael",
+     *  "age": 10,
+     *  "grade_level": "10th",
+     *  "school": "Saint Junior High School",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -110,6 +131,9 @@ class ChildController extends Controller
      * @responseField contact The contact object who represents the parent.
      * @responseField gender The gender of the child.
      * @responseField name The name of the child.
+     * @responseField age The age of the child.
+     * @responseField grade_level The grade level of the child.
+     * @responseField school The school of the child.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -121,6 +145,9 @@ class ChildController extends Controller
         $validated = $request->validate([
             'gender' => 'required|string|in:boy,girl,other',
             'name' => 'nullable|string|max:255',
+            'age' => 'nullable|integer',
+            'grade_level' => 'nullable|string|max:255',
+            'school' => 'nullable|string|max:255',
         ]);
 
         try {
@@ -135,6 +162,9 @@ class ChildController extends Controller
             child: $child,
             gender: $validated['gender'],
             name: $validated['name'],
+            age: $validated['age'],
+            gradeLevel: $validated['grade_level'],
+            school: $validated['school'],
         ))->execute();
 
         return new ChildResource($child);

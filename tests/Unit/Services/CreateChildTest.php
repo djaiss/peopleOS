@@ -48,6 +48,9 @@ class CreateChildTest extends TestCase
             contact: $contact,
             name: 'John',
             gender: ChildGender::BOY->value,
+            age: 10,
+            gradeLevel: '10th',
+            school: 'High School',
         ))->execute();
 
         $this->assertDatabaseHas('children', [
@@ -63,6 +66,22 @@ class CreateChildTest extends TestCase
         $this->assertEquals(
             'John',
             $child->name
+        );
+        $this->assertEquals(
+            ChildGender::BOY->value,
+            $child->gender
+        );
+        $this->assertEquals(
+            10,
+            $child->age
+        );
+        $this->assertEquals(
+            '10th',
+            $child->grade_level
+        );
+        $this->assertEquals(
+            'High School',
+            $child->school
         );
     }
 }
