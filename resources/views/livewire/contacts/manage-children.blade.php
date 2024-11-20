@@ -132,53 +132,61 @@
           </div>
 
           <div class="absolute -top-1 right-6 cursor-pointer rounded-full border border-gray-300 bg-white p-2 hover:bg-gray-100">
-            <x-link hover>
-              <x-lucide-pencil class="h-4 w-4 text-gray-500" />
-            </x-link>
+            <span wire:click="toggleAddMode">
+              <x-lucide-plus class="h-4 w-4 text-gray-500" />
+            </span>
           </div>
         </div>
       </div>
 
       <!-- kid -->
-      @foreach ($children as $child)
-        <div class="">
-          <!-- name + age -->
-          <div class="flex items-end">
-            <div class="flex items-center">
-              @if ($child['gender'] === 'boy')
-                <x-icons.boy class="mr-2 h-3 w-3" />
-              @elseif ($child['gender'] === 'girl')
-                <x-icons.girl class="mr-2 h-3 w-3" />
-              @else
-                <x-icons.other class="mr-2 h-3 w-3" />
-              @endif
+      <div class="space-y-1">
+        @foreach ($children as $child)
+          <div>
+            <!-- name + age -->
+            <div class="flex items-end">
+              <div class="flex items-center">
+                @if ($child['gender'] === 'boy')
+                  <x-icons.boy class="mr-2 h-4 w-4" />
+                @elseif ($child['gender'] === 'girl')
+                  <x-icons.girl class="mr-2 h-4 w-4" />
+                @else
+                  <x-icons.other class="mr-2 h-4 w-4" />
+                @endif
 
-              <span>{{ $child['name'] }}</span>
+                <span>{{ $child['name'] }}</span>
+              </div>
+
+              <div class="mx-1 mb-1 flex-grow border-b border-dotted border-gray-600"></div>
+
+              @if ($child['age'])
+                <span>{{ $child['age'] }} yo</span>
+              @endif
             </div>
 
-            <div class="mx-1 mb-1 flex-grow border-b border-dotted border-gray-600"></div>
+            <!-- grade + school -->
+            @if ($child['school'] || $child['grade_level'])
+              <div class="ml-6 mt-1 flex flex-col space-y-1 text-xs">
+                @if ($child['school'])
+                  <div class="mr-2 flex items-center text-gray-500">
+                    <x-lucide-school class="mr-1 h-3 w-3" />
 
-            @if ($child['age'])
-              <span>{{ $child['age'] }} yo</span>
+                    <span>{{ $child['school'] }}</span>
+                  </div>
+                @endif
+
+                @if ($child['grade_level'])
+                  <div class="flex items-center text-gray-500">
+                    <x-lucide-graduation-cap class="mr-1 h-3 w-3" />
+
+                    <span>{{ $child['grade_level'] }}</span>
+                  </div>
+                @endif
+              </div>
             @endif
           </div>
-
-          <!-- grade + school -->
-          <div class="ml-6 mt-1 flex flex-col space-y-1 text-xs">
-            <div class="mr-2 flex items-center text-gray-500">
-              <x-lucide-school class="mr-1 h-3 w-3" />
-
-              <span>Ecole Saint-Joseph</span>
-            </div>
-
-            <div class="flex items-center text-gray-500">
-              <x-lucide-graduation-cap class="mr-1 h-3 w-3" />
-
-              <span>CE1</span>
-            </div>
-          </div>
-        </div>
-      @endforeach
+        @endforeach
+      </div>
     </div>
 
     <div class="relative mb-8 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">

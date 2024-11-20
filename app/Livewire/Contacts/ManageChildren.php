@@ -26,19 +26,19 @@ class ManageChildren extends Component
     public bool $addMode = false;
 
     #[Validate('nullable|string|min:3|max:100')]
-    public string $name = '';
+    public ?string $name = null;
 
     #[Validate('required|string|in:boy,girl,other')]
-    public string $gender = '';
+    public ?string $gender = null;
 
     #[Validate('nullable|string|min:1|max:100')]
-    public string $age = '';
+    public ?string $age = null;
 
     #[Validate('nullable|string|min:3|max:100')]
-    public string $gradeLevel = '';
+    public ?string $gradeLevel = null;
 
     #[Validate('nullable|string|min:3|max:100')]
-    public string $school = '';
+    public ?string $school = null;
 
     public function mount()
     {
@@ -56,11 +56,11 @@ class ManageChildren extends Component
     public function toggleAddMode()
     {
         $this->addMode = ! $this->addMode;
-        $this->name = '';
-        $this->gender = '';
-        $this->age = '';
-        $this->gradeLevel = '';
-        $this->school = '';
+        $this->name = null;
+        $this->gender = null;
+        $this->age = null;
+        $this->gradeLevel = null;
+        $this->school = null;
         $this->resetErrorBag();
     }
 
