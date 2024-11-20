@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->text('grade_level')->nullable();
             $table->text('school')->nullable();
+            $table->datetime('age_entered_at')->nullable();
             $table->timestamps();
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
         });

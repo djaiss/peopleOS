@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ChildGender;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +29,7 @@ class Child extends Model
         'age',
         'grade_level',
         'school',
+        'age_entered_at', // when the age was entered in the system, used to calculate the age
     ];
 
     /**
@@ -41,6 +43,7 @@ class Child extends Model
         'age' => 'integer',
         'grade_level' => 'encrypted',
         'school' => 'encrypted',
+        'age_entered_at' => 'datetime',
     ];
 
     /**
@@ -71,6 +74,29 @@ class Child extends Model
                     ChildGender::GIRL->value => trans('a girl'),
                     default => trans('a child'),
                 };
+            }
+        );
+    }
+
+    /**
+     * Get the age of the child.
+     * The age is automatically calculated based on the number of years
+     * originally defined and the current year.
+     *
+     * @return Attribute<int|null,int|null>
+     */
+    protected function age(): ?Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes) {
+                if (! Arr::get($attributes, 'age')) {
+                    return null;
+                }
+
+                $age = Arr::get($attributes, 'age');
+                $ageEnteredAt = Carbon::parse(Arr::get($attributes, 'age_entered_at'));
+
+                return $age + round($ageEnteredAt->diffInYears(now()));
             }
         );
     }

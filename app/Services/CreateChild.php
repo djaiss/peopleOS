@@ -51,6 +51,7 @@ class CreateChild
             'age' => $this->age ?? null,
             'grade_level' => $this->gradeLevel ?? null,
             'school' => $this->school ?? null,
+            'age_entered_at' => $this->age ? now() : null,
         ]);
     }
 }

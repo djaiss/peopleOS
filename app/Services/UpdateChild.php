@@ -47,6 +47,7 @@ class UpdateChild
         $this->child->age = $this->age ?? null;
         $this->child->grade_level = $this->gradeLevel ?? null;
         $this->child->school = $this->school ?? null;
+        $this->child->age_entered_at = $this->age ? now() : null;
         $this->child->save();
     }
 }

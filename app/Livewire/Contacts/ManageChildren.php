@@ -40,6 +40,9 @@ class ManageChildren extends Component
     #[Validate('nullable|string|min:3|max:100')]
     public ?string $school = null;
 
+    #[Locked]
+    public int $editedChildId = 0;
+
     public function mount()
     {
         $this->contact = Contact::find($this->contactId);
@@ -96,5 +99,28 @@ class ManageChildren extends Component
         $this->children = $this->children->prepend($child);
 
         $this->toggleAddMode();
+    }
+
+    public function editMode(int $childId): void
+    {
+        $this->editedChildId = $childId;
+
+        $child = $this->children->firstWhere('id', $childId);
+        $this->name = $child['name'];
+        $this->gender = $child['gender'];
+        $this->age = $child['age'];
+        $this->gradeLevel = $child['grade_level'];
+        $this->school = $child['school'];
+    }
+
+    public function resetEdit(): void
+    {
+        $this->editedChildId = 0;
+        $this->name = null;
+        $this->gender = null;
+        $this->age = null;
+        $this->gradeLevel = null;
+        $this->school = null;
+        $this->resetErrorBag();
     }
 }
