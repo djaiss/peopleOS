@@ -140,9 +140,9 @@
       </div>
 
       <!-- kid -->
-      <div class="space-y-1">
+      <div class="space-y-0">
         @foreach ($children as $child)
-          <div>
+          <div class="rounded-lg border border-transparent px-2 py-1 hover:cursor-pointer hover:border-gray-200 hover:bg-gray-50">
             <!-- name + age -->
             <div class="flex items-end">
               <div class="flex items-center">
