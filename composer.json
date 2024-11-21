@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^8.2",
+    "php": "^8.4",
     "amirami/localizator": "^0.13.0@alpha",
     "bacon/bacon-qr-code": "^3.0",
     "codezero/laravel-localizer": "^3.0",

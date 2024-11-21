@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckVault
@@ -23,9 +24,9 @@ class CheckVault
         }
 
         try {
-            $vault = auth()->user()
+            $vault = Auth::user()
                 ->vaults()
-                ->where('account_id', auth()->user()->account_id)
+                ->where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
 
             $request->attributes->add(['vault' => $vault]);

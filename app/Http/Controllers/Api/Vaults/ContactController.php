@@ -13,6 +13,7 @@ use App\Services\DestroyContact;
 use App\Services\UpdateContact;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Contacts
@@ -139,7 +140,7 @@ class ContactController extends Controller
         ]);
 
         $contact = (new CreateContact(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
             gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
             ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
@@ -282,7 +283,7 @@ class ContactController extends Controller
         ]);
 
         $contact = (new UpdateContact(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
             gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
             ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
@@ -321,7 +322,7 @@ class ContactController extends Controller
         $contact = $request->attributes->get('contact');
 
         (new DestroyContact(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
             contact: $contact,
         ))->execute();

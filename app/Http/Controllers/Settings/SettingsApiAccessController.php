@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Settings\Api\ApiIndexViewModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -38,7 +39,7 @@ class SettingsApiAccessController extends Controller
 
     public function destroy(Request $request, int $id): RedirectResponse
     {
-        auth()->user()->tokens()->where('id', $id)->delete();
+        Auth::user()->tokens()->where('id', $id)->delete();
 
         return Redirect::route('settings.api.index')
             ->success(trans('The key has been revoked'));

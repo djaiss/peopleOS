@@ -13,6 +13,7 @@ use App\Services\DestroyContactPhoneNumber;
 use App\Services\UpdateContactPhoneNumber;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Contacts
@@ -56,7 +57,7 @@ class ContactPhoneNumberController extends Controller
         ]);
 
         $contactPhoneNumber = (new CreateContactPhoneNumber(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
             label: $validated['label'],
             phoneNumber: $validated['phone_number'],
@@ -106,7 +107,7 @@ class ContactPhoneNumberController extends Controller
         }
 
         $contactPhoneNumber = (new UpdateContactPhoneNumber(
-            user: auth()->user(),
+            user: Auth::user(),
             contactPhoneNumber: $contactPhoneNumber,
             label: $validated['label'],
             phoneNumber: $validated['phone_number'],
@@ -138,7 +139,7 @@ class ContactPhoneNumberController extends Controller
         }
 
         (new DestroyContactPhoneNumber(
-            user: auth()->user(),
+            user: Auth::user(),
             contactPhoneNumber: $contactPhoneNumber,
         ))->execute();
 

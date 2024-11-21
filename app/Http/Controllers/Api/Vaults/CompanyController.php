@@ -11,6 +11,7 @@ use App\Services\UpdateCompany;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Companies
@@ -39,7 +40,7 @@ class CompanyController extends Controller
         ]);
 
         $company = (new CreateCompany(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
             name: $validated['name'],
         ))->execute();
@@ -82,7 +83,7 @@ class CompanyController extends Controller
         }
 
         $company = (new UpdateCompany(
-            user: auth()->user(),
+            user: Auth::user(),
             company: $company,
             name: $validated['name'],
         ))->execute();
@@ -117,7 +118,7 @@ class CompanyController extends Controller
         }
 
         (new DestroyCompany(
-            user: auth()->user(),
+            user: Auth::user(),
             company: $company,
         ))->execute();
 

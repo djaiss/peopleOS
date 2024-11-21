@@ -8,6 +8,7 @@ use App\Models\Vault;
 use App\Services\UpdateJobInformation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Contacts
@@ -52,7 +53,7 @@ class ContactJobInformationController extends Controller
         ]);
 
         $company = (new UpdateJobInformation(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
             companyName: $validated['company_name'],
             jobTitle: $validated['job_title'],

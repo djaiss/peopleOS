@@ -11,6 +11,7 @@ use App\Services\DestroyVault;
 use App\Services\UpdateVault;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Vaults
@@ -54,7 +55,7 @@ class VaultController extends Controller
         ]);
 
         $vault = (new CreateVault(
-            user: auth()->user(),
+            user: Auth::user(),
             name: $validated['name'],
             description: $validated['description'],
         ))->execute();
@@ -95,7 +96,7 @@ class VaultController extends Controller
         ]);
 
         $vault = (new UpdateVault(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
             name: $validated['name'],
             description: $validated['description'],
@@ -118,7 +119,7 @@ class VaultController extends Controller
         $vault = $request->attributes->get('vault');
 
         (new DestroyVault(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
         ))->execute();
 
@@ -218,7 +219,7 @@ class VaultController extends Controller
      */
     public function index()
     {
-        $vaults = auth()->user()->vaults()
+        $vaults = Auth::user()->vaults()
             ->paginate();
 
         return new VaultCollection($vaults);

@@ -8,6 +8,7 @@ use App\Models\Vault;
 use App\Services\UpdateBackgroundInformation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Contacts
@@ -38,7 +39,7 @@ class ContactBackgroundInformationController extends Controller
         ]);
 
         (new UpdateBackgroundInformation(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
             information: $validated['information'],
         ))->execute();
