@@ -3,8 +3,10 @@
 namespace App\Livewire\Contacts;
 
 use App\Http\ViewModels\Vaults\Contacts\ContactChildrenViewModel;
+use App\Models\Child;
 use App\Models\Contact;
 use App\Services\CreateChild;
+use App\Services\UpdateChild;
 use Livewire\Component;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -122,5 +124,37 @@ class ManageChildren extends Component
         $this->gradeLevel = null;
         $this->school = null;
         $this->resetErrorBag();
+    }
+
+    public function update(): void
+    {
+        $this->validate([
+            'name' => 'nullable|string|min:3|max:100',
+            'gender' => 'required|string|in:boy,girl,other',
+            'age' => 'nullable|string|min:1|max:100',
+            'gradeLevel' => 'nullable|string|min:3|max:100',
+            'school' => 'nullable|string|min:3|max:100',
+        ]);
+
+        $child = Child::where('contact_id', $this->contact->id)
+            ->findOrFail($this->editedChildId);
+
+        $child = (new UpdateChild(
+            user: Auth::user(),
+            child: $child,
+            name: $this->name,
+            gender: $this->gender,
+            age: $this->age,
+            gradeLevel: $this->gradeLevel,
+            school: $this->school,
+        ))->execute();
+
+        Toaster::success(__('Child updated'));
+
+        $child = ContactChildrenViewModel::child($child);
+
+        $this->children = $this->children->prepend($child);
+
+        $this->toggleEditMode();
     }
 }
