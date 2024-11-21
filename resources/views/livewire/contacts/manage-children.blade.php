@@ -189,10 +189,10 @@
           @else
             <!-- edit child form -->
             <form wire:submit="update" class="items-center rounded-lg border border-gray-200 bg-white p-3 hover:border-gray-300 dark:border-gray-700 dark:bg-gray-900" x-data="{
-              showName: false,
-              showAge: false,
-              showSchool: false,
-              showGradeLevel: false,
+              showName: {{ $child['name'] ? 'true' : 'false' }},
+              showAge: {{ $child['age'] ? 'true' : 'false' }},
+              showSchool: {{ $child['school'] ? 'true' : 'false' }},
+              showGradeLevel: {{ $child['grade_level'] ? 'true' : 'false' }},
             }">
               <!-- choose gender -->
               <div class="mb-2 grid grid-cols-3 space-x-2">
@@ -297,14 +297,20 @@
                 <x-input-error class="mt-2" :messages="$errors->get('school')" />
               </div>
 
-              <div class="flex justify-between">
-                <x-button.secondary wire:click="resetEdit" class="mr-2">
-                  {{ __('Cancel') }}
-                </x-button.secondary>
+              <div class="flex flex-col">
+                <div class="flex justify-between border-b border-gray-200 pb-2">
+                  <x-button.secondary wire:click="resetEdit" class="mr-2">
+                    {{ __('Cancel') }}
+                  </x-button.secondary>
 
-                <x-button.primary type="submit">
-                  {{ __('Save') }}
-                </x-button.primary>
+                  <x-button.primary type="submit">
+                    {{ __('Save') }}
+                  </x-button.primary>
+                </div>
+
+                <x-button.danger type="button" wire:confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" wire:click="delete({{ $child['id'] }})">
+                  {{ __('Delete') }}
+                </x-button.danger>
               </div>
             </form>
           @endif
@@ -317,7 +323,7 @@
         <div class="-rotate-12 rounded border border-gray-200 bg-white p-1 transition group-hover:rotate-0 group-hover:border-blue-500">
           <x-lucide-baby class="h-4 w-4 text-gray-500 group-hover:text-blue-500" />
         </div>
-        <span class="ml-3 text-gray-500 group-hover:text-gray-800">{{ __('Add kids') }}</span>
+        <span id="blank-state" class="ml-3 text-gray-500 group-hover:text-gray-800">{{ __('Add kids') }}</span>
       </div>
     @endif
   @endif

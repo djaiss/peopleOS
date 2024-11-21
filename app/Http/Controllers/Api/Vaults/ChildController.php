@@ -206,6 +206,10 @@ class ChildController extends Controller
     /**
      * Retrieve a child.
      *
+     * The age is approximate, it is calculated based on the age originally
+     * defined and the current year. For example, if the age entered is 10 and
+     * the age was entered 5 years ago, the age returned will be 15.
+     *
      * @urlParam vault required The id of the vault. Example: 1
      * @urlParam contact required The id of the contact. Example: 1
      * @urlParam child required The id of the child. Example: 1
@@ -219,6 +223,9 @@ class ChildController extends Controller
      *   },
      *   "gender": "boy",
      *   "name": "John Doe",
+     *   "age": 10,
+     *   "grade_level": "10th",
+     *   "school": "Saint Junior High School",
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      * }
@@ -228,6 +235,9 @@ class ChildController extends Controller
      * @responseField contact The contact object who represents the parent.
      * @responseField gender The gender of the child.
      * @responseField name The name of the child.
+     * @responseField age The age of the child.
+     * @responseField grade_level The grade level of the child.
+     * @responseField school The school of the child.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -260,6 +270,9 @@ class ChildController extends Controller
      *  },
      *  "gender": "boy",
      *  "name": "Michael",
+     *  "age": 10,
+     *  "grade_level": "10th",
+     *  "school": "Saint Junior High School",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }, {
@@ -271,6 +284,9 @@ class ChildController extends Controller
      *  },
      *  "gender": "girl",
      *  "name": "Dwight",
+     *  "age": 10,
+     *  "grade_level": "10th",
+     *  "school": "Saint Junior High School",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }],
@@ -312,6 +328,9 @@ class ChildController extends Controller
      * @responseField contact The contact object who represents the parent.
      * @responseField gender The gender of the child.
      * @responseField name The name of the child.
+     * @responseField age The age of the child.
+     * @responseField grade_level The grade level of the child.
+     * @responseField school The school of the child.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */

@@ -3,15 +3,12 @@
 namespace Tests\Unit\ViewModels\Vaults\Contacts;
 
 use App\Http\ViewModels\Vaults\Contacts\ContactChildrenViewModel;
-use App\Http\ViewModels\Vaults\Contacts\ContactNotesViewModel;
 use App\Models\Child;
 use App\Models\Contact;
-use App\Models\Note;
 use App\Models\User;
 use App\Models\Vault;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 

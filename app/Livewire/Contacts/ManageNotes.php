@@ -116,7 +116,7 @@ class ManageNotes extends Component
             ->findOrFail($noteId);
 
         $note = (new UpdateNote(
-            user: auth()->user(),
+            user: Auth::user(),
             note: $note,
             body: $this->editedBody,
         ))->execute();
@@ -136,7 +136,7 @@ class ManageNotes extends Component
             ->findOrFail($noteId);
 
         (new DestroyNote(
-            user: auth()->user(),
+            user: Auth::user(),
             note: $note,
         ))->execute();
 

@@ -6,12 +6,13 @@ use App\Http\ViewModels\Vaults\Contacts\ContactChildrenViewModel;
 use App\Models\Child;
 use App\Models\Contact;
 use App\Services\CreateChild;
+use App\Services\DestroyChild;
 use App\Services\UpdateChild;
-use Livewire\Component;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
 class ManageChildren extends Component
@@ -153,8 +154,23 @@ class ManageChildren extends Component
 
         $child = ContactChildrenViewModel::child($child);
 
-        $this->children = $this->children->prepend($child);
+        $this->children = $this->children->map(fn (array $existingChild) => $existingChild['id'] === $this->editedChildId ? $child : $existingChild);
 
-        $this->toggleEditMode();
+        $this->resetEdit();
+    }
+
+    public function delete(int $childId): void
+    {
+        $child = Child::where('contact_id', $this->contact->id)
+            ->findOrFail($childId);
+
+        (new DestroyChild(
+            user: Auth::user(),
+            child: $child,
+        ))->execute();
+
+        Toaster::success(__('Child deleted'));
+
+        $this->children = $this->children->reject(fn (array $child) => $child['id'] === $childId);
     }
 }
