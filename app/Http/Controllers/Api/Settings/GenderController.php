@@ -12,6 +12,7 @@ use App\Services\UpdateGender;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Genders
@@ -56,7 +57,7 @@ class GenderController extends Controller
         ]);
 
         $gender = (new CreateGender(
-            user: auth()->user(),
+            user: Auth::user(),
             label: $validated['label'],
         ))->execute();
 
@@ -92,7 +93,7 @@ class GenderController extends Controller
         $id = $request->route()->parameter('gender');
 
         try {
-            $gender = Gender::where('account_id', auth()->user()->account_id)
+            $gender = Gender::where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(401, 'There is no gender with this id in your account.');
@@ -104,7 +105,7 @@ class GenderController extends Controller
         ]);
 
         $gender = (new UpdateGender(
-            user: auth()->user(),
+            user: Auth::user(),
             gender: $gender,
             label: $validated['label'],
             position: $validated['position'],
@@ -127,14 +128,14 @@ class GenderController extends Controller
         $id = $request->route()->parameter('gender');
 
         try {
-            $gender = Gender::where('account_id', auth()->user()->account_id)
+            $gender = Gender::where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(401, 'There is no gender with this id in your account.');
         }
 
         (new DestroyGender(
-            user: auth()->user(),
+            user: Auth::user(),
             gender: $gender,
         ))->execute();
 
@@ -172,7 +173,7 @@ class GenderController extends Controller
         $id = $request->route()->parameter('gender');
 
         try {
-            $gender = Gender::where('account_id', auth()->user()->account_id)
+            $gender = Gender::where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(401, 'There is no gender with this id in your account.');
@@ -243,7 +244,7 @@ class GenderController extends Controller
      */
     public function index(Request $request)
     {
-        $genders = auth()->user()->account
+        $genders = Auth::user()->account
             ->genders()
             ->paginate();
 

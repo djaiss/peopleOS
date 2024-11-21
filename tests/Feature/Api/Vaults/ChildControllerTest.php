@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Api\Vaults;
 
+use App\Models\Child;
 use App\Models\Contact;
-use App\Models\Note;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -11,12 +11,12 @@ use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class NoteControllerTest extends TestCase
+class ChildControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     #[Test]
-    public function it_creates_a_note(): void
+    public function it_creates_a_child(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
@@ -27,35 +27,43 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes', [
-            'body' => 'This is a note.',
+        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children', [
+            'gender' => 'boy',
+            'name' => 'John Doe',
+            'age' => 10,
+            'grade_level' => '10th',
+            'school' => 'Saint Junior High School',
         ]);
 
         $response->assertStatus(201);
-        $note = Note::orderBy('id', 'desc')->first();
+        $child = Child::orderBy('id', 'desc')->first();
 
         $this->assertEquals(
             [
-                'id' => $note->id,
-                'object' => 'note',
-                'body' => 'This is a note.',
+                'id' => $child->id,
+                'object' => 'child',
                 'contact' => [
                     'id' => $contact->id,
                     'name' => $contact->name,
                 ],
+                'gender' => 'boy',
+                'name' => 'John Doe',
+                'age' => 10,
+                'grade_level' => '10th',
+                'school' => 'Saint Junior High School',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
             $response->json()['data']
         );
 
-        $this->assertDatabaseHas('notes', [
-            'id' => $note->id,
+        $this->assertDatabaseHas('children', [
+            'id' => $child->id,
         ]);
     }
 
     #[Test]
-    public function it_updates_a_note(): void
+    public function it_updates_a_child(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
@@ -63,72 +71,81 @@ class NoteControllerTest extends TestCase
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $note = Note::factory()->create([
+        $child = Child::factory()->create([
             'contact_id' => $contact->id,
         ]);
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id, [
-            'body' => 'This is an updated note.',
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children/'.$child->id, [
+            'gender' => 'girl',
+            'name' => 'Jane Doe',
+            'age' => 10,
+            'grade_level' => '10th',
+            'school' => 'Saint Junior High School',
         ]);
 
         $response->assertStatus(200);
 
         $this->assertEquals(
             [
-                'id' => $note->id,
-                'object' => 'note',
-                'body' => 'This is an updated note.',
+                'id' => $child->id,
+                'object' => 'child',
                 'contact' => [
                     'id' => $contact->id,
                     'name' => $contact->name,
                 ],
+                'gender' => 'girl',
+                'name' => 'Jane Doe',
+                'age' => 10,
+                'grade_level' => '10th',
+                'school' => 'Saint Junior High School',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
             $response->json()['data']
         );
 
-        $this->assertDatabaseHas('notes', [
-            'id' => $note->id,
+        $this->assertDatabaseHas('children', [
+            'id' => $child->id,
         ]);
     }
 
     #[Test]
-    public function it_cant_update_a_note(): void
+    public function it_cant_update_a_child(): void
     {
         $user = User::factory()->create();
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $note = Note::factory()->create();
+        $child = Child::factory()->create();
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id, [
-            'body' => 'This is an updated note.',
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children/'.$child->id, [
+            'gender' => 'girl',
+            'name' => 'Jane Doe',
         ]);
 
         $response->assertStatus(401);
     }
 
     #[Test]
-    public function it_deletes_a_note(): void
+    public function it_deletes_a_child(): void
     {
         $user = User::factory()->create();
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $note = Note::factory()->create([
+        $child = Child::factory()->create([
             'contact_id' => $contact->id,
         ]);
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children/'.$child->id);
 
         $response->assertStatus(200);
 
@@ -139,30 +156,30 @@ class NoteControllerTest extends TestCase
             $response->json()
         );
 
-        $this->assertDatabaseMissing('notes', [
-            'id' => $note->id,
+        $this->assertDatabaseMissing('children', [
+            'id' => $child->id,
         ]);
     }
 
     #[Test]
-    public function it_cant_delete_a_note(): void
+    public function it_cant_delete_a_child(): void
     {
         $user = User::factory()->create();
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $note = Note::factory()->create();
+        $child = Child::factory()->create();
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children/'.$child->id);
 
         $response->assertStatus(401);
     }
 
     #[Test]
-    public function it_shows_a_note(): void
+    public function it_shows_a_child(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create();
@@ -170,26 +187,34 @@ class NoteControllerTest extends TestCase
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $note = Note::factory()->create([
+        $child = Child::factory()->create([
             'contact_id' => $contact->id,
-            'body' => 'This is a note.',
+            'gender' => 'boy',
+            'name' => 'John Doe',
+            'age' => 10,
+            'grade_level' => '10th',
+            'school' => 'Saint Junior High School',
         ]);
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id);
+        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children/'.$child->id);
 
         $response->assertStatus(200);
 
         $this->assertEquals(
             [
-                'id' => $note->id,
-                'object' => 'note',
-                'body' => 'This is a note.',
+                'id' => $child->id,
+                'object' => 'child',
                 'contact' => [
                     'id' => $contact->id,
                     'name' => $contact->name,
                 ],
+                'gender' => 'boy',
+                'name' => 'John Doe',
+                'age' => 10,
+                'grade_level' => '10th',
+                'school' => 'Saint Junior High School',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
@@ -198,20 +223,20 @@ class NoteControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_lists_all_the_notes(): void
+    public function it_lists_all_the_children(): void
     {
         $user = User::factory()->create();
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        Note::factory()->count(2)->create([
+        Child::factory()->count(2)->create([
             'contact_id' => $contact->id,
         ]);
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes');
+        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/children');
 
         $response->assertStatus(200);
 

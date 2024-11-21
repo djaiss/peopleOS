@@ -12,6 +12,7 @@ use App\Services\UpdateEthnicity;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Ethnicities
@@ -51,7 +52,7 @@ class EthnicityController extends Controller
         ]);
 
         $ethnicity = (new CreateEthnicity(
-            user: auth()->user(),
+            user: Auth::user(),
             label: $validated['label'],
         ))->execute();
 
@@ -84,7 +85,7 @@ class EthnicityController extends Controller
         $id = $request->route()->parameter('ethnicity');
 
         try {
-            $ethnicity = Ethnicity::where('account_id', auth()->user()->account_id)
+            $ethnicity = Ethnicity::where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(401, 'There is no ethnicity with this id in your account.');
@@ -95,7 +96,7 @@ class EthnicityController extends Controller
         ]);
 
         $ethnicity = (new UpdateEthnicity(
-            user: auth()->user(),
+            user: Auth::user(),
             ethnicity: $ethnicity,
             label: $validated['label'],
         ))->execute();
@@ -117,14 +118,14 @@ class EthnicityController extends Controller
         $id = $request->route()->parameter('ethnicity');
 
         try {
-            $ethnicity = Ethnicity::where('account_id', auth()->user()->account_id)
+            $ethnicity = Ethnicity::where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(401, 'There is no ethnicity with this id in your account.');
         }
 
         (new DestroyEthnicity(
-            user: auth()->user(),
+            user: Auth::user(),
             ethnicity: $ethnicity,
         ))->execute();
 
@@ -160,7 +161,7 @@ class EthnicityController extends Controller
         $id = $request->route()->parameter('ethnicity');
 
         try {
-            $ethnicity = Ethnicity::where('account_id', auth()->user()->account_id)
+            $ethnicity = Ethnicity::where('account_id', Auth::user()->account_id)
                 ->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(401, 'There is no ethnicity with this id in your account.');
@@ -229,7 +230,7 @@ class EthnicityController extends Controller
      */
     public function index(Request $request)
     {
-        $ethnicities = auth()->user()->account
+        $ethnicities = Auth::user()->account
             ->ethnicities()
             ->paginate();
 

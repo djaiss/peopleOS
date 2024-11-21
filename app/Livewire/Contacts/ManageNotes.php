@@ -9,6 +9,7 @@ use App\Services\CreateNote;
 use App\Services\DestroyNote;
 use App\Services\UpdateNote;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -76,7 +77,7 @@ class ManageNotes extends Component
         ]);
 
         $note = (new CreateNote(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $this->contact,
             body: $this->body,
         ))->execute();
@@ -115,7 +116,7 @@ class ManageNotes extends Component
             ->findOrFail($noteId);
 
         $note = (new UpdateNote(
-            user: auth()->user(),
+            user: Auth::user(),
             note: $note,
             body: $this->editedBody,
         ))->execute();
@@ -135,7 +136,7 @@ class ManageNotes extends Component
             ->findOrFail($noteId);
 
         (new DestroyNote(
-            user: auth()->user(),
+            user: Auth::user(),
             note: $note,
         ))->execute();
 

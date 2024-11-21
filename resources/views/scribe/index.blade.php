@@ -130,6 +130,26 @@
                 <a href="#contacts-DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-">Delete a contact phone number.</a>
               </li>
             </ul>
+            <li class="tocify-item level-2" data-unique="contacts-children">
+              <a href="#contacts-children">Children</a>
+            </li>
+            <ul id="tocify-subheader-contacts-children" class="tocify-subheader">
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts--contact--children">
+                <a href="#contacts-GETapi-vaults--vault--contacts--contact--children">List all children.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts--contact--children--child-">
+                <a href="#contacts-GETapi-vaults--vault--contacts--contact--children--child-">Retrieve a child.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-POSTapi-vaults--vault--contacts--contact--children">
+                <a href="#contacts-POSTapi-vaults--vault--contacts--contact--children">Create a child.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-PUTapi-vaults--vault--contacts--contact--children--child-">
+                <a href="#contacts-PUTapi-vaults--vault--contacts--contact--children--child-">Update a child.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-DELETEapi-vaults--vault--contacts--contact--children--child-">
+                <a href="#contacts-DELETEapi-vaults--vault--contacts--contact--children--child-">Delete a child.</a>
+              </li>
+            </ul>
           </ul>
         </ul>
         <ul id="tocify-header-ethnicities" class="tocify-header">
@@ -183,6 +203,9 @@
           <ul id="tocify-subheader-notes" class="tocify-subheader">
             <li class="tocify-item level-2" data-unique="notes-GETapi-vaults--vault--contacts--contact--notes">
               <a href="#notes-GETapi-vaults--vault--contacts--contact--notes">List all notes.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="notes-GETapi-vaults--vault--contacts--contact--notes--note-">
+              <a href="#notes-GETapi-vaults--vault--contacts--contact--notes--note-">Retrieve a note.</a>
             </li>
             <li class="tocify-item level-2" data-unique="notes-POSTapi-vaults--vault--contacts--contact--notes">
               <a href="#notes-POSTapi-vaults--vault--contacts--contact--notes">Create a note.</a>
@@ -239,7 +262,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 14, 2024</li>
+        <li>Last updated: November 21, 2024</li>
       </ul>
     </div>
 
@@ -844,14 +867,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/eveniet/contacts" \
+    --get "http://localhost/api/vaults/aut/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/eveniet/contacts"
+    "http://localhost/api/vaults/aut/contacts"
 );
 
 const headers = {
@@ -867,7 +890,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/eveniet/contacts';
+$url = 'http://localhost/api/vaults/aut/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -1043,11 +1066,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="eveniet" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="aut" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>eveniet</code>
+              <code>aut</code>
             </p>
           </div>
         </form>
@@ -3136,14 +3159,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/minus/contacts/consequuntur/phone-numbers" \
+    --get "http://localhost/api/vaults/aut/contacts/voluptatem/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/minus/contacts/consequuntur/phone-numbers"
+    "http://localhost/api/vaults/aut/contacts/voluptatem/phone-numbers"
 );
 
 const headers = {
@@ -3159,7 +3182,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/minus/contacts/consequuntur/phone-numbers';
+$url = 'http://localhost/api/vaults/aut/contacts/voluptatem/phone-numbers';
 $response = $client-&gt;get(
     $url,
     [
@@ -3289,11 +3312,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="minus" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="aut" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>minus</code>
+              <code>aut</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3301,11 +3324,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="consequuntur" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="voluptatem" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>consequuntur</code>
+              <code>voluptatem</code>
             </p>
           </div>
         </form>
@@ -3369,7 +3392,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"praesentium\",
+    \"label\": \"id\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3386,7 +3409,7 @@ const headers = {
 };
 
 let body = {
-    "label": "praesentium",
+    "label": "id",
     "phone_number": "+1234567890"
 };
 
@@ -3408,7 +3431,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'praesentium',
+            'label' =&gt; 'id',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3513,11 +3536,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="praesentium" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="id" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>praesentium</code>
+              <code>id</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3547,7 +3570,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"sequi\",
+    \"label\": \"amet\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3564,7 +3587,7 @@ const headers = {
 };
 
 let body = {
-    "label": "sequi",
+    "label": "amet",
     "phone_number": "+1234567890"
 };
 
@@ -3586,7 +3609,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'sequi',
+            'label' =&gt; 'amet',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3703,11 +3726,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="sequi" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="amet" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>sequi</code>
+              <code>amet</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3733,14 +3756,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/dolores/contacts/1/phone-numbers/1" \
+    "http://localhost/api/vaults/sint/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/dolores/contacts/1/phone-numbers/1"
+    "http://localhost/api/vaults/sint/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3756,7 +3779,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/dolores/contacts/1/phone-numbers/1';
+$url = 'http://localhost/api/vaults/sint/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3832,11 +3855,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="dolores" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="sint" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>dolores</code>
+              <code>sint</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3860,6 +3883,1226 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <br />
             <p>
               The id of the contact phone number. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="contacts-children">Children</h2>
+        <h2 id="contacts-GETapi-vaults--vault--contacts--contact--children">List all children.</h2>
+
+        <p></p>
+
+        <p>This API call returns a paginated collection of children.</p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts--contact--children">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/vaults/dolor/contacts/itaque/children" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/dolor/contacts/itaque/children"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/dolor/contacts/itaque/children';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--contacts--contact--children">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;child&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;gender&quot;: &quot;boy&quot;,
+ &quot;name&quot;: &quot;Michael&quot;,
+ &quot;age&quot;: 10,
+ &quot;grade_level&quot;: &quot;10th&quot;,
+ &quot;school&quot;: &quot;Saint Junior High School&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}, {
+ &quot;id&quot;: 5,
+ &quot;object&quot;: &quot;child&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;gender&quot;: &quot;girl&quot;,
+ &quot;name&quot;: &quot;Dwight&quot;,
+ &quot;age&quot;: 10,
+ &quot;grade_level&quot;: &quot;10th&quot;,
+ &quot;school&quot;: &quot;Saint Junior High School&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/1/children?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/1/children?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/vaults/1/contacts?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/1/children&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--contacts--contact--children" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--contacts--contact--children"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--contacts--contact--children"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--contacts--contact--children" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--contacts--contact--children">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--contacts--contact--children" data-method="GET" data-path="api/vaults/{vault}/contacts/{contact}/children" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--contacts--contact--children', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/children</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="dolor" data-component="url" />
+            <br />
+            <p>
+              The vault. Example:
+              <code>dolor</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="itaque" data-component="url" />
+            <br />
+            <p>
+              The contact. Example:
+              <code>itaque</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;child&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>gender</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The gender of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>age</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The age of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>grade_level</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The grade level of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>school</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The school of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-GETapi-vaults--vault--contacts--contact--children--child-">Retrieve a child.</h2>
+
+        <p></p>
+
+        <p>The age is approximate, it is calculated based on the age originally defined and the current year. For example, if the age entered is 10 and the age was entered 5 years ago, the age returned will be 15.</p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts--contact--children--child-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/vaults/1/contacts/1/children/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/1/contacts/1/children/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/1/contacts/1/children/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--contacts--contact--children--child-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;child&quot;,
+  &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+  },
+  &quot;gender&quot;: &quot;boy&quot;,
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;age&quot;: 10,
+  &quot;grade_level&quot;: &quot;10th&quot;,
+  &quot;school&quot;: &quot;Saint Junior High School&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--contacts--contact--children--child-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--contacts--contact--children--child-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--contacts--contact--children--child-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--contacts--contact--children--child-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--contacts--contact--children--child-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--contacts--contact--children--child-" data-method="GET" data-path="api/vaults/{vault}/contacts/{contact}/children/{child}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--contacts--contact--children--child-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/children/{child}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--contacts--contact--children--child-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--contacts--contact--children--child-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>child</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="child" data-endpoint="GETapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the child. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;child&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>gender</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The gender of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>age</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The age of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>grade_level</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The grade level of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>school</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The school of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-POSTapi-vaults--vault--contacts--contact--children">Create a child.</h2>
+
+        <p></p>
+
+        <p>Creates a new child for the given contact. A child has currently two information: gender and name. Only the gender is required, the name is optional. A contact can have multiple children.</p>
+        <p>Once created, the child will be returned in the response.</p>
+
+        <span id="example-requests-POSTapi-vaults--vault--contacts--contact--children">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/vaults/1/contacts/1/children" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"gender\": \"boy\",
+    \"name\": \"Michael\",
+    \"age\": 10,
+    \"grade_level\": \"10th\",
+    \"school\": \"Saint Junior High School\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/1/contacts/1/children"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "gender": "boy",
+    "name": "Michael",
+    "age": 10,
+    "grade_level": "10th",
+    "school": "Saint Junior High School"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/1/contacts/1/children';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'gender' =&gt; 'boy',
+            'name' =&gt; 'Michael',
+            'age' =&gt; 10,
+            'grade_level' =&gt; '10th',
+            'school' =&gt; 'Saint Junior High School',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-vaults--vault--contacts--contact--children">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;child&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;gender&quot;: &quot;boy&quot;,
+ &quot;name&quot;: &quot;Michael&quot;,
+ &quot;age&quot;: 10,
+ &quot;grade_level&quot;: &quot;10th&quot;,
+ &quot;school&quot;: &quot;Saint Junior High School&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-vaults--vault--contacts--contact--children" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-vaults--vault--contacts--contact--children"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-vaults--vault--contacts--contact--children"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-vaults--vault--contacts--contact--children" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-vaults--vault--contacts--contact--children">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-vaults--vault--contacts--contact--children" data-method="POST" data-path="api/vaults/{vault}/contacts/{contact}/children" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-vaults--vault--contacts--contact--children', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/children</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="gender" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="boy" data-component="body" />
+            <br />
+            <p>
+              The gender of the child. Only three values are accepted for this field: 'boy', 'girl', 'other'. Any other value will be rejected. Example:
+              <code>boy</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="Michael" data-component="body" />
+            <br />
+            <p>
+              The name of the child. Max 255 characters. Example:
+              <code>Michael</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>age</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="number" style="display: none" step="any" name="age" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="10" data-component="body" />
+            <br />
+            <p>
+              The age of the child. Example:
+              <code>10</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>grade_level</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="grade_level" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="10th" data-component="body" />
+            <br />
+            <p>
+              The grade level of the child. Example:
+              <code>10th</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>school</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="school" data-endpoint="POSTapi-vaults--vault--contacts--contact--children" value="Saint Junior High School" data-component="body" />
+            <br />
+            <p>
+              The school of the child. Example:
+              <code>Saint Junior High School</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;child&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>gender</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The gender of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>age</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The age of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>grade_level</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The grade level of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>school</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The school of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--contact--children--child-">Update a child.</h2>
+
+        <p></p>
+
+        <p>Updates an existing child.</p>
+        <p>Once updated, the child will be returned in the response.</p>
+
+        <span id="example-requests-PUTapi-vaults--vault--contacts--contact--children--child-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/vaults/1/contacts/1/children/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"gender\": \"boy\",
+    \"name\": \"Michael\",
+    \"age\": 10,
+    \"grade_level\": \"10th\",
+    \"school\": \"Saint Junior High School\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/1/contacts/1/children/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "gender": "boy",
+    "name": "Michael",
+    "age": 10,
+    "grade_level": "10th",
+    "school": "Saint Junior High School"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/1/contacts/1/children/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'gender' =&gt; 'boy',
+            'name' =&gt; 'Michael',
+            'age' =&gt; 10,
+            'grade_level' =&gt; '10th',
+            'school' =&gt; 'Saint Junior High School',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-vaults--vault--contacts--contact--children--child-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;child&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;gender&quot;: &quot;boy&quot;,
+ &quot;name&quot;: &quot;Michael&quot;,
+ &quot;age&quot;: 10,
+ &quot;grade_level&quot;: &quot;10th&quot;,
+ &quot;school&quot;: &quot;Saint Junior High School&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-vaults--vault--contacts--contact--children--child-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-vaults--vault--contacts--contact--children--child-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-vaults--vault--contacts--contact--children--child-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-vaults--vault--contacts--contact--children--child-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-vaults--vault--contacts--contact--children--child-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-vaults--vault--contacts--contact--children--child-" data-method="PUT" data-path="api/vaults/{vault}/contacts/{contact}/children/{child}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-vaults--vault--contacts--contact--children--child-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/children/{child}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>child</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="child" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the child. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="gender" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="boy" data-component="body" />
+            <br />
+            <p>
+              The gender of the child. Only three values are accepted for this field: 'boy', 'girl', 'other'. Any other value will be rejected. Example:
+              <code>boy</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="Michael" data-component="body" />
+            <br />
+            <p>
+              The name of the child. Max 255 characters. Example:
+              <code>Michael</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>age</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="number" style="display: none" step="any" name="age" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="10" data-component="body" />
+            <br />
+            <p>
+              The age of the child. Example:
+              <code>10</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>grade_level</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="grade_level" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="10th" data-component="body" />
+            <br />
+            <p>
+              The grade level of the child. Example:
+              <code>10th</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>school</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="school" data-endpoint="PUTapi-vaults--vault--contacts--contact--children--child-" value="Saint Junior High School" data-component="body" />
+            <br />
+            <p>
+              The school of the child. Example:
+              <code>Saint Junior High School</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;child&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>gender</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The gender of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>age</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The age of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>grade_level</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The grade level of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>school</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The school of the child.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-DELETEapi-vaults--vault--contacts--contact--children--child-">Delete a child.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-vaults--vault--contacts--contact--children--child-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/vaults/1/contacts/1/children/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/1/contacts/1/children/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/1/contacts/1/children/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-vaults--vault--contacts--contact--children--child-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-vaults--vault--contacts--contact--children--child-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-vaults--vault--contacts--contact--children--child-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-vaults--vault--contacts--contact--children--child-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-vaults--vault--contacts--contact--children--child-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-vaults--vault--contacts--contact--children--child-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-vaults--vault--contacts--contact--children--child-" data-method="DELETE" data-path="api/vaults/{vault}/contacts/{contact}/children/{child}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-vaults--vault--contacts--contact--children--child-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/children/{child}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-vaults--vault--contacts--contact--children--child-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-vaults--vault--contacts--contact--children--child-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="DELETEapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>child</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="child" data-endpoint="DELETEapi-vaults--vault--contacts--contact--children--child-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the child. Example:
               <code>1</code>
             </p>
           </div>
@@ -5542,6 +6785,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <h1 id="notes">Notes</h1>
 
+        <p>Notes are a way to add additional information to a contact. You can have as many notes as you want for a contact. We support markdown formatting, so it's up to the client to render it properly, as the body might contain markdown in the response.</p>
+
         <h2 id="notes-GETapi-vaults--vault--contacts--contact--notes">List all notes.</h2>
 
         <p></p>
@@ -5553,14 +6798,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1/contacts/recusandae/notes" \
+    --get "http://localhost/api/vaults/1/contacts/eaque/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/recusandae/notes"
+    "http://localhost/api/vaults/1/contacts/eaque/notes"
 );
 
 const headers = {
@@ -5576,7 +6821,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/recusandae/notes';
+$url = 'http://localhost/api/vaults/1/contacts/eaque/notes';
 $response = $client-&gt;get(
     $url,
     [
@@ -5681,15 +6926,234 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="recusandae" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="eaque" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>recusandae</code>
+              <code>eaque</code>
             </p>
           </div>
         </form>
 
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;note&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>body</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The body of the note.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="notes-GETapi-vaults--vault--contacts--contact--notes--note-">Retrieve a note.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts--contact--notes--note-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/vaults/1/contacts/1/notes/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/vaults/1/contacts/1/notes/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/vaults/1/contacts/1/notes/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--contacts--contact--notes--note-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;note&quot;,
+  &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+  },
+  &quot;body&quot;: &quot;This is a note.&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--contacts--contact--notes--note-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--contacts--contact--notes--note-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--contacts--contact--notes--note-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--contacts--contact--notes--note-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--contacts--contact--notes--note-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--contacts--contact--notes--note-" data-method="GET" data-path="api/vaults/{vault}/contacts/{contact}/notes/{note}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--contacts--contact--notes--note-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/notes/{note}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--contacts--contact--notes--note-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--contacts--contact--notes--note-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--notes--note-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes--note-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>note</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="note" data-endpoint="GETapi-vaults--vault--contacts--contact--notes--note-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the note. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;note&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>body</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The body of the note.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
         <h2 id="notes-POSTapi-vaults--vault--contacts--contact--notes">Create a note.</h2>
 
         <p></p>
@@ -5699,7 +7163,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults/1/contacts/impedit/notes" \
+    "http://localhost/api/vaults/1/contacts/sit/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5710,7 +7174,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/impedit/notes"
+    "http://localhost/api/vaults/1/contacts/sit/notes"
 );
 
 const headers = {
@@ -5731,7 +7195,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/impedit/notes';
+$url = 'http://localhost/api/vaults/1/contacts/sit/notes';
 $response = $client-&gt;post(
     $url,
     [
@@ -5758,11 +7222,11 @@ print_r(json_decode((string) $body));</code></pre>
 <code class="language-json" style="max-height: 300px;">{
  &quot;id&quot;: 1,
  &quot;object&quot;: &quot;note&quot;,
- &quot;body&quot;: &quot;This is a note.&quot;,
  &quot;contact&quot;: {
      &quot;id&quot;: 1,
      &quot;name&quot;: &quot;Dwight Schrute&quot;,
  },
+ &quot;body&quot;: &quot;This is a note.&quot;,
  &quot;created_at&quot;: 1718982400,
  &quot;updated_at&quot;: 1718982400,
 }</code>
@@ -5830,11 +7294,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="impedit" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="sit" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>impedit</code>
+              <code>sit</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -5852,6 +7316,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;note&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>body</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The body of the note.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
         <h2 id="notes-PUTapi-vaults--vault--contacts--contact--notes--note-">Update a note.</h2>
 
         <p></p>
@@ -6026,6 +7528,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;note&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>body</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The body of the note.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
         <h2 id="notes-DELETEapi-vaults--vault--contacts--contact--notes--note-">Delete a note.</h2>
 
         <p></p>

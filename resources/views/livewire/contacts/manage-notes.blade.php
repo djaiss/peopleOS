@@ -2,13 +2,13 @@
   <!-- add note -->
   <div class="mb-8 rounded-lg border border-gray-200 bg-white px-3 py-3 shadow-md">
     <form wire:submit="store">
-      <x-textarea id="body" wire:model="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="note-body"></x-textarea>
+      <x-textarea id="body" wire:model="body" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}"></x-textarea>
       <x-input-error class="mt-2" :messages="$errors->get('body')" />
 
       <div class="flex justify-between">
         <p class="text-xs text-gray-500">{{ __('We support Markdown\'s syntax.') }}</p>
 
-        <x-button.secondary type="submit" dusk="submit-note">
+        <x-button.secondary type="submit">
           {{ __('Add note') }}
         </x-button.secondary>
       </div>
@@ -32,13 +32,13 @@
           </div>
 
           <div>
-            <x-link wire:click="editMode({{ $note['id'] }})" class="mr-2 hidden cursor-pointer group-hover:inline" dusk="edit-cta-note-{{ $note['id'] }}">{{ __('Edit') }}</x-link>
-            <x-link wire:click="delete({{ $note['id'] }})" wire:confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" class="hidden cursor-pointer group-hover:inline" dusk="delete-note-{{ $note['id'] }}">{{ __('Delete') }}</x-link>
+            <x-link wire:click="editMode({{ $note['id'] }})" class="mr-2 hidden cursor-pointer group-hover:inline">{{ __('Edit') }}</x-link>
+            <x-link wire:click="delete({{ $note['id'] }})" wire:confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" class="hidden cursor-pointer group-hover:inline">{{ __('Delete') }}</x-link>
           </div>
         </div>
 
         <!-- body -->
-        <div dusk="note-body-{{ $note['id'] }}" class="px-3 py-2">
+        <div class="px-3 py-2">
           {!! $note['body'] !!}
         </div>
 
@@ -46,7 +46,7 @@
       @else
         <div class="px-3 py-3">
           <form wire:submit="update({{ $note['id'] }})">
-            <x-textarea wire:model="editedBody" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}" dusk="update-note-body-{{ $note['id'] }}">{{ $note['body_raw'] }}</x-textarea>
+            <x-textarea wire:model="editedBody" class="mb-2 w-full" rows="3" required placeholder="{{ __('Add a note') }}">{{ $note['body_raw'] }}</x-textarea>
             <x-input-error class="mt-2" :messages="$errors->get('editedBody')" />
 
             <div class="flex justify-between">
@@ -57,7 +57,7 @@
                   {{ __('Cancel') }}
                 </x-button.secondary>
 
-                <x-button.primary type="submit" dusk="update-note-{{ $note['id'] }}">
+                <x-button.primary type="submit">
                   {{ __('Save') }}
                 </x-button.primary>
               </div>
