@@ -9,6 +9,7 @@ use App\Services\CreateEthnicity;
 use App\Services\DestroyEthnicity;
 use App\Services\UpdateEthnicity;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -82,7 +83,7 @@ class ManageEthnicities extends Component
         ]);
 
         $ethnicity = (new CreateEthnicity(
-            user: auth()->user(),
+            user: Auth::user(),
             label: $this->name,
         ))->execute();
 
@@ -106,7 +107,7 @@ class ManageEthnicities extends Component
             ->findOrFail($ethnicityId);
 
         $ethnicity = (new UpdateEthnicity(
-            user: auth()->user(),
+            user: Auth::user(),
             ethnicity: $ethnicity,
             label: $this->editedName,
         ))->execute();
@@ -133,7 +134,7 @@ class ManageEthnicities extends Component
             ->findOrFail($ethnicityId);
 
         (new DestroyEthnicity(
-            user: auth()->user(),
+            user: Auth::user(),
             ethnicity: $ethnicity,
         ))->execute();
 

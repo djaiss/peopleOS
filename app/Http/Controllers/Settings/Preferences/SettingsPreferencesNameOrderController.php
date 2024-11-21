@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Settings\Preferences\PreferencesIndexViewModel;
 use App\Services\UpdateNameOrderPreferences;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class SettingsPreferencesNameOrderController extends Controller
 {
     public function index(): string
     {
-        $view = PreferencesIndexViewModel::data(auth()->user());
+        $view = PreferencesIndexViewModel::data(Auth::user());
 
         return view('settings.preferences.name_order.index', [
             'view' => $view,
@@ -22,7 +23,7 @@ class SettingsPreferencesNameOrderController extends Controller
 
     public function edit(): View
     {
-        $view = PreferencesIndexViewModel::data(auth()->user());
+        $view = PreferencesIndexViewModel::data(Auth::user());
 
         return view('settings.preferences.name_order.edit', [
             'view' => $view,
@@ -36,20 +37,20 @@ class SettingsPreferencesNameOrderController extends Controller
         ]);
 
         (new UpdateNameOrderPreferences(
-            user: auth()->user(),
+            user: Auth::user(),
             nameOrder: $validated['name-order'],
         ))->execute();
 
         // reset the cache that contains the contact list for the user to
         // refresh the contact names
-        foreach (auth()->user()->vaults as $vault) {
+        foreach (Auth::user()->vaults as $vault) {
             ContactListCache::make(
-                user: auth()->user(),
+                user: Auth::user(),
                 vault: $vault,
             )->forget();
         }
 
-        $view = PreferencesIndexViewModel::data(auth()->user());
+        $view = PreferencesIndexViewModel::data(Auth::user());
 
         return view('settings.preferences.name_order.index', [
             'view' => $view,

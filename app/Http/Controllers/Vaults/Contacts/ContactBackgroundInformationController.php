@@ -6,6 +6,7 @@ use App\Cache\ContactInformationCache;
 use App\Http\Controllers\Controller;
 use App\Services\UpdateBackgroundInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ContactBackgroundInformationController extends Controller
@@ -19,7 +20,7 @@ class ContactBackgroundInformationController extends Controller
         ]);
 
         (new UpdateBackgroundInformation(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
             information: $validated['information'],
         ))->execute();
@@ -27,7 +28,7 @@ class ContactBackgroundInformationController extends Controller
         $vault = $request->attributes->get('vault');
 
         $contact = ContactInformationCache::make(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
         )->refresh();
 

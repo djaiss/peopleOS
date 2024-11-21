@@ -9,6 +9,7 @@ use App\Services\CreateGender;
 use App\Services\DestroyGender;
 use App\Services\UpdateGender;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -82,7 +83,7 @@ class ManageGenders extends Component
         ]);
 
         $gender = (new CreateGender(
-            user: auth()->user(),
+            user: Auth::user(),
             label: $this->name,
         ))->execute();
 
@@ -106,7 +107,7 @@ class ManageGenders extends Component
             ->findOrFail($genderId);
 
         $gender = (new UpdateGender(
-            user: auth()->user(),
+            user: Auth::user(),
             gender: $gender,
             label: $this->editedName,
             position: $gender['position'],
@@ -134,7 +135,7 @@ class ManageGenders extends Component
             ->findOrFail($genderId);
 
         (new DestroyGender(
-            user: auth()->user(),
+            user: Auth::user(),
             gender: $gender,
         ))->execute();
 

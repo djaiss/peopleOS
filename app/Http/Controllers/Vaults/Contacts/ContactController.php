@@ -12,6 +12,7 @@ use App\Services\DestroyContact;
 use App\Services\UpdateContact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -95,7 +96,7 @@ class ContactController extends Controller
         ]);
 
         $contact = (new CreateContact(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
             gender: isset($validated['gender_id']) ? Gender::find($validated['gender_id']) : null,
             ethnicity: isset($validated['ethnicity_id']) ? Ethnicity::find($validated['ethnicity_id']) : null,
@@ -219,7 +220,7 @@ class ContactController extends Controller
         ]);
 
         $contact = (new UpdateContact(
-            user: auth()->user(),
+            user: Auth::user(),
             contact: $contact,
             gender: isset($validated['gender_id']) ? Gender::find($validated['gender_id']) : null,
             ethnicity: isset($validated['ethnicity_id']) ? Ethnicity::find($validated['ethnicity_id']) : null,
@@ -250,7 +251,7 @@ class ContactController extends Controller
         $contact = $request->attributes->get('contact');
 
         (new DestroyContact(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $vault,
             contact: $contact,
         ))->execute();

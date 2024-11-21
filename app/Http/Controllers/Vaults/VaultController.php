@@ -8,6 +8,7 @@ use App\Services\CreateVault;
 use App\Services\DestroyVault;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class VaultController extends Controller
@@ -54,7 +55,7 @@ class VaultController extends Controller
         ]);
 
         $vault = (new CreateVault(
-            user: auth()->user(),
+            user: Auth::user(),
             name: $validated['name'],
             description: $validated['description'],
         ))->execute();
@@ -75,7 +76,7 @@ class VaultController extends Controller
     public function destroy(Request $request)
     {
         (new DestroyVault(
-            user: auth()->user(),
+            user: Auth::user(),
             vault: $request->attributes->get('vault'),
         ))->execute();
 

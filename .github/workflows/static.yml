@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 env:
-  php-version: '8.3'
+  php-version: '8.4'
 
 concurrency:
   group: Static ${{ github.ref }}
