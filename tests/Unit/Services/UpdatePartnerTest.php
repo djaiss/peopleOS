@@ -2,14 +2,11 @@
 
 namespace Tests\Unit\Services;
 
-use App\Enums\ChildGender;
-use App\Models\Child;
 use App\Models\Contact;
 use App\Models\MaritalStatus;
 use App\Models\Partner;
 use App\Models\User;
 use App\Models\Vault;
-use App\Services\UpdateChild;
 use App\Services\UpdatePartner;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

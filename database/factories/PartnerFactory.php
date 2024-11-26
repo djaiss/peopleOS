@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\ChildGender;
-use App\Models\Child;
 use App\Models\Contact;
 use App\Models\MaritalStatus;
 use App\Models\Partner;

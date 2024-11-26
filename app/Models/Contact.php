@@ -143,6 +143,14 @@ class Contact extends Model
     }
 
     /**
+     * Get the partners associated with the contact.
+     */
+    public function partners(): HasMany
+    {
+        return $this->hasMany(Partner::class);
+    }
+
+    /**
      * Get the name of the contact, according to the user preference.
      *
      * @return Attribute<string,never>

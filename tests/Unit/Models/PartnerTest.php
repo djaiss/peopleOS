@@ -2,8 +2,6 @@
 
 namespace Tests\Unit\Models;
 
-use App\Enums\ChildGender;
-use App\Models\Child;
 use App\Models\Partner;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;

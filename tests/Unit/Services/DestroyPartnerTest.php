@@ -2,12 +2,10 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Child;
 use App\Models\Contact;
 use App\Models\Partner;
 use App\Models\User;
 use App\Models\Vault;
-use App\Services\DestroyChild;
 use App\Services\DestroyPartner;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
