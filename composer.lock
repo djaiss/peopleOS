@@ -2436,16 +2436,16 @@
         },
         {
             "name": "masmerise/livewire-toaster",
-            "version": "2.3.2",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/masmerise/livewire-toaster.git",
-                "reference": "a4687d0713e85008f10ce221ef41d3b1142c3049"
+                "reference": "4962a6ce61d597f7b0935fb4ced09a38bde8845e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/masmerise/livewire-toaster/zipball/a4687d0713e85008f10ce221ef41d3b1142c3049",
-                "reference": "a4687d0713e85008f10ce221ef41d3b1142c3049",
+                "url": "https://api.github.com/repos/masmerise/livewire-toaster/zipball/4962a6ce61d597f7b0935fb4ced09a38bde8845e",
+                "reference": "4962a6ce61d597f7b0935fb4ced09a38bde8845e",
                 "shasum": ""
             },
             "require": {
@@ -2501,9 +2501,9 @@
             ],
             "support": {
                 "issues": "https://github.com/masmerise/livewire-toaster/issues",
-                "source": "https://github.com/masmerise/livewire-toaster/tree/2.3.2"
+                "source": "https://github.com/masmerise/livewire-toaster/tree/2.5.0"
             },
-            "time": "2024-11-06T16:06:13+00:00"
+            "time": "2024-11-25T07:23:16+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6497,16 +6497,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.14.7",
+            "version": "v3.14.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "f484b8c9124de0b163da39958331098ffcd4a65e"
+                "reference": "2e805a6bd4e1aa83774316bb062703c65d0691ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/f484b8c9124de0b163da39958331098ffcd4a65e",
-                "reference": "f484b8c9124de0b163da39958331098ffcd4a65e",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/2e805a6bd4e1aa83774316bb062703c65d0691ef",
+                "reference": "2e805a6bd4e1aa83774316bb062703c65d0691ef",
                 "shasum": ""
             },
             "require": {
@@ -6565,7 +6565,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
-                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.14.7"
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.14.9"
             },
             "funding": [
                 {
@@ -6577,7 +6577,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-14T09:12:35+00:00"
+            "time": "2024-11-25T14:51:20+00:00"
         },
         {
             "name": "erusev/parsedown",
