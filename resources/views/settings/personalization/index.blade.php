@@ -33,9 +33,12 @@
                 <h3 class="text-lg font-medium">{{ __('Personalization') }}</h3>
                 <p class="text-sm">{{ __('Personalize your experience and preferences.') }}</p>
               </div>
-              <div>
+              <div class="space-y-6">
                 <livewire:settings.manage-genders lazy :account-id="auth()->user()->account_id" />
+
                 <livewire:settings.manage-ethnicities lazy :account-id="auth()->user()->account_id" />
+
+                <livewire:settings.manage-marital-statuses lazy :account-id="auth()->user()->account_id" />
               </div>
             </div>
           </div>
