@@ -22,6 +22,7 @@ class Partner extends Model
         'marital_status_id',
         'name',
         'occupation',
+        'number_of_years_together',
     ];
 
     /**
@@ -32,6 +33,7 @@ class Partner extends Model
     protected $casts = [
         'name' => 'encrypted',
         'occupation' => 'encrypted',
+        'number_of_years_together' => 'encrypted',
     ];
 
     /**

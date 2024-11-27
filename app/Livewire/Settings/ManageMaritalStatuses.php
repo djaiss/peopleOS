@@ -2,16 +2,11 @@
 
 namespace App\Livewire\Settings;
 
-use App\Http\ViewModels\Settings\Personalization\GenderViewModel;
 use App\Http\ViewModels\Settings\Personalization\MaritalStatusViewModel;
 use App\Models\Account;
-use App\Models\Gender;
 use App\Models\MaritalStatus;
-use App\Services\CreateGender;
 use App\Services\CreateMaritalStatus;
-use App\Services\DestroyGender;
 use App\Services\DestroyMaritalStatus;
-use App\Services\UpdateGender;
 use App\Services\UpdateMaritalStatus;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -123,7 +118,7 @@ class ManageMaritalStatuses extends Component
 
         $maritalStatus = MaritalStatusViewModel::maritalStatus($maritalStatus);
 
-        $this->maritalStatuses = $this->maritalStatuses->map(fn(array $existingMaritalStatus) => $existingMaritalStatus['id'] === $maritalStatusId ? $maritalStatus : $existingMaritalStatus);
+        $this->maritalStatuses = $this->maritalStatuses->map(fn (array $existingMaritalStatus) => $existingMaritalStatus['id'] === $maritalStatusId ? $maritalStatus : $existingMaritalStatus);
     }
 
     public function resetEdit(): void
@@ -145,6 +140,6 @@ class ManageMaritalStatuses extends Component
 
         Toaster::success(__('Marital status deleted'));
 
-        $this->maritalStatuses = $this->maritalStatuses->reject(fn(array $maritalStatus) => $maritalStatus['id'] === $maritalStatusId);
+        $this->maritalStatuses = $this->maritalStatuses->reject(fn (array $maritalStatus) => $maritalStatus['id'] === $maritalStatusId);
     }
 }

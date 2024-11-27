@@ -107,6 +107,7 @@ class UpdatePartnerTest extends TestCase
             maritalStatus: $maritalStatus,
             name: 'John',
             occupation: 'Software Engineer',
+            numberOfYearsTogether: 5,
         ))->execute();
 
         $this->assertDatabaseHas('partners', [
@@ -125,6 +126,10 @@ class UpdatePartnerTest extends TestCase
         $this->assertEquals(
             'Software Engineer',
             $partner->occupation
+        );
+        $this->assertEquals(
+            5,
+            $partner->number_of_years_together
         );
     }
 }

@@ -15,6 +15,7 @@ class UpdatePartner
         public MaritalStatus $maritalStatus,
         public ?string $name,
         public ?string $occupation,
+        public ?string $numberOfYearsTogether,
     ) {}
 
     public function execute(): Partner
@@ -48,6 +49,7 @@ class UpdatePartner
         $this->partner->marital_status_id = $this->maritalStatus->id;
         $this->partner->name = $this->name ?? null;
         $this->partner->occupation = $this->occupation ?? null;
+        $this->partner->number_of_years_together = $this->numberOfYearsTogether ?? null;
         $this->partner->save();
     }
 }

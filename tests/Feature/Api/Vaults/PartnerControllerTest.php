@@ -35,6 +35,7 @@ class PartnerControllerTest extends TestCase
             'marital_status_id' => $maritalStatus->id,
             'name' => 'John Doe',
             'occupation' => 'Software Engineer',
+            'number_of_years_together' => '5',
         ]);
 
         $response->assertStatus(201);
@@ -54,6 +55,7 @@ class PartnerControllerTest extends TestCase
                 ],
                 'name' => 'John Doe',
                 'occupation' => 'Software Engineer',
+                'number_of_years_together' => '5',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
@@ -87,6 +89,7 @@ class PartnerControllerTest extends TestCase
             'marital_status_id' => $maritalStatus->id,
             'name' => 'Jane Doe',
             'occupation' => 'Software Engineer',
+            'number_of_years_together' => '5',
         ]);
 
         $response->assertStatus(200);
@@ -105,6 +108,7 @@ class PartnerControllerTest extends TestCase
                 ],
                 'name' => 'Jane Doe',
                 'occupation' => 'Software Engineer',
+                'number_of_years_together' => '5',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],
@@ -135,6 +139,7 @@ class PartnerControllerTest extends TestCase
             'marital_status_id' => $maritalStatus->id,
             'name' => 'Jane Doe',
             'occupation' => 'Software Engineer',
+            'number_of_years_together' => '5',
         ]);
 
         $response->assertStatus(401);
@@ -200,6 +205,7 @@ class PartnerControllerTest extends TestCase
             'contact_id' => $contact->id,
             'name' => 'John Doe',
             'occupation' => 'Software Engineer',
+            'number_of_years_together' => '5',
         ]);
 
         Sanctum::actingAs($user);
@@ -222,6 +228,7 @@ class PartnerControllerTest extends TestCase
                 ],
                 'name' => 'John Doe',
                 'occupation' => 'Software Engineer',
+                'number_of_years_together' => '5',
                 'created_at' => 1514764800,
                 'updated_at' => 1514764800,
             ],

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('marital_status_id');
             $table->text('name')->nullable();
             $table->text('occupation')->nullable();
+            $table->text('number_of_years_together')->nullable();
             $table->timestamps();
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->foreign('marital_status_id')->references('id')->on('marital_statuses')->onDelete('cascade');

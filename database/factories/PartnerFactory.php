@@ -26,6 +26,7 @@ class PartnerFactory extends Factory
             'marital_status_id' => MaritalStatus::factory(),
             'name' => $this->faker->text(),
             'occupation' => $this->faker->text(),
+            'number_of_years_together' => $this->faker->numberBetween(1, 50),
         ];
     }
 }

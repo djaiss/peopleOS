@@ -282,7 +282,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 26, 2024</li>
+        <li>Last updated: November 27, 2024</li>
       </ul>
     </div>
 
@@ -887,14 +887,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/ipsam/contacts" \
+    --get "http://peopleos.test/api/vaults/et/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/ipsam/contacts"
+    "http://peopleos.test/api/vaults/et/contacts"
 );
 
 const headers = {
@@ -910,7 +910,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/ipsam/contacts';
+$url = 'http://peopleos.test/api/vaults/et/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -1086,11 +1086,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="ipsam" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="et" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>ipsam</code>
+              <code>et</code>
             </p>
           </div>
         </form>
@@ -3179,14 +3179,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/dolore/contacts/tempora/phone-numbers" \
+    --get "http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/dolore/contacts/tempora/phone-numbers"
+    "http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers"
 );
 
 const headers = {
@@ -3202,7 +3202,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/dolore/contacts/tempora/phone-numbers';
+$url = 'http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers';
 $response = $client-&gt;get(
     $url,
     [
@@ -3332,11 +3332,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="dolore" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="repudiandae" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>dolore</code>
+              <code>repudiandae</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3344,11 +3344,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="tempora" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="quo" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>tempora</code>
+              <code>quo</code>
             </p>
           </div>
         </form>
@@ -3412,7 +3412,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"quae\",
+    \"label\": \"consequatur\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3429,7 +3429,7 @@ const headers = {
 };
 
 let body = {
-    "label": "quae",
+    "label": "consequatur",
     "phone_number": "+1234567890"
 };
 
@@ -3451,7 +3451,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'quae',
+            'label' =&gt; 'consequatur',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3556,11 +3556,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="quae" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="consequatur" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>quae</code>
+              <code>consequatur</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3590,7 +3590,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"inventore\",
+    \"label\": \"nemo\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3607,7 +3607,7 @@ const headers = {
 };
 
 let body = {
-    "label": "inventore",
+    "label": "nemo",
     "phone_number": "+1234567890"
 };
 
@@ -3629,7 +3629,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'inventore',
+            'label' =&gt; 'nemo',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3746,11 +3746,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="inventore" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="nemo" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>inventore</code>
+              <code>nemo</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3776,14 +3776,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/facere/contacts/1/phone-numbers/1" \
+    "http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/facere/contacts/1/phone-numbers/1"
+    "http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3799,7 +3799,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/facere/contacts/1/phone-numbers/1';
+$url = 'http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3875,11 +3875,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="facere" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="ut" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>facere</code>
+              <code>ut</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3920,14 +3920,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/dignissimos/contacts/doloremque/children" \
+    --get "http://peopleos.test/api/vaults/fugiat/contacts/est/children" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/dignissimos/contacts/doloremque/children"
+    "http://peopleos.test/api/vaults/fugiat/contacts/est/children"
 );
 
 const headers = {
@@ -3943,7 +3943,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/dignissimos/contacts/doloremque/children';
+$url = 'http://peopleos.test/api/vaults/fugiat/contacts/est/children';
 $response = $client-&gt;get(
     $url,
     [
@@ -4077,11 +4077,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="dignissimos" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="fugiat" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>dignissimos</code>
+              <code>fugiat</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4089,11 +4089,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="doloremque" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="est" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>doloremque</code>
+              <code>est</code>
             </p>
           </div>
         </form>
@@ -5140,14 +5140,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/et/contacts/dignissimos/partners" \
+    --get "http://peopleos.test/api/vaults/quia/contacts/assumenda/partners" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/et/contacts/dignissimos/partners"
+    "http://peopleos.test/api/vaults/quia/contacts/assumenda/partners"
 );
 
 const headers = {
@@ -5163,7 +5163,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/et/contacts/dignissimos/partners';
+$url = 'http://peopleos.test/api/vaults/quia/contacts/assumenda/partners';
 $response = $client-&gt;get(
     $url,
     [
@@ -5197,6 +5197,7 @@ print_r(json_decode((string) $body));</code></pre>
  },
  &quot;name&quot;: &quot;Michael&quot;,
  &quot;occupation&quot;: &quot;Software Engineer&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
 }, {
@@ -5212,6 +5213,7 @@ print_r(json_decode((string) $body));</code></pre>
  },
  &quot;name&quot;: &quot;Dwight&quot;,
  &quot;occupation&quot;: &quot;Salesman&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
 }],
@@ -5299,11 +5301,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="et" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="quia" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>et</code>
+              <code>quia</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5311,11 +5313,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="dignissimos" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="assumenda" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>dignissimos</code>
+              <code>assumenda</code>
             </p>
           </div>
         </form>
@@ -5357,6 +5359,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The occupation of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>created_at</code></b>
@@ -5436,6 +5444,7 @@ print_r(json_decode((string) $body));</code></pre>
   },
   &quot;name&quot;: &quot;John Doe&quot;,
   &quot;occupation&quot;: &quot;Software Engineer&quot;,
+  &quot;number_of_years_together&quot;: &quot;5&quot;,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800
 }</code>
@@ -5563,6 +5572,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The occupation of the partner.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>created_at</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -5592,7 +5607,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"marital_status_id\": 1,
     \"name\": \"Michael\",
-    \"occupation\": \"Software Engineer\"
+    \"occupation\": \"Software Engineer\",
+    \"number_of_years_together\": \"5\"
 }"
 </code></pre>
           </div>
@@ -5610,7 +5626,8 @@ const headers = {
 let body = {
     "marital_status_id": 1,
     "name": "Michael",
-    "occupation": "Software Engineer"
+    "occupation": "Software Engineer",
+    "number_of_years_together": "5"
 };
 
 fetch(url, {
@@ -5634,6 +5651,7 @@ $response = $client-&gt;post(
             'marital_status_id' =&gt; 1,
             'name' =&gt; 'Michael',
             'occupation' =&gt; 'Software Engineer',
+            'number_of_years_together' =&gt; '5',
         ],
     ]
 );
@@ -5661,6 +5679,7 @@ print_r(json_decode((string) $body));</code></pre>
  },
  &quot;name&quot;: &quot;Michael&quot;,
  &quot;occupation&quot;: &quot;Software Engineer&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
 }</code>
@@ -5776,6 +5795,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
               <code>Software Engineer</code>
             </p>
           </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>number_of_years_together</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="number_of_years_together" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="5" data-component="body" />
+            <br />
+            <p>
+              The number of years the partner has been together. Can be a string if needed. Example:
+              <code>5</code>
+            </p>
+          </div>
         </form>
 
         <h3>Response</h3>
@@ -5817,6 +5850,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The occupation of the partner.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>created_at</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -5846,7 +5885,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"marital_status_id\": 1,
     \"name\": \"Michael\",
-    \"occupation\": \"Software Engineer\"
+    \"occupation\": \"Software Engineer\",
+    \"number_of_years_together\": \"5\"
 }"
 </code></pre>
           </div>
@@ -5864,7 +5904,8 @@ const headers = {
 let body = {
     "marital_status_id": 1,
     "name": "Michael",
-    "occupation": "Software Engineer"
+    "occupation": "Software Engineer",
+    "number_of_years_together": "5"
 };
 
 fetch(url, {
@@ -5888,6 +5929,7 @@ $response = $client-&gt;put(
             'marital_status_id' =&gt; 1,
             'name' =&gt; 'Michael',
             'occupation' =&gt; 'Software Engineer',
+            'number_of_years_together' =&gt; '5',
         ],
     ]
 );
@@ -5915,6 +5957,7 @@ print_r(json_decode((string) $body));</code></pre>
  },
  &quot;name&quot;: &quot;Michael&quot;,
  &quot;occupation&quot;: &quot;Software Engineer&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
 }</code>
@@ -6042,6 +6085,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
               <code>Software Engineer</code>
             </p>
           </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>number_of_years_together</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="number_of_years_together" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="5" data-component="body" />
+            <br />
+            <p>
+              The number of years the partner has been together. Can be a string if needed. Example:
+              <code>5</code>
+            </p>
+          </div>
         </form>
 
         <h3>Response</h3>
@@ -6081,6 +6138,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The occupation of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>created_at</code></b>

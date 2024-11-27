@@ -3,7 +3,6 @@
 namespace App\Http\ViewModels\Settings\Personalization;
 
 use App\Models\Account;
-use App\Models\Gender;
 use App\Models\MaritalStatus;
 use Illuminate\Support\Collection;
 

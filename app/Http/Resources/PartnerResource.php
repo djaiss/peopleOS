@@ -27,6 +27,7 @@ class PartnerResource extends JsonResource
             ] : null,
             'name' => $this->name,
             'occupation' => $this->occupation,
+            'number_of_years_together' => $this->number_of_years_together,
             'created_at' => $this->created_at->timestamp,
             'updated_at' => $this->updated_at->timestamp,
         ];

@@ -38,6 +38,7 @@ class PartnerController extends Controller
      * @bodyParam marital_status_id int required The id of the marital status. Example: 1
      * @bodyParam name string The name of the partner. Max 255 characters. Example: Michael
      * @bodyParam occupation string The occupation of the partner. Max 255 characters. Example: Software Engineer
+     * @bodyParam number_of_years_together string The number of years the partner has been together. Can be a string if needed. Example: 5
      *
      * @response 201 {
      *  "id": 4,
@@ -52,6 +53,7 @@ class PartnerController extends Controller
      *  },
      *  "name": "Michael",
      *  "occupation": "Software Engineer",
+     *  "number_of_years_together": "5",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -62,6 +64,7 @@ class PartnerController extends Controller
      * @responseField marital_status The marital status object of the partner.
      * @responseField name The name of the partner.
      * @responseField occupation The occupation of the partner.
+     * @responseField number_of_years_together The number of years the partner has been together.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -73,6 +76,7 @@ class PartnerController extends Controller
             'marital_status_id' => 'required|integer',
             'name' => 'nullable|string|max:255',
             'occupation' => 'nullable|string|max:255',
+            'number_of_years_together' => 'nullable|string|max:255',
         ]);
 
         $partner = (new CreatePartner(
@@ -81,6 +85,7 @@ class PartnerController extends Controller
             maritalStatus: MaritalStatus::find($validated['marital_status_id']),
             name: $validated['name'],
             occupation: $validated['occupation'],
+            numberOfYearsTogether: $validated['number_of_years_together'],
         ))->execute();
 
         return new PartnerResource($partner);
@@ -100,6 +105,7 @@ class PartnerController extends Controller
      * @bodyParam marital_status_id int required The id of the marital status. Example: 1
      * @bodyParam name string The name of the partner. Max 255 characters. Example: Michael
      * @bodyParam occupation string The occupation of the partner. Max 255 characters. Example: Software Engineer
+     * @bodyParam number_of_years_together string The number of years the partner has been together. Can be a string if needed. Example: 5
      *
      * @response 200 {
      *  "id": 4,
@@ -114,6 +120,7 @@ class PartnerController extends Controller
      *  },
      *  "name": "Michael",
      *  "occupation": "Software Engineer",
+     *  "number_of_years_together": "5",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -124,6 +131,7 @@ class PartnerController extends Controller
      * @responseField marital_status The marital status object of the partner.
      * @responseField name The name of the partner.
      * @responseField occupation The occupation of the partner.
+     * @responseField number_of_years_together The number of years the partner has been together.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -136,6 +144,7 @@ class PartnerController extends Controller
             'marital_status_id' => 'required|integer',
             'name' => 'nullable|string|max:255',
             'occupation' => 'nullable|string|max:255',
+            'number_of_years_together' => 'nullable|string|max:255',
         ]);
 
         try {
@@ -151,6 +160,7 @@ class PartnerController extends Controller
             maritalStatus: MaritalStatus::find($validated['marital_status_id']),
             name: $validated['name'],
             occupation: $validated['occupation'],
+            numberOfYearsTogether: $validated['number_of_years_together'],
         ))->execute();
 
         return new PartnerResource($partner);
@@ -209,6 +219,7 @@ class PartnerController extends Controller
      *   },
      *   "name": "John Doe",
      *   "occupation": "Software Engineer",
+     *   "number_of_years_together": "5",
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      * }
@@ -219,6 +230,7 @@ class PartnerController extends Controller
      * @responseField marital_status The marital status object of the partner.
      * @responseField name The name of the partner.
      * @responseField occupation The occupation of the partner.
+     * @responseField number_of_years_together The number of years the partner has been together.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -256,6 +268,7 @@ class PartnerController extends Controller
      *  },
      *  "name": "Michael",
      *  "occupation": "Software Engineer",
+     *  "number_of_years_together": "5",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }, {
@@ -271,6 +284,7 @@ class PartnerController extends Controller
      *  },
      *  "name": "Dwight",
      *  "occupation": "Salesman",
+     *  "number_of_years_together": "5",
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }],
@@ -313,6 +327,7 @@ class PartnerController extends Controller
      * @responseField marital_status The marital status object of the partner.
      * @responseField name The name of the partner.
      * @responseField occupation The occupation of the partner.
+     * @responseField number_of_years_together The number of years the partner has been together.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */

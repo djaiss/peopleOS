@@ -3,7 +3,6 @@
 namespace Tests\Unit\ViewModels\Settings\Personalization;
 
 use App\Http\ViewModels\Settings\Personalization\MaritalStatusViewModel;
-use App\Models\Gender;
 use App\Models\MaritalStatus;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

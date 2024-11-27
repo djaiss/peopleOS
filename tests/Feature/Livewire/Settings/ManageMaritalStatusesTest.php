@@ -2,9 +2,7 @@
 
 namespace Tests\Feature\Livewire\Settings;
 
-use App\Livewire\Settings\ManageEthnicities;
 use App\Livewire\Settings\ManageMaritalStatuses;
-use App\Models\Ethnicity;
 use App\Models\MaritalStatus;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
