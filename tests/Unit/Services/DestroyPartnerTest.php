@@ -2,32 +2,32 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Child;
 use App\Models\Contact;
+use App\Models\Partner;
 use App\Models\User;
 use App\Models\Vault;
-use App\Services\DestroyChild;
+use App\Services\DestroyPartner;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class DestroyChildTest extends TestCase
+class DestroyPartnerTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_destroys_a_child(): void
+    public function it_destroys_a_partner(): void
     {
         $user = User::factory()->create();
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $child = Child::factory()->create([
+        $partner = Partner::factory()->create([
             'contact_id' => $contact->id,
         ]);
-        $this->executeService($user, $child);
+        $this->executeService($user, $partner);
     }
 
     #[Test]
@@ -40,10 +40,10 @@ class DestroyChildTest extends TestCase
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $child = Child::factory()->create([
+        $partner = Partner::factory()->create([
             'contact_id' => $contact->id,
         ]);
-        $this->executeService($user, $child);
+        $this->executeService($user, $partner);
     }
 
     #[Test]
@@ -56,14 +56,14 @@ class DestroyChildTest extends TestCase
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $child = Child::factory()->create([
+        $partner = Partner::factory()->create([
             'contact_id' => $contact->id,
         ]);
-        $this->executeService($user, $child);
+        $this->executeService($user, $partner);
     }
 
     #[Test]
-    public function it_fails_if_child_doesnt_belong_to_contact(): void
+    public function it_fails_if_partner_doesnt_belong_to_contact(): void
     {
         $this->expectException(ModelNotFoundException::class);
 
@@ -72,21 +72,21 @@ class DestroyChildTest extends TestCase
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
         ]);
-        $child = Child::factory()->create([
+        $partner = Partner::factory()->create([
             'contact_id' => $contact->id,
         ]);
-        $this->executeService($user, $child);
+        $this->executeService($user, $partner);
     }
 
-    private function executeService(User $user, Child $child): void
+    private function executeService(User $user, Partner $partner): void
     {
-        (new DestroyChild(
+        (new DestroyPartner(
             user: $user,
-            child: $child,
+            partner: $partner,
         ))->execute();
 
-        $this->assertDatabaseMissing('children', [
-            'id' => $child->id,
+        $this->assertDatabaseMissing('partners', [
+            'id' => $partner->id,
         ]);
     }
 }

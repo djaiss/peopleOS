@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
 use App\Http\Controllers\Api\Vaults\ContactPhoneNumberController;
 use App\Http\Controllers\Api\Vaults\NoteController;
+use App\Http\Controllers\Api\Vaults\PartnerController;
 use App\Http\Controllers\Api\Vaults\VaultController;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Support\Facades\Route;
@@ -70,6 +71,13 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::post('vaults/{vault}/contacts/{contact}/children', [ChildController::class, 'create']);
             Route::put('vaults/{vault}/contacts/{contact}/children/{child}', [ChildController::class, 'update']);
             Route::delete('vaults/{vault}/contacts/{contact}/children/{child}', [ChildController::class, 'destroy']);
+
+            // manage partners
+            Route::get('vaults/{vault}/contacts/{contact}/partners', [PartnerController::class, 'index']);
+            Route::get('vaults/{vault}/contacts/{contact}/partners/{partner}', [PartnerController::class, 'show']);
+            Route::post('vaults/{vault}/contacts/{contact}/partners', [PartnerController::class, 'create']);
+            Route::put('vaults/{vault}/contacts/{contact}/partners/{partner}', [PartnerController::class, 'update']);
+            Route::delete('vaults/{vault}/contacts/{contact}/partners/{partner}', [PartnerController::class, 'destroy']);
         });
 
         // manage companies
