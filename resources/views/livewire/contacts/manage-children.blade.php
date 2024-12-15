@@ -110,7 +110,7 @@
         <x-input-error class="mt-2" :messages="$errors->get('school')" />
       </div>
 
-      <div class="flex justify-between">
+      <div class="mt-4 flex justify-between">
         <x-button.secondary wire:click="toggleAddMode" class="mr-2">
           {{ __('Cancel') }}
         </x-button.secondary>
@@ -319,7 +319,7 @@
     </div>
   @else
     @if (! $addMode)
-      <div wire:click="toggleAddMode" class="group mb-8 flex cursor-pointer items-center rounded-lg border border-gray-200 bg-white p-3 shadow-md hover:border-gray-300 dark:border-gray-700 dark:bg-gray-900">
+      <div wire:click="toggleAddMode" class="group mb-8 flex cursor-pointer items-center rounded-lg border border-gray-200 bg-white p-3 shadow-md hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900">
         <div class="-rotate-12 rounded border border-gray-200 bg-white p-1 transition group-hover:rotate-0 group-hover:border-blue-500">
           <x-lucide-baby class="h-4 w-4 text-gray-500 group-hover:text-blue-500" />
         </div>
