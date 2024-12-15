@@ -22,6 +22,7 @@ class DestroyContactTest extends TestCase
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
+            'can_be_deleted' => true,
         ]);
 
         $this->executeService($user, $vault, $contact);
@@ -34,6 +35,7 @@ class DestroyContactTest extends TestCase
         $vault = Vault::factory()->create();
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
+            'can_be_deleted' => true,
         ]);
 
         $this->expectException(ModelNotFoundException::class);
@@ -47,7 +49,23 @@ class DestroyContactTest extends TestCase
         $vault = Vault::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $contact = Contact::factory()->create();
+        $contact = Contact::factory()->create([
+            'can_be_deleted' => true,
+        ]);
+
+        $this->expectException(ModelNotFoundException::class);
+        $this->executeService($user, $vault, $contact);
+    }
+
+    #[Test]
+    public function it_fails_if_contact_is_not_deletable(): void
+    {
+        $user = User::factory()->create();
+        $vault = $this->createVault($user);
+        $contact = Contact::factory()->create([
+            'vault_id' => $vault->id,
+            'can_be_deleted' => false,
+        ]);
 
         $this->expectException(ModelNotFoundException::class);
         $this->executeService($user, $vault, $contact);

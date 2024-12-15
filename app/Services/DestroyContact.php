@@ -41,5 +41,9 @@ class DestroyContact
         if ($this->contact->vault_id !== $this->vault->id) {
             throw new ModelNotFoundException;
         }
+
+        if (!$this->contact->can_be_deleted) {
+            throw new ModelNotFoundException;
+        }
     }
 }
