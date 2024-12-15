@@ -38,7 +38,7 @@
             </div>
 
             <!-- kids -->
-            <livewire:contacts.manage-children :contact-id="$contact['id']" />
+            <livewire:contacts.manage-children lazy :contact-id="$contact['id']" />
 
             <!-- partners -->
             <livewire:contacts.manage-partners lazy :contact-id="$contact['id']" />
