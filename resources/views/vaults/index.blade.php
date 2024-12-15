@@ -47,16 +47,16 @@
     </main>
   @else
     <div class="mx-auto max-w-4xl px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
-      <div class="mb-10 items-center justify-between sm:mb-6 sm:flex">
-        <h3 class="mb-3 sm:mb-0 dark:text-slate-200">
+      <div class="mb-4 items-center justify-between sm:mb-6 sm:flex">
+        <h3 class="mb-3 hidden sm:mb-0 sm:block dark:text-slate-200">
           {{ __('All the vaults in the account') }}
         </h3>
-        <x-button.primary href="{{ $routes['vault']['new'] }}" hover dusk="">
+        <x-button.primary href="{{ $routes['vault']['new'] }}" hover class="block w-full text-center sm:inline sm:w-auto">
           {{ __('New vault') }}
         </x-button.primary>
       </div>
 
-      <div class="flex bg-white shadow sm:rounded-lg">
+      <div class="flex rounded-lg bg-white shadow">
         <ul class="w-full">
           @foreach ($vaults as $vault)
             <li class="border-b border-gray-200 px-6 py-4 last:border-b-0 hover:bg-slate-50 first:hover:rounded-t-lg last:hover:rounded-b-lg">
