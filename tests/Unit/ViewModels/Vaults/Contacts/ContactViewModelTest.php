@@ -65,6 +65,7 @@ class ContactViewModelTest extends TestCase
             'suffix' => 'jr',
             'background_information' => 'background information',
             'job_title' => 'Paper salesman',
+            'can_be_deleted' => true,
         ]);
         $company = Company::factory()->create([
             'vault_id' => $vault->id,
@@ -75,7 +76,7 @@ class ContactViewModelTest extends TestCase
 
         $array = ContactViewModel::show($contact);
 
-        $this->assertEquals(20, count($array));
+        $this->assertEquals(21, count($array));
 
         $this->assertEquals(
             $contact->id,
@@ -144,6 +145,10 @@ class ContactViewModelTest extends TestCase
         $this->assertEquals(
             '',
             $array['company']['url']
+        );
+        $this->assertEquals(
+            true,
+            $array['can_be_deleted']
         );
         $this->assertEquals(
             [

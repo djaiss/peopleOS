@@ -57,6 +57,7 @@ class ContactViewModel
                 'url' => '',
             ],
             'existing_companies' => self::companies($contact->vault) ?? collect(),
+            'can_be_deleted' => $contact->can_be_deleted,
         ];
     }
 

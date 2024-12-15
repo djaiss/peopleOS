@@ -155,14 +155,16 @@
           </div>
 
           <!-- delete contact -->
-          <form id="deleteContactForm" action="{{ route('vaults.contacts.destroy', ['vault' => $vault, 'slug' => $contact['slug']]) }}" method="POST" class="mb-1 px-5 py-2 text-center">
-            @csrf
-            @method('DELETE')
+          @if ($contact['can_be_deleted'])
+            <form id="deleteContactForm" action="{{ route('vaults.contacts.destroy', ['vault' => $vault, 'slug' => $contact['slug']]) }}" method="POST" class="mb-1 px-5 py-2 text-center">
+              @csrf
+              @method('DELETE')
 
-            <a onclick="event.preventDefault(); if(confirm('{{ __('Are you sure? This can not be undone.') }}')) document.getElementById('deleteContactForm').submit();" class="cursor-pointer text-sm text-red-600 underline hover:no-underline" dusk="link-delete-contact">
-              {{ __('Delete contact') }}
-            </a>
-          </form>
+              <a onclick="event.preventDefault(); if(confirm('{{ __('Are you sure? This can not be undone.') }}')) document.getElementById('deleteContactForm').submit();" class="cursor-pointer text-sm text-red-600 underline hover:no-underline" dusk="link-delete-contact">
+                {{ __('Delete contact') }}
+              </a>
+            </form>
+          @endif
         </div>
       </div>
     </div>
