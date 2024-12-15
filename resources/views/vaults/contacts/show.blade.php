@@ -41,7 +41,7 @@
             <livewire:contacts.manage-children :contact-id="$contact['id']" />
 
             <!-- partners -->
-            <livewire:contacts.manage-partners :contact-id="$contact['id']" />
+            <livewire:contacts.manage-partners lazy :contact-id="$contact['id']" />
 
             <!-- name and avatar -->
             <div class="flex">
