@@ -168,19 +168,11 @@ class ContactController extends Controller
                 'name' => $gender->getLabel(),
             ]);
 
-        $maritalStatuses = MaritalStatus::where('account_id', $account->id)
-            ->get()
-            ->map(fn (MaritalStatus $maritalStatus) => [
-                'id' => $maritalStatus->id,
-                'name' => trans($maritalStatus->getLabel()),
-            ]);
-
         return view('vaults.contacts.edit', [
             'vault' => $vault,
             'contact' => $contact,
             'ethnicities' => $ethnicities,
             'genders' => $genders,
-            'maritalStatuses' => $maritalStatuses,
             'routes' => [
                 'contact' => [
                     'index' => route('vaults.contacts.index', $vault),
@@ -204,7 +196,6 @@ class ContactController extends Controller
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',
             'ethnicity_id' => 'nullable|exists:ethnicities,id',
-            'marital_status_id' => 'nullable|exists:marital_statuses,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
@@ -224,7 +215,6 @@ class ContactController extends Controller
             contact: $contact,
             gender: isset($validated['gender_id']) ? Gender::find($validated['gender_id']) : null,
             ethnicity: isset($validated['ethnicity_id']) ? Ethnicity::find($validated['ethnicity_id']) : null,
-            maritalStatus: isset($validated['marital_status_id']) ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],

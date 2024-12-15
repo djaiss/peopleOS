@@ -35,7 +35,6 @@ class Contact extends Model
         'company_id',
         'gender_id',
         'ethnicity_id',
-        'marital_status_id',
         'slug',
         'first_name',
         'middle_name',
@@ -111,14 +110,6 @@ class Contact extends Model
     }
 
     /**
-     * Get the marital status associated with the contact.
-     */
-    public function maritalStatus(): BelongsTo
-    {
-        return $this->belongsTo(MaritalStatus::class);
-    }
-
-    /**
      * Get the contact phone number records associated with the contact.
      */
     public function contactPhoneNumbers(): HasMany
@@ -140,6 +131,14 @@ class Contact extends Model
     public function children(): HasMany
     {
         return $this->hasMany(Child::class);
+    }
+
+    /**
+     * Get the partners associated with the contact.
+     */
+    public function partners(): HasMany
+    {
+        return $this->hasMany(Partner::class);
     }
 
     /**

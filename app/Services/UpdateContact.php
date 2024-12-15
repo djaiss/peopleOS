@@ -16,7 +16,6 @@ class UpdateContact
         public Contact $contact,
         public ?Gender $gender,
         public ?Ethnicity $ethnicity,
-        public ?MaritalStatus $maritalStatus,
         public string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -66,19 +65,12 @@ class UpdateContact
             Ethnicity::where('account_id', $this->user->account_id)
                 ->findOrFail($this->ethnicity->id);
         }
-
-        // make sure the marital status exists and belongs to the account
-        if ($this->maritalStatus) {
-            MaritalStatus::where('account_id', $this->user->account_id)
-                ->findOrFail($this->maritalStatus->id);
-        }
     }
 
     private function update(): void
     {
         $this->contact->gender_id = $this->gender?->id;
         $this->contact->ethnicity_id = $this->ethnicity?->id;
-        $this->contact->marital_status_id = $this->maritalStatus?->id;
         $this->contact->first_name = $this->firstName;
         $this->contact->last_name = $this->lastName ?? null;
         $this->contact->middle_name = $this->middleName ?? null;

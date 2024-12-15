@@ -10,6 +10,7 @@ use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\MaritalStatus;
 use App\Models\Note;
+use App\Models\Partner;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -54,15 +55,6 @@ class ContactTest extends TestCase
     }
 
     #[Test]
-    public function it_belongs_to_a_marital_status(): void
-    {
-        $contact = Contact::factory()->create([
-            'marital_status_id' => MaritalStatus::factory()->create()->id,
-        ]);
-        $this->assertTrue($contact->maritalStatus()->exists());
-    }
-
-    #[Test]
     public function it_has_many_contact_phone_numbers(): void
     {
         $contact = Contact::factory()->create();
@@ -93,6 +85,17 @@ class ContactTest extends TestCase
         ]);
 
         $this->assertTrue($contact->children()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_partners(): void
+    {
+        $contact = Contact::factory()->create();
+        Partner::factory()->create([
+            'contact_id' => $contact->id,
+        ]);
+
+        $this->assertTrue($contact->partners()->exists());
     }
 
     #[Test]

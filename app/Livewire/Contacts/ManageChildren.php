@@ -59,6 +59,17 @@ class ManageChildren extends Component
         ]);
     }
 
+    public function placeholder()
+    {
+        return <<<'HTML'
+        <div>
+            <div class="flex flex-col space-y-3 mb-3">
+                <div class="animate-pulse bg-slate-200 h-[125px] w-full rounded-xl"></div>
+            </div>
+        </div>
+        HTML;
+    }
+
     public function toggleAddMode()
     {
         $this->addMode = ! $this->addMode;

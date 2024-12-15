@@ -32,10 +32,7 @@ class UpdateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $this->executeService($user, $vault, $contact, $gender, $ethnicity, $maritalStatus);
+        $this->executeService($user, $vault, $contact, $gender, $ethnicity);
     }
 
     #[Test]
@@ -54,10 +51,7 @@ class UpdateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $this->executeService($user, $vault, $contact, $gender, $ethnicity, $maritalStatus);
+        $this->executeService($user, $vault, $contact, $gender, $ethnicity);
     }
 
     #[Test]
@@ -76,10 +70,7 @@ class UpdateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $this->executeService($user, $vault, $contact, $gender, $ethnicity, $maritalStatus);
+        $this->executeService($user, $vault, $contact, $gender, $ethnicity);
     }
 
     #[Test]
@@ -96,10 +87,7 @@ class UpdateContactTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $this->executeService($user, $vault, $contact, $gender, $ethnicity, $maritalStatus);
+        $this->executeService($user, $vault, $contact, $gender, $ethnicity);
     }
 
     #[Test]
@@ -116,40 +104,16 @@ class UpdateContactTest extends TestCase
             'account_id' => $user->account->id,
         ]);
         $ethnicity = Ethnicity::factory()->create();
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $this->executeService($user, $vault, $contact, $gender, $ethnicity, $maritalStatus);
+        $this->executeService($user, $vault, $contact, $gender, $ethnicity);
     }
 
-    #[Test]
-    public function it_fails_if_marital_status_doesnt_belong_to_account(): void
-    {
-        $this->expectException(ModelNotFoundException::class);
-
-        $user = User::factory()->create();
-        $vault = $this->createVault($user);
-        $contact = Contact::factory()->create([
-            'vault_id' => $vault->id,
-        ]);
-        $gender = Gender::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $ethnicity = Ethnicity::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
-        $maritalStatus = MaritalStatus::factory()->create();
-        $this->executeService($user, $vault, $contact, $gender, $ethnicity, $maritalStatus);
-    }
-
-    private function executeService(User $user, Vault $vault, Contact $contact, Gender $gender, ?Ethnicity $ethnicity = null, ?MaritalStatus $maritalStatus = null): void
+    private function executeService(User $user, Vault $vault, Contact $contact, Gender $gender, ?Ethnicity $ethnicity = null): void
     {
         $contact = (new UpdateContact(
             user: $user,
             contact: $contact,
             gender: $gender,
             ethnicity: $ethnicity,
-            maritalStatus: $maritalStatus,
             nationality: 'American',
             firstName: 'Ross',
             lastName: 'Geller',

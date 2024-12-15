@@ -41,6 +41,9 @@ class CreateContact
         $this->validate();
         $this->createContact();
         $this->generateSlug();
+        if ($this->maritalStatus) {
+            $this->createPartner();
+        }
 
         return $this->contact;
     }
@@ -85,7 +88,6 @@ class CreateContact
             'vault_id' => $this->vault->id,
             'gender_id' => $this->gender?->id,
             'ethnicity_id' => $this->ethnicity?->id,
-            'marital_status_id' => $this->maritalStatus?->id,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName ?? null,
             'middle_name' => $this->middleName ?? null,
@@ -100,6 +102,18 @@ class CreateContact
             'prefix' => $this->prefix ?? null,
             'can_be_deleted' => $this->canBeDeleted,
         ]);
+    }
+
+    private function createPartner(): void
+    {
+        (new CreatePartner(
+            user: $this->user,
+            contact: $this->contact,
+            maritalStatus: $this->maritalStatus,
+            name: null,
+            occupation: null,
+            numberOfYearsTogether: null,
+        ))->execute();
     }
 
     private function generateSlug(): void

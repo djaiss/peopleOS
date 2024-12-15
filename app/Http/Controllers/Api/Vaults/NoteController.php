@@ -27,6 +27,7 @@ class NoteController extends Controller
      * Create a note.
      *
      * @urlParam vault required The id of the vault. Example: 1
+     * @urlParam contact required The id of the contact. Example: 1
      *
      * @bodyParam body string required The body of the note. Example: This is a note.
      *
@@ -198,6 +199,7 @@ class NoteController extends Controller
      * This will list all the notes.
      *
      * @urlParam vault required The id of the vault. Example: 1
+     * @urlParam contact required The id of the contact. Example: 1
      *
      * @response 200 [{
      *  "id": 4,

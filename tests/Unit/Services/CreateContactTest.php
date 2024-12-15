@@ -136,6 +136,11 @@ class CreateContactTest extends TestCase
             'can_be_deleted' => true,
         ]);
 
+        $this->assertDatabaseHas('partners', [
+            'contact_id' => $contact->id,
+            'marital_status_id' => $maritalStatus->id,
+        ]);
+
         $this->assertInstanceOf(
             Contact::class,
             $contact

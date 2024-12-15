@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Laravel Documentation</title>
+    <title>PeopleOS Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 
@@ -150,6 +150,26 @@
                 <a href="#contacts-DELETEapi-vaults--vault--contacts--contact--children--child-">Delete a child.</a>
               </li>
             </ul>
+            <li class="tocify-item level-2" data-unique="contacts-partners">
+              <a href="#contacts-partners">Partners</a>
+            </li>
+            <ul id="tocify-subheader-contacts-partners" class="tocify-subheader">
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts--contact--partners">
+                <a href="#contacts-GETapi-vaults--vault--contacts--contact--partners">List all partners.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-GETapi-vaults--vault--contacts--contact--partners--partner-">
+                <a href="#contacts-GETapi-vaults--vault--contacts--contact--partners--partner-">Retrieve a partner.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-POSTapi-vaults--vault--contacts--contact--partners">
+                <a href="#contacts-POSTapi-vaults--vault--contacts--contact--partners">Create a partner.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-PUTapi-vaults--vault--contacts--contact--partners--partner-">
+                <a href="#contacts-PUTapi-vaults--vault--contacts--contact--partners--partner-">Update a partner.</a>
+              </li>
+              <li class="tocify-item level-3" data-unique="contacts-DELETEapi-vaults--vault--contacts--contact--partners--partner-">
+                <a href="#contacts-DELETEapi-vaults--vault--contacts--contact--partners--partner-">Delete a partner.</a>
+              </li>
+            </ul>
           </ul>
         </ul>
         <ul id="tocify-header-ethnicities" class="tocify-header">
@@ -262,7 +282,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 21, 2024</li>
+        <li>Last updated: November 27, 2024</li>
       </ul>
     </div>
 
@@ -273,7 +293,7 @@
         <aside>
           <strong>Base URL</strong>
           :
-          <code>http://localhost</code>
+          <code>http://peopleos.test</code>
         </aside>
         <p>This documentation aims to provide all the information you need to work with our API.</p>
         <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile). You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
@@ -310,14 +330,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1/companies" \
+    --get "http://peopleos.test/api/vaults/1/companies" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/companies"
+    "http://peopleos.test/api/vaults/1/companies"
 );
 
 const headers = {
@@ -333,7 +353,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/companies';
+$url = 'http://peopleos.test/api/vaults/1/companies';
 $response = $client-&gt;get(
     $url,
     [
@@ -433,7 +453,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults/1/companies" \
+    "http://peopleos.test/api/vaults/1/companies" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -444,7 +464,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/companies"
+    "http://peopleos.test/api/vaults/1/companies"
 );
 
 const headers = {
@@ -465,7 +485,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/companies';
+$url = 'http://peopleos.test/api/vaults/1/companies';
 $response = $client-&gt;post(
     $url,
     [
@@ -577,7 +597,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/companies/1" \
+    "http://peopleos.test/api/vaults/1/companies/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -588,7 +608,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/companies/1"
+    "http://peopleos.test/api/vaults/1/companies/1"
 );
 
 const headers = {
@@ -609,7 +629,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/companies/1';
+$url = 'http://peopleos.test/api/vaults/1/companies/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -733,14 +753,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/1/companies/1" \
+    "http://peopleos.test/api/vaults/1/companies/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/companies/1"
+    "http://peopleos.test/api/vaults/1/companies/1"
 );
 
 const headers = {
@@ -756,7 +776,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/companies/1';
+$url = 'http://peopleos.test/api/vaults/1/companies/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -867,14 +887,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/aut/contacts" \
+    --get "http://peopleos.test/api/vaults/et/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/aut/contacts"
+    "http://peopleos.test/api/vaults/et/contacts"
 );
 
 const headers = {
@@ -890,7 +910,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/aut/contacts';
+$url = 'http://peopleos.test/api/vaults/et/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -1066,11 +1086,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="aut" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="et" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>aut</code>
+              <code>et</code>
             </p>
           </div>
         </form>
@@ -1216,7 +1236,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults/1/contacts" \
+    "http://peopleos.test/api/vaults/1/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1242,7 +1262,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts"
+    "http://peopleos.test/api/vaults/1/contacts"
 );
 
 const headers = {
@@ -1278,7 +1298,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts';
+$url = 'http://peopleos.test/api/vaults/1/contacts';
 $response = $client-&gt;post(
     $url,
     [
@@ -1786,14 +1806,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1/contacts/1" \
+    --get "http://peopleos.test/api/vaults/1/contacts/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1"
+    "http://peopleos.test/api/vaults/1/contacts/1"
 );
 
 const headers = {
@@ -1809,7 +1829,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -2109,7 +2129,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/contacts/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2135,7 +2155,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1"
+    "http://peopleos.test/api/vaults/1/contacts/1"
 );
 
 const headers = {
@@ -2171,7 +2191,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -2691,14 +2711,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/1/contacts/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1"
+    "http://peopleos.test/api/vaults/1/contacts/1"
 );
 
 const headers = {
@@ -2714,7 +2734,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2823,7 +2843,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/contacts/1/job" \
+    "http://peopleos.test/api/vaults/1/contacts/1/job" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2835,7 +2855,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/job"
+    "http://peopleos.test/api/vaults/1/contacts/1/job"
 );
 
 const headers = {
@@ -2857,7 +2877,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/job';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/job';
 $response = $client-&gt;put(
     $url,
     [
@@ -2999,7 +3019,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/contacts/1/background" \
+    "http://peopleos.test/api/vaults/1/contacts/1/background" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3010,7 +3030,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/background"
+    "http://peopleos.test/api/vaults/1/contacts/1/background"
 );
 
 const headers = {
@@ -3031,7 +3051,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/background';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/background';
 $response = $client-&gt;put(
     $url,
     [
@@ -3159,14 +3179,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/aut/contacts/voluptatem/phone-numbers" \
+    --get "http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/aut/contacts/voluptatem/phone-numbers"
+    "http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers"
 );
 
 const headers = {
@@ -3182,7 +3202,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/aut/contacts/voluptatem/phone-numbers';
+$url = 'http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers';
 $response = $client-&gt;get(
     $url,
     [
@@ -3312,11 +3332,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="aut" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="repudiandae" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>aut</code>
+              <code>repudiandae</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3324,11 +3344,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="voluptatem" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="quo" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>voluptatem</code>
+              <code>quo</code>
             </p>
           </div>
         </form>
@@ -3388,11 +3408,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults/1/contacts/1/phone-numbers" \
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"id\",
+    \"label\": \"consequatur\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3400,7 +3420,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/phone-numbers"
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers"
 );
 
 const headers = {
@@ -3409,7 +3429,7 @@ const headers = {
 };
 
 let body = {
-    "label": "id",
+    "label": "consequatur",
     "phone_number": "+1234567890"
 };
 
@@ -3422,7 +3442,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/phone-numbers';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/phone-numbers';
 $response = $client-&gt;post(
     $url,
     [
@@ -3431,7 +3451,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'id',
+            'label' =&gt; 'consequatur',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3536,11 +3556,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="id" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="consequatur" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>id</code>
+              <code>consequatur</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3566,11 +3586,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/contacts/1/phone-numbers/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"amet\",
+    \"label\": \"nemo\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3578,7 +3598,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/phone-numbers/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3587,7 +3607,7 @@ const headers = {
 };
 
 let body = {
-    "label": "amet",
+    "label": "nemo",
     "phone_number": "+1234567890"
 };
 
@@ -3600,7 +3620,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/phone-numbers/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/phone-numbers/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -3609,7 +3629,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'amet',
+            'label' =&gt; 'nemo',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3726,11 +3746,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="amet" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="nemo" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>amet</code>
+              <code>nemo</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3756,14 +3776,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/sint/contacts/1/phone-numbers/1" \
+    "http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/sint/contacts/1/phone-numbers/1"
+    "http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3779,7 +3799,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/sint/contacts/1/phone-numbers/1';
+$url = 'http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3855,11 +3875,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="sint" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="ut" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>sint</code>
+              <code>ut</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3900,14 +3920,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/dolor/contacts/itaque/children" \
+    --get "http://peopleos.test/api/vaults/fugiat/contacts/est/children" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/dolor/contacts/itaque/children"
+    "http://peopleos.test/api/vaults/fugiat/contacts/est/children"
 );
 
 const headers = {
@@ -3923,7 +3943,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/dolor/contacts/itaque/children';
+$url = 'http://peopleos.test/api/vaults/fugiat/contacts/est/children';
 $response = $client-&gt;get(
     $url,
     [
@@ -4057,11 +4077,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="dolor" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="fugiat" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>dolor</code>
+              <code>fugiat</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4069,11 +4089,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="itaque" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="est" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>itaque</code>
+              <code>est</code>
             </p>
           </div>
         </form>
@@ -4151,14 +4171,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1/contacts/1/children/1" \
+    --get "http://peopleos.test/api/vaults/1/contacts/1/children/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/children/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/children/1"
 );
 
 const headers = {
@@ -4174,7 +4194,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/children/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/children/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -4369,7 +4389,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults/1/contacts/1/children" \
+    "http://peopleos.test/api/vaults/1/contacts/1/children" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4384,7 +4404,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/children"
+    "http://peopleos.test/api/vaults/1/contacts/1/children"
 );
 
 const headers = {
@@ -4409,7 +4429,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/children';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/children';
 $response = $client-&gt;post(
     $url,
     [
@@ -4668,7 +4688,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/contacts/1/children/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1/children/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4683,7 +4703,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/children/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/children/1"
 );
 
 const headers = {
@@ -4708,7 +4728,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/children/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/children/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -4976,14 +4996,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/1/contacts/1/children/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1/children/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/children/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/children/1"
 );
 
 const headers = {
@@ -4999,7 +5019,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/children/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/children/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5108,6 +5128,1176 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h2 id="contacts-partners">Partners</h2>
+        <h2 id="contacts-GETapi-vaults--vault--contacts--contact--partners">List all partners.</h2>
+
+        <p></p>
+
+        <p>This API call returns a paginated collection of partners.</p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts--contact--partners">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/vaults/quia/contacts/assumenda/partners" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/quia/contacts/assumenda/partners"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/quia/contacts/assumenda/partners';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--contacts--contact--partners">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;partner&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;marital_status&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Single&quot;,
+ },
+ &quot;name&quot;: &quot;Michael&quot;,
+ &quot;occupation&quot;: &quot;Software Engineer&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}, {
+ &quot;id&quot;: 5,
+ &quot;object&quot;: &quot;partner&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;marital_status&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Single&quot;,
+ },
+ &quot;name&quot;: &quot;Dwight&quot;,
+ &quot;occupation&quot;: &quot;Salesman&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/1/partners?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/1/partners?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/vaults/1/contacts?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/vaults/1/contacts/1/partners&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--contacts--contact--partners" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--contacts--contact--partners"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--contacts--contact--partners"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--contacts--contact--partners" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--contacts--contact--partners">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--contacts--contact--partners" data-method="GET" data-path="api/vaults/{vault}/contacts/{contact}/partners" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--contacts--contact--partners', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/partners</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="quia" data-component="url" />
+            <br />
+            <p>
+              The vault. Example:
+              <code>quia</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="assumenda" data-component="url" />
+            <br />
+            <p>
+              The contact. Example:
+              <code>assumenda</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;partner&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status object of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>occupation</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The occupation of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-GETapi-vaults--vault--contacts--contact--partners--partner-">Retrieve a partner.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-vaults--vault--contacts--contact--partners--partner-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/vaults/1/contacts/1/partners/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1/partners/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/partners/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-vaults--vault--contacts--contact--partners--partner-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;id&quot;: 1,
+  &quot;object&quot;: &quot;partner&quot;,
+  &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+  },
+  &quot;marital_status&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Single&quot;,
+  },
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;occupation&quot;: &quot;Software Engineer&quot;,
+  &quot;number_of_years_together&quot;: &quot;5&quot;,
+  &quot;created_at&quot;: 1514764800,
+  &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-vaults--vault--contacts--contact--partners--partner-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-vaults--vault--contacts--contact--partners--partner-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-vaults--vault--contacts--contact--partners--partner-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-vaults--vault--contacts--contact--partners--partner-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-vaults--vault--contacts--contact--partners--partner-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-vaults--vault--contacts--contact--partners--partner-" data-method="GET" data-path="api/vaults/{vault}/contacts/{contact}/partners/{partner}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-vaults--vault--contacts--contact--partners--partner-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/partners/{partner}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-vaults--vault--contacts--contact--partners--partner-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-vaults--vault--contacts--contact--partners--partner-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>partner</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="partner" data-endpoint="GETapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the partner. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;partner&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status object of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>occupation</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The occupation of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-POSTapi-vaults--vault--contacts--contact--partners">Create a partner.</h2>
+
+        <p></p>
+
+        <p>Creates a new partner for the given contact. A partner has currently three pieces of information: marital status, name and occupation. Only the marital status is required, the name and occupation are optional. A contact can have multiple partners.</p>
+        <p>Once created, the partner will be returned in the response.</p>
+
+        <span id="example-requests-POSTapi-vaults--vault--contacts--contact--partners">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://peopleos.test/api/vaults/1/contacts/1/partners" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"marital_status_id\": 1,
+    \"name\": \"Michael\",
+    \"occupation\": \"Software Engineer\",
+    \"number_of_years_together\": \"5\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1/partners"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "marital_status_id": 1,
+    "name": "Michael",
+    "occupation": "Software Engineer",
+    "number_of_years_together": "5"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/partners';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'marital_status_id' =&gt; 1,
+            'name' =&gt; 'Michael',
+            'occupation' =&gt; 'Software Engineer',
+            'number_of_years_together' =&gt; '5',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-vaults--vault--contacts--contact--partners">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;partner&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;marital_status&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Single&quot;,
+ },
+ &quot;name&quot;: &quot;Michael&quot;,
+ &quot;occupation&quot;: &quot;Software Engineer&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-vaults--vault--contacts--contact--partners" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-vaults--vault--contacts--contact--partners"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-vaults--vault--contacts--contact--partners"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-vaults--vault--contacts--contact--partners" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-vaults--vault--contacts--contact--partners">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-vaults--vault--contacts--contact--partners" data-method="POST" data-path="api/vaults/{vault}/contacts/{contact}/partners" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-vaults--vault--contacts--contact--partners', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/partners</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>marital_status_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="marital_status_id" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="1" data-component="body" />
+            <br />
+            <p>
+              The id of the marital status. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="Michael" data-component="body" />
+            <br />
+            <p>
+              The name of the partner. Max 255 characters. Example:
+              <code>Michael</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>occupation</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="occupation" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="Software Engineer" data-component="body" />
+            <br />
+            <p>
+              The occupation of the partner. Max 255 characters. Example:
+              <code>Software Engineer</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>number_of_years_together</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="number_of_years_together" data-endpoint="POSTapi-vaults--vault--contacts--contact--partners" value="5" data-component="body" />
+            <br />
+            <p>
+              The number of years the partner has been together. Can be a string if needed. Example:
+              <code>5</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;partner&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status object of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>occupation</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The occupation of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-PUTapi-vaults--vault--contacts--contact--partners--partner-">Update a partner.</h2>
+
+        <p></p>
+
+        <p>Updates an existing partner.</p>
+        <p>Once updated, the partner will be returned in the response.</p>
+
+        <span id="example-requests-PUTapi-vaults--vault--contacts--contact--partners--partner-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/vaults/1/contacts/1/partners/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"marital_status_id\": 1,
+    \"name\": \"Michael\",
+    \"occupation\": \"Software Engineer\",
+    \"number_of_years_together\": \"5\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1/partners/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "marital_status_id": 1,
+    "name": "Michael",
+    "occupation": "Software Engineer",
+    "number_of_years_together": "5"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/partners/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'marital_status_id' =&gt; 1,
+            'name' =&gt; 'Michael',
+            'occupation' =&gt; 'Software Engineer',
+            'number_of_years_together' =&gt; '5',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-vaults--vault--contacts--contact--partners--partner-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;partner&quot;,
+ &quot;contact&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Dwight Schrute&quot;,
+ },
+ &quot;marital_status&quot;: {
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Single&quot;,
+ },
+ &quot;name&quot;: &quot;Michael&quot;,
+ &quot;occupation&quot;: &quot;Software Engineer&quot;,
+ &quot;number_of_years_together&quot;: &quot;5&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-vaults--vault--contacts--contact--partners--partner-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-vaults--vault--contacts--contact--partners--partner-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-vaults--vault--contacts--contact--partners--partner-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-vaults--vault--contacts--contact--partners--partner-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-vaults--vault--contacts--contact--partners--partner-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-vaults--vault--contacts--contact--partners--partner-" data-method="PUT" data-path="api/vaults/{vault}/contacts/{contact}/partners/{partner}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-vaults--vault--contacts--contact--partners--partner-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/partners/{partner}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>partner</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="partner" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the partner. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>marital_status_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="marital_status_id" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="body" />
+            <br />
+            <p>
+              The id of the marital status. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="Michael" data-component="body" />
+            <br />
+            <p>
+              The name of the partner. Max 255 characters. Example:
+              <code>Michael</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>occupation</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="occupation" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="Software Engineer" data-component="body" />
+            <br />
+            <p>
+              The occupation of the partner. Max 255 characters. Example:
+              <code>Software Engineer</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>number_of_years_together</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="number_of_years_together" data-endpoint="PUTapi-vaults--vault--contacts--contact--partners--partner-" value="5" data-component="body" />
+            <br />
+            <p>
+              The number of years the partner has been together. Can be a string if needed. Example:
+              <code>5</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;partner&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>contact</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The contact object who represents the parent.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>marital_status</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The marital status object of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>occupation</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The occupation of the partner.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>number_of_years_together</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The number of years the partner has been together.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="contacts-DELETEapi-vaults--vault--contacts--contact--partners--partner-">Delete a partner.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-vaults--vault--contacts--contact--partners--partner-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://peopleos.test/api/vaults/1/contacts/1/partners/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/vaults/1/contacts/1/partners/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/partners/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-vaults--vault--contacts--contact--partners--partner-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-vaults--vault--contacts--contact--partners--partner-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-vaults--vault--contacts--contact--partners--partner-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-vaults--vault--contacts--contact--partners--partner-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-vaults--vault--contacts--contact--partners--partner-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-vaults--vault--contacts--contact--partners--partner-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-vaults--vault--contacts--contact--partners--partner-" data-method="DELETE" data-path="api/vaults/{vault}/contacts/{contact}/partners/{partner}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-vaults--vault--contacts--contact--partners--partner-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/vaults/{vault}/contacts/{contact}/partners/{partner}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-vaults--vault--contacts--contact--partners--partner-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-vaults--vault--contacts--contact--partners--partner-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>vault</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the vault. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>contact</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="contact" data-endpoint="DELETEapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the contact. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>partner</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="partner" data-endpoint="DELETEapi-vaults--vault--contacts--contact--partners--partner-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the partner. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
         <h1 id="ethnicities">Ethnicities</h1>
 
         <p>Ethnicity refers to a person's identification with a group based on common ancestry, language, cultural heritage, or national origin.</p>
@@ -5124,14 +6314,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/ethnicities" \
+    --get "http://peopleos.test/api/ethnicities" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ethnicities"
+    "http://peopleos.test/api/ethnicities"
 );
 
 const headers = {
@@ -5147,7 +6337,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ethnicities';
+$url = 'http://peopleos.test/api/ethnicities';
 $response = $client-&gt;get(
     $url,
     [
@@ -5302,14 +6492,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/ethnicities/1" \
+    --get "http://peopleos.test/api/ethnicities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ethnicities/1"
+    "http://peopleos.test/api/ethnicities/1"
 );
 
 const headers = {
@@ -5325,7 +6515,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ethnicities/1';
+$url = 'http://peopleos.test/api/ethnicities/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -5474,7 +6664,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/ethnicities" \
+    "http://peopleos.test/api/ethnicities" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5485,7 +6675,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ethnicities"
+    "http://peopleos.test/api/ethnicities"
 );
 
 const headers = {
@@ -5506,7 +6696,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ethnicities';
+$url = 'http://peopleos.test/api/ethnicities';
 $response = $client-&gt;post(
     $url,
     [
@@ -5639,7 +6829,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/ethnicities/1" \
+    "http://peopleos.test/api/ethnicities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5650,7 +6840,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ethnicities/1"
+    "http://peopleos.test/api/ethnicities/1"
 );
 
 const headers = {
@@ -5671,7 +6861,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ethnicities/1';
+$url = 'http://peopleos.test/api/ethnicities/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -5817,14 +7007,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/ethnicities/1" \
+    "http://peopleos.test/api/ethnicities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ethnicities/1"
+    "http://peopleos.test/api/ethnicities/1"
 );
 
 const headers = {
@@ -5840,7 +7030,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ethnicities/1';
+$url = 'http://peopleos.test/api/ethnicities/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5942,14 +7132,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/genders" \
+    --get "http://peopleos.test/api/genders" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/genders"
+    "http://peopleos.test/api/genders"
 );
 
 const headers = {
@@ -5965,7 +7155,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/genders';
+$url = 'http://peopleos.test/api/genders';
 $response = $client-&gt;get(
     $url,
     [
@@ -6122,14 +7312,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/genders/1" \
+    --get "http://peopleos.test/api/genders/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/genders/1"
+    "http://peopleos.test/api/genders/1"
 );
 
 const headers = {
@@ -6145,7 +7335,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/genders/1';
+$url = 'http://peopleos.test/api/genders/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -6303,7 +7493,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/genders" \
+    "http://peopleos.test/api/genders" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -6314,7 +7504,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/genders"
+    "http://peopleos.test/api/genders"
 );
 
 const headers = {
@@ -6335,7 +7525,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/genders';
+$url = 'http://peopleos.test/api/genders';
 $response = $client-&gt;post(
     $url,
     [
@@ -6475,7 +7665,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/genders/1" \
+    "http://peopleos.test/api/genders/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -6487,7 +7677,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/genders/1"
+    "http://peopleos.test/api/genders/1"
 );
 
 const headers = {
@@ -6509,7 +7699,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/genders/1';
+$url = 'http://peopleos.test/api/genders/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -6675,14 +7865,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/genders/1" \
+    "http://peopleos.test/api/genders/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/genders/1"
+    "http://peopleos.test/api/genders/1"
 );
 
 const headers = {
@@ -6698,7 +7888,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/genders/1';
+$url = 'http://peopleos.test/api/genders/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -6798,14 +7988,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1/contacts/eaque/notes" \
+    --get "http://peopleos.test/api/vaults/1/contacts/1/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/eaque/notes"
+    "http://peopleos.test/api/vaults/1/contacts/1/notes"
 );
 
 const headers = {
@@ -6821,7 +8011,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/eaque/notes';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes';
 $response = $client-&gt;get(
     $url,
     [
@@ -6926,11 +8116,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="eaque" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--notes" value="1" data-component="url" />
             <br />
             <p>
-              The contact. Example:
-              <code>eaque</code>
+              The id of the contact. Example:
+              <code>1</code>
             </p>
           </div>
         </form>
@@ -6982,14 +8172,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1/contacts/1/notes/1" \
+    --get "http://peopleos.test/api/vaults/1/contacts/1/notes/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/notes/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/notes/1"
 );
 
 const headers = {
@@ -7005,7 +8195,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/notes/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -7163,7 +8353,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults/1/contacts/sit/notes" \
+    "http://peopleos.test/api/vaults/1/contacts/1/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7174,7 +8364,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/sit/notes"
+    "http://peopleos.test/api/vaults/1/contacts/1/notes"
 );
 
 const headers = {
@@ -7195,7 +8385,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/sit/notes';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes';
 $response = $client-&gt;post(
     $url,
     [
@@ -7294,11 +8484,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="sit" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="POSTapi-vaults--vault--contacts--contact--notes" value="1" data-component="url" />
             <br />
             <p>
-              The contact. Example:
-              <code>sit</code>
+              The id of the contact. Example:
+              <code>1</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -7363,7 +8553,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1/contacts/1/notes/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1/notes/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7374,7 +8564,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/notes/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/notes/1"
 );
 
 const headers = {
@@ -7395,7 +8585,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/notes/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -7575,14 +8765,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/1/contacts/1/notes/1" \
+    "http://peopleos.test/api/vaults/1/contacts/1/notes/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1/contacts/1/notes/1"
+    "http://peopleos.test/api/vaults/1/contacts/1/notes/1"
 );
 
 const headers = {
@@ -7598,7 +8788,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1/contacts/1/notes/1';
+$url = 'http://peopleos.test/api/vaults/1/contacts/1/notes/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -7722,14 +8912,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/me" \
+    --get "http://peopleos.test/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/me"
+    "http://peopleos.test/api/me"
 );
 
 const headers = {
@@ -7745,7 +8935,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/me';
+$url = 'http://peopleos.test/api/me';
 $response = $client-&gt;get(
     $url,
     [
@@ -7832,7 +9022,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/me" \
+    "http://peopleos.test/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7845,7 +9035,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/me"
+    "http://peopleos.test/api/me"
 );
 
 const headers = {
@@ -7868,7 +9058,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/me';
+$url = 'http://peopleos.test/api/me';
 $response = $client-&gt;put(
     $url,
     [
@@ -8000,14 +9190,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults" \
+    --get "http://peopleos.test/api/vaults" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults"
+    "http://peopleos.test/api/vaults"
 );
 
 const headers = {
@@ -8023,7 +9213,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults';
+$url = 'http://peopleos.test/api/vaults';
 $response = $client-&gt;get(
     $url,
     [
@@ -8182,7 +9372,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/vaults" \
+    "http://peopleos.test/api/vaults" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8194,7 +9384,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults"
+    "http://peopleos.test/api/vaults"
 );
 
 const headers = {
@@ -8216,7 +9406,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults';
+$url = 'http://peopleos.test/api/vaults';
 $response = $client-&gt;post(
     $url,
     [
@@ -8365,14 +9555,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/vaults/1" \
+    --get "http://peopleos.test/api/vaults/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1"
+    "http://peopleos.test/api/vaults/1"
 );
 
 const headers = {
@@ -8388,7 +9578,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1';
+$url = 'http://peopleos.test/api/vaults/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -8519,7 +9709,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/vaults/1" \
+    "http://peopleos.test/api/vaults/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8531,7 +9721,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1"
+    "http://peopleos.test/api/vaults/1"
 );
 
 const headers = {
@@ -8553,7 +9743,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1';
+$url = 'http://peopleos.test/api/vaults/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -8715,14 +9905,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/vaults/1" \
+    "http://peopleos.test/api/vaults/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/vaults/1"
+    "http://peopleos.test/api/vaults/1"
 );
 
 const headers = {
@@ -8738,7 +9928,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/vaults/1';
+$url = 'http://peopleos.test/api/vaults/1';
 $response = $client-&gt;delete(
     $url,
     [

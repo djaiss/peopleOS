@@ -43,14 +43,6 @@ class MaritalStatus extends Model
     }
 
     /**
-     * Get the contacts associated with the marital status.
-     */
-    public function contacts(): HasMany
-    {
-        return $this->hasMany(Contact::class);
-    }
-
-    /**
      * Get the name of label attribute.
      * Marital status entries have a default label that can be translated.
      * Howerer, if a label is already set, it will be used instead of the default.

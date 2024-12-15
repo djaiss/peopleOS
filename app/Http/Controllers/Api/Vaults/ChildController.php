@@ -69,7 +69,6 @@ class ChildController extends Controller
      */
     public function create(Request $request)
     {
-        $vault = $request->attributes->get('vault');
         $contact = $request->attributes->get('contact');
 
         $validated = $request->validate([

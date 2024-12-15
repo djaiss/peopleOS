@@ -1,0 +1,19 @@
+meta {
+  name: List children
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://{{URL}}/vaults/{{vault_id}}/contacts/{{contact_id}}/children
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

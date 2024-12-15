@@ -4,7 +4,6 @@
  * @var \App\Models\Contact $contact
  * @var array $ethnicities
  * @var array $genders
- * @var array $maritalStatuses
  * @var array $routes
  */
 ?>
@@ -62,8 +61,6 @@
             showRomanizedName:
               {{ ! empty($contact['romanized_name']) ? 'true' : 'false' }},
             showNationality: {{ ! empty($contact['nationality']) ? 'true' : 'false' }},
-            showMaritalStatus:
-              {{ ! empty($contact['marital_status_id']) ? 'true' : 'false' }},
           }">
           <!-- prefix -->
           <div x-cloak x-show="showPrefix" x-transition class="relative mb-5">
@@ -141,16 +138,6 @@
             <p class="mt-1 text-xs text-gray-500">
               {{ __('Gender is the classification of people based on their biological sex.') }}
             </p>
-          </div>
-
-          <!-- marital status -->
-          <div x-cloak x-show="showMaritalStatus" x-transition class="relative mb-5">
-            <x-input-label for="marital_status_id" :value="__('Marital status')" />
-            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="marital_status_id" name="marital_status_id">
-              @foreach ($maritalStatuses as $maritalStatus)
-                <option :value="{{ $maritalStatus['id'] }}" :selected="$contact['marital_status_id'] === $maritalStatus['id']">{{ $maritalStatus['name'] }}</option>
-              @endforeach
-            </select>
           </div>
 
           <!-- ethnicity -->
@@ -258,9 +245,6 @@
               </span>
             @endif
 
-            <span x-cloak x-show="! showMaritalStatus" x-on:click="showMaritalStatus = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
-              {{ __('+ marital status') }}
-            </span>
             <span x-cloak x-show="! showEthnicity" x-on:click="showEthnicity = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
               {{ __('+ ethnicity') }}
             </span>

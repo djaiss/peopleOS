@@ -38,7 +38,10 @@
             </div>
 
             <!-- kids -->
-            <livewire:contacts.manage-children :contact-id="$contact['id']" />
+            <livewire:contacts.manage-children lazy :contact-id="$contact['id']" />
+
+            <!-- partners -->
+            <livewire:contacts.manage-partners lazy :contact-id="$contact['id']" />
 
             <!-- name and avatar -->
             <div class="flex">
@@ -74,51 +77,6 @@
                   <span class="me-2 rounded bg-pink-100 px-2.5 py-0.5 text-xs font-medium text-pink-800 dark:bg-pink-900 dark:text-pink-300">Pink</span>
                 </div>
               </div>
-            </div>
-
-            <!-- spouse -->
-            <div class="relative mb-8 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
-              <div class="absolute -top-4 w-full">
-                <div class="flex justify-between">
-                  <div class="flex items-center rounded-full border bg-white py-1 pl-2 pr-3 text-sm">
-                    <svg class="mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M6 3h12l4 6-10 13L2 9Z" />
-                      <path d="M11 3 8 9l4 13 4-13-3-6" />
-                      <path d="M2 9h20" />
-                    </svg>
-                    <div>Love</div>
-                  </div>
-
-                  <div class="button -left-6 flex cursor-pointer items-center rounded border bg-white text-sm">
-                    <x-lucide-plus class="h-4 w-4" />
-                  </div>
-                </div>
-              </div>
-
-              <ul class="mt-2">
-                <li>
-                  Regis
-                  <span class="text-xs text-gray-600">(8)</span>
-                </li>
-                <li>
-                  Lorraine
-                  <span class="text-xs text-gray-600">(8)</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- extended family -->
-            <div class="group mb-8 flex items-center rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
-              <div class="-rotate-12 rounded border border-gray-200 bg-white p-1 transition group-hover:rotate-0">
-                <svg class="text-gray-500 group-hover:text-blue-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2" />
-                  <rect width="18" height="18" x="3" y="4" rx="2" />
-                  <circle cx="12" cy="10" r="2" />
-                  <line x1="8" x2="8" y1="2" y2="4" />
-                  <line x1="16" x2="16" y1="2" y2="4" />
-                </svg>
-              </div>
-              <span class="ml-3 text-gray-500 group-hover:text-gray-800">Add extended family</span>
             </div>
           </div>
 

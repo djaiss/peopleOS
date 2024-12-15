@@ -110,7 +110,7 @@
         <x-input-error class="mt-2" :messages="$errors->get('school')" />
       </div>
 
-      <div class="flex justify-between">
+      <div class="mt-4 flex justify-between">
         <x-button.secondary wire:click="toggleAddMode" class="mr-2">
           {{ __('Cancel') }}
         </x-button.secondary>
@@ -222,6 +222,42 @@
                 <x-input-error class="mt-2" :messages="$errors->get('gender')" />
               </div>
 
+              <!-- name -->
+              <div x-cloak x-show="showName" class="relative mb-4">
+                <x-input-label for="name" :optional="true" :value="__('Name')" />
+
+                <x-text-input x-ref="showName" wire:model="name" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="name" name="name" type="text" />
+
+                <x-input-error class="mt-2" :messages="$errors->get('name')" />
+              </div>
+
+              <!-- age -->
+              <div x-cloak x-show="showAge" class="relative mb-4">
+                <x-input-label for="age" :optional="true" :value="__('Age')" />
+
+                <x-text-input x-ref="showAge" wire:model="age" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="age" name="age" type="number" min="0" max="100" />
+
+                <x-input-error class="mt-2" :messages="$errors->get('age')" />
+              </div>
+
+              <!-- grade level -->
+              <div x-cloak x-show="showGradeLevel" class="relative mb-4">
+                <x-input-label for="grade_level" :optional="true" :value="__('Grade level')" />
+
+                <x-text-input x-ref="showGradeLevel" wire:model="gradeLevel" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="grade_level" name="grade_level" type="text" />
+
+                <x-input-error class="mt-2" :messages="$errors->get('grade_level')" />
+              </div>
+
+              <!-- school -->
+              <div x-cloak x-show="showSchool" class="relative mb-4">
+                <x-input-label for="school" :optional="true" :value="__('School')" />
+
+                <x-text-input x-ref="showSchool" wire:model="school" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="school" name="school" type="text" />
+
+                <x-input-error class="mt-2" :messages="$errors->get('school')" />
+              </div>
+
               <!-- add optional fields -->
               <div class="flex flex-wrap text-xs">
                 <span x-cloak x-show="! showName" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
@@ -261,42 +297,6 @@
                 </span>
               </div>
 
-              <!-- name -->
-              <div x-cloak x-show="showName" class="relative mb-4">
-                <x-input-label for="name" :optional="true" :value="__('Name')" />
-
-                <x-text-input x-ref="showName" wire:model="name" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="name" name="name" type="text" />
-
-                <x-input-error class="mt-2" :messages="$errors->get('name')" />
-              </div>
-
-              <!-- age -->
-              <div x-cloak x-show="showAge" class="relative mb-4">
-                <x-input-label for="age" :optional="true" :value="__('Age')" />
-
-                <x-text-input x-ref="showAge" wire:model="age" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="age" name="age" type="number" min="0" max="100" />
-
-                <x-input-error class="mt-2" :messages="$errors->get('age')" />
-              </div>
-
-              <!-- grade level -->
-              <div x-cloak x-show="showGradeLevel" class="relative mb-4">
-                <x-input-label for="grade_level" :optional="true" :value="__('Grade level')" />
-
-                <x-text-input x-ref="showGradeLevel" wire:model="gradeLevel" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="grade_level" name="grade_level" type="text" />
-
-                <x-input-error class="mt-2" :messages="$errors->get('grade_level')" />
-              </div>
-
-              <!-- school -->
-              <div x-cloak x-show="showSchool" class="relative mb-4">
-                <x-input-label for="school" :optional="true" :value="__('School')" />
-
-                <x-text-input x-ref="showSchool" wire:model="school" wire:keydown.escape="toggleAddMode" class="mt-1 block w-full" id="school" name="school" type="text" />
-
-                <x-input-error class="mt-2" :messages="$errors->get('school')" />
-              </div>
-
               <div class="flex flex-col">
                 <div class="flex justify-between border-b border-gray-200 pb-2">
                   <x-button.secondary wire:click="resetEdit" class="mr-2">
@@ -319,7 +319,7 @@
     </div>
   @else
     @if (! $addMode)
-      <div wire:click="toggleAddMode" class="group mb-8 flex cursor-pointer items-center rounded-lg border border-gray-200 bg-white p-3 shadow-md hover:border-gray-300 dark:border-gray-700 dark:bg-gray-900">
+      <div wire:click="toggleAddMode" class="group mb-8 flex cursor-pointer items-center rounded-lg border border-gray-200 bg-white p-3 shadow-md hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900">
         <div class="-rotate-12 rounded border border-gray-200 bg-white p-1 transition group-hover:rotate-0 group-hover:border-blue-500">
           <x-lucide-baby class="h-4 w-4 text-gray-500 group-hover:text-blue-500" />
         </div>
