@@ -291,6 +291,7 @@ class ContactControllerTest extends TestCase
         $vault = $this->createVault($user);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
+            'can_be_deleted' => true,
         ]);
 
         $this->actingAs($user)
