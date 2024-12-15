@@ -7,6 +7,14 @@
     </div>
   </div>
 
+  @if ($contact['prefix'])
+    <div class="flex items-end">
+      <span class="font-mono text-xs uppercase tracking-tighter text-gray-600">{{ __('prefix') }}</span>
+      <div class="mx-1 mb-1 flex-grow border-b border-dotted border-gray-600"></div>
+      <span>{{ $contact['prefix'] }}</span>
+    </div>
+  @endif
+
   @if ($contact['first_name'])
     <div class="flex items-end">
       <span class="font-mono text-xs uppercase tracking-tighter text-gray-600">{{ __('first name') }}</span>
@@ -28,6 +36,14 @@
       <span class="font-mono text-xs uppercase tracking-tighter text-gray-600">{{ __('last name') }}</span>
       <div class="mx-1 mb-1 flex-grow border-b border-dotted border-gray-600"></div>
       <span>{{ $contact['last_name'] }}</span>
+    </div>
+  @endif
+
+  @if ($contact['suffix'])
+    <div class="flex items-end">
+      <span class="font-mono text-xs uppercase tracking-tighter text-gray-600">{{ __('suffix') }}</span>
+      <div class="mx-1 mb-1 flex-grow border-b border-dotted border-gray-600"></div>
+      <span>{{ $contact['suffix'] }}</span>
     </div>
   @endif
 
