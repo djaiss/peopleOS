@@ -69,13 +69,6 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
      *  },
-     *  "marital_status": {
-     *   "id": 1,
-     *   "object": "marital_status",
-     *   "label": "Married",
-     *   "created_at": 1514764800,
-     *   "updated_at": 1514764800,
-     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -170,6 +163,9 @@ class ContactController extends Controller
      *
      * You can choose to mark a contact as deletable or not.
      *
+     * You can't edit the marital status with this method. Use the partner
+     * endpoint to update the marital status.
+     *
      * Once updated, the contact will be returned in the response, as well as
      * the display name of the contact. This name's format depends on the user
      * settings.
@@ -179,7 +175,6 @@ class ContactController extends Controller
      *
      * @bodyParam gender_id integer The gender object associated with the contact. This object must be a valid Gender object. Example: 1
      * @bodyParam ethnicity_id integer The ethnicity object associated with the contact. This object must be a valid Ethnicity object. Example: 1
-     * @bodyParam marital_status_id integer The marital status of the contact. This object must be a valid MaritalStatus object. Example: 1
      * @bodyParam first_name string required The first name of the contact. Max 255 characters. Example: Michael
      * @bodyParam last_name string The last name of the contact. Max 255 characters. Example: Scott
      * @bodyParam middle_name string The middle name of the contact. Max 255 characters. Example: Gary
@@ -211,13 +206,6 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
      *  },
-     *  "marital_status": {
-     *   "id": 1,
-     *   "object": "marital_status",
-     *   "label": "Married",
-     *   "created_at": 1514764800,
-     *   "updated_at": 1514764800,
-     *  },
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -240,7 +228,6 @@ class ContactController extends Controller
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender object.
      * @responseField ethnicity The ethnicity object.
-     * @responseField marital_status The marital status object.
      * @responseField name The display name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -266,7 +253,6 @@ class ContactController extends Controller
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',
             'ethnicity_id' => 'nullable|exists:ethnicities,id',
-            'marital_status_id' => 'nullable|exists:marital_statuses,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'middle_name' => 'nullable|string|max:255',
@@ -287,7 +273,6 @@ class ContactController extends Controller
             contact: $contact,
             gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
             ethnicity: $validated['ethnicity_id'] ? Ethnicity::find($validated['ethnicity_id']) : null,
-            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             middleName: $validated['middle_name'],
@@ -355,13 +340,6 @@ class ContactController extends Controller
      *     "created_at": 1514764800,
      *     "updated_at": 1514764800
      *   },
-     *   "marital_status": {
-     *     "id": 1,
-     *     "object": "marital_status",
-     *     "label": "Married",
-     *     "created_at": 1514764800,
-     *     "updated_at": 1514764800
-     *   },
      *   "name": "John Doe",
      *   "first_name": "John",
      *   "last_name": "Doe",
@@ -384,7 +362,6 @@ class ContactController extends Controller
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender of the contact.
      * @responseField ethnicity The ethnicity of the contact.
-     * @responseField marital_status The marital status of the contact.
      * @responseField name The full name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -432,7 +409,6 @@ class ContactController extends Controller
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      *  },
-     *  "marital_status": {
      *  "name": "Michael Scott",
      *  "first_name": "Michael",
      *  "last_name": "Scott",
@@ -461,13 +437,6 @@ class ContactController extends Controller
      *   "id": 1,
      *   "object": "ethnicity",
      *   "label": "Asian",
-     *   "created_at": 1514764800,
-     *   "updated_at": 1514764800
-     *  },
-     *  "marital_status": {
-     *   "id": 1,
-     *   "object": "marital_status",
-     *   "label": "Married",
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      *  },
@@ -523,7 +492,6 @@ class ContactController extends Controller
      * @responseField object The object type. Always "contact".
      * @responseField gender The gender object.
      * @responseField ethnicity The ethnicity object.
-     * @responseField marital_status The marital status object.
      * @responseField name The display name of the contact.
      * @responseField first_name The first name of the contact.
      * @responseField last_name The last name of the contact.
@@ -548,7 +516,6 @@ class ContactController extends Controller
         $contacts = $vault->contacts()
             ->with('gender')
             ->with('ethnicity')
-            ->with('maritalStatus')
             ->paginate();
 
         return new ContactCollection($contacts);

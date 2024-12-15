@@ -20,17 +20,6 @@ class MaritalStatusTest extends TestCase
     }
 
     #[Test]
-    public function it_has_many_contacts(): void
-    {
-        $maritalStatus = MaritalStatus::factory()->create();
-        Contact::factory()->create([
-            'marital_status_id' => $maritalStatus->id,
-        ]);
-
-        $this->assertTrue($maritalStatus->contacts()->exists());
-    }
-
-    #[Test]
     public function it_gets_the_default_label(): void
     {
         $maritalStatus = MaritalStatus::factory()->create([

@@ -231,7 +231,6 @@ class ContactControllerTest extends TestCase
         $this->assertArrayHasKey('contact', $response);
         $this->assertArrayHasKey('ethnicities', $response);
         $this->assertArrayHasKey('genders', $response);
-        $this->assertArrayHasKey('maritalStatuses', $response);
         $this->assertArrayHasKey('routes', $response);
 
         $this->assertCount(1, $response['routes']);
@@ -261,9 +260,6 @@ class ContactControllerTest extends TestCase
         $ethnicity = Ethnicity::factory()->create([
             'account_id' => $user->account->id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account->id,
-        ]);
 
         $this->actingAs($user)
             ->put('/vaults/'.$vault->id.'/contacts/'.$contact->slug, [
@@ -271,7 +267,6 @@ class ContactControllerTest extends TestCase
                 'last_name' => 'Scott',
                 'gender_id' => $gender->id,
                 'ethnicity_id' => $ethnicity->id,
-                'marital_status_id' => $maritalStatus->id,
                 'nickname' => '',
                 'middle_name' => '',
                 'maiden_name' => '',

@@ -35,7 +35,6 @@ class Contact extends Model
         'company_id',
         'gender_id',
         'ethnicity_id',
-        'marital_status_id',
         'slug',
         'first_name',
         'middle_name',
@@ -108,14 +107,6 @@ class Contact extends Model
     public function ethnicity(): BelongsTo
     {
         return $this->belongsTo(Ethnicity::class);
-    }
-
-    /**
-     * Get the marital status associated with the contact.
-     */
-    public function maritalStatus(): BelongsTo
-    {
-        return $this->belongsTo(MaritalStatus::class);
     }
 
     /**

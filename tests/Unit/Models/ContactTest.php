@@ -55,15 +55,6 @@ class ContactTest extends TestCase
     }
 
     #[Test]
-    public function it_belongs_to_a_marital_status(): void
-    {
-        $contact = Contact::factory()->create([
-            'marital_status_id' => MaritalStatus::factory()->create()->id,
-        ]);
-        $this->assertTrue($contact->maritalStatus()->exists());
-    }
-
-    #[Test]
     public function it_has_many_contact_phone_numbers(): void
     {
         $contact = Contact::factory()->create();
