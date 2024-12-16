@@ -12,7 +12,8 @@ class CreateEthnicity
     public function __construct(
         public User $user,
         public string $label,
-    ) {}
+    ) {
+    }
 
     public function execute(): Ethnicity
     {

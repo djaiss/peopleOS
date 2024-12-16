@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marital_statuses', function (Blueprint $table): void {
+        Schema::create('templates', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->text('label')->nullable();
-            $table->text('label_translation_key')->nullable();
+            $table->text('name');
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marital_statuses');
+        Schema::dropIfExists('templates');
     }
 };

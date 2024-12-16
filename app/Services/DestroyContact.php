@@ -13,7 +13,8 @@ class DestroyContact
         public User $user,
         public Vault $vault,
         public Contact $contact,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {
@@ -42,7 +43,7 @@ class DestroyContact
             throw new ModelNotFoundException;
         }
 
-        if (!$this->contact->can_be_deleted) {
+        if (! $this->contact->can_be_deleted) {
             throw new ModelNotFoundException;
         }
     }

@@ -54,7 +54,7 @@ class LocalizeApplication extends Command
                 continue;
             }
 
-            $this->info('loading locale: '.$locale);
+            $this->info('loading locale: ' . $locale);
             $jsonString = $file->getContents();
             $strings = json_decode($jsonString, true);
 
@@ -68,7 +68,7 @@ class LocalizeApplication extends Command
             if ($value === '') {
                 $this->googleTranslate->setTarget($locale);
                 $translated = $this->googleTranslate->translate($index);
-                $this->info('translating: `'.$index.'` to `'.$translated.'`');
+                $this->info('translating: `' . $index . '` to `' . $translated . '`');
 
                 // we store the translated string in the array
                 $strings[$index] = $translated;
@@ -76,6 +76,6 @@ class LocalizeApplication extends Command
         }
 
         // now we need to save the array back to the file
-        Storage::disk('lang')->put($locale.'.json', json_encode($strings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        Storage::disk('lang')->put($locale . '.json', json_encode($strings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 }

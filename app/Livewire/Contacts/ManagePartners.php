@@ -9,12 +9,12 @@ use App\Models\Partner;
 use App\Services\CreatePartner;
 use App\Services\DestroyPartner;
 use App\Services\UpdatePartner;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Masmerise\Toaster\Toaster;
-use Illuminate\Support\Collection;
 
 class ManagePartners extends Component
 {
@@ -46,7 +46,7 @@ class ManagePartners extends Component
     #[Locked]
     public int $editedPartnerId = 0;
 
-    public function mount()
+    public function mount(): void
     {
         $this->contact = Contact::find($this->contactId);
         $this->partners = collect(ContactPartnerViewModel::index($this->contact));
@@ -56,7 +56,7 @@ class ManagePartners extends Component
     {
         $maritalStatuses = MaritalStatus::where('account_id', $this->contact->vault->account_id)
             ->get()
-            ->map(fn(MaritalStatus $maritalStatus) => [
+            ->map(fn (MaritalStatus $maritalStatus) => [
                 'id' => $maritalStatus->id,
                 'name' => trans($maritalStatus->getLabel()),
             ]);
@@ -78,7 +78,7 @@ class ManagePartners extends Component
         HTML;
     }
 
-    public function toggleAddMode()
+    public function toggleAddMode(): void
     {
         $this->addMode = ! $this->addMode;
         $this->name = null;

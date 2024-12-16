@@ -17,7 +17,7 @@ class DestroyEthnicityTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_destroys_an_ethnicity()
+    public function it_destroys_an_ethnicity(): void
     {
         Queue::fake();
 
@@ -41,7 +41,7 @@ class DestroyEthnicityTest extends TestCase
     }
 
     #[Test]
-    public function it_fails_if_ethnicity_doesnt_belong_to_users_account()
+    public function it_fails_if_ethnicity_doesnt_belong_to_users_account(): void
     {
         $user = User::factory()->create();
         $ethnicity = Ethnicity::factory()->create();

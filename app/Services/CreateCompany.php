@@ -15,7 +15,8 @@ class CreateCompany
         public User $user,
         public Vault $vault,
         public string $name,
-    ) {}
+    ) {
+    }
 
     public function execute(): Company
     {

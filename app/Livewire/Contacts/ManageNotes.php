@@ -35,7 +35,7 @@ class ManageNotes extends Component
     #[Validate('required|string|min:3|max:100000')]
     public string $body = '';
 
-    public function mount()
+    public function mount(): void
     {
         $this->contact = Contact::find($this->contactId);
         $this->notes = collect(ContactNotesViewModel::index($this->contact));

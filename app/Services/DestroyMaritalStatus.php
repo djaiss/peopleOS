@@ -11,7 +11,8 @@ class DestroyMaritalStatus
     public function __construct(
         public User $user,
         public MaritalStatus $maritalStatus,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {

@@ -14,7 +14,8 @@ class DestroyContactPhoneNumber
     public function __construct(
         public User $user,
         public ContactPhoneNumber $contactPhoneNumber,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {
