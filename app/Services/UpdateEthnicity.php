@@ -13,7 +13,8 @@ class UpdateEthnicity
         public User $user,
         public Ethnicity $ethnicity,
         public string $label,
-    ) {}
+    ) {
+    }
 
     public function execute(): Ethnicity
     {

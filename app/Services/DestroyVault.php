@@ -12,7 +12,8 @@ class DestroyVault
     public function __construct(
         public User $user,
         public Vault $vault,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {

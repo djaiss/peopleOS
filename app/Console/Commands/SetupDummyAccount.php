@@ -97,7 +97,7 @@ class SetupDummyAccount extends Command
         $this->line('| username: blank@blank.com');
         $this->line('| password: blank123');
         $this->line('|----------------------------');
-        $this->line('| URL:      '.config('app.url'));
+        $this->line('| URL:      ' . config('app.url'));
         $this->line('-----------------------------');
 
         $this->info('Setup is done. Have fun.');

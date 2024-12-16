@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('templates', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->text('name');
