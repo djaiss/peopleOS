@@ -4,4 +4,6 @@ namespace App\Exceptions;
 
 use Exception;
 
-class InvalidTemplateStructureException extends Exception {}
+class InvalidTemplateStructureException extends Exception
+{
+}

@@ -12,7 +12,7 @@ class ValidateTemplateStructureTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private string $validTemplate = <<<YAML
+    private string $validTemplate = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -41,7 +41,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage('Missing template root element');
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 name: "Daily Reflection"
 columns: []
 YAML;
@@ -55,7 +55,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage('Template name is required');
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   columns: []
 YAML;
@@ -69,7 +69,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage('Template must contain columns array');
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
 YAML;
@@ -83,7 +83,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage('Column at index 0 must have a name');
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -103,7 +103,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Column 'General Overview' must contain questions array");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -119,7 +119,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Question at index 0 in column 'General Overview' must have a name");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -139,7 +139,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Invalid answer type 'invalid_type' for question 'Test Question'");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -160,7 +160,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Choice answer for question 'Test Question' must specify options array");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -181,7 +181,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Range answer for question 'Test Question' must specify range array with exactly 2 values");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -203,7 +203,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Range start must be less than range end for question 'Test Question'");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:
@@ -225,7 +225,7 @@ YAML;
         $this->expectException(InvalidTemplateStructureException::class);
         $this->expectExceptionMessage("Answer configuration for question 'Test Question' must specify comment_allowed as boolean");
 
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:

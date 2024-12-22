@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Validator;
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Yaml\Exception\ParseException;
 use App\Exceptions\InvalidTemplateStructureException;
+use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 class ValidateTemplateStructure
 {
@@ -15,7 +14,8 @@ class ValidateTemplateStructure
 
     public function __construct(
         public string $yamlContent
-    ) {}
+    ) {
+    }
 
     public function execute(): bool
     {
@@ -37,15 +37,15 @@ class ValidateTemplateStructure
 
     private function validateMainStructure(): void
     {
-        if (!isset($this->parsedYaml['template'])) {
+        if (! isset($this->parsedYaml['template'])) {
             throw new InvalidTemplateStructureException('Missing template root element');
         }
 
-        if (!isset($this->parsedYaml['template']['name'])) {
+        if (! isset($this->parsedYaml['template']['name'])) {
             throw new InvalidTemplateStructureException('Template name is required');
         }
 
-        if (!isset($this->parsedYaml['template']['columns']) || !is_array($this->parsedYaml['template']['columns'])) {
+        if (! isset($this->parsedYaml['template']['columns']) || ! is_array($this->parsedYaml['template']['columns'])) {
             throw new InvalidTemplateStructureException('Template must contain columns array');
         }
     }
@@ -59,11 +59,11 @@ class ValidateTemplateStructure
 
     private function validateColumn(array $column, int $columnIndex): void
     {
-        if (!isset($column['name'])) {
+        if (! isset($column['name'])) {
             throw new InvalidTemplateStructureException("Column at index {$columnIndex} must have a name");
         }
 
-        if (!isset($column['questions']) || !is_array($column['questions'])) {
+        if (! isset($column['questions']) || ! is_array($column['questions'])) {
             throw new InvalidTemplateStructureException("Column '{$column['name']}' must contain questions array");
         }
 
@@ -74,11 +74,11 @@ class ValidateTemplateStructure
 
     private function validateQuestion(array $question, string $columnName, int $questionIndex): void
     {
-        if (!isset($question['name'])) {
+        if (! isset($question['name'])) {
             throw new InvalidTemplateStructureException("Question at index {$questionIndex} in column '{$columnName}' must have a name");
         }
 
-        if (!isset($question['answers']) || !is_array($question['answers'])) {
+        if (! isset($question['answers']) || ! is_array($question['answers'])) {
             throw new InvalidTemplateStructureException("Question '{$question['name']}' must have answers configuration");
         }
 
@@ -87,15 +87,15 @@ class ValidateTemplateStructure
 
     private function validateAnswers(array $answers, string $questionName): void
     {
-        if (!isset($answers['type'])) {
+        if (! isset($answers['type'])) {
             throw new InvalidTemplateStructureException("Answer configuration for question '{$questionName}' must specify a type");
         }
 
-        if (!in_array($answers['type'], $this->allowedAnswerTypes)) {
+        if (! in_array($answers['type'], $this->allowedAnswerTypes)) {
             throw new InvalidTemplateStructureException("Invalid answer type '{$answers['type']}' for question '{$questionName}'");
         }
 
-        if (!isset($answers['comment_allowed']) || !is_bool($answers['comment_allowed'])) {
+        if (! isset($answers['comment_allowed']) || ! is_bool($answers['comment_allowed'])) {
             throw new InvalidTemplateStructureException("Answer configuration for question '{$questionName}' must specify comment_allowed as boolean");
         }
 
@@ -112,18 +112,18 @@ class ValidateTemplateStructure
 
     private function validateChoiceAnswer(array $answers, string $questionName): void
     {
-        if (!isset($answers['options']) || !is_array($answers['options']) || empty($answers['options'])) {
+        if (! isset($answers['options']) || ! is_array($answers['options']) || empty($answers['options'])) {
             throw new InvalidTemplateStructureException("Choice answer for question '{$questionName}' must specify options array");
         }
     }
 
     private function validateRangeAnswer(array $answers, string $questionName): void
     {
-        if (!isset($answers['range']) || !is_array($answers['range']) || count($answers['range']) !== 2) {
+        if (! isset($answers['range']) || ! is_array($answers['range']) || count($answers['range']) !== 2) {
             throw new InvalidTemplateStructureException("Range answer for question '{$questionName}' must specify range array with exactly 2 values");
         }
 
-        if (!is_numeric($answers['range'][0]) || !is_numeric($answers['range'][1])) {
+        if (! is_numeric($answers['range'][0]) || ! is_numeric($answers['range'][1])) {
             throw new InvalidTemplateStructureException("Range values for question '{$questionName}' must be numeric");
         }
 

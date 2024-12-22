@@ -3,26 +3,11 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
-use App\Models\AddressType;
-use App\Models\CallReasonType;
-use App\Models\ContactInformationType;
-use App\Models\Currency;
-use App\Models\Emotion;
 use App\Models\Ethnicity;
 use App\Models\Gender;
-use App\Models\GiftOccasion;
-use App\Models\GiftState;
-use App\Models\GroupType;
 use App\Models\MaritalStatus;
-use App\Models\Module;
-use App\Models\PetCategory;
-use App\Models\PostTemplate;
-use App\Models\Pronoun;
-use App\Models\RelationshipGroupType;
-use App\Models\Religion;
 use App\Models\Template;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
