@@ -20,6 +20,7 @@ class Template extends Model
     protected $fillable = [
         'account_id',
         'name',
+        'content',
     ];
 
     /**
@@ -29,6 +30,7 @@ class Template extends Model
      */
     protected $casts = [
         'name' => 'encrypted',
+        'content' => 'encrypted',
     ];
 
     /**

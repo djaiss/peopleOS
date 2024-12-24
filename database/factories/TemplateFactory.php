@@ -23,6 +23,7 @@ class TemplateFactory extends Factory
         return [
             'account_id' => Account::factory(),
             'name' => $this->faker->name(),
+            'content' => $this->faker->text(),
         ];
     }
 }
