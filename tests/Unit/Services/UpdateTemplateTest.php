@@ -4,7 +4,6 @@ namespace Tests\Unit\Services;
 
 use App\Models\Template;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\UpdateTemplate;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -42,7 +41,7 @@ class UpdateTemplateTest extends TestCase
             user: $user,
             template: $template,
             name: 'Dunder mifflin',
-            content: <<<YAML
+            content: <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:

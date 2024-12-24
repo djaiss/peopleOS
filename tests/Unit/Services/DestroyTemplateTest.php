@@ -4,7 +4,6 @@ namespace Tests\Unit\Services;
 
 use App\Models\Template;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\DestroyTemplate;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

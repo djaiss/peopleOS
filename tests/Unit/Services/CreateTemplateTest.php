@@ -2,14 +2,10 @@
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\ClearCacheOfAllVaultsInAccount;
-use App\Models\Contact;
 use App\Models\Template;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\CreateTemplate;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -30,7 +26,7 @@ class CreateTemplateTest extends TestCase
         $template = (new CreateTemplate(
             user: $user,
             name: 'Daily Reflection',
-            content: <<<YAML
+            content: <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:

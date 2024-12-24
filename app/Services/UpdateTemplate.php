@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Template;
 use App\Models\User;
-use App\Models\Vault;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateTemplate

@@ -2,12 +2,8 @@
 
 namespace App\Services;
 
-use App\Cache\AccountVaultsCache;
-use App\Models\Contact;
 use App\Models\Template;
 use App\Models\User;
-use App\Models\Vault;
-use Illuminate\Support\Str;
 
 class CreateTemplate
 {
