@@ -15,7 +15,8 @@ class UpdateNote
         public User $user,
         public Note $note,
         public string $body,
-    ) {}
+    ) {
+    }
 
     public function execute(): Note
     {

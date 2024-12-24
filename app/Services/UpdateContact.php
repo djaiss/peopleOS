@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -29,7 +28,8 @@ class UpdateContact
         public ?string $prefix,
         public ?string $suffix,
         public bool $canBeDeleted = true,
-    ) {}
+    ) {
+    }
 
     public function execute(): Contact
     {

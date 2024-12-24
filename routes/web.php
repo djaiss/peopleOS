@@ -93,4 +93,4 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

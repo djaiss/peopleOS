@@ -17,7 +17,7 @@ class ContactPartnerViewModel
         $partners = $contact->partners()
             ->with('maritalStatus')
             ->get()
-            ->map(fn(Partner $partner) => self::partner($partner));
+            ->map(fn (Partner $partner) => self::partner($partner));
 
         return $partners;
     }

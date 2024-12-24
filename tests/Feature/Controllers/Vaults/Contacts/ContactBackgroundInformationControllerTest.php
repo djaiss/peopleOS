@@ -22,7 +22,7 @@ class ContactBackgroundInformationControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/background-information', [
+            ->post('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/background-information', [
                 'information' => 'this is a note',
             ])
             ->assertSee('this is a note');

@@ -2,22 +2,10 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Address;
 use App\Models\Company;
 use App\Models\Contact;
-use App\Models\ContactImportantDateType;
-use App\Models\File;
-use App\Models\Group;
-use App\Models\Journal;
-use App\Models\LifeEventCategory;
-use App\Models\LifeMetric;
-use App\Models\MoodTrackingParameter;
-use App\Models\Tag;
-use App\Models\Template;
-use App\Models\TimelineEvent;
 use App\Models\User;
 use App\Models\Vault;
-use App\Models\VaultQuickFactsTemplate;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -32,17 +20,6 @@ class VaultTest extends TestCase
         $vault = Vault::factory()->create();
         $this->assertTrue($vault->account()->exists());
     }
-
-    // #[Test]
-    // public function it_belongs_to_a_template()
-    // {
-    //     $template = Template::factory()->create();
-
-    //     $vault = Vault::factory()->create([
-    //         'default_template_id' => $template->id,
-    //     ]);
-    //     $this->assertTrue($vault->template()->exists());
-    // }
 
     #[Test]
     public function it_has_many_users(): void
@@ -81,136 +58,4 @@ class VaultTest extends TestCase
 
         $this->assertTrue($vault->companies()->exists());
     }
-
-    // #[Test]
-    // public function it_has_many_important_date_types(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     $type = ContactImportantDateType::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->contactImportantDateTypes()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_companies(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     Company::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->companies()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_groups(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     Group::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->groups()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_journals(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     Journal::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->journals()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_tags(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     Tag::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->tags()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_files(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     File::factory()->count(2)->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->files()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_mood_tracking_parameters(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     MoodTrackingParameter::factory()->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->moodTrackingParameters()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_life_event_categories(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     LifeEventCategory::factory()->count(2)->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->lifeEventCategories()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_timeline_events(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     TimelineEvent::factory()->count(2)->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->timelineEvents()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_addresses(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     Address::factory()->count(2)->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->addresses()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_quick_fact_template_entries(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     VaultQuickFactsTemplate::factory()->count(2)->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->quickFactsTemplateEntries()->exists());
-    // }
-
-    // #[Test]
-    // public function it_has_many_life_metrics_entries(): void
-    // {
-    //     $vault = Vault::factory()->create();
-    //     LifeMetric::factory()->count(2)->create([
-    //         'vault_id' => $vault->id,
-    //     ]);
-
-    //     $this->assertTrue($vault->lifeMetrics()->exists());
-    // }
 }

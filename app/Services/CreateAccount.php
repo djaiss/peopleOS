@@ -17,7 +17,8 @@ class CreateAccount
         public string $password,
         public string $firstName,
         public string $lastName,
-    ) {}
+    ) {
+    }
 
     /**
      * Create an account.

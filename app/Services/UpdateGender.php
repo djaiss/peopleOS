@@ -13,7 +13,8 @@ class UpdateGender
         public Gender $gender,
         public string $label,
         public int $position,
-    ) {}
+    ) {
+    }
 
     public function execute(): Gender
     {
