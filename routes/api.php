@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Settings\EthnicityController;
 use App\Http\Controllers\Api\Settings\GenderController;
 use App\Http\Controllers\Api\Settings\MeController;
+use App\Http\Controllers\Api\Settings\TemplateController;
 use App\Http\Controllers\Api\Vaults\ChildController;
 use App\Http\Controllers\Api\Vaults\CompanyController;
 use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
@@ -18,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::get('me', [MeController::class, 'show'])->name('me');
     Route::put('me', [MeController::class, 'update']);
+
+    // manage templates
+    Route::get('templates', [TemplateController::class, 'index']);
+    Route::get('templates/{template}', [TemplateController::class, 'show']);
+    Route::post('templates', [TemplateController::class, 'create']);
+    Route::put('templates/{template}', [TemplateController::class, 'update']);
+    Route::delete('templates/{template}', [TemplateController::class, 'destroy']);
 
     // manage genders
     Route::get('genders', [GenderController::class, 'index']);
