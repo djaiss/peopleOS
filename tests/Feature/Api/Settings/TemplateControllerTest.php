@@ -45,8 +45,7 @@ YAML,
                 'id' => $template->id,
                 'object' => 'template',
                 'name' => 'Work day',
-                'content' =>
-                <<<'YAML'
+                'content' => <<<'YAML'
 template:
   name: "Daily Reflection"
   columns:

@@ -3,17 +3,11 @@
 namespace App\Http\Controllers\Api\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\GenderCollection;
-use App\Http\Resources\GenderResource;
 use App\Http\Resources\TemplateCollection;
 use App\Http\Resources\TemplateResource;
-use App\Models\Gender;
 use App\Models\Template;
-use App\Services\CreateGender;
 use App\Services\CreateTemplate;
-use App\Services\DestroyGender;
 use App\Services\DestroyTemplate;
-use App\Services\UpdateGender;
 use App\Services\UpdateTemplate;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
