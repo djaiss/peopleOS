@@ -11,7 +11,7 @@
   </x-slot>
 
   <main class="relative sm:mt-10">
-    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-2 py-2 sm:px-0">
       <div class="space-y-6 pb-16">
         <div class="space-y-0.5">
           <h2 class="text-2xl font-bold tracking-tight">{{ __('Settings') }}</h2>

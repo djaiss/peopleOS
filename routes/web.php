@@ -11,6 +11,7 @@ use App\Http\Controllers\Settings\Profile\SettingsRecoveryCodeController;
 use App\Http\Controllers\Settings\SettingsApiAccessController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Settings\SettingsPersonalizationController;
+use App\Http\Controllers\Settings\SettingsTemplateController;
 use App\Http\Controllers\Vaults\Contacts\ContactBackgroundInformationController;
 use App\Http\Controllers\Vaults\Contacts\ContactController;
 use App\Http\Controllers\Vaults\Contacts\ContactJobInformationController;
@@ -84,6 +85,9 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
         // recovery codes
         Route::get('recovery-codes', [SettingsRecoveryCodeController::class, 'show'])->name('settings.profile.recovery-code.show');
+
+        // templates
+        Route::get('templates', [SettingsTemplateController::class, 'index'])->name('settings.templates.index');
 
         // api
         Route::get('api', [SettingsApiAccessController::class, 'index'])->name('settings.api.index');

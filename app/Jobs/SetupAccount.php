@@ -30,6 +30,7 @@ class SetupAccount implements ShouldQueue
         $this->createGenders();
         $this->createEthnicities();
         $this->createMaritalStatuses();
+        $this->createTemplates();
     }
 
     private function createGenders(): void
@@ -215,6 +216,40 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'label_translation_key' => trans_key('Complicated'),
+                'created_at' => now(),
+            ],
+        ]);
+    }
+
+    private function createTemplates(): void
+    {
+        DB::table('templates')->insert([
+            [
+                'account_id' => $this->user->account_id,
+                'name' => 'Work day',
+                'content' => '<<<YAML
+template:
+  name: "Work day"
+  columns:
+    - name: "Left column"
+      questions:
+        - name: "What did you do?"
+          answers:
+            type: "text"
+            comment_allowed: true
+        - name: "How do you feel?"
+          answers:
+            type: "range"
+            range: [1, 4]
+            comment_allowed: true
+    - name: "Right column"
+      questions:
+        - name: "Have you been at work?"
+          answers:
+            type: "range"
+            range: ["Yes", "No"]
+            comment_allowed: true
+YAML,',
                 'created_at' => now(),
             ],
         ]);
