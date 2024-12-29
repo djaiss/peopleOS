@@ -34,7 +34,7 @@ class ContactFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (Contact $contact): void {
-            $contact->slug = $contact->id.'-'.$contact->first_name;
+            $contact->slug = $contact->id . '-' . $contact->first_name;
             $contact->save();
         });
     }

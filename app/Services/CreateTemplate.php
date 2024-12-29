@@ -13,7 +13,8 @@ class CreateTemplate
         public User $user,
         public string $name,
         public string $content,
-    ) {}
+    ) {
+    }
 
     public function execute(): Template
     {

@@ -14,7 +14,8 @@ class DestroyNote
     public function __construct(
         public User $user,
         public Note $note,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {

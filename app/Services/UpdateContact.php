@@ -28,7 +28,8 @@ class UpdateContact
         public ?string $prefix,
         public ?string $suffix,
         public bool $canBeDeleted = true,
-    ) {}
+    ) {
+    }
 
     public function execute(): Contact
     {

@@ -92,7 +92,7 @@ YAML,
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/templates/'.$template->id, [
+        $response = $this->json('PUT', '/api/templates/' . $template->id, [
             'name' => 'New template',
             'content' => <<<'YAML'
 template:
@@ -149,7 +149,7 @@ YAML,
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/templates/'.$template->id, [
+        $response = $this->json('PUT', '/api/templates/' . $template->id, [
             'name' => 'New template',
             'content' => 'new: content',
         ]);
@@ -168,7 +168,7 @@ YAML,
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/templates/'.$template->id);
+        $response = $this->json('DELETE', '/api/templates/' . $template->id);
 
         $response->assertStatus(200);
 
@@ -194,7 +194,7 @@ YAML,
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/templates/'.$template->id);
+        $response = $this->json('DELETE', '/api/templates/' . $template->id);
 
         $response->assertStatus(401);
     }
@@ -223,7 +223,7 @@ YAML,
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/templates/'.$template->id);
+        $response = $this->json('GET', '/api/templates/' . $template->id);
 
         $response->assertStatus(200);
 

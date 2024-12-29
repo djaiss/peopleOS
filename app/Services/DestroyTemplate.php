@@ -11,7 +11,8 @@ class DestroyTemplate
     public function __construct(
         public User $user,
         public Template $template,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {

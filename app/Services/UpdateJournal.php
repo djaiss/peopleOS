@@ -12,7 +12,8 @@ class UpdateJournal
         public User $user,
         public Journal $journal,
         public string $name,
-    ) {}
+    ) {
+    }
 
     public function execute(): Journal
     {

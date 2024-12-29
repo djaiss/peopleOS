@@ -40,7 +40,7 @@ class ManagePartnersTest extends TestCase
 
         $component->assertOk()->assertSee('John Doe Partner');
 
-        $this->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+        $this->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
             ->assertSeeLivewire(ManagePartners::class, [
                 'contactId' => $contact->id,
             ]);

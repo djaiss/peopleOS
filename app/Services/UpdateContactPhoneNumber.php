@@ -16,7 +16,8 @@ class UpdateContactPhoneNumber
         public ContactPhoneNumber $contactPhoneNumber,
         public string $label,
         public string $phoneNumber,
-    ) {}
+    ) {
+    }
 
     public function execute(): ContactPhoneNumber
     {

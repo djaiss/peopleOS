@@ -11,7 +11,8 @@ class DestroyJournal
     public function __construct(
         public User $user,
         public Journal $journal,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {
