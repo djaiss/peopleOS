@@ -36,6 +36,6 @@ class WallpaperHelper
 
         shuffle($photos);
 
-        return asset('wallpapers/' . $photos[0]);
+        return asset('wallpapers/'.$photos[0]);
     }
 }

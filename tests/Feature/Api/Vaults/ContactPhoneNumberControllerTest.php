@@ -27,7 +27,7 @@ class ContactPhoneNumberControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/phone-numbers', [
+        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/phone-numbers', [
             'label' => 'mobile',
             'phone_number' => '+1234567890',
         ]);
@@ -67,7 +67,7 @@ class ContactPhoneNumberControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/phone-numbers/' . $contactPhoneNumber->id, [
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/phone-numbers/'.$contactPhoneNumber->id, [
             'label' => 'mobile',
             'phone_number' => '+1234567890',
         ]);
@@ -103,7 +103,7 @@ class ContactPhoneNumberControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/phone-numbers/' . $contactPhoneNumber->id, [
+        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/phone-numbers/'.$contactPhoneNumber->id, [
             'label' => 'mobile',
             'phone_number' => '+1234567890',
         ]);
@@ -125,7 +125,7 @@ class ContactPhoneNumberControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/phone-numbers/' . $contactPhoneNumber->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/phone-numbers/'.$contactPhoneNumber->id);
 
         $response->assertStatus(200);
 
@@ -149,7 +149,7 @@ class ContactPhoneNumberControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/phone-numbers/' . $contactPhoneNumber->id);
+        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/phone-numbers/'.$contactPhoneNumber->id);
 
         $response->assertStatus(401);
     }
@@ -168,7 +168,7 @@ class ContactPhoneNumberControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/phone-numbers');
+        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/phone-numbers');
 
         $response->assertStatus(200);
 

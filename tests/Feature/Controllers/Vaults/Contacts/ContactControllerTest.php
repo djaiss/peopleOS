@@ -28,7 +28,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/contacts')
+            ->get('/vaults/'.$vault->id.'/contacts')
             ->assertSee('Michael Scott')
             ->assertOk();
 
@@ -43,7 +43,7 @@ class ContactControllerTest extends TestCase
                 'id' => $contact->id,
                 'name' => 'Michael Scott',
                 'routes' => [
-                    'show' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/' . $contact->slug,
+                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
                 ],
             ],
             $response['contacts']->toArray()[1]
@@ -51,7 +51,7 @@ class ContactControllerTest extends TestCase
         $this->assertEquals(
             [
                 'contact' => [
-                    'new' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/new',
+                    'new' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/new',
                 ],
             ],
             $response['routes']
@@ -77,7 +77,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/contacts/new')
+            ->get('/vaults/'.$vault->id.'/contacts/new')
             ->assertSee('Add a contact')
             ->assertOk();
 
@@ -91,8 +91,8 @@ class ContactControllerTest extends TestCase
         $this->assertEquals(
             [
                 'contact' => [
-                    'index' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts',
-                    'store' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts',
+                    'index' => env('APP_URL').'/vaults/'.$vault->id.'/contacts',
+                    'store' => env('APP_URL').'/vaults/'.$vault->id.'/contacts',
                 ],
             ],
             $response['routes']
@@ -141,7 +141,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post('/vaults/' . $vault->id . '/contacts', [
+            ->post('/vaults/'.$vault->id.'/contacts', [
                 'first_name' => 'Michael',
                 'last_name' => 'Scott',
                 'gender_id' => $gender->id,
@@ -160,7 +160,7 @@ class ContactControllerTest extends TestCase
             ])
             ->assertRedirectToRoute('vaults.contacts.show', [
                 'vault' => $vault,
-                'slug' => Contact::orderBy('id', 'desc')->first()->id . '-michael-scott',
+                'slug' => Contact::orderBy('id', 'desc')->first()->id.'-michael-scott',
             ]);
 
         Toaster::assertDispatched('The contact has been created');
@@ -178,7 +178,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
             ->assertSee('Michael Scott')
             ->assertOk();
 
@@ -195,7 +195,7 @@ class ContactControllerTest extends TestCase
                 'id' => $contact->id,
                 'name' => 'Michael Scott',
                 'routes' => [
-                    'show' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/' . $contact->slug,
+                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
                 ],
             ],
             $response['contacts']->toArray()[1]
@@ -203,8 +203,8 @@ class ContactControllerTest extends TestCase
         $this->assertEquals(
             [
                 'contact' => [
-                    'new' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/new',
-                    'edit' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/edit',
+                    'new' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/new',
+                    'edit' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/edit',
                 ],
             ],
             $response['routes']
@@ -223,7 +223,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug . '/edit')
+            ->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug.'/edit')
             ->assertSee('Michael Scott')
             ->assertOk();
 
@@ -237,9 +237,9 @@ class ContactControllerTest extends TestCase
         $this->assertEquals(
             [
                 'contact' => [
-                    'index' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts',
-                    'show' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/' . $contact->slug,
-                    'update' => env('APP_URL') . '/vaults/' . $vault->id . '/contacts/' . $contact->slug,
+                    'index' => env('APP_URL').'/vaults/'.$vault->id.'/contacts',
+                    'show' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
+                    'update' => env('APP_URL').'/vaults/'.$vault->id.'/contacts/'.$contact->slug,
                 ],
             ],
             $response['routes']
@@ -262,7 +262,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->put('/vaults/' . $vault->id . '/contacts/' . $contact->slug, [
+            ->put('/vaults/'.$vault->id.'/contacts/'.$contact->slug, [
                 'first_name' => 'Michael',
                 'last_name' => 'Scott',
                 'gender_id' => $gender->id,
@@ -295,7 +295,7 @@ class ContactControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->delete('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+            ->delete('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
             ->assertRedirectToRoute('vaults.contacts.index', [
                 'vault' => $vault,
             ]);

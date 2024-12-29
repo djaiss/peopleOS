@@ -13,8 +13,7 @@ class UpdateBackgroundInformation
         public User $user,
         public Contact $contact,
         public ?string $information,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

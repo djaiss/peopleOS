@@ -39,7 +39,7 @@ class VaultControllerTest extends TestCase
                 'updated_at' => '0 seconds ago',
                 'routes' => [
                     'vault' => [
-                        'show' => env('APP_URL') . '/vaults/' . $vault->id,
+                        'show' => env('APP_URL').'/vaults/'.$vault->id,
                     ],
                 ],
             ],
@@ -47,7 +47,7 @@ class VaultControllerTest extends TestCase
         );
 
         $this->assertEquals(
-            env('APP_URL') . '/new',
+            env('APP_URL').'/new',
             $response['routes']['vault']['new']
         );
     }
@@ -85,7 +85,7 @@ class VaultControllerTest extends TestCase
         $vault = $this->createVault($user);
 
         $response = $this->actingAs($user)
-            ->get('/vaults/' . $vault->id)
+            ->get('/vaults/'.$vault->id)
             ->assertOk();
 
         $this->assertArrayHasKey('vault', $response);
@@ -99,7 +99,7 @@ class VaultControllerTest extends TestCase
         $vault = $this->createVault($user);
 
         $this->actingAs($user)
-            ->get('/vaults/' . $vault->id . '/settings')
+            ->get('/vaults/'.$vault->id.'/settings')
             ->assertSeeText('Delete the vault')
             ->assertOk();
     }
@@ -112,7 +112,7 @@ class VaultControllerTest extends TestCase
         $vault = $this->createVault($user);
 
         $this->actingAs($user)
-            ->delete('/vaults/' . $vault->id)
+            ->delete('/vaults/'.$vault->id)
             ->assertRedirectToRoute('vaults.index');
 
         Toaster::assertDispatched('The vault has been deleted');

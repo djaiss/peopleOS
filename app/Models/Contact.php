@@ -158,7 +158,7 @@ class Contact extends Model
                 $lastName = Arr::get($attributes, 'last_name');
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName . $separator . $lastName;
+                return $firstName.$separator.$lastName;
             }
         );
     }

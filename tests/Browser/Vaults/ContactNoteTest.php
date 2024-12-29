@@ -31,11 +31,11 @@ class ContactNoteTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
                 ->type('@note-body', 'this is a note')
                 ->click('@submit-note')
                 ->pause(130)
-                ->assertSeeIn('@note-body-' . Note::latest()->first()->id, 'this is a note');
+                ->assertSeeIn('@note-body-'.Note::latest()->first()->id, 'this is a note');
         });
     }
 
@@ -59,13 +59,13 @@ class ContactNoteTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact, $note): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
-                ->mouseover('#note-' . $note->id)
-                ->click('@edit-cta-note-' . $note->id)
-                ->type('@update-note-body-' . $note->id, 'this is a great note')
-                ->click('@update-note-' . $note->id)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+                ->mouseover('#note-'.$note->id)
+                ->click('@edit-cta-note-'.$note->id)
+                ->type('@update-note-body-'.$note->id, 'this is a great note')
+                ->click('@update-note-'.$note->id)
                 ->pause(130)
-                ->assertSeeIn('@note-body-' . $note->id, 'this is a great note');
+                ->assertSeeIn('@note-body-'.$note->id, 'this is a great note');
         });
     }
 
@@ -89,9 +89,9 @@ class ContactNoteTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $vault, $contact, $note): void {
             $browser->loginAs($user)
-                ->visit('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
-                ->mouseover('#note-' . $note->id)
-                ->click('@delete-note-' . $note->id)
+                ->visit('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+                ->mouseover('#note-'.$note->id)
+                ->click('@delete-note-'.$note->id)
                 ->acceptDialog()
                 ->pause(130)
                 ->assertDontSee('this is a great note');

@@ -25,9 +25,9 @@ class VaultTest extends DuskTestCase
                 ->type('name', 'Accounting')
                 ->type('description', 'Accounting team')
                 ->click('@submit-form-button')
-                ->assertPathIs('/vaults/' . Vault::first()->id);
+                ->assertPathIs('/vaults/'.Vault::first()->id);
 
-            $browser->visit('/vaults/' . Vault::first()->id . '/settings')
+            $browser->visit('/vaults/'.Vault::first()->id.'/settings')
                 ->click('@delete-vault-cta')
                 ->acceptDialog()
                 ->assertPathIs('/');

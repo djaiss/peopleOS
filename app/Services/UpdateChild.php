@@ -16,8 +16,7 @@ class UpdateChild
         public ?int $age,
         public ?string $gradeLevel,
         public ?string $school,
-    ) {
-    }
+    ) {}
 
     public function execute(): Child
     {

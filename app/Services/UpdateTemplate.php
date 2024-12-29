@@ -13,8 +13,7 @@ class UpdateTemplate
         public Template $template,
         public string $name,
         public ?string $content,
-    ) {
-    }
+    ) {}
 
     public function execute(): Template
     {

@@ -35,7 +35,7 @@ class ManageChildrenTest extends TestCase
 
         $component->assertOk()->assertSee('John Doe Child');
 
-        $this->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
+        $this->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
             ->assertSeeLivewire(ManageChildren::class, [
                 'contactId' => $contact->id,
             ]);

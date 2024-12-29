@@ -11,8 +11,7 @@ class DestroyChild
     public function __construct(
         public User $user,
         public Child $child,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

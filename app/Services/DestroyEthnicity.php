@@ -12,8 +12,7 @@ class DestroyEthnicity
     public function __construct(
         public User $user,
         public Ethnicity $ethnicity,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

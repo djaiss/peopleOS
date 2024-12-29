@@ -34,7 +34,7 @@ class ApiTest extends DuskTestCase
             // delete api key
             $id = DB::table('personal_access_tokens')->where('name', 'Dunder Mifflin Infinity')->first()->id;
 
-            $browser->click('@cta-revoke-key-' . $id)
+            $browser->click('@cta-revoke-key-'.$id)
                 ->acceptDialog()
                 ->pause(120)
                 ->assertDontSee('Dunder Mifflin Infinity');

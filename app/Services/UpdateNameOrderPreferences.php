@@ -9,8 +9,7 @@ class UpdateNameOrderPreferences
     public function __construct(
         public User $user,
         public string $nameOrder,
-    ) {
-    }
+    ) {}
 
     public function execute(): User
     {

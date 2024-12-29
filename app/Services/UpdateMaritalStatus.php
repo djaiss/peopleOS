@@ -12,8 +12,7 @@ class UpdateMaritalStatus
         public User $user,
         public MaritalStatus $maritalStatus,
         public string $label,
-    ) {
-    }
+    ) {}
 
     public function execute(): MaritalStatus
     {

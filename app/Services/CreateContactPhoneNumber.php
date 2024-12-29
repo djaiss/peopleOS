@@ -16,8 +16,7 @@ class CreateContactPhoneNumber
         public Contact $contact,
         public string $label,
         public string $phoneNumber,
-    ) {
-    }
+    ) {}
 
     public function execute(): ContactPhoneNumber
     {

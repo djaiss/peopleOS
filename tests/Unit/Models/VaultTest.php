@@ -4,6 +4,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Company;
 use App\Models\Contact;
+use App\Models\Journal;
 use App\Models\User;
 use App\Models\Vault;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -57,5 +58,16 @@ class VaultTest extends TestCase
         ]);
 
         $this->assertTrue($vault->companies()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_journals(): void
+    {
+        $vault = Vault::factory()->create();
+        Journal::factory()->create([
+            'vault_id' => $vault->id,
+        ]);
+
+        $this->assertTrue($vault->journals()->exists());
     }
 }

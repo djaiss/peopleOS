@@ -15,8 +15,7 @@ class CreateNote
         public User $user,
         public Contact $contact,
         public string $body,
-    ) {
-    }
+    ) {}
 
     public function execute(): Note
     {

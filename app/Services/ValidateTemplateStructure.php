@@ -14,8 +14,7 @@ class ValidateTemplateStructure
 
     public function __construct(
         public string $yamlContent
-    ) {
-    }
+    ) {}
 
     public function execute(): bool
     {
@@ -31,7 +30,7 @@ class ValidateTemplateStructure
         try {
             $this->parsedYaml = Yaml::parse($this->yamlContent);
         } catch (ParseException $e) {
-            throw new InvalidTemplateStructureException('Invalid YAML format: ' . $e->getMessage());
+            throw new InvalidTemplateStructureException('Invalid YAML format: '.$e->getMessage());
         }
     }
 

@@ -56,7 +56,7 @@ class EthinicityControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/ethnicities/' . $ethnicity->id, [
+        $response = $this->json('PUT', '/api/ethnicities/'.$ethnicity->id, [
             'label' => 'Asian',
         ]);
 
@@ -89,7 +89,7 @@ class EthinicityControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/ethnicities/' . $ethnicity->id, [
+        $response = $this->json('PUT', '/api/ethnicities/'.$ethnicity->id, [
             'label' => 'Asian',
         ]);
 
@@ -107,7 +107,7 @@ class EthinicityControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/ethnicities/' . $ethnicity->id);
+        $response = $this->json('DELETE', '/api/ethnicities/'.$ethnicity->id);
 
         $response->assertStatus(200);
 
@@ -133,7 +133,7 @@ class EthinicityControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/ethnicities/' . $ethnicity->id);
+        $response = $this->json('DELETE', '/api/ethnicities/'.$ethnicity->id);
 
         $response->assertStatus(401);
     }
@@ -150,7 +150,7 @@ class EthinicityControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/ethnicities/' . $ethnicity->id);
+        $response = $this->json('GET', '/api/ethnicities/'.$ethnicity->id);
 
         $response->assertStatus(200);
 

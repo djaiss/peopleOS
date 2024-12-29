@@ -11,8 +11,7 @@ class DestroyCompany
     public function __construct(
         public User $user,
         public Company $company,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {
