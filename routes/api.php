@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\Vaults\ContactPhoneNumberController;
 use App\Http\Controllers\Api\Vaults\NoteController;
 use App\Http\Controllers\Api\Vaults\PartnerController;
 use App\Http\Controllers\Api\Vaults\VaultController;
+use App\Http\Controllers\Api\Vaults\JournalController;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Support\Facades\Route;
 
@@ -93,5 +94,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
         Route::post('vaults/{vault}/companies', [CompanyController::class, 'create']);
         Route::put('vaults/{vault}/companies/{company}', [CompanyController::class, 'update']);
         Route::delete('vaults/{vault}/companies/{company}', [CompanyController::class, 'destroy']);
+
+        // manage journals
+        Route::get('vaults/{vault}/journals', [JournalController::class, 'index']);
+        Route::post('vaults/{vault}/journals', [JournalController::class, 'create']);
+
+        Route::middleware(['journal'])->group(function (): void {
+            Route::get('vaults/{vault}/journals/{journal}', [JournalController::class, 'show']);
+            Route::put('vaults/{vault}/journals/{journal}', [JournalController::class, 'update']);
+            Route::delete('vaults/{vault}/journals/{journal}', [JournalController::class, 'destroy']);
+        });
     });
 });

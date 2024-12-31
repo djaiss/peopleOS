@@ -30,8 +30,8 @@
           <div class="flex-1 py-3 lg:max-w-2xl">
             <div class="space-y-6">
               <div class="border-b border-gray-200 pb-4">
-                <h3 class="text-lg font-medium">{{ __('Personalization') }}</h3>
-                <p class="text-sm">{{ __('Personalize your experience and preferences.') }}</p>
+                <h3 class="text-lg font-medium">{{ __('Journal templates') }}</h3>
+                <p class="text-sm">{{ __('Day entries in your journal will follow the structure of the template you select. There must be at least one template in your account for journals to work.') }}</p>
               </div>
               <div class="space-y-6">
                 <livewire:settings.manage-genders lazy :account-id="auth()->user()->account_id" />
