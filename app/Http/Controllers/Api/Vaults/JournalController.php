@@ -27,6 +27,7 @@ class JournalController extends Controller
      * Create a journal.
      *
      * @urlParam vault required The id of the vault. Example: 1
+     *
      * @bodyParam name string required The name of the journal. Example: Daily journal
      *
      * @response 201 {
@@ -65,6 +66,7 @@ class JournalController extends Controller
      *
      * @urlParam vault required The id of the vault. Example: 1
      * @urlParam journal required The id of the journal. Example: 1
+     *
      * @bodyParam name string required The name of the journal. Example: Updated journal
      *
      * @response 200 {
@@ -137,8 +139,6 @@ class JournalController extends Controller
             'status' => 'success',
         ], 200);
     }
-
-
 
     /**
      * Get a specific journal.
