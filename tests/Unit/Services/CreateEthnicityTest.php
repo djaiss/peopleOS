@@ -14,7 +14,7 @@ class CreateEthnicityTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_an_ethnicity()
+    public function it_creates_an_ethnicity(): void
     {
         $user = User::factory()->create();
         $label = 'Asian';

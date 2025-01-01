@@ -31,7 +31,7 @@ class ManageNotesTest extends TestCase
 
         $component->assertOk()->assertSee('Add a note');
 
-        $this->get('/vaults/'.$vault->id.'/contacts/'.$contact->slug)
+        $this->get('/vaults/' . $vault->id . '/contacts/' . $contact->slug)
             ->assertSeeLivewire(ManageNotes::class, [
                 'contactId' => $contact->id,
             ]);

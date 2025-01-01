@@ -46,7 +46,7 @@ class ManageChildren extends Component
     #[Locked]
     public int $editedChildId = 0;
 
-    public function mount()
+    public function mount(): void
     {
         $this->contact = Contact::find($this->contactId);
         $this->children = collect(ContactChildrenViewModel::index($this->contact));
@@ -70,7 +70,7 @@ class ManageChildren extends Component
         HTML;
     }
 
-    public function toggleAddMode()
+    public function toggleAddMode(): void
     {
         $this->addMode = ! $this->addMode;
         $this->name = null;

@@ -11,7 +11,8 @@ class DestroyPartner
     public function __construct(
         public User $user,
         public Partner $partner,
-    ) {}
+    ) {
+    }
 
     public function execute(): void
     {

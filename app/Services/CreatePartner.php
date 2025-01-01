@@ -19,7 +19,8 @@ class CreatePartner
         public ?string $name,
         public ?string $occupation,
         public ?string $numberOfYearsTogether,
-    ) {}
+    ) {
+    }
 
     public function execute(): Partner
     {
