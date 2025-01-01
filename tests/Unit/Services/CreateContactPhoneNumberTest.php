@@ -16,7 +16,7 @@ class CreateContactPhoneNumberTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_a_contact_phone_number()
+    public function it_creates_a_contact_phone_number(): void
     {
         $user = User::factory()->create();
         $vault = $this->createVault($user);
@@ -27,7 +27,7 @@ class CreateContactPhoneNumberTest extends TestCase
     }
 
     #[Test]
-    public function it_fails_if_user_and_contact_dont_belong_to_same_account()
+    public function it_fails_if_user_and_contact_dont_belong_to_same_account(): void
     {
         $this->expectException(ModelNotFoundException::class);
 

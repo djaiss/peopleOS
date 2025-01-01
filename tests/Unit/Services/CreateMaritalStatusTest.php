@@ -14,7 +14,7 @@ class CreateMaritalStatusTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_a_marital_status()
+    public function it_creates_a_marital_status(): void
     {
         $user = User::factory()->create();
         $label = 'Asian';

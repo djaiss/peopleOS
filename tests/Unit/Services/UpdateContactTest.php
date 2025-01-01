@@ -5,7 +5,6 @@ namespace Tests\Unit\Services;
 use App\Models\Contact;
 use App\Models\Ethnicity;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\User;
 use App\Models\Vault;
 use App\Services\UpdateContact;

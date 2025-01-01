@@ -26,7 +26,7 @@ class ContactJobInformationControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/job', [
+        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/job', [
             'job_title' => 'CEO',
             'company_name' => 'Dunder Mifflin',
         ]);

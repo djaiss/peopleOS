@@ -15,7 +15,7 @@ class UpdateMaritalStatusTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_updates_a_marital_status()
+    public function it_updates_a_marital_status(): void
     {
         $user = User::factory()->create();
         $maritalStatus = MaritalStatus::factory()->create([
@@ -41,7 +41,7 @@ class UpdateMaritalStatusTest extends TestCase
     }
 
     #[Test]
-    public function it_fails_if_marital_status_doesnt_belong_to_users_account()
+    public function it_fails_if_marital_status_doesnt_belong_to_users_account(): void
     {
         $user = User::factory()->create();
         $maritalStatus = MaritalStatus::factory()->create();

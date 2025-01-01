@@ -12,7 +12,8 @@ class CreateMaritalStatus
     public function __construct(
         public User $user,
         public string $label,
-    ) {}
+    ) {
+    }
 
     public function execute(): MaritalStatus
     {

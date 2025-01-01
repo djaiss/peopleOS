@@ -37,7 +37,7 @@ class ManageMaritalStatuses extends Component
     #[Validate('required|string|min:3|max:100000')]
     public string $editedName = '';
 
-    public function mount()
+    public function mount(): void
     {
         $this->account = Account::find($this->accountId);
         $this->maritalStatuses = collect(MaritalStatusViewModel::index($this->account));
@@ -63,7 +63,7 @@ class ManageMaritalStatuses extends Component
         HTML;
     }
 
-    public function toggleAddMode()
+    public function toggleAddMode(): void
     {
         $this->addMode = ! $this->addMode;
     }

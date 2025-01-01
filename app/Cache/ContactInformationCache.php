@@ -23,7 +23,7 @@ final class ContactInformationCache extends CacheHelper
         protected readonly User $user,
         protected readonly Contact $contact,
     ) {
-        $this->identifier = $user->id.'_'.$contact->id;
+        $this->identifier = $user->id . '_' . $contact->id;
     }
 
     public static function make(User $user, Contact $contact): static
