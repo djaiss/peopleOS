@@ -1,0 +1,25 @@
+meta {
+  name: Update template
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://{{URL}}/templates/1
+  body: json
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+body:json {
+  "name": "Updated Template",
+  "content": "Updated template content"
+}
+
+auth:bearer {
+  token: {{token}}
+}

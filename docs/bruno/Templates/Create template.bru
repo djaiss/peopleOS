@@ -1,0 +1,25 @@
+meta {
+  name: Create template
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://{{URL}}/templates
+  body: json
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+body:json {
+  "name": "Sample Template",
+  "content": "Template content goes here"
+}
+
+auth:bearer {
+  token: {{token}}
+}

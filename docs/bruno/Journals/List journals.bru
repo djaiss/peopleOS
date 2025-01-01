@@ -1,0 +1,19 @@
+meta {
+  name: List journals
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://{{URL}}/vaults/{{vault_id}}/journals
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

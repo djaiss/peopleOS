@@ -85,7 +85,7 @@
     @empty
       <div id="blank-state" class="flex flex-col items-center rounded-lg bg-white p-6">
         <div class="mb-5 rounded-full bg-slate-100 p-4">
-          <x-lucide-user class="h-6 w-6 text-gray-500" />
+          <x-lucide-fish-symbol class="h-6 w-6 text-gray-500" />
         </div>
 
         <p class="text-center">{{ __('Ethnicities are used to express the ethnicity of contacts.') }}</p>

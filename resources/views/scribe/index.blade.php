@@ -251,6 +251,28 @@
             </li>
           </ul>
         </ul>
+        <ul id="tocify-header-templates" class="tocify-header">
+          <li class="tocify-item level-1" data-unique="templates">
+            <a href="#templates">Templates</a>
+          </li>
+          <ul id="tocify-subheader-templates" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="templates-GETapi-templates">
+              <a href="#templates-GETapi-templates">List all templates.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="templates-GETapi-templates--template-">
+              <a href="#templates-GETapi-templates--template-">Retrieve a template.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="templates-POSTapi-templates">
+              <a href="#templates-POSTapi-templates">Create a template.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="templates-PUTapi-templates--template-">
+              <a href="#templates-PUTapi-templates--template-">Update a template.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="templates-DELETEapi-templates--template-">
+              <a href="#templates-DELETEapi-templates--template-">Delete a template.</a>
+            </li>
+          </ul>
+        </ul>
         <ul id="tocify-header-vaults" class="tocify-header">
           <li class="tocify-item level-1" data-unique="vaults">
             <a href="#vaults">Vaults</a>
@@ -282,7 +304,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 27, 2024</li>
+        <li>Last updated: December 29, 2024</li>
       </ul>
     </div>
 
@@ -887,14 +909,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/et/contacts" \
+    --get "http://peopleos.test/api/vaults/harum/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/et/contacts"
+    "http://peopleos.test/api/vaults/harum/contacts"
 );
 
 const headers = {
@@ -910,7 +932,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/et/contacts';
+$url = 'http://peopleos.test/api/vaults/harum/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -948,7 +970,6 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800
  },
- &quot;marital_status&quot;: {
  &quot;name&quot;: &quot;Michael Scott&quot;,
  &quot;first_name&quot;: &quot;Michael&quot;,
  &quot;last_name&quot;: &quot;Scott&quot;,
@@ -977,13 +998,6 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;id&quot;: 1,
   &quot;object&quot;: &quot;ethnicity&quot;,
   &quot;label&quot;: &quot;Asian&quot;,
-  &quot;created_at&quot;: 1514764800,
-  &quot;updated_at&quot;: 1514764800
- },
- &quot;marital_status&quot;: {
-  &quot;id&quot;: 1,
-  &quot;object&quot;: &quot;marital_status&quot;,
-  &quot;label&quot;: &quot;Married&quot;,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800
  },
@@ -1086,11 +1100,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="et" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts" value="harum" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>et</code>
+              <code>harum</code>
             </p>
           </div>
         </form>
@@ -1120,12 +1134,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The ethnicity object.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>marital_status</code></b>
-          &nbsp;&nbsp; &nbsp; &nbsp;
-          <br />
-          <p>The marital status object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>name</code></b>
@@ -1351,13 +1359,6 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;id&quot;: 1,
   &quot;object&quot;: &quot;ethnicity&quot;,
   &quot;label&quot;: &quot;Asian&quot;,
-  &quot;created_at&quot;: 1514764800,
-  &quot;updated_at&quot;: 1514764800,
- },
- &quot;marital_status&quot;: {
-  &quot;id&quot;: 1,
-  &quot;object&quot;: &quot;marital_status&quot;,
-  &quot;label&quot;: &quot;Married&quot;,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800,
  },
@@ -1867,13 +1868,6 @@ print_r(json_decode((string) $body));</code></pre>
         &quot;created_at&quot;: 1514764800,
         &quot;updated_at&quot;: 1514764800
     },
-    &quot;marital_status&quot;: {
-        &quot;id&quot;: 1,
-        &quot;object&quot;: &quot;marital_status&quot;,
-        &quot;label&quot;: &quot;Married&quot;,
-        &quot;created_at&quot;: 1514764800,
-        &quot;updated_at&quot;: 1514764800
-    },
     &quot;name&quot;: &quot;John Doe&quot;,
     &quot;first_name&quot;: &quot;John&quot;,
     &quot;last_name&quot;: &quot;Doe&quot;,
@@ -1999,14 +1993,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The ethnicity of the contact.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>marital_status</code></b>
-          &nbsp;&nbsp;
-          <small>object</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The marital status of the contact.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>name</code></b>
           &nbsp;&nbsp;
           <small>string</small>
@@ -2122,6 +2108,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <p>Updates an existing contact.</p>
         <p>You can choose to mark a contact as deletable or not.</p>
+        <p>You can't edit the marital status with this method. Use the partner endpoint to update the marital status.</p>
         <p>Once updated, the contact will be returned in the response, as well as the display name of the contact. This name's format depends on the user settings.</p>
 
         <span id="example-requests-PUTapi-vaults--vault--contacts--contact-">
@@ -2135,7 +2122,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"gender_id\": 1,
     \"ethnicity_id\": 1,
-    \"marital_status_id\": 1,
     \"first_name\": \"Michael\",
     \"last_name\": \"Scott\",
     \"middle_name\": \"Gary\",
@@ -2166,7 +2152,6 @@ const headers = {
 let body = {
     "gender_id": 1,
     "ethnicity_id": 1,
-    "marital_status_id": 1,
     "first_name": "Michael",
     "last_name": "Scott",
     "middle_name": "Gary",
@@ -2202,7 +2187,6 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'gender_id' =&gt; 1,
             'ethnicity_id' =&gt; 1,
-            'marital_status_id' =&gt; 1,
             'first_name' =&gt; 'Michael',
             'last_name' =&gt; 'Scott',
             'middle_name' =&gt; 'Gary',
@@ -2244,13 +2228,6 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;id&quot;: 1,
   &quot;object&quot;: &quot;ethnicity&quot;,
   &quot;label&quot;: &quot;Asian&quot;,
-  &quot;created_at&quot;: 1514764800,
-  &quot;updated_at&quot;: 1514764800,
- },
- &quot;marital_status&quot;: {
-  &quot;id&quot;: 1,
-  &quot;object&quot;: &quot;marital_status&quot;,
-  &quot;label&quot;: &quot;Married&quot;,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800,
  },
@@ -2368,20 +2345,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <br />
             <p>
               The ethnicity object associated with the contact. This object must be a valid Ethnicity object. Example:
-              <code>1</code>
-            </p>
-          </div>
-          <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>marital_status_id</code></b>
-            &nbsp;&nbsp;
-            <small>integer</small>
-            &nbsp;
-            <i>optional</i>
-            &nbsp;
-            <input type="number" style="display: none" step="any" name="marital_status_id" data-endpoint="PUTapi-vaults--vault--contacts--contact-" value="1" data-component="body" />
-            <br />
-            <p>
-              The marital status of the contact. This object must be a valid MaritalStatus object. Example:
               <code>1</code>
             </p>
           </div>
@@ -2599,12 +2562,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
           <p>The ethnicity object.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>marital_status</code></b>
-          &nbsp;&nbsp; &nbsp; &nbsp;
-          <br />
-          <p>The marital status object.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>name</code></b>
@@ -3179,14 +3136,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers" \
+    --get "http://peopleos.test/api/vaults/ullam/contacts/est/phone-numbers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers"
+    "http://peopleos.test/api/vaults/ullam/contacts/est/phone-numbers"
 );
 
 const headers = {
@@ -3202,7 +3159,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/repudiandae/contacts/quo/phone-numbers';
+$url = 'http://peopleos.test/api/vaults/ullam/contacts/est/phone-numbers';
 $response = $client-&gt;get(
     $url,
     [
@@ -3332,11 +3289,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="repudiandae" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="ullam" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>repudiandae</code>
+              <code>ullam</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3344,11 +3301,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="quo" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--phone-numbers" value="est" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>quo</code>
+              <code>est</code>
             </p>
           </div>
         </form>
@@ -3412,7 +3369,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"consequatur\",
+    \"label\": \"nemo\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3429,7 +3386,7 @@ const headers = {
 };
 
 let body = {
-    "label": "consequatur",
+    "label": "nemo",
     "phone_number": "+1234567890"
 };
 
@@ -3451,7 +3408,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'consequatur',
+            'label' =&gt; 'nemo',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3556,11 +3513,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="consequatur" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="POSTapi-vaults--vault--contacts--contact--phone-numbers" value="nemo" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>consequatur</code>
+              <code>nemo</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3590,7 +3547,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"label\": \"nemo\",
+    \"label\": \"odit\",
     \"phone_number\": \"+1234567890\"
 }"
 </code></pre>
@@ -3607,7 +3564,7 @@ const headers = {
 };
 
 let body = {
-    "label": "nemo",
+    "label": "odit",
     "phone_number": "+1234567890"
 };
 
@@ -3629,7 +3586,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'label' =&gt; 'nemo',
+            'label' =&gt; 'odit',
             'phone_number' =&gt; '+1234567890',
         ],
     ]
@@ -3746,11 +3703,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="nemo" data-component="body" />
+            <input type="text" style="display: none" name="label" data-endpoint="PUTapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="odit" data-component="body" />
             <br />
             <p>
               The label of the phone number. The current supported labels are mobile, home, work, fax and other. Example:
-              <code>nemo</code>
+              <code>odit</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3776,14 +3733,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1" \
+    "http://peopleos.test/api/vaults/deleniti/contacts/1/phone-numbers/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1"
+    "http://peopleos.test/api/vaults/deleniti/contacts/1/phone-numbers/1"
 );
 
 const headers = {
@@ -3799,7 +3756,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/ut/contacts/1/phone-numbers/1';
+$url = 'http://peopleos.test/api/vaults/deleniti/contacts/1/phone-numbers/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3875,11 +3832,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="ut" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="DELETEapi-vaults--vault--contacts--contact--phone-numbers--contactPhoneNumber-" value="deleniti" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>ut</code>
+              <code>deleniti</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3920,14 +3877,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/fugiat/contacts/est/children" \
+    --get "http://peopleos.test/api/vaults/nesciunt/contacts/inventore/children" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/fugiat/contacts/est/children"
+    "http://peopleos.test/api/vaults/nesciunt/contacts/inventore/children"
 );
 
 const headers = {
@@ -3943,7 +3900,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/fugiat/contacts/est/children';
+$url = 'http://peopleos.test/api/vaults/nesciunt/contacts/inventore/children';
 $response = $client-&gt;get(
     $url,
     [
@@ -4077,11 +4034,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="fugiat" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="nesciunt" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>fugiat</code>
+              <code>nesciunt</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4089,11 +4046,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="est" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--children" value="inventore" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>est</code>
+              <code>inventore</code>
             </p>
           </div>
         </form>
@@ -5140,14 +5097,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://peopleos.test/api/vaults/quia/contacts/assumenda/partners" \
+    --get "http://peopleos.test/api/vaults/consequatur/contacts/alias/partners" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://peopleos.test/api/vaults/quia/contacts/assumenda/partners"
+    "http://peopleos.test/api/vaults/consequatur/contacts/alias/partners"
 );
 
 const headers = {
@@ -5163,7 +5120,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://peopleos.test/api/vaults/quia/contacts/assumenda/partners';
+$url = 'http://peopleos.test/api/vaults/consequatur/contacts/alias/partners';
 $response = $client-&gt;get(
     $url,
     [
@@ -5301,11 +5258,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="quia" data-component="url" />
+            <input type="text" style="display: none" name="vault" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="consequatur" data-component="url" />
             <br />
             <p>
               The vault. Example:
-              <code>quia</code>
+              <code>consequatur</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5313,11 +5270,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="assumenda" data-component="url" />
+            <input type="text" style="display: none" name="contact" data-endpoint="GETapi-vaults--vault--contacts--contact--partners" value="alias" data-component="url" />
             <br />
             <p>
               The contact. Example:
-              <code>assumenda</code>
+              <code>alias</code>
             </p>
           </div>
         </form>
@@ -9171,6 +9128,883 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <p>
               The email of the user. Max 255 characters. Example:
               <code>jessica.jones@gmail.com</code>
+            </p>
+          </div>
+        </form>
+
+        <h1 id="templates">Templates</h1>
+
+        <p>Templates define the structure of a journal entry. As of this writing, the content of a template is defined as a YAML file. The YAML file is interpreted by the application to render the journal entry the day the template is used.</p>
+
+        <h2 id="templates-GETapi-templates">List all templates.</h2>
+
+        <p></p>
+
+        <p>This API call returns a paginated collection of templates that contains 15 items per page.</p>
+
+        <span id="example-requests-GETapi-templates">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/templates" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/templates"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/templates';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-templates">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;template&quot;,
+ &quot;name&quot;: &quot;Work day&quot;,
+ &quot;content&quot;: &quot;&lt;a YAML file&gt;&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}, {
+ &quot;id&quot;: 2,
+ &quot;object&quot;: &quot;template&quot;,
+ &quot;name&quot;: &quot;Work day&quot;,
+ &quot;content&quot;: &quot;&lt;a YAML file&gt;&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/templates?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/templates?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/templates?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/templates&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-templates" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-templates"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-templates"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-templates" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-templates">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-templates" data-method="GET" data-path="api/templates" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-templates', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/templates</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-templates" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-templates" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;template&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the template.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>content</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The content of the template which is a YAML file.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="templates-GETapi-templates--template-">Retrieve a template.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-templates--template-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "http://peopleos.test/api/templates/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/templates/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/templates/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-templates--template-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;object&quot;: &quot;template&quot;,
+    &quot;name&quot;: &quot;Work day&quot;,
+    &quot;content&quot;: &quot;&lt;a YAML file&gt;&quot;,
+    &quot;created_at&quot;: 1514764800,
+    &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+          <blockquote>
+            <p>Example response (401):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;There is no template with this id in your account.&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-templates--template-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-templates--template-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-templates--template-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-templates--template-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-templates--template-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-templates--template-" data-method="GET" data-path="api/templates/{template}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-templates--template-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/templates/{template}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-templates--template-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-templates--template-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>template</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="template" data-endpoint="GETapi-templates--template-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the template. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;template&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The name of the template.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>content</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The content of the template which is a YAML file.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="templates-POSTapi-templates">Create a template.</h2>
+
+        <p></p>
+
+        <span id="example-requests-POSTapi-templates">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "http://peopleos.test/api/templates" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Work day\",
+    \"content\": \"any valid YAML file\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/templates"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Work day",
+    "content": "any valid YAML file"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/templates';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Work day',
+            'content' =&gt; 'any valid YAML file',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-templates">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;template&quot;,
+ &quot;name&quot;: &quot;Work day&quot;,
+ &quot;content&quot;: &quot;&lt;a YAML file&gt;&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-templates" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-templates"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-templates"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-templates" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-templates">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-templates" data-method="POST" data-path="api/templates" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-templates', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/templates</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-templates" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-templates" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="POSTapi-templates" value="Work day" data-component="body" />
+            <br />
+            <p>
+              The name of the template. Max 255 characters. Example:
+              <code>Work day</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>content</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="content" data-endpoint="POSTapi-templates" value="any valid YAML file" data-component="body" />
+            <br />
+            <p>
+              The content of the template which is a YAML file. Example:
+              <code>any valid YAML file</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;template&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the template.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>content</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The content of the template which is a YAML file.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="templates-PUTapi-templates--template-">Update a template.</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-templates--template-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://peopleos.test/api/templates/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Work day\",
+    \"content\": \"any valid YAML file\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/templates/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Work day",
+    "content": "any valid YAML file"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/templates/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Work day',
+            'content' =&gt; 'any valid YAML file',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-templates--template-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;template&quot;,
+ &quot;name&quot;: &quot;Work day&quot;,
+ &quot;content&quot;: &quot;&lt;a YAML file&gt;&quot;,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-templates--template-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-templates--template-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-templates--template-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-templates--template-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-templates--template-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-templates--template-" data-method="PUT" data-path="api/templates/{template}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-templates--template-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/templates/{template}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-templates--template-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-templates--template-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>template</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="template" data-endpoint="PUTapi-templates--template-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the template. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-templates--template-" value="Work day" data-component="body" />
+            <br />
+            <p>
+              The name of the template. Max 255 characters. Example:
+              <code>Work day</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>content</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="content" data-endpoint="PUTapi-templates--template-" value="any valid YAML file" data-component="body" />
+            <br />
+            <p>
+              The content of the template which is a YAML file. Example:
+              <code>any valid YAML file</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;template&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the template.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>content</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The content of the template which is a YAML file.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="templates-DELETEapi-templates--template-">Delete a template.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-templates--template-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://peopleos.test/api/templates/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://peopleos.test/api/templates/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://peopleos.test/api/templates/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-templates--template-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-templates--template-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-templates--template-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-templates--template-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-templates--template-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-templates--template-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-templates--template-" data-method="DELETE" data-path="api/templates/{template}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-templates--template-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/templates/{template}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-templates--template-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-templates--template-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>template</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="template" data-endpoint="DELETEapi-templates--template-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the template. Example:
+              <code>1</code>
             </p>
           </div>
         </form>

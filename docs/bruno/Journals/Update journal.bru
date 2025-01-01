@@ -1,0 +1,24 @@
+meta {
+  name: Update journal
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://{{URL}}/vaults/{{vault_id}}/journals/{{journal_id}}
+  body: json
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+body:json {
+  "name": "Updated journal"
+}
+
+auth:bearer {
+  token: {{token}}
+}

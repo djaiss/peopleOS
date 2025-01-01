@@ -3,6 +3,7 @@
 use App\Http\Middleware\CheckAccount;
 use App\Http\Middleware\CheckAPIContact;
 use App\Http\Middleware\CheckContact;
+use App\Http\Middleware\CheckJournal;
 use App\Http\Middleware\CheckVault;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -21,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'vault' => CheckVault::class,
             'contact' => CheckContact::class,
             'api_contact' => CheckAPIContact::class,
+            'journal' => CheckJournal::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

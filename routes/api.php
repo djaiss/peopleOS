@@ -3,12 +3,14 @@
 use App\Http\Controllers\Api\Settings\EthnicityController;
 use App\Http\Controllers\Api\Settings\GenderController;
 use App\Http\Controllers\Api\Settings\MeController;
+use App\Http\Controllers\Api\Settings\TemplateController;
 use App\Http\Controllers\Api\Vaults\ChildController;
 use App\Http\Controllers\Api\Vaults\CompanyController;
 use App\Http\Controllers\Api\Vaults\ContactBackgroundInformationController;
 use App\Http\Controllers\Api\Vaults\ContactController;
 use App\Http\Controllers\Api\Vaults\ContactJobInformationController;
 use App\Http\Controllers\Api\Vaults\ContactPhoneNumberController;
+use App\Http\Controllers\Api\Vaults\JournalController;
 use App\Http\Controllers\Api\Vaults\NoteController;
 use App\Http\Controllers\Api\Vaults\PartnerController;
 use App\Http\Controllers\Api\Vaults\VaultController;
@@ -18,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::get('me', [MeController::class, 'show'])->name('me');
     Route::put('me', [MeController::class, 'update']);
+
+    // manage templates
+    Route::get('templates', [TemplateController::class, 'index']);
+    Route::get('templates/{template}', [TemplateController::class, 'show']);
+    Route::post('templates', [TemplateController::class, 'create']);
+    Route::put('templates/{template}', [TemplateController::class, 'update']);
+    Route::delete('templates/{template}', [TemplateController::class, 'destroy']);
 
     // manage genders
     Route::get('genders', [GenderController::class, 'index']);
@@ -85,5 +94,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
         Route::post('vaults/{vault}/companies', [CompanyController::class, 'create']);
         Route::put('vaults/{vault}/companies/{company}', [CompanyController::class, 'update']);
         Route::delete('vaults/{vault}/companies/{company}', [CompanyController::class, 'destroy']);
+
+        // manage journals
+        Route::get('vaults/{vault}/journals', [JournalController::class, 'index']);
+        Route::post('vaults/{vault}/journals', [JournalController::class, 'create']);
+
+        Route::middleware(['journal'])->group(function (): void {
+            Route::get('vaults/{vault}/journals/{journal}', [JournalController::class, 'show']);
+            Route::put('vaults/{vault}/journals/{journal}', [JournalController::class, 'update']);
+            Route::delete('vaults/{vault}/journals/{journal}', [JournalController::class, 'destroy']);
+        });
     });
 });

@@ -67,4 +67,12 @@ class Vault extends Model
     {
         return $this->hasMany(Company::class);
     }
+
+    /**
+     * Get the journals associated with the vault.
+     */
+    public function journals(): HasMany
+    {
+        return $this->hasMany(Journal::class);
+    }
 }

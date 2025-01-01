@@ -41,7 +41,7 @@ class ContactChildrenViewModelTest extends TestCase
     #[Test]
     public function it_gets_a_single_child(): void
     {
-        Carbon::setTestNow(Carbon::create(2018, 1, 1));
+        Carbon::setTestNow(Carbon::create(2024, 1, 1));
         $user = User::factory()->create([
             'first_name' => 'John',
         ]);
@@ -58,6 +58,7 @@ class ContactChildrenViewModelTest extends TestCase
             'age' => 10,
             'grade_level' => '10th',
             'school' => 'High School',
+            'age_entered_at' => Carbon::create(2018, 1, 1),
         ]);
 
         $array = ContactChildrenViewModel::child($child);
@@ -69,7 +70,7 @@ class ContactChildrenViewModelTest extends TestCase
                 'id' => $child->id,
                 'name' => 'John Doe',
                 'gender' => 'Male',
-                'age' => '10',
+                'age' => '16',
                 'grade_level' => '10th',
                 'school' => 'High School',
             ],

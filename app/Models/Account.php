@@ -23,10 +23,8 @@ class Account extends Model
 
     /**
      * Get the users associated with the account.
-     *
-     * @return HasMany
      */
-    public function users()
+    public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }
@@ -61,5 +59,13 @@ class Account extends Model
     public function vaults(): HasMany
     {
         return $this->hasMany(Vault::class);
+    }
+
+    /**
+     * Get the templates associated with the account.
+     */
+    public function templates(): HasMany
+    {
+        return $this->hasMany(Template::class);
     }
 }

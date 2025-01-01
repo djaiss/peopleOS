@@ -1,0 +1,19 @@
+meta {
+  name: Delete template
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://{{URL}}/templates/1
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

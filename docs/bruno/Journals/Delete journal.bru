@@ -1,0 +1,19 @@
+meta {
+  name: Delete journal
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://{{URL}}/vaults/{{vault_id}}/journals/{{journal_id}}
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
