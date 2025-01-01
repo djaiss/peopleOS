@@ -88,6 +88,8 @@ Route::middleware('auth', 'verified', 'account')->group(function (): void {
 
         // templates
         Route::get('templates', [SettingsTemplateController::class, 'index'])->name('settings.templates.index');
+        Route::get('templates/new', [SettingsTemplateController::class, 'new'])->name('settings.templates.new');
+        Route::post('templates', [SettingsTemplateController::class, 'store'])->name('settings.templates.store');
 
         // api
         Route::get('api', [SettingsApiAccessController::class, 'index'])->name('settings.api.index');

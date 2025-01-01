@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 class SetupAccount implements ShouldQueue
@@ -226,9 +227,8 @@ class SetupAccount implements ShouldQueue
         DB::table('templates')->insert([
             [
                 'account_id' => $this->user->account_id,
-                'name' => 'Work day',
-                'content' => '<<<YAML
-template:
+                'name' => Crypt::encryptString('Work day'),
+                'content' => Crypt::encryptString('template:
   name: "Work day"
   columns:
     - name: "Left column"
@@ -248,8 +248,7 @@ template:
           answers:
             type: "range"
             range: ["Yes", "No"]
-            comment_allowed: true
-YAML,',
+            comment_allowed: true'),
                 'created_at' => now(),
             ],
         ]);
