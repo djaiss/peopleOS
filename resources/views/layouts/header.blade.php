@@ -2,7 +2,7 @@
   <!-- main nav -->
   <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b bg-slate-900 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
     <div class="dark:highlight-white/5 items-center rounded-lg border border-slate-600 bg-slate-700 px-2 py-1 text-sm sm:flex dark:border-0 dark:border-gray-700 dark:bg-gray-400/20 dark:bg-gray-900">
-      <x-link href="{{ route('vaults.index') }}" class="flex-shrink-0 text-slate-400 hover:text-white dark:text-sky-400">{{ auth()->user()->first_name }}</x-link>
+      <x-link hover href="{{ route('vaults.index') }}" class="flex-shrink-0 text-slate-400 hover:text-white dark:text-sky-400">{{ auth()->user()->first_name }}</x-link>
 
       <!-- information about the current vault -->
       {{--
@@ -53,11 +53,14 @@
         <span class="text-sm text-slate-400 group-hover:text-white group-hover:no-underline dark:text-sky-400">{{ __('Settings') }}</span>
       </x-link>
 
-      <x-link class="group flex" href="{{ route('logout') }}">
-        <x-lucide-log-out class="mr-1 w-4 text-slate-400 group-hover:text-white" />
+      <form method="POST" action="{{ route('logout') }}" x-data>
+        @csrf
+        <x-link class="group flex" href="{{ route('logout') }}">
+          <x-lucide-log-out class="mr-1 w-4 text-slate-400 group-hover:text-white" />
 
-        <span class="text-sm text-slate-400 hover:text-white hover:no-underline dark:text-sky-400">{{ __('Logout') }}</span>
-      </x-link>
+          <span @click.prevent="$root.submit();" class="text-sm text-slate-400 hover:text-white hover:no-underline dark:text-sky-400">{{ __('Logout') }}</span>
+        </x-link>
+      </form>
     </div>
   </nav>
 
