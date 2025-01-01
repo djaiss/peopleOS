@@ -8,7 +8,6 @@ use App\Models\Contact;
 use App\Models\ContactPhoneNumber;
 use App\Models\Ethnicity;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\Note;
 use App\Models\Partner;
 use App\Models\User;

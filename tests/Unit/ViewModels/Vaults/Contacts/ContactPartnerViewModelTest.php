@@ -4,10 +4,10 @@ namespace Tests\Unit\ViewModels\Vaults\Contacts;
 
 use App\Http\ViewModels\Vaults\Contacts\ContactPartnerViewModel;
 use App\Models\Contact;
+use App\Models\MaritalStatus;
 use App\Models\Partner;
 use App\Models\User;
 use App\Models\Vault;
-use App\Models\MaritalStatus;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;

@@ -27,7 +27,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes', [
+        $response = $this->json('POST', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes', [
             'body' => 'This is a note.',
         ]);
 
@@ -69,7 +69,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id, [
+        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes/' . $note->id, [
             'body' => 'This is an updated note.',
         ]);
 
@@ -107,7 +107,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id, [
+        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes/' . $note->id, [
             'body' => 'This is an updated note.',
         ]);
 
@@ -128,7 +128,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id);
+        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes/' . $note->id);
 
         $response->assertStatus(200);
 
@@ -156,7 +156,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id);
+        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes/' . $note->id);
 
         $response->assertStatus(401);
     }
@@ -177,7 +177,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes/'.$note->id);
+        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes/' . $note->id);
 
         $response->assertStatus(200);
 
@@ -211,7 +211,7 @@ class NoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/notes');
+        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/notes');
 
         $response->assertStatus(200);
 

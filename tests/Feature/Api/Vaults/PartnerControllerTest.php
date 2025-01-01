@@ -31,7 +31,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners', [
+        $response = $this->json('POST', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners', [
             'marital_status_id' => $maritalStatus->id,
             'name' => 'John Doe',
             'occupation' => 'Software Engineer',
@@ -85,7 +85,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners/'.$partner->id, [
+        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners/' . $partner->id, [
             'marital_status_id' => $maritalStatus->id,
             'name' => 'Jane Doe',
             'occupation' => 'Software Engineer',
@@ -135,7 +135,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners/'.$partner->id, [
+        $response = $this->json('PUT', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners/' . $partner->id, [
             'marital_status_id' => $maritalStatus->id,
             'name' => 'Jane Doe',
             'occupation' => 'Software Engineer',
@@ -159,7 +159,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners/'.$partner->id);
+        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners/' . $partner->id);
 
         $response->assertStatus(200);
 
@@ -187,7 +187,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners/'.$partner->id);
+        $response = $this->json('DELETE', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners/' . $partner->id);
 
         $response->assertStatus(401);
     }
@@ -210,7 +210,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners/'.$partner->id);
+        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners/' . $partner->id);
 
         $response->assertStatus(200);
 
@@ -250,7 +250,7 @@ class PartnerControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/vaults/'.$vault->id.'/contacts/'.$contact->id.'/partners');
+        $response = $this->json('GET', '/api/vaults/' . $vault->id . '/contacts/' . $contact->id . '/partners');
 
         $response->assertStatus(200);
 
