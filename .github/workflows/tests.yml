@@ -1,0 +1,122 @@
+name: Unit tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  release:
+    types: [created]
+
+env:
+  default-php-version: '8.4'
+  coverage-with: sqlite
+
+concurrency:
+  group: Build ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  #############
+  # Run tests
+  #############
+  tests:
+    runs-on: ubuntu-latest
+    name: PHP ${{ matrix.php-version }} + ${{ matrix.connection }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.4']
+        connection: [sqlite, mysql]
+        testsuite: [Unit]
+        coverage: [true] # run test with coverage, if 'coverage-with' match with the connection
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Setup PHP ${{ matrix.php-version }} without coverage
+        if: matrix.connection != env.coverage-with || matrix.php-version != env.default-php-version || ! matrix.coverage
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, dom, fileinfo, ${{ matrix.connection }}
+          coverage: none
+      - name: Setup PHP ${{ matrix.php-version }}
+        if: matrix.connection == env.coverage-with && matrix.php-version == env.default-php-version && matrix.coverage
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, dom, fileinfo, ${{ matrix.connection }}
+          coverage: pcov
+          ini-values: pcov.directory=., pcov.exclude="~vendor~"
+      - name: Check PHP Version
+        run: php -v
+      - name: Check Composer Version
+        run: composer -V
+      - name: Check PHP Extensions
+        run: php -m
+
+      # Composer
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Cache composer files
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+            ${{ runner.os }}-composer-${{ matrix.php-version }}
+            ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+      # Prepare
+      - name: Prepare environment
+        run: |
+          cp tests/.env.ci.${{ matrix.connection }} .env
+          mkdir -p public/build/assets
+          {\
+            echo "{"; \
+            for f in app.js app.css; do \
+              [[ $first == 1 ]] && echo -n "," || first=1; \
+              k=${f##*.}/$f; \
+              echo "\"resources/$k\": {\"file\": \"assets/$f\", \"src\": \"resources/$k\"}"; \
+              echo '' > public/build/assets/$f; \
+            done; \
+            echo "}"; \
+          } | tee public/build/manifest.json
+      - name: Create sqlite database
+        if: matrix.connection == 'sqlite'
+        run: touch database/database.sqlite
+      - name: Create mysql database
+        if: matrix.connection == 'mysql'
+        run: |
+          sudo systemctl start mysql.service
+          mysql --protocol=tcp -u root -proot -e "CREATE DATABASE IF NOT EXISTS bivouac CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+      - name: Create pgsql database
+        if: matrix.connection == 'pgsql'
+        run: |
+          sudo systemctl start postgresql.service
+          sudo -u postgres psql --command="CREATE USER bivouac PASSWORD 'secret'" --command="\du"
+          sudo -u postgres createdb --owner=bivouac bivouac
+          PGPASSWORD=secret psql --username=bivouac --host=localhost --list bivouac
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        run: php artisan migrate --no-interaction -vvv
+
+      # Test
+      - name: Run tests
+        run: vendor/bin/phpunit
+        env:
+          DB_CONNECTION: ${{ matrix.connection }}

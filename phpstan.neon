@@ -1,0 +1,22 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app/
+    # Level 9 is the highest level
+    level: 3
+    ignoreErrors:
+        # larastan needs to manage ->pivot properties
+        #- '#Access to an undefined property App\\Models\\[^:]*::\$pivot\.#'
+        #- '#Method\s.+?\sreturn type has no value type specified in iterable type array\.#'
+
+    excludePaths:
+        - app/Http/Controllers/Auth/VerifyEmailController.php
+        - app/Models/User.php
+        - app/Http/Middleware/CheckVault.php
+        - app/Http/Resources/*.php
+
+#
+#    checkMissingIterableValueType: false
+    treatPhpDocTypesAsCertain: false
