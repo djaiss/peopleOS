@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Account;
@@ -19,6 +21,8 @@ class AccountFactory extends Factory
      */
     public function definition()
     {
-        return [];
+        return [
+            'name' => fake()->company(),
+        ];
     }
 }

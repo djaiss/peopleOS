@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Services;
 
 use App\Models\User;
@@ -25,10 +27,12 @@ class CreateAccountTest extends TestCase
             password: 'johnny',
             firstName: 'Dwight',
             lastName: 'Schrute',
+            organizationName: 'Dunder Mifflin',
         ))->execute();
 
         $this->assertDatabaseHas('accounts', [
             'id' => $user->account->id,
+            'name' => 'Dunder Mifflin',
         ]);
 
         $this->assertDatabaseHas('users', [

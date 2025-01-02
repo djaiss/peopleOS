@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -24,8 +26,9 @@ class RegistrationController extends Controller
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'organization_name' => ['required', 'string', 'max:255'],
         ]);
 
         $user = (new CreateAccount(
@@ -33,6 +36,7 @@ class RegistrationController extends Controller
             password: $request->input('password'),
             firstName: $request->input('first_name'),
             lastName: $request->input('last_name'),
+            organizationName: $request->input('organization_name'),
         ))->execute();
 
         event(new Registered($user));

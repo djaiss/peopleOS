@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
-use App\Jobs\SetupAccount;
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
@@ -17,6 +18,7 @@ class CreateAccount
         public string $password,
         public string $firstName,
         public string $lastName,
+        public string $organizationName,
     ) {}
 
     /**
@@ -24,7 +26,9 @@ class CreateAccount
      */
     public function execute(): User
     {
-        $this->account = Account::create();
+        $this->account = Account::create([
+            'name' => $this->organizationName,
+        ]);
 
         return $this->addFirstUser();
     }

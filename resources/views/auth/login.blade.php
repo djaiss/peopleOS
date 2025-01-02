@@ -3,7 +3,6 @@
   <x-auth-session-status class="mb-4" :status="session('status')" />
 
   <div class="mb-12 mt-6 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md sm:max-w-4xl md:flex-row dark:bg-gray-800">
-
     <div class="w-full">
       <!-- title -->
       <div class="border-b border-gray-200 px-6 pb-6 pt-8 dark:border-gray-700">

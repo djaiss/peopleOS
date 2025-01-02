@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,7 +19,9 @@ class Account extends Model
      *
      * @var array<int,string>
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+    ];
 
     /**
      * Get the users associated with the account.

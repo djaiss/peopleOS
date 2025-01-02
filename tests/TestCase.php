@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use App\Models\Contact;
@@ -12,7 +14,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a vault.
      */
-    public function createVault(User $user, string $firstName = 'Dwight', string $lastName = 'Schrute'): Vault
+    final public function createVault(User $user, string $firstName = 'Dwight', string $lastName = 'Schrute'): Vault
     {
         $vault = Vault::factory()->create([
             'account_id' => $user->account->id,

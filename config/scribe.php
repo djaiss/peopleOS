@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Knuckles\Scribe\Extracting\Strategies;
 
 return [
@@ -260,5 +262,5 @@ INTRO,
         'serializer' => null,
     ],
 
-    'routeMatcher' => \Knuckles\Scribe\Matching\RouteMatcher::class,
+    'routeMatcher' => Knuckles\Scribe\Matching\RouteMatcher::class,
 ];
