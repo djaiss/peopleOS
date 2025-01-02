@@ -2,11 +2,9 @@
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\SetupAccount;
 use App\Models\User;
 use App\Services\CreateAccount;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
