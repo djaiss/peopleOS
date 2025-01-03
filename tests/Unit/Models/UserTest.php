@@ -20,4 +20,18 @@ class UserTest extends TestCase
 
         $this->assertTrue($dwight->account()->exists());
     }
+
+    #[Test]
+    public function it_gets_the_name(): void
+    {
+        $user = User::factory()->create([
+            'first_name' => 'Dwight',
+            'last_name' => 'Schrute',
+        ]);
+
+        $this->assertEquals(
+            'Dwight Schrute',
+            $user->name
+        );
+    }
 }

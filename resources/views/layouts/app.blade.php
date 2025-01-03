@@ -19,10 +19,6 @@
     <div class="min-h-screen bg-slate-100 dark:bg-gray-900">
       @include('layouts.header')
 
-      @if ($vault->id >= 1)
-        @include('layouts.navigation')
-      @endif
-
       @isset($breadcrumb)
         <nav class="breadcrumb bg-white sm:border-b dark:bg-gray-900">
           <div class="max-w-8xl mx-auto hidden px-4 py-2 sm:px-6 md:block">
