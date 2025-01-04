@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
+use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use App\Services\UpdateUserInformation;
@@ -33,6 +34,10 @@ class UpdateUserInformationTest extends TestCase
 
         Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
             return $job->user->id === $user->id;
+        });
+
+        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job): bool {
+            return $job->action === 'personal_profile_update';
         });
     }
 

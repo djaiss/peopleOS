@@ -7,14 +7,11 @@ parameters:
     # Level 9 is the highest level
     level: 3
     ignoreErrors:
-        # larastan needs to manage ->pivot properties
-        #- '#Access to an undefined property App\\Models\\[^:]*::\$pivot\.#'
-        #- '#Method\s.+?\sreturn type has no value type specified in iterable type array\.#'
+        - '#Access to an undefined property App\\Models\\User::\$name\.#'
 
     excludePaths:
         - app/Http/Controllers/Auth/VerifyEmailController.php
         - app/Models/User.php
-        - app/Http/Middleware/CheckVault.php
         - app/Http/Resources/*.php
 
 #

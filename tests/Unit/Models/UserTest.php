@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
+use App\Models\Log;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -19,6 +20,17 @@ class UserTest extends TestCase
         $dwight = User::factory()->create();
 
         $this->assertTrue($dwight->account()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_logs(): void
+    {
+        $dwight = User::factory()->create();
+        Log::factory()->create([
+            'user_id' => $dwight->id,
+        ]);
+
+        $this->assertTrue($dwight->logs()->exists());
     }
 
     #[Test]

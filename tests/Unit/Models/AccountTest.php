@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
+use App\Models\Log;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,5 +24,16 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->users()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_logs(): void
+    {
+        $account = Account::factory()->create();
+        Log::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->logs()->exists());
     }
 }

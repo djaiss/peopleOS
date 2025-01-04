@@ -24,6 +24,14 @@ class Account extends Model
     ];
 
     /**
+     * Get the logs associated with the account.
+     */
+    public function logs(): HasMany
+    {
+        return $this->hasMany(Log::class);
+    }
+
+    /**
      * Get the users associated with the account.
      */
     public function users(): HasMany

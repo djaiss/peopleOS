@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -24,18 +25,23 @@ class UpdateUserInformation
      */
     public function execute(): User
     {
-        $previousEmail = $this->user->email;
-        if ($previousEmail !== $this->email) {
-            $this->user->email_verified_at = null;
-            event(new Registered($this->user));
-        }
-        $this->updateUser();
+        $this->triggerEmailVerification();
+        $this->update();
         $this->updateUserLastActivityDate();
+        $this->log();
 
         return $this->user;
     }
 
-    private function updateUser(): void
+    private function triggerEmailVerification(): void
+    {
+        if ($this->user->email !== $this->email) {
+            $this->user->email_verified_at = null;
+            event(new Registered($this->user));
+        }
+    }
+
+    private function update(): void
     {
         $this->user->update([
             'first_name' => $this->firstName,
@@ -47,5 +53,14 @@ class UpdateUserInformation
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user);
+    }
+
+    private function log(): void
+    {
+        LogUserAction::dispatch(
+            user: $this->user,
+            action: 'personal_profile_update',
+            description: 'Updated their personal profile',
+        );
     }
 }

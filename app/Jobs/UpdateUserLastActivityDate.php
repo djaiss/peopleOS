@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Jobs;
 
 use App\Models\User;
@@ -12,8 +14,7 @@ class UpdateUserLastActivityDate implements ShouldQueue
 
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 
     public function handle(): void
     {

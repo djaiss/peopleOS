@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
@@ -77,6 +78,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the logs associated with the user.
+     */
+    public function logs(): HasMany
+    {
+        return $this->hasMany(Log::class);
+    }
+
+    /**
      * Get the user's full name.
      */
     protected function name(): Attribute
@@ -114,10 +123,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the disk that profile photos should be stored on.
-     *
-     * @return string
      */
-    protected function profilePhotoDisk()
+    protected function profilePhotoDisk(): string
     {
         return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('jetstream.profile_photo_disk', 'public');
     }
