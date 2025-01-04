@@ -1,6 +1,8 @@
 <?php
 /**
- * @var \App\Models\User $user
+ * @var array $user
+ * @var array $logs
+ * @var bool $has_more_logs
  */
 ?>
 
@@ -62,19 +64,20 @@
 
     <div class="relative bg-gray-50 px-6 pt-8 lg:px-12">
       <div class="mx-auto max-w-2xl px-2 py-2 sm:px-0">
+        <!-- Profile -->
         <h1 class="font-semi-bold mb-4 text-xl">
           {{ __('Profile') }}
         </h1>
 
-        <form class="border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }" action="{{ route('administration.update') }}" method="POST">
+        <form action="{{ route('administration.update') }}" method="POST" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
           @csrf
           @method('PUT')
 
           <!-- profile photo -->
-          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
+          <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="profile_photo_path" :value="__('Profile photo')" class="col-span-2" />
             <div class="justify-self-end">
-              <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+              <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}" />
             </div>
           </div>
 
@@ -82,7 +85,7 @@
           <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="first_name" :value="__('First name')" class="col-span-2" />
             <div class="w-full justify-self-end">
-              <x-text-input class="block w-full" id="first_name" name="first_name" value="{{ $user->first_name }}" type="text" required @focus="showActions = true" @blur="showActions = false" />
+              <x-text-input class="block w-full" id="first_name" name="first_name" value="{{ $user['first_name'] }}" type="text" required @focus="showActions = true" @blur="showActions = false" />
               <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
             </div>
           </div>
@@ -91,7 +94,7 @@
           <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="last_name" :value="__('Last name')" class="col-span-2" />
             <div class="w-full justify-self-end">
-              <x-text-input class="block w-full" id="last_name" name="last_name" value="{{ $user->last_name }}" type="text" required @focus="showActions = true" @blur="showActions = false" />
+              <x-text-input class="block w-full" id="last_name" name="last_name" value="{{ $user['last_name'] }}" type="text" required @focus="showActions = true" @blur="showActions = false" />
               <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
             </div>
           </div>
@@ -104,7 +107,7 @@
             </div>
 
             <div class="w-full justify-self-end">
-              <x-text-input class="block w-full" id="email" name="email" value="{{ $user->email }}" type="email" required @focus="showActions = true" @blur="showActions = false" />
+              <x-text-input class="block w-full" id="email" name="email" value="{{ $user['email'] }}" type="email" required @focus="showActions = true" @blur="showActions = false" />
               <x-input-error class="mt-2" :messages="$errors->get('email')" />
             </div>
           </div>
@@ -119,6 +122,38 @@
             </x-button.primary>
           </div>
         </form>
+
+        <!-- Last activity -->
+        <h2 class="font-semi-bold mb-4 text-lg">
+          {{ __('Last activity') }}
+        </h2>
+
+        <div class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
+          <!-- last actions -->
+          @foreach ($logs as $log)
+            <div class="flex items-center justify-between border-b border-gray-200 p-3 text-sm first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+              <div class="flex items-center gap-3">
+                <x-lucide-activity class="size-3 min-w-3 text-zinc-600 dark:text-zinc-400" />
+                <div class="">
+                  <p class="flex items-center gap-1">
+                    <span class="">{{ $log['user']['name'] }}</span>
+                    |
+                    <span class="font-mono text-xs">{{ $log['action'] }}</span>
+                  </p>
+                  <p>{{ $log['description'] }}</p>
+                </div>
+              </div>
+
+              <p class="font-mono text-xs">{{ $log['created_at'] }}</p>
+            </div>
+          @endforeach
+
+          @if ($has_more_logs)
+            <div class="flex justify-center rounded-b-lg p-3 text-sm hover:bg-blue-50">
+              <x-link class="text-center">Browse all activity</x-link>
+            </div>
+          @endif
+        </div>
       </div>
     </div>
   </div>

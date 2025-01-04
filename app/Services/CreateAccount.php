@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Jobs\LogUserAction;
+use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
@@ -12,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 class CreateAccount
 {
     private Account $account;
+
+    private User $user;
 
     public function __construct(
         public string $email,
@@ -30,12 +34,16 @@ class CreateAccount
             'name' => $this->organizationName,
         ]);
 
-        return $this->addFirstUser();
+        $this->addFirstUser();
+        $this->updateUserLastActivityDate();
+        $this->logUserAction();
+
+        return $this->user;
     }
 
-    private function addFirstUser(): User
+    private function addFirstUser(): void
     {
-        return User::create([
+        $this->user = User::create([
             'account_id' => $this->account->id,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
@@ -45,5 +53,19 @@ class CreateAccount
             'is_account_administrator' => true,
             'timezone' => 'UTC',
         ]);
+    }
+
+    private function updateUserLastActivityDate(): void
+    {
+        UpdateUserLastActivityDate::dispatch($this->user);
+    }
+
+    private function logUserAction(): void
+    {
+        LogUserAction::dispatch(
+            user: $this->user,
+            action: 'account_creation',
+            description: 'Created an account',
+        );
     }
 }

@@ -14,6 +14,7 @@ return [
     */
 
     'actions' => [
+        'account_creation' => 'Account creation',
         'personal_profile_update' => 'Update on the personal profile',
     ],
 

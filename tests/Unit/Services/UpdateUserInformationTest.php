@@ -36,8 +36,8 @@ class UpdateUserInformationTest extends TestCase
             return $job->user->id === $user->id;
         });
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job): bool {
-            return $job->action === 'personal_profile_update';
+        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
+            return $job->action === 'personal_profile_update' && $job->user->id === $user->id;
         });
     }
 

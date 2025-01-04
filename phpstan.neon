@@ -8,6 +8,9 @@ parameters:
     level: 3
     ignoreErrors:
         - '#Access to an undefined property App\\Models\\User::\$name\.#'
+        - '#Access to an undefined property App\\Models\\Log::\$name\.#'
+        - '#Property App\\Models\\User::\$last_activity_at \(string\|null\) does not accept Illuminate\\Support\\Carbon\.#'
+        - '#Access to an undefined property App\\Models\\User::\$profile_photo_url\.#'
 
     excludePaths:
         - app/Http/Controllers/Auth/VerifyEmailController.php
