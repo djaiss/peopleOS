@@ -39,6 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'two_factor_recovery_codes',
         'two_factor_confirmed_at',
         'profile_photo_path',
+        'last_activity_at',
     ];
 
     /**
@@ -63,6 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
             'is_account_administrator' => 'boolean',
             'two_factor_confirmed_at' => 'datetime',
+            'last_activity_at' => 'datetime',
         ];
     }
 

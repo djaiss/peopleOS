@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 
@@ -29,6 +30,7 @@ class UpdateUserInformation
             event(new Registered($this->user));
         }
         $this->updateUser();
+        $this->updateUserLastActivityDate();
 
         return $this->user;
     }
@@ -40,5 +42,10 @@ class UpdateUserInformation
             'last_name' => $this->lastName,
             'email' => $this->email,
         ]);
+    }
+
+    private function updateUserLastActivityDate(): void
+    {
+        UpdateUserLastActivityDate::dispatch($this->user);
     }
 }

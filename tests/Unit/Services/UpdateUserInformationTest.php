@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
+use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use App\Services\UpdateUserInformation;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -19,6 +21,8 @@ class UpdateUserInformationTest extends TestCase
     #[Test]
     public function it_updates_user_information(): void
     {
+        Queue::fake();
+
         $user = User::factory()->create([
             'first_name' => 'Michael',
             'last_name' => 'Scott',
@@ -26,6 +30,10 @@ class UpdateUserInformationTest extends TestCase
         ]);
 
         $this->executeService($user);
+
+        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
+            return $job->user->id === $user->id;
+        });
     }
 
     #[Test]

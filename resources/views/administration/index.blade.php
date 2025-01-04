@@ -71,7 +71,7 @@
           @method('PUT')
 
           <!-- profile photo -->
-          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3">
+          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="profile_photo_path" :value="__('Profile photo')" class="col-span-2" />
             <div class="justify-self-end">
               <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
@@ -79,7 +79,7 @@
           </div>
 
           <!-- first name -->
-          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3">
+          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="first_name" :value="__('First name')" class="col-span-2" />
             <div class="w-full justify-self-end">
               <x-text-input class="block w-full" id="first_name" name="first_name" value="{{ $user->first_name }}" type="text" required @focus="showActions = true" @blur="showActions = false" />
@@ -88,7 +88,7 @@
           </div>
 
           <!-- last name -->
-          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3">
+          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="last_name" :value="__('Last name')" class="col-span-2" />
             <div class="w-full justify-self-end">
               <x-text-input class="block w-full" id="last_name" name="last_name" value="{{ $user->last_name }}" type="text" required @focus="showActions = true" @blur="showActions = false" />
@@ -97,7 +97,7 @@
           </div>
 
           <!-- email -->
-          <div class="grid grid-cols-3 items-center p-3">
+          <div class="grid grid-cols-3 items-center p-3 hover:bg-blue-50">
             <div class="col-span-2">
               <x-input-label for="email" :value="__('Email')" />
               <x-help>{{ __('We will send you an email to verify this email address, and won\'t use this email for marketing purposes.') }}</x-help>
