@@ -3,7 +3,7 @@
   'optional' => false,
 ])
 
-<label {{ $attributes->merge(['class' => 'mb-2 block text-sm font-medium dark:text-gray-300 text-gray-700']) }}>
+<label {{ $attributes->merge(['class' => 'block text-sm font-medium dark:text-gray-300 text-gray-700']) }}>
   {{ $value ?? $slot }}
 
   @if ($optional)

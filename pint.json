@@ -22,21 +22,7 @@
     "no_useless_else": true,
     "no_multiple_statements_per_line": true,
     "ordered_class_elements": {
-      "order": [
-        "use_trait",
-        "case",
-        "constant",
-        "constant_public",
-        "constant_protected",
-        "constant_private",
-        "property_public",
-        "property_protected",
-        "property_private",
-        "construct",
-        "destruct",
-        "magic",
-        "phpunit"
-      ],
+      "order": ["use_trait", "case", "constant", "constant_public", "constant_protected", "constant_private", "property_public", "property_protected", "property_private", "construct", "destruct", "magic", "phpunit"],
       "sort_algorithm": "none"
     },
     "ordered_interfaces": true,

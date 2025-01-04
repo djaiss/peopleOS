@@ -1,13 +1,13 @@
 <div class="w-full">
   <!-- main nav -->
   <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-gray-200 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
-    <div class="items-center text-sm sm:flex relative">
-      <x-lucide-search class="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-      <x-text-input type="text" placeholder="{{ __('Search') }}" class="w-30 text-sm pl-8 pr-3 py-1 bg-gray-100 border border-gray-300 focus:bg-white" />
+    <div class="relative items-center text-sm sm:flex">
+      <x-lucide-search class="pointer-events-none absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+      <x-text-input type="text" placeholder="{{ __('Search') }}" class="w-30 border border-gray-300 bg-gray-100 py-1 pl-8 pr-3 text-sm focus:bg-white" />
     </div>
 
     <div class="relative ms-3 flex items-center gap-x-3">
-      <x-lucide-bell class="w-4 h-4 text-gray-500" />
+      <x-lucide-bell class="h-4 w-4 text-gray-500" />
 
       <x-dropdown align="right" width="48">
         <x-slot name="trigger">
@@ -21,6 +21,10 @@
           <div class="block px-4 py-2 text-xs text-gray-400">
             {{ __('Manage Account') }}
           </div>
+
+          <x-dropdown-link href="{{ route('administration.index') }}">
+            {{ __('Administration') }}
+          </x-dropdown-link>
 
           <x-dropdown-link href="{{ route('dashboard') }}">
             {{ __('Your profile') }}
