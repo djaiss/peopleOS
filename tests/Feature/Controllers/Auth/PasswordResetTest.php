@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Auth;
+namespace Tests\Feature\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
