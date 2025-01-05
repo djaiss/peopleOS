@@ -48,6 +48,19 @@ class ManageApiKeys extends Component
         return view('livewire.administration.security.manage-api-keys');
     }
 
+    public function placeholder(): string
+    {
+        return <<<'HTML'
+        <div>
+            <div class="flex flex-col space-y-2 mb-3">
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+            </div>
+        </div>
+        HTML;
+    }
+
     public function toggleAddMode(): void
     {
         $this->addMode = ! $this->addMode;
