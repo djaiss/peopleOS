@@ -6,7 +6,9 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
+use App\Mail\ApiKeyCreated;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class CreateApiKey
 {
@@ -20,10 +22,12 @@ class CreateApiKey
      */
     public function execute(): string
     {
+        $token = $this->user->createToken($this->label)->plainTextToken;
         $this->updateUserLastActivityDate();
         $this->log();
+        $this->sendMail();
 
-        return $this->user->createToken($this->label)->plainTextToken;
+        return $token;
     }
 
     private function updateUserLastActivityDate(): void
@@ -38,5 +42,11 @@ class CreateApiKey
             action: 'api_key_creation',
             description: 'Created an API key',
         );
+    }
+
+    private function sendMail(): void
+    {
+        Mail::to($this->user->email)
+            ->queue(new ApiKeyCreated($this->label));
     }
 }

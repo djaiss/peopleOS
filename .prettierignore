@@ -9,3 +9,4 @@ public/
 package-lock.json
 composer.lock
 /storage
+/resources/views/mail/
