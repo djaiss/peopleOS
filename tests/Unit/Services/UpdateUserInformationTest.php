@@ -80,12 +80,14 @@ class UpdateUserInformationTest extends TestCase
             email: $email,
             firstName: 'Dwight',
             lastName: 'Schrute',
+            nickname: 'Dwig',
         ))->execute();
 
         $this->assertDatabaseHas('users', [
             'id' => $updatedUser->id,
             'first_name' => 'Dwight',
             'last_name' => 'Schrute',
+            'nickname' => 'Dwig',
             'email' => $email,
         ]);
 

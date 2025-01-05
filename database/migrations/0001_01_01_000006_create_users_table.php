@@ -18,11 +18,13 @@ return new class extends Migration
             $table->unsignedBigInteger('account_id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('nickname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('locale')->default('en');
             $table->boolean('is_account_administrator')->default(false);
+            $table->boolean('does_display_full_names')->default(true);
             $table->string('timezone')->nullable();
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();

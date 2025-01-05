@@ -99,6 +99,15 @@
             </div>
           </div>
 
+          <!-- nickname -->
+          <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
+            <x-input-label for="nickname" :value="__('Nickname')" class="col-span-2" />
+            <div class="w-full justify-self-end">
+              <x-text-input class="block w-full [&:placeholder-shown]:bg-gray-50" id="nickname" name="nickname" value="{{ $user['nickname'] }}" type="text" placeholder="{{ __('No nickname defined') }}" @focus="showActions = true" @blur="showActions = false" />
+              <x-input-error class="mt-2" :messages="$errors->get('nickname')" />
+            </div>
+          </div>
+
           <!-- email -->
           <div class="grid grid-cols-3 items-center p-3 hover:bg-blue-50">
             <div class="col-span-2">
@@ -122,6 +131,26 @@
             </x-button.primary>
           </div>
         </form>
+
+        <!-- Preferences -->
+        <h2 class="font-semi-bold mb-4 text-lg">
+          {{ __('Preferences') }}
+        </h2>
+
+        <div class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
+          <div class="grid grid-cols-3 items-center p-3 hover:bg-blue-50">
+            <div class="col-span-2">
+              <p class="col-span-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {{ __('Display full names') }}
+              </p>
+              <x-help>{{ __('Show full names of users instead of nicknames') }}</x-help>
+            </div>
+
+            <div class="justify-self-end">
+              <livewire:administration.toggle-display-names :user-id="$user['id']" />
+            </div>
+          </div>
+        </div>
 
         <!-- Last activity -->
         <h2 class="font-semi-bold mb-4 text-lg">

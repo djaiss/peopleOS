@@ -22,6 +22,7 @@ class AdministrationControllerTest extends TestCase
         $user = User::factory()->create([
             'first_name' => 'Dwight',
             'last_name' => 'Schrute',
+            'nickname' => 'Dwig',
             'email' => 'dwight@schrute.com',
             'last_activity_at' => now(),
         ]);
@@ -42,9 +43,11 @@ class AdministrationControllerTest extends TestCase
 
         $this->assertEquals(
             [
+                'id' => $user->id,
                 'profile_photo_url' => $user->profile_photo_url,
                 'first_name' => 'Dwight',
                 'last_name' => 'Schrute',
+                'nickname' => 'Dwig',
                 'email' => 'dwight@schrute.com',
                 'name' => 'Dwight Schrute',
             ],
@@ -74,6 +77,7 @@ class AdministrationControllerTest extends TestCase
             ->put('/administration', [
                 'first_name' => 'Dwight',
                 'last_name' => 'Schrute',
+                'nickname' => 'Dwig',
                 'email' => 'dwight@schrute.com',
             ]);
 
@@ -83,6 +87,7 @@ class AdministrationControllerTest extends TestCase
             'id' => $user->id,
             'first_name' => 'Dwight',
             'last_name' => 'Schrute',
+            'nickname' => 'Dwig',
             'email' => 'dwight@schrute.com',
         ]);
 

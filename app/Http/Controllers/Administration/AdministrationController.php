@@ -34,9 +34,11 @@ class AdministrationController extends Controller
 
         return view('administration.index', [
             'user' => [
+                'id' => Auth::user()->id,
                 'profile_photo_url' => Auth::user()->profile_photo_url,
                 'first_name' => Auth::user()->first_name,
                 'last_name' => Auth::user()->last_name,
+                'nickname' => Auth::user()?->nickname,
                 'email' => Auth::user()->email,
                 'name' => Auth::user()->name,
             ],
@@ -50,6 +52,7 @@ class AdministrationController extends Controller
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'nickname' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore(Auth::user()->id)],
         ]);
 
@@ -58,6 +61,7 @@ class AdministrationController extends Controller
             email: $validated['email'],
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
+            nickname: $validated['nickname'],
         ))->execute();
 
         return redirect()->route('administration.index')

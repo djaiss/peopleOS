@@ -16,6 +16,7 @@ class UpdateUserInformation
         public string $email,
         public string $firstName,
         public string $lastName,
+        public ?string $nickname,
     ) {}
 
     /**
@@ -47,6 +48,7 @@ class UpdateUserInformation
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
             'email' => $this->email,
+            'nickname' => $this->nickname,
         ]);
     }
 
