@@ -8,64 +8,14 @@
 
 <x-app-layout>
   <div class="grid h-[calc(100vh-48px)] grid-cols-1 lg:grid-cols-[240px,1fr]">
-    <div class="border-r border-gray-300 bg-gray-100">
-      <div class="flex flex-col px-6 pt-8">
-        <!-- back to dashboard -->
-        <a href="{{ route('dashboard') }}" class="mb-4">
-          <div class="flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5 text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white">
-            <div class="flex items-center gap-2">
-              <x-lucide-chevron-left class="size-3 min-w-3" />
-              <span>
-                {{ __('Back to dashboard') }}
-              </span>
-            </div>
-          </div>
-        </a>
+    <!-- sidebar -->
+    @include('administration.partials.sidebar')
 
-        <div class="flex flex-col gap-4">
-          <div class="flex flex-col gap-0.5">
-            <span class="tpx-2 py-1.5 text-xs font-semibold text-zinc-950/40 dark:text-white/40">
-              {{ __('Your account') }}
-            </span>
-            <a href="{{ route('administration.index') }}">
-              <div class="{{ request()->routeIs('administration.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5 dark:hover:bg-white/5 dark:hover:text-white">
-                <div class="flex items-center gap-2">
-                  <x-lucide-user class="size-4 min-w-3" />
-                  <span>
-                    {{ __('Profile') }}
-                  </span>
-                </div>
-              </div>
-            </a>
-            <a href="">
-              <div class="flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5 text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white">
-                <div class="flex items-center gap-2">
-                  <x-lucide-shield-alert class="size-4 min-w-3" />
-                  <span>
-                    {{ __('Security') }}
-                  </span>
-                </div>
-              </div>
-            </a>
-            <a href="">
-              <div class="flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5 text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white">
-                <div class="flex items-center gap-2">
-                  <x-lucide-key class="size-4 min-w-3" />
-                  <span>
-                    {{ __('Api tokens') }}
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- main content -->
     <div class="relative bg-gray-50 px-6 pt-8 lg:px-12">
       <div class="mx-auto max-w-2xl px-2 py-2 sm:px-0">
         <!-- Profile -->
-        <h1 class="font-semi-bold mb-4 text-xl">
+        <h1 class="font-semi-bold mb-4 text-2xl">
           {{ __('Profile') }}
         </h1>
 
@@ -138,7 +88,7 @@
         </h2>
 
         <div class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
-          <div class="grid grid-cols-3 items-center p-3 hover:bg-blue-50">
+          <div class="grid grid-cols-3 items-center rounded-lg p-3 hover:bg-blue-50">
             <div class="col-span-2">
               <p class="col-span-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 {{ __('Display full names') }}

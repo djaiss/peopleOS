@@ -17,6 +17,8 @@ return [
         'account_creation' => 'Account creation',
         'personal_profile_update' => 'Update on the personal profile',
         'display_full_names_toggle' => 'Toggle display of full names',
+        'api_key_creation' => 'API key creation',
+        'api_key_deletion' => 'API key deletion',
     ],
 
 ];
