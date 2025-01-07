@@ -23,6 +23,9 @@ class AdministrationInviteUserAgainController extends Controller
      * Sends a new invitation to a user who has not yet accepted the invitation.
      * Only administrators and HR representatives can send a new invitation.
      *
+     * The invitation will be valid for 3 days. After 3 days, the user will need
+     * to request a new invitation.
+     *
      * @response 200 {
      *  "id": 4,
      *  "object": "user",

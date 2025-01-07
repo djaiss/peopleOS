@@ -25,6 +25,9 @@ class AdministrationUserController extends Controller
      *
      * By default, the user will have the Member permission.
      *
+     * The invitation will be valid for 3 days. After 3 days, the user will need
+     * to request a new invitation.
+     *
      * @bodyParam email string required The email of the user. Max 255 characters. Example: dwight.schrute@dundermifflin.com
      *
      * @response 200 {
