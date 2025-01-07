@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 /**
  * @group Administration
  *
- * You can modify the account information here.
+ * @subgroup Account management
  */
 class AccountController extends Controller
 {
     /**
-     * Get the information about the account the logged user.
+     * Get the information about the account of the logged user.
      *
      * @response 200 {
      *  "id": 4,

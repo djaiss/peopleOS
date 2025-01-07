@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Api\Settings;
+namespace Tests\Feature\Api\Administration;
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
