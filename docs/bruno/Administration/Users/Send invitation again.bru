@@ -1,0 +1,15 @@
+meta {
+  name: Send invitation again
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://{{URL}}/administration/users/2/invite
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

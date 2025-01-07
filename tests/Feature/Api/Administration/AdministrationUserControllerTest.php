@@ -32,7 +32,7 @@ class AdministrationUserControllerTest extends TestCase
 
         $this->assertEquals(
             [
-                'id' => $user->account->id,
+                'id' => User::where('email', 'dwight.schrute@dundermifflin.com')->first()->id,
                 'object' => 'user',
                 'email' => 'dwight.schrute@dundermifflin.com',
             ],

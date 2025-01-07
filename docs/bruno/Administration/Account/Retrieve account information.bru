@@ -1,11 +1,11 @@
 meta {
-  name: /me
+  name: Retrieve account information
   type: http
   seq: 1
 }
 
 get {
-  url: http://{{URL}}/account
+  url: http://{{URL}}/me
   body: none
   auth: bearer
 }

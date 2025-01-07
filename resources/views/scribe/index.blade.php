@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Laravel Documentation</title>
+    <title>OrganizationOS Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 
@@ -118,7 +118,7 @@
         <aside>
           <strong>Base URL</strong>
           :
-          <code>http://localhost</code>
+          <code>http://organizationos.test</code>
         </aside>
         <p>This documentation aims to provide all the information you need to work with our API.</p>
         <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile). You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
@@ -157,14 +157,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/me" \
+    --get "http://organizationos.test/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/me"
+    "http://organizationos.test/api/me"
 );
 
 const headers = {
@@ -180,7 +180,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/me';
+$url = 'http://organizationos.test/api/me';
 $response = $client-&gt;get(
     $url,
     [
@@ -311,7 +311,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/me" \
+    "http://organizationos.test/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -325,7 +325,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/me"
+    "http://organizationos.test/api/me"
 );
 
 const headers = {
@@ -349,7 +349,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/me';
+$url = 'http://organizationos.test/api/me';
 $response = $client-&gt;put(
     $url,
     [
@@ -534,14 +534,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/account" \
+    --get "http://organizationos.test/api/account" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/account"
+    "http://organizationos.test/api/account"
 );
 
 const headers = {
@@ -557,7 +557,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/account';
+$url = 'http://organizationos.test/api/account';
 $response = $client-&gt;get(
     $url,
     [
@@ -668,7 +668,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/account" \
+    "http://organizationos.test/api/account" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -679,7 +679,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/account"
+    "http://organizationos.test/api/account"
 );
 
 const headers = {
@@ -700,7 +700,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/account';
+$url = 'http://organizationos.test/api/account';
 $response = $client-&gt;put(
     $url,
     [
@@ -823,13 +823,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
         <p>Invites a user to the account. Only administrators and HR representatives can invite users.</p>
         <p>By default, the user will have the Member permission.</p>
+        <p>The invitation will be valid for 3 days. After 3 days, the user will need to request a new invitation.</p>
 
         <span id="example-requests-POSTapi-administration-users">
           <blockquote>Example request:</blockquote>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/administration/users" \
+    "http://organizationos.test/api/administration/users" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -840,7 +841,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/administration/users"
+    "http://organizationos.test/api/administration/users"
 );
 
 const headers = {
@@ -861,7 +862,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/administration/users';
+$url = 'http://organizationos.test/api/administration/users';
 $response = $client-&gt;post(
     $url,
     [
@@ -982,20 +983,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <p></p>
 
         <p>Sends a new invitation to a user who has not yet accepted the invitation. Only administrators and HR representatives can send a new invitation.</p>
+        <p>The invitation will be valid for 3 days. After 3 days, the user will need to request a new invitation.</p>
 
         <span id="example-requests-PUTapi-administration-users--user_id--invite">
           <blockquote>Example request:</blockquote>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/administration/users/1/invite" \
+    "http://organizationos.test/api/administration/users/1/invite" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/administration/users/1/invite"
+    "http://organizationos.test/api/administration/users/1/invite"
 );
 
 const headers = {
@@ -1011,7 +1013,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/administration/users/1/invite';
+$url = 'http://organizationos.test/api/administration/users/1/invite';
 $response = $client-&gt;put(
     $url,
     [

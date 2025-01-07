@@ -1,0 +1,19 @@
+meta {
+  name: Update account information
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://{{URL}}/account?name=Dunder Mifflin
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: Dunder Mifflin
+}
+
+auth:bearer {
+  token: {{token}}
+}

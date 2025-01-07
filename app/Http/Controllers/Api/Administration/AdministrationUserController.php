@@ -46,13 +46,13 @@ class AdministrationUserController extends Controller
             'email' => ['required', 'email', 'max:255'],
         ]);
 
-        (new InviteUser(
+        $invitedUser = (new InviteUser(
             user: $request->user(),
             email: $validated['email'],
         ))->execute();
 
         $response = [
-            'id' => $request->user()->account->id,
+            'id' => $invitedUser->id,
             'object' => 'user',
             'email' => $validated['email'],
         ];
