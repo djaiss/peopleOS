@@ -43,6 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'two_factor_confirmed_at',
         'profile_photo_path',
         'last_activity_at',
+        'status',
         'invited_at',
         'invitation_accepted_at',
     ];

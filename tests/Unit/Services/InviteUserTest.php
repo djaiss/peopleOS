@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Enums\Permission;
+use App\Enums\UserStatus;
 use App\Exceptions\PermissionException;
 use App\Exceptions\UserAlreadyExistsException;
 use App\Jobs\LogUserAction;
@@ -43,6 +44,7 @@ class InviteUserTest extends TestCase
             'email' => 'dwight@dundermifflin.com',
             'permission' => Permission::MEMBER->value,
             'account_id' => $user->account_id,
+            'status' => UserStatus::INVITED->value,
             'invited_at' => '2018-01-01 00:00:00',
         ]);
 

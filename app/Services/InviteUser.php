@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\Permission;
+use App\Enums\UserStatus;
 use App\Exceptions\PermissionException;
 use App\Exceptions\UserAlreadyExistsException;
 use App\Jobs\LogUserAction;
@@ -62,6 +63,7 @@ class InviteUser
             'invited_at' => now(),
             'permission' => Permission::MEMBER->value,
             'account_id' => $this->user->account_id,
+            'status' => UserStatus::INVITED->value,
         ]);
     }
 

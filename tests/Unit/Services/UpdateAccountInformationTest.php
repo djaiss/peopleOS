@@ -24,7 +24,9 @@ class UpdateAccountInformationTest extends TestCase
     {
         Queue::fake();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'permission' => Permission::ADMINISTRATOR->value,
+        ]);
 
         $updatedUser = (new UpdateAccountInformation(
             user: $user,

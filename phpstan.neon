@@ -17,6 +17,7 @@ parameters:
         - app/Http/Controllers/Auth/VerifyEmailController.php
         - app/Models/User.php
         - app/Http/Resources/*.php
+        - app/Http/Controllers/Administration/AdministrationUserController.php
 
 #
 #    checkMissingIterableValueType: false

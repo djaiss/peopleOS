@@ -7,6 +7,6 @@ namespace App\Enums;
 enum Permission: string
 {
     case ADMINISTRATOR = 'administrator';
-    case HR = 'human resource representative';
+    case HR = 'human_resource_representative';
     case MEMBER = 'member';
 }

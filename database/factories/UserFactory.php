@@ -38,7 +38,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'last_activity_at' => null,
-            'permission' => Permission::ADMINISTRATOR->value,
+            'permission' => Permission::MEMBER->value,
         ];
     }
 
