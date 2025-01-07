@@ -39,6 +39,8 @@ Laravel Best Practices
 - Implement proper database indexing for improved query performance.
 - Use Laravel's built-in pagination features.
 - Implement proper error logging and monitoring.
+- Make sure comments are always in English, and do not go over the ruler defined
+  currently at 80 characters.
 
 Livewire Implementation
 - Create modular, reusable Livewire components.

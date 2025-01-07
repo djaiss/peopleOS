@@ -17,12 +17,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('nickname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('locale')->default('en');
             $table->string('permission')->default(Permission::MEMBER->value);
             $table->boolean('does_display_full_names')->default(true);
@@ -32,6 +32,7 @@ return new class extends Migration
             $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->datetime('last_activity_at')->nullable();
+            $table->datetime('invited_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');

@@ -11,6 +11,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitations.accept');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::get('/dashboard', function () {
         return view('dashboard');

@@ -43,6 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'two_factor_confirmed_at',
         'profile_photo_path',
         'last_activity_at',
+        'invited_at',
     ];
 
     /**
@@ -68,6 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'does_display_full_names' => 'boolean',
             'two_factor_confirmed_at' => 'datetime',
             'last_activity_at' => 'datetime',
+            'invited_at' => 'datetime',
         ];
     }
 
