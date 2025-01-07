@@ -21,6 +21,7 @@ return [
         'api_key_deletion' => 'API key deletion',
         'account_update' => 'Update on the organization account',
         'user_invitation' => 'User invitation',
+        'user_invitation_resend' => 'User invitation resend',
     ],
 
 ];

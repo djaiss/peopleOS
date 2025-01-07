@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->datetime('last_activity_at')->nullable();
             $table->datetime('invited_at')->nullable();
+            $table->datetime('invitation_accepted_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
