@@ -92,6 +92,9 @@
               <li class="tocify-item level-3" data-unique="administration-POSTapi-administration-users">
                 <a href="#administration-POSTapi-administration-users">Invite a user.</a>
               </li>
+              <li class="tocify-item level-3" data-unique="administration-PUTapi-administration-users--user_id--invite">
+                <a href="#administration-PUTapi-administration-users--user_id--invite">Send a new invitation to a user.</a>
+              </li>
             </ul>
           </ul>
         </ul>
@@ -944,6 +947,153 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <p>
               The email of the user. Max 255 characters. Example:
               <code>dwight.schrute@dundermifflin.com</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The ID of the user.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The type of the object. Always &quot;user&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>email</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The email of the user.</p>
+        </div>
+        <h2 id="administration-PUTapi-administration-users--user_id--invite">Send a new invitation to a user.</h2>
+
+        <p></p>
+
+        <p>Sends a new invitation to a user who has not yet accepted the invitation. Only administrators and HR representatives can send a new invitation.</p>
+
+        <span id="example-requests-PUTapi-administration-users--user_id--invite">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/administration/users/1/invite" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/administration/users/1/invite"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/administration/users/1/invite';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-administration-users--user_id--invite">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 4,
+    &quot;object&quot;: &quot;user&quot;,
+    &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-administration-users--user_id--invite" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-administration-users--user_id--invite"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-administration-users--user_id--invite"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-administration-users--user_id--invite" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-administration-users--user_id--invite">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-administration-users--user_id--invite" data-method="PUT" data-path="api/administration/users/{user_id}/invite" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-administration-users--user_id--invite', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/administration/users/{user_id}/invite</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-administration-users--user_id--invite" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-administration-users--user_id--invite" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>user_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="user_id" data-endpoint="PUTapi-administration-users--user_id--invite" value="1" data-component="url" />
+            <br />
+            <p>
+              The ID of the user. Example:
+              <code>1</code>
             </p>
           </div>
         </form>
