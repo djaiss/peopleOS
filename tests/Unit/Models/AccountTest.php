@@ -36,4 +36,17 @@ class AccountTest extends TestCase
 
         $this->assertTrue($account->logs()->exists());
     }
+
+    #[Test]
+    public function it_gets_the_avatar(): void
+    {
+        $account = Account::factory()->create([
+            'name' => 'Dunder Mifflin Paper Company',
+        ]);
+
+        $this->assertEquals(
+            'https://ui-avatars.com/api/?name=D+M+P+C&color=7F9CF5&background=EBF4FF',
+            $account->avatar
+        );
+    }
 }

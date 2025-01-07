@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at',
         'password',
         'locale',
-        'is_account_administrator',
+        'permission',
         'does_display_full_names',
         'timezone',
         'two_factor_secret',
@@ -65,7 +65,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'is_account_administrator' => 'boolean',
             'does_display_full_names' => 'boolean',
             'two_factor_confirmed_at' => 'datetime',
             'last_activity_at' => 'datetime',

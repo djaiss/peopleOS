@@ -32,18 +32,21 @@ class AdministrationController extends Controller
                 'created_at' => $log->created_at->diffForHumans(),
             ]);
 
+        $user = Auth::user();
+
         return view('administration.index', [
             'user' => [
-                'id' => Auth::user()->id,
-                'profile_photo_url' => Auth::user()->profile_photo_url,
-                'first_name' => Auth::user()->first_name,
-                'last_name' => Auth::user()->last_name,
-                'nickname' => Auth::user()?->nickname,
-                'email' => Auth::user()->email,
-                'name' => Auth::user()->name,
+                'id' => $user->id,
+                'profile_photo_url' => $user->profile_photo_url,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'nickname' => $user?->nickname,
+                'email' => $user->email,
+                'name' => $user->name,
+                'permission' => $user->permission,
             ],
             'logs' => $logs,
-            'has_more_logs' => Log::where('user_id', Auth::user()->id)->count() > 3,
+            'has_more_logs' => Log::where('user_id', $user->id)->count() > 3,
         ]);
     }
 

@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Arr;
 
 class Account extends Model
 {
@@ -37,5 +39,19 @@ class Account extends Model
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the avatar URL.
+     */
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes): string {
+                $name = mb_trim(collect(explode(' ', (string) Arr::get($attributes, 'name')))->map(fn ($segment): string => mb_substr($segment, 0, 1))->join(' '));
+
+                return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
+            }
+        );
     }
 }

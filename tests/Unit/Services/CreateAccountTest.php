@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
+use App\Enums\Permission;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
@@ -46,7 +47,7 @@ class CreateAccountTest extends TestCase
             'first_name' => 'Dwight',
             'last_name' => 'Schrute',
             'email' => 'dwight@dundermifflin.com',
-            'is_account_administrator' => true,
+            'permission' => Permission::ADMINISTRATOR->value,
             'timezone' => 'UTC',
         ]);
 

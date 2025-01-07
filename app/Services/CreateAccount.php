@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\Permission;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Account;
@@ -50,7 +51,7 @@ class CreateAccount
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'locale' => App::getLocale(),
-            'is_account_administrator' => true,
+            'permission' => Permission::ADMINISTRATOR->value,
             'timezone' => 'UTC',
         ]);
     }

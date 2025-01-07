@@ -30,6 +30,7 @@ class AdministrationSecurityControllerTest extends TestCase
         $this->assertEquals(
             [
                 'id' => $user->id,
+                'permission' => 'administrator',
             ],
             $response['user']
         );

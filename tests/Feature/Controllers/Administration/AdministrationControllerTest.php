@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Administration;
 
+use App\Enums\Permission;
 use App\Models\Log;
 use App\Models\User;
 use Carbon\Carbon;
@@ -25,6 +26,7 @@ class AdministrationControllerTest extends TestCase
             'nickname' => 'Dwig',
             'email' => 'dwight@schrute.com',
             'last_activity_at' => now(),
+            'permission' => Permission::ADMINISTRATOR->value,
         ]);
         Log::factory()->create([
             'user_id' => $user->id,
@@ -50,6 +52,7 @@ class AdministrationControllerTest extends TestCase
                 'nickname' => 'Dwig',
                 'email' => 'dwight@schrute.com',
                 'name' => 'Dwight Schrute',
+                'permission' => Permission::ADMINISTRATOR->value,
             ],
             $response['user']
         );

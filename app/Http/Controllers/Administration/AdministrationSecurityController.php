@@ -15,6 +15,7 @@ class AdministrationSecurityController extends Controller
         return view('administration.security.index', [
             'user' => [
                 'id' => Auth::user()->id,
+                'permission' => Auth::user()->permission,
             ],
         ]);
     }
