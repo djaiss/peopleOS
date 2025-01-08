@@ -22,6 +22,9 @@ return [
         'account_update' => 'Update on the organization account',
         'user_invitation' => 'User invitation',
         'user_invitation_resend' => 'User invitation resend',
+        'office_creation' => 'Office creation',
+        'office_update' => 'Office update',
+        'office_deletion' => 'Office destroy',
     ],
 
 ];

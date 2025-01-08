@@ -42,6 +42,14 @@ class Account extends Model
     }
 
     /**
+     * Get the offices associated with the account.
+     */
+    public function offices(): HasMany
+    {
+        return $this->hasMany(Office::class);
+    }
+
+    /**
      * Get the avatar URL.
      */
     protected function avatar(): Attribute
