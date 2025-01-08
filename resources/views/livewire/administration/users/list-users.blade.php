@@ -1,7 +1,20 @@
-<div>
+<div x-data="{ search: '' }">
   <div class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
+    <!-- search -->
+    <div class="flex items-center justify-between border-b border-gray-200 p-3 text-sm first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+      <div class="relative ml-auto items-center text-sm sm:flex">
+        <x-lucide-search class="pointer-events-none absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+        <x-text-input type="text" placeholder="{{ __('Search') }}" class="w-30 border border-gray-300 bg-gray-100 py-1 pl-8 pr-3 text-sm focus:bg-white" x-model="search" />
+      </div>
+    </div>
+
+    <!-- users -->
     @foreach ($users as $user)
-      <div class="flex items-center justify-between border-b border-gray-200 p-3 text-sm first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+      <div class="flex items-center justify-between border-b border-gray-200 p-3 text-sm first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-blue-50" x-show="
+        search === '' ||
+          '{{ strtolower($user['name']) }}'.includes(search.toLowerCase()) ||
+          '{{ strtolower($user['email']) }}'.includes(search.toLowerCase())
+      ">
         <div class="flex items-center gap-3">
           <img src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}" class="h-8 w-8 shrink-0 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" />
           <div>
