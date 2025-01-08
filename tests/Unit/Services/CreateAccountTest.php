@@ -53,6 +53,11 @@ class CreateAccountTest extends TestCase
             'timezone' => 'UTC',
         ]);
 
+        $this->assertDatabaseHas('offices', [
+            'account_id' => $user->account_id,
+            'name' => 'Main Office',
+        ]);
+
         $this->assertInstanceOf(
             User::class,
             $user

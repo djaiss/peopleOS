@@ -1023,7 +1023,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/administration/offices/17" \
+    "http://organizationos.test/api/administration/offices/18" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1034,7 +1034,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices/17"
+    "http://organizationos.test/api/administration/offices/18"
 );
 
 const headers = {
@@ -1055,7 +1055,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices/17';
+$url = 'http://organizationos.test/api/administration/offices/18';
 $response = $client-&gt;put(
     $url,
     [
@@ -1138,11 +1138,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="17" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="18" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>17</code>
+              <code>18</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1225,14 +1225,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/administration/offices/16" \
+    "http://organizationos.test/api/administration/offices/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices/16"
+    "http://organizationos.test/api/administration/offices/4"
 );
 
 const headers = {
@@ -1248,7 +1248,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices/16';
+$url = 'http://organizationos.test/api/administration/offices/4';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1324,11 +1324,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="16" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="4" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>16</code>
+              <code>4</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
