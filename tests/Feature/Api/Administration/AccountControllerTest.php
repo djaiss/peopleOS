@@ -43,7 +43,7 @@ class AccountControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_updates_the_account(): void
+    public function administrator_can_update_the_account(): void
     {
         $user = User::factory()->create([
             'permission' => Permission::ADMINISTRATOR->value,
