@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Administration;
 
 use App\Enums\Permission;
-use App\Enums\UserStatus;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,11 +20,6 @@ class AdministrationUserControllerTest extends TestCase
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create([
-            'first_name' => 'Michael',
-            'last_name' => 'Scott',
-            'email' => 'michael.scott@dundermifflin.com',
-            'status' => UserStatus::ACTIVE,
-            'last_activity_at' => Carbon::now(),
             'permission' => Permission::ADMINISTRATOR->value,
         ]);
 
@@ -35,7 +29,6 @@ class AdministrationUserControllerTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertArrayHasKey('user', $response);
-        $this->assertArrayHasKey('users', $response);
 
         $this->assertEquals(
             [
@@ -43,17 +36,6 @@ class AdministrationUserControllerTest extends TestCase
                 'permission' => 'administrator',
             ],
             $response['user']
-        );
-
-        $this->assertEquals(
-            [
-                'id' => $user->id,
-                'name' => 'Michael Scott',
-                'email' => 'michael.scott@dundermifflin.com',
-                'status' => 'active',
-                'last_activity_at' => '2018-01-01 00:00:00',
-            ],
-            $response['users'][0]
         );
     }
 

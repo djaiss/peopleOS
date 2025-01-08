@@ -44,7 +44,9 @@ class InviteUserTest extends TestCase
         $component = Livewire::actingAs($user)
             ->test(InviteUser::class)
             ->set('email', 'jim.halpert@dundermifflin.com')
-            ->call('store');
+            ->call('store')
+            ->assertDispatched('user-invited')
+            ->assertDispatched('store-complete');
 
         $component->assertHasNoErrors();
         $component->assertSet('email', '');

@@ -21,6 +21,13 @@
         <p class="mb-4 text-sm text-zinc-500">{{ __('Invite a user to join your account. We will send them an email to join.') }}</p>
 
         <livewire:administration.users.invite-user />
+
+        <!-- Preferences -->
+        <h2 class="font-semi-bold mb-4 text-lg">
+          {{ __('All the users in the account') }}
+        </h2>
+
+        <livewire:administration.users.list-users />
       </div>
     </div>
   </div>

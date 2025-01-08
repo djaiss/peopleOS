@@ -34,5 +34,8 @@ class InviteUser extends Component
         Toaster::success(__('User invited'));
 
         $this->reset('email');
+
+        $this->dispatch('user-invited');
+        $this->dispatch('store-complete');
     }
 }
