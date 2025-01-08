@@ -6,6 +6,7 @@ namespace App\Livewire\Administration\Offices;
 
 use App\Models\Office;
 use App\Services\CreateOffice;
+use App\Services\DestroyOffice;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
@@ -39,6 +40,19 @@ class ManageOffices extends Component
         return view('livewire.administration.offices.manage-offices');
     }
 
+    public function placeholder(): string
+    {
+        return <<<'HTML'
+        <div>
+            <div class="flex flex-col space-y-2 mb-3">
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+            </div>
+        </div>
+        HTML;
+    }
+
     public function toggleAddMode(): void
     {
         $this->addMode = ! $this->addMode;
@@ -64,5 +78,19 @@ class ManageOffices extends Component
             'id' => $office->id,
             'name' => $office->name,
         ]);
+    }
+
+    public function delete(int $officeId): void
+    {
+        $office = Office::where('id', $officeId)->first();
+
+        (new DestroyOffice(
+            user: Auth::user(),
+            office: $office,
+        ))->execute();
+
+        Toaster::success(__('Office deleted'));
+
+        $this->offices = $this->offices->reject(fn (array $office): bool => $office['id'] === $officeId);
     }
 }

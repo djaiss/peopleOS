@@ -6,6 +6,7 @@ namespace Tests\Feature\Livewire\Administration\Security;
 
 use App\Enums\Permission;
 use App\Livewire\Administration\Offices\ManageOffices;
+use App\Models\Office;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -88,5 +89,27 @@ class ManageOfficesTest extends TestCase
         $component->set('name', str_repeat('a', 256))
             ->call('store')
             ->assertHasErrors(['name' => 'max']);
+    }
+
+    #[Test]
+    public function it_can_delete_an_office(): void
+    {
+        $user = User::factory()->create([
+            'permission' => Permission::ADMINISTRATOR->value,
+        ]);
+
+        $office = Office::factory()->create([
+            'account_id' => $user->account_id,
+            'name' => 'Scranton Branch',
+        ]);
+
+        $component = Livewire::actingAs($user)
+            ->test(ManageOffices::class);
+
+        $component->call('delete', $office->id);
+
+        $this->assertDatabaseMissing('offices', [
+            'id' => $office->id,
+        ]);
     }
 }
