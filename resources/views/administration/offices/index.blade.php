@@ -13,20 +13,14 @@
     <div class="relative bg-gray-50 px-6 pt-8 lg:px-12">
       <div class="mx-auto max-w-2xl px-2 py-2 sm:px-0">
         <h1 class="font-semi-bold mb-4 text-2xl">
-          {{ __('Users') }}
+          {{ __('Offices') }}
         </h1>
 
-        <h2 class="font-semi-bold mb-1 text-lg">{{ __('Invite a user') }}</h2>
-        <p class="mb-4 text-sm text-zinc-500">{{ __('Invite a user to join your account. We will send them an email to join.') }}</p>
-
-        <livewire:administration.users.invite-user />
-
-        <!-- list users -->
         <h2 class="font-semi-bold mb-4 text-lg">
-          {{ __('All the users in the account') }}
+          {{ __('All the offices in the account') }}
         </h2>
 
-        <livewire:administration.users.list-users lazy />
+        <livewire:administration.offices.manage-offices lazy />
       </div>
     </div>
   </div>
