@@ -26,6 +26,19 @@ class ListUsers extends Component
         return view('livewire.administration.users.list-users');
     }
 
+    public function placeholder(): string
+    {
+        return <<<'HTML'
+        <div>
+            <div class="flex flex-col space-y-2 mb-3">
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+                <div class="animate-pulse bg-slate-200 h-8 w-full rounded-xl"></div>
+            </div>
+        </div>
+        HTML;
+    }
+
     public function getUsers(): Collection
     {
         return User::where('account_id', Auth::user()->account_id)

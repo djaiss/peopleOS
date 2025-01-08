@@ -27,7 +27,7 @@
           {{ __('All the users in the account') }}
         </h2>
 
-        <livewire:administration.users.list-users />
+        <livewire:administration.users.list-users lazy />
       </div>
     </div>
   </div>
