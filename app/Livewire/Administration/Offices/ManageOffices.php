@@ -7,6 +7,7 @@ namespace App\Livewire\Administration\Offices;
 use App\Models\Office;
 use App\Services\CreateOffice;
 use App\Services\DestroyOffice;
+use App\Services\UpdateOffice;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
@@ -20,6 +21,9 @@ class ManageOffices extends Component
     public Collection $offices;
 
     public bool $addMode = false;
+
+    #[Locked]
+    public int $editedOfficeId = 0;
 
     #[Validate('required|string|min:3|max:255')]
     public string $name = '';
@@ -78,6 +82,47 @@ class ManageOffices extends Component
             'id' => $office->id,
             'name' => $office->name,
         ]);
+    }
+
+    public function toggleEditMode(int $officeId): void
+    {
+        $this->editedOfficeId = $officeId;
+
+        $office = $this->offices->firstWhere('id', $officeId);
+        $this->name = $office['name'];
+    }
+
+    public function update(): void
+    {
+        $this->validate([
+            'name' => 'required|string|min:3|max:100',
+        ]);
+
+        $office = Office::where('id', $this->editedOfficeId)->first();
+
+        $office = (new UpdateOffice(
+            user: Auth::user(),
+            office: $office,
+            name: $this->name,
+        ))->execute();
+
+        Toaster::success(__('Office updated'));
+
+        $office = [
+            'id' => $office->id,
+            'name' => $office->name,
+        ];
+
+        $this->offices = $this->offices->map(fn (array $existingOffice): array => $existingOffice['id'] === $this->editedOfficeId ? $office : $existingOffice);
+
+        $this->resetEdit();
+    }
+
+    public function resetEdit(): void
+    {
+        $this->editedOfficeId = 0;
+        $this->name = '';
+        $this->resetErrorBag();
     }
 
     public function delete(int $officeId): void
