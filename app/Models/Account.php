@@ -50,6 +50,14 @@ class Account extends Model
     }
 
     /**
+     * Get the teams associated with the account.
+     */
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
+
+    /**
      * Get the avatar URL.
      */
     protected function avatar(): Attribute
