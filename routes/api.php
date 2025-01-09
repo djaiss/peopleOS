@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainControl
 use App\Http\Controllers\Api\Administration\AdministrationOfficeController;
 use App\Http\Controllers\Api\Administration\AdministrationUserController;
 use App\Http\Controllers\Api\Administration\MeController;
+use App\Http\Controllers\Api\Teams\TeamController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
@@ -14,6 +15,9 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     // logged user
     Route::get('me', [MeController::class, 'show'])->name('me');
     Route::put('me', [MeController::class, 'update'])->name('me.update');
+
+    // teams
+    Route::post('teams', [TeamController::class, 'store'])->name('teams.store');
 
     // account information
     Route::get('account', [AccountController::class, 'show'])->name('account');
