@@ -1,0 +1,15 @@
+meta {
+  name: List offices
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://{{URL}}/administration/offices
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
