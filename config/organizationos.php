@@ -26,8 +26,8 @@ return [
         'office_update' => 'Office update',
         'office_deletion' => 'Office destroy',
         'team_creation' => 'Team creation',
-        'team_update' => 'Team update',
         'team_deletion' => 'Team deletion',
+        'team_update' => 'Team update',
     ],
 
 ];

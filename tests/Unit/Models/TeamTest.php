@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Account;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -23,5 +24,14 @@ class TeamTest extends TestCase
         ]);
 
         $this->assertTrue($team->account()->exists());
+    }
+
+    #[Test]
+    public function it_belongs_to_many_users(): void
+    {
+        $team = Team::factory()->create();
+        $user = User::factory()->create();
+        $team->users()->attach($user);
+        $this->assertTrue($team->users()->exists());
     }
 }
