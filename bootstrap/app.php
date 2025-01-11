@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Middleware\CheckAdministratorOrHRPermission;
 use App\Http\Middleware\CheckAdministratorPermission;
+use App\Http\Middleware\CheckTeamApi;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -19,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'administrator' => CheckAdministratorPermission::class,
             'administrator_or_hr' => CheckAdministratorOrHRPermission::class,
+            'team.api' => CheckTeamApi::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -18,6 +18,9 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
 
     // teams
     Route::post('teams', [TeamController::class, 'store'])->name('teams.store');
+    Route::middleware(['team.api'])->group(function (): void {
+        Route::put('teams/{team}', [TeamController::class, 'update'])->name('teams.update');
+    });
 
     // account information
     Route::get('account', [AccountController::class, 'show'])->name('account');
