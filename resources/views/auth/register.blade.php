@@ -54,7 +54,7 @@
         <x-input-error :messages="$errors->get('organization_name')" class="mt-2" />
       </div>
 
-      <div class="mb-4 flex items-center">
+      <div class="flex items-center">
         <x-button.primary class="w-full">
           {{ __('Register') }}
         </x-button.primary>
