@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::post('teams', [TeamController::class, 'store'])->name('teams.store');
     Route::middleware(['team.api'])->group(function (): void {
         Route::put('teams/{team}', [TeamController::class, 'update'])->name('teams.update');
+        Route::delete('teams/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
     });
 
     // account information

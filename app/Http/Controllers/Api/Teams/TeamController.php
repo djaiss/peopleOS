@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\TeamResource;
 use App\Models\Team;
 use App\Services\CreateTeam;
+use App\Services\DestroyTeam;
 use App\Services\UpdateTeam;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -90,5 +92,28 @@ class TeamController extends Controller
         ))->execute();
 
         return new TeamResource($team);
+    }
+
+    /**
+     * Delete a team.
+     *
+     * A team can be deleted by any user who is part of the team.
+     *
+     * @urlParam team required The ID of the team. Example: 1
+     *
+     * @response 200 {
+     *  "status": "success"
+     * }
+     */
+    public function destroy(Request $request): JsonResponse
+    {
+        $team = $request->attributes->get('team');
+
+        (new DestroyTeam(
+            user: $request->user(),
+            team: $team,
+        ))->execute();
+
+        return response()->json(['status' => 'success']);
     }
 }

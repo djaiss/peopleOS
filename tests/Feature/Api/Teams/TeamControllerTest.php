@@ -187,4 +187,48 @@ class TeamControllerTest extends TestCase
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['name']);
     }
+
+    #[Test]
+    public function administrator_can_destroy_a_team(): void
+    {
+        $user = User::factory()->create([
+            'permission' => Permission::ADMINISTRATOR->value,
+        ]);
+
+        $team = Team::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $user->teams()->attach($team);
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('DELETE', '/api/teams/'.$team->id);
+
+        $response->assertStatus(200);
+
+        $this->assertEquals(
+            [
+                'status' => 'success',
+            ],
+            $response->json()
+        );
+
+        $this->assertDatabaseMissing('teams', [
+            'id' => $team->id,
+        ]);
+    }
+
+    #[Test]
+    public function user_not_part_of_team_cannot_destroy_it(): void
+    {
+        $user = User::factory()->create();
+        $team = Team::factory()->create();
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('DELETE', '/api/teams/'.$team->id);
+
+        $response->assertStatus(403);
+    }
 }

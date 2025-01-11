@@ -126,6 +126,9 @@
             <li class="tocify-item level-2" data-unique="teams-PUTapi-teams--id-">
               <a href="#teams-PUTapi-teams--id-">Update a team.</a>
             </li>
+            <li class="tocify-item level-2" data-unique="teams-DELETEapi-teams--id-">
+              <a href="#teams-DELETEapi-teams--id-">Delete a team.</a>
+            </li>
           </ul>
         </ul>
       </div>
@@ -2039,7 +2042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/teams/dolorem" \
+    "http://organizationos.test/api/teams/labore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2050,7 +2053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/dolorem"
+    "http://organizationos.test/api/teams/labore"
 );
 
 const headers = {
@@ -2071,7 +2074,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/dolorem';
+$url = 'http://organizationos.test/api/teams/labore';
 $response = $client-&gt;put(
     $url,
     [
@@ -2154,11 +2157,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="dolorem" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="labore" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>dolorem</code>
+              <code>labore</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2218,6 +2221,136 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>Time at which the object was created. Measured in seconds since the Unix epoch.</p>
         </div>
+        <h2 id="teams-DELETEapi-teams--id-">Delete a team.</h2>
+
+        <p></p>
+
+        <p>A team can be deleted by any user who is part of the team.</p>
+
+        <span id="example-requests-DELETEapi-teams--id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "http://organizationos.test/api/teams/dolores" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "http://organizationos.test/api/teams/dolores"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://organizationos.test/api/teams/dolores';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-teams--id-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-teams--id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-teams--id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-teams--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-teams--id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-teams--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-teams--id-" data-method="DELETE" data-path="api/teams/{id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-teams--id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/teams/{id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-teams--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-teams--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>id</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="dolores" data-component="url" />
+            <br />
+            <p>
+              The ID of the team. Example:
+              <code>dolores</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>team</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="team" data-endpoint="DELETEapi-teams--id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The ID of the team. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
       </div>
       <div class="dark-box">
         <div class="lang-selector">
