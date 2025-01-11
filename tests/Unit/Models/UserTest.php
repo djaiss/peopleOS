@@ -9,6 +9,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
+use ReflectionMethod;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -54,6 +55,51 @@ class UserTest extends TestCase
         $this->assertEquals(
             'Dwight Schrute',
             $user->name
+        );
+    }
+
+    #[Test]
+    public function it_generates_correct_initials_for_default_photo(): void
+    {
+        $user = User::factory()->create([
+            'first_name' => 'Dwight',
+            'last_name' => 'Schrute',
+        ]);
+
+        // this is a protected method, so we need to use reflection to access it
+        $method = new ReflectionMethod($user, 'defaultProfilePhotoUrl');
+        $method->setAccessible(true);
+
+        $this->assertEquals(
+            'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF',
+            $method->invoke($user)
+        );
+    }
+
+    #[Test]
+    public function it_gets_the_avatar_if_there_is_no_profile_photo(): void
+    {
+        $user = User::factory()->create([
+            'first_name' => 'Dwight',
+            'last_name' => 'Schrute',
+        ]);
+
+        $this->assertEquals(
+            'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF',
+            $user->profile_photo_url
+        );
+    }
+
+    #[Test]
+    public function it_gets_the_avatar_if_there_is_a_profile_photo(): void
+    {
+        config(['filesystems.default' => 'local']);
+        $user = User::factory()->create();
+        $user->profile_photo_path = 'path/to/photo.jpg';
+
+        $this->assertEquals(
+            '/storage/path/to/photo.jpg',
+            $user->profile_photo_url
         );
     }
 }

@@ -123,7 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function profilePhotoUrl(): Attribute
     {
         return Attribute::get(fn (): string => $this->profile_photo_path
-            ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
+            ? Storage::disk(config('filesystems.default'))->url($this->profile_photo_path)
             : $this->defaultProfilePhotoUrl());
     }
 
@@ -132,16 +132,14 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected function defaultProfilePhotoUrl(): string
     {
-        $name = mb_trim(collect(explode(' ', $this->name))->map(fn ($segment): string => mb_substr($segment, 0, 1))->join(' '));
+        // Get first letter of each word in the name and join them with spaces
+        $nameArray = explode(' ', $this->name);
+        $initials = [];
+        foreach ($nameArray as $namePart) {
+            $initials[] = mb_substr($namePart, 0, 1);
+        }
+        $name = mb_trim(implode(' ', $initials));
 
         return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
-    }
-
-    /**
-     * Get the disk that profile photos should be stored on.
-     */
-    protected function profilePhotoDisk(): string
-    {
-        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('jetstream.profile_photo_disk', 'public');
     }
 }
