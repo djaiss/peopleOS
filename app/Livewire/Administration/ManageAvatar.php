@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\Administration\Users;
+namespace App\Livewire\Administration;
 
 use App\Models\User;
 use App\Services\UpdateProfilePicture;
@@ -31,7 +31,7 @@ class ManageAvatar extends Component
 
     public function render()
     {
-        return view('livewire.administration.users.manage-avatar');
+        return view('livewire.administration.manage-avatar');
     }
 
     public function store(): void

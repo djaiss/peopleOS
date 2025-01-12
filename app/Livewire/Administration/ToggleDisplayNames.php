@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Services\ToggleDisplayFullNames;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
-use Livewire\Features\SupportRedirects\Redirector;
+use Masmerise\Toaster\Toaster;
 
 class ToggleDisplayNames extends Component
 {
@@ -25,13 +25,14 @@ class ToggleDisplayNames extends Component
         return view('livewire.administration.toggle-display-names');
     }
 
-    public function toggle(): Redirector
+    public function toggle(): void
     {
         (new ToggleDisplayFullNames(
             user: $this->user,
         ))->execute();
 
-        return redirect()->route('administration.index')
-            ->success(trans('Changes saved'));
+        Toaster::success(__('Changes saved'));
+
+        $this->dispatch('display-names-updated');
     }
 }

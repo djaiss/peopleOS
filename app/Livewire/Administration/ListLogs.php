@@ -43,6 +43,7 @@ class ListLogs extends Component
     }
 
     #[On('avatar-updated')]
+    #[On('display-names-updated')]
     public function getLogs(): void
     {
         $this->logs = Log::where('user_id', Auth::user()->id)

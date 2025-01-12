@@ -76,7 +76,7 @@
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Profile photo') }}</h2>
         <p class="mb-4 text-sm text-zinc-500">{{ __('You can upload a profile photo to use as your avatar, or use the default avatar.') }}</p>
 
-        <livewire:administration.users.manage-avatar />
+        <livewire:administration.manage-avatar />
 
         <!-- Preferences -->
         <h2 class="font-semi-bold mb-4 text-lg">
