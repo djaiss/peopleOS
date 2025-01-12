@@ -71,7 +71,7 @@ class UserTest extends TestCase
         $method->setAccessible(true);
 
         $this->assertEquals(
-            'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF',
+            'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF&size=64',
             $method->invoke($user)
         );
     }
@@ -85,7 +85,7 @@ class UserTest extends TestCase
         ]);
 
         $this->assertEquals(
-            'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF',
+            'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF&size=64',
             $user->profile_photo_url
         );
     }

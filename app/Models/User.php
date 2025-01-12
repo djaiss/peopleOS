@@ -134,7 +134,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the default profile photo URL if no profile photo has been uploaded.
      */
-    protected function defaultProfilePhotoUrl(): string
+    protected function defaultProfilePhotoUrl(int $size = 64): string
     {
         // Get first letter of each word in the name and join them with spaces
         $nameArray = explode(' ', $this->name);
@@ -144,6 +144,6 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
+        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
     }
 }

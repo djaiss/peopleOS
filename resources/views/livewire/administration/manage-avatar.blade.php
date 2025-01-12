@@ -22,11 +22,11 @@
     }"
     class="relative"
     :style="`height: ${containerHeight}px`">
-    <div class="relative w-full" :class="{ 'rotate-y-180': isFlipped }" style="transform-style: preserve-3d; transition: transform 0.6s">
+    <div class="relative w-full" :class="{ '[transform:rotateY(-180deg)]': isFlipped }" style="transform-style: preserve-3d; transition: transform 0.3s">
       <!-- Front face -->
-      <div x-ref="frontFace" class="backface-hidden absolute w-full border border-gray-200 bg-white sm:rounded-lg">
+      <div x-ref="frontFace" class="absolute w-full border border-gray-200 bg-white [backface-visibility:hidden] sm:rounded-lg">
         <div class="grid grid-cols-3 items-center rounded-t-lg p-3 last:rounded-b-lg hover:bg-blue-50">
-          <img class="col-span-2 h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ $avatarUrl }}" alt="{{ $user->name }}" wire:key="avatar-{{ $user->id }}" />
+          <img class="col-span-2 h-16 w-16 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ $avatarUrl }}" alt="{{ $user->name }}" wire:key="avatar-{{ $user->id }}" />
           <div class="justify-self-end">
             <x-button.invisible @click="isFlipped = true" class="text-sm">
               {{ __('Upload a new photo') }}
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Back face -->
-      <div x-cloak x-ref="backFace" class="rotate-y-180 backface-hidden absolute w-full border border-gray-200 bg-white sm:rounded-lg">
+      <div x-cloak x-ref="backFace" class="absolute w-full border border-gray-200 bg-white [backface-visibility:hidden] [transform:rotateY(-180deg)] sm:rounded-lg">
         <form wire:submit.prevent="store">
           <div class="flex flex-col justify-between">
             <div class="items-center rounded-t-lg p-3 hover:bg-blue-50">
