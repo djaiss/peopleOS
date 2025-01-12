@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Masmerise\Toaster\Toaster;
 
 class ManageAvatar extends Component
 {
@@ -47,6 +48,7 @@ class ManageAvatar extends Component
         // After successful upload
         $this->refreshAvatarUrl();
         $this->dispatch('avatar-updated');
+        Toaster::success(__('Changes saved'));
     }
 
     private function refreshAvatarUrl(): void
