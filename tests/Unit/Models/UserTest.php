@@ -67,7 +67,7 @@ class UserTest extends TestCase
         ]);
 
         // this is a protected method, so we need to use reflection to access it
-        $method = new ReflectionMethod($user, 'defaultProfilePhotoUrl');
+        $method = new ReflectionMethod($user, 'defaultAvatar');
         $method->setAccessible(true);
 
         $this->assertEquals(
@@ -86,7 +86,7 @@ class UserTest extends TestCase
 
         $this->assertEquals(
             'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF&size=64',
-            $user->profile_photo_url
+            $user->getAvatar(64)
         );
     }
 
@@ -99,7 +99,7 @@ class UserTest extends TestCase
 
         $this->assertEquals(
             '/storage/path/to/photo.jpg',
-            $user->profile_photo_url
+            $user->getAvatar(64)
         );
     }
 }

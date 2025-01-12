@@ -53,6 +53,6 @@ class ManageAvatar extends Component
 
     private function refreshAvatarUrl(): void
     {
-        $this->avatarUrl = $this->user->profile_photo_url;
+        $this->avatarUrl = $this->user->getAvatar(58);
     }
 }

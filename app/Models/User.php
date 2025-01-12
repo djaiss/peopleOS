@@ -121,20 +121,17 @@ class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
-    /**
-     * Get the URL to the user's profile photo.
-     */
-    protected function profilePhotoUrl(): Attribute
+    public function getAvatar(int $size = 64): string
     {
-        return Attribute::get(fn (): string => $this->profile_photo_path
+        return $this->profile_photo_path
             ? Storage::disk(config('filesystems.default'))->url($this->profile_photo_path)
-            : $this->defaultProfilePhotoUrl());
+            : $this->defaultAvatar($size);
     }
 
     /**
      * Get the default profile photo URL if no profile photo has been uploaded.
      */
-    protected function defaultProfilePhotoUrl(int $size = 64): string
+    protected function defaultAvatar(int $size = 64): string
     {
         // Get first letter of each word in the name and join them with spaces
         $nameArray = explode(' ', $this->name);

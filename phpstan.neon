@@ -11,7 +11,6 @@ parameters:
         - '#Access to an undefined property App\\Models\\Log::\$name\.#'
         - '#Access to an undefined property App\\Models\\Account::\$avatar\.#'
         - '#Property App\\Models\\User::\$last_activity_at \(string\|null\) does not accept Illuminate\\Support\\Carbon\.#'
-        - '#Access to an undefined property App\\Models\\User::\$profile_photo_url\.#'
         - '#Cannot call method format\(\) on string\.#'
 
     excludePaths:
