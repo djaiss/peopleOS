@@ -72,7 +72,7 @@ class UpdateUserInformation
             'last_name' => $this->lastName,
             'email' => $this->email,
             'nickname' => $this->nickname,
-            'borned_at' => $this->bornedAt,
+            'born_at' => $this->bornedAt,
         ]);
     }
 

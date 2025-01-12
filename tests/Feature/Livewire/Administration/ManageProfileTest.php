@@ -23,7 +23,7 @@ class ManageProfileTest extends TestCase
             'last_name' => 'Halpert',
             'nickname' => 'Big Tuna',
             'email' => 'jim.halpert@dundermifflin.com',
-            'borned_at' => '1979-10-01',
+            'born_at' => '1979-10-01',
         ]);
 
         $component = Livewire::actingAs($user)
@@ -35,7 +35,7 @@ class ManageProfileTest extends TestCase
             ->assertSet('last_name', 'Halpert')
             ->assertSet('nickname', 'Big Tuna')
             ->assertSet('email', 'jim.halpert@dundermifflin.com')
-            ->assertSet('borned_at', '10-01-1979');
+            ->assertSet('born_at', '10-01-1979');
     }
 
     #[Test]
@@ -46,7 +46,7 @@ class ManageProfileTest extends TestCase
             'last_name' => 'Schrute',
             'email' => 'dwight.schrute@dundermifflin.com',
             'nickname' => 'Assistant Regional Manager',
-            'borned_at' => '1970-01-20',
+            'born_at' => '1970-01-20',
         ]);
 
         $component = Livewire::actingAs($user)
@@ -55,7 +55,7 @@ class ManageProfileTest extends TestCase
             ->set('last_name', 'Scott')
             ->set('email', 'michael.scott@dundermifflin.com')
             ->set('nickname', 'World\'s Best Boss')
-            ->set('borned_at', '03/15/1965')
+            ->set('born_at', '03/15/1965')
             ->call('update');
 
         $component->assertHasNoErrors();
@@ -66,7 +66,7 @@ class ManageProfileTest extends TestCase
             'last_name' => 'Scott',
             'email' => 'michael.scott@dundermifflin.com',
             'nickname' => 'World\'s Best Boss',
-            'borned_at' => '1965-03-15 00:00:00',
+            'born_at' => '1965-03-15 00:00:00',
         ]);
     }
 

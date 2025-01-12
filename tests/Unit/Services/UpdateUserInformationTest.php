@@ -80,14 +80,14 @@ class UpdateUserInformationTest extends TestCase
         Queue::fake();
 
         $user = User::factory()->create([
-            'borned_at' => null,
+            'born_at' => null,
         ]);
 
         $this->executeService($user, 'michael@dundermifflin.com', '03/15/1985');
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'borned_at' => '1985-03-15 00:00:00',
+            'born_at' => '1985-03-15 00:00:00',
         ]);
     }
 

@@ -21,7 +21,7 @@ class ManageProfile extends Component
 
     public string $email = '';
 
-    public ?string $borned_at = '';
+    public ?string $born_at = '';
 
     public function mount(): void
     {
@@ -30,7 +30,7 @@ class ManageProfile extends Component
         $this->last_name = $user->last_name;
         $this->nickname = $user->nickname;
         $this->email = $user->email;
-        $this->borned_at = $user->borned_at?->format('m-d-Y');
+        $this->born_at = $user->born_at?->format('m-d-Y');
     }
 
     public function render()
@@ -60,7 +60,7 @@ class ManageProfile extends Component
             'last_name' => ['required', 'string', 'max:255'],
             'nickname' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore(Auth::user()->id)],
-            'borned_at' => ['nullable', 'date'],
+            'born_at' => ['nullable', 'date'],
         ]);
 
         (new UpdateUserInformation(
@@ -69,7 +69,7 @@ class ManageProfile extends Component
             firstName: $this->first_name,
             lastName: $this->last_name,
             nickname: $this->nickname,
-            bornedAt: $this->borned_at,
+            bornedAt: $this->born_at,
         ))->execute();
 
         Toaster::success(__('Changes saved'));

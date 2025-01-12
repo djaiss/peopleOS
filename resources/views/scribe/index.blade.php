@@ -240,7 +240,7 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;last_name&quot;: &quot;Schrute&quot;,
     &quot;nickname&quot;: &quot;Dwight&quot;,
     &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;,
-    &quot;borned_at&quot;: &quot;1985-03-15&quot;
+    &quot;born_at&quot;: &quot;1985-03-15&quot;
 }</code>
  </pre>
         </span>
@@ -333,7 +333,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The email of the user.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>borned_at</code></b>
+          <b style="line-height: 2"><code>born_at</code></b>
           &nbsp;&nbsp;
           <small>string</small>
           &nbsp; &nbsp;
@@ -361,7 +361,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"last_name\": \"Schrute\",
     \"email\": \"dwight.schrute@dundermifflin.com\",
     \"nickname\": \"Dwight\",
-    \"borned_at\": \"1985-03-15\"
+    \"born_at\": \"1985-03-15\"
 }"
 </code></pre>
           </div>
@@ -381,7 +381,7 @@ let body = {
     "last_name": "Schrute",
     "email": "dwight.schrute@dundermifflin.com",
     "nickname": "Dwight",
-    "borned_at": "1985-03-15"
+    "born_at": "1985-03-15"
 };
 
 fetch(url, {
@@ -406,7 +406,7 @@ $response = $client-&gt;put(
             'last_name' =&gt; 'Schrute',
             'email' =&gt; 'dwight.schrute@dundermifflin.com',
             'nickname' =&gt; 'Dwight',
-            'borned_at' =&gt; '1985-03-15',
+            'born_at' =&gt; '1985-03-15',
         ],
     ]
 );
@@ -427,7 +427,7 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;last_name&quot;: &quot;Schrute&quot;,
     &quot;nickname&quot;: &quot;Dwight&quot;,
     &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;,
-    &quot;borned_at&quot;: &quot;1985-03-15&quot;
+    &quot;born_at&quot;: &quot;1985-03-15&quot;
 }</code>
  </pre>
         </span>
@@ -527,13 +527,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>borned_at</code></b>
+            <b style="line-height: 2"><code>born_at</code></b>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp;
             <i>optional</i>
             &nbsp;
-            <input type="text" style="display: none" name="borned_at" data-endpoint="PUTapi-me" value="1985-03-15" data-component="body" />
+            <input type="text" style="display: none" name="born_at" data-endpoint="PUTapi-me" value="1985-03-15" data-component="body" />
             <br />
             <p>
               The birth date of the user. Format: YYYY-MM-DD. Example:
@@ -585,7 +585,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The nickname of the user.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>borned_at</code></b>
+          <b style="line-height: 2"><code>born_at</code></b>
           &nbsp;&nbsp;
           <small>string</small>
           &nbsp; &nbsp;
@@ -2077,7 +2077,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/teams/qui" \
+    "http://organizationos.test/api/teams/expedita" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2088,7 +2088,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/qui"
+    "http://organizationos.test/api/teams/expedita"
 );
 
 const headers = {
@@ -2109,7 +2109,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/qui';
+$url = 'http://organizationos.test/api/teams/expedita';
 $response = $client-&gt;put(
     $url,
     [
@@ -2192,11 +2192,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="qui" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="expedita" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>qui</code>
+              <code>expedita</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2267,14 +2267,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/teams/natus" \
+    "http://organizationos.test/api/teams/omnis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/natus"
+    "http://organizationos.test/api/teams/omnis"
 );
 
 const headers = {
@@ -2290,7 +2290,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/natus';
+$url = 'http://organizationos.test/api/teams/omnis';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2366,11 +2366,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="natus" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="omnis" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>natus</code>
+              <code>omnis</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

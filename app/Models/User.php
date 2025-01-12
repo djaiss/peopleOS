@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'status',
         'invited_at',
         'invitation_accepted_at',
-        'borned_at',
+        'born_at',
     ];
 
     /**
@@ -75,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'last_activity_at' => 'datetime',
             'invited_at' => 'datetime',
             'invitation_accepted_at' => 'datetime',
-            'borned_at' => 'date',
+            'born_at' => 'date',
         ];
     }
 
