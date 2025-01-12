@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Administration\Users;
 
 use App\Models\User;
+use App\Services\UpdateProfilePicture;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -38,10 +39,10 @@ class ManageAvatar extends Component
             'photo' => 'image|max:2000',
         ]);
 
-        $path = $this->photo->storePublicly(path: 'photos');
-        $this->user->update([
-            'profile_photo_path' => $path,
-        ]);
+        (new UpdateProfilePicture(
+            user: $this->user,
+            photo: $this->photo,
+        ))->execute();
 
         // After successful upload
         $this->refreshAvatarUrl();
