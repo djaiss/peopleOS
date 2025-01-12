@@ -40,8 +40,8 @@
   </div>
 
   <!-- birthdate -->
-  <div class="grid grid-cols-3 items-center p-3 hover:bg-blue-50">
-    <x-input-label for="nickname" :value="__('Nickname')" class="col-span-2" />
+  <div class="grid grid-cols-3 items-center p-3 last:rounded-b-lg hover:bg-blue-50">
+    <x-input-label for="born_at" :value="__('Birthdate')" class="col-span-2" />
     <div class="w-full justify-self-end">
       <x-text-input x-mask="99/99/9999" placeholder="MM/DD/YYYY" class="block w-full" id="born_at" name="born_at" wire:model="born_at" type="text" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
       <x-input-error class="mt-2" :messages="$errors->get('born_at')" />

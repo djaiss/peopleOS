@@ -1,5 +1,5 @@
 <div wire:click="toggle" x-data="{
-  switchOn: {{ $user->does_display_full_names ? 'true' : 'false' }},
+  switchOn: {{ $user->does_display_age ? 'true' : 'false' }},
 }" class="flex items-center justify-center space-x-2">
   <input type="checkbox" name="switch" class="hidden" :checked="switchOn" />
 

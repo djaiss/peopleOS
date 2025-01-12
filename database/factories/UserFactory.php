@@ -40,6 +40,7 @@ class UserFactory extends Factory
             'last_activity_at' => null,
             'permission' => Permission::MEMBER->value,
             'born_at' => null,
+            'does_display_age' => false,
         ];
     }
 

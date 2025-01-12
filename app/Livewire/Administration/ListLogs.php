@@ -44,6 +44,7 @@ class ListLogs extends Component
 
     #[On('avatar-updated')]
     #[On('display-names-updated')]
+    #[On('birthdate-updated')]
     #[On('profile-updated')]
     public function getLogs(): void
     {

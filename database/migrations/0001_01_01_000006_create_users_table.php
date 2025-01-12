@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('locale')->default('en');
             $table->string('permission')->default(Permission::MEMBER->value);
             $table->boolean('does_display_full_names')->default(true);
+            $table->boolean('does_display_age')->default(false);
             $table->string('timezone')->nullable();
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();
