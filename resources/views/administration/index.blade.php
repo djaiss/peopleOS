@@ -23,14 +23,6 @@
           @csrf
           @method('PUT')
 
-          <!-- profile photo -->
-          <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
-            <x-input-label for="profile_photo_path" :value="__('Profile photo')" class="col-span-2" />
-            <div class="justify-self-end">
-              <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}" />
-            </div>
-          </div>
-
           <!-- first name -->
           <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
             <x-input-label for="first_name" :value="__('First name')" class="col-span-2" />
@@ -81,6 +73,12 @@
             </x-button.primary>
           </div>
         </form>
+
+        <!-- Profile photo -->
+        <h2 class="font-semi-bold mb-1 text-lg">{{ __('Profile photo') }}</h2>
+        <p class="mb-4 text-sm text-zinc-500">{{ __('You can upload a profile photo to use as your avatar, or use the default avatar.') }}</p>
+
+        <livewire:administration.users.manage-avatar />
 
         <!-- Preferences -->
         <h2 class="font-semi-bold mb-4 text-lg">

@@ -140,7 +140,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 11, 2025</li>
+        <li>Last updated: January 12, 2025</li>
       </ul>
     </div>
 
@@ -2042,7 +2042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/teams/dolorum" \
+    "http://organizationos.test/api/teams/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2053,7 +2053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/dolorum"
+    "http://organizationos.test/api/teams/quia"
 );
 
 const headers = {
@@ -2074,7 +2074,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/dolorum';
+$url = 'http://organizationos.test/api/teams/quia';
 $response = $client-&gt;put(
     $url,
     [
@@ -2157,11 +2157,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="dolorum" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="quia" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>dolorum</code>
+              <code>quia</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2232,14 +2232,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/teams/cum" \
+    "http://organizationos.test/api/teams/architecto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/cum"
+    "http://organizationos.test/api/teams/architecto"
 );
 
 const headers = {
@@ -2255,7 +2255,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/cum';
+$url = 'http://organizationos.test/api/teams/architecto';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2331,11 +2331,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="cum" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="architecto" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>cum</code>
+              <code>architecto</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
