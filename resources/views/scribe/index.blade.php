@@ -239,7 +239,8 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;first_name&quot;: &quot;Dwight&quot;,
     &quot;last_name&quot;: &quot;Schrute&quot;,
     &quot;nickname&quot;: &quot;Dwight&quot;,
-    &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;
+    &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;,
+    &quot;borned_at&quot;: &quot;1985-03-15&quot;
 }</code>
  </pre>
         </span>
@@ -331,6 +332,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The email of the user.</p>
         </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>borned_at</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The birth date of the user. Format: YYYY-MM-DD</p>
+        </div>
         <h2 id="administration-PUTapi-me">Update your profile.</h2>
 
         <p></p>
@@ -351,7 +360,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"first_name\": \"Dwight\",
     \"last_name\": \"Schrute\",
     \"email\": \"dwight.schrute@dundermifflin.com\",
-    \"nickname\": \"Dwight\"
+    \"nickname\": \"Dwight\",
+    \"borned_at\": \"1985-03-15\"
 }"
 </code></pre>
           </div>
@@ -370,7 +380,8 @@ let body = {
     "first_name": "Dwight",
     "last_name": "Schrute",
     "email": "dwight.schrute@dundermifflin.com",
-    "nickname": "Dwight"
+    "nickname": "Dwight",
+    "borned_at": "1985-03-15"
 };
 
 fetch(url, {
@@ -395,6 +406,7 @@ $response = $client-&gt;put(
             'last_name' =&gt; 'Schrute',
             'email' =&gt; 'dwight.schrute@dundermifflin.com',
             'nickname' =&gt; 'Dwight',
+            'borned_at' =&gt; '1985-03-15',
         ],
     ]
 );
@@ -414,7 +426,8 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;first_name&quot;: &quot;Dwight&quot;,
     &quot;last_name&quot;: &quot;Schrute&quot;,
     &quot;nickname&quot;: &quot;Dwight&quot;,
-    &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;
+    &quot;email&quot;: &quot;dwight.schrute@dundermifflin.com&quot;,
+    &quot;borned_at&quot;: &quot;1985-03-15&quot;
 }</code>
  </pre>
         </span>
@@ -513,6 +526,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
               <code>Dwight</code>
             </p>
           </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>borned_at</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="borned_at" data-endpoint="PUTapi-me" value="1985-03-15" data-component="body" />
+            <br />
+            <p>
+              The birth date of the user. Format: YYYY-MM-DD. Example:
+              <code>1985-03-15</code>
+            </p>
+          </div>
         </form>
 
         <h3>Response</h3>
@@ -556,6 +583,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
           &nbsp; &nbsp;
           <br />
           <p>The nickname of the user.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>borned_at</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The birth date of the user. Format: YYYY-MM-DD</p>
         </div>
         <h2 id="administration-account-management">Account management</h2>
         <h2 id="administration-GETapi-account">Get the information about the account of the logged user.</h2>
@@ -1039,7 +1074,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/administration/offices/7" \
+    "http://organizationos.test/api/administration/offices/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1050,7 +1085,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices/7"
+    "http://organizationos.test/api/administration/offices/1"
 );
 
 const headers = {
@@ -1071,7 +1106,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices/7';
+$url = 'http://organizationos.test/api/administration/offices/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -1154,11 +1189,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="7" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="1" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>7</code>
+              <code>1</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1241,14 +1276,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/administration/offices/7" \
+    "http://organizationos.test/api/administration/offices/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices/7"
+    "http://organizationos.test/api/administration/offices/1"
 );
 
 const headers = {
@@ -1264,7 +1299,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices/7';
+$url = 'http://organizationos.test/api/administration/offices/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1340,11 +1375,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="7" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="1" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>7</code>
+              <code>1</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2232,14 +2267,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/teams/molestiae" \
+    "http://organizationos.test/api/teams/natus" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/molestiae"
+    "http://organizationos.test/api/teams/natus"
 );
 
 const headers = {
@@ -2255,7 +2290,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/molestiae';
+$url = 'http://organizationos.test/api/teams/natus';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2331,11 +2366,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="molestiae" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="natus" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>molestiae</code>
+              <code>natus</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

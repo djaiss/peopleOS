@@ -12,6 +12,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Queue;
+use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -73,7 +74,46 @@ class UpdateUserInformationTest extends TestCase
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
 
-    private function executeService(User $user, string $email = 'dwight@dundermifflin.com'): void
+    #[Test]
+    public function it_updates_user_birth_date(): void
+    {
+        Queue::fake();
+
+        $user = User::factory()->create([
+            'borned_at' => null,
+        ]);
+
+        $this->executeService($user, 'michael@dundermifflin.com', '03/15/1985');
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'borned_at' => '1985-03-15 00:00:00',
+        ]);
+    }
+
+    #[Test]
+    public function it_fails_if_birth_date_is_in_the_future(): void
+    {
+        $user = User::factory()->create();
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Birth date cannot be in the future');
+
+        $this->executeService($user, 'michael@dundermifflin.com', '03/15/2025');
+    }
+
+    #[Test]
+    public function it_fails_if_birth_date_format_is_invalid(): void
+    {
+        $user = User::factory()->create();
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Birth date must be in MM/DD/YYYY format');
+
+        $this->executeService($user, 'michael@dundermifflin.com', '2025-03-15');
+    }
+
+    private function executeService(User $user, string $email = 'dwight@dundermifflin.com', ?string $bornedAt = null): void
     {
         $updatedUser = (new UpdateUserInformation(
             user: $user,
@@ -81,6 +121,7 @@ class UpdateUserInformationTest extends TestCase
             firstName: 'Dwight',
             lastName: 'Schrute',
             nickname: 'Dwig',
+            bornedAt: $bornedAt,
         ))->execute();
 
         $this->assertDatabaseHas('users', [

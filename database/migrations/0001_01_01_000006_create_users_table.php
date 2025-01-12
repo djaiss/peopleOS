@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->datetime('invited_at')->nullable();
             $table->datetime('invitation_accepted_at')->nullable();
+            $table->date('borned_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');

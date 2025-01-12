@@ -39,6 +39,7 @@ class UserFactory extends Factory
             'profile_photo_path' => null,
             'last_activity_at' => null,
             'permission' => Permission::MEMBER->value,
+            'borned_at' => null,
         ];
     }
 

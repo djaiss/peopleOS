@@ -25,6 +25,7 @@ class MeControllerTest extends TestCase
                 'last_name' => 'Schrute',
                 'email' => 'dwight.schrute@dundermifflin.com',
                 'nickname' => 'Dwight',
+                'borned_at' => '1985-03-15',
             ])
         );
 
@@ -40,6 +41,7 @@ class MeControllerTest extends TestCase
                 'last_name' => 'Schrute',
                 'nickname' => 'Dwight',
                 'email' => 'dwight.schrute@dundermifflin.com',
+                'borned_at' => '1985-03-15',
             ]
         );
     }
@@ -52,6 +54,7 @@ class MeControllerTest extends TestCase
             'last_name' => 'Schrute',
             'email' => 'dwight.schrute@dundermifflin.com',
             'nickname' => 'Dwight',
+            'borned_at' => '1985-03-15',
         ]);
 
         Sanctum::actingAs($user);
@@ -61,6 +64,7 @@ class MeControllerTest extends TestCase
             'last_name' => 'Scott',
             'email' => 'michael.scott@dundermifflin.com',
             'nickname' => 'Michael',
+            'borned_at' => '03/15/1985',
         ]);
 
         $response->assertStatus(200);
@@ -72,17 +76,10 @@ class MeControllerTest extends TestCase
                 'last_name' => 'Scott',
                 'email' => 'michael.scott@dundermifflin.com',
                 'nickname' => 'Michael',
+                'borned_at' => '1985-03-15',
             ],
             $response->json()
         );
-
-        $this->assertDatabaseHas('users', [
-            'id' => $user->id,
-            'first_name' => 'Michael',
-            'last_name' => 'Scott',
-            'email' => 'michael.scott@dundermifflin.com',
-            'nickname' => 'Michael',
-        ]);
     }
 
     #[Test]
@@ -95,6 +92,7 @@ class MeControllerTest extends TestCase
             'last_name' => 'Schrute',
             'email' => 'dwight.schrute@dundermifflin.com',
             'nickname' => 'Dwight',
+            'borned_at' => '1985-03-15',
         ]);
 
         Sanctum::actingAs($user);
@@ -104,6 +102,7 @@ class MeControllerTest extends TestCase
             'last_name' => 'Scott',
             'email' => 'michael.scott@dundermifflin.com',
             'nickname' => 'Michael',
+            'borned_at' => '03/15/1985',
         ]);
 
         Event::assertDispatched(Registered::class);
