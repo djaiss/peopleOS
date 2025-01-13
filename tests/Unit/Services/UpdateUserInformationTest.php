@@ -126,11 +126,12 @@ class UpdateUserInformationTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $updatedUser->id,
-            'first_name' => 'Dwight',
-            'last_name' => 'Schrute',
-            'nickname' => 'Dwig',
             'email' => $email,
         ]);
+
+        $this->assertEquals('Dwight', $updatedUser->first_name);
+        $this->assertEquals('Schrute', $updatedUser->last_name);
+        $this->assertEquals('Dwig', $updatedUser->nickname);
 
         $this->assertInstanceOf(
             User::class,

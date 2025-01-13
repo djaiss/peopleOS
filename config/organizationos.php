@@ -20,7 +20,6 @@ return [
         'display_age_toggle' => 'Toggle display of age',
         'api_key_creation' => 'API key creation',
         'api_key_deletion' => 'API key deletion',
-        'account_update' => 'Update on the organization account',
         'user_invitation' => 'User invitation',
         'user_invitation_resend' => 'User invitation resend',
         'office_creation' => 'Office creation',

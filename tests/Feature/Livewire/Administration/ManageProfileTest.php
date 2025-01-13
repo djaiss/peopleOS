@@ -62,12 +62,14 @@ class ManageProfileTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'first_name' => 'Michael',
-            'last_name' => 'Scott',
             'email' => 'michael.scott@dundermifflin.com',
-            'nickname' => 'World\'s Best Boss',
             'born_at' => '1965-03-15 00:00:00',
         ]);
+
+        $this->assertEquals('Michael', $user->first_name);
+        $this->assertEquals('Scott', $user->last_name);
+        $this->assertEquals("World's Best Boss", $user->nickname);
+        $this->assertEquals('1965-03-15 00:00:00', $user->born_at);
     }
 
     #[Test]
