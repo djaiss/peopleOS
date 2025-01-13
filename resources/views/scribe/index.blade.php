@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>OrganizationOS Documentation</title>
+    <title>Laravel Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 
@@ -74,17 +74,6 @@
             <li class="tocify-item level-2" data-unique="administration-PUTapi-me">
               <a href="#administration-PUTapi-me">Update your profile.</a>
             </li>
-            <li class="tocify-item level-2" data-unique="administration-account-management">
-              <a href="#administration-account-management">Account management</a>
-            </li>
-            <ul id="tocify-subheader-administration-account-management" class="tocify-subheader">
-              <li class="tocify-item level-3" data-unique="administration-GETapi-account">
-                <a href="#administration-GETapi-account">Get the information about the account of the logged user.</a>
-              </li>
-              <li class="tocify-item level-3" data-unique="administration-PUTapi-account">
-                <a href="#administration-PUTapi-account">Update the account information.</a>
-              </li>
-            </ul>
             <li class="tocify-item level-2" data-unique="administration-manage-offices">
               <a href="#administration-manage-offices">Manage offices</a>
             </li>
@@ -140,7 +129,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 12, 2025</li>
+        <li>Last updated: January 13, 2025</li>
       </ul>
     </div>
 
@@ -151,7 +140,7 @@
         <aside>
           <strong>Base URL</strong>
           :
-          <code>http://organizationos.test</code>
+          <code>http://localhost</code>
         </aside>
         <p>This documentation aims to provide all the information you need to work with our API.</p>
         <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile). You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
@@ -190,14 +179,14 @@
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://organizationos.test/api/me" \
+    --get "http://localhost/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/me"
+    "http://localhost/api/me"
 );
 
 const headers = {
@@ -213,7 +202,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/me';
+$url = 'http://localhost/api/me';
 $response = $client-&gt;get(
     $url,
     [
@@ -353,7 +342,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/me" \
+    "http://localhost/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -368,7 +357,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/me"
+    "http://localhost/api/me"
 );
 
 const headers = {
@@ -393,7 +382,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/me';
+$url = 'http://localhost/api/me';
 $response = $client-&gt;put(
     $url,
     [
@@ -592,298 +581,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The birth date of the user. Format: YYYY-MM-DD</p>
         </div>
-        <h2 id="administration-account-management">Account management</h2>
-        <h2 id="administration-GETapi-account">Get the information about the account of the logged user.</h2>
-
-        <p></p>
-
-        <span id="example-requests-GETapi-account">
-          <blockquote>Example request:</blockquote>
-
-          <div class="bash-example">
-            <pre><code class="language-bash">curl --request GET \
-    --get "http://organizationos.test/api/account" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
-          </div>
-
-          <div class="javascript-example">
-            <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/account"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-          </div>
-
-          <div class="php-example">
-            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/account';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre>
-          </div>
-        </span>
-
-        <span id="example-responses-GETapi-account">
-          <blockquote>
-            <p>Example response (200):</p>
-          </blockquote>
-          <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 4,
-    &quot;object&quot;: &quot;account&quot;,
-    &quot;name&quot;: &quot;Dunder Mifflin Paper Company&quot;
-}</code>
- </pre>
-        </span>
-        <span id="execution-results-GETapi-account" hidden>
-          <blockquote>
-            Received response
-            <span id="execution-response-status-GETapi-account"></span>
-            :
-          </blockquote>
-          <pre class="json"><code id="execution-response-content-GETapi-account"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-        </span>
-        <span id="execution-error-GETapi-account" hidden>
-          <blockquote>Request failed with error:</blockquote>
-          <pre><code id="execution-error-message-GETapi-account">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-        </span>
-        <form id="form-GETapi-account" data-method="GET" data-path="api/account" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-account', this);">
-          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
-          <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/account</code></b>
-          </p>
-          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-          <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>Content-Type</code></b>
-            &nbsp;&nbsp; &nbsp; &nbsp;
-            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-account" value="application/json" data-component="header" />
-            <br />
-            <p>
-              Example:
-              <code>application/json</code>
-            </p>
-          </div>
-          <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>Accept</code></b>
-            &nbsp;&nbsp; &nbsp; &nbsp;
-            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-account" value="application/json" data-component="header" />
-            <br />
-            <p>
-              Example:
-              <code>application/json</code>
-            </p>
-          </div>
-        </form>
-
-        <h3>Response</h3>
-        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>id</code></b>
-          &nbsp;&nbsp;
-          <small>integer</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The ID of the account.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>object</code></b>
-          &nbsp;&nbsp;
-          <small>string</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The type of the object. Always &quot;account&quot;.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>name</code></b>
-          &nbsp;&nbsp;
-          <small>string</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The name of the account.</p>
-        </div>
-        <h2 id="administration-PUTapi-account">Update the account information.</h2>
-
-        <p></p>
-
-        <p>This lets you update the account information. Only administrators can change these fields.</p>
-
-        <span id="example-requests-PUTapi-account">
-          <blockquote>Example request:</blockquote>
-
-          <div class="bash-example">
-            <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/account" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"Dunder Mifflin Paper Company\"
-}"
-</code></pre>
-          </div>
-
-          <div class="javascript-example">
-            <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/account"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "Dunder Mifflin Paper Company"
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre>
-          </div>
-
-          <div class="php-example">
-            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/account';
-$response = $client-&gt;put(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'name' =&gt; 'Dunder Mifflin Paper Company',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre>
-          </div>
-        </span>
-
-        <span id="example-responses-PUTapi-account">
-          <blockquote>
-            <p>Example response (200):</p>
-          </blockquote>
-          <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 4,
-    &quot;object&quot;: &quot;account&quot;,
-    &quot;name&quot;: &quot;Dunder Mifflin Paper Company&quot;
-}</code>
- </pre>
-        </span>
-        <span id="execution-results-PUTapi-account" hidden>
-          <blockquote>
-            Received response
-            <span id="execution-response-status-PUTapi-account"></span>
-            :
-          </blockquote>
-          <pre class="json"><code id="execution-response-content-PUTapi-account"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-        </span>
-        <span id="execution-error-PUTapi-account" hidden>
-          <blockquote>Request failed with error:</blockquote>
-          <pre><code id="execution-error-message-PUTapi-account">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-        </span>
-        <form id="form-PUTapi-account" data-method="PUT" data-path="api/account" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-account', this);">
-          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
-          <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/account</code></b>
-          </p>
-          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-          <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>Content-Type</code></b>
-            &nbsp;&nbsp; &nbsp; &nbsp;
-            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-account" value="application/json" data-component="header" />
-            <br />
-            <p>
-              Example:
-              <code>application/json</code>
-            </p>
-          </div>
-          <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>Accept</code></b>
-            &nbsp;&nbsp; &nbsp; &nbsp;
-            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-account" value="application/json" data-component="header" />
-            <br />
-            <p>
-              Example:
-              <code>application/json</code>
-            </p>
-          </div>
-          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-          <div style="padding-left: 28px; clear: unset">
-            <b style="line-height: 2"><code>name</code></b>
-            &nbsp;&nbsp;
-            <small>string</small>
-            &nbsp; &nbsp;
-            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-account" value="Dunder Mifflin Paper Company" data-component="body" />
-            <br />
-            <p>
-              The name of the account. Max 255 characters. Example:
-              <code>Dunder Mifflin Paper Company</code>
-            </p>
-          </div>
-        </form>
-
-        <h3>Response</h3>
-        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>id</code></b>
-          &nbsp;&nbsp;
-          <small>integer</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The ID of the user.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>object</code></b>
-          &nbsp;&nbsp;
-          <small>string</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The type of the object. Always &quot;account&quot;.</p>
-        </div>
-        <div style="padding-left: 28px; clear: unset">
-          <b style="line-height: 2"><code>name</code></b>
-          &nbsp;&nbsp;
-          <small>string</small>
-          &nbsp; &nbsp;
-          <br />
-          <p>The name of the account.</p>
-        </div>
         <h2 id="administration-manage-offices">Manage offices</h2>
         <h2 id="administration-POSTapi-administration-offices">Create an office.</h2>
 
@@ -897,7 +594,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://organizationos.test/api/administration/offices" \
+    "http://localhost/api/administration/offices" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -908,7 +605,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices"
+    "http://localhost/api/administration/offices"
 );
 
 const headers = {
@@ -929,7 +626,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices';
+$url = 'http://localhost/api/administration/offices';
 $response = $client-&gt;post(
     $url,
     [
@@ -1074,7 +771,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/administration/offices/1" \
+    "http://localhost/api/administration/offices/20" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1085,7 +782,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices/1"
+    "http://localhost/api/administration/offices/20"
 );
 
 const headers = {
@@ -1106,7 +803,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices/1';
+$url = 'http://localhost/api/administration/offices/20';
 $response = $client-&gt;put(
     $url,
     [
@@ -1189,11 +886,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="1" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="20" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>1</code>
+              <code>20</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1276,14 +973,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/administration/offices/1" \
+    "http://localhost/api/administration/offices/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices/1"
+    "http://localhost/api/administration/offices/17"
 );
 
 const headers = {
@@ -1299,7 +996,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices/1';
+$url = 'http://localhost/api/administration/offices/17';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1375,11 +1072,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="1" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="17" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>1</code>
+              <code>17</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1408,14 +1105,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "http://organizationos.test/api/administration/offices" \
+    --get "http://localhost/api/administration/offices" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/offices"
+    "http://localhost/api/administration/offices"
 );
 
 const headers = {
@@ -1431,7 +1128,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/offices';
+$url = 'http://localhost/api/administration/offices';
 $response = $client-&gt;get(
     $url,
     [
@@ -1591,7 +1288,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://organizationos.test/api/administration/users" \
+    "http://localhost/api/administration/users" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1602,7 +1299,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/users"
+    "http://localhost/api/administration/users"
 );
 
 const headers = {
@@ -1623,7 +1320,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/users';
+$url = 'http://localhost/api/administration/users';
 $response = $client-&gt;post(
     $url,
     [
@@ -1751,14 +1448,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/administration/users/1/invite" \
+    "http://localhost/api/administration/users/1/invite" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/administration/users/1/invite"
+    "http://localhost/api/administration/users/1/invite"
 );
 
 const headers = {
@@ -1774,7 +1471,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/administration/users/1/invite';
+$url = 'http://localhost/api/administration/users/1/invite';
 $response = $client-&gt;put(
     $url,
     [
@@ -1900,7 +1597,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request POST \
-    "http://organizationos.test/api/teams" \
+    "http://localhost/api/teams" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1911,7 +1608,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams"
+    "http://localhost/api/teams"
 );
 
 const headers = {
@@ -1932,7 +1629,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams';
+$url = 'http://localhost/api/teams';
 $response = $client-&gt;post(
     $url,
     [
@@ -2077,7 +1774,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "http://organizationos.test/api/teams/qui" \
+    "http://localhost/api/teams/et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2088,7 +1785,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/qui"
+    "http://localhost/api/teams/et"
 );
 
 const headers = {
@@ -2109,7 +1806,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/qui';
+$url = 'http://localhost/api/teams/et';
 $response = $client-&gt;put(
     $url,
     [
@@ -2192,11 +1889,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="qui" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="et" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>qui</code>
+              <code>et</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2267,14 +1964,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "http://organizationos.test/api/teams/molestiae" \
+    "http://localhost/api/teams/esse" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "http://organizationos.test/api/teams/molestiae"
+    "http://localhost/api/teams/esse"
 );
 
 const headers = {
@@ -2290,7 +1987,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://organizationos.test/api/teams/molestiae';
+$url = 'http://localhost/api/teams/esse';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2366,11 +2063,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="molestiae" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="esse" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>molestiae</code>
+              <code>esse</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

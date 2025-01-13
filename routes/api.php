@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Api\Administration\AccountController;
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
 use App\Http\Controllers\Api\Administration\AdministrationOfficeController;
 use App\Http\Controllers\Api\Administration\AdministrationUserController;
@@ -24,9 +23,7 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     });
 
     // account information
-    Route::get('account', [AccountController::class, 'show'])->name('account');
     Route::middleware(['administrator'])->group(function (): void {
-        Route::put('account', [AccountController::class, 'update'])->name('account.update');
 
         // offices
         Route::post('administration/offices', [AdministrationOfficeController::class, 'store'])->name('offices.store');
