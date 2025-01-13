@@ -41,6 +41,7 @@ class UserFactory extends Factory
             'permission' => Permission::MEMBER->value,
             'born_at' => null,
             'does_display_age' => false,
+            'has_paid' => false,
         ];
     }
 

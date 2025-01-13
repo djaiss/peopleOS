@@ -16,7 +16,6 @@ return [
 
     'enable_paid_version' => env('ENABLE_PAID_VERSION', false),
 
-
     /*
     |--------------------------------------------------------------------------
     | Possible actions

@@ -7,7 +7,6 @@ use App\Http\Controllers\Administration\AdministrationOfficeController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationUserController;
 use App\Http\Controllers\UpgradeAccountController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'account_id',
+        'has_paid',
         'first_name',
         'last_name',
         'nickname',
@@ -68,6 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function casts(): array
     {
         return [
+            'has_paid' => 'boolean',
             'first_name' => 'encrypted',
             'last_name' => 'encrypted',
             'nickname' => 'encrypted',

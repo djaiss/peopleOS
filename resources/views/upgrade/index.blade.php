@@ -10,8 +10,6 @@
     @include('administration.partials.sidebar')
 
     <!-- main content -->
-    <div class="relative bg-gray-50 px-6 pt-8 lg:px-12">
-      {{ Auth::user() }} you need to upgrade your account
-    </div>
+    <div class="relative bg-gray-50 px-6 pt-8 lg:px-12">{{ Auth::user() }} you need to upgrade your account</div>
   </div>
 </x-app-layout>

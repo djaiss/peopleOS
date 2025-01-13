@@ -29,12 +29,11 @@ class Account extends Model
      * @return array<string, string>
      */
     protected function casts(): array
-{
+    {
         return [
             'has_lifetime_access' => 'boolean',
         ];
     }
-
 
     /**
      * Get the logs associated with the account.
