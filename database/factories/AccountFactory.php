@@ -21,6 +21,8 @@ class AccountFactory extends Factory
      */
     public function definition()
     {
-        return [];
+        return [
+            'has_lifetime_access' => false,
+        ];
     }
 }

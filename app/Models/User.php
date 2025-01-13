@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'account_id',
+        'has_paid',
         'first_name',
         'last_name',
         'nickname',
@@ -68,6 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function casts(): array
     {
         return [
+            'has_paid' => 'boolean',
             'first_name' => 'encrypted',
             'last_name' => 'encrypted',
             'nickname' => 'encrypted',
@@ -144,5 +146,15 @@ class User extends Authenticatable implements MustVerifyEmail
         $name = mb_trim(implode(' ', $initials));
 
         return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
+    }
+
+    /**
+     * Check if the user needs to pay to continue using the app.
+     */
+    public function needsToPay(): bool
+    {
+        return config('peopleos.enable_paid_version')
+            && ! $this->has_paid
+            && $this->created_at->diffInDays(now()) > 30;
     }
 }
