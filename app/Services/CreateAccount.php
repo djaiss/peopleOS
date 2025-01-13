@@ -9,7 +9,6 @@ use App\Enums\UserStatus;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Account;
-use App\Models\Office;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +24,6 @@ class CreateAccount
         public string $password,
         public string $firstName,
         public string $lastName,
-        public string $organizationName,
     ) {}
 
     /**
@@ -33,12 +31,9 @@ class CreateAccount
      */
     public function execute(): User
     {
-        $this->account = Account::create([
-            'name' => $this->organizationName,
-        ]);
+        $this->account = Account::create();
 
         $this->addFirstUser();
-        $this->addFirstOffice();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -57,14 +52,6 @@ class CreateAccount
             'permission' => Permission::ADMINISTRATOR->value,
             'status' => UserStatus::ACTIVE->value,
             'timezone' => 'UTC',
-        ]);
-    }
-
-    private function addFirstOffice(): void
-    {
-        Office::create([
-            'account_id' => $this->account->id,
-            'name' => 'Main Office',
         ]);
     }
 

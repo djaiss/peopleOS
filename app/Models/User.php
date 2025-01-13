@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -69,6 +68,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function casts(): array
     {
         return [
+            'first_name' => 'encrypted',
+            'last_name' => 'encrypted',
+            'nickname' => 'encrypted',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'does_display_full_names' => 'boolean',
@@ -111,9 +113,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: function ($value, $attributes): string {
-                $firstName = Arr::get($attributes, 'first_name');
-                $lastName = Arr::get($attributes, 'last_name');
+            get: function (mixed $value, array $attributes): string {
+                $firstName = $this->first_name;
+                $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';
 
                 return $firstName.$separator.$lastName;

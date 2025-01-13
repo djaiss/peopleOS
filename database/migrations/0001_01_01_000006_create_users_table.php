@@ -17,9 +17,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('nickname')->nullable();
+            $table->text('first_name')->nullable();
+            $table->text('last_name')->nullable();
+            $table->text('nickname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();

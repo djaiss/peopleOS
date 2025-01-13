@@ -21,8 +21,6 @@ class AccountFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'name' => fake()->company(),
-        ];
+        return [];
     }
 }

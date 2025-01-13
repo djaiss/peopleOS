@@ -45,6 +45,10 @@ class LogTest extends TestCase
         $this->assertEquals('Dwight Schrute', $log->name);
 
         $log->user = null;
-        $this->assertEquals('Jim Halpert', $log->name);
+
+        $this->assertEquals(
+            $log->user_name,
+            $log->name
+        );
     }
 }

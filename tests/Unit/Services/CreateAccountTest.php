@@ -34,29 +34,23 @@ class CreateAccountTest extends TestCase
             password: 'johnny',
             firstName: 'Dwight',
             lastName: 'Schrute',
-            organizationName: 'Dunder Mifflin',
         ))->execute();
 
         $this->assertDatabaseHas('accounts', [
             'id' => $user->account->id,
-            'name' => 'Dunder Mifflin',
         ]);
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'account_id' => $user->account_id,
-            'first_name' => 'Dwight',
-            'last_name' => 'Schrute',
             'email' => 'dwight@dundermifflin.com',
             'permission' => Permission::ADMINISTRATOR->value,
             'status' => UserStatus::ACTIVE->value,
             'timezone' => 'UTC',
         ]);
 
-        $this->assertDatabaseHas('offices', [
-            'account_id' => $user->account_id,
-            'name' => 'Main Office',
-        ]);
+        $this->assertEquals('Dwight', $user->first_name);
+        $this->assertEquals('Schrute', $user->last_name);
 
         $this->assertInstanceOf(
             User::class,

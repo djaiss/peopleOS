@@ -1,10 +1,12 @@
 {
-  "name": "djaiss/organizationos",
+  "name": "djaiss/peopleos",
   "type": "project",
-  "description": "An open source application to manage remote organizations.",
+  "description": "An open source personal CRM.",
   "keywords": [
     "laravel",
-    "framework"
+    "framework",
+    "crm",
+    "personal"
   ],
   "license": "MIT",
   "require": {
@@ -62,23 +64,23 @@
       "@php artisan migrate --graceful --ansi"
     ],
     "test": [
-      "@organizationos:rector",
-      "@organizationos:unit",
-      "@organizationos:static"
+      "@peopleos:rector",
+      "@peopleos:unit",
+      "@peopleos:static"
     ],
     "precommit": [
       "@test",
-      "@organizationos:lint",
-      "@organizationos:docs",
-      "@organizationos:prettier"
+      "@peopleos:lint",
+      "@peopleos:docs",
+      "@peopleos:prettier"
     ],
-    "organizationos:docs": "php artisan scribe:generate",
-    "organizationos:lint": "./vendor/bin/pint",
-    "organizationos:prettier": "npx prettier --write resources/",
-    "organizationos:rector": "./vendor/bin/rector",
-    "organizationos:static": "./vendor/bin/phpstan analyse --memory-limit=256M",
-    "organizationos:unit": "rm -f database/test.sqlite_test* && php artisan migrate:fresh --database=testing && php artisan test --parallel --processes=4",
-    "organizationos:update": "composer update && bun update && bun upgrade"
+    "peopleos:docs": "php artisan scribe:generate",
+    "peopleos:lint": "./vendor/bin/pint",
+    "peopleos:prettier": "npx prettier --write resources/",
+    "peopleos:rector": "./vendor/bin/rector",
+    "peopleos:static": "./vendor/bin/phpstan analyse --memory-limit=256M",
+    "peopleos:unit": "rm -f database/test.sqlite_test* && php artisan migrate:fresh --database=testing && php artisan test --parallel --processes=4",
+    "peopleos:update": "composer update && bun update && bun upgrade"
   },
   "extra": {
     "laravel": {

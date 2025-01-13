@@ -44,7 +44,7 @@ class AdministrationOfficeControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/administration/account');
+            ->get('/administration/offices');
 
         $response->assertStatus(403);
 

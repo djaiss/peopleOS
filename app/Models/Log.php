@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Arr;
 
 class Log extends Model
 {
@@ -28,6 +27,20 @@ class Log extends Model
         'action',
         'description',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'user_name' => 'encrypted',
+            'action' => 'encrypted',
+            'description' => 'encrypted',
+        ];
+    }
 
     /**
      * Get the account associated with the log.
@@ -57,7 +70,7 @@ class Log extends Model
             get: function ($value, $attributes): string {
                 $user = $this->user;
 
-                return $user ? $user->name : Arr::get($attributes, 'user_name');
+                return $user ? $user->name : $this->user_name;
             }
         );
     }
