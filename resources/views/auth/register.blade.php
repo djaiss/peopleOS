@@ -1,7 +1,7 @@
 <x-guest-layout>
   <div class="mb-12 mt-6 w-full overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-900">
     <div class="px-6 pt-6">
-      <p class="mb-2 text-lg font-bold">{{ __('Sign up for an account for your organization') }}</p>
+      <p class="mb-2 text-lg font-bold">{{ __('Sign up for an account') }}</p>
       <p class="text-sm text-gray-500">{{ __('You will be the administrator of this account.') }}</p>
     </div>
 
@@ -35,7 +35,7 @@
       <div class="flex gap-4">
         <div class="mb-4">
           <x-input-label for="password" :value="__('Password')" />
-          <x-text-input id="password" class="block w-full" type="password" name="password" required autocomplete="password" />
+          <x-text-input id="password" class="block w-full" type="password" name="password" required autocomplete="password" passwordrules="minlength: 20; required: lower; required: upper; required: digit; required: [-];" />
           <x-input-error :messages="$errors->get('password')" class="mt-2" />
           <x-help>{{ __('Mininum 3 characters.') }}</x-help>
         </div>
@@ -46,12 +46,6 @@
           <x-text-input id="password_confirmation" class="block w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
           <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-      </div>
-
-      <div class="mb-4">
-        <x-input-label for="organization_name" :value="__('Organization name')" />
-        <x-text-input id="organization_name" class="block w-full" type="text" name="organization_name" required />
-        <x-input-error :messages="$errors->get('organization_name')" class="mt-2" />
       </div>
 
       <div class="flex items-center">

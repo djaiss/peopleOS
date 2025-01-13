@@ -30,6 +30,20 @@ class Log extends Model
     ];
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'user_name' => 'encrypted',
+            'action' => 'encrypted',
+            'description' => 'encrypted',
+        ];
+    }
+
+    /**
      * Get the account associated with the log.
      */
     public function account(): BelongsTo

@@ -34,12 +34,10 @@ class CreateAccountTest extends TestCase
             password: 'johnny',
             firstName: 'Dwight',
             lastName: 'Schrute',
-            organizationName: 'Dunder Mifflin',
         ))->execute();
 
         $this->assertDatabaseHas('accounts', [
             'id' => $user->account->id,
-            'name' => 'Dunder Mifflin',
         ]);
 
         $this->assertDatabaseHas('users', [
@@ -51,11 +49,6 @@ class CreateAccountTest extends TestCase
             'permission' => Permission::ADMINISTRATOR->value,
             'status' => UserStatus::ACTIVE->value,
             'timezone' => 'UTC',
-        ]);
-
-        $this->assertDatabaseHas('offices', [
-            'account_id' => $user->account_id,
-            'name' => 'Main Office',
         ]);
 
         $this->assertInstanceOf(
