@@ -145,4 +145,14 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
     }
+
+    /**
+     * Check if the user needs to pay to continue using the app.
+     */
+    public function needsToPay(): bool
+    {
+        return config('peopleos.enable_paid_version')
+            && ! $this->has_paid
+            && $this->created_at->diffInDays(now()) > 30;
+    }
 }

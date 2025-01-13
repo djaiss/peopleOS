@@ -102,4 +102,40 @@ class UserTest extends TestCase
             $user->getAvatar(64)
         );
     }
+
+    #[Test]
+    public function it_checks_if_the_user_needs_to_pay(): void
+    {
+        config(['peopleos.enable_paid_version' => true]);
+        $user = User::factory()->create([
+            'has_paid' => false,
+            'created_at' => now()->subDays(31),
+        ]);
+        $this->assertTrue($user->needsToPay());
+
+        $user = User::factory()->create([
+            'has_paid' => false,
+            'created_at' => now()->subDays(29),
+        ]);
+        $this->assertFalse($user->needsToPay());
+
+        $user = User::factory()->create([
+            'has_paid' => true,
+            'created_at' => now()->subDays(31),
+        ]);
+        $this->assertFalse($user->needsToPay());
+
+        config(['peopleos.enable_paid_version' => false]);
+        $user = User::factory()->create([
+            'has_paid' => false,
+            'created_at' => now()->subDays(31),
+        ]);
+        $this->assertFalse($user->needsToPay());
+
+        $user = User::factory()->create([
+            'has_paid' => false,
+            'created_at' => now()->subDays(29),
+        ]);
+        $this->assertFalse($user->needsToPay());
+    }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->boolean('has_paid')->default(false);
             $table->text('first_name')->nullable();
             $table->text('last_name')->nullable();
             $table->text('nickname')->nullable();

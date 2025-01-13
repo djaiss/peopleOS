@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table): void {
             $table->id();
+            $table->boolean('has_lifetime_access')->default(false);
             $table->timestamps();
         });
     }

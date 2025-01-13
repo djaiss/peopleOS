@@ -1,9 +1,26 @@
 <div class="w-full">
   <!-- main nav -->
   <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-gray-200 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
-    <div class="relative items-center text-sm sm:flex">
-      <x-lucide-search class="pointer-events-none absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-      <x-text-input type="text" placeholder="{{ __('Search') }}" class="w-30 border border-gray-300 bg-gray-100 py-1 pl-8 pr-3 text-sm focus:bg-white" />
+    <div class="flex items-center gap-x-5">
+      <!-- search -->
+      <div class="relative items-center text-sm sm:flex">
+        <x-lucide-search class="pointer-events-none absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+        <x-text-input type="text" placeholder="{{ __('Search') }}" class="w-30 border border-gray-300 bg-gray-100 py-1 pl-8 pr-3 text-sm focus:bg-white" />
+      </div>
+
+      <!-- upgrade -->
+      @if (! Auth::user()->has_paid && config('peopleos.enable_paid_version'))
+      <div class="flex items-center gap-x-2">
+        <div class="rounded-md border border-yellow-300 bg-yellow-50 px-3 py-1">
+          <p class="text-sm text-yellow-800">
+            {{ max(0, round(30 - Auth::user()->created_at->diffInDays(now()))) }} days left in your trial
+          </p>
+        </div>
+        <a href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
+          {{ __('Upgrade') }}
+        </a>
+      </div>
+      @endif
     </div>
 
     <div class="relative ms-3 flex items-center gap-x-3">

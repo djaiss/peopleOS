@@ -19,7 +19,22 @@ class Account extends Model
      *
      * @var array<int,string>
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'has_lifetime_access',
+    ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+{
+        return [
+            'has_lifetime_access' => 'boolean',
+        ];
+    }
+
 
     /**
      * Get the logs associated with the account.
