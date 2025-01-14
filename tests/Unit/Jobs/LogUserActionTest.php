@@ -19,8 +19,8 @@ class LogUserActionTest extends TestCase
     public function it_logs_user_action(): void
     {
         $user = User::factory()->create([
-            'first_name' => 'Dwight',
-            'last_name' => 'Schrute',
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
         ]);
 
         LogUserAction::dispatch(
@@ -31,7 +31,7 @@ class LogUserActionTest extends TestCase
 
         $log = Log::first();
 
-        $this->assertEquals('Dwight Schrute', $log->user_name);
+        $this->assertEquals('Ross Geller', $log->user_name);
         $this->assertEquals('personal_profile_update', $log->action);
         $this->assertEquals('Updated their personal profile', $log->description);
     }

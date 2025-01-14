@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Enums\Permission;
 use App\Enums\UserStatus;
 use App\Jobs\LogUserAction;
+use App\Jobs\SetupAccount;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Account;
 use App\Models\User;
@@ -34,6 +34,7 @@ class CreateAccount
         $this->account = Account::create();
 
         $this->addFirstUser();
+        $this->populateAccount();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -49,10 +50,14 @@ class CreateAccount
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'locale' => App::getLocale(),
-            'permission' => Permission::ADMINISTRATOR->value,
             'status' => UserStatus::ACTIVE->value,
             'timezone' => 'UTC',
         ]);
+    }
+
+    private function populateAccount(): void
+    {
+        SetupAccount::dispatch($this->user);
     }
 
     private function updateUserLastActivityDate(): void

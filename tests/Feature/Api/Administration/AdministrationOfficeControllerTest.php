@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api\Administration;
 
-use App\Enums\Permission;
 use App\Models\Office;
 use App\Models\User;
 use Carbon\Carbon;
@@ -18,12 +17,10 @@ class AdministrationOfficeControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function administrator_can_create_an_office(): void
+    public function user_can_create_an_office(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
         Sanctum::actingAs($user);
 
         $response = $this->json('POST', '/api/administration/offices', [
@@ -50,12 +47,10 @@ class AdministrationOfficeControllerTest extends TestCase
     }
 
     #[Test]
-    public function administrator_can_update_an_office(): void
+    public function user_can_update_an_office(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
             'name' => 'Scranton Branch',
@@ -87,11 +82,9 @@ class AdministrationOfficeControllerTest extends TestCase
     }
 
     #[Test]
-    public function administrator_can_delete_an_office(): void
+    public function user_can_delete_an_office(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
         ]);
@@ -118,9 +111,7 @@ class AdministrationOfficeControllerTest extends TestCase
     public function it_lists_all_the_offices(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
         Office::factory()->create([
             'account_id' => $user->account_id,
             'name' => 'New York Branch',

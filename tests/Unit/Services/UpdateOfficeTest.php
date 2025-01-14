@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\Permission;
-use App\Exceptions\PermissionException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Office;
@@ -25,9 +23,7 @@ class UpdateOfficeTest extends TestCase
     {
         Queue::fake();
 
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
@@ -60,47 +56,5 @@ class UpdateOfficeTest extends TestCase
                 && $job->user->id === $user->id
                 && $job->description === 'Updated the office called Stamford Branch';
         });
-    }
-
-    #[Test]
-    public function hr_representative_cannot_update_an_office(): void
-    {
-        Queue::fake();
-
-        $user = User::factory()->create([
-            'permission' => Permission::HR->value,
-        ]);
-
-        $office = Office::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        $this->expectException(PermissionException::class);
-
-        (new UpdateOffice(
-            user: $user,
-            office: $office,
-            name: 'Stamford Branch',
-        ))->execute();
-    }
-
-    #[Test]
-    public function regular_member_cannot_update_an_office(): void
-    {
-        $user = User::factory()->create([
-            'permission' => Permission::MEMBER->value,
-        ]);
-
-        $office = Office::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        $this->expectException(PermissionException::class);
-
-        (new UpdateOffice(
-            user: $user,
-            office: $office,
-            name: 'Stamford Branch',
-        ))->execute();
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Livewire\Administration\Security;
 
-use App\Enums\Permission;
 use App\Livewire\Administration\Offices\ManageOffices;
 use App\Models\Office;
 use App\Models\User;
@@ -20,9 +19,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function the_component_renders(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(ManageOffices::class);
@@ -33,9 +30,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_can_toggle_add_mode(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(ManageOffices::class);
@@ -50,9 +45,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_can_create_an_office(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(ManageOffices::class);
@@ -71,9 +64,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_validates_name_when_creating_office(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(ManageOffices::class);
@@ -94,9 +85,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_can_toggle_edit_mode(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
@@ -118,9 +107,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_can_update_an_office(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
@@ -146,9 +133,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_validates_name_when_updating_office(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
@@ -175,9 +160,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_can_reset_edit_mode(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
@@ -199,9 +182,7 @@ class ManageOfficesTest extends TestCase
     #[Test]
     public function it_can_delete_an_office(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,

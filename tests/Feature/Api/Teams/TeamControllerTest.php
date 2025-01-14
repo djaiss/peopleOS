@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api\Teams;
 
-use App\Enums\Permission;
 use App\Models\Team;
 use App\Models\User;
 use Carbon\Carbon;
@@ -18,12 +17,10 @@ class TeamControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function administrator_can_create_a_team(): void
+    public function user_can_create_a_team(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         Sanctum::actingAs($user);
 
@@ -53,43 +50,9 @@ class TeamControllerTest extends TestCase
     }
 
     #[Test]
-    public function hr_representative_can_create_a_team(): void
-    {
-        $user = User::factory()->create([
-            'permission' => Permission::HR->value,
-        ]);
-
-        Sanctum::actingAs($user);
-
-        $response = $this->json('POST', '/api/teams', [
-            'name' => 'Web developers',
-        ]);
-
-        $response->assertStatus(201);
-    }
-
-    #[Test]
-    public function regular_member_can_create_a_team(): void
-    {
-        $user = User::factory()->create([
-            'permission' => Permission::MEMBER->value,
-        ]);
-
-        Sanctum::actingAs($user);
-
-        $response = $this->json('POST', '/api/teams', [
-            'name' => 'Web developers',
-        ]);
-
-        $response->assertStatus(201);
-    }
-
-    #[Test]
     public function it_validates_team_name_when_creating(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         Sanctum::actingAs($user);
 
@@ -112,9 +75,7 @@ class TeamControllerTest extends TestCase
     public function it_updates_a_team(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $team = Team::factory()->create([
             'account_id' => $user->account_id,
@@ -191,9 +152,7 @@ class TeamControllerTest extends TestCase
     #[Test]
     public function administrator_can_destroy_a_team(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $team = Team::factory()->create([
             'account_id' => $user->account_id,

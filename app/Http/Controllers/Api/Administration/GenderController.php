@@ -25,17 +25,51 @@ class GenderController extends Controller
      *
      * Returns a list of genders in the account, ordered by position.
      *
-     * @response 200 {
-     *  "data": [
-     *   {
-     *    "id": 1,
-     *    "object": "gender",
-     *    "name": "Male",
-     *    "position": 1,
-     *    "created_at": "1679090539"
-     *   }
-     *  ]
-     * }
+     * @response 200 {"data": [{
+     *  "id": 1,
+     *  "object": "gender",
+     *  "name": "Male",
+     *  "position": 1,
+     *  "created_at": 1514764800,
+     * }, {
+     *  "id": 2,
+     *  "object": "gender",
+     *  "name": "Female",
+     *  "position": 2,
+     *  "created_at": 1514764800,
+     * }],
+     * "links": {
+     *   "first": "http://peopleos.test/api/administration/genders?page=1",
+     *   "last": "http://peopleos.test/api/administration/genders?page=1",
+     *   "prev": null,
+     *   "next": null
+     *  },
+     *  "meta": {
+     *    "current_page": 1,
+     *    "from": 1,
+     *    "last_page": 1,
+     *    "links": [
+     *      {
+     *        "url": null,
+     *        "label": "&laquo; Previous",
+     *        "active": false
+     *      },
+     *      {
+     *        "url": "http://peopleos.test/api/administration/genders?page=1",
+     *        "label": "1",
+     *        "active": true
+     *      },
+     *      {
+     *        "url": null,
+     *        "label": "Next &raquo;",
+     *        "active": false
+     *      }
+     *    ],
+     *    "path": "http://peopleos.test/api/administration/genders",
+     *    "per_page": 15,
+     *    "to": 1,
+     *    "total": 1
+     *  }
      *
      * @responseField id The ID of the gender
      * @responseField object The type of the object. Always "gender"

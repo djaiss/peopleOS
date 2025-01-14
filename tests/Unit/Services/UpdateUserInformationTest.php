@@ -26,9 +26,9 @@ class UpdateUserInformationTest extends TestCase
         Queue::fake();
 
         $user = User::factory()->create([
-            'first_name' => 'Michael',
-            'last_name' => 'Scott',
-            'email' => 'michael@dundermifflin.com',
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
+            'email' => 'ross.geller@friends.com',
         ]);
 
         $this->executeService($user);
@@ -48,11 +48,11 @@ class UpdateUserInformationTest extends TestCase
         Event::fake();
 
         $user = User::factory()->create([
-            'email' => 'michael@dundermifflin.com',
+            'email' => 'ross.geller@friends.com',
             'email_verified_at' => now(),
         ]);
 
-        $this->executeService($user, 'dwight@dundermifflin.com');
+        $this->executeService($user, 'monica.geller@friends.com');
 
         Event::assertDispatched(Registered::class);
         $this->assertNull($user->refresh()->email_verified_at);
@@ -64,11 +64,11 @@ class UpdateUserInformationTest extends TestCase
         Event::fake();
 
         $user = User::factory()->create([
-            'email' => 'michael@dundermifflin.com',
+            'email' => 'ross.geller@friends.com',
             'email_verified_at' => now(),
         ]);
 
-        $this->executeService($user, 'michael@dundermifflin.com');
+        $this->executeService($user, 'ross.geller@friends.com');
 
         Event::assertNotDispatched(Registered::class);
         $this->assertNotNull($user->refresh()->email_verified_at);
@@ -83,7 +83,7 @@ class UpdateUserInformationTest extends TestCase
             'born_at' => null,
         ]);
 
-        $this->executeService($user, 'michael@dundermifflin.com', '03/15/1985');
+        $this->executeService($user, 'ross.geller@friends.com', '03/15/1985');
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
@@ -99,7 +99,7 @@ class UpdateUserInformationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Birth date cannot be in the future');
 
-        $this->executeService($user, 'michael@dundermifflin.com', '03/15/2025');
+        $this->executeService($user, 'ross.geller@friends.com', '03/15/2025');
     }
 
     #[Test]
@@ -110,7 +110,7 @@ class UpdateUserInformationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Birth date must be in MM/DD/YYYY format');
 
-        $this->executeService($user, 'michael@dundermifflin.com', '2025-03-15');
+        $this->executeService($user, 'ross.geller@friends.com', '2025-03-15');
     }
 
     private function executeService(User $user, string $email = 'dwight@dundermifflin.com', ?string $bornedAt = null): void
@@ -118,9 +118,9 @@ class UpdateUserInformationTest extends TestCase
         $updatedUser = (new UpdateUserInformation(
             user: $user,
             email: $email,
-            firstName: 'Dwight',
-            lastName: 'Schrute',
-            nickname: 'Dwig',
+            firstName: 'Ross',
+            lastName: 'Geller',
+            nickname: 'Ross',
             bornedAt: $bornedAt,
         ))->execute();
 
@@ -129,9 +129,9 @@ class UpdateUserInformationTest extends TestCase
             'email' => $email,
         ]);
 
-        $this->assertEquals('Dwight', $updatedUser->first_name);
-        $this->assertEquals('Schrute', $updatedUser->last_name);
-        $this->assertEquals('Dwig', $updatedUser->nickname);
+        $this->assertEquals('Ross', $updatedUser->first_name);
+        $this->assertEquals('Geller', $updatedUser->last_name);
+        $this->assertEquals('Ross', $updatedUser->nickname);
 
         $this->assertInstanceOf(
             User::class,

@@ -29,7 +29,7 @@ class AdministrationInviteUserAgainController extends Controller
      * @response 200 {
      *  "id": 4,
      *  "object": "user",
-     *  "email": "dwight.schrute@dundermifflin.com"
+     *  "email": "ross.geller@friends.com"
      * }
      *
      * @responseField id The ID of the user.

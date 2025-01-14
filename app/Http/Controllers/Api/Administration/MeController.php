@@ -25,10 +25,10 @@ class MeController extends Controller
      *
      * @response 200 {
      *  "id": 4,
-     *  "first_name": "Dwight",
-     *  "last_name": "Schrute",
-     *  "nickname": "Dwight",
-     *  "email": "dwight.schrute@dundermifflin.com",
+     *  "first_name": "Ross",
+     *  "last_name": "Geller",
+     *  "nickname": "Ross",
+     *  "email": "ross.geller@friends.com",
      *  "born_at": "1985-03-15"
      * }
      *
@@ -72,10 +72,10 @@ class MeController extends Controller
      *
      * @response 200 {
      *  "id": 4,
-     *  "first_name": "Dwight",
-     *  "last_name": "Schrute",
-     *  "nickname": "Dwight",
-     *  "email": "dwight.schrute@dundermifflin.com",
+     *  "first_name": "Ross",
+     *  "last_name": "Geller",
+     *  "nickname": "Ross",
+     *  "email": "ross.geller@friends.com",
      *  "born_at": "1985-03-15"
      * }
      *

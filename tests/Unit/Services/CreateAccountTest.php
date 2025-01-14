@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\Permission;
 use App\Enums\UserStatus;
 use App\Jobs\LogUserAction;
+use App\Jobs\SetupAccount;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use App\Services\CreateAccount;
@@ -30,10 +30,10 @@ class CreateAccountTest extends TestCase
         Queue::fake();
 
         $user = (new CreateAccount(
-            email: 'dwight@dundermifflin.com',
+            email: 'ross.geller@friends.com',
             password: 'johnny',
-            firstName: 'Dwight',
-            lastName: 'Schrute',
+            firstName: 'Ross',
+            lastName: 'Geller',
         ))->execute();
 
         $this->assertDatabaseHas('accounts', [
@@ -43,19 +43,20 @@ class CreateAccountTest extends TestCase
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'account_id' => $user->account_id,
-            'email' => 'dwight@dundermifflin.com',
-            'permission' => Permission::ADMINISTRATOR->value,
+            'email' => 'ross.geller@friends.com',
             'status' => UserStatus::ACTIVE->value,
             'timezone' => 'UTC',
         ]);
 
-        $this->assertEquals('Dwight', $user->first_name);
-        $this->assertEquals('Schrute', $user->last_name);
+        $this->assertEquals('Ross', $user->first_name);
+        $this->assertEquals('Geller', $user->last_name);
 
         $this->assertInstanceOf(
             User::class,
             $user
         );
+
+        Queue::assertPushed(SetupAccount::class, fn($job) => $job->user->id === $user->id);
 
         Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
             return $job->user->id === $user->id;

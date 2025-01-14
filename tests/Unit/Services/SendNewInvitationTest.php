@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\Permission;
-use App\Exceptions\PermissionException;
 use App\Exceptions\UserAlreadyJoindedException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
@@ -13,6 +11,7 @@ use App\Mail\UserInvited;
 use App\Models\User;
 use App\Services\SendNewInvitation;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
@@ -30,12 +29,10 @@ class SendNewInvitationTest extends TestCase
         Queue::fake();
         Mail::fake();
 
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $invitedUser = User::factory()->create([
-            'email' => 'dwight@dundermifflin.com',
+            'email' => 'ross.geller@friends.com',
             'account_id' => $user->account_id,
         ]);
 
@@ -45,7 +42,7 @@ class SendNewInvitationTest extends TestCase
         ))->execute();
 
         $this->assertDatabaseHas('users', [
-            'email' => 'dwight@dundermifflin.com',
+            'email' => 'ross.geller@friends.com',
             'account_id' => $user->account_id,
             'invited_at' => '2018-01-01 00:00:00',
         ]);
@@ -62,41 +59,20 @@ class SendNewInvitationTest extends TestCase
         Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
             return $job->action === 'user_invitation_resend'
                 && $job->user->id === $user->id
-                && $job->description === 'Resent invitation to dwight@dundermifflin.com';
+                && $job->description === 'Resent invitation to ross.geller@friends.com';
         });
 
         Mail::assertQueued(UserInvited::class);
     }
 
     #[Test]
-    public function it_fails_if_user_is_not_administrator_or_hr(): void
-    {
-        $user = User::factory()->create([
-            'permission' => Permission::MEMBER->value,
-        ]);
-
-        $invitedUser = User::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        $this->expectException(PermissionException::class);
-
-        (new SendNewInvitation(
-            user: $user,
-            invitedUser: $invitedUser,
-        ))->execute();
-    }
-
-    #[Test]
     public function it_fails_if_invited_user_is_not_in_the_same_account(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $invitedUser = User::factory()->create();
 
-        $this->expectException(PermissionException::class);
+        $this->expectException(ModelNotFoundException::class);
 
         (new SendNewInvitation(
             user: $user,
@@ -107,9 +83,7 @@ class SendNewInvitationTest extends TestCase
     #[Test]
     public function it_fails_if_invited_user_has_already_accepted_the_invitation(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $invitedUser = User::factory()->create([
             'account_id' => $user->account_id,
