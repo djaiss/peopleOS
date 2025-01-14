@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\Permission;
-use App\Exceptions\PermissionException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Office;
 use App\Models\User;
 use App\Services\DestroyOffice;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
@@ -25,9 +24,7 @@ class DestroyOfficeTest extends TestCase
     {
         Queue::fake();
 
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = Office::factory()->create([
             'account_id' => $user->account_id,
@@ -55,38 +52,13 @@ class DestroyOfficeTest extends TestCase
     }
 
     #[Test]
-    public function hr_representative_cannot_destroy_an_office(): void
+    public function it_cant_destroy_an_office_that_is_not_in_the_user_s_account(): void
     {
-        Queue::fake();
+        $user = User::factory()->create();
 
-        $user = User::factory()->create([
-            'permission' => Permission::HR->value,
-        ]);
+        $office = Office::factory()->create();
 
-        $office = Office::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        $this->expectException(PermissionException::class);
-
-        (new DestroyOffice(
-            user: $user,
-            office: $office,
-        ))->execute();
-    }
-
-    #[Test]
-    public function regular_member_cannot_destroy_an_office(): void
-    {
-        $user = User::factory()->create([
-            'permission' => Permission::MEMBER->value,
-        ]);
-
-        $office = Office::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        $this->expectException(PermissionException::class);
+        $this->expectException(ModelNotFoundException::class);
 
         (new DestroyOffice(
             user: $user,

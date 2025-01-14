@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Livewire\Administration\Users;
 
-use App\Enums\Permission;
 use App\Livewire\Administration\Users\InviteUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,9 +20,7 @@ class InviteUserTest extends TestCase
     #[Test]
     public function the_component_renders(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(InviteUser::class);
@@ -37,9 +34,7 @@ class InviteUserTest extends TestCase
         Queue::fake();
         Mail::fake();
 
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(InviteUser::class)
@@ -53,35 +48,14 @@ class InviteUserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'email' => 'jim.halpert@dundermifflin.com',
-            'permission' => Permission::MEMBER->value,
             'account_id' => $user->account_id,
         ]);
     }
 
     #[Test]
-    public function hr_representative_can_invite_users(): void
-    {
-        Queue::fake();
-        Mail::fake();
-
-        $user = User::factory()->create([
-            'permission' => Permission::HR->value,
-        ]);
-
-        $component = Livewire::actingAs($user)
-            ->test(InviteUser::class)
-            ->set('email', 'jim.halpert@dundermifflin.com')
-            ->call('store');
-
-        $component->assertHasNoErrors();
-    }
-
-    #[Test]
     public function it_validates_email(): void
     {
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $component = Livewire::actingAs($user)
             ->test(InviteUser::class);

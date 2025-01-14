@@ -1,9 +1,3 @@
-<?php
-/**
- * @var array $user
- */
-?>
-
 <x-app-layout>
   <div class="grid h-[calc(100vh-48px)] grid-cols-1 lg:grid-cols-[240px,1fr]">
     <!-- sidebar -->
@@ -41,7 +35,7 @@
             </div>
 
             <div class="justify-self-end">
-              <livewire:administration.toggle-display-names :user-id="$user['id']" />
+              {{-- <livewire:administration.toggle-display-names :user-id="$user['id']" /> --}}
             </div>
           </div>
 

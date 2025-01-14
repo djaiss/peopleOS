@@ -27,15 +27,8 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
     Route::put('administration', [AdministrationController::class, 'update'])->name('administration.update');
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');
 
-    Route::middleware(['administrator'])->group(function (): void {
-        // offices
-        Route::get('administration/offices', [AdministrationOfficeController::class, 'index'])->name('administration.offices.index');
-    });
-
-    Route::middleware(['administrator_or_hr'])->group(function (): void {
-        Route::get('administration/users', [AdministrationUserController::class, 'index'])->name('administration.users.index');
-
-    });
+    Route::get('administration/offices', [AdministrationOfficeController::class, 'index'])->name('administration.offices.index');
+    Route::get('administration/users', [AdministrationUserController::class, 'index'])->name('administration.users.index');
 });
 
 require __DIR__.'/auth.php';

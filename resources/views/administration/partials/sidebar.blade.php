@@ -41,39 +41,32 @@
       </div>
 
       <!-- administration -->
-      @if ($user['permission'] === 'administrator' || $user['permission'] === 'human_resource_representative')
-        <div class="flex flex-col gap-0.5">
-          <span class="tpx-2 py-1.5 text-xs font-semibold text-zinc-950/40 dark:text-white/40">
-            {{ __('Administration') }}
-          </span>
+      <div class="flex flex-col gap-0.5">
+        <span class="tpx-2 py-1.5 text-xs font-semibold text-zinc-950/40 dark:text-white/40">
+          {{ __('Administration') }}
+        </span>
 
-          @if ($user['permission'] === 'administrator' || $user['permission'] === 'human_resource_representative')
-            <a wire:navigate href="{{ route('administration.users.index') }}">
-              <div class="{{ request()->routeIs('administration.users.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
-                <div class="flex items-center gap-2">
-                  <x-lucide-user-round-plus class="size-4 min-w-3" />
-                  <span>
-                    {{ __('Users') }}
-                  </span>
-                </div>
-              </div>
-            </a>
-          @endif
-
-          @if ($user['permission'] === 'administrator' || $user['permission'] === 'human_resource_representative')
-            <a wire:navigate href="{{ route('administration.offices.index') }}">
-              <div class="{{ request()->routeIs('administration.offices.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
-                <div class="flex items-center gap-2">
-                  <x-lucide-building class="size-4 min-w-3" />
-                  <span>
-                    {{ __('Offices') }}
-                  </span>
-                </div>
-              </div>
-            </a>
-          @endif
-        </div>
-      @endif
+        <a wire:navigate href="{{ route('administration.users.index') }}">
+          <div class="{{ request()->routeIs('administration.users.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
+            <div class="flex items-center gap-2">
+              <x-lucide-user-round-plus class="size-4 min-w-3" />
+              <span>
+                {{ __('Users') }}
+              </span>
+            </div>
+          </div>
+        </a>
+        <a wire:navigate href="{{ route('administration.offices.index') }}">
+          <div class="{{ request()->routeIs('administration.offices.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
+            <div class="flex items-center gap-2">
+              <x-lucide-building class="size-4 min-w-3" />
+              <span>
+                {{ __('Offices') }}
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>

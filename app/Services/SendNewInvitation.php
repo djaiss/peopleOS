@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Enums\Permission;
-use App\Exceptions\PermissionException;
 use App\Exceptions\UserAlreadyJoindedException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Mail\UserInvited;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 
@@ -23,8 +22,6 @@ class SendNewInvitation
 
     /**
      * Send a new invitation to a user to the account who is not yet registered.
-     * The user needs to be either an administrator or an HR
-     * representative to send a new invitation to a user.
      * If the user has already accepted the invitation, we can't send a new
      * invitation.
      */
@@ -40,15 +37,8 @@ class SendNewInvitation
 
     private function validate(): void
     {
-        if (! in_array($this->user->permission, [
-            Permission::ADMINISTRATOR->value,
-            Permission::HR->value,
-        ])) {
-            throw new PermissionException();
-        }
-
         if ($this->invitedUser->account_id !== $this->user->account_id) {
-            throw new PermissionException();
+            throw new ModelNotFoundException();
         }
 
         if ($this->invitedUser->invitation_accepted_at) {

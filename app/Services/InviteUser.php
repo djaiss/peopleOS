@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Enums\Permission;
 use App\Enums\UserStatus;
-use App\Exceptions\PermissionException;
 use App\Exceptions\UserAlreadyExistsException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
@@ -28,8 +26,6 @@ class InviteUser
      * Invite a user to the account.
      * We can't invite a user to the account if the email address is already in
      * use.
-     * The user needs to have to be either an administrator or an HR
-     * representative to invite a user to the account.
      */
     public function execute(): User
     {
@@ -44,13 +40,6 @@ class InviteUser
 
     private function validate(): void
     {
-        if (! in_array($this->user->permission, [
-            Permission::ADMINISTRATOR->value,
-            Permission::HR->value,
-        ])) {
-            throw new PermissionException();
-        }
-
         if (User::where('email', $this->email)->exists()) {
             throw new UserAlreadyExistsException();
         }
@@ -61,7 +50,6 @@ class InviteUser
         $this->invitedUser = User::create([
             'email' => $this->email,
             'invited_at' => now(),
-            'permission' => Permission::MEMBER->value,
             'account_id' => $this->user->account_id,
             'status' => UserStatus::INVITED->value,
         ]);

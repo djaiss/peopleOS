@@ -1,9 +1,3 @@
-<?php
-/**
- * @var array $user
- */
-?>
-
 <x-app-layout>
   <div class="grid h-[calc(100vh-48px)] grid-cols-1 lg:grid-cols-[240px,1fr]">
     <!-- sidebar -->
@@ -19,7 +13,7 @@
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Personal API keys') }}</h2>
         <p class="mb-4 text-sm text-zinc-500">{{ __('Use the API to build your own integration.') }}</p>
 
-        <livewire:administration.security.manage-api-keys lazy :user-id="$user['id']" />
+        {{-- <livewire:administration.security.manage-api-keys lazy :user-id="$user['id']" /> --}}
       </div>
     </div>
   </div>

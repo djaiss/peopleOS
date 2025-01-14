@@ -24,20 +24,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     });
 
     // account information
-    Route::middleware(['administrator'])->group(function (): void {
+    // offices
+    Route::post('administration/offices', [AdministrationOfficeController::class, 'store'])->name('offices.store');
+    Route::put('administration/offices/{office}', [AdministrationOfficeController::class, 'update'])->name('offices.update');
+    Route::delete('administration/offices/{office}', [AdministrationOfficeController::class, 'destroy'])->name('offices.destroy');
+    Route::get('administration/offices', [AdministrationOfficeController::class, 'index'])->name('offices.index');
 
-        // offices
-        Route::post('administration/offices', [AdministrationOfficeController::class, 'store'])->name('offices.store');
-        Route::put('administration/offices/{office}', [AdministrationOfficeController::class, 'update'])->name('offices.update');
-        Route::delete('administration/offices/{office}', [AdministrationOfficeController::class, 'destroy'])->name('offices.destroy');
-        Route::get('administration/offices', [AdministrationOfficeController::class, 'index'])->name('offices.index');
-    });
-
-    Route::middleware(['administrator_or_hr'])->group(function (): void {
-        // users
-        Route::post('administration/users', [AdministrationUserController::class, 'store'])->name('users.store');
-        Route::put('administration/users/{user}/invite', [AdministrationInviteUserAgainController::class, 'update'])->name('users.invite');
-    });
+    // users
+    Route::post('administration/users', [AdministrationUserController::class, 'store'])->name('users.store');
+    Route::put('administration/users/{user}/invite', [AdministrationInviteUserAgainController::class, 'update'])->name('users.invite');
 
     // genders
     Route::get('administration/genders', [GenderController::class, 'index'])->name('administration.genders.index');

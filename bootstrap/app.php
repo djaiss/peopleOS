@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Middleware\CheckAdministratorOrHRPermission;
-use App\Http\Middleware\CheckAdministratorPermission;
 use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\CheckTeamApi;
 use Illuminate\Foundation\Application;
@@ -20,8 +18,6 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'subscription' => CheckSubscription::class,
-            'administrator' => CheckAdministratorPermission::class,
-            'administrator_or_hr' => CheckAdministratorOrHRPermission::class,
             'team.api' => CheckTeamApi::class,
         ]);
     })

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Enums\Permission;
-use App\Exceptions\PermissionException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Office;
@@ -34,12 +32,7 @@ class CreateOffice
         return $this->office;
     }
 
-    private function validate(): void
-    {
-        if ($this->user->permission !== Permission::ADMINISTRATOR->value) {
-            throw new PermissionException();
-        }
-    }
+    private function validate(): void {}
 
     private function createOffice(): void
     {

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\Permission;
-use App\Exceptions\PermissionException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Office;
@@ -25,9 +23,7 @@ class CreateOfficeTest extends TestCase
     {
         Queue::fake();
 
-        $user = User::factory()->create([
-            'permission' => Permission::ADMINISTRATOR->value,
-        ]);
+        $user = User::factory()->create();
 
         $office = (new CreateOffice(
             user: $user,
@@ -52,37 +48,5 @@ class CreateOfficeTest extends TestCase
         Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
             return $job->action === 'office_creation' && $job->user->id === $user->id;
         });
-    }
-
-    #[Test]
-    public function hr_representative_cannot_create_an_office(): void
-    {
-        Queue::fake();
-
-        $user = User::factory()->create([
-            'permission' => Permission::HR->value,
-        ]);
-
-        $this->expectException(PermissionException::class);
-
-        (new CreateOffice(
-            user: $user,
-            name: 'Scranton Branch',
-        ))->execute();
-    }
-
-    #[Test]
-    public function regular_member_cannot_create_an_office(): void
-    {
-        $user = User::factory()->create([
-            'permission' => Permission::MEMBER->value,
-        ]);
-
-        $this->expectException(PermissionException::class);
-
-        (new CreateOffice(
-            user: $user,
-            name: 'Scranton Branch',
-        ))->execute();
     }
 }
