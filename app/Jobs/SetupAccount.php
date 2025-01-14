@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Jobs;
 
 use App\Models\User;
@@ -27,8 +29,8 @@ class SetupAccount implements ShouldQueue
     public function handle(): void
     {
         $this->createGenders();
-        //$this->createEthnicities();
-        //$this->createMaritalStatuses();
+        // $this->createEthnicities();
+        // $this->createMaritalStatuses();
     }
 
     private function createGenders(): void
@@ -37,17 +39,17 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'position' => 1,
-                'name' =>  'Man',
+                'name' => 'Man',
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 2,
-                'name' =>  'Woman',
+                'name' => 'Woman',
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 3,
-                'name' =>  'Other',
+                'name' => 'Other',
             ],
         ]);
     }

@@ -56,7 +56,7 @@ class CreateAccountTest extends TestCase
             $user
         );
 
-        Queue::assertPushed(SetupAccount::class, fn($job) => $job->user->id === $user->id);
+        Queue::assertPushed(SetupAccount::class, fn ($job) => $job->user->id === $user->id);
 
         Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
             return $job->user->id === $user->id;
