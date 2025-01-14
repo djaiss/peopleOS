@@ -98,4 +98,6 @@ Dependencies
 
 When providing code examples or explanations, always consider the integration of all four technologies in the TALL stack. Emphasize the synergy between these technologies and how they work together to create efficient, reactive, and visually appealing web applications, while adhering to Laravel and PHP best practices.
 
+When writing tests, please refer to the other tests in the project. For example, if you are writing a test for a controller, please refer to the other tests for the controller in the project. If you are writing a test for a model, please refer to the other tests for the model in the project. If you are writing a test for a Livewire component, please refer to the other tests for the Livewire component in the project. Same for services.
+
 For test data (names, emails, situations, etc.), always use The Office, the popular American tv show.

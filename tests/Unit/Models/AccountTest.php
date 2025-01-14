@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
+use App\Models\Gender;
 use App\Models\Log;
 use App\Models\Office;
 use App\Models\Team;
@@ -37,6 +38,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->logs()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_genders(): void
+    {
+        $account = Account::factory()->create();
+        Gender::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->genders()->exists());
     }
 
     #[Test]

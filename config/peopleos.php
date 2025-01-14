@@ -41,6 +41,9 @@ return [
         'team_deletion' => 'Team deletion',
         'team_update' => 'Team update',
         'profile_picture_update' => 'Profile picture update',
+        'gender_creation' => 'Gender creation',
+        'gender_update' => 'Gender update',
+        'gender_deletion' => 'Gender deletion',
     ],
 
 ];
