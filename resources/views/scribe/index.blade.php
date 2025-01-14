@@ -104,6 +104,25 @@
             </ul>
           </ul>
         </ul>
+        <ul id="tocify-header-genders" class="tocify-header">
+          <li class="tocify-item level-1" data-unique="genders">
+            <a href="#genders">Genders</a>
+          </li>
+          <ul id="tocify-subheader-genders" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="genders-GETapi-administration-genders">
+              <a href="#genders-GETapi-administration-genders">List all genders.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="genders-POSTapi-administration-genders">
+              <a href="#genders-POSTapi-administration-genders">Create a gender.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="genders-PUTapi-administration-genders--id-">
+              <a href="#genders-PUTapi-administration-genders--id-">Update a gender.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="genders-DELETEapi-administration-genders--id-">
+              <a href="#genders-DELETEapi-administration-genders--id-">Delete a gender.</a>
+            </li>
+          </ul>
+        </ul>
         <ul id="tocify-header-teams" class="tocify-header">
           <li class="tocify-item level-1" data-unique="teams">
             <a href="#teams">Teams</a>
@@ -129,7 +148,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 13, 2025</li>
+        <li>Last updated: January 14, 2025</li>
       </ul>
     </div>
 
@@ -771,7 +790,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/administration/offices/14" \
+    "https://peopleos.test/api/administration/offices/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -782,7 +801,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/offices/14"
+    "https://peopleos.test/api/administration/offices/4"
 );
 
 const headers = {
@@ -803,7 +822,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/offices/14';
+$url = 'https://peopleos.test/api/administration/offices/4';
 $response = $client-&gt;put(
     $url,
     [
@@ -886,11 +905,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="14" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="4" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>14</code>
+              <code>4</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -973,14 +992,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/administration/offices/16" \
+    "https://peopleos.test/api/administration/offices/15" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/offices/16"
+    "https://peopleos.test/api/administration/offices/15"
 );
 
 const headers = {
@@ -996,7 +1015,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/offices/16';
+$url = 'https://peopleos.test/api/administration/offices/15';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1072,11 +1091,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="16" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="15" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>16</code>
+              <code>15</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1584,6 +1603,602 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <br />
           <p>The email of the user.</p>
         </div>
+        <h1 id="genders">Genders</h1>
+
+        <h2 id="genders-GETapi-administration-genders">List all genders.</h2>
+
+        <p></p>
+
+        <p>Returns a list of genders in the account, ordered by position.</p>
+
+        <span id="example-requests-GETapi-administration-genders">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "https://peopleos.test/api/administration/genders" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/genders"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/genders';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-administration-genders">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;object&quot;: &quot;gender&quot;,
+            &quot;name&quot;: &quot;Male&quot;,
+            &quot;position&quot;: 1,
+            &quot;created_at&quot;: &quot;1679090539&quot;
+        }
+    ]
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-administration-genders" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-administration-genders"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-administration-genders"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-administration-genders" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-administration-genders">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-administration-genders" data-method="GET" data-path="api/administration/genders" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-administration-genders', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/administration/genders</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-administration-genders" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-administration-genders" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The ID of the gender</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The type of the object. Always &quot;gender&quot;</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The name of the gender</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>position</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The position of the gender in the list</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>Time at which the object was created. Measured in seconds since the Unix epoch</p>
+        </div>
+        <h2 id="genders-POSTapi-administration-genders">Create a gender.</h2>
+
+        <p></p>
+
+        <p>A gender categorizes the gender identity of a person. Genders are ordered by position. When you create a new gender, it will be added to the end of the list by default - ie after the max gender position. A person can have one gender, or not gender at all.</p>
+
+        <span id="example-requests-POSTapi-administration-genders">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "https://peopleos.test/api/administration/genders" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Male\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/genders"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Male"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/genders';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Male',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-administration-genders">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;object&quot;: &quot;gender&quot;,
+        &quot;name&quot;: &quot;Male&quot;,
+        &quot;position&quot;: 1,
+        &quot;created_at&quot;: &quot;1679090539&quot;
+    }
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-administration-genders" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-administration-genders"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-administration-genders"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-administration-genders" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-administration-genders">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-administration-genders" data-method="POST" data-path="api/administration/genders" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-administration-genders', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/administration/genders</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-administration-genders" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-administration-genders" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="POSTapi-administration-genders" value="Male" data-component="body" />
+            <br />
+            <p>
+              The name of the gender. Max 255 characters. Example:
+              <code>Male</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="genders-PUTapi-administration-genders--id-">Update a gender.</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-administration-genders--id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "https://peopleos.test/api/administration/genders/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Female\",
+    \"position\": 2
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/genders/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Female",
+    "position": 2
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/genders/16';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Female',
+            'position' =&gt; 2,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-administration-genders--id-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;object&quot;: &quot;gender&quot;,
+        &quot;name&quot;: &quot;Female&quot;,
+        &quot;position&quot;: 2,
+        &quot;created_at&quot;: &quot;1679090539&quot;
+    }
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-administration-genders--id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-administration-genders--id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-administration-genders--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-administration-genders--id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-administration-genders--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-administration-genders--id-" data-method="PUT" data-path="api/administration/genders/{id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-administration-genders--id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/administration/genders/{id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-administration-genders--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-administration-genders--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-genders--id-" value="16" data-component="url" />
+            <br />
+            <p>
+              The ID of the gender. Example:
+              <code>16</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="gender" data-endpoint="PUTapi-administration-genders--id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The ID of the gender. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-administration-genders--id-" value="Female" data-component="body" />
+            <br />
+            <p>
+              The name of the gender. Max 255 characters. Example:
+              <code>Female</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>position</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="position" data-endpoint="PUTapi-administration-genders--id-" value="2" data-component="body" />
+            <br />
+            <p>
+              The position of the gender in the list. Example:
+              <code>2</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="genders-DELETEapi-administration-genders--id-">Delete a gender.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-administration-genders--id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "https://peopleos.test/api/administration/genders/13" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/genders/13"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/genders/13';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-administration-genders--id-">
+          <blockquote>
+            <p>Example response (204):</p>
+          </blockquote>
+          <pre>
+<code>Empty response</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-administration-genders--id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-administration-genders--id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-administration-genders--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-administration-genders--id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-administration-genders--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-administration-genders--id-" data-method="DELETE" data-path="api/administration/genders/{id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-administration-genders--id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/administration/genders/{id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-administration-genders--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-administration-genders--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-genders--id-" value="13" data-component="url" />
+            <br />
+            <p>
+              The ID of the gender. Example:
+              <code>13</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="gender" data-endpoint="DELETEapi-administration-genders--id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The ID of the gender. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
         <h1 id="teams">Teams</h1>
 
         <h2 id="teams-POSTapi-teams">Create a team.</h2>
@@ -1774,7 +2389,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/teams/necessitatibus" \
+    "https://peopleos.test/api/teams/maiores" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1785,7 +2400,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/necessitatibus"
+    "https://peopleos.test/api/teams/maiores"
 );
 
 const headers = {
@@ -1806,7 +2421,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/necessitatibus';
+$url = 'https://peopleos.test/api/teams/maiores';
 $response = $client-&gt;put(
     $url,
     [
@@ -1889,11 +2504,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="necessitatibus" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="maiores" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>necessitatibus</code>
+              <code>maiores</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -1964,14 +2579,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/teams/optio" \
+    "https://peopleos.test/api/teams/eveniet" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/optio"
+    "https://peopleos.test/api/teams/eveniet"
 );
 
 const headers = {
@@ -1987,7 +2602,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/optio';
+$url = 'https://peopleos.test/api/teams/eveniet';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2063,11 +2678,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="optio" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="eveniet" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>optio</code>
+              <code>eveniet</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

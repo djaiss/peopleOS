@@ -52,6 +52,14 @@ class Account extends Model
     }
 
     /**
+     * Get the genders associated with the account.
+     */
+    public function genders(): HasMany
+    {
+        return $this->hasMany(Gender::class);
+    }
+
+    /**
      * Get the offices associated with the account.
      */
     public function offices(): HasMany
