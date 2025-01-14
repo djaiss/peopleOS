@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Administration\Personalization;
 
 use App\Models\Gender;
 use App\Services\CreateGender;
 use App\Services\DestroyGender;
 use App\Services\UpdateGender;
-use Livewire\Component;
-use Livewire\Attributes\Locked;
-use Livewire\Attributes\Validate;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
 class ManageGenders extends Component
@@ -31,7 +33,7 @@ class ManageGenders extends Component
         $this->genders = collect(Gender::where('account_id', Auth::user()->account_id)
             ->orderBy('name')
             ->get()
-            ->map(fn(Gender $gender): array => [
+            ->map(fn (Gender $gender): array => [
                 'id' => $gender->id,
                 'name' => $gender->name,
             ]));
@@ -112,7 +114,7 @@ class ManageGenders extends Component
             'name' => $gender->name,
         ];
 
-        $this->genders = $this->genders->map(fn(array $existingGender): array => $existingGender['id'] === $this->editedGenderId ? $gender : $existingGender);
+        $this->genders = $this->genders->map(fn (array $existingGender): array => $existingGender['id'] === $this->editedGenderId ? $gender : $existingGender);
 
         $this->resetEdit();
     }
@@ -135,6 +137,6 @@ class ManageGenders extends Component
 
         Toaster::success(__('Gender deleted'));
 
-        $this->genders = $this->genders->reject(fn(array $gender): bool => $gender['id'] === $genderId);
+        $this->genders = $this->genders->reject(fn (array $gender): bool => $gender['id'] === $genderId);
     }
 }
