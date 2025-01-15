@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 class SetupAccount implements ShouldQueue
@@ -39,17 +40,17 @@ class SetupAccount implements ShouldQueue
             [
                 'account_id' => $this->user->account_id,
                 'position' => 1,
-                'name' => 'Man',
+                'name' => Crypt::encryptString('Man'),
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 2,
-                'name' => 'Woman',
+                'name' => Crypt::encryptString('Woman'),
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 3,
-                'name' => 'Other',
+                'name' => Crypt::encryptString('Other'),
             ],
         ]);
     }
