@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Exceptions\UserAlreadyJoindedException;
+use App\Exceptions\UserAlreadyJoinedException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Mail\UserInvited;
@@ -90,7 +90,7 @@ class SendNewInvitationTest extends TestCase
             'invitation_accepted_at' => now(),
         ]);
 
-        $this->expectException(UserAlreadyJoindedException::class);
+        $this->expectException(UserAlreadyJoinedException::class);
 
         (new SendNewInvitation(
             user: $user,

@@ -3,13 +3,13 @@ APP_NAME=Laravel
 APP_ENV=testing
 APP_KEY=base64:NTrXToqFZJlv48dgPc+kNpc3SBt333TfDnF1mDShsBg=
 APP_DEBUG=true
-APP_URL=https://organizationos.test
+APP_URL=https://peopleos.test
 
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=organizationos
-DB_USERNAME=organizationos
+DB_DATABASE=peopleos
+DB_USERNAME=peopleos
 DB_PASSWORD=secret
 
 BROADCAST_DRIVER=log

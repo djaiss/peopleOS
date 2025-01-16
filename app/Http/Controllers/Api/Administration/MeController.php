@@ -102,7 +102,7 @@ class MeController extends Controller
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],
-            bornedAt: $validated['born_at'],
+            bornAt: $validated['born_at'],
         ))->execute();
 
         $response = [

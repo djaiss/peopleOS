@@ -113,7 +113,7 @@ class UpdateUserInformationTest extends TestCase
         $this->executeService($user, 'ross.geller@friends.com', '2025-03-15');
     }
 
-    private function executeService(User $user, string $email = 'dwight@dundermifflin.com', ?string $bornedAt = null): void
+    private function executeService(User $user, string $email = 'dwight@dundermifflin.com', ?string $bornAt = null): void
     {
         $updatedUser = (new UpdateUserInformation(
             user: $user,
@@ -121,7 +121,7 @@ class UpdateUserInformationTest extends TestCase
             firstName: 'Ross',
             lastName: 'Geller',
             nickname: 'Ross',
-            bornedAt: $bornedAt,
+            bornAt: $bornAt,
         ))->execute();
 
         $this->assertDatabaseHas('users', [
