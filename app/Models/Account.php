@@ -60,6 +60,14 @@ class Account extends Model
     }
 
     /**
+     * Get the marital statuses associated with the account.
+     */
+    public function maritalStatuses(): HasMany
+    {
+        return $this->hasMany(MaritalStatus::class);
+    }
+
+    /**
      * Get the offices associated with the account.
      */
     public function offices(): HasMany
