@@ -148,7 +148,7 @@
       </ul>
 
       <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 15, 2025</li>
+        <li>Last updated: January 16, 2025</li>
       </ul>
     </div>
 
@@ -790,7 +790,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/administration/offices/10" \
+    "https://peopleos.test/api/administration/offices/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -801,7 +801,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/offices/10"
+    "https://peopleos.test/api/administration/offices/1"
 );
 
 const headers = {
@@ -822,7 +822,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/offices/10';
+$url = 'https://peopleos.test/api/administration/offices/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -905,11 +905,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="10" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-offices--id-" value="1" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>10</code>
+              <code>1</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -992,14 +992,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/administration/offices/20" \
+    "https://peopleos.test/api/administration/offices/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/offices/20"
+    "https://peopleos.test/api/administration/offices/1"
 );
 
 const headers = {
@@ -1015,7 +1015,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/offices/20';
+$url = 'https://peopleos.test/api/administration/offices/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1091,11 +1091,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="20" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-offices--id-" value="1" data-component="url" />
             <br />
             <p>
               The ID of the office. Example:
-              <code>20</code>
+              <code>1</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1931,7 +1931,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/administration/genders/2" \
+    "https://peopleos.test/api/administration/genders/12" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1943,7 +1943,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/genders/2"
+    "https://peopleos.test/api/administration/genders/12"
 );
 
 const headers = {
@@ -1965,7 +1965,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/genders/2';
+$url = 'https://peopleos.test/api/administration/genders/12';
 $response = $client-&gt;put(
     $url,
     [
@@ -2051,11 +2051,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-genders--id-" value="2" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="PUTapi-administration-genders--id-" value="12" data-component="url" />
             <br />
             <p>
               The ID of the gender. Example:
-              <code>2</code>
+              <code>12</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2106,14 +2106,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/administration/genders/2" \
+    "https://peopleos.test/api/administration/genders/12" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/genders/2"
+    "https://peopleos.test/api/administration/genders/12"
 );
 
 const headers = {
@@ -2129,7 +2129,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/genders/2';
+$url = 'https://peopleos.test/api/administration/genders/12';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2202,11 +2202,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-genders--id-" value="2" data-component="url" />
+            <input type="number" style="display: none" step="any" name="id" data-endpoint="DELETEapi-administration-genders--id-" value="12" data-component="url" />
             <br />
             <p>
               The ID of the gender. Example:
-              <code>2</code>
+              <code>12</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2413,7 +2413,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/teams/ducimus" \
+    "https://peopleos.test/api/teams/omnis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2424,7 +2424,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/ducimus"
+    "https://peopleos.test/api/teams/omnis"
 );
 
 const headers = {
@@ -2445,7 +2445,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/ducimus';
+$url = 'https://peopleos.test/api/teams/omnis';
 $response = $client-&gt;put(
     $url,
     [
@@ -2528,11 +2528,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="ducimus" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="omnis" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>ducimus</code>
+              <code>omnis</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2603,14 +2603,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/teams/culpa" \
+    "https://peopleos.test/api/teams/sed" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/culpa"
+    "https://peopleos.test/api/teams/sed"
 );
 
 const headers = {
@@ -2626,7 +2626,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/culpa';
+$url = 'https://peopleos.test/api/teams/sed';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2702,11 +2702,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="culpa" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="sed" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>culpa</code>
+              <code>sed</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

@@ -17,7 +17,6 @@ use Masmerise\Toaster\Toaster;
 
 class ManageGenders extends Component
 {
-    #[Locked]
     public Collection $genders;
 
     public bool $addMode = false;
@@ -28,10 +27,13 @@ class ManageGenders extends Component
     #[Validate('required|string|min:3|max:255')]
     public string $name = '';
 
+    #[Validate('required|integer|min:0')]
+    public int $position = 0;
+
     public function mount(): void
     {
         $this->genders = collect(Gender::where('account_id', Auth::user()->account_id)
-            ->orderBy('name')
+            ->orderBy('position')
             ->get()
             ->map(fn (Gender $gender): array => [
                 'id' => $gender->id,
@@ -90,6 +92,28 @@ class ManageGenders extends Component
 
         $gender = $this->genders->firstWhere('id', $genderId);
         $this->name = $gender['name'];
+    }
+
+    public function updatePosition(array $positions): void
+    {
+        foreach ($positions as $position) {
+            $gender = Gender::find($position['id']);
+            if ($gender && $gender->account_id === Auth::user()->account_id) {
+                $gender->update([
+                    'position' => $position['order'],
+                ]);
+            }
+        }
+
+        $this->genders = collect(Gender::where('account_id', Auth::user()->account_id)
+            ->orderBy('position')
+            ->get()
+            ->map(fn (Gender $gender): array => [
+                'id' => $gender->id,
+                'name' => $gender->name,
+            ]));
+
+        Toaster::success(__('Changes saved'));
     }
 
     public function update(): void
