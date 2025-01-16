@@ -5,19 +5,38 @@ on:
     types: [opened, edited, synchronize]
 
 jobs:
-  main:
-    - name: Install Aspell
-      shell: bash
-      run: |
-          if [[ "$RUNNER_OS" == "Linux" ]]; then
-            sudo apt-get update && sudo apt-get install -y aspell aspell-en
-          elif [[ "$RUNNER_OS" == "macOS" ]]; then
-            brew install aspell
-          fi
+  spelling:
+    name: Check spelling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Check Typos
-      shell: bash
-      run: |
-          if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
-            composer test:typos
-          fi
+      - name: Install Aspell
+        run: |
+          sudo apt-get update && sudo apt-get install -y aspell aspell-en
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, fileinfo
+          coverage: none
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache composer files
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Check Typos
+        run: composer peopleos:typos

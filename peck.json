@@ -1,18 +1,7 @@
 {
-    "preset": "laravel",
-    "ignore": {
-        "words": [
-            "php",
-            "config",
-            "namespace",
-            "prev",
-            "peopleos",
-            "organizationos",
-            "personalization",
-            "birthdate",
-            "laquo",
-            "raquo"
-        ],
-        "paths": []
-    }
+  "preset": "laravel",
+  "ignore": {
+    "words": ["php", "config", "namespace", "prev", "peopleos", "organizationos", "personalization", "birthdate", "laquo", "raquo"],
+    "paths": []
+  }
 }

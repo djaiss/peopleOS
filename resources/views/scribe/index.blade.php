@@ -2413,7 +2413,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/teams/omnis" \
+    "https://peopleos.test/api/teams/molestiae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2424,7 +2424,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/omnis"
+    "https://peopleos.test/api/teams/molestiae"
 );
 
 const headers = {
@@ -2445,7 +2445,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/omnis';
+$url = 'https://peopleos.test/api/teams/molestiae';
 $response = $client-&gt;put(
     $url,
     [
@@ -2528,11 +2528,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="omnis" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="molestiae" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>omnis</code>
+              <code>molestiae</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2603,14 +2603,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/teams/sed" \
+    "https://peopleos.test/api/teams/autem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/sed"
+    "https://peopleos.test/api/teams/autem"
 );
 
 const headers = {
@@ -2626,7 +2626,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/sed';
+$url = 'https://peopleos.test/api/teams/autem';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2702,11 +2702,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="sed" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="autem" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>sed</code>
+              <code>autem</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

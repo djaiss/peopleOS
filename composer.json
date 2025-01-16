@@ -73,7 +73,8 @@
       "@test",
       "@peopleos:lint",
       "@peopleos:docs",
-      "@peopleos:prettier"
+      "@peopleos:prettier",
+      "@peopleos:typos"
     ],
     "peopleos:docs": "php artisan scribe:generate",
     "peopleos:lint": "./vendor/bin/pint",
@@ -81,7 +82,8 @@
     "peopleos:rector": "./vendor/bin/rector",
     "peopleos:static": "./vendor/bin/phpstan analyse --memory-limit=256M",
     "peopleos:unit": "rm -f database/test.sqlite_test* && php artisan migrate:fresh --database=testing && php artisan test --parallel --processes=4",
-    "peopleos:update": "composer update && bun update && bun upgrade"
+    "peopleos:update": "composer update && bun update && bun upgrade",
+    "peopleos:typos": "./vendor/bin/peck"
   },
   "extra": {
     "laravel": {
