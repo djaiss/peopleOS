@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
-use App\Models\Gender;
 use App\Models\MaritalStatus;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;

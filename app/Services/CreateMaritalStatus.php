@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gender;
 use App\Models\MaritalStatus;
 use App\Models\User;
 

@@ -123,6 +123,25 @@
             </li>
           </ul>
         </ul>
+        <ul id="tocify-header-marital-statuses" class="tocify-header">
+          <li class="tocify-item level-1" data-unique="marital-statuses">
+            <a href="#marital-statuses">Marital statuses</a>
+          </li>
+          <ul id="tocify-subheader-marital-statuses" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="marital-statuses-GETapi-administration-marital-statuses">
+              <a href="#marital-statuses-GETapi-administration-marital-statuses">List all marital statuses.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="marital-statuses-POSTapi-administration-marital-statuses">
+              <a href="#marital-statuses-POSTapi-administration-marital-statuses">Create a marital status.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="marital-statuses-PUTapi-administration-marital-statuses--maritalStatus_id-">
+              <a href="#marital-statuses-PUTapi-administration-marital-statuses--maritalStatus_id-">Update a marital status.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="marital-statuses-DELETEapi-administration-marital-statuses--maritalStatus_id-">
+              <a href="#marital-statuses-DELETEapi-administration-marital-statuses--maritalStatus_id-">Delete a marital status.</a>
+            </li>
+          </ul>
+        </ul>
         <ul id="tocify-header-teams" class="tocify-header">
           <li class="tocify-item level-1" data-unique="teams">
             <a href="#teams">Teams</a>
@@ -2223,6 +2242,626 @@ You can check the Dev Tools console for debugging information.</code></pre>
           </div>
         </form>
 
+        <h1 id="marital-statuses">Marital statuses</h1>
+
+        <h2 id="marital-statuses-GETapi-administration-marital-statuses">List all marital statuses.</h2>
+
+        <p></p>
+
+        <p>Returns a list of marital statuses in the account, ordered by position.</p>
+
+        <span id="example-requests-GETapi-administration-marital-statuses">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "https://peopleos.test/api/administration/marital-statuses" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/marital-statuses"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/marital-statuses';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-administration-marital-statuses">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 1,
+ &quot;object&quot;: &quot;marital_status&quot;,
+ &quot;name&quot;: &quot;Married&quot;,
+ &quot;position&quot;: 1,
+ &quot;created_at&quot;: 1514764800,
+}, {
+ &quot;id&quot;: 2,
+ &quot;object&quot;: &quot;marital_status&quot;,
+ &quot;name&quot;: &quot;Divorced&quot;,
+ &quot;position&quot;: 2,
+ &quot;created_at&quot;: 1514764800,
+}],
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/administration/marital-statuses?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/administration/marital-statuses?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/administration/marital-statuses?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/administration/marital-statuses&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-administration-marital-statuses" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-administration-marital-statuses"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-administration-marital-statuses"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-administration-marital-statuses" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-administration-marital-statuses">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-administration-marital-statuses" data-method="GET" data-path="api/administration/marital-statuses" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-administration-marital-statuses', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/administration/marital-statuses</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-administration-marital-statuses" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-administration-marital-statuses" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The ID of the marital status</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The type of the object. Always &quot;marital_status&quot;</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The name of the marital status</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>position</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The position of the marital status in the list</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Time at which the object was created. Measured in seconds since the Unix epoch</p>
+        </div>
+        <h2 id="marital-statuses-POSTapi-administration-marital-statuses">Create a marital status.</h2>
+
+        <p></p>
+
+        <p>A marital status categorizes the marital status of a person. Marital statuses are ordered by position. When you create a new marital status, it will be added to the end of the list by default - ie after the max marital status position. A person can have one marital status, or not marital status at all.</p>
+
+        <span id="example-requests-POSTapi-administration-marital-statuses">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "https://peopleos.test/api/administration/marital-statuses" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Married\"
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/marital-statuses"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Married"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/marital-statuses';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Married',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-administration-marital-statuses">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;object&quot;: &quot;marital_status&quot;,
+        &quot;name&quot;: &quot;Married&quot;,
+        &quot;position&quot;: 1,
+        &quot;created_at&quot;: &quot;1679090539&quot;
+    }
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-administration-marital-statuses" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-administration-marital-statuses"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-administration-marital-statuses"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-administration-marital-statuses" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-administration-marital-statuses">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-administration-marital-statuses" data-method="POST" data-path="api/administration/marital-statuses" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-administration-marital-statuses', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/administration/marital-statuses</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-administration-marital-statuses" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-administration-marital-statuses" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="POSTapi-administration-marital-statuses" value="Married" data-component="body" />
+            <br />
+            <p>
+              The name of the marital status. Max 255 characters. Example:
+              <code>Married</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="marital-statuses-PUTapi-administration-marital-statuses--maritalStatus_id-">Update a marital status.</h2>
+
+        <p></p>
+
+        <span id="example-requests-PUTapi-administration-marital-statuses--maritalStatus_id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "https://peopleos.test/api/administration/marital-statuses/18" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Married\",
+    \"position\": 2
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/marital-statuses/18"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Married",
+    "position": 2
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/marital-statuses/18';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Married',
+            'position' =&gt; 2,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-administration-marital-statuses--maritalStatus_id-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;object&quot;: &quot;marital_status&quot;,
+        &quot;name&quot;: &quot;Divorced&quot;,
+        &quot;position&quot;: 2,
+        &quot;created_at&quot;: &quot;1679090539&quot;
+    }
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-administration-marital-statuses--maritalStatus_id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-administration-marital-statuses--maritalStatus_id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-administration-marital-statuses--maritalStatus_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-administration-marital-statuses--maritalStatus_id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-administration-marital-statuses--maritalStatus_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-administration-marital-statuses--maritalStatus_id-" data-method="PUT" data-path="api/administration/marital-statuses/{maritalStatus_id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-administration-marital-statuses--maritalStatus_id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/administration/marital-statuses/{maritalStatus_id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>maritalStatus_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="18" data-component="url" />
+            <br />
+            <p>
+              The ID of the maritalStatus. Example:
+              <code>18</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>marital_status</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="marital_status" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The ID of the marital status. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="name" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="Married" data-component="body" />
+            <br />
+            <p>
+              The name of the marital status. Max 255 characters. Example:
+              <code>Married</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>position</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="position" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="2" data-component="body" />
+            <br />
+            <p>
+              The position of the marital status in the list. Example:
+              <code>2</code>
+            </p>
+          </div>
+        </form>
+
+        <h2 id="marital-statuses-DELETEapi-administration-marital-statuses--maritalStatus_id-">Delete a marital status.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-administration-marital-statuses--maritalStatus_id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "https://peopleos.test/api/administration/marital-statuses/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/administration/marital-statuses/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/administration/marital-statuses/16';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-administration-marital-statuses--maritalStatus_id-">
+          <blockquote>
+            <p>Example response (204):</p>
+          </blockquote>
+          <pre>
+<code>Empty response</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-administration-marital-statuses--maritalStatus_id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-administration-marital-statuses--maritalStatus_id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-administration-marital-statuses--maritalStatus_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-administration-marital-statuses--maritalStatus_id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-administration-marital-statuses--maritalStatus_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-administration-marital-statuses--maritalStatus_id-" data-method="DELETE" data-path="api/administration/marital-statuses/{maritalStatus_id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-administration-marital-statuses--maritalStatus_id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/administration/marital-statuses/{maritalStatus_id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>maritalStatus_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp; &nbsp;
+            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="16" data-component="url" />
+            <br />
+            <p>
+              The ID of the maritalStatus. Example:
+              <code>16</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>marital_status</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="marital_status" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The ID of the marital status. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
         <h1 id="teams">Teams</h1>
 
         <h2 id="teams-POSTapi-teams">Create a team.</h2>
@@ -2413,7 +3052,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/teams/molestiae" \
+    "https://peopleos.test/api/teams/id" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2424,7 +3063,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/molestiae"
+    "https://peopleos.test/api/teams/id"
 );
 
 const headers = {
@@ -2445,7 +3084,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/molestiae';
+$url = 'https://peopleos.test/api/teams/id';
 $response = $client-&gt;put(
     $url,
     [
@@ -2528,11 +3167,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="molestiae" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="id" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>molestiae</code>
+              <code>id</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2603,14 +3242,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/teams/autem" \
+    "https://peopleos.test/api/teams/est" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/autem"
+    "https://peopleos.test/api/teams/est"
 );
 
 const headers = {
@@ -2626,7 +3265,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/autem';
+$url = 'https://peopleos.test/api/teams/est';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2702,11 +3341,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="autem" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="est" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>autem</code>
+              <code>est</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
