@@ -7,6 +7,7 @@ use App\Http\Controllers\Administration\AdministrationOfficeController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationUserController;
+use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,11 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
 
     Route::get('administration/offices', [AdministrationOfficeController::class, 'index'])->name('administration.offices.index');
     Route::get('administration/users', [AdministrationUserController::class, 'index'])->name('administration.users.index');
+
+    Route::middleware(['instance.admin'])->group(function (): void {
+        Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
+        Route::get('instance/{instance}', [InstanceController::class, 'show'])->name('instance.show');
+    });
 });
 
 require __DIR__.'/auth.php';

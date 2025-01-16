@@ -41,8 +41,8 @@
             {{ __('Administration') }}
           </x-dropdown-link>
 
-          <x-dropdown-link href="{{ route('dashboard') }}">
-            {{ __('Your profile') }}
+          <x-dropdown-link href="{{ route('instance.index') }}">
+            {{ __('Instance Administration') }}
           </x-dropdown-link>
 
           <div class="border-t border-gray-200 dark:border-gray-600"></div>

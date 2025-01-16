@@ -36,6 +36,7 @@ return new class extends Migration
             $table->datetime('invited_at')->nullable();
             $table->datetime('invitation_accepted_at')->nullable();
             $table->date('born_at')->nullable();
+            $table->boolean('is_instance_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
