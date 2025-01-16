@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "OrganizationOS",
+  "name": "PeopleOS",
   "type": "collection",
   "ignore": ["node_modules", ".git"]
 }

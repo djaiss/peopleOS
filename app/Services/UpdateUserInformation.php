@@ -21,7 +21,7 @@ class UpdateUserInformation
         public string $firstName,
         public string $lastName,
         public ?string $nickname,
-        public ?string $bornedAt,
+        public ?string $bornAt,
     ) {}
 
     /**
@@ -42,11 +42,11 @@ class UpdateUserInformation
 
     private function validate(): void
     {
-        if ($this->bornedAt !== null) {
+        if ($this->bornAt !== null) {
             try {
-                $bornedAt = Carbon::createFromFormat('m/d/Y', $this->bornedAt);
+                $bornAt = Carbon::createFromFormat('m/d/Y', $this->bornAt);
 
-                if ($bornedAt->isFuture()) {
+                if ($bornAt->isFuture()) {
                     throw new InvalidArgumentException('Birth date cannot be in the future');
                 }
             } catch (InvalidFormatException) {
@@ -72,7 +72,7 @@ class UpdateUserInformation
             'last_name' => $this->lastName,
             'email' => $this->email,
             'nickname' => $this->nickname,
-            'born_at' => $this->bornedAt,
+            'born_at' => $this->bornAt,
         ]);
     }
 

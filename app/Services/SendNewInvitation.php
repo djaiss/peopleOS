@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Exceptions\UserAlreadyJoindedException;
+use App\Exceptions\UserAlreadyJoinedException;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Mail\UserInvited;
@@ -42,7 +42,7 @@ class SendNewInvitation
         }
 
         if ($this->invitedUser->invitation_accepted_at) {
-            throw new UserAlreadyJoindedException();
+            throw new UserAlreadyJoinedException();
         }
     }
 

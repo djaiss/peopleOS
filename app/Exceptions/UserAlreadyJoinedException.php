@@ -6,7 +6,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class UserAlreadyJoindedException extends Exception
+class UserAlreadyJoinedException extends Exception
 {
     public function __construct(string $message = 'User already joined the account.')
     {

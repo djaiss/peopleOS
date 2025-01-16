@@ -69,7 +69,7 @@ class ManageProfile extends Component
             firstName: $this->first_name,
             lastName: $this->last_name,
             nickname: $this->nickname,
-            bornedAt: $this->born_at,
+            bornAt: $this->born_at,
         ))->execute();
 
         Toaster::success(__('Changes saved'));

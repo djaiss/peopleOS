@@ -1,6 +1,6 @@
 ## Installation
 
-OrganizationOS is a regular Laravel application; it's build on top of Laravel and uses Vue / Tailwind CSS for the frontend. We stick to the Laravel conventions as much as possible.
+peopleos is a regular Laravel application; it's build on top of Laravel and uses Vue / Tailwind CSS for the frontend. We stick to the Laravel conventions as much as possible.
 
 In terms of local development, you can use the following requirements:
 
@@ -10,9 +10,9 @@ In terms of local development, you can use the following requirements:
 If you have these requirements, you can start by cloning the repository and installing the dependencies:
 
 ```bash
-git clone https://github.com/djaiss/organizationos.git
+git clone https://github.com/djaiss/peopleos.git
 
-cd organizationos
+cd peopleos
 
 git checkout -b feat/your-feature # or fix/your-fix
 ```
