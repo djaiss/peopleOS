@@ -48,6 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'invited_at',
         'invitation_accepted_at',
         'born_at',
+        'is_instance_admin',
     ];
 
     /**
@@ -81,6 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'invited_at' => 'datetime',
             'invitation_accepted_at' => 'datetime',
             'born_at' => 'date',
+            'is_instance_admin' => 'boolean',
         ];
     }
 

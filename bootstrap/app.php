@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\CheckInstanceAdministrator;
 use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\CheckTeamApi;
 use Illuminate\Foundation\Application;
@@ -19,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'subscription' => CheckSubscription::class,
             'team.api' => CheckTeamApi::class,
+            'instance.admin' => CheckInstanceAdministrator::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
