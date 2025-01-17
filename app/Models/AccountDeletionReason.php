@@ -6,14 +6,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AccountDeletionReason extends Model
 {
     use HasFactory;
 
     protected $table = 'account_deletion_reasons';
-
 
     /**
      * The attributes that are mass assignable.

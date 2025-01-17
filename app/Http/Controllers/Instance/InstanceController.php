@@ -6,8 +6,6 @@ namespace App\Http\Controllers\Instance;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class InstanceController extends Controller
@@ -18,21 +16,21 @@ class InstanceController extends Controller
         $totalAccounts = Account::count();
 
         $accounts = Account::query()
-            ->with(['users' => function ($query) {
+            ->with(['users' => function ($query): void {
                 $query->orderBy('created_at', 'asc')
                     ->limit(1);
             }])
             ->withCount('persons')
             ->get()
-            ->map(function ($account) {
+            ->map(function ($account): array {
                 $firstUser = $account->users->first();
 
                 return [
                     'id' => $firstUser?->id,
-                    'name' => $firstUser ? trim($firstUser->first_name . ' ' . $firstUser->last_name) : '',
+                    'name' => $firstUser ? mb_trim($firstUser->first_name.' '.$firstUser->last_name) : '',
                     'email' => $firstUser?->email,
-                    'is_instance_admin' => $firstUser?->is_instance_admin,
-                    'persons_count' => $account->persons_count
+                    'last_activity_at' => $firstUser?->last_activity_at->format('Y-m-d H:i:s'),
+                    'persons_count' => $account->persons_count,
                 ];
             });
 

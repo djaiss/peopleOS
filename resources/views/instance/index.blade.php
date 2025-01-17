@@ -1,9 +1,22 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-      {{ __('Instance Administration') }}
-    </h2>
-  </x-slot>
+  <!-- Admin Panel Indicator -->
+  <div class="border-b border-yellow-200 bg-yellow-50">
+    <div class="mx-auto flex max-w-7xl items-center justify-center gap-x-3 px-4 py-2 sm:px-6 lg:px-8">
+      <x-lucide-shield class="h-4 w-4 text-yellow-600" />
+      <span class="text-sm font-medium text-yellow-800">{{ __('Instance Administration Area') }}</span>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <nav class="border-b border-gray-200 bg-white">
+    <div class="mx-auto flex max-w-7xl items-center gap-x-3 px-4 py-3 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-x-3 text-sm text-gray-500">
+        <a wire:navigate href="{{ route('dashboard') }}" class="hover:text-gray-700">{{ __('Dashboard') }}</a>
+        <x-lucide-chevron-right class="h-4 w-4" />
+        <span class="text-gray-700">{{ __('Instance Administration') }}</span>
+      </div>
+    </div>
+  </nav>
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -52,7 +65,7 @@
       <!-- Accounts List -->
       <div class="mb-8 overflow-hidden rounded-lg border border-gray-200 bg-white" x-data="{
         search: '',
-        accounts: @json($accounts)
+        accounts: {{ \Illuminate\Support\Js::from($accounts) }},
       }">
         <!-- Search -->
         <div class="border-b border-gray-200 p-4">
@@ -78,7 +91,8 @@
             <div class="grid grid-cols-1 gap-2 p-4 text-sm hover:bg-blue-50 sm:grid-cols-12 sm:gap-4 sm:p-3" x-show="
               search === '' ||
                 account.name.toLowerCase().includes(search.toLowerCase()) ||
-                account.email.toLowerCase().includes(search.toLowerCase())
+                account.email.toLowerCase().includes(search.toLowerCase()) ||
+                account.id.toString().includes(search)
             ">
               <!-- Mobile Labels + Content -->
               <div class="col-span-1 flex items-center justify-between sm:block">
@@ -105,7 +119,7 @@
                 <span class="font-semibold sm:hidden">Last Activity:</span>
                 <div class="flex items-center gap-2">
                   <x-lucide-clock class="h-4 w-4 text-gray-500" />
-                  <span x-text="account.last_activity"></span>
+                  <span x-text="account.last_activity_at"></span>
                 </div>
               </div>
 
@@ -124,7 +138,8 @@
             ! accounts.some(
               (account) =>
                 account.name.toLowerCase().includes(search.toLowerCase()) ||
-                account.email.toLowerCase().includes(search.toLowerCase())
+                account.email.toLowerCase().includes(search.toLowerCase()) ||
+                account.id.toString().includes(search),
             )
           ">
             <x-lucide-search class="mx-auto h-12 w-12 text-gray-400" />
