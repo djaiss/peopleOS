@@ -10,11 +10,25 @@
           {{ __('Personalization') }}
         </h1>
 
-        <h2 class="font-semi-bold mb-4 text-lg">
-          {{ __('All the genders available in the account') }}
+        <h2 class="font-semi-bold mb-1 text-lg">
+          {{ __('All the genders in the account') }}
         </h2>
 
+        <p class="mb-4 text-sm text-zinc-500">
+          {{ __('You can drag and drop the genders to change their order.') }}
+        </p>
+
         <livewire:administration.personalization.manage-genders />
+
+        <h2 class="font-semi-bold mb-1 text-lg">
+          {{ __('All the marital statuses in the account') }}
+        </h2>
+
+        <p class="mb-4 text-sm text-zinc-500">
+          {{ __('You can drag and drop the marital statuses to change their order.') }}
+        </p>
+
+        <livewire:administration.personalization.manage-marital-statuses />
       </div>
     </div>
   </div>
