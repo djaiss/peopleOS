@@ -30,7 +30,7 @@ class MaritalStatusFactory extends Factory
     {
         return [
             'account_id' => Account::factory(),
-            'name' => fake()->randomElement(['Male', 'Female', 'Non-binary']),
+            'name' => fake()->randomElement(['Married', 'Divorced', 'Single']),
             'position' => fake()->numberBetween(1, 100),
         ];
     }
