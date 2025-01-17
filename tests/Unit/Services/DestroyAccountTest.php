@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Mail\AccountDestroyed;
+use App\Models\AccountDeletionReason;
 use App\Models\User;
 use App\Services\DestroyAccount;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -33,6 +34,11 @@ class DestroyAccountTest extends TestCase
         $this->assertDatabaseMissing('accounts', [
             'id' => $user->account_id,
         ]);
+
+        $this->assertEquals(
+            'the service is not working',
+            AccountDeletionReason::first()->reason,
+        );
 
         Mail::assertQueued(AccountDestroyed::class, function (AccountDestroyed $job): bool {
             return $job->reason === 'the service is not working';
