@@ -68,14 +68,6 @@ class Account extends Model
     }
 
     /**
-     * Get the offices associated with the account.
-     */
-    public function offices(): HasMany
-    {
-        return $this->hasMany(Office::class);
-    }
-
-    /**
      * Get the teams associated with the account.
      */
     public function teams(): HasMany

@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services;
+
+use App\Mail\AccountDestroyed;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+
+class DestroyAccount
+{
+    public function __construct(
+        private readonly User $user,
+        private readonly string $reason,
+    ) {}
+
+    public function execute(): void
+    {
+        $this->user->account->delete();
+        $this->sendMail();
+    }
+
+    private function sendMail(): void
+    {
+        Mail::to($this->user->email)
+            ->queue(new AccountDestroyed(
+                reason: $this->reason,
+                activeSince: $this->user->account->created_at->format('Y-m-d'),
+            ));
+    }
+}

@@ -56,22 +56,12 @@
             </div>
           </div>
         </a>
-        <a wire:navigate href="{{ route('administration.users.index') }}">
-          <div class="{{ request()->routeIs('administration.users.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
+        <a wire:navigate href="{{ route('administration.account.index') }}">
+          <div class="{{ request()->routeIs('administration.account.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
             <div class="flex items-center gap-2">
-              <x-lucide-user-round-plus class="size-4 min-w-3" />
+              <x-lucide-settings class="size-4 min-w-3" />
               <span>
-                {{ __('Users') }}
-              </span>
-            </div>
-          </div>
-        </a>
-        <a wire:navigate href="{{ route('administration.offices.index') }}">
-          <div class="{{ request()->routeIs('administration.offices.index') ? 'text-green-600 hover:bg-green-600/5 dark:text-green-500 dark:hover:bg-green-500/5' : 'text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white' }} flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5">
-            <div class="flex items-center gap-2">
-              <x-lucide-building class="size-4 min-w-3" />
-              <span>
-                {{ __('Offices') }}
+                {{ __('Account administration') }}
               </span>
             </div>
           </div>
