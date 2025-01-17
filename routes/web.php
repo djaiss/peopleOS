@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Administration\AdministrationAccountController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationOfficeController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
@@ -31,8 +32,9 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
 
     Route::get('administration/personalization', [AdministrationPersonalizationController::class, 'index'])->name('administration.personalization.index');
 
-    Route::get('administration/offices', [AdministrationOfficeController::class, 'index'])->name('administration.offices.index');
     Route::get('administration/users', [AdministrationUserController::class, 'index'])->name('administration.users.index');
+
+    Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');
 
     Route::middleware(['instance.admin'])->group(function (): void {
         Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
