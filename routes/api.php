@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
-use App\Http\Controllers\Api\Administration\AdministrationOfficeController;
-use App\Http\Controllers\Api\Administration\AdministrationUserController;
 use App\Http\Controllers\Api\Administration\GenderController;
 use App\Http\Controllers\Api\Administration\MaritalStatusController;
 use App\Http\Controllers\Api\Administration\MeController;
@@ -25,7 +23,6 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     });
 
     // users
-    Route::post('administration/users', [AdministrationUserController::class, 'store'])->name('users.store');
     Route::put('administration/users/{user}/invite', [AdministrationInviteUserAgainController::class, 'update'])->name('users.invite');
 
     // genders

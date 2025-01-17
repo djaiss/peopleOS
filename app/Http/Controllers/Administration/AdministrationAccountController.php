@@ -22,6 +22,7 @@ class AdministrationAccountController extends Controller
     {
         (new DestroyAccount(
             user: Auth::user(),
+            reason: $request->input('feedback'),
         ))->execute();
 
         $request->session()->invalidate();
