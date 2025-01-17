@@ -13,7 +13,7 @@
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Personal API keys') }}</h2>
         <p class="mb-4 text-sm text-zinc-500">{{ __('Use the API to build your own integration.') }}</p>
 
-        {{-- <livewire:administration.security.manage-api-keys lazy :user-id="$user['id']" /> --}}
+        <livewire:administration.security.manage-api-keys lazy />
       </div>
     </div>
   </div>

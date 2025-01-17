@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Services\CreateApiKey;
 use App\Services\DestroyApiKey;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\PersonalAccessToken;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
@@ -16,9 +17,6 @@ use Masmerise\Toaster\Toaster;
 
 class ManageApiKeys extends Component
 {
-    #[Locked]
-    public int $userId;
-
     #[Locked]
     public User $user;
 
@@ -32,7 +30,7 @@ class ManageApiKeys extends Component
 
     public function mount(): void
     {
-        $this->user = User::find($this->userId);
+        $this->user = Auth::user();
         $this->apiKeys = collect($this->user->tokens
             ->map(fn (PersonalAccessToken $token): array => [
                 'id' => $token->id,
