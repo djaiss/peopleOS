@@ -8,6 +8,7 @@ use App\Models\Account;
 use App\Models\Gender;
 use App\Models\Log;
 use App\Models\MaritalStatus;
+use App\Models\Person;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -60,6 +61,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->maritalStatuses()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_persons(): void
+    {
+        $account = Account::factory()->create();
+        Person::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->persons()->exists());
     }
 
     #[Test]

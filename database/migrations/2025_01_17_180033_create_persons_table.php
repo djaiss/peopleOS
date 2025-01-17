@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('account_deletion_reasons', function (Blueprint $table): void {
+        Schema::create('persons', function (Blueprint $table): void {
             $table->id();
-            $table->text('reason');
+            $table->unsignedBigInteger('account_id');
+            $table->text('first_name');
+            $table->text('last_name');
+            $table->text('email');
             $table->timestamps();
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('account_deletion_reasons');
+        Schema::dropIfExists('persons');
     }
 };

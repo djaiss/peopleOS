@@ -41,9 +41,11 @@
             {{ __('Administration') }}
           </x-dropdown-link>
 
-          <x-dropdown-link href="{{ route('instance.index') }}">
-            {{ __('Instance Administration') }}
-          </x-dropdown-link>
+          @if (Auth::user()->is_instance_admin)
+            <x-dropdown-link href="{{ route('instance.index') }}">
+              {{ __('Instance administration') }}
+            </x-dropdown-link>
+          @endif
 
           <div class="border-t border-gray-200 dark:border-gray-600"></div>
 

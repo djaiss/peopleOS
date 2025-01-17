@@ -68,6 +68,14 @@ class Account extends Model
     }
 
     /**
+     * Get the persons associated with the account.
+     */
+    public function persons(): HasMany
+    {
+        return $this->hasMany(Person::class);
+    }
+
+    /**
      * Get the teams associated with the account.
      */
     public function teams(): HasMany

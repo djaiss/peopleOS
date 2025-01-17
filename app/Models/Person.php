@@ -6,12 +6,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class AccountDeletionReason extends Model
+class Person extends Model
 {
     use HasFactory;
 
-    protected $table = 'account_deletion_reasons';
+    protected $table = 'persons';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,10 @@ class AccountDeletionReason extends Model
      * @var array<int,string>
      */
     protected $fillable = [
-        'reason',
+        'account_id',
+        'first_name',
+        'last_name',
+        'email',
     ];
 
     /**
@@ -30,7 +34,17 @@ class AccountDeletionReason extends Model
     protected function casts(): array
     {
         return [
-            'reason' => 'encrypted',
+            'first_name' => 'encrypted',
+            'last_name' => 'encrypted',
+            'email' => 'encrypted',
         ];
+    }
+
+    /**
+     * Get the account associated with the team.
+     */
+    public function account(): BelongsTo
+    {
+        return $this->belongsTo(Account::class);
     }
 }
