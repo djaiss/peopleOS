@@ -40,7 +40,7 @@ class UpdateProfilePicture
 
     private function update(): void
     {
-        $this->path = $this->photo->storePublicly(path: 'photos');
+        $this->path = $this->photo->storePublicly(path: 'avatars');
         $this->user->update([
             'profile_photo_path' => $this->path,
         ]);
