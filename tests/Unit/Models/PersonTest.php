@@ -7,8 +7,6 @@ namespace Tests\Unit\Models;
 use App\Models\Account;
 use App\Models\Gender;
 use App\Models\Person;
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;

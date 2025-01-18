@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Person;
 use App\Models\Gender;
+use App\Models\Person;
 use App\Models\User;
 use App\Services\CreatePerson;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -64,7 +66,7 @@ class CreatePersonTest extends TestCase
 
         $this->assertEquals('Ross', $person->first_name);
         $this->assertEquals('Geller', $person->last_name);
-        $this->assertEquals($person->id . '-ross-geller', $person->slug);
+        $this->assertEquals($person->id.'-ross-geller', $person->slug);
 
         $this->assertInstanceOf(
             Person::class,

@@ -1,17 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Contact;
-use App\Models\Ethnicity;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
-use App\Models\Vault;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
 class CreatePerson
@@ -45,7 +42,7 @@ class CreatePerson
     private function validate(): void
     {
         // make sure the gender exists and belongs to the account
-        if ($this->gender) {
+        if ($this->gender instanceof Gender) {
             Gender::where('account_id', $this->user->account_id)
                 ->findOrFail($this->gender->id);
         }
@@ -69,8 +66,8 @@ class CreatePerson
 
     private function generateSlug(): void
     {
-        $name = $this->person->first_name . ' ' . $this->person->last_name;
-        $slug = $this->person->id . '-' . Str::of($name)->slug('-');
+        $name = $this->person->first_name.' '.$this->person->last_name;
+        $slug = $this->person->id.'-'.Str::of($name)->slug('-');
 
         $this->person->slug = $slug;
         $this->person->save();
@@ -86,7 +83,7 @@ class CreatePerson
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_creation',
-            description: 'Created the person called ' . $this->person->name,
+            description: 'Created the person called '.$this->person->name,
         );
     }
 }

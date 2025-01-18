@@ -58,7 +58,7 @@ class UpdatePersonTest extends TestCase
 
         $this->assertEquals('Monica', $person->first_name);
         $this->assertEquals('Geller', $person->last_name);
-        $this->assertEquals($person->id . '-monica-geller', $person->slug);
+        $this->assertEquals($person->id.'-monica-geller', $person->slug);
 
         $this->assertInstanceOf(
             Person::class,
