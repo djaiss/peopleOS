@@ -6,14 +6,24 @@ use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainControl
 use App\Http\Controllers\Api\Administration\GenderController;
 use App\Http\Controllers\Api\Administration\MaritalStatusController;
 use App\Http\Controllers\Api\Administration\MeController;
+use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Teams\TeamController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
-
     // logged user
     Route::get('me', [MeController::class, 'show'])->name('me');
     Route::put('me', [MeController::class, 'update'])->name('me.update');
+
+    // persons
+    Route::get('persons', [PersonController::class, 'index'])->name('persons.index');
+    Route::post('persons', [PersonController::class, 'create'])->name('persons.create');
+
+    Route::middleware(['person.api'])->group(function (): void {
+        Route::get('persons/{person}', [PersonController::class, 'show'])->name('persons.show');
+        Route::put('persons/{person}', [PersonController::class, 'update'])->name('persons.update');
+        Route::delete('persons/{person}', [PersonController::class, 'destroy'])->name('persons.destroy');
+    });
 
     // teams
     Route::post('teams', [TeamController::class, 'store'])->name('teams.store');

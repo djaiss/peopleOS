@@ -122,6 +122,28 @@
             </li>
           </ul>
         </ul>
+        <ul id="tocify-header-people" class="tocify-header">
+          <li class="tocify-item level-1" data-unique="people">
+            <a href="#people">People</a>
+          </li>
+          <ul id="tocify-subheader-people" class="tocify-subheader">
+            <li class="tocify-item level-2" data-unique="people-GETapi-persons">
+              <a href="#people-GETapi-persons">List all persons.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="people-POSTapi-persons">
+              <a href="#people-POSTapi-persons">Create a person.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="people-GETapi-persons--id-">
+              <a href="#people-GETapi-persons--id-">Retrieve a person.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="people-PUTapi-persons--id-">
+              <a href="#people-PUTapi-persons--id-">Update a person.</a>
+            </li>
+            <li class="tocify-item level-2" data-unique="people-DELETEapi-persons--id-">
+              <a href="#people-DELETEapi-persons--id-">Delete a person.</a>
+            </li>
+          </ul>
+        </ul>
         <ul id="tocify-header-teams" class="tocify-header">
           <li class="tocify-item level-1" data-unique="teams">
             <a href="#teams">Teams</a>
@@ -1696,7 +1718,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/administration/marital-statuses/19" \
+    "https://peopleos.test/api/administration/marital-statuses/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1708,7 +1730,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/marital-statuses/19"
+    "https://peopleos.test/api/administration/marital-statuses/5"
 );
 
 const headers = {
@@ -1730,7 +1752,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/marital-statuses/19';
+$url = 'https://peopleos.test/api/administration/marital-statuses/5';
 $response = $client-&gt;put(
     $url,
     [
@@ -1816,11 +1838,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="19" data-component="url" />
+            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="5" data-component="url" />
             <br />
             <p>
               The ID of the maritalStatus. Example:
-              <code>19</code>
+              <code>5</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1871,14 +1893,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/administration/marital-statuses/16" \
+    "https://peopleos.test/api/administration/marital-statuses/8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/marital-statuses/16"
+    "https://peopleos.test/api/administration/marital-statuses/8"
 );
 
 const headers = {
@@ -1894,7 +1916,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/marital-statuses/16';
+$url = 'https://peopleos.test/api/administration/marital-statuses/8';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1967,11 +1989,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="16" data-component="url" />
+            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="8" data-component="url" />
             <br />
             <p>
               The ID of the maritalStatus. Example:
-              <code>16</code>
+              <code>8</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1983,6 +2005,1417 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <br />
             <p>
               The ID of the marital status. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h1 id="people">People</h1>
+
+        <h2 id="people-GETapi-persons">List all persons.</h2>
+
+        <p></p>
+
+        <p>This API call returns a paginated collection of persons that contains 15 items per page.</p>
+
+        <span id="example-requests-GETapi-persons">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "https://peopleos.test/api/persons" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/persons"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/persons';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-persons">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{&quot;data&quot;: [{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;person&quot;,
+ &quot;name&quot;: &quot;Ross Geller&quot;,
+ &quot;first_name&quot;: &quot;Ross&quot;,
+ &quot;last_name&quot;: &quot;Geller&quot;,
+ &quot;middle_name&quot;: &quot;Gary&quot;,
+ &quot;nickname&quot;: &quot;Bear&quot;,
+ &quot;maiden_name&quot;: &quot;Johnson&quot;,
+ &quot;prefix&quot;: &quot;Mr.&quot;,
+ &quot;suffix&quot;: &quot;Jr.&quot;,
+ &quot;can_be_deleted&quot;: true,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+}, {
+ &quot;id&quot;: 5,
+ &quot;object&quot;: &quot;person&quot;,
+ &quot;name&quot;: &quot;Monica Geller&quot;,
+ &quot;first_name&quot;: &quot;Monica&quot;,
+ &quot;last_name&quot;: &quot;Geller&quot;,
+ &quot;middle_name&quot;: &quot;Geller&quot;,
+ &quot;nickname&quot;: &quot;Mon&quot;,
+ &quot;maiden_name&quot;: &quot;Geller&quot;,
+ &quot;prefix&quot;: &quot;Ms.&quot;,
+ &quot;suffix&quot;: &quot;Sr.&quot;,
+ &quot;can_be_deleted&quot;: true,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800
+},
+&quot;links&quot;: {
+  &quot;first&quot;: &quot;http://peopleos.test/api/persons?page=1&quot;,
+  &quot;last&quot;: &quot;http://peopleos.test/api/persons?page=1&quot;,
+  &quot;prev&quot;: null,
+  &quot;next&quot;: null
+ },
+ &quot;meta&quot;: {
+   &quot;current_page&quot;: 1,
+   &quot;from&quot;: 1,
+   &quot;last_page&quot;: 1,
+   &quot;links&quot;: [
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+       &quot;active&quot;: false
+     },
+     {
+       &quot;url&quot;: &quot;http://peopleos.test/api/persons?page=1&quot;,
+       &quot;label&quot;: &quot;1&quot;,
+       &quot;active&quot;: true
+     },
+     {
+       &quot;url&quot;: null,
+       &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+       &quot;active&quot;: false
+     }
+   ],
+   &quot;path&quot;: &quot;http://peopleos.test/api/persons&quot;,
+   &quot;per_page&quot;: 15,
+   &quot;to&quot;: 1,
+   &quot;total&quot;: 1
+ }</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-persons" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-persons"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-persons"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-persons" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-persons">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-persons" data-method="GET" data-path="api/persons" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-persons', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/persons</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-persons" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-persons" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;person&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The display name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>first_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The first name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>last_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The last name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>middle_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The middle name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nickname</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nickname of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>maiden_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The maiden name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>prefix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The prefix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>suffix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The suffix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>can_be_deleted</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Whether the person can be deleted.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="people-POSTapi-persons">Create a person.</h2>
+
+        <p></p>
+
+        <p>Once created, the person will be returned in the response, as well as the display name of the person. This name's format depends on the user settings.</p>
+
+        <span id="example-requests-POSTapi-persons">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request POST \
+    "https://peopleos.test/api/persons" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"gender_id\": 1,
+    \"first_name\": \"Ross\",
+    \"last_name\": \"Geller\",
+    \"middle_name\": \"Gary\",
+    \"nickname\": \"Bear\",
+    \"maiden_name\": \"Johnson\",
+    \"prefix\": \"Mr.\",
+    \"suffix\": \"Jr.\",
+    \"can_be_deleted\": true
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/persons"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "gender_id": 1,
+    "first_name": "Ross",
+    "last_name": "Geller",
+    "middle_name": "Gary",
+    "nickname": "Bear",
+    "maiden_name": "Johnson",
+    "prefix": "Mr.",
+    "suffix": "Jr.",
+    "can_be_deleted": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/persons';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'gender_id' =&gt; 1,
+            'first_name' =&gt; 'Ross',
+            'last_name' =&gt; 'Geller',
+            'middle_name' =&gt; 'Gary',
+            'nickname' =&gt; 'Bear',
+            'maiden_name' =&gt; 'Johnson',
+            'prefix' =&gt; 'Mr.',
+            'suffix' =&gt; 'Jr.',
+            'can_be_deleted' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-POSTapi-persons">
+          <blockquote>
+            <p>Example response (201):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;person&quot;,
+ &quot;name&quot;: &quot;Ross Geller&quot;,
+ &quot;first_name&quot;: &quot;Ross&quot;,
+ &quot;last_name&quot;: &quot;Geller&quot;,
+ &quot;middle_name&quot;: &quot;Gary&quot;,
+ &quot;nickname&quot;: &quot;Bear&quot;,
+ &quot;maiden_name&quot;: &quot;Johnson&quot;,
+ &quot;prefix&quot;: &quot;Mr.&quot;,
+ &quot;suffix&quot;: &quot;Jr.&quot;,
+ &quot;can_be_deleted&quot;: 1,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-POSTapi-persons" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-POSTapi-persons"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-POSTapi-persons"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-POSTapi-persons" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-POSTapi-persons">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-POSTapi-persons" data-method="POST" data-path="api/persons" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('POSTapi-persons', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/persons</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="POSTapi-persons" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="POSTapi-persons" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="number" style="display: none" step="any" name="gender_id" data-endpoint="POSTapi-persons" value="1" data-component="body" />
+            <br />
+            <p>
+              The gender object associated with the person. This object must be a valid Gender object. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>first_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="first_name" data-endpoint="POSTapi-persons" value="Ross" data-component="body" />
+            <br />
+            <p>
+              The first name of the person. Max 255 characters. Example:
+              <code>Ross</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>last_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="last_name" data-endpoint="POSTapi-persons" value="Geller" data-component="body" />
+            <br />
+            <p>
+              The last name of the person. Max 255 characters. Example:
+              <code>Geller</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>middle_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="middle_name" data-endpoint="POSTapi-persons" value="Gary" data-component="body" />
+            <br />
+            <p>
+              The middle name of the person. Max 255 characters. Example:
+              <code>Gary</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>nickname</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="nickname" data-endpoint="POSTapi-persons" value="Bear" data-component="body" />
+            <br />
+            <p>
+              The nickname of the person. Max 255 characters. Example:
+              <code>Bear</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>maiden_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="maiden_name" data-endpoint="POSTapi-persons" value="Johnson" data-component="body" />
+            <br />
+            <p>
+              The maiden name of the person, important in some cultures, where a woman’s surname changes after marriage. Max 255 characters. Example:
+              <code>Johnson</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>prefix</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="prefix" data-endpoint="POSTapi-persons" value="Mr." data-component="body" />
+            <br />
+            <p>
+              The prefix of the person. Max 255 characters. Example:
+              <code>Mr.</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>suffix</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="suffix" data-endpoint="POSTapi-persons" value="Jr." data-component="body" />
+            <br />
+            <p>
+              The suffix of the person. Max 255 characters. Example:
+              <code>Jr.</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>can_be_deleted</code></b>
+            &nbsp;&nbsp;
+            <small>boolean</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <label data-endpoint="POSTapi-persons" style="display: none">
+              <input type="radio" name="can_be_deleted" value="true" data-endpoint="POSTapi-persons" data-component="body" />
+              <code>true</code>
+            </label>
+            <label data-endpoint="POSTapi-persons" style="display: none">
+              <input type="radio" name="can_be_deleted" value="false" data-endpoint="POSTapi-persons" data-component="body" />
+              <code>false</code>
+            </label>
+            <br />
+            <p>
+              Whether the person can be deleted. 0 for false, 1 for true. Example:
+              <code>true</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;person&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The display name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>first_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The first name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>last_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The last name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>middle_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The middle name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nickname</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nickname of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>maiden_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The maiden name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>prefix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The prefix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>suffix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The suffix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>can_be_deleted</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Whether the person can be deleted.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="people-GETapi-persons--id-">Retrieve a person.</h2>
+
+        <p></p>
+
+        <span id="example-requests-GETapi-persons--id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request GET \
+    --get "https://peopleos.test/api/persons/sint" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/persons/sint"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/persons/sint';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-GETapi-persons--id-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;object&quot;: &quot;person&quot;,
+    &quot;name&quot;: &quot;Ross Geller&quot;,
+    &quot;first_name&quot;: &quot;Ross&quot;,
+    &quot;last_name&quot;: &quot;Geller&quot;,
+    &quot;middle_name&quot;: &quot;Gary&quot;,
+    &quot;nickname&quot;: &quot;Bear&quot;,
+    &quot;maiden_name&quot;: &quot;Johnson&quot;,
+    &quot;prefix&quot;: &quot;Mr.&quot;,
+    &quot;suffix&quot;: &quot;Jr.&quot;,
+    &quot;can_be_deleted&quot;: true,
+    &quot;created_at&quot;: 1514764800,
+    &quot;updated_at&quot;: 1514764800
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-GETapi-persons--id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-GETapi-persons--id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-GETapi-persons--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-GETapi-persons--id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-GETapi-persons--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-GETapi-persons--id-" data-method="GET" data-path="api/persons/{id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('GETapi-persons--id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/persons/{id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="GETapi-persons--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="GETapi-persons--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>id</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="id" data-endpoint="GETapi-persons--id-" value="sint" data-component="url" />
+            <br />
+            <p>
+              The ID of the person. Example:
+              <code>sint</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>person</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="person" data-endpoint="GETapi-persons--id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the person. Example:
+              <code>1</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the contact.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;person&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The full name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>first_name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The first name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>last_name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The last name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>middle_name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The middle name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nickname</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The nickname of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>maiden_name</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The maiden name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>prefix</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The prefix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>suffix</code></b>
+          &nbsp;&nbsp;
+          <small>string</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The suffix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>can_be_deleted</code></b>
+          &nbsp;&nbsp;
+          <small>boolean</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>Whether the person can be deleted.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the person was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp;
+          <small>integer</small>
+          &nbsp; &nbsp;
+          <br />
+          <p>The date the person was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="people-PUTapi-persons--id-">Update a person.</h2>
+
+        <p></p>
+
+        <p>Updates an existing person.</p>
+        <p>Once updated, the person will be returned in the response, as well as the display name of the person. This name's format depends on the user settings.</p>
+
+        <span id="example-requests-PUTapi-persons--id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request PUT \
+    "https://peopleos.test/api/persons/vel" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"gender_id\": 1,
+    \"first_name\": \"Michael\",
+    \"last_name\": \"Scott\",
+    \"middle_name\": \"Gary\",
+    \"nickname\": \"Mike\",
+    \"maiden_name\": \"Johnson\",
+    \"patronymic_name\": \"frv\",
+    \"tribal_name\": \"kekmrfp\",
+    \"prefix\": \"Mr.\",
+    \"suffix\": \"Jr.\",
+    \"can_be_deleted\": true
+}"
+</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/persons/vel"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "gender_id": 1,
+    "first_name": "Michael",
+    "last_name": "Scott",
+    "middle_name": "Gary",
+    "nickname": "Mike",
+    "maiden_name": "Johnson",
+    "patronymic_name": "frv",
+    "tribal_name": "kekmrfp",
+    "prefix": "Mr.",
+    "suffix": "Jr.",
+    "can_be_deleted": true
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/persons/vel';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'gender_id' =&gt; 1,
+            'first_name' =&gt; 'Michael',
+            'last_name' =&gt; 'Scott',
+            'middle_name' =&gt; 'Gary',
+            'nickname' =&gt; 'Mike',
+            'maiden_name' =&gt; 'Johnson',
+            'patronymic_name' =&gt; 'frv',
+            'tribal_name' =&gt; 'kekmrfp',
+            'prefix' =&gt; 'Mr.',
+            'suffix' =&gt; 'Jr.',
+            'can_be_deleted' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-PUTapi-persons--id-">
+          <blockquote>
+            <p>Example response (200):</p>
+          </blockquote>
+          <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+ &quot;id&quot;: 4,
+ &quot;object&quot;: &quot;person&quot;,
+ &quot;name&quot;: &quot;Ross Geller&quot;,
+ &quot;first_name&quot;: &quot;Ross&quot;,
+ &quot;last_name&quot;: &quot;Geller&quot;,
+ &quot;middle_name&quot;: &quot;Gary&quot;,
+ &quot;nickname&quot;: &quot;Bear&quot;,
+ &quot;maiden_name&quot;: &quot;Johnson&quot;,
+ &quot;prefix&quot;: &quot;Mr.&quot;,
+ &quot;suffix&quot;: &quot;Jr.&quot;,
+ &quot;can_be_deleted&quot;: 1,
+ &quot;created_at&quot;: 1514764800,
+ &quot;updated_at&quot;: 1514764800,
+}</code>
+ </pre>
+        </span>
+        <span id="execution-results-PUTapi-persons--id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-PUTapi-persons--id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-PUTapi-persons--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-PUTapi-persons--id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-PUTapi-persons--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-PUTapi-persons--id-" data-method="PUT" data-path="api/persons/{id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('PUTapi-persons--id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/persons/{id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="PUTapi-persons--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="PUTapi-persons--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>id</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-persons--id-" value="vel" data-component="url" />
+            <br />
+            <p>
+              The ID of the person. Example:
+              <code>vel</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>person</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="person" data-endpoint="PUTapi-persons--id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the person. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>gender_id</code></b>
+            &nbsp;&nbsp;
+            <small>integer</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="number" style="display: none" step="any" name="gender_id" data-endpoint="PUTapi-persons--id-" value="1" data-component="body" />
+            <br />
+            <p>
+              The gender associated with the person. This object must be a valid Gender object. Example:
+              <code>1</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>first_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="first_name" data-endpoint="PUTapi-persons--id-" value="Michael" data-component="body" />
+            <br />
+            <p>
+              The first name of the person. Max 255 characters. Example:
+              <code>Michael</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>last_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="last_name" data-endpoint="PUTapi-persons--id-" value="Scott" data-component="body" />
+            <br />
+            <p>
+              The last name of the person. Max 255 characters. Example:
+              <code>Scott</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>middle_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="middle_name" data-endpoint="PUTapi-persons--id-" value="Gary" data-component="body" />
+            <br />
+            <p>
+              The middle name of the person. Max 255 characters. Example:
+              <code>Gary</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>nickname</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="nickname" data-endpoint="PUTapi-persons--id-" value="Mike" data-component="body" />
+            <br />
+            <p>
+              The nickname of the person. Max 255 characters. Example:
+              <code>Mike</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>maiden_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="maiden_name" data-endpoint="PUTapi-persons--id-" value="Johnson" data-component="body" />
+            <br />
+            <p>
+              The maiden name of the person, important in some cultures, where a woman’s surname changes after marriage. Max 255 characters. Example:
+              <code>Johnson</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>patronymic_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="patronymic_name" data-endpoint="PUTapi-persons--id-" value="frv" data-component="body" />
+            <br />
+            <p>
+              Must not be greater than 255 characters. Example:
+              <code>frv</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>tribal_name</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="tribal_name" data-endpoint="PUTapi-persons--id-" value="kekmrfp" data-component="body" />
+            <br />
+            <p>
+              Must not be greater than 255 characters. Example:
+              <code>kekmrfp</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>prefix</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="prefix" data-endpoint="PUTapi-persons--id-" value="Mr." data-component="body" />
+            <br />
+            <p>
+              The prefix of the person. Max 255 characters. Example:
+              <code>Mr.</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>suffix</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <input type="text" style="display: none" name="suffix" data-endpoint="PUTapi-persons--id-" value="Jr." data-component="body" />
+            <br />
+            <p>
+              The suffix of the person. Max 255 characters. Example:
+              <code>Jr.</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>can_be_deleted</code></b>
+            &nbsp;&nbsp;
+            <small>boolean</small>
+            &nbsp;
+            <i>optional</i>
+            &nbsp;
+            <label data-endpoint="PUTapi-persons--id-" style="display: none">
+              <input type="radio" name="can_be_deleted" value="true" data-endpoint="PUTapi-persons--id-" data-component="body" />
+              <code>true</code>
+            </label>
+            <label data-endpoint="PUTapi-persons--id-" style="display: none">
+              <input type="radio" name="can_be_deleted" value="false" data-endpoint="PUTapi-persons--id-" data-component="body" />
+              <code>false</code>
+            </label>
+            <br />
+            <p>
+              Whether the person can be deleted. 0 for false, 1 for true. Example:
+              <code>true</code>
+            </p>
+          </div>
+        </form>
+
+        <h3>Response</h3>
+        <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>id</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Unique identifier for the object.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>object</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The object type. Always &quot;person&quot;.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The display name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>first_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The first name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>last_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The last name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>middle_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The middle name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>nickname</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The nickname of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>maiden_name</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The maiden name of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>prefix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The prefix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>suffix</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The suffix of the person.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>can_be_deleted</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>Whether the person can be deleted.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>created_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was created. Represented as a Unix timestamp.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>updated_at</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The date the object was last updated. Represented as a Unix timestamp.</p>
+        </div>
+        <h2 id="people-DELETEapi-persons--id-">Delete a person.</h2>
+
+        <p></p>
+
+        <span id="example-requests-DELETEapi-persons--id-">
+          <blockquote>Example request:</blockquote>
+
+          <div class="bash-example">
+            <pre><code class="language-bash">curl --request DELETE \
+    "https://peopleos.test/api/persons/ullam" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+          </div>
+
+          <div class="javascript-example">
+            <pre><code class="language-javascript">const url = new URL(
+    "https://peopleos.test/api/persons/ullam"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+          </div>
+
+          <div class="php-example">
+            <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'https://peopleos.test/api/persons/ullam';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+          </div>
+        </span>
+
+        <span id="example-responses-DELETEapi-persons--id-">
+          <blockquote>
+            <p>Example response (204):</p>
+          </blockquote>
+          <pre>
+<code>Empty response</code>
+ </pre>
+        </span>
+        <span id="execution-results-DELETEapi-persons--id-" hidden>
+          <blockquote>
+            Received response
+            <span id="execution-response-status-DELETEapi-persons--id-"></span>
+            :
+          </blockquote>
+          <pre class="json"><code id="execution-response-content-DELETEapi-persons--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+        </span>
+        <span id="execution-error-DELETEapi-persons--id-" hidden>
+          <blockquote>Request failed with error:</blockquote>
+          <pre><code id="execution-error-message-DELETEapi-persons--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+        </span>
+        <form id="form-DELETEapi-persons--id-" data-method="DELETE" data-path="api/persons/{id}" data-authed="0" data-hasfiles="0" data-isarraybody="0" autocomplete="off" onsubmit="event.preventDefault(); executeTryOut('DELETEapi-persons--id-', this);">
+          <h3>Request&nbsp;&nbsp;&nbsp;</h3>
+          <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/persons/{id}</code></b>
+          </p>
+          <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Content-Type</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Content-Type" data-endpoint="DELETEapi-persons--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>Accept</code></b>
+            &nbsp;&nbsp; &nbsp; &nbsp;
+            <input type="text" style="display: none" name="Accept" data-endpoint="DELETEapi-persons--id-" value="application/json" data-component="header" />
+            <br />
+            <p>
+              Example:
+              <code>application/json</code>
+            </p>
+          </div>
+          <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>id</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-persons--id-" value="ullam" data-component="url" />
+            <br />
+            <p>
+              The ID of the person. Example:
+              <code>ullam</code>
+            </p>
+          </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>person</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="person" data-endpoint="DELETEapi-persons--id-" value="1" data-component="url" />
+            <br />
+            <p>
+              The id of the person. Example:
               <code>1</code>
             </p>
           </div>
@@ -2178,7 +3611,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/teams/animi" \
+    "https://peopleos.test/api/teams/et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2189,7 +3622,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/animi"
+    "https://peopleos.test/api/teams/et"
 );
 
 const headers = {
@@ -2210,7 +3643,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/animi';
+$url = 'https://peopleos.test/api/teams/et';
 $response = $client-&gt;put(
     $url,
     [
@@ -2293,11 +3726,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="animi" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="et" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>animi</code>
+              <code>et</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -2368,14 +3801,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/teams/et" \
+    "https://peopleos.test/api/teams/neque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/et"
+    "https://peopleos.test/api/teams/neque"
 );
 
 const headers = {
@@ -2391,7 +3824,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/et';
+$url = 'https://peopleos.test/api/teams/neque';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2467,11 +3900,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="et" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="neque" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>et</code>
+              <code>neque</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
