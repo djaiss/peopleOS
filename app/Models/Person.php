@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -21,9 +22,16 @@ class Person extends Model
      */
     protected $fillable = [
         'account_id',
+        'gender_id',
+        'slug',
         'first_name',
+        'middle_name',
         'last_name',
-        'email',
+        'nickname',
+        'maiden_name',
+        'suffix',
+        'prefix',
+        'can_be_deleted',
     ];
 
     /**
@@ -34,9 +42,15 @@ class Person extends Model
     protected function casts(): array
     {
         return [
+            'slug' => 'encrypted',
             'first_name' => 'encrypted',
+            'middle_name' => 'encrypted',
             'last_name' => 'encrypted',
-            'email' => 'encrypted',
+            'nickname' => 'encrypted',
+            'maiden_name' => 'encrypted',
+            'suffix' => 'encrypted',
+            'prefix' => 'encrypted',
+            'can_be_deleted' => 'boolean',
         ];
     }
 
@@ -46,5 +60,29 @@ class Person extends Model
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
+    }
+
+    /**
+     * Get the gender associated with the person.
+     */
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class);
+    }
+
+    /**
+     * Get the person's full name.
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attributes): string {
+                $firstName = $this->first_name;
+                $lastName = $this->last_name;
+                $separator = $firstName && $lastName ? ' ' : '';
+
+                return $firstName . $separator . $lastName;
+            }
+        );
     }
 }

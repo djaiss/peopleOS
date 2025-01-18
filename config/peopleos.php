@@ -47,6 +47,9 @@ return [
         'marital_status_creation' => 'Marital status creation',
         'marital_status_update' => 'Marital status update',
         'marital_status_deletion' => 'Marital status deletion',
+        'person_creation' => 'Person creation',
+        'person_update' => 'Person update',
+        'person_deletion' => 'Person deletion',
     ],
 
 ];
