@@ -31,6 +31,7 @@ class InstanceController extends Controller
                     'email' => $firstUser?->email,
                     'last_activity_at' => $firstUser?->last_activity_at->format('Y-m-d H:i:s'),
                     'persons_count' => $account->persons_count,
+                    'avatar' => $firstUser?->getAvatar(64),
                 ];
             });
 
