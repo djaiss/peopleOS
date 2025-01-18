@@ -16,11 +16,19 @@ return new class extends Migration
         Schema::create('persons', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->text('first_name');
-            $table->text('last_name');
-            $table->text('email');
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->text('slug')->nullable();
+            $table->text('first_name')->nullable();
+            $table->text('middle_name')->nullable();
+            $table->text('last_name')->nullable();
+            $table->text('nickname')->nullable();
+            $table->text('maiden_name')->nullable();
+            $table->text('suffix')->nullable();
+            $table->text('prefix')->nullable();
+            $table->boolean('can_be_deleted')->default(true);
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
         });
     }
 
