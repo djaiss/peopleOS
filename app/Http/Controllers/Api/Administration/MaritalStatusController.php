@@ -107,7 +107,7 @@ class MaritalStatusController extends Controller
      *  }
      * }
      */
-    public function store(Request $request): JsonResource
+    public function create(Request $request): JsonResource
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],

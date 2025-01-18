@@ -37,13 +37,13 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
 
     // genders
     Route::get('administration/genders', [GenderController::class, 'index'])->name('administration.genders.index');
-    Route::post('administration/genders', [GenderController::class, 'store'])->name('administration.genders.store');
+    Route::post('administration/genders', [GenderController::class, 'create'])->name('administration.genders.create');
     Route::put('administration/genders/{gender}', [GenderController::class, 'update'])->name('administration.genders.update');
     Route::delete('administration/genders/{gender}', [GenderController::class, 'destroy'])->name('administration.genders.destroy');
 
     // marital statuses
     Route::get('administration/marital-statuses', [MaritalStatusController::class, 'index'])->name('administration.marital-statuses.index');
-    Route::post('administration/marital-statuses', [MaritalStatusController::class, 'store'])->name('administration.marital-statuses.store');
+    Route::post('administration/marital-statuses', [MaritalStatusController::class, 'create'])->name('administration.marital-statuses.create');
     Route::put('administration/marital-statuses/{maritalStatus}', [MaritalStatusController::class, 'update'])->name('administration.marital-statuses.update');
     Route::delete('administration/marital-statuses/{maritalStatus}', [MaritalStatusController::class, 'destroy'])->name('administration.marital-statuses.destroy');
 });
