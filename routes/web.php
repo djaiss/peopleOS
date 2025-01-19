@@ -7,6 +7,9 @@ use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Instance\InstanceController;
+use App\Http\Controllers\Persons\PersonController;
+use App\Http\Controllers\Persons\PersonGiftController;
+use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +26,17 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
 
     // upgrade
     Route::get('upgrade', [UpgradeAccountController::class, 'index'])->name('upgrade.index');
+
+    // persons
+    Route::get('persons', [PersonController::class, 'index'])->name('persons.index');
+    Route::get('persons/new', [PersonController::class, 'new'])->name('persons.new');
+    Route::post('persons', [PersonController::class, 'store'])->name('persons.store');
+
+    // persons notes
+    Route::get('persons/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
+
+    // persons gifts
+    Route::get('persons/gifts', [PersonGiftController::class, 'index'])->name('persons.gifts.index');
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');
     Route::put('administration', [AdministrationController::class, 'update'])->name('administration.update');

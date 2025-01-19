@@ -1,6 +1,6 @@
 <form wire:submit="update" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
   <!-- first name -->
-  <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
+  <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
     <x-input-label for="first_name" :value="__('First name')" class="col-span-2" />
     <div class="w-full justify-self-end">
       <x-text-input class="block w-full" id="first_name" name="first_name" wire:model="first_name" type="text" required @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
