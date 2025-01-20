@@ -82,7 +82,7 @@ class PersonController extends Controller
         $person = $request->attributes->get('person');
         $persons = Person::where('account_id', Auth::user()->account_id)
             ->get()
-            ->map(fn(Person $person): array => [
+            ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'slug' => $person->slug,
