@@ -21,7 +21,7 @@ class PersonController extends Controller
         $genders = Gender::where('account_id', Auth::user()->account_id)
             ->orderBy('position')
             ->get()
-            ->map(fn(Gender $gender) => [
+            ->map(fn (Gender $gender): array => [
                 'id' => $gender->id,
                 'name' => $gender->name,
             ]);
@@ -31,8 +31,8 @@ class PersonController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(): void
     {
-        dd($request->all());
+        dd($this);
     }
 }
