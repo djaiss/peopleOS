@@ -8,7 +8,7 @@ use App\Models\Account;
 use App\Models\Gender;
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Str;
 /**
  * @extends Factory<Person>
  */
@@ -41,7 +41,7 @@ class PersonFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (Person $person): void {
-            $person->slug = $person->id.'-'.$person->first_name;
+            $person->slug = $person->id.'-'.Str::lower($person->first_name);
             $person->save();
         });
     }
