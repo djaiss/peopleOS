@@ -21,7 +21,7 @@ class PersonControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $person = Person::factory()->create([
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
             'first_name' => 'Monica',
             'last_name' => 'Geller',
         ]);
@@ -36,7 +36,7 @@ class PersonControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
             'name' => 'Male',
         ]);
 
@@ -61,7 +61,7 @@ class PersonControllerTest extends TestCase
         Toaster::fake();
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
         ]);
 
         $this->actingAs($user)
@@ -87,7 +87,7 @@ class PersonControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $person = Person::factory()->create([
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
             'first_name' => 'Monica',
             'last_name' => 'Geller',
         ]);

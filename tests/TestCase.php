@@ -17,7 +17,7 @@ abstract class TestCase extends BaseTestCase
     final public function createVault(User $user, string $firstName = 'Dwight', string $lastName = 'Schrute'): Vault
     {
         $vault = Vault::factory()->create([
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
         ]);
         $contact = Contact::factory()->create([
             'vault_id' => $vault->id,
