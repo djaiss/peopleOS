@@ -37,7 +37,7 @@ class CreateAccountTest extends TestCase
         ))->execute();
 
         $this->assertDatabaseHas('accounts', [
-            'id' => $user->account->id,
+            'id' => $user->account_id,
         ]);
 
         $this->assertDatabaseHas('users', [

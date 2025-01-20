@@ -25,7 +25,7 @@ class CreatePersonTest extends TestCase
     {
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
         ]);
         $this->executeService($user, $gender);
     }
@@ -59,7 +59,7 @@ class CreatePersonTest extends TestCase
 
         $this->assertDatabaseHas('persons', [
             'id' => $person->id,
-            'account_id' => $user->account->id,
+            'account_id' => $user->account_id,
             'gender_id' => $gender->id,
             'can_be_deleted' => true,
         ]);
