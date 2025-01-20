@@ -31,6 +31,9 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
     Route::get('persons', [PersonController::class, 'index'])->name('persons.index');
     Route::get('persons/new', [PersonController::class, 'new'])->name('persons.new');
     Route::post('persons', [PersonController::class, 'store'])->name('persons.store');
+    Route::middleware(['person'])->group(function (): void {
+        Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
+    });
 
     // persons notes
     Route::get('persons/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');

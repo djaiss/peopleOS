@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Middleware\CheckInstanceAdministrator;
+use App\Http\Middleware\CheckPerson;
 use App\Http\Middleware\CheckPersonApi;
 use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\CheckTeamApi;
@@ -21,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'subscription' => CheckSubscription::class,
             'team.api' => CheckTeamApi::class,
+            'person' => CheckPerson::class,
             'person.api' => CheckPersonApi::class,
             'instance.admin' => CheckInstanceAdministrator::class,
         ]);

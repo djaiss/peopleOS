@@ -37,4 +37,12 @@ class PersonFactory extends Factory
             'can_be_deleted' => true,
         ];
     }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (Person $person): void {
+            $person->slug = $person->id.'-'.$person->first_name;
+            $person->save();
+        });
+    }
 }
