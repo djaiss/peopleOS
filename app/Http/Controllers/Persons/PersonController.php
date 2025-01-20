@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
+use App\Models\Person;
 use App\Services\CreatePerson;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,19 @@ class PersonController extends Controller
 {
     public function index(): View
     {
-        return view('persons.index');
+        $persons = Person::where('account_id', Auth::user()->account_id)
+            ->orderBy('first_name')
+            ->get()
+            ->map(fn (Person $person): array => [
+                'id' => $person->id,
+                'name' => $person->name,
+                'slug' => $person->slug,
+            ])
+            ->sortBy('name');
+
+        return view('persons.index', [
+            'persons' => $persons,
+        ]);
     }
 
     public function new(): View
@@ -67,9 +80,18 @@ class PersonController extends Controller
     public function show(Request $request): View
     {
         $person = $request->attributes->get('person');
+        $persons = Person::where('account_id', Auth::user()->account_id)
+            ->get()
+            ->map(fn (Person $person): array => [
+                'id' => $person->id,
+                'name' => $person->name,
+                'slug' => $person->slug,
+            ])
+            ->sortBy('name');
 
         return view('persons.show', [
             'person' => $person,
+            'persons' => $persons,
         ]);
     }
 }

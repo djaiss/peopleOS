@@ -1,3 +1,9 @@
+<?php
+/*
+ * @var array $persons
+ */
+?>
+
 <div class="flex h-[calc(100vh-48px)] flex-col overflow-hidden bg-white">
   <!-- Search header - fixed -->
   <div class="shrink-0 border-b border-gray-200 p-3">
@@ -17,16 +23,16 @@
   <!-- Scrollable contact list -->
   <div class="overflow-y-auto">
     <div class="divide-y divide-gray-200">
-      @foreach (range(1, 50) as $i)
-        <div class="flex items-center gap-3 p-3 hover:bg-blue-50">
+      @foreach ($persons as $person)
+        <a href="{{ route('persons.show', $person['slug']) }}" class="flex items-center gap-3 p-3 hover:bg-blue-50">
           <div class="shrink-0">
-            <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="https://i.pravatar.cc/32?u={{ $i }}" alt="" />
+            <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="https://i.pravatar.cc/32?u={{ $person['id'] }}" alt="" />
           </div>
           <div class="min-w-0">
-            <p class="truncate font-medium">{{ fake()->name() }}</p>
-            <p class="truncate text-sm text-gray-600">{{ fake()->email() }}</p>
+            <p class="truncate font-medium">{{ $person['name'] }}</p>
+            <p class="truncate text-sm text-gray-600">{{ $person['slug'] }}</p>
           </div>
-        </div>
+        </a>
       @endforeach
     </div>
   </div>

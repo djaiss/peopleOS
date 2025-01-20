@@ -24,11 +24,23 @@ class PersonControllerTest extends TestCase
             'account_id' => $user->account_id,
             'first_name' => 'Monica',
             'last_name' => 'Geller',
+            'slug' => 'monica-geller',
         ]);
 
         $response = $this->actingAs($user)
             ->get('/persons')
-            ->assertOk();
+            ->assertOk()
+            ->assertSee('Monica Geller');
+
+        $this->assertArrayHasKey('persons', $response);
+        $this->assertEquals(
+            [
+                'id' => $person->id,
+                'name' => 'Monica Geller',
+                'slug' => $person->id.'-monica',
+            ],
+            $response['persons'][0]
+        );
     }
 
     #[Test]
@@ -97,5 +109,14 @@ class PersonControllerTest extends TestCase
             ->assertOk();
 
         $this->assertArrayHasKey('person', $response);
+        $this->assertArrayHasKey('persons', $response);
+        $this->assertEquals(
+            [
+                'id' => $person->id,
+                'name' => 'Monica Geller',
+                'slug' => $person->id.'-monica',
+            ],
+            $response['persons'][0]
+        );
     }
 }
