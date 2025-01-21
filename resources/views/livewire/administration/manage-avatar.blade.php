@@ -20,9 +20,15 @@
         this.containerHeight = this.isFlipped ? this.backHeight : this.frontHeight
       },
     }"
-    class="relative"
+    class="perspective-1000 relative"
     :style="`height: ${containerHeight}px`">
-    <div class="relative w-full" :class="{ '[transform:rotateY(-180deg)]': isFlipped }" style="transform-style: preserve-3d; transition: transform 0.3s">
+    <div
+      class="relative w-full transition-all duration-500"
+      :class="{
+        '[transform:rotateY(-180deg)_scale(1.0)]': isFlipped,
+        '[transform:rotateY(0deg)_scale(1)]': !isFlipped
+      }"
+      style="transform-style: preserve-3d">
       <!-- Front face -->
       <div x-ref="frontFace" class="absolute w-full border border-gray-200 bg-white [backface-visibility:hidden] sm:rounded-lg">
         <div class="grid grid-cols-3 items-center rounded-t-lg p-3 last:rounded-b-lg hover:bg-blue-50">
