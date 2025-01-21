@@ -36,10 +36,10 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
         Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
         Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');
         Route::delete('persons/{slug}', [PersonSettingsController::class, 'destroy'])->name('persons.settings.destroy');
-    });
 
-    // persons notes
-    Route::get('persons/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
+        // persons notes
+        Route::get('persons/{slug}/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
+    });
 
     // persons gifts
     Route::get('persons/gifts', [PersonGiftController::class, 'index'])->name('persons.gifts.index');
