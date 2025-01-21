@@ -10,6 +10,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
+use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
     Route::post('persons', [PersonController::class, 'store'])->name('persons.store');
     Route::middleware(['person'])->group(function (): void {
         Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
+        Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');
     });
 
     // persons notes

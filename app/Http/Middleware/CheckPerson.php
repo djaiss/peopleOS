@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Jobs\LogLastPersonSeen;
 use App\Models\Person;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -29,6 +30,11 @@ class CheckPerson
                 ->findOrFail($id);
 
             $request->attributes->add(['person' => $person]);
+
+            LogLastPersonSeen::dispatch(
+                user: Auth::user(),
+                person: $person
+            );
 
             return $next($request);
         } catch (ModelNotFoundException) {

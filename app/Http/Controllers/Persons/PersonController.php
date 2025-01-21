@@ -17,9 +17,11 @@ class PersonController extends Controller
 {
     public function index(): View
     {
-        $persons = Person::where('account_id', Auth::user()->account_id)
+        $personsQuery = Person::where('account_id', Auth::user()->account_id)
             ->orderBy('first_name')
-            ->get()
+            ->get();
+
+        $persons = $personsQuery
             ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
@@ -31,7 +33,8 @@ class PersonController extends Controller
             return view('persons.blank');
         }
 
-        return view('persons.index', [
+        return view('persons.show', [
+            'person' => $personsQuery->first(),
             'persons' => $persons,
         ]);
     }
@@ -84,6 +87,7 @@ class PersonController extends Controller
     public function show(Request $request): View
     {
         $person = $request->attributes->get('person');
+
         $persons = Person::where('account_id', Auth::user()->account_id)
             ->get()
             ->map(fn (Person $person): array => [
