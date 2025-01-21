@@ -30,6 +30,11 @@ return new class extends Migration
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
         });
+
+        Schema::table('users', function (Blueprint $table): void {
+            $table->unsignedBigInteger('last_person_seen_id')->nullable()->after('account_id');
+            $table->foreign('last_person_seen_id')->references('id')->on('persons')->onDelete('set null');
+        });
     }
 
     /**
