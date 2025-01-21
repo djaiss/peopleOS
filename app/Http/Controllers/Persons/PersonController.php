@@ -27,6 +27,10 @@ class PersonController extends Controller
             ])
             ->sortBy('name');
 
+        if (count($persons) === 0) {
+            return view('persons.blank');
+        }
+
         return view('persons.index', [
             'persons' => $persons,
         ]);

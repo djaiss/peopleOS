@@ -44,6 +44,18 @@ class PersonControllerTest extends TestCase
     }
 
     #[Test]
+    public function a_user_can_see_a_blank_page_when_there_are_no_persons(): void
+    {
+        config(['app.name' => 'PeopleOS']);
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->get('/persons')
+            ->assertOk()
+            ->assertSee('Welcome to PeopleOS');
+    }
+
+    #[Test]
     public function a_user_can_visit_the_create_person_page(): void
     {
         $user = User::factory()->create();
