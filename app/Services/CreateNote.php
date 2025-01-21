@@ -6,10 +6,10 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gender;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\User;
+use Exception;
 
 class CreateNote
 {
@@ -34,7 +34,7 @@ class CreateNote
     private function validate(): void
     {
         if ($this->user->account_id !== $this->person->account_id) {
-            throw new \Exception('User and person are not in the same account');
+            throw new Exception('User and person are not in the same account');
         }
     }
 

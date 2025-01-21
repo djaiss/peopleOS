@@ -6,10 +6,9 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gender;
 use App\Models\Note;
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Exception;
 
 class DestroyNote
 {
@@ -31,7 +30,7 @@ class DestroyNote
     private function validate(): void
     {
         if ($this->user->account_id !== $this->note->person->account_id) {
-            throw new \Exception('User and note are not in the same account');
+            throw new Exception('User and note are not in the same account');
         }
     }
 

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Middleware\CheckInstanceAdministrator;
+use App\Http\Middleware\CheckNote;
 use App\Http\Middleware\CheckPerson;
 use App\Http\Middleware\CheckPersonApi;
 use App\Http\Middleware\CheckSubscription;
@@ -24,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'team.api' => CheckTeamApi::class,
             'person' => CheckPerson::class,
             'person.api' => CheckPersonApi::class,
+            'note' => CheckNote::class,
             'instance.admin' => CheckInstanceAdministrator::class,
         ]);
     })
