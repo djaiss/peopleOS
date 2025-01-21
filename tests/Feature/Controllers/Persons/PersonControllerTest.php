@@ -80,7 +80,7 @@ class PersonControllerTest extends TestCase
     }
 
     #[Test]
-    public function a_user_can_create_a_contact(): void
+    public function a_user_can_create_a_person(): void
     {
         Toaster::fake();
         $user = User::factory()->create();
@@ -107,7 +107,7 @@ class PersonControllerTest extends TestCase
     }
 
     #[Test]
-    public function a_user_can_visit_the_contact_show_page(): void
+    public function a_user_can_visit_the_person_show_page(): void
     {
         $user = User::factory()->create();
         $person = Person::factory()->create([
