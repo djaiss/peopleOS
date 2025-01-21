@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Account;
 use App\Models\Note;
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Note>

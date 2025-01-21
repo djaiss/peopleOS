@@ -6,12 +6,11 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gender;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\DestroyNote;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
@@ -65,7 +64,7 @@ class DestroyNoteTest extends TestCase
             'person_id' => $person->id,
         ]);
 
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('User and note are not in the same account');
 
         (new DestroyNote(

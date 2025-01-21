@@ -6,13 +6,11 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gender;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\User;
-use App\Services\CreateGender;
-use App\Services\CreateNote;
 use App\Services\UpdateNote;
+use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
@@ -75,7 +73,7 @@ class UpdateNoteTest extends TestCase
             'person_id' => $person->id,
         ]);
 
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('User and note are not in the same account');
 
         (new UpdateNote(

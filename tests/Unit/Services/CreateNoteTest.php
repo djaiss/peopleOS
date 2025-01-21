@@ -6,12 +6,11 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gender;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\User;
-use App\Services\CreateGender;
 use App\Services\CreateNote;
+use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
@@ -68,7 +67,7 @@ class CreateNoteTest extends TestCase
         $user = User::factory()->create();
         $person = Person::factory()->create();
 
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('User and person are not in the same account');
 
         (new CreateNote(

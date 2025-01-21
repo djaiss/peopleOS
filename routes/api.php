@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Administration\GenderController;
 use App\Http\Controllers\Api\Administration\MaritalStatusController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Persons\PersonController;
+use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Teams\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
         Route::get('persons/{person}', [PersonController::class, 'show'])->name('persons.show');
         Route::put('persons/{person}', [PersonController::class, 'update'])->name('persons.update');
         Route::delete('persons/{person}', [PersonController::class, 'destroy'])->name('persons.destroy');
+
+        // notes
+        Route::get('persons/{person}/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
+        Route::post('persons/{person}/notes', [PersonNoteController::class, 'create'])->name('persons.notes.create');
+        Route::middleware(['note'])->group(function (): void {
+            Route::get('persons/{person}/notes/{note}', [PersonNoteController::class, 'show'])->name('persons.notes.show');
+            Route::put('persons/{person}/notes/{note}', [PersonNoteController::class, 'update'])->name('persons.notes.update');
+            Route::delete('persons/{person}/notes/{note}', [PersonNoteController::class, 'destroy'])->name('persons.notes.destroy');
+        });
     });
 
     // teams
