@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Account;
 use App\Models\Gender;
+use App\Models\Note;
 use App\Models\Person;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -35,6 +36,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->gender()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_notes(): void
+    {
+        $person = Person::factory()->create();
+        Note::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->notes()->exists());
     }
 
     #[Test]
