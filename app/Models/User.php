@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'account_id',
+        'last_person_seen_id',
         'has_paid',
         'first_name',
         'last_name',
@@ -70,6 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'has_paid' => 'boolean',
+            'last_person_seen_id' => 'integer',
             'first_name' => 'encrypted',
             'last_name' => 'encrypted',
             'nickname' => 'encrypted',
@@ -92,6 +94,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
+    }
+
+    /**
+     * Get the last person seen by the user.
+     */
+    public function lastPersonSeen(): BelongsTo
+    {
+        return $this->belongsTo(Person::class, 'last_person_seen_id');
     }
 
     /**

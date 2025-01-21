@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->unsignedBigInteger('last_person_seen_id')->nullable();
             $table->boolean('has_paid')->default(false);
             $table->text('first_name')->nullable();
             $table->text('last_name')->nullable();
@@ -40,6 +41,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->foreign('last_person_seen_id')->references('id')->on('persons')->onDelete('set null');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table): void {

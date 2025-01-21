@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gender;
 use App\Models\Person;
-use App\Services\CreatePerson;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
