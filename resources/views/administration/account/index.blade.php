@@ -10,21 +10,21 @@
           {{ __('Account administration') }}
         </h1>
 
+        <div class="mb-2 flex items-center gap-x-2">
+          <x-lucide-alert-triangle class="h-4 w-4 text-red-600" />
+          <h2 class="font-semi-bold mb-1 text-lg text-red-600">
+            {{ __('Delete your account') }}
+          </h2>
+        </div>
+
         <!-- Danger Zone -->
         <div class="rounded-md border border-red-200 bg-red-50">
           <div class="p-4">
-            <div class="flex items-center gap-x-2">
-              <x-lucide-alert-triangle class="h-5 w-5 text-red-600" />
-              <h2 class="font-semi-bold text-lg text-red-600">
-                {{ __('Danger Zone') }}
-              </h2>
-            </div>
-
-            <p class="mt-2 text-sm text-red-600">
-              {{ __('Your account will be deleted and cannot be restored. This is irreversible. Please be certain.') }}
+            <p class="mb-4 text-sm text-red-600">
+              {{ __('Your account and all data will be deleted immediately and cannot be restored. This is irreversible. Please be certain.') }}
             </p>
 
-            <form action="{{ route('administration.account.destroy') }}" method="post" class="mt-4" x-data="{
+            <form action="{{ route('administration.account.destroy') }}" method="post" x-data="{
               feedback: '',
               isValid: false,
               async handleSubmit() {
