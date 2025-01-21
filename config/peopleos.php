@@ -50,6 +50,9 @@ return [
         'person_creation' => 'Person creation',
         'person_update' => 'Person update',
         'person_deletion' => 'Person deletion',
+        'note_creation' => 'Note creation',
+        'note_update' => 'Note update',
+        'note_deletion' => 'Note deletion',
     ],
 
 ];
