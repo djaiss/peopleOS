@@ -157,6 +157,95 @@ class ManageNotesTest extends TestCase
     }
 
     #[Test]
+    public function it_can_update_a_note(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $note = Note::factory()->create([
+            'person_id' => $person->id,
+            'content' => 'How you doin?',
+        ]);
+
+        $component = Livewire::actingAs($user)
+            ->test(ManageNotes::class, [
+                'notes' => collect([
+                    [
+                        'id' => $note->id,
+                        'content' => $note->content,
+                        'created_at' => $note->created_at->format('M j, Y'),
+                        'is_new' => false,
+                    ],
+                ]),
+                'person' => $person,
+            ]);
+
+        $component->call('edit', $note->id)
+            ->set('editedContent', 'Joey doesn\'t share food!')
+            ->call('update');
+
+        $component->assertSet('editedNoteId', 0)
+        ->assertSet('editedContent', '')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseHas('notes', [
+            'id' => $note->id,
+            'person_id' => $person->id,
+        ]);
+
+        $updatedNote = Note::find($note->id);
+        $this->assertEquals('Joey doesn\'t share food!', $updatedNote->content);
+
+        $notes = $component->get('notes');
+        $this->assertEquals('Joey doesn\'t share food!', $notes[0]['content']);
+    }
+
+    #[Test]
+    public function it_validates_content_when_updating_note(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
+        ]);
+
+        $note = Note::factory()->create([
+            'person_id' => $person->id,
+            'content' => 'We were on a break!',
+        ]);
+
+        $component = Livewire::actingAs($user)
+            ->test(ManageNotes::class, [
+                'notes' => collect([
+                    [
+                        'id' => $note->id,
+                        'content' => $note->content,
+                        'created_at' => $note->created_at->format('M j, Y'),
+                        'is_new' => false,
+                    ],
+                ]),
+                'person' => $person,
+            ]);
+
+        $component->call('edit', $note->id);
+
+        $component->set('editedContent', '')
+            ->call('update')
+            ->assertHasErrors(['editedContent' => 'required']);
+
+        $component->set('editedContent', 'ab')
+            ->call('update')
+            ->assertHasErrors(['editedContent' => 'min']);
+
+        $component->set('editedContent', str_repeat('a', 25600))
+            ->call('update')
+            ->assertHasErrors(['editedContent' => 'max']);
+    }
+
+    #[Test]
     public function it_can_delete_a_note(): void
     {
         $user = User::factory()->create();
