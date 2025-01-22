@@ -1,7 +1,8 @@
 <?php
 /*
- * @var array $persons
+ * @var Collection $persons
  * @var \App\Models\Person $person
+ * @var Collection $genders
  */
 ?>
 
@@ -17,8 +18,18 @@
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-2xl p-6">
         <h1 class="font-semi-bold mb-4 text-2xl">
-          {{ __('Edit person') }}
+          {{ __('Manage person') }}
         </h1>
+
+        <h2 class="font-semi-bold mb-1 text-lg">
+          {{ __('Edit person') }}
+        </h2>
+
+        <p class="mb-4 text-sm text-zinc-500">
+          {{ __('Edit the person details here.') }}
+        </p>
+
+        <livewire:persons.manage-names :genders="$genders" :person="$person" />
 
         <h2 class="font-semi-bold mb-1 text-lg">
           {{ __('Delete person') }}

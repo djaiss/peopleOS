@@ -1,7 +1,7 @@
 <?php
 /*
- * @var array $person
- * @var array $persons
+ * @var Person $person
+ * @var Collection $persons
  */
 ?>
 
