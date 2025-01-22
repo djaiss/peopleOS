@@ -19,7 +19,7 @@ class PersonNoteController extends Controller
 
         $persons = Person::where('account_id', Auth::user()->account_id)
             ->get()
-            ->map(fn(Person $person): array => [
+            ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'slug' => $person->slug,
@@ -29,10 +29,11 @@ class PersonNoteController extends Controller
         $notes = Note::where('person_id', $person->id)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (Note $note) => [
+            ->map(fn (Note $note): array => [
                 'id' => $note->id,
-                'title' => $note->title,
-                'created_at' => $note->created_at,
+                'content' => $note->content,
+                'created_at' => $note->created_at->format('M j, Y'),
+                'is_new' => false,
             ]);
 
         return view('persons.notes.index', [
