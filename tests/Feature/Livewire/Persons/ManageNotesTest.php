@@ -155,4 +155,39 @@ class ManageNotesTest extends TestCase
         $this->assertCount(1, $notes);
         $this->assertTrue($notes[0]['is_new']);
     }
+
+    #[Test]
+    public function it_can_delete_a_note(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $note = Note::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $component = Livewire::actingAs($user)
+            ->test(ManageNotes::class, [
+                'notes' => collect([
+                    [
+                        'id' => $note->id,
+                        'content' => $note->content,
+                        'created_at' => $note->created_at->format('M j, Y'),
+                        'is_new' => false,
+                    ],
+                ]),
+                'person' => $person,
+            ]);
+
+        $component->call('delete', $note->id);
+
+        $this->assertDatabaseMissing('notes', [
+            'id' => $note->id,
+        ]);
+
+        $notes = $component->get('notes');
+        $this->assertCount(0, $notes);
+    }
 }
