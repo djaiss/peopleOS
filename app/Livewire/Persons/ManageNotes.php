@@ -7,6 +7,7 @@ namespace App\Livewire\Persons;
 use App\Models\Note;
 use App\Models\Person;
 use App\Services\CreateNote;
+use App\Services\DestroyNote;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
@@ -74,5 +75,19 @@ class ManageNotes extends Component
                 'created_at' => $note->created_at->format('M j, Y'),
                 'is_new' => true,
             ]);
+    }
+
+    public function delete(int $noteId): void
+    {
+        $note = Note::where('id', $noteId)->first();
+
+        (new DestroyNote(
+            user: Auth::user(),
+            note: $note,
+        ))->execute();
+
+        Toaster::success(__('Note deleted'));
+
+        $this->notes = $this->notes->reject(fn (array $note): bool => $note['id'] === $noteId);
     }
 }
