@@ -187,7 +187,7 @@ class ManageNotesTest extends TestCase
             ->call('update');
 
         $component->assertSet('editedNoteId', 0)
-        ->assertSet('editedContent', '')
+            ->assertSet('editedContent', '')
             ->assertHasNoErrors();
 
         $this->assertDatabaseHas('notes', [

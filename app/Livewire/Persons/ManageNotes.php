@@ -101,7 +101,7 @@ class ManageNotes extends Component
             'created_at' => $note->created_at->format('M j, Y'),
         ];
 
-        $this->notes = $this->notes->map(fn(array $existingNote): array => $existingNote['id'] === $this->editedNoteId ? $note : $existingNote);
+        $this->notes = $this->notes->map(fn (array $existingNote): array => $existingNote['id'] === $this->editedNoteId ? $note : $existingNote);
 
         $this->resetEdit();
     }
