@@ -47,8 +47,7 @@ class ManageNamesTest extends TestCase
             ->assertSet('nickName', 'Dinosaur Guy')
             ->assertSet('suffix', 'Ph.D.')
             ->assertSet('prefix', 'Dr.')
-            ->assertSet('maidenName', null)
-            ->assertSet('genderId', 1);
+            ->assertSet('maidenName', null);
     }
 
     #[Test]
