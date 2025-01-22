@@ -11,7 +11,7 @@
     @include('persons.partials.contact-list', ['persons' => $persons])
 
     <!-- Section B: Contact Overview -->
-    @include('persons.partials.profile')
+    @include('persons.partials.profile', ['person' => $person])
 
     <!-- Section C: Detail View -->
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">contact</div>
