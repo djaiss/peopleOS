@@ -1,3 +1,9 @@
+<?php
+/*
+ * @var Collection $genders
+ */
+?>
+
 <x-app-layout>
   <main class="grid min-h-[calc(100vh-48px)] place-items-center bg-gray-50">
     <div class="mx-auto w-full max-w-lg px-2 py-2 sm:py-6">

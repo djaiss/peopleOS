@@ -1,6 +1,6 @@
 <?php
 /*
- * @var array $persons
+ * @var Collection $persons
  */
 ?>
 

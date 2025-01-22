@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gender;
 use App\Models\Person;
 use App\Services\DestroyPerson;
 use Illuminate\Http\RedirectResponse;
@@ -28,9 +29,17 @@ class PersonSettingsController extends Controller
             ])
             ->sortBy('name');
 
+        $genders = Gender::where('account_id', Auth::user()->account_id)
+            ->get()
+            ->map(fn (Gender $gender): array => [
+                'id' => $gender->id,
+                'name' => $gender->name,
+            ]);
+
         return view('persons.settings.index', [
             'person' => $person,
             'persons' => $persons,
+            'genders' => $genders,
         ]);
     }
 
