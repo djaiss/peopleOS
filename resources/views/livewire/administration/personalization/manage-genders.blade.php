@@ -107,7 +107,7 @@
 
   <!-- add new gender -->
   @if ($addMode)
-    <form wire:submit="store" class="space-y-5 p-4 hover:bg-blue-50">
+    <form wire:submit="store" class="space-y-5 border-t border-gray-200 p-4 hover:bg-blue-50">
       <div class="relative">
         <x-input-label for="name" :value="__('Name of the gender')" />
         <x-text-input wire:model="name" wire:keydown.escape="toggleAddMode" x-effect="if (shouldFocus) { $el.focus(); shouldFocus = false }" class="mt-1 block w-full" id="name" name="name" type="text" required data-1p-ignore />
