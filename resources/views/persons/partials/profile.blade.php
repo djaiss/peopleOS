@@ -72,6 +72,10 @@
         <x-lucide-folder class="h-4 w-4 text-gray-500" />
         <span class="text-sm font-medium text-gray-600">Files</span>
       </a>
+      <a wire:navigate href="{{ route('persons.work.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('persons.work.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-briefcase class="{{ request()->routeIs('persons.work.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+        <span class="{{ request()->routeIs('persons.work.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Work & Passions') }}</span>
+      </a>
       <a wire:navigate href="{{ route('persons.settings.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('persons.settings.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-settings class="{{ request()->routeIs('persons.settings.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
         <span class="{{ request()->routeIs('persons.settings.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Edit information') }}</span>
