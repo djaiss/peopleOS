@@ -12,7 +12,6 @@
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
-    "husky": "^9.1.7",
     "laravel-vite-plugin": "^1.2.0",
     "lint-staged": "^15.4.1",
     "postcss": "^8.5.1",
