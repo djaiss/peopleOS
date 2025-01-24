@@ -24,7 +24,7 @@
   <div class="overflow-y-auto">
     <div class="divide-y divide-gray-200">
       @foreach ($persons as $person)
-        <a href="{{ route('persons.show', $person['slug']) }}" class="flex items-center gap-3 p-3 hover:bg-blue-50">
+        <a wire:navigate href="{{ route('persons.show', $person['slug']) }}" class="flex items-center gap-3 p-3 hover:bg-blue-50">
           <div class="shrink-0">
             <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="https://i.pravatar.cc/32?u={{ $person['id'] }}" alt="" />
           </div>

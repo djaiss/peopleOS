@@ -11,6 +11,7 @@ use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonSettingsController;
+use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,9 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
 
         // persons notes
         Route::get('persons/{slug}/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
+
+        // work and passion
+        Route::get('persons/{slug}/work', [PersonWorkController::class, 'index'])->name('persons.work.index');
     });
 
     // persons gifts

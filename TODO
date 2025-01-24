@@ -1,4 +1,6 @@
 
 Todo:
-  ✔ Rename all the store methods to create @done(25-01-18 16:23)
-  - Rename all calls to account->id
+  - Add passions to person
+  - Add nationality to person and significant other
+  - Add hobbies to person
+  - Add languages to person

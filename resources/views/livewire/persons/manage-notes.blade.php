@@ -6,37 +6,35 @@
   <p class="mb-4 text-sm text-zinc-500">
     {{ __('Record a note about this person so you can remember important details.') }}
   </p>
-  <div class="mb-6 rounded-lg border border-gray-200 bg-white">
-    <div class="p-4">
-      <form wire:submit="store">
-        <div class="mb-4">
-          <x-textarea wire:model="content" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-hidden" rows="3" placeholder="{{ __('Write your note here...') }}"></x-textarea>
-          <x-input-error class="mt-2" :messages="$errors->get('content')" />
-        </div>
+  <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
+    <form wire:submit="store">
+      <div class="mb-4">
+        <x-textarea wire:model="content" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none" rows="3" placeholder="{{ __('Write your note here...') }}"></x-textarea>
+        <x-input-error class="mt-2" :messages="$errors->get('content')" />
+      </div>
 
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <!-- Emotion Selector -->
-            <div class="relative" x-data="{ open: false }">
-              <button @click="open = !open" type="button" class="flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50">
-                <x-lucide-smile class="h-4 w-4 text-gray-500" />
-                <span>{{ __('Emotion') }}</span>
-              </button>
-            </div>
-
-            <!-- Reminder -->
-            <button type="button" class="flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50">
-              <x-lucide-bell class="h-4 w-4 text-gray-500" />
-              <span>{{ __('Set reminder') }}</span>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <!-- Emotion Selector -->
+          <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" type="button" class="flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50">
+              <x-lucide-smile class="h-4 w-4 text-gray-500" />
+              <span>{{ __('Emotion') }}</span>
             </button>
           </div>
 
-          <x-button.primary>
-            {{ __('Save') }}
-          </x-button.primary>
+          <!-- Reminder -->
+          <button type="button" class="flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50">
+            <x-lucide-bell class="h-4 w-4 text-gray-500" />
+            <span>{{ __('Set reminder') }}</span>
+          </button>
         </div>
-      </form>
-    </div>
+
+        <x-button.primary>
+          {{ __('Save') }}
+        </x-button.primary>
+      </div>
+    </form>
   </div>
 
   <!-- Notes list -->
