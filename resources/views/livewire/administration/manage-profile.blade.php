@@ -21,7 +21,7 @@
   <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
     <x-input-label for="nickname" :value="__('Nickname')" class="col-span-2" />
     <div class="w-full justify-self-end">
-      <x-text-input class="block w-full [&:placeholder-shown]:bg-gray-50" id="nickname" name="nickname" wire:model="nickname" type="text" placeholder="{{ __('No nickname defined') }}" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+      <x-text-input class="block w-full placeholder-shown:bg-gray-50" id="nickname" name="nickname" wire:model="nickname" type="text" placeholder="{{ __('No nickname defined') }}" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
       <x-input-error class="mt-2" :messages="$errors->get('nickname')" />
     </div>
   </div>

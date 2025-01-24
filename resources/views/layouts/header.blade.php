@@ -4,7 +4,7 @@
     <div class="flex items-center gap-x-10">
       <!-- Logo and brand -->
       <a wire:navigate href="{{ route('dashboard') }}" class="flex items-center gap-x-2">
-        <div class="flex h-7 w-7 items-center justify-center rounded bg-blue-600 p-1">
+        <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-600 p-1">
           <x-lucide-users class="h-5 w-5 text-white" />
         </div>
         <span class="text-lg font-semibold text-gray-900 dark:text-white">{{ config('app.name') }}</span>
@@ -45,8 +45,8 @@
 
       <x-dropdown align="right" width="48">
         <x-slot name="trigger">
-          <button class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-none">
-            <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
+          <button class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
+            <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
           </button>
         </x-slot>
 

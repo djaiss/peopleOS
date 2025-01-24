@@ -21,7 +21,7 @@
 
       <!-- Call to action -->
       <div class="mt-8">
-        <a wire:navigate href="{{ route('persons.new') }}" class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        <a wire:navigate href="{{ route('persons.new') }}" class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-hidden">
           <x-lucide-plus class="h-5 w-5" />
           {{ __('Add your first person') }}
         </a>
