@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
-use App\Models\Note;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

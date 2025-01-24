@@ -1,20 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
-use App\Models\Contact;
-use App\Models\Ethnicity;
 use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
-use App\Models\Vault;
 use App\Services\CreateAccount;
-use App\Services\CreateCompany;
-use App\Services\CreateContact;
 use App\Services\CreateNote;
 use App\Services\CreatePerson;
-use App\Services\CreateVault;
-use App\Services\UpdateJobInformation;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Illuminate\Console\Command;
@@ -24,7 +19,7 @@ class SetupDummyAccount extends Command
 {
     use ConfirmableTrait;
 
-    protected ?\Faker\Generator $faker;
+    protected ?\Faker\Generator $faker = null;
 
     protected User $firstUser;
 
@@ -98,7 +93,7 @@ class SetupDummyAccount extends Command
         $this->line('| username: blank@blank.com');
         $this->line('| password: blank123');
         $this->line('|----------------------------');
-        $this->line('| URL:      ' . config('app.url'));
+        $this->line('| URL:      '.config('app.url'));
         $this->line('-----------------------------');
 
         $this->info('Setup is done. Have fun.');
@@ -765,16 +760,16 @@ class SetupDummyAccount extends Command
             $this->createPerson($character);
         }
 
-            foreach ($parksAndRecCharacters as $character) {
-                $this->createPerson($character);
-            }
+        foreach ($parksAndRecCharacters as $character) {
+            $this->createPerson($character);
+        }
 
-            foreach ($friendsCharacters as $character) {
-                $this->createPerson($character);
-            }
+        foreach ($friendsCharacters as $character) {
+            $this->createPerson($character);
+        }
     }
 
-    private function createPerson($character): void
+    private function createPerson(array $character): void
     {
         $person = (new CreatePerson(
             user: $this->firstUser,
@@ -794,11 +789,11 @@ class SetupDummyAccount extends Command
 
     private function createNotes(Person $person): void
     {
-        for ($i = 0; $i < rand(0, 93); $i++) {
+        for ($i = 0; $i < random_int(0, 93); $i++) {
             $note = (new CreateNote(
                 user: $this->firstUser,
                 person: $person,
-                content: $this->faker->paragraphs(rand(1, 3), true)
+                content: $this->faker->paragraphs(random_int(1, 3), true)
             ))->execute();
         }
     }

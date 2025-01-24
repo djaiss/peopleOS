@@ -9,7 +9,7 @@
   <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
     <form wire:submit="store">
       <div class="mb-4">
-        <x-textarea wire:model="content" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" rows="3" placeholder="{{ __('Write your note here...') }}"></x-textarea>
+        <x-textarea wire:model="content" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none" rows="3" placeholder="{{ __('Write your note here...') }}"></x-textarea>
         <x-input-error class="mt-2" :messages="$errors->get('content')" />
       </div>
 
