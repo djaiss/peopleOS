@@ -1,5 +1,5 @@
 <x-app-layout>
-  <div class="grid h-[calc(100vh-48px)] grid-cols-[280px,320px,1fr] divide-x divide-gray-200">
+  <div class="grid h-[calc(100vh-48px)] grid-cols-[280px_320px_1fr] divide-x divide-gray-200">
     <!-- Section A: Contact List -->
     @include('persons.partials.contact-list')
 
@@ -25,7 +25,7 @@
               <!-- Price -->
               <div class="mb-4">
                 <x-input-label for="price" :value="__('Estimated price')" />
-                <div class="relative mt-1 rounded-md shadow-sm">
+                <div class="relative mt-1 rounded-md shadow-xs">
                   <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span class="text-gray-500 sm:text-sm">$</span>
                   </div>
@@ -42,7 +42,7 @@
               <!-- Description -->
               <div class="mb-4">
                 <x-input-label for="description" :value="__('Description')" />
-                <textarea wire:model="description" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" rows="2"></textarea>
+                <textarea wire:model="description" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-hidden" rows="2"></textarea>
               </div>
 
               <div class="flex items-center justify-between">

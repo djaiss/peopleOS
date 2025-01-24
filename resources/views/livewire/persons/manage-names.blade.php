@@ -49,7 +49,7 @@
     <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="maiden_name" :value="__('Maiden name')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full [&:placeholder-shown]:bg-gray-50" id="maiden_name" name="maiden_name" wire:model="maidenName" type="text" placeholder="{{ __('No maiden name defined') }}" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full placeholder-shown:bg-gray-50" id="maiden_name" name="maiden_name" wire:model="maidenName" type="text" placeholder="{{ __('No maiden name defined') }}" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
         <x-input-error class="mt-2" :messages="$errors->get('maiden_name')" />
       </div>
     </div>
@@ -67,7 +67,7 @@
     <div class="grid grid-cols-3 items-center rounded-b-lg p-3 hover:bg-blue-50">
       <x-input-label for="gender_id" :value="__('Gender')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <select wire:model="genderId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="gender_id" name="gender_id">
+        <select wire:model="genderId" class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="gender_id" name="gender_id">
           <option disabled value="">{{ __('Select a gender') }}</option>
           @foreach ($genders as $gender)
             <option value="{{ $gender['id'] }}">{{ $gender['name'] }}</option>

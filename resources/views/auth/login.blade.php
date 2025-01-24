@@ -2,10 +2,10 @@
   <!-- Session Status -->
   <x-auth-session-status class="mb-4" :status="session('status')" />
 
-  <div class="mb-12 mt-6 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md sm:max-w-4xl md:flex-row dark:bg-gray-800">
+  <div class="mt-6 mb-12 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md sm:max-w-4xl md:flex-row dark:bg-gray-800">
     <div class="w-full">
       <!-- title -->
-      <div class="border-b border-gray-200 px-6 pb-6 pt-8 dark:border-gray-700">
+      <div class="border-b border-gray-200 px-6 pt-8 pb-6 dark:border-gray-700">
         <h1 class="text-center text-xl text-gray-800 dark:text-gray-200">
           <span class="me-2">👋</span>
           {{ __('Sign in to your account') }}
@@ -13,7 +13,7 @@
       </div>
 
       <!-- form -->
-      <form method="POST" action="{{ route('login') }}" class="border-b border-gray-200 px-6 pb-6 pt-8">
+      <form method="POST" action="{{ route('login') }}" class="border-b border-gray-200 px-6 pt-8 pb-6">
         @csrf
 
         <!-- Email Address -->
@@ -35,7 +35,7 @@
         <!-- Remember Me -->
         <div class="mt-4 block">
           <label for="remember_me" class="inline-flex items-center">
-            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember" />
+            <input id="remember_me" type="checkbox" class="rounded-sm border-gray-300 text-indigo-600 shadow-xs focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember" />
             <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
               {{ __('Remember me') }}
             </span>

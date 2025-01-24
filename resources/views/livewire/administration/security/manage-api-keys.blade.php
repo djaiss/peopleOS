@@ -17,7 +17,7 @@
       @if (! $apiKey['just_added'])
         <div class="group flex items-center justify-between border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0">
           <div class="flex items-center justify-between gap-3">
-            <div class="rounded bg-zinc-100 p-2">
+            <div class="rounded-sm bg-zinc-100 p-2">
               <x-lucide-key class="h-4 w-4 text-zinc-500" />
             </div>
 
@@ -34,7 +34,7 @@
       @else
         <div class="flex items-center justify-between border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0">
           <div class="flex items-center justify-between gap-3">
-            <div class="rounded bg-zinc-100 p-2">
+            <div class="rounded-sm bg-zinc-100 p-2">
               <x-lucide-key class="h-4 w-4 text-zinc-500" />
             </div>
 
@@ -49,7 +49,7 @@
                   document.body.removeChild(el)
                 },
               }">
-                <button @click="copyToClipboard()" class="group flex h-8 w-auto cursor-pointer items-center justify-center rounded-md border border-neutral-200/60 bg-white px-3 py-1 text-xs text-neutral-500 hover:bg-neutral-100 hover:text-neutral-600 focus:bg-white focus:outline-none active:bg-white">
+                <button @click="copyToClipboard()" class="group flex h-8 w-auto cursor-pointer items-center justify-center rounded-md border border-neutral-200/60 bg-white px-3 py-1 text-xs text-neutral-500 hover:bg-neutral-100 hover:text-neutral-600 focus:bg-white focus:outline-hidden active:bg-white">
                   {{ $apiKey['token'] }}
 
                   <x-lucide-copy class="ml-1 h-4 w-4" />

@@ -27,7 +27,7 @@
   </div>
 
   <div x-show="open" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="scale-95 opacity-0" x-transition:enter-end="scale-100 opacity-100" x-transition:leave="transition duration-75 ease-in" x-transition:leave-start="scale-100 opacity-100" x-transition:leave-end="scale-95 opacity-0" class="{{ $width }} {{ $alignmentClasses }} absolute z-50 mt-2 rounded-md shadow-lg" style="display: none" @click="open = false">
-    <div class="{{ $contentClasses }} rounded-md ring-1 ring-black ring-opacity-5">
+    <div class="{{ $contentClasses }} ring-opacity-5 rounded-md ring ring-gray-400">
       {{ $content }}
     </div>
   </div>

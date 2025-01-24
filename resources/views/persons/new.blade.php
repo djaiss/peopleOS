@@ -87,7 +87,7 @@
           <!-- gender -->
           <div x-cloak x-show="showGender" x-transition class="relative mb-5">
             <x-input-label for="gender_id" :value="__('Gender')" />
-            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="gender_id" name="gender_id">
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="gender_id" name="gender_id">
               @foreach ($genders as $gender)
                 <option :value="{{ $gender['id'] }}">{{ $gender['name'] }}</option>
               @endforeach
@@ -99,7 +99,7 @@
 
           <!-- other fields -->
           <div class="flex flex-wrap text-xs">
-            <span x-cloak x-show="! showPrefix" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+            <span x-cloak x-show="! showPrefix" class="me-2 mb-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
               showPrefix = true
               $nextTick(() => {
                 $refs.prefix.focus()
@@ -107,7 +107,7 @@
             ">
               {{ __('+ prefix') }}
             </span>
-            <span x-cloak x-show="! showMiddleName" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+            <span x-cloak x-show="! showMiddleName" class="me-2 mb-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
               showMiddleName = true
               $nextTick(() => {
                 $refs.middlename.focus()
@@ -115,7 +115,7 @@
             ">
               {{ __('+ middle name') }}
             </span>
-            <span x-cloak x-show="! showSuffix" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+            <span x-cloak x-show="! showSuffix" class="me-2 mb-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
               showSuffix = true
               $nextTick(() => {
                 $refs.suffix.focus()
@@ -123,7 +123,7 @@
             ">
               {{ __('+ suffix') }}
             </span>
-            <span x-cloak x-show="! showNickname" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+            <span x-cloak x-show="! showNickname" class="me-2 mb-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
               showNickname = true
               $nextTick(() => {
                 $refs.nickname.focus()
@@ -131,7 +131,7 @@
             ">
               {{ __('+ nickname') }}
             </span>
-            <span x-cloak x-show="! showMaidenName" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
+            <span x-cloak x-show="! showMaidenName" class="me-2 mb-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500" x-on:click="
               showMaidenName = true
               $nextTick(() => {
                 $refs.maidenname.focus()
@@ -141,7 +141,7 @@
             </span>
 
             @if (count($genders) > 0)
-              <span x-cloak x-show="! showGender" x-on:click="showGender = true" class="mb-2 me-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
+              <span x-cloak x-show="! showGender" x-on:click="showGender = true" class="me-2 mb-2 flex cursor-pointer flex-wrap rounded-lg border bg-slate-200 px-1 py-1 hover:bg-slate-300 dark:bg-slate-500">
                 {{ __('+ gender') }}
               </span>
             @endif

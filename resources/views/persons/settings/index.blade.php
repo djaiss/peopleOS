@@ -7,7 +7,7 @@
 ?>
 
 <x-app-layout>
-  <div class="grid h-[calc(100vh-48px)] grid-cols-[280px,320px,1fr] divide-x divide-gray-200">
+  <div class="grid h-[calc(100vh-48px)] grid-cols-[280px_320px_1fr] divide-x divide-gray-200">
     <!-- Section A: Contact List -->
     @include('persons.partials.contact-list')
 
@@ -46,7 +46,7 @@
             @method('delete')
 
             <div class="flex items-center justify-center gap-x-3 px-3 py-3">
-              <button type="submit" onclick="return confirm('{{ __('Are you sure you want to delete this person? This action cannot be undone.') }}')" class="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
+              <button type="submit" onclick="return confirm('{{ __('Are you sure you want to delete this person? This action cannot be undone.') }}')" class="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
                 <x-lucide-trash-2 class="h-4 w-4" />
                 {{ __('Delete person') }}
               </button>
