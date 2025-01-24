@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('job_title')->nullable();
             $table->text('estimated_salary')->nullable();
             $table->timestamps();
-            $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
         });
     }
 
