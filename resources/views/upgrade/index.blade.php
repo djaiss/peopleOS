@@ -5,7 +5,7 @@
 ?>
 
 <x-app-layout>
-  <div class="grid h-[calc(100vh-48px)] grid-cols-1 lg:grid-cols-[240px,1fr]">
+  <div class="grid h-[calc(100vh-48px)] grid-cols-1 lg:grid-cols-[240px_1fr]">
     <!-- sidebar -->
     @include('administration.partials.sidebar')
 

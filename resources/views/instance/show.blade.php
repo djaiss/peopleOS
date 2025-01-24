@@ -23,7 +23,7 @@
   <x-slot name="header">
     <div class="flex items-center gap-x-3">
       <x-lucide-chevron-left class="h-5 w-5 text-gray-400" />
-      <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+      <h2 class="text-xl leading-tight font-semibold text-gray-800 dark:text-gray-200">
         {{ __('Account Details') }}
       </h2>
     </div>
@@ -118,19 +118,19 @@
       <!-- Action Pane -->
       <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <!-- Delete Account -->
-        <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-4 py-3 text-sm font-medium text-red-600 shadow-sm transition hover:bg-red-50">
+        <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-4 py-3 text-sm font-medium text-red-600 shadow-xs transition hover:bg-red-50">
           <x-lucide-trash-2 class="h-4 w-4" />
           {{ __('Delete Account') }}
         </button>
 
         <!-- Give Free Account -->
-        <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-green-200 bg-white px-4 py-3 text-sm font-medium text-green-600 shadow-sm transition hover:bg-green-50">
+        <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-green-200 bg-white px-4 py-3 text-sm font-medium text-green-600 shadow-xs transition hover:bg-green-50">
           <x-lucide-gift class="h-4 w-4" />
           {{ __('Give Free Account') }}
         </button>
 
         <!-- Deactivate Account -->
-        <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-yellow-200 bg-white px-4 py-3 text-sm font-medium text-yellow-600 shadow-sm transition hover:bg-yellow-50">
+        <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-yellow-200 bg-white px-4 py-3 text-sm font-medium text-yellow-600 shadow-xs transition hover:bg-yellow-50">
           <x-lucide-ban class="h-4 w-4" />
           {{ __('Deactivate Account') }}
         </button>

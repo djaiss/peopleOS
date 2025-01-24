@@ -80,7 +80,7 @@
       <div class="mb-4 rounded-lg border border-gray-200 bg-white">
         <form wire:submit="update" class="p-4">
           <div class="mb-4">
-            <x-textarea wire:model="editedContent" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="{{ __('Write your note here...') }}"></x-textarea>
+            <x-textarea wire:model="editedContent" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-hidden" placeholder="{{ __('Write your note here...') }}"></x-textarea>
             <x-input-error class="mt-2" :messages="$errors->get('content')" />
           </div>
 

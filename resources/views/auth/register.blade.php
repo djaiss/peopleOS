@@ -1,11 +1,11 @@
 <x-guest-layout>
-  <div class="mb-12 mt-6 w-full overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-900">
+  <div class="mt-6 mb-12 w-full overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-900">
     <div class="px-6 pt-6">
       <p class="mb-2 text-lg font-bold">{{ __('Sign up for an account') }}</p>
       <p class="text-sm text-gray-500">{{ __('You will be the administrator of this account.') }}</p>
     </div>
 
-    <form method="POST" action="{{ route('register') }}" class="border-b border-gray-200 px-6 pb-3 pt-6">
+    <form method="POST" action="{{ route('register') }}" class="border-b border-gray-200 px-6 pt-6 pb-3">
       @csrf
 
       <!-- Name -->

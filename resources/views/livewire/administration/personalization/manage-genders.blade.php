@@ -62,7 +62,7 @@
             }"
             class="group flex items-center justify-between border-2 border-transparent p-3 transition-colors duration-200 last:rounded-b-lg">
             <div class="flex items-center justify-between gap-3">
-              <div class="cursor-move rounded bg-zinc-100 p-2">
+              <div class="cursor-move rounded-sm bg-zinc-100 p-2">
                 <x-lucide-grip-vertical class="h-4 w-4 text-zinc-500" />
               </div>
               <div class="flex flex-col">

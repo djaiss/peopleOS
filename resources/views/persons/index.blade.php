@@ -5,7 +5,7 @@
 ?>
 
 <x-app-layout>
-  <div class="grid h-[calc(100vh-48px)] grid-cols-[280px,320px,1fr] divide-x divide-gray-200">
+  <div class="grid h-[calc(100vh-48px)] grid-cols-[280px_320px_1fr] divide-x divide-gray-200">
     <!-- Section A: Contact List -->
     @include('persons.partials.contact-list', ['persons' => $persons])
 
