@@ -176,7 +176,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/' . $person->id . '/notes/' . $note->id);
+        $response = $this->json('GET', '/api/persons/'.$person->id.'/notes/'.$note->id);
 
         $response->assertStatus(404);
     }
