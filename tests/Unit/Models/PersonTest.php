@@ -8,6 +8,7 @@ use App\Models\Account;
 use App\Models\Gender;
 use App\Models\Note;
 use App\Models\Person;
+use App\Models\WorkHistory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -47,6 +48,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->notes()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_work_histories(): void
+    {
+        $person = Person::factory()->create();
+        WorkHistory::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->workHistories()->exists());
     }
 
     #[Test]
