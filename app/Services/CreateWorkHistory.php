@@ -52,6 +52,16 @@ class CreateWorkHistory
             'duration' => $this->duration ?? null,
             'active' => $this->active,
         ]);
+
+        if ($this->active) {
+            // make all the other work histories inactive, except for the
+            // one we just created
+            $this->person->workHistories()
+                ->where('active', true)
+                ->where('id', '!=', $this->workHistory->id)->update([
+                    'active' => false,
+                ]);
+        }
     }
 
     private function updateUserLastActivityDate(): void

@@ -101,6 +101,8 @@ class ManageNames extends Component
 
         $this->setValues();
 
+        $this->dispatch('name-updated');
+
         Toaster::success(__('Person updated'));
 
         $this->redirectRoute('persons.settings.index', [

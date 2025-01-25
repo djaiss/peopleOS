@@ -34,6 +34,16 @@ class UpdateWorkHistory
             'active' => $this->active,
         ]);
 
+        if ($this->active) {
+            // make all the other work histories inactive, except for the
+            // one we just updated
+            $this->workHistory->person->workHistories()
+                ->where('active', true)
+                ->where('id', '!=', $this->workHistory->id)->update([
+                    'active' => false,
+                ]);
+        }
+
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
