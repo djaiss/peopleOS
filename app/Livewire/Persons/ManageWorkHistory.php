@@ -92,6 +92,7 @@ class ManageWorkHistory extends Component
         ]);
 
         $this->toggleAddMode();
+        $this->dispatch('work-history-updated');
 
         Toaster::success(__('Work history entry created'));
     }
@@ -138,6 +139,7 @@ class ManageWorkHistory extends Component
         );
 
         $this->resetEdit();
+        $this->dispatch('work-history-updated');
         Toaster::success(__('Work history entry updated'));
     }
 

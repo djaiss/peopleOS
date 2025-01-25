@@ -81,6 +81,8 @@ class ManageWorkHistoryTest extends TestCase
             ->set('isCurrentJob', true)
             ->call('store');
 
+        $component->assertDispatched('work-history-updated');
+
         $this->assertDatabaseHas('work_information', [
             'person_id' => $person->id,
         ]);
@@ -200,6 +202,8 @@ class ManageWorkHistoryTest extends TestCase
 
         $component->assertHasNoErrors()
             ->assertSet('editedWorkHistoryId', 0);
+
+        $component->assertDispatched('work-history-updated');
 
         $this->assertDatabaseHas('work_information', [
             'id' => $workHistory->id,
