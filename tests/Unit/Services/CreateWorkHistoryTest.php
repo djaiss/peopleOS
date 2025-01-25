@@ -37,6 +37,7 @@ class CreateWorkHistoryTest extends TestCase
             person: $person,
             companyName: 'Central Perk',
             jobTitle: 'Waitress',
+            duration: '1 year',
             estimatedSalary: '10000',
             active: true,
         ))->execute();
@@ -81,6 +82,7 @@ class CreateWorkHistoryTest extends TestCase
             person: $person,
             companyName: 'Central Perk',
             jobTitle: 'Waitress',
+            duration: '1 year',
             estimatedSalary: '10000',
             active: true,
         ))->execute();

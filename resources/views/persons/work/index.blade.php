@@ -21,7 +21,7 @@
           {{ __('Work & Passions') }}
         </h1>
 
-        <livewire:persons.manage-work-history />
+        <livewire:persons.manage-work-history :person="$person" />
 
         <!-- Passions Section -->
         <h2 class="font-semi-bold mb-1 text-lg">

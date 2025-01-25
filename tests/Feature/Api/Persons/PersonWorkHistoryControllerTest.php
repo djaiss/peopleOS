@@ -32,6 +32,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'company_name' => 'New York Museum of Prehistoric History',
             'job_title' => 'Paleontologist',
             'estimated_salary' => '$75,000',
+            'duration' => '1 year',
             'active' => true,
         ]);
 
@@ -45,6 +46,7 @@ class PersonWorkHistoryControllerTest extends TestCase
         $this->assertEquals('New York Museum of Prehistoric History', $workHistory->company_name);
         $this->assertEquals('Paleontologist', $workHistory->job_title);
         $this->assertEquals('$75,000', $workHistory->estimated_salary);
+        $this->assertEquals('1 year', $workHistory->duration);
         $this->assertTrue($workHistory->active);
     }
 
@@ -61,6 +63,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'job_title' => 'Original Title',
             'estimated_salary' => '$50,000',
             'active' => false,
+            'duration' => '1 year',
         ]);
 
         Sanctum::actingAs($user);
@@ -70,6 +73,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'job_title' => 'Professor',
             'estimated_salary' => '$85,000',
             'active' => true,
+            'duration' => '2 years',
         ]);
 
         $response->assertStatus(200);
@@ -81,7 +85,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'New York University',
             $workHistory->refresh()->company_name
         );
-
+        $this->assertEquals('2 years', $workHistory->refresh()->duration);
         $this->assertEquals('New York University', $response->json('data.company_name'));
         $this->assertEquals('Professor', $response->json('data.job_title'));
         $this->assertEquals('$85,000', $response->json('data.estimated_salary'));
@@ -158,6 +162,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'company_name' => 'Central Perk',
             'job_title' => 'Barista',
             'estimated_salary' => '$30,000',
+            'duration' => '1 year',
             'active' => true,
         ]);
 
@@ -172,6 +177,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'job_title' => 'Barista',
             'estimated_salary' => '$30,000',
             'active' => true,
+            'duration' => '1 year',
         ]);
     }
 
@@ -204,6 +210,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'job_title' => 'Barista',
             'estimated_salary' => '$30,000',
             'active' => true,
+            'duration' => '1 year',
         ]);
 
         Sanctum::actingAs($user);
@@ -217,6 +224,7 @@ class PersonWorkHistoryControllerTest extends TestCase
             'job_title' => 'Barista',
             'estimated_salary' => '$30,000',
             'active' => true,
+            'duration' => '1 year',
         ]);
     }
 }

@@ -1762,7 +1762,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/administration/marital-statuses/9" \
+    "https://peopleos.test/api/administration/marital-statuses/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1774,7 +1774,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/marital-statuses/9"
+    "https://peopleos.test/api/administration/marital-statuses/5"
 );
 
 const headers = {
@@ -1796,7 +1796,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/marital-statuses/9';
+$url = 'https://peopleos.test/api/administration/marital-statuses/5';
 $response = $client-&gt;put(
     $url,
     [
@@ -1882,11 +1882,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="9" data-component="url" />
+            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="PUTapi-administration-marital-statuses--maritalStatus_id-" value="5" data-component="url" />
             <br />
             <p>
               The ID of the maritalStatus. Example:
-              <code>9</code>
+              <code>5</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -1937,14 +1937,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/administration/marital-statuses/5" \
+    "https://peopleos.test/api/administration/marital-statuses/7" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/administration/marital-statuses/5"
+    "https://peopleos.test/api/administration/marital-statuses/7"
 );
 
 const headers = {
@@ -1960,7 +1960,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/administration/marital-statuses/5';
+$url = 'https://peopleos.test/api/administration/marital-statuses/7';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2033,11 +2033,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>integer</small>
             &nbsp; &nbsp;
-            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="5" data-component="url" />
+            <input type="number" style="display: none" step="any" name="maritalStatus_id" data-endpoint="DELETEapi-administration-marital-statuses--maritalStatus_id-" value="7" data-component="url" />
             <br />
             <p>
               The ID of the maritalStatus. Example:
-              <code>5</code>
+              <code>7</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2067,14 +2067,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "https://peopleos.test/api/persons/possimus/notes" \
+    --get "https://peopleos.test/api/persons/molestiae/notes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/possimus/notes"
+    "https://peopleos.test/api/persons/molestiae/notes"
 );
 
 const headers = {
@@ -2090,7 +2090,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/possimus/notes';
+$url = 'https://peopleos.test/api/persons/molestiae/notes';
 $response = $client-&gt;get(
     $url,
     [
@@ -2208,11 +2208,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--notes" value="possimus" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--notes" value="molestiae" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>possimus</code>
+              <code>molestiae</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2450,14 +2450,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "https://peopleos.test/api/persons/iusto/notes/sint" \
+    --get "https://peopleos.test/api/persons/ut/notes/id" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/iusto/notes/sint"
+    "https://peopleos.test/api/persons/ut/notes/id"
 );
 
 const headers = {
@@ -2473,7 +2473,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/iusto/notes/sint';
+$url = 'https://peopleos.test/api/persons/ut/notes/id';
 $response = $client-&gt;get(
     $url,
     [
@@ -2553,11 +2553,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--notes--id-" value="iusto" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--notes--id-" value="ut" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>iusto</code>
+              <code>ut</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2565,11 +2565,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="GETapi-persons--person_id--notes--id-" value="sint" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="GETapi-persons--person_id--notes--id-" value="id" data-component="url" />
             <br />
             <p>
               The ID of the note. Example:
-              <code>sint</code>
+              <code>id</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2642,7 +2642,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/persons/neque/notes/ex" \
+    "https://peopleos.test/api/persons/perferendis/notes/in" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2653,7 +2653,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/neque/notes/ex"
+    "https://peopleos.test/api/persons/perferendis/notes/in"
 );
 
 const headers = {
@@ -2674,7 +2674,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/neque/notes/ex';
+$url = 'https://peopleos.test/api/persons/perferendis/notes/in';
 $response = $client-&gt;put(
     $url,
     [
@@ -2757,11 +2757,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="PUTapi-persons--person_id--notes--id-" value="neque" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="PUTapi-persons--person_id--notes--id-" value="perferendis" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>neque</code>
+              <code>perferendis</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2769,11 +2769,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-persons--person_id--notes--id-" value="ex" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-persons--person_id--notes--id-" value="in" data-component="url" />
             <br />
             <p>
               The ID of the note. Example:
-              <code>ex</code>
+              <code>in</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2844,14 +2844,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/persons/ut/notes/quibusdam" \
+    "https://peopleos.test/api/persons/animi/notes/quae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/ut/notes/quibusdam"
+    "https://peopleos.test/api/persons/animi/notes/quae"
 );
 
 const headers = {
@@ -2867,7 +2867,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/ut/notes/quibusdam';
+$url = 'https://peopleos.test/api/persons/animi/notes/quae';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2940,11 +2940,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="DELETEapi-persons--person_id--notes--id-" value="ut" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="DELETEapi-persons--person_id--notes--id-" value="animi" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>ut</code>
+              <code>animi</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -2952,11 +2952,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-persons--person_id--notes--id-" value="quibusdam" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-persons--person_id--notes--id-" value="quae" data-component="url" />
             <br />
             <p>
               The ID of the note. Example:
-              <code>quibusdam</code>
+              <code>quae</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3606,14 +3606,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "https://peopleos.test/api/persons/labore" \
+    --get "https://peopleos.test/api/persons/sit" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/labore"
+    "https://peopleos.test/api/persons/sit"
 );
 
 const headers = {
@@ -3629,7 +3629,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/labore';
+$url = 'https://peopleos.test/api/persons/sit';
 $response = $client-&gt;get(
     $url,
     [
@@ -3717,11 +3717,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="GETapi-persons--id-" value="labore" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="GETapi-persons--id-" value="sit" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>labore</code>
+              <code>sit</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -3856,7 +3856,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/persons/at" \
+    "https://peopleos.test/api/persons/non" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3866,8 +3866,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"middle_name\": \"Gary\",
     \"nickname\": \"Mike\",
     \"maiden_name\": \"Johnson\",
-    \"patronymic_name\": \"ntbgchtxuwn\",
-    \"tribal_name\": \"my\",
+    \"patronymic_name\": \"hsihwitjouuqwbnt\",
+    \"tribal_name\": \"eaegxmsdcwkail\",
     \"prefix\": \"Mr.\",
     \"suffix\": \"Jr.\",
     \"can_be_deleted\": true
@@ -3877,7 +3877,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/at"
+    "https://peopleos.test/api/persons/non"
 );
 
 const headers = {
@@ -3892,8 +3892,8 @@ let body = {
     "middle_name": "Gary",
     "nickname": "Mike",
     "maiden_name": "Johnson",
-    "patronymic_name": "ntbgchtxuwn",
-    "tribal_name": "my",
+    "patronymic_name": "hsihwitjouuqwbnt",
+    "tribal_name": "eaegxmsdcwkail",
     "prefix": "Mr.",
     "suffix": "Jr.",
     "can_be_deleted": true
@@ -3908,7 +3908,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/at';
+$url = 'https://peopleos.test/api/persons/non';
 $response = $client-&gt;put(
     $url,
     [
@@ -3923,8 +3923,8 @@ $response = $client-&gt;put(
             'middle_name' =&gt; 'Gary',
             'nickname' =&gt; 'Mike',
             'maiden_name' =&gt; 'Johnson',
-            'patronymic_name' =&gt; 'ntbgchtxuwn',
-            'tribal_name' =&gt; 'my',
+            'patronymic_name' =&gt; 'hsihwitjouuqwbnt',
+            'tribal_name' =&gt; 'eaegxmsdcwkail',
             'prefix' =&gt; 'Mr.',
             'suffix' =&gt; 'Jr.',
             'can_be_deleted' =&gt; true,
@@ -4009,11 +4009,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-persons--id-" value="at" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-persons--id-" value="non" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>at</code>
+              <code>non</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4118,11 +4118,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;
             <i>optional</i>
             &nbsp;
-            <input type="text" style="display: none" name="patronymic_name" data-endpoint="PUTapi-persons--id-" value="ntbgchtxuwn" data-component="body" />
+            <input type="text" style="display: none" name="patronymic_name" data-endpoint="PUTapi-persons--id-" value="hsihwitjouuqwbnt" data-component="body" />
             <br />
             <p>
               Must not be greater than 255 characters. Example:
-              <code>ntbgchtxuwn</code>
+              <code>hsihwitjouuqwbnt</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4132,11 +4132,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;
             <i>optional</i>
             &nbsp;
-            <input type="text" style="display: none" name="tribal_name" data-endpoint="PUTapi-persons--id-" value="my" data-component="body" />
+            <input type="text" style="display: none" name="tribal_name" data-endpoint="PUTapi-persons--id-" value="eaegxmsdcwkail" data-component="body" />
             <br />
             <p>
               Must not be greater than 255 characters. Example:
-              <code>my</code>
+              <code>eaegxmsdcwkail</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4279,14 +4279,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/persons/facilis" \
+    "https://peopleos.test/api/persons/vel" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/facilis"
+    "https://peopleos.test/api/persons/vel"
 );
 
 const headers = {
@@ -4302,7 +4302,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/facilis';
+$url = 'https://peopleos.test/api/persons/vel';
 $response = $client-&gt;delete(
     $url,
     [
@@ -4375,11 +4375,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-persons--id-" value="facilis" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-persons--id-" value="vel" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>facilis</code>
+              <code>vel</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4586,7 +4586,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/teams/odio" \
+    "https://peopleos.test/api/teams/ullam" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4597,7 +4597,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/odio"
+    "https://peopleos.test/api/teams/ullam"
 );
 
 const headers = {
@@ -4618,7 +4618,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/odio';
+$url = 'https://peopleos.test/api/teams/ullam';
 $response = $client-&gt;put(
     $url,
     [
@@ -4701,11 +4701,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="odio" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="PUTapi-teams--id-" value="ullam" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>odio</code>
+              <code>ullam</code>
             </p>
           </div>
           <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
@@ -4776,14 +4776,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/teams/fugiat" \
+    "https://peopleos.test/api/teams/amet" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/teams/fugiat"
+    "https://peopleos.test/api/teams/amet"
 );
 
 const headers = {
@@ -4799,7 +4799,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/teams/fugiat';
+$url = 'https://peopleos.test/api/teams/amet';
 $response = $client-&gt;delete(
     $url,
     [
@@ -4875,11 +4875,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="fugiat" data-component="url" />
+            <input type="text" style="display: none" name="id" data-endpoint="DELETEapi-teams--id-" value="amet" data-component="url" />
             <br />
             <p>
               The ID of the team. Example:
-              <code>fugiat</code>
+              <code>amet</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -4909,14 +4909,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "https://peopleos.test/api/persons/odit/work-history" \
+    --get "https://peopleos.test/api/persons/sed/work-history" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/odit/work-history"
+    "https://peopleos.test/api/persons/sed/work-history"
 );
 
 const headers = {
@@ -4932,7 +4932,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/odit/work-history';
+$url = 'https://peopleos.test/api/persons/sed/work-history';
 $response = $client-&gt;get(
     $url,
     [
@@ -4959,6 +4959,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;company_name&quot;: &quot;Google&quot;,
  &quot;job_title&quot;: &quot;Software Engineer&quot;,
  &quot;estimated_salary&quot;: &quot;$100,000&quot;,
+ &quot;duration&quot;: &quot;1 year&quot;,
  &quot;active&quot;: true,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
@@ -4968,6 +4969,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;company_name&quot;: &quot;Facebook&quot;,
  &quot;job_title&quot;: &quot;Software Engineer&quot;,
  &quot;estimated_salary&quot;: &quot;$120,000&quot;,
+ &quot;duration&quot;: &quot;1 year&quot;,
  &quot;active&quot;: true,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800
@@ -5056,11 +5058,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--work-history" value="odit" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--work-history" value="sed" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>odit</code>
+              <code>sed</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5110,6 +5112,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The estimated salary.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>duration</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The duration of the work history entry.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>active</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -5145,7 +5153,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"company_name\": \"Google\",
     \"job_title\": \"Software Engineer\",
     \"estimated_salary\": \"$100,000\",
-    \"active\": true
+    \"active\": true,
+    \"duration\": \"1 year\"
 }"
 </code></pre>
           </div>
@@ -5164,7 +5173,8 @@ let body = {
     "company_name": "Google",
     "job_title": "Software Engineer",
     "estimated_salary": "$100,000",
-    "active": true
+    "active": true,
+    "duration": "1 year"
 };
 
 fetch(url, {
@@ -5189,6 +5199,7 @@ $response = $client-&gt;post(
             'job_title' =&gt; 'Software Engineer',
             'estimated_salary' =&gt; '$100,000',
             'active' =&gt; true,
+            'duration' =&gt; '1 year',
         ],
     ]
 );
@@ -5209,6 +5220,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;company_name&quot;: &quot;Google&quot;,
  &quot;job_title&quot;: &quot;Software Engineer&quot;,
  &quot;estimated_salary&quot;: &quot;$100,000&quot;,
+ &quot;duration&quot;: &quot;1 year&quot;,
  &quot;active&quot;: true,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
@@ -5328,6 +5340,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
               <code>true</code>
             </p>
           </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>duration</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="duration" data-endpoint="POSTapi-persons--person--work-history" value="1 year" data-component="body" />
+            <br />
+            <p>
+              The duration of the work history entry. Example:
+              <code>1 year</code>
+            </p>
+          </div>
         </form>
 
         <h3>Response</h3>
@@ -5363,6 +5387,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The estimated salary.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>duration</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The duration of the work history entry.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>active</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -5389,14 +5419,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request GET \
-    --get "https://peopleos.test/api/persons/saepe/work-history/suscipit" \
+    --get "https://peopleos.test/api/persons/ut/work-history/molestias" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/saepe/work-history/suscipit"
+    "https://peopleos.test/api/persons/ut/work-history/molestias"
 );
 
 const headers = {
@@ -5412,7 +5442,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/saepe/work-history/suscipit';
+$url = 'https://peopleos.test/api/persons/ut/work-history/molestias';
 $response = $client-&gt;get(
     $url,
     [
@@ -5439,6 +5469,7 @@ print_r(json_decode((string) $body));</code></pre>
   &quot;company_name&quot;: &quot;Google&quot;,
   &quot;job_title&quot;: &quot;Software Engineer&quot;,
   &quot;estimated_salary&quot;: &quot;$100,000&quot;,
+  &quot;duration&quot;: &quot;1 year&quot;,
   &quot;active&quot;: true,
   &quot;created_at&quot;: 1514764800,
   &quot;updated_at&quot;: 1514764800,
@@ -5495,11 +5526,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--work-history--entry-" value="saepe" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="GETapi-persons--person_id--work-history--entry-" value="ut" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>saepe</code>
+              <code>ut</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5507,11 +5538,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="entry" data-endpoint="GETapi-persons--person_id--work-history--entry-" value="suscipit" data-component="url" />
+            <input type="text" style="display: none" name="entry" data-endpoint="GETapi-persons--person_id--work-history--entry-" value="molestias" data-component="url" />
             <br />
             <p>
               Example:
-              <code>suscipit</code>
+              <code>molestias</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5573,6 +5604,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>The estimated salary.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>duration</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The duration of the work history entry.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>active</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -5602,21 +5639,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request PUT \
-    "https://peopleos.test/api/persons/et/work-history/velit" \
+    "https://peopleos.test/api/persons/et/work-history/at" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"company_name\": \"Google\",
     \"job_title\": \"Software Engineer\",
     \"estimated_salary\": \"$100,000\",
-    \"active\": true
+    \"active\": true,
+    \"duration\": \"1 year\"
 }"
 </code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/et/work-history/velit"
+    "https://peopleos.test/api/persons/et/work-history/at"
 );
 
 const headers = {
@@ -5628,7 +5666,8 @@ let body = {
     "company_name": "Google",
     "job_title": "Software Engineer",
     "estimated_salary": "$100,000",
-    "active": true
+    "active": true,
+    "duration": "1 year"
 };
 
 fetch(url, {
@@ -5640,7 +5679,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/et/work-history/velit';
+$url = 'https://peopleos.test/api/persons/et/work-history/at';
 $response = $client-&gt;put(
     $url,
     [
@@ -5653,6 +5692,7 @@ $response = $client-&gt;put(
             'job_title' =&gt; 'Software Engineer',
             'estimated_salary' =&gt; '$100,000',
             'active' =&gt; true,
+            'duration' =&gt; '1 year',
         ],
     ]
 );
@@ -5673,6 +5713,7 @@ print_r(json_decode((string) $body));</code></pre>
  &quot;company_name&quot;: &quot;Google&quot;,
  &quot;job_title&quot;: &quot;Software Engineer&quot;,
  &quot;estimated_salary&quot;: &quot;$100,000&quot;,
+ &quot;duration&quot;: &quot;1 year&quot;,
  &quot;active&quot;: true,
  &quot;created_at&quot;: 1514764800,
  &quot;updated_at&quot;: 1514764800,
@@ -5741,11 +5782,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="entry" data-endpoint="PUTapi-persons--person_id--work-history--entry-" value="velit" data-component="url" />
+            <input type="text" style="display: none" name="entry" data-endpoint="PUTapi-persons--person_id--work-history--entry-" value="at" data-component="url" />
             <br />
             <p>
               Example:
-              <code>velit</code>
+              <code>at</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5828,6 +5869,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
               <code>true</code>
             </p>
           </div>
+          <div style="padding-left: 28px; clear: unset">
+            <b style="line-height: 2"><code>duration</code></b>
+            &nbsp;&nbsp;
+            <small>string</small>
+            &nbsp; &nbsp;
+            <input type="text" style="display: none" name="duration" data-endpoint="PUTapi-persons--person_id--work-history--entry-" value="1 year" data-component="body" />
+            <br />
+            <p>
+              The duration of the work history entry. Example:
+              <code>1 year</code>
+            </p>
+          </div>
         </form>
 
         <h3>Response</h3>
@@ -5869,6 +5922,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
           <p>Whether the work history entry is active.</p>
         </div>
         <div style="padding-left: 28px; clear: unset">
+          <b style="line-height: 2"><code>duration</code></b>
+          &nbsp;&nbsp; &nbsp; &nbsp;
+          <br />
+          <p>The duration of the work history entry.</p>
+        </div>
+        <div style="padding-left: 28px; clear: unset">
           <b style="line-height: 2"><code>created_at</code></b>
           &nbsp;&nbsp; &nbsp; &nbsp;
           <br />
@@ -5889,14 +5948,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
           <div class="bash-example">
             <pre><code class="language-bash">curl --request DELETE \
-    "https://peopleos.test/api/persons/nisi/work-history/mollitia" \
+    "https://peopleos.test/api/persons/sunt/work-history/qui" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
           </div>
 
           <div class="javascript-example">
             <pre><code class="language-javascript">const url = new URL(
-    "https://peopleos.test/api/persons/nisi/work-history/mollitia"
+    "https://peopleos.test/api/persons/sunt/work-history/qui"
 );
 
 const headers = {
@@ -5912,7 +5971,7 @@ fetch(url, {
 
           <div class="php-example">
             <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'https://peopleos.test/api/persons/nisi/work-history/mollitia';
+$url = 'https://peopleos.test/api/persons/sunt/work-history/qui';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5985,11 +6044,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="person_id" data-endpoint="DELETEapi-persons--person_id--work-history--entry-" value="nisi" data-component="url" />
+            <input type="text" style="display: none" name="person_id" data-endpoint="DELETEapi-persons--person_id--work-history--entry-" value="sunt" data-component="url" />
             <br />
             <p>
               The ID of the person. Example:
-              <code>nisi</code>
+              <code>sunt</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">
@@ -5997,11 +6056,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             &nbsp;&nbsp;
             <small>string</small>
             &nbsp; &nbsp;
-            <input type="text" style="display: none" name="entry" data-endpoint="DELETEapi-persons--person_id--work-history--entry-" value="mollitia" data-component="url" />
+            <input type="text" style="display: none" name="entry" data-endpoint="DELETEapi-persons--person_id--work-history--entry-" value="qui" data-component="url" />
             <br />
             <p>
               Example:
-              <code>mollitia</code>
+              <code>qui</code>
             </p>
           </div>
           <div style="padding-left: 28px; clear: unset">

@@ -22,6 +22,7 @@ class WorkHistoryResource extends JsonResource
             'company_name' => $this->company_name,
             'job_title' => $this->job_title,
             'estimated_salary' => $this->estimated_salary,
+            'duration' => $this->duration,
             'active' => $this->active,
             'created_at' => $this->created_at->timestamp,
             'updated_at' => $this->updated_at->timestamp,

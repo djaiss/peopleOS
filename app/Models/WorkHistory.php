@@ -23,6 +23,7 @@ class WorkHistory extends Model
         'person_id',
         'company_name',
         'job_title',
+        'duration',
         'estimated_salary',
         'active',
     ];
@@ -38,6 +39,7 @@ class WorkHistory extends Model
             'company_name' => 'encrypted',
             'job_title' => 'encrypted',
             'estimated_salary' => 'encrypted',
+            'duration' => 'encrypted',
             'active' => 'boolean',
         ];
     }
