@@ -31,6 +31,7 @@ class WorkHistoryFactory extends Factory
             'person_id' => Person::factory(),
             'company_name' => fake()->company(),
             'job_title' => fake()->jobTitle(),
+            'duration' => fake()->numberBetween(1, 10),
             'estimated_salary' => fake()->numberBetween(1000, 10000),
             'active' => fake()->boolean(),
         ];

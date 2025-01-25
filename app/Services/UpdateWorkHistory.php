@@ -18,6 +18,7 @@ class UpdateWorkHistory
         private readonly ?string $companyName,
         private readonly ?string $jobTitle,
         private readonly ?string $estimatedSalary,
+        private readonly ?string $duration,
         private readonly bool $active,
     ) {}
 
@@ -26,9 +27,10 @@ class UpdateWorkHistory
         $this->validate();
 
         $this->workHistory->update([
-            'company_name' => $this->companyName ?? null,
+            'company_name' => $this->companyName,
             'job_title' => $this->jobTitle,
-            'estimated_salary' => $this->estimatedSalary ?? null,
+            'estimated_salary' => $this->estimatedSalary,
+            'duration' => $this->duration,
             'active' => $this->active,
         ]);
 

@@ -41,6 +41,7 @@ class UpdateWorkHistoryTest extends TestCase
             companyName: 'Central Perk',
             jobTitle: 'Waitress',
             estimatedSalary: '10000',
+            duration: '1 year',
             active: true,
         ))->execute();
 
@@ -88,6 +89,7 @@ class UpdateWorkHistoryTest extends TestCase
             companyName: 'Central Perk',
             jobTitle: 'Waitress',
             estimatedSalary: '10000',
+            duration: '1 year',
             active: true,
         ))->execute();
     }

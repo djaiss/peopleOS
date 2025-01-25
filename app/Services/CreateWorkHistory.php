@@ -21,6 +21,7 @@ class CreateWorkHistory
         private readonly ?string $companyName,
         private readonly string $jobTitle,
         private readonly ?string $estimatedSalary,
+        private readonly ?string $duration,
         private readonly bool $active,
     ) {}
 
@@ -48,6 +49,7 @@ class CreateWorkHistory
             'company_name' => $this->companyName ?? null,
             'job_title' => $this->jobTitle,
             'estimated_salary' => $this->estimatedSalary ?? null,
+            'duration' => $this->duration ?? null,
             'active' => $this->active,
         ]);
     }

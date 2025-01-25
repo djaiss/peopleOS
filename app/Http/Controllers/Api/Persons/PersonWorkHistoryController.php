@@ -33,6 +33,7 @@ class PersonWorkHistoryController extends Controller
      * @bodyParam job_title string required The job title. Example: Software Engineer
      * @bodyParam estimated_salary string required The estimated salary. Example: $100,000
      * @bodyParam active boolean required Whether the work history entry is active. Example: true
+     * @bodyParam duration string required The duration of the work history entry. Example: 1 year
      *
      * @response 201 {
      *  "id": 4,
@@ -40,6 +41,7 @@ class PersonWorkHistoryController extends Controller
      *  "company_name": "Google",
      *  "job_title": "Software Engineer",
      *  "estimated_salary": "$100,000",
+     *  "duration": "1 year",
      *  "active": true,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
@@ -50,6 +52,7 @@ class PersonWorkHistoryController extends Controller
      * @responseField company_name The name of the company.
      * @responseField job_title The job title.
      * @responseField estimated_salary The estimated salary.
+     * @responseField duration The duration of the work history entry.
      * @responseField active Whether the work history entry is active.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
@@ -63,6 +66,7 @@ class PersonWorkHistoryController extends Controller
             'job_title' => 'required|string|max:255',
             'estimated_salary' => 'nullable|string|max:255',
             'active' => 'required|boolean',
+            'duration' => 'nullable|string|max:255',
         ]);
 
         $workHistory = (new CreateWorkHistory(
@@ -72,6 +76,7 @@ class PersonWorkHistoryController extends Controller
             jobTitle: $validated['job_title'],
             estimatedSalary: $validated['estimated_salary'],
             active: $validated['active'],
+            duration: $validated['duration'] ?? null,
         ))->execute();
 
         return new WorkHistoryResource($workHistory);
@@ -91,6 +96,7 @@ class PersonWorkHistoryController extends Controller
      * @bodyParam job_title string required The job title. Example: Software Engineer
      * @bodyParam estimated_salary string required The estimated salary. Example: $100,000
      * @bodyParam active boolean required Whether the work history entry is active. Example: true
+     * @bodyParam duration string required The duration of the work history entry. Example: 1 year
      *
      * @response 200 {
      *  "id": 4,
@@ -98,6 +104,7 @@ class PersonWorkHistoryController extends Controller
      *  "company_name": "Google",
      *  "job_title": "Software Engineer",
      *  "estimated_salary": "$100,000",
+     *  "duration": "1 year",
      *  "active": true,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
@@ -109,6 +116,7 @@ class PersonWorkHistoryController extends Controller
      * @responseField job_title The job title.
      * @responseField estimated_salary The estimated salary.
      * @responseField active Whether the work history entry is active.
+     * @responseField duration The duration of the work history entry.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -121,6 +129,7 @@ class PersonWorkHistoryController extends Controller
             'job_title' => 'required|string|max:255',
             'estimated_salary' => 'nullable|string|max:255',
             'active' => 'required|boolean',
+            'duration' => 'nullable|string|max:255',
         ]);
 
         $workHistory = (new UpdateWorkHistory(
@@ -130,6 +139,7 @@ class PersonWorkHistoryController extends Controller
             jobTitle: $validated['job_title'],
             estimatedSalary: $validated['estimated_salary'],
             active: $validated['active'],
+            duration: $validated['duration'] ?? null,
         ))->execute();
 
         return new WorkHistoryResource($workHistory);
@@ -171,6 +181,7 @@ class PersonWorkHistoryController extends Controller
      *   "company_name": "Google",
      *   "job_title": "Software Engineer",
      *   "estimated_salary": "$100,000",
+     *   "duration": "1 year",
      *   "active": true,
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800,
@@ -181,6 +192,7 @@ class PersonWorkHistoryController extends Controller
      * @responseField company_name The name of the company.
      * @responseField job_title The job title.
      * @responseField estimated_salary The estimated salary.
+     * @responseField duration The duration of the work history entry.
      * @responseField active Whether the work history entry is active.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
@@ -206,6 +218,7 @@ class PersonWorkHistoryController extends Controller
      *  "company_name": "Google",
      *  "job_title": "Software Engineer",
      *  "estimated_salary": "$100,000",
+     *  "duration": "1 year",
      *  "active": true,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
@@ -215,6 +228,7 @@ class PersonWorkHistoryController extends Controller
      *  "company_name": "Facebook",
      *  "job_title": "Software Engineer",
      *  "estimated_salary": "$120,000",
+     *  "duration": "1 year",
      *  "active": true,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800
@@ -257,6 +271,7 @@ class PersonWorkHistoryController extends Controller
      * @responseField company_name The name of the company.
      * @responseField job_title The job title.
      * @responseField estimated_salary The estimated salary.
+     * @responseField duration The duration of the work history entry.
      * @responseField active Whether the work history entry is active.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
