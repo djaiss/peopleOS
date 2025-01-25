@@ -53,6 +53,9 @@ return [
         'note_creation' => 'Note creation',
         'note_update' => 'Note update',
         'note_deletion' => 'Note deletion',
+        'work_history_creation' => 'Work history creation',
+        'work_history_update' => 'Work history update',
+        'work_history_deletion' => 'Work history deletion',
     ],
 
 ];

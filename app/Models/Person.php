@@ -80,6 +80,15 @@ class Person extends Model
     }
 
     /**
+     * Get the work histories associated with the person.
+     * (I know it's not the best name)
+     */
+    public function workHistories(): HasMany
+    {
+        return $this->hasMany(WorkHistory::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute
