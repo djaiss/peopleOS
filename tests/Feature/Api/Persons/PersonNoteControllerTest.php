@@ -168,6 +168,20 @@ class PersonNoteControllerTest extends TestCase
     }
 
     #[Test]
+    public function user_cannot_get_note_from_another_person(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create();
+        $note = Note::factory()->create();
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/notes/' . $note->id);
+
+        $response->assertStatus(404);
+    }
+
+    #[Test]
     public function user_can_get_list_of_notes(): void
     {
         $user = User::factory()->create();
