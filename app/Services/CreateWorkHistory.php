@@ -18,9 +18,9 @@ class CreateWorkHistory
     public function __construct(
         private readonly User $user,
         private readonly Person $person,
-        private readonly string $companyName,
+        private readonly ?string $companyName,
         private readonly string $jobTitle,
-        private readonly string $estimatedSalary,
+        private readonly ?string $estimatedSalary,
         private readonly bool $active,
     ) {}
 
@@ -45,9 +45,9 @@ class CreateWorkHistory
     {
         $this->workHistory = WorkHistory::create([
             'person_id' => $this->person->id,
-            'company_name' => $this->companyName,
+            'company_name' => $this->companyName ?? null,
             'job_title' => $this->jobTitle,
-            'estimated_salary' => $this->estimatedSalary,
+            'estimated_salary' => $this->estimatedSalary ?? null,
             'active' => $this->active,
         ]);
     }

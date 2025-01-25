@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Administration\MaritalStatusController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
+use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
 use App\Http\Controllers\Api\Teams\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::get('persons/{person}/notes/{note}', [PersonNoteController::class, 'show'])->name('persons.notes.show');
             Route::put('persons/{person}/notes/{note}', [PersonNoteController::class, 'update'])->name('persons.notes.update');
             Route::delete('persons/{person}/notes/{note}', [PersonNoteController::class, 'destroy'])->name('persons.notes.destroy');
+        });
+
+        // work history
+        Route::get('persons/{person}/work-history', [PersonWorkHistoryController::class, 'index'])->name('persons.work-history.index');
+        Route::post('persons/{person}/work-history', [PersonWorkHistoryController::class, 'create'])->name('persons.work-history.create');
+        Route::middleware(['work_history'])->group(function (): void {
+            Route::get('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'show'])->name('persons.work-history.show');
+            Route::put('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'update'])->name('persons.work-history.update');
+            Route::delete('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'destroy'])->name('persons.work-history.destroy');
         });
     });
 
