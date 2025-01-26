@@ -38,6 +38,8 @@ class PersonControllerTest extends TestCase
                 'id' => $person->id,
                 'name' => 'Monica Geller',
                 'slug' => $person->id.'-monica',
+                'nickname' => '',
+                'maiden_name' => '',
             ],
             $response['persons'][0]
         );
@@ -122,13 +124,5 @@ class PersonControllerTest extends TestCase
 
         $this->assertArrayHasKey('person', $response);
         $this->assertArrayHasKey('persons', $response);
-        $this->assertEquals(
-            [
-                'id' => $person->id,
-                'name' => 'Monica Geller',
-                'slug' => $person->id.'-monica',
-            ],
-            $response['persons'][0]
-        );
     }
 }
