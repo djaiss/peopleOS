@@ -56,6 +56,7 @@ return [
         'work_history_creation' => 'Work history creation',
         'work_history_update' => 'Work history update',
         'work_history_deletion' => 'Work history deletion',
+        'account_pruning' => 'Account pruning',
     ],
 
 ];

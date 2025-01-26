@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Administration\AdministrationAccountController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
+use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Persons\PersonController;
@@ -55,6 +56,7 @@ Route::middleware(['auth:sanctum', 'verified', 'subscription'])->group(function 
     Route::get('administration/personalization', [AdministrationPersonalizationController::class, 'index'])->name('administration.personalization.index');
 
     Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');
+    Route::put('administration/prune', [AdministrationPruneAccountController::class, 'update'])->name('administration.account.prune');
     Route::delete('administration/account', [AdministrationAccountController::class, 'destroy'])->name('administration.account.destroy');
 
     Route::middleware(['instance.admin'])->group(function (): void {

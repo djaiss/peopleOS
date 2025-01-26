@@ -32,11 +32,7 @@ class AdministrationAccountControllerTest extends TestCase
     {
         Queue::fake();
 
-        $user = User::factory()->create([
-            'first_name' => 'Ross',
-            'last_name' => 'Geller',
-            'email' => 'ross.geller@friends.com',
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)
             ->from('/administration/account')

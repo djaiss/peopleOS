@@ -16,7 +16,7 @@
     }
 }" class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
   <!-- header -->
-  <div class="flex items-center justify-between rounded-t-lg p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+  <div class="flex items-center justify-between rounded-t-lg border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
     @if ($genders->isEmpty())
       <p class="text-sm text-zinc-500">{{ __('No genders created') }}</p>
     @else

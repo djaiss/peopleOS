@@ -10,6 +10,24 @@
           {{ __('Account administration') }}
         </h1>
 
+        <h2 class="font-semi-bold mb-1 text-lg">{{ __('Prune your account') }}</h2>
+        <p class="mb-4 text-sm text-zinc-500">{{ __('Delete all persons and related data from your account. This lets you start over with a new account.') }}</p>
+
+        <div class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
+          <div class="flex items-center justify-between rounded-t-lg border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+            <p class="text-sm text-zinc-500">{{ __('Beware, this action is irreversible.') }}</p>
+
+            <form onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('administration.account.prune') }}" method="post">
+              @csrf
+              @method('put')
+
+              <x-button.secondary type="submit" class="mr-2 text-sm">
+                {{ __('Delete all persons') }}
+              </x-button.secondary>
+            </form>
+          </div>
+        </div>
+
         <div class="mb-2 flex items-center gap-x-2">
           <x-lucide-alert-triangle class="h-4 w-4 text-red-600" />
           <h2 class="font-semi-bold mb-1 text-lg text-red-600">

@@ -16,7 +16,7 @@
     }
 }" class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
   <!-- header -->
-  <div class="flex items-center justify-between rounded-t-lg p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+  <div class="flex items-center justify-between rounded-t-lg border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
     @if ($maritalStatuses->isEmpty())
       <p class="text-sm text-zinc-500">{{ __('No marital statuses created') }}</p>
     @else
@@ -60,7 +60,7 @@
               'opacity-50 bg-gray-50': dragging === index,
               'border-transparent': dragging !== index
             }"
-            class="group flex items-center justify-between border-2 border-transparent p-3 transition-colors duration-200 last:rounded-b-lg">
+            class="group flex items-center justify-between p-3 transition-colors duration-200 last:rounded-b-lg last:border-b-0">
             <div class="flex items-center justify-between gap-3">
               <div class="cursor-move rounded-sm bg-zinc-100 p-2">
                 <x-lucide-grip-vertical class="h-4 w-4 text-zinc-500" />
