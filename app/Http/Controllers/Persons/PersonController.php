@@ -25,6 +25,8 @@ class PersonController extends Controller
             ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
+                'maiden_name' => $person->maiden_name,
+                'nickname' => $person->nickname,
                 'slug' => $person->slug,
             ])
             ->sortBy('name');
@@ -93,6 +95,8 @@ class PersonController extends Controller
             ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
+                'maiden_name' => $person->maiden_name,
+                'nickname' => $person->nickname,
                 'slug' => $person->slug,
             ])
             ->sortBy('name');
