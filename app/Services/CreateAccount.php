@@ -31,7 +31,9 @@ class CreateAccount
      */
     public function execute(): User
     {
-        $this->account = Account::create();
+        $this->account = Account::create([
+            'trial_ends_at' => now()->addDays(30),
+        ]);
 
         $this->addFirstUser();
         $this->populateAccount();

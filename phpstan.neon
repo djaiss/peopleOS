@@ -13,6 +13,8 @@ parameters:
         - '#Property App\\Models\\[a-zA-Z]+::\$[a-zA-Z_]+_at \(string\|null\) does not accept Illuminate\\Support\\Carbon\.#'
         - '#Property App\\Models\\[a-zA-Z]+::\$[a-zA-Z_]+_at \(string\|null\) does not accept Carbon\\Carbon\.#'
         - '#Cannot call method format\(\) on string\.#'
+        - '#Cannot call method isFuture\(\) on string\.#'
+        - '#Cannot call method isPast\(\) on string\.#'
 
     excludePaths:
         - app/Http/Controllers/Auth/VerifyEmailController.php

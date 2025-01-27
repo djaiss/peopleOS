@@ -10,6 +10,7 @@ use App\Jobs\SetupAccount;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use App\Services\CreateAccount;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
@@ -28,6 +29,7 @@ class CreateAccountTest extends TestCase
     private function executeService(): void
     {
         Queue::fake();
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
 
         $user = (new CreateAccount(
             email: 'ross.geller@friends.com',
@@ -38,6 +40,7 @@ class CreateAccountTest extends TestCase
 
         $this->assertDatabaseHas('accounts', [
             'id' => $user->account_id,
+            'trial_ends_at' => '2018-01-31 00:00:00',
         ]);
 
         $this->assertDatabaseHas('users', [

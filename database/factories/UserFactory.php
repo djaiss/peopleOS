@@ -39,7 +39,6 @@ class UserFactory extends Factory
             'last_activity_at' => null,
             'born_at' => null,
             'does_display_age' => false,
-            'has_paid' => false,
             'is_instance_admin' => false,
         ];
     }

@@ -23,6 +23,7 @@ class AccountFactory extends Factory
     {
         return [
             'has_lifetime_access' => false,
+            'trial_ends_at' => now()->addDays(30),
         ];
     }
 }
