@@ -23,6 +23,7 @@ class DestroyAccountTest extends TestCase
     {
         Queue::fake();
         Mail::fake();
+        config(['mail.account_deletion_notification_email' => 'regis@peopleos.com']);
 
         $user = User::factory()->create();
 
@@ -41,7 +42,8 @@ class DestroyAccountTest extends TestCase
         );
 
         Mail::assertQueued(AccountDestroyed::class, function (AccountDestroyed $job): bool {
-            return $job->reason === 'the service is not working';
+            return $job->reason === 'the service is not working'
+                && $job->to[0]['address'] === 'regis@peopleos.com';
         });
     }
 }

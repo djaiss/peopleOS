@@ -1,6 +1,7 @@
 
 Todo:
   - Fix active job being not refreshed on work history update
+  - Add services to manage instance
   - Add passions to person
   - Add nationality to person and significant other
   - Add hobbies to person
