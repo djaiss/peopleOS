@@ -47,9 +47,12 @@ class InstanceController extends Controller
     {
         $firstUser = $account->users->first();
 
+        $logs = $account->logs()->with('user')->orderBy('created_at', 'desc')->take(10)->get();
+
         return view('instance.show', [
             'account' => $account,
             'firstUser' => $firstUser,
+            'logs' => $logs,
         ]);
     }
 }

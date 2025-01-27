@@ -157,7 +157,7 @@
         </div>
 
         <div class="divide-y divide-gray-200">
-          @foreach ($account->logs()->with('user')->orderBy('created_at', 'desc')->take(10)->get()as $log)
+          @foreach ($logs as $log)
             <div class="flex items-center justify-between p-4">
               <div class="flex items-center gap-3">
                 <x-lucide-activity class="h-4 w-4 text-gray-500" />
