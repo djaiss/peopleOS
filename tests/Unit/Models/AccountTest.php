@@ -88,6 +88,7 @@ class AccountTest extends TestCase
     #[Test]
     public function it_checks_if_the_account_is_in_trial(): void
     {
+        config(['peopleos.enable_paid_version' => true]);
         $account = Account::factory()->create([
             'has_lifetime_access' => false,
             'trial_ends_at' => now()->addDays(30),
