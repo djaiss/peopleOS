@@ -21,6 +21,7 @@ class Account extends Model
      */
     protected $fillable = [
         'has_lifetime_access',
+        'trial_ends_at',
     ];
 
     /**
@@ -32,6 +33,7 @@ class Account extends Model
     {
         return [
             'has_lifetime_access' => 'boolean',
+            'trial_ends_at' => 'datetime',
         ];
     }
 
@@ -81,5 +83,25 @@ class Account extends Model
     public function teams(): HasMany
     {
         return $this->hasMany(Team::class);
+    }
+
+    /**
+     * Check if the account is in trial.
+     */
+    public function isInTrial(): bool
+    {
+        return config('peopleos.enable_paid_version')
+            && ! $this->has_lifetime_access
+            && $this->trial_ends_at->isFuture();
+    }
+
+    /**
+     * Check if the account needs to pay to continue using the app.
+     */
+    public function needsToPay(): bool
+    {
+        return config('peopleos.enable_paid_version')
+            && ! $this->has_lifetime_access
+            && $this->trial_ends_at->isPast();
     }
 }
