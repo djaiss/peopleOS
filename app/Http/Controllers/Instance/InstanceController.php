@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Instance;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class InstanceController extends Controller
@@ -29,9 +30,10 @@ class InstanceController extends Controller
                     'id' => $firstUser?->id,
                     'name' => $firstUser ? mb_trim($firstUser->first_name.' '.$firstUser->last_name) : '',
                     'email' => $firstUser?->email,
-                    'last_activity_at' => $firstUser?->last_activity_at->format('Y-m-d H:i:s'),
+                    'last_activity_at' => $firstUser?->last_activity_at?->format('Y-m-d H:i:s'),
                     'persons_count' => $account->persons_count,
                     'avatar' => $firstUser?->getAvatar(64),
+                    'url' => route('instance.show', $account->id),
                 ];
             });
 
@@ -41,8 +43,13 @@ class InstanceController extends Controller
         ]);
     }
 
-    public function show(): View
+    public function show(Request $request, Account $account): View
     {
-        return view('instance.show');
+        $firstUser = $account->users->first();
+
+        return view('instance.show', [
+            'account' => $account,
+            'firstUser' => $firstUser,
+        ]);
     }
 }

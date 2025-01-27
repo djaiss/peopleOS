@@ -88,7 +88,7 @@
         <!-- Table Body -->
         <div class="divide-y divide-gray-200">
           <template x-for="account in accounts" :key="account.id">
-            <div class="grid grid-cols-1 gap-2 p-4 text-sm hover:bg-blue-50 sm:grid-cols-12 sm:gap-4 sm:p-3" x-show="
+            <a :href="account.url" class="grid cursor-pointer grid-cols-1 gap-2 p-4 text-sm hover:bg-blue-50 sm:grid-cols-12 sm:gap-4 sm:p-3" x-show="
               search === '' ||
                 account.name.toLowerCase().includes(search.toLowerCase()) ||
                 account.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -130,7 +130,7 @@
                   <span x-text="`${account.persons_count} contacts`"></span>
                 </div>
               </div>
-            </div>
+            </a>
           </template>
 
           <!-- Empty State -->

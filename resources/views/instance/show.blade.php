@@ -38,7 +38,7 @@
           <div class="flex-1">
             <div class="mb-4 flex items-center gap-2">
               <x-lucide-building class="h-5 w-5 text-gray-500" />
-              <span class="font-mono text-sm text-gray-600">{{ __('Account ID:') }} 1234</span>
+              <span class="font-mono text-sm text-gray-600">{{ __('Account ID:') }} {{ $account->id }}</span>
             </div>
 
             <div class="mb-4">
@@ -47,28 +47,27 @@
                   <x-lucide-user class="h-8 w-8 p-1.5 text-gray-600" />
                 </div>
                 <div>
-                  <p class="font-semibold">John Doe</p>
-                  <p class="text-sm text-gray-600">john@example.com</p>
-                  <p class="text-xs text-gray-500">{{ __('User ID:') }} 5678</p>
+                  <p class="font-semibold">{{ $firstUser->name }}</p>
+                  <p class="text-sm text-gray-600">{{ $firstUser->email }}</p>
+                  <p class="text-xs text-gray-500">{{ __('User ID:') }} {{ $firstUser->id }}</p>
                 </div>
               </div>
             </div>
 
             <div class="flex items-center gap-2 text-sm text-gray-600">
               <x-lucide-calendar class="h-4 w-4" />
-              <span>{{ __('Created on March 15, 2024') }}</span>
+              <span>{{ __('Created on') }} {{ $account->created_at->format('F d, Y') }}</span>
             </div>
           </div>
 
           <!-- Right column with subscription status -->
           <div class="text-center">
             <div class="mb-2 inline-flex rounded-full bg-green-100 px-3 py-1">
-              <div class="flex items-center gap-1">
+              <div class="flex items-center gap-2">
                 <x-lucide-check-circle class="h-4 w-4 text-green-600" />
-                <span class="text-sm font-medium text-green-600">{{ __('Paid Account') }}</span>
+                <span class="text-sm font-medium text-green-600">{{ __('Paid account') }}</span>
               </div>
             </div>
-            <p class="text-sm text-gray-600">{{ __('Next billing date:') }} April 15, 2024</p>
           </div>
         </div>
       </div>
@@ -80,7 +79,7 @@
           <div class="flex-1">
             <div class="mb-4 flex items-center gap-2">
               <x-lucide-building class="h-5 w-5 text-gray-500" />
-              <span class="font-mono text-sm text-gray-600">{{ __('Account ID:') }} 1234</span>
+              <span class="font-mono text-sm text-gray-600">{{ __('Account ID:') }} {{ $account->id }}</span>
             </div>
 
             <div class="mb-4">
@@ -89,16 +88,16 @@
                   <x-lucide-user class="h-12 w-12 p-2 text-gray-600" />
                 </div>
                 <div>
-                  <p class="font-semibold">John Doe</p>
-                  <p class="text-sm text-gray-600">john@example.com</p>
-                  <p class="text-xs text-gray-500">{{ __('User ID:') }} 5678</p>
+                  <p class="font-semibold">{{ $firstUser->name }}</p>
+                  <p class="text-sm text-gray-600">{{ $firstUser->email }}</p>
+                  <p class="text-xs text-gray-500">{{ __('User ID:') }} {{ $firstUser->id }}</p>
                 </div>
               </div>
             </div>
 
             <div class="flex items-center gap-2 text-sm text-gray-600">
               <x-lucide-calendar class="h-4 w-4" />
-              <span>{{ __('Created on March 15, 2024') }}</span>
+              <span>{{ __('Created on') }} {{ $account->created_at->format('F d, Y') }}</span>
             </div>
           </div>
 
@@ -110,7 +109,7 @@
                 <span class="text-sm font-medium text-yellow-600">{{ __('Trial Account') }}</span>
               </div>
             </div>
-            <p class="text-sm text-gray-600">{{ __('Trial expires in:') }} 15 days</p>
+            <p class="text-sm text-gray-600">{{ __('Trial expires in:') }} {{ $account->trial_ends_at->diffInDays() }} {{ __('days') }}</p>
           </div>
         </div>
       </div>
