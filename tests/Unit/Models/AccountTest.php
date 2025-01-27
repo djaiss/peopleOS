@@ -84,4 +84,50 @@ class AccountTest extends TestCase
 
         $this->assertTrue($account->teams()->exists());
     }
+
+    #[Test]
+    public function it_checks_if_the_account_is_in_trial(): void
+    {
+        config(['peopleos.enable_paid_version' => true]);
+        $account = Account::factory()->create([
+            'has_lifetime_access' => false,
+            'trial_ends_at' => now()->addDays(30),
+        ]);
+        $this->assertTrue($account->isInTrial());
+    }
+
+    #[Test]
+    public function it_checks_if_the_account_needs_to_pay(): void
+    {
+        config(['peopleos.enable_paid_version' => true]);
+        $account = Account::factory()->create([
+            'has_lifetime_access' => false,
+            'trial_ends_at' => now()->subMinutes(1),
+        ]);
+        $this->assertTrue($account->needsToPay());
+
+        $account = Account::factory()->create([
+            'has_lifetime_access' => false,
+            'trial_ends_at' => now()->addMinutes(1),
+        ]);
+        $this->assertFalse($account->needsToPay());
+
+        $account = Account::factory()->create([
+            'has_lifetime_access' => true,
+        ]);
+        $this->assertFalse($account->needsToPay());
+
+        config(['peopleos.enable_paid_version' => false]);
+        $account = Account::factory()->create([
+            'has_lifetime_access' => false,
+            'trial_ends_at' => now()->subDays(31),
+        ]);
+        $this->assertFalse($account->needsToPay());
+
+        $account = Account::factory()->create([
+            'has_lifetime_access' => false,
+            'trial_ends_at' => now()->subDays(29),
+        ]);
+        $this->assertFalse($account->needsToPay());
+    }
 }

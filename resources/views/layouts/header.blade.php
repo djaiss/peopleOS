@@ -27,10 +27,10 @@
         </a>
 
         <!-- upgrade -->
-        @if (! Auth::user()->has_paid && config('peopleos.enable_paid_version'))
+        @if (Auth::user()->account->isInTrial())
           <div class="flex items-center gap-x-2">
             <div class="rounded-md border border-yellow-300 bg-yellow-50 px-3 py-1">
-              <p class="text-sm text-yellow-800">{{ max(0, round(30 - Auth::user()->created_at->diffInDays(now()))) }} days left in your trial</p>
+              <p class="text-sm text-yellow-800">{{ round(now()->diffInDays(Auth::user()->account->trial_ends_at)) }} days left in your trial</p>
             </div>
             <a wire:navigate href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
               {{ __('Upgrade') }}

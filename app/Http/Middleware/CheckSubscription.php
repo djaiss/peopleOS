@@ -21,8 +21,8 @@ class CheckSubscription
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->needsToPay()) {
-            abort(403);
+        if (Auth::user()->account->needsToPay()) {
+            return redirect()->route('upgrade.index');
         }
 
         return $next($request);

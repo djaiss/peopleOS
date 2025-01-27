@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->boolean('is_instance_admin')->default(false);
-            $table->boolean('has_paid')->default(false);
             $table->text('first_name')->nullable();
             $table->text('last_name')->nullable();
             $table->text('nickname')->nullable();
