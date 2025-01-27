@@ -61,7 +61,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
     Route::middleware(['instance.admin'])->group(function (): void {
         Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
-        Route::get('instance/{instance}', [InstanceController::class, 'show'])->name('instance.show');
+        Route::get('instance/accounts/{account}', [InstanceController::class, 'show'])->name('instance.show');
     });
 });
 

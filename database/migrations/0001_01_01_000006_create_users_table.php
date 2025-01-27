@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->boolean('is_instance_admin')->default(false);
             $table->text('first_name')->nullable();
             $table->text('last_name')->nullable();
             $table->text('nickname')->nullable();
@@ -35,7 +36,6 @@ return new class extends Migration
             $table->datetime('invited_at')->nullable();
             $table->datetime('invitation_accepted_at')->nullable();
             $table->date('born_at')->nullable();
-            $table->boolean('is_instance_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
