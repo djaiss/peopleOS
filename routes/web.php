@@ -8,6 +8,7 @@ use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Instance\InstanceController;
+use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
@@ -62,6 +63,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::middleware(['instance.admin'])->group(function (): void {
         Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
         Route::get('instance/accounts/{account}', [InstanceController::class, 'show'])->name('instance.show');
+        Route::delete('instance/accounts/{account}', [InstanceDestroyAccountController::class, 'destroy'])->name('instance.destroy');
     });
 });
 

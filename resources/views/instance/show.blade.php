@@ -116,10 +116,14 @@
       @if (! $firstUser->is_instance_admin && $firstUser->id !== Auth::id())
         <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <!-- Delete Account -->
-          <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-4 py-3 text-sm font-medium text-red-600 shadow-xs transition hover:bg-red-50">
-            <x-lucide-trash-2 class="h-4 w-4" />
-            {{ __('Delete Account') }}
-          </button>
+          <form onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.destroy', $account) }}" method="post" class="w-full">
+            @csrf
+            @method('delete')
+            <button type="submit" class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-4 py-3 text-sm font-medium text-red-600 shadow-xs transition hover:bg-red-50">
+              <x-lucide-trash-2 class="h-4 w-4" />
+              {{ __('Delete account') }}
+            </button>
+          </form>
 
           <!-- Give Free Account -->
           @if (! $account->has_lifetime_access)
@@ -153,7 +157,7 @@
         </div>
 
         <div class="divide-y divide-gray-200">
-          @foreach ($account->logs()->with('user')->orderBy('created_at', 'desc')->take(10)->get() as $log)
+          @foreach ($logs as $log)
             <div class="flex items-center justify-between p-4">
               <div class="flex items-center gap-3">
                 <x-lucide-activity class="h-4 w-4 text-gray-500" />
