@@ -127,10 +127,15 @@
 
           <!-- Give Free Account -->
           @if (! $account->has_lifetime_access)
-            <button type="button" class="flex items-center justify-center gap-2 rounded-lg border border-green-200 bg-white px-4 py-3 text-sm font-medium text-green-600 shadow-xs transition hover:bg-green-50">
-              <x-lucide-gift class="h-4 w-4" />
-              {{ __('Give Free Account') }}
-            </button>
+            <form onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.accounts.free', $account) }}" method="post" class="w-full">
+              @csrf
+              @method('put')
+
+              <button type="submit" class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-green-200 bg-white px-4 py-3 text-sm font-medium text-green-600 shadow-xs transition hover:bg-green-50">
+                <x-lucide-gift class="h-4 w-4" />
+                {{ __('Give free account') }}
+              </button>
+            </form>
           @endif
 
           <!-- Deactivate Account -->
