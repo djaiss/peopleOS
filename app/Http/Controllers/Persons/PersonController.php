@@ -18,6 +18,7 @@ class PersonController extends Controller
     public function index(): View
     {
         $personsQuery = Person::where('account_id', Auth::user()->account_id)
+            ->where('is_listed', true)
             ->orderBy('first_name')
             ->get();
 
@@ -67,6 +68,7 @@ class PersonController extends Controller
             'maiden_name' => 'nullable|string|max:255',
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
+            'is_listed' => 'boolean',
         ]);
 
         $person = (new CreatePerson(
@@ -79,6 +81,7 @@ class PersonController extends Controller
             maidenName: $validated['maiden_name'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
+            isListed: $validated['is_listed'],
         ))->execute();
 
         return redirect()->route('persons.show', [
@@ -91,6 +94,7 @@ class PersonController extends Controller
         $person = $request->attributes->get('person');
 
         $persons = Person::where('account_id', Auth::user()->account_id)
+            ->where('is_listed', true)
             ->get()
             ->map(fn (Person $person): array => [
                 'id' => $person->id,

@@ -60,6 +60,7 @@ class PersonControllerTest extends TestCase
             'prefix' => 'Mr',
             'suffix' => null,
             'can_be_deleted' => true,
+            'is_listed' => true,
         ]);
 
         $response->assertStatus(201);
@@ -96,6 +97,7 @@ class PersonControllerTest extends TestCase
             'prefix' => 'Mrs',
             'suffix' => null,
             'can_be_deleted' => true,
+            'is_listed' => true,
         ]);
 
         $response->assertStatus(200);

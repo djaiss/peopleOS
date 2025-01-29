@@ -33,6 +33,7 @@ class Person extends Model
         'suffix',
         'prefix',
         'can_be_deleted',
+        'is_listed',
     ];
 
     /**
@@ -52,6 +53,7 @@ class Person extends Model
             'suffix' => 'encrypted',
             'prefix' => 'encrypted',
             'can_be_deleted' => 'boolean',
+            'is_listed' => 'boolean',
         ];
     }
 

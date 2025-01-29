@@ -26,6 +26,7 @@ class UpdatePerson
         private readonly ?string $prefix,
         private readonly ?string $suffix,
         private readonly bool $canBeDeleted = true,
+        private readonly bool $isListed = true,
     ) {}
 
     public function execute(): Person
@@ -64,6 +65,7 @@ class UpdatePerson
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,
             'can_be_deleted' => $this->canBeDeleted,
+            'is_listed' => $this->isListed,
         ]);
     }
 

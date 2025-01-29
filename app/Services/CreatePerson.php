@@ -26,6 +26,7 @@ class CreatePerson
         public ?string $prefix,
         public ?string $suffix,
         public bool $canBeDeleted = true,
+        public bool $isListed = true,
     ) {}
 
     public function execute(): Person
@@ -61,6 +62,7 @@ class CreatePerson
             'suffix' => $this->suffix ?? null,
             'prefix' => $this->prefix ?? null,
             'can_be_deleted' => $this->canBeDeleted,
+            'is_listed' => $this->isListed,
         ]);
     }
 

@@ -36,6 +36,7 @@ class PersonFactory extends Factory
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'can_be_deleted' => true,
+            'is_listed' => true,
         ];
     }
 

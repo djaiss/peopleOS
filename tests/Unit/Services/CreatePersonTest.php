@@ -55,6 +55,7 @@ class CreatePersonTest extends TestCase
             prefix: '',
             suffix: '',
             canBeDeleted: true,
+            isListed: true,
         ))->execute();
 
         $this->assertDatabaseHas('persons', [
@@ -62,6 +63,7 @@ class CreatePersonTest extends TestCase
             'account_id' => $user->account_id,
             'gender_id' => $gender->id,
             'can_be_deleted' => true,
+            'is_listed' => true,
         ]);
 
         $this->assertEquals('Ross', $person->first_name);

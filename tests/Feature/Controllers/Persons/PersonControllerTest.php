@@ -100,6 +100,7 @@ class PersonControllerTest extends TestCase
                 'maiden_name' => '',
                 'prefix' => '',
                 'suffix' => '',
+                'is_listed' => true,
             ])
             ->assertRedirectToRoute('persons.show', [
                 'slug' => Person::orderBy('id', 'desc')->first()->slug,
