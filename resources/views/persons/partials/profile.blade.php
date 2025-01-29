@@ -45,9 +45,9 @@
         <x-lucide-book-open class="{{ request()->routeIs('persons.notes.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
         <span class="{{ request()->routeIs('persons.notes.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Notes</span>
       </a>
-      <a href="#" class="flex items-center gap-3 border-l-2 border-blue-500 bg-blue-50 px-4 py-3">
-        <x-lucide-person-standing class="h-4 w-4 text-blue-500" />
-        <span class="text-sm font-medium text-blue-700">Family</span>
+      <a wire:navigate href="{{ route('persons.family.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('persons.family.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3">
+        <x-lucide-person-standing class="{{ request()->routeIs('persons.family.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+        <span class="{{ request()->routeIs('persons.family.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Family</span>
       </a>
       <a href="#" class="flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-bell class="h-4 w-4 text-gray-500" />

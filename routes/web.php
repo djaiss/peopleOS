@@ -11,6 +11,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Persons\PersonController;
+use App\Http\Controllers\Persons\PersonFamilyController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonSettingsController;
@@ -47,6 +48,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
             // work and passion
             Route::get('persons/{slug}/work', [PersonWorkController::class, 'index'])->name('persons.work.index');
+
+            // family
+            Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('persons.family.index');
         });
 
         // persons gifts
