@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Account;
 use App\Models\Gender;
+use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\WorkHistory;
@@ -73,5 +74,57 @@ class PersonTest extends TestCase
             'Ross Geller',
             $person->name
         );
+    }
+
+    #[Test]
+    public function it_has_many_love_relationships(): void
+    {
+        $ross = Person::factory()->create();
+
+        // Test relationship as person_id
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+        ]);
+        $this->assertTrue($ross->loveRelationships()->exists());
+
+        // Test relationship as related_person_id
+        $rachel = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+        LoveRelationship::factory()->create([
+            'person_id' => $rachel->id,
+            'related_person_id' => $ross->id,
+        ]);
+        $this->assertEquals(2, $ross->loveRelationships()->count());
+    }
+
+    #[Test]
+    public function it_checks_if_person_has_active_love_relationship(): void
+    {
+        $ross = Person::factory()->create();
+        $rachel = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+
+        // Create an active relationship
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $rachel->id,
+            'is_current' => true,
+        ]);
+
+        $this->assertTrue($ross->hasActiveLoveRelationship());
+
+        // Test with no active relationships
+        $monica = Person::factory()->create();
+        $this->assertFalse($monica->hasActiveLoveRelationship());
+
+        // Test with only inactive relationships
+        LoveRelationship::factory()->create([
+            'person_id' => $monica->id,
+            'related_person_id' => $ross->id,
+            'is_current' => false,
+        ]);
+        $this->assertFalse($monica->hasActiveLoveRelationship());
     }
 }
