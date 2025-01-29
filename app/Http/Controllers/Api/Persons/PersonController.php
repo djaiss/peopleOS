@@ -39,6 +39,7 @@ class PersonController extends Controller
      * @bodyParam prefix string The prefix of the person. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the person. Max 255 characters. Example: Jr.
      * @bodyParam can_be_deleted boolean Whether the person can be deleted. 0 for false, 1 for true. Example: 1
+     * @bodyParam is_listed boolean Whether the person should be listed in the person list. 0 for false, 1 for true. Example: 1
      *
      * @response 201 {
      *  "id": 4,
@@ -52,6 +53,7 @@ class PersonController extends Controller
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
+     *  "is_listed": 1,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -67,6 +69,7 @@ class PersonController extends Controller
      * @responseField prefix The prefix of the person.
      * @responseField suffix The suffix of the person.
      * @responseField can_be_deleted Whether the person can be deleted.
+     * @responseField is_listed Whether the person is listed in the contact list.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -82,6 +85,7 @@ class PersonController extends Controller
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
             'can_be_deleted' => 'boolean',
+            'is_listed' => 'boolean',
         ]);
 
         $person = (new CreatePerson(
@@ -95,6 +99,7 @@ class PersonController extends Controller
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
             canBeDeleted: $validated['can_be_deleted'],
+            isListed: $validated['is_listed'],
         ))->execute();
 
         return new PersonResource($person);
@@ -120,6 +125,7 @@ class PersonController extends Controller
      * @bodyParam prefix string The prefix of the person. Max 255 characters. Example: Mr.
      * @bodyParam suffix string The suffix of the person. Max 255 characters. Example: Jr.
      * @bodyParam can_be_deleted boolean Whether the person can be deleted. 0 for false, 1 for true. Example: 1
+     * @bodyParam is_listed boolean Whether the person should be listed in the person list. 0 for false, 1 for true. Example: 1
      *
      * @response 200 {
      *  "id": 4,
@@ -133,6 +139,7 @@ class PersonController extends Controller
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
+     *  "is_listed": 1
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -148,6 +155,7 @@ class PersonController extends Controller
      * @responseField prefix The prefix of the person.
      * @responseField suffix The suffix of the person.
      * @responseField can_be_deleted Whether the person can be deleted.
+     * @responseField is_listed Whether the person is listed in the contact list.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */
@@ -167,6 +175,7 @@ class PersonController extends Controller
             'prefix' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
             'can_be_deleted' => 'boolean',
+            'is_listed' => 'boolean',
         ]);
 
         $person = (new UpdatePerson(
@@ -181,6 +190,7 @@ class PersonController extends Controller
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
             canBeDeleted: $validated['can_be_deleted'],
+            isListed: $validated['is_listed'],
         ))->execute();
 
         return new PersonResource($person);
@@ -228,6 +238,7 @@ class PersonController extends Controller
      *   "prefix": "Mr.",
      *   "suffix": "Jr.",
      *   "can_be_deleted": true,
+     *   "is_listed": true,
      *   "created_at": 1514764800,
      *   "updated_at": 1514764800
      * }
@@ -243,6 +254,7 @@ class PersonController extends Controller
      * @responseField prefix The prefix of the person.
      * @responseField suffix The suffix of the person.
      * @responseField can_be_deleted Whether the person can be deleted.
+     * @responseField can_be_deleted Whether the person is listed in the contact list.
      * @responseField created_at The date the person was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the person was last updated. Represented as a Unix timestamp.
      */
@@ -271,6 +283,7 @@ class PersonController extends Controller
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": true,
+     *  "is_listed": true,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800
      * }, {
@@ -285,6 +298,7 @@ class PersonController extends Controller
      *  "prefix": "Ms.",
      *  "suffix": "Sr.",
      *  "can_be_deleted": true,
+     *  "is_listed": true,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800
      * },
@@ -332,6 +346,7 @@ class PersonController extends Controller
      * @responseField prefix The prefix of the person.
      * @responseField suffix The suffix of the person.
      * @responseField can_be_deleted Whether the person can be deleted.
+     * @responseField is_listed Whether the person is listed in the contact list.
      * @responseField created_at The date the object was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the object was last updated. Represented as a Unix timestamp.
      */

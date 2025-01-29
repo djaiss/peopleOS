@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
             $table->boolean('can_be_deleted')->default(true);
+            $table->boolean('is_listed')->default(true);
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');

@@ -47,6 +47,7 @@ class UpdatePersonTest extends TestCase
             prefix: 'Ms',
             suffix: 'Jr',
             canBeDeleted: false,
+            isListed: false,
         ))->execute();
 
         $this->assertDatabaseHas('persons', [
@@ -54,6 +55,7 @@ class UpdatePersonTest extends TestCase
             'account_id' => $user->account_id,
             'gender_id' => $gender->id,
             'can_be_deleted' => false,
+            'is_listed' => false,
         ]);
 
         $this->assertEquals('Monica', $person->first_name);
@@ -95,6 +97,8 @@ class UpdatePersonTest extends TestCase
             maidenName: null,
             prefix: null,
             suffix: null,
+            canBeDeleted: false,
+            isListed: false,
         ))->execute();
     }
 
@@ -120,6 +124,8 @@ class UpdatePersonTest extends TestCase
             maidenName: null,
             prefix: null,
             suffix: null,
+            canBeDeleted: false,
+            isListed: false,
         ))->execute();
     }
 }

@@ -20,6 +20,7 @@ class PersonSettingsController extends Controller
         $person = $request->attributes->get('person');
 
         $persons = Person::where('account_id', Auth::user()->account_id)
+            ->where('is_listed', true)
             ->orderBy('first_name')
             ->get()
             ->map(fn (Person $person): array => [

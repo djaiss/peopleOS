@@ -17,6 +17,7 @@ class PersonFamilyController extends Controller
         $person = $request->attributes->get('person');
 
         $persons = Person::where('account_id', Auth::user()->account_id)
+            ->where('is_listed', true)
             ->get()
             ->map(fn (Person $person): array => [
                 'id' => $person->id,
