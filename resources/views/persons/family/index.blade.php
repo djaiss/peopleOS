@@ -14,11 +14,11 @@
       global $relationshipStatuses;
       if (isset($relationshipStatuses[$name])) {
         return '<div class="ml-1.5 flex items-center gap-1 text-xs text-rose-500">
-              <x-lucide-heart class="h-3 w-3" />
-              <span class="truncate">' .
+                  <x-lucide-heart class="h-3 w-3" />
+                  <span class="truncate">' .
           $relationshipStatuses[$name]['to'] .
           '</span>
-            </div>';
+                </div>';
       }
       return '';
     }

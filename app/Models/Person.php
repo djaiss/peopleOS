@@ -89,6 +89,20 @@ class Person extends Model
     }
 
     /**
+     * Get the love relationships associated with the person.
+     * This includes relationships where the person is either
+     * the main person or the related person.
+     */
+    public function loveRelationships(): HasMany
+    {
+        return $this->hasMany(LoveRelationship::class, 'person_id')
+            ->union(
+                $this->hasMany(LoveRelationship::class, 'related_person_id')
+                    ->getQuery()
+            );
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute
@@ -102,5 +116,15 @@ class Person extends Model
                 return $firstName.$separator.$lastName;
             }
         );
+    }
+
+    /**
+     * Check if the person has an active love relationship.
+     */
+    public function hasActiveLoveRelationship(): bool
+    {
+        return $this->loveRelationships()
+            ->where('is_current', true)
+            ->exists();
     }
 }
