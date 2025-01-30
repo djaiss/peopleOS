@@ -14,11 +14,11 @@
       global $relationshipStatuses;
       if (isset($relationshipStatuses[$name])) {
         return '<div class="ml-1.5 flex items-center gap-1 text-xs text-rose-500">
-                          <x-lucide-heart class="h-3 w-3" />
-                          <span class="truncate">' .
+                              <x-lucide-heart class="h-3 w-3" />
+                              <span class="truncate">' .
           $relationshipStatuses[$name]['to'] .
           '</span>
-                        </div>';
+                            </div>';
       }
       return '';
     }
@@ -35,67 +35,7 @@
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-3xl p-6">
         <!-- Love Relationships Section -->
-        <section class="mb-8">
-          <div class="mb-4 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <x-lucide-heart class="h-5 w-5 text-rose-500" />
-              <h2 class="text-lg font-semibold text-gray-900">Love & Romance</h2>
-            </div>
-            <button type="button" class="inline-flex items-center gap-1 rounded-md bg-rose-50 px-2 py-1 text-sm font-medium text-rose-600 hover:bg-rose-100">
-              <x-lucide-plus class="h-4 w-4" />
-              Add relationship
-            </button>
-          </div>
-          <div class="space-y-4">
-            <!-- Current Spouse -->
-            <div class="rounded-lg border border-gray-200 bg-white">
-              <h3 class="border-b border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-                <div class="flex items-center gap-2">
-                  <x-lucide-gem class="h-4 w-4 text-rose-500" />
-                  Current Relationship
-                </div>
-              </h3>
-              <div class="p-4">
-                <div class="flex items-center gap-3">
-                  <img class="h-10 w-10 rounded-full object-cover ring-1 ring-gray-200" src="https://i.pravatar.cc/40?u=1" alt="" />
-                  <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-1">
-                      <p class="truncate font-medium text-gray-900">Monica Geller</p>
-                      {!! getRelationshipIndicator('Monica Geller') !!}
-                    </div>
-                    <p class="text-sm text-gray-500">Spouse • 32 years old • Born April 22, 1969</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Past Relationships -->
-            <div class="rounded-lg border border-gray-200 bg-white">
-              <h3 class="border-b border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-                <div class="flex items-center gap-2">
-                  <x-lucide-heart-crack class="h-4 w-4 text-gray-500" />
-                  Past Relationships
-                </div>
-              </h3>
-              <div class="divide-y divide-gray-200">
-                @foreach ([['name' => 'Janice Hosenstein', 'type' => 'Ex-girlfriend', 'birthdate' => 'December 5, 1967'], ['name' => 'Rachel Green', 'type' => 'Ex-girlfriend', 'birthdate' => 'May 5, 1969']] as $relation)
-                  <div class="p-4">
-                    <div class="flex items-center gap-3">
-                      <img class="h-10 w-10 rounded-full object-cover ring-1 ring-gray-200" src="https://i.pravatar.cc/40?u={{ $loop->iteration + 10 }}" alt="" />
-                      <div class="min-w-0 flex-1">
-                        <div class="flex items-center gap-1">
-                          <p class="truncate font-medium text-gray-900">{{ $relation['name'] }}</p>
-                          {!! getRelationshipIndicator($relation['name']) !!}
-                        </div>
-                        <p class="text-sm text-gray-500">{{ $relation['type'] }} • Born {{ $relation['birthdate'] }}</p>
-                      </div>
-                    </div>
-                  </div>
-                @endforeach
-              </div>
-            </div>
-          </div>
-        </section>
+        <livewire:persons.manage-love-relationship :person="$person" />
 
         <!-- Children Section -->
         <section class="mb-8">
