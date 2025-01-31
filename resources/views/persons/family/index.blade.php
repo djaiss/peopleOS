@@ -1,29 +1,4 @@
 <x-app-layout>
-  @php
-    $relationshipStatuses = [
-      'Monica Geller' => ['status' => 'married', 'to' => 'Chandler Bing'],
-      'Ross Geller' => ['status' => 'married', 'to' => 'Rachel Green'],
-      'Rachel Green' => ['status' => 'married', 'to' => 'Ross Geller'],
-      'Phoebe Buffay' => ['status' => 'married', 'to' => 'Mike Hannigan'],
-      'Jack Geller' => ['status' => 'married', 'to' => 'Judy Geller'],
-      'Judy Geller' => ['status' => 'married', 'to' => 'Jack Geller'],
-    ];
-
-    function getRelationshipIndicator($name)
-    {
-      global $relationshipStatuses;
-      if (isset($relationshipStatuses[$name])) {
-        return '<div class="ml-1.5 flex items-center gap-1 text-xs text-rose-500">
-                              <x-lucide-heart class="h-3 w-3" />
-                              <span class="truncate">' .
-          $relationshipStatuses[$name]['to'] .
-          '</span>
-                            </div>';
-      }
-      return '';
-    }
-  @endphp
-
   <div class="grid h-[calc(100vh-48px)] grid-cols-[280px_320px_1fr] divide-x divide-gray-200">
     <!-- Section A: Contact List -->
     <livewire:persons.show-person-list :persons="$persons" :person="$person" />
@@ -35,7 +10,7 @@
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-3xl p-6">
         <!-- Love Relationships Section -->
-        <livewire:persons.manage-love-relationship :person="$person" />
+        <livewire:persons.manage-love-relationship lazy :person="$person" />
 
         <!-- Children Section -->
         <section class="mb-8">
@@ -58,7 +33,6 @@
                     <div class="min-w-0 flex-1">
                       <div class="flex items-center gap-1">
                         <p class="truncate font-medium text-gray-900">{{ $child['name'] }}</p>
-                        {!! getRelationshipIndicator($child['name']) !!}
                       </div>
                       <p class="text-sm text-gray-500">{{ $child['type'] }} • {{ $child['age'] }} years old • Born {{ $child['birthdate'] }}</p>
                     </div>
@@ -118,7 +92,6 @@
                         <div class="min-w-0 flex-1">
                           <div class="flex items-center gap-1">
                             <p class="truncate font-medium text-gray-900">{{ $relative['name'] }}</p>
-                            {!! getRelationshipIndicator($relative['name']) !!}
                           </div>
                           <p class="text-sm text-gray-500">{{ $relative['type'] }} • Born {{ $relative['birthdate'] }}</p>
                         </div>
@@ -152,7 +125,6 @@
                     <div class="min-w-0 flex-1">
                       <div class="flex items-center gap-1">
                         <p class="truncate font-medium text-gray-900">{{ $friend['name'] }}</p>
-                        {!! getRelationshipIndicator($friend['name']) !!}
                       </div>
                       <p class="text-sm text-gray-500">{{ $friend['type'] }} • Born {{ $friend['birthdate'] }}</p>
                     </div>

@@ -53,15 +53,6 @@ class CreateLoveRelationship
         if ($existingRelationship) {
             throw new ModelNotFoundException('Relationship already exists');
         }
-
-        // Make sure that the relationship doesn't already exist in the reverse direction
-        $existingRelationship = LoveRelationship::where('person_id', $this->relatedPerson->id)
-            ->where('related_person_id', $this->person->id)
-            ->first();
-
-        if ($existingRelationship) {
-            throw new ModelNotFoundException('Relationship already exists');
-        }
     }
 
     private function createLoveRelationship(): void
@@ -69,6 +60,15 @@ class CreateLoveRelationship
         $this->loveRelationship = LoveRelationship::create([
             'person_id' => $this->person->id,
             'related_person_id' => $this->relatedPerson->id,
+            'type' => $this->type,
+            'is_current' => $this->isCurrent,
+            'notes' => $this->notes,
+        ]);
+
+        // we also create the reverse relationship
+        LoveRelationship::create([
+            'person_id' => $this->relatedPerson->id,
+            'related_person_id' => $this->person->id,
             'type' => $this->type,
             'is_current' => $this->isCurrent,
             'notes' => $this->notes,

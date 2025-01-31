@@ -97,11 +97,7 @@ class Person extends Model
      */
     public function loveRelationships(): HasMany
     {
-        return $this->hasMany(LoveRelationship::class, 'person_id')
-            ->union(
-                $this->hasMany(LoveRelationship::class, 'related_person_id')
-                    ->getQuery()
-            );
+        return $this->hasMany(LoveRelationship::class, 'person_id');
     }
 
     /**

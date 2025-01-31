@@ -53,6 +53,12 @@ class CreateLoveRelationshipTest extends TestCase
             'is_current' => true,
         ]);
 
+        $this->assertDatabaseHas('love_relationships', [
+            'person_id' => $relatedPerson->id,
+            'related_person_id' => $person->id,
+            'is_current' => true,
+        ]);
+
         $this->assertEquals('Married', $loveRelationship->type);
         $this->assertEquals('Got married in Las Vegas', $loveRelationship->notes);
 
@@ -122,40 +128,6 @@ class CreateLoveRelationshipTest extends TestCase
             user: $user,
             person: $ross,
             relatedPerson: $rachel,
-            type: 'Married',
-        ))->execute();
-    }
-
-    #[Test]
-    public function it_fails_if_relationship_exists_in_reverse_direction(): void
-    {
-        $user = User::factory()->create();
-        $chandler = Person::factory()->create([
-            'account_id' => $user->account_id,
-            'first_name' => 'Chandler',
-            'last_name' => 'Bing',
-        ]);
-        $monica = Person::factory()->create([
-            'account_id' => $user->account_id,
-            'first_name' => 'Monica',
-            'last_name' => 'Geller',
-        ]);
-
-        // Create relationship in reverse direction
-        LoveRelationship::create([
-            'person_id' => $monica->id,
-            'related_person_id' => $chandler->id,
-            'type' => 'Dating',
-            'is_current' => true,
-        ]);
-
-        $this->expectException(ModelNotFoundException::class);
-        $this->expectExceptionMessage('Relationship already exists');
-
-        (new CreateLoveRelationship(
-            user: $user,
-            person: $chandler,
-            relatedPerson: $monica,
             type: 'Married',
         ))->execute();
     }

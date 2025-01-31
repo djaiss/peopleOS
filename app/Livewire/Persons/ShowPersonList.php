@@ -6,7 +6,9 @@ namespace App\Livewire\Persons;
 
 use App\Models\Person;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ShowPersonList extends Component
@@ -42,5 +44,22 @@ class ShowPersonList extends Component
         return view('livewire.persons.show-person-list', [
             'filteredPersons' => $filteredPersons,
         ]);
+    }
+
+    #[On('relationship-updated')]
+    public function refreshList(): void
+    {
+        $this->persons = Person::where('account_id', Auth::user()->account_id)
+            ->where('is_listed', true)
+            ->orderBy('first_name')
+            ->get()
+            ->map(fn(Person $person): array => [
+                'id' => $person->id,
+                'name' => $person->name,
+                'maiden_name' => $person->maiden_name,
+                'nickname' => $person->nickname,
+                'slug' => $person->slug,
+            ])
+            ->sortBy('name');
     }
 }
