@@ -53,7 +53,7 @@ class ShowPersonList extends Component
             ->where('is_listed', true)
             ->orderBy('first_name')
             ->get()
-            ->map(fn(Person $person): array => [
+            ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'maiden_name' => $person->maiden_name,

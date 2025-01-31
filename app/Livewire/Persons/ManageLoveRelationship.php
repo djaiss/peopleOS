@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Persons;
 
 use App\Models\LoveRelationship;
@@ -104,12 +106,12 @@ class ManageLoveRelationship extends Component
         $this->natureOfRelationship = '';
         $this->active = false;
         $this->createEntry = false;
-        $this->addMode = !$this->addMode;
+        $this->addMode = ! $this->addMode;
     }
 
     public function toggleAddExistingPerson(): void
     {
-        $this->addExistingPerson = !$this->addExistingPerson;
+        $this->addExistingPerson = ! $this->addExistingPerson;
     }
 
     public function storeNewPerson(): void
@@ -151,11 +153,11 @@ class ManageLoveRelationship extends Component
 
         if ($this->active) {
             $this->currentRelationships = $this->currentRelationships
-                ->map(fn(array $e): array => array_merge($e, ['is_new' => false]))
+                ->map(fn (array $e): array => array_merge($e, ['is_new' => false]))
                 ->prepend($this->getRelationshipDetails($relationship, true));
         } else {
             $this->pastRelationships = $this->pastRelationships
-                ->map(fn(array $e): array => array_merge($e, ['is_new' => false]))
+                ->map(fn (array $e): array => array_merge($e, ['is_new' => false]))
                 ->prepend($this->getRelationshipDetails($relationship, true));
         }
 
