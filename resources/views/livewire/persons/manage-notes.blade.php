@@ -6,6 +6,8 @@
   <p class="mb-4 text-sm text-zinc-500">
     {{ __('Record a note about this person so you can remember important details.') }}
   </p>
+
+  <!-- Add note form -->
   <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
     <form wire:submit="store">
       <div class="mb-4">

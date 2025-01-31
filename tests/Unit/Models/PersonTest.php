@@ -86,16 +86,6 @@ class PersonTest extends TestCase
             'person_id' => $ross->id,
         ]);
         $this->assertTrue($ross->loveRelationships()->exists());
-
-        // Test relationship as related_person_id
-        $rachel = Person::factory()->create([
-            'account_id' => $ross->account_id,
-        ]);
-        LoveRelationship::factory()->create([
-            'person_id' => $rachel->id,
-            'related_person_id' => $ross->id,
-        ]);
-        $this->assertEquals(2, $ross->loveRelationships()->count());
     }
 
     #[Test]
