@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
+use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
 use App\Models\Person;
@@ -20,18 +21,9 @@ class PersonSettingsController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $persons = Person::where('account_id', Auth::user()->account_id)
-            ->where('is_listed', true)
-            ->orderBy('first_name')
-            ->get()
-            ->map(fn (Person $person): array => [
-                'id' => $person->id,
-                'name' => $person->name,
-                'maiden_name' => $person->maiden_name,
-                'nickname' => $person->nickname,
-                'slug' => $person->slug,
-            ])
-            ->sortBy('name');
+        $persons = PeopleListCache::make(
+            accountId: Auth::user()->account_id,
+        )->value();
 
         $genders = Gender::where('account_id', Auth::user()->account_id)
             ->get()
