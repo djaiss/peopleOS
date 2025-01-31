@@ -43,7 +43,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
         Route::middleware(['person'])->group(function (): void {
             Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
+
+            // person settings
             Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');
+            Route::put('persons/{slug}/settings', [PersonSettingsController::class, 'update'])->name('persons.settings.update');
+
             Route::delete('persons/{slug}', [PersonSettingsController::class, 'destroy'])->name('persons.settings.destroy');
 
             // persons notes

@@ -21,15 +21,7 @@
           {{ __('Manage person') }}
         </h1>
 
-        <h2 class="font-semi-bold mb-1 text-lg">
-          {{ __('Edit person') }}
-        </h2>
-
-        <p class="mb-4 text-sm text-zinc-500">
-          {{ __('Edit the person details here.') }}
-        </p>
-
-        <livewire:persons.manage-names :genders="$genders" :person="$person" />
+        @include('persons.settings.partials.information', ['person' => $person, 'genders' => $genders])
 
         <h2 class="font-semi-bold mb-1 text-lg">
           {{ __('Delete person') }}

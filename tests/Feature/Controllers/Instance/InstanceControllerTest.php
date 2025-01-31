@@ -97,7 +97,7 @@ class InstanceControllerTest extends TestCase
             'has_lifetime_access' => false,
             'trial_ends_at' => now()->addDays(10),
         ]);
-        $accountUser = User::factory()->create([
+        User::factory()->create([
             'account_id' => $account->id,
             'first_name' => 'Chandler',
             'last_name' => 'Bing',
