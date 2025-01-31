@@ -9,7 +9,6 @@ use App\Models\Gender;
 use App\Models\Log;
 use App\Models\MaritalStatus;
 use App\Models\Person;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -72,17 +71,6 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->persons()->exists());
-    }
-
-    #[Test]
-    public function it_has_many_teams(): void
-    {
-        $account = Account::factory()->create();
-        Team::factory()->count(2)->create([
-            'account_id' => $account->id,
-        ]);
-
-        $this->assertTrue($account->teams()->exists());
     }
 
     #[Test]

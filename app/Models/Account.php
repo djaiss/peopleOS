@@ -78,14 +78,6 @@ class Account extends Model
     }
 
     /**
-     * Get the teams associated with the account.
-     */
-    public function teams(): HasMany
-    {
-        return $this->hasMany(Team::class);
-    }
-
-    /**
      * Check if the account is in trial.
      */
     public function isInTrial(): bool

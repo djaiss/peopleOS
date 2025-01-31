@@ -7,7 +7,6 @@ use App\Http\Middleware\CheckNote;
 use App\Http\Middleware\CheckPerson;
 use App\Http\Middleware\CheckPersonApi;
 use App\Http\Middleware\CheckSubscription;
-use App\Http\Middleware\CheckTeamApi;
 use App\Http\Middleware\CheckWorkHistory;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -23,7 +22,6 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'subscription' => CheckSubscription::class,
-            'team.api' => CheckTeamApi::class,
             'person' => CheckPerson::class,
             'person.api' => CheckPersonApi::class,
             'note' => CheckNote::class,
