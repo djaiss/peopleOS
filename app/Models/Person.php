@@ -58,7 +58,7 @@ class Person extends Model
     }
 
     /**
-     * Get the account associated with the team.
+     * Get the account associated with the person.
      */
     public function account(): BelongsTo
     {

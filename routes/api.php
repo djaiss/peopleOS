@@ -10,7 +10,6 @@ use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
-use App\Http\Controllers\Api\Teams\TeamController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
@@ -44,13 +43,6 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::put('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'update'])->name('persons.work-history.update');
             Route::delete('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'destroy'])->name('persons.work-history.destroy');
         });
-    });
-
-    // teams
-    Route::post('teams', [TeamController::class, 'store'])->name('teams.store');
-    Route::middleware(['team.api'])->group(function (): void {
-        Route::put('teams/{team}', [TeamController::class, 'update'])->name('teams.update');
-        Route::delete('teams/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
     });
 
     // prune account

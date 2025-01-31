@@ -39,7 +39,7 @@ class Gender extends Model
     }
 
     /**
-     * Get the account associated with the team.
+     * Get the account associated with the gender.
      */
     public function account(): BelongsTo
     {
