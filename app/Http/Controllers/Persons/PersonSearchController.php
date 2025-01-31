@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
+use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
-use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,18 +19,9 @@ class PersonSearchController extends Controller
             'term' => 'required|string|max:255',
         ]);
 
-        $persons = Person::where('account_id', Auth::user()->account_id)
-            ->where('is_listed', true)
-            ->orderBy('first_name')
-            ->get()
-            ->map(fn (Person $person): array => [
-                'id' => $person->id,
-                'name' => $person->name,
-                'maiden_name' => $person->maiden_name,
-                'nickname' => $person->nickname,
-                'slug' => $person->slug,
-            ])
-            ->sortBy('name');
+        $persons = PeopleListCache::make(
+            accountId: Auth::user()->account_id,
+        )->value();
 
         $filteredPersons = $persons->filter(function (array $personItem) use ($validated): bool {
             if ($validated['term'] === '' || $validated['term'] === '0') {
