@@ -14,6 +14,7 @@ use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonFamilyController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
+use App\Http\Controllers\Persons\PersonSearchController;
 use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
@@ -38,6 +39,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
         Route::get('persons', [PersonController::class, 'index'])->name('persons.index');
         Route::get('persons/new', [PersonController::class, 'new'])->name('persons.new');
         Route::post('persons', [PersonController::class, 'store'])->name('persons.store');
+        Route::post('persons/search', [PersonSearchController::class, 'store'])->name('persons.search');
+
         Route::middleware(['person'])->group(function (): void {
             Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
             Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');
