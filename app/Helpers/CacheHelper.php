@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Cache;
@@ -15,21 +17,21 @@ abstract class CacheHelper
         return $this->key;
     }
 
-    public function value(): mixed
+    final public function value(): mixed
     {
         return Cache::remember(
             $this->getKey(),
             $this->ttl,
-            fn() => $this->generate()
+            fn (): mixed => $this->generate()
         );
     }
 
-    public function forget(): bool
+    final public function forget(): bool
     {
         return Cache::forget($this->getKey());
     }
 
-    public function refresh(): mixed
+    final public function refresh(): mixed
     {
         $this->forget();
 

@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Persons;
 use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
-use App\Models\Person;
 use App\Services\DestroyPerson;
 use App\Services\UpdatePerson;
 use Illuminate\Http\RedirectResponse;

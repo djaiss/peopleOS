@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Persons;
 use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Note;
-use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;

@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Cache;
 
 use App\Helpers\CacheHelper;
 use App\Models\Account;
 use App\Models\Person;
-use App\Models\Vault;
 use App\Traits\CacheIdentifier;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ final class PeopleListCache extends CacheHelper
     protected int $ttl = 604800; // 1 week
 
     public function __construct(
-        protected readonly int $accountId,
+        private int $accountId,
     ) {
         $this->identifier = $accountId;
     }
@@ -37,7 +38,7 @@ final class PeopleListCache extends CacheHelper
         return Person::where('account_id', Auth::user()->account_id)
             ->where('is_listed', true)
             ->get()
-            ->map(fn(Person $person): array => [
+            ->map(fn (Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'maiden_name' => $person->maiden_name,
