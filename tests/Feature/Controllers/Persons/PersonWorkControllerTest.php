@@ -93,7 +93,7 @@ class PersonWorkControllerTest extends TestCase
             'last_name' => 'Green',
         ]);
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/persons/'.$person->slug.'/work', [
                 'title' => 'Fashion Buyer',
                 'company' => 'Ralph Lauren',
@@ -106,6 +106,8 @@ class PersonWorkControllerTest extends TestCase
         $this->assertDatabaseHas('work_information', [
             'person_id' => $person->id,
         ]);
+
+        $response->assertSessionHas('status', 'The work history has been created');
 
         $workHistory = WorkHistory::where('person_id', $person->id)->first();
         $this->assertEquals('Fashion Buyer', $workHistory->job_title);
@@ -222,7 +224,7 @@ class PersonWorkControllerTest extends TestCase
             'active' => true,
         ]);
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
                 'title' => 'Lead Actor',
                 'company' => 'Days of Our Lives',
@@ -235,6 +237,8 @@ class PersonWorkControllerTest extends TestCase
         $this->assertDatabaseHas('work_information', [
             'person_id' => $person->id,
         ]);
+
+        $response->assertSessionHas('status', 'The work history has been updated');
 
         $workHistory = WorkHistory::where('person_id', $person->id)->first();
         $this->assertEquals('Lead Actor', $workHistory->job_title);
@@ -318,9 +322,11 @@ class PersonWorkControllerTest extends TestCase
             'active' => true,
         ]);
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->delete('/persons/'.$person->slug.'/work/'.$workHistory->id)
             ->assertRedirectToRoute('persons.work.index', $person->slug);
+
+        $response->assertSessionHas('status', 'The work history has been deleted');
 
         $this->assertDatabaseMissing('work_information', [
             'person_id' => $person->id,

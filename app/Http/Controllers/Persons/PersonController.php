@@ -87,7 +87,7 @@ class PersonController extends Controller
 
         return redirect()->route('persons.show', [
             'slug' => $person->slug,
-        ])->with('success', trans('The person has been created'));
+        ])->with('status', trans('The person has been created'));
     }
 
     public function show(Request $request): View

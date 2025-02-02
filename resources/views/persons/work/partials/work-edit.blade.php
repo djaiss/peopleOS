@@ -5,7 +5,7 @@
  */
 ?>
 
-<form x-target="work-history-{{ $workHistory->id }}" x-target.422="work-history-{{ $workHistory->id }}" id="work-history-{{ $workHistory->id }}" action="{{ route('persons.work.update', [$person->slug, $workHistory->id]) }}" method="POST">
+<form x-target="work-history-{{ $workHistory->id }} notifications" x-target.422="work-history-{{ $workHistory->id }}" id="work-history-{{ $workHistory->id }}" action="{{ route('persons.work.update', [$person->slug, $workHistory->id]) }}" method="POST">
   @csrf
   @method('PUT')
 

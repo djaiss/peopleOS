@@ -39,7 +39,7 @@ class AdministrationPruneAccountControllerTest extends TestCase
             ->put('/administration/prune');
 
         $response->assertRedirect('/administration/account');
-
+        $response->assertSessionHas('status', 'The account has been pruned');
         $this->assertDatabaseMissing('persons', [
             'id' => $person->id,
         ]);
