@@ -125,4 +125,14 @@ class Person extends Model
             ->where('is_current', true)
             ->exists();
     }
+
+    /**
+     * Get the person's job title, if they have an active job.
+     */
+    public function job(): ?string
+    {
+        return $this->workHistories()
+            ->where('active', true)
+            ->first()?->job_title;
+    }
 }
