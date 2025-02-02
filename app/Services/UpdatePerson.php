@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
@@ -36,6 +37,7 @@ class UpdatePerson
         $this->updateUserLastActivityDate();
         $this->logUserAction();
         $this->generateSlug();
+        $this->refreshCache();
 
         return $this->person;
     }
@@ -90,5 +92,12 @@ class UpdatePerson
             action: 'person_update',
             description: 'Updated the person called '.$this->person->name,
         );
+    }
+
+    private function refreshCache(): void
+    {
+        PeopleListCache::make(
+            accountId: $this->user->account_id,
+        )->refresh();
     }
 }
