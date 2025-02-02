@@ -1,8 +1,9 @@
 import './bootstrap';
-import '../../vendor/masmerise/livewire-toaster/resources/js';
+import Alpine from 'alpinejs';
 import mask from '@alpinejs/mask';
 import ajax from '@imacrayon/alpine-ajax';
-import 'instant.page';
+
+window.Alpine = Alpine;
 
 Alpine.plugin(mask);
 Alpine.plugin(ajax);
@@ -13,4 +14,4 @@ Alpine.plugin(ajax);
 // window.Alpine = Alpine;
 // window.htmx = htmx;
 
-// Alpine.start();
+Alpine.start();

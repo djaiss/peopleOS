@@ -9,7 +9,7 @@ parameters:
     ignoreErrors:
         - '#Access to an undefined property App\\Models\\User::\$name\.#'
         - '#Access to an undefined property App\\Models\\Person::\$name\.#'
-        - '#Access to an undefined property App\\Models\\Log::\$name\.#'
+        # - '#Access to an undefined property App\\Models\\Log::\$name\.#'
         - '#Property App\\Models\\[a-zA-Z]+::\$[a-zA-Z_]+_at \(string\|null\) does not accept Illuminate\\Support\\Carbon\.#'
         - '#Property App\\Models\\[a-zA-Z]+::\$[a-zA-Z_]+_at \(string\|null\) does not accept Carbon\\Carbon\.#'
         - '#Cannot call method format\(\) on string\.#'
@@ -20,7 +20,7 @@ parameters:
         - app/Http/Controllers/Auth/VerifyEmailController.php
         - app/Models/User.php
         - app/Http/Resources/*.php
-        - app/Livewire/Administration/Users/ListUsers.php
+        - app/Livewire/*
 
 #
 #    checkMissingIterableValueType: false

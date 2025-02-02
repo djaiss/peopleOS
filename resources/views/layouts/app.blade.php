@@ -11,11 +11,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Styles -->
-    @livewireStyles
   </head>
-  <body class="font-sans antialiased" data-instant-whitelist>
+  <body class="font-sans antialiased">
     <div class="min-h-screen bg-white dark:bg-gray-900">
       @include('layouts.header')
 
@@ -23,11 +20,6 @@
       <main>
         {{ $slot }}
       </main>
-
-      <!-- toaster -->
-      <x-toaster-hub />
     </div>
-
-    @livewireScripts
   </body>
 </html>

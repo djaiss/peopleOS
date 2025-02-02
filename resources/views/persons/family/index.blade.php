@@ -10,7 +10,7 @@
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-3xl p-6">
         <!-- Love Relationships Section -->
-        <livewire:persons.manage-love-relationship lazy :person="$person" />
+        <!--  <livewire:persons.manage-love-relationship lazy :person="$person" />
 
         <!-- Children Section -->
         <section class="mb-8">

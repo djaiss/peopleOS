@@ -7,7 +7,6 @@ namespace Tests\Feature\Controllers\Persons;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Masmerise\Toaster\Toaster;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -36,7 +35,6 @@ class PersonSettingsControllerTest extends TestCase
     #[Test]
     public function a_user_can_delete_a_person(): void
     {
-        Toaster::fake();
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
@@ -45,7 +43,5 @@ class PersonSettingsControllerTest extends TestCase
         $this->actingAs($user)
             ->delete('/persons/'.$person->slug)
             ->assertRedirectToRoute('persons.index');
-
-        Toaster::assertDispatched('Person deleted successfully');
     }
 }

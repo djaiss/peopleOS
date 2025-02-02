@@ -7,10 +7,9 @@ namespace App\Livewire\Administration\Users;
 use App\Services\InviteUser as InviteUserService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class InviteUser extends Component
+class InviteUser
 {
     #[Validate('required|email|unique:users,email')]
     public string $email = '';

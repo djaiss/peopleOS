@@ -2,6 +2,7 @@
 /*
  * @var array $persons
  * @var \App\Models\Person $person
+ * @var Collection $workHistories
  */
 ?>
 
@@ -21,7 +22,7 @@
           {{ __('Work & Passions') }}
         </h1>
 
-        <livewire:persons.manage-work-history :person="$person" />
+        @include('persons.work.partials.work', ['person' => $person, 'workHistories' => $workHistories])
 
         <!-- Passions Section -->
         <h2 class="font-semi-bold mb-1 text-lg">

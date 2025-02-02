@@ -6,9 +6,8 @@ namespace App\Livewire\Persons;
 
 use App\Models\Person;
 use Livewire\Attributes\On;
-use Livewire\Component;
 
-class DisplayPersonInformation extends Component
+class DisplayPersonInformation
 {
     public Person $person;
 

@@ -22,6 +22,6 @@ class InstanceFreeAccountController extends Controller
 
         return redirect()->route('instance.show', [
             'account' => $account,
-        ])->success(trans('The account is now free'));
+        ])->with('success', trans('The account is now free'));
     }
 }

@@ -19,14 +19,14 @@
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Invite a user') }}</h2>
         <p class="mb-4 text-sm text-zinc-500">{{ __('Invite a user to join your account. We will send them an email to join.') }}</p>
 
-        <livewire:administration.users.invite-user />
+        {{-- <livewire:administration.users.invite-user /> --}}
 
         <!-- list users -->
         <h2 class="font-semi-bold mb-4 text-lg">
           {{ __('All the users in the account') }}
         </h2>
 
-        <livewire:administration.users.list-users lazy />
+        {{-- <livewire:administration.users.list-users lazy /> --}}
       </div>
     </div>
   </div>

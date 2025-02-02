@@ -21,6 +21,6 @@ class InstanceDestroyAccountController extends Controller
         ))->execute();
 
         return redirect()->route('instance.index')
-            ->success(trans('The account has been deleted'));
+            ->with('success', trans('The account has been deleted'));
     }
 }

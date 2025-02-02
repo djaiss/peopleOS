@@ -17,7 +17,7 @@
     <!-- Section C: Detail View -->
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="p-6">
-        <livewire:persons.manage-notes :notes="$notes" :person="$person" />
+        <!-- <livewire:persons.manage-notes :notes="$notes" :person="$person" /> -->
       </div>
     </div>
   </div>

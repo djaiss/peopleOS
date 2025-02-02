@@ -13,10 +13,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class ManageNotes extends Component
+class ManageNotes
 {
     public Collection $notes;
 

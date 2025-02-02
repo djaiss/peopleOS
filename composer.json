@@ -15,9 +15,7 @@
     "laravel/framework": "^11.9",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
-    "livewire/livewire": "^3.5",
     "mallardduck/blade-lucide-icons": "^1.23",
-    "masmerise/livewire-toaster": "^2.3",
     "pragmarx/google2fa": "^8.0"
   },
   "require-dev": {

@@ -7,10 +7,9 @@ namespace App\Livewire\Administration;
 use App\Models\User;
 use App\Services\ToggleDisplayFullNames;
 use Livewire\Attributes\Locked;
-use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class ToggleDisplayNames extends Component
+class ToggleDisplayNames
 {
     #[Locked]
     public User $user;
