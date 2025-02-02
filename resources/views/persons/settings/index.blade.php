@@ -33,6 +33,7 @@
 
         <!--  -->
         <div class="mb-6 rounded-lg border border-gray-200 bg-white">
+          @if ($person->can_be_deleted)
           <form action="{{ route('persons.settings.destroy', ['slug' => $person->slug]) }}" method="post">
             @csrf
             @method('delete')
@@ -43,7 +44,20 @@
                 {{ __('Delete person') }}
               </button>
             </div>
-          </form>
+            </form>
+          @else
+            <div class="flex items-center gap-3 p-4">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-amber-100">
+                <x-lucide-shield-alert class="h-6 w-6 text-amber-600" />
+              </div>
+              <div>
+                <h3 class="text-sm font-medium text-gray-900">{{ __('Contact cannot be deleted') }}</h3>
+                <p class="mt-1 text-sm text-gray-500">
+                  {{ __('This contact is linked to other records or has special permissions that prevent deletion. Please review and remove any dependencies first.') }}
+                </p>
+              </div>
+            </div>
+          @endif
         </div>
       </div>
     </div>
