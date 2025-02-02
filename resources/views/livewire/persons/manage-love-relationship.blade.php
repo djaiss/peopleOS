@@ -54,12 +54,12 @@
           <div class="mb-4 flex gap-4 px-4">
             <div class="flex-1">
               <x-input-label for="firstName" :value="__('First name')" class="mb-1" />
-              <x-text-input class="block w-full" id="firstName" name="firstName" wire:model="firstName" type="text" required data-1p-ignore />
+              <x-text-input class="block w-full" id="firstName" name="firstName" wire:model="firstName" type="text" required />
               <x-input-error :messages="$errors->get('firstName')" class="mt-2" />
             </div>
             <div class="flex-1">
               <x-input-label optional for="lastName" :value="__('Last name')" class="mb-1" />
-              <x-text-input class="block w-full" id="lastName" name="lastName" wire:model="lastName" type="text" data-1p-ignore />
+              <x-text-input class="block w-full" id="lastName" name="lastName" wire:model="lastName" type="text" />
               <x-input-error :messages="$errors->get('lastName')" class="mt-2" />
             </div>
           </div>
@@ -67,7 +67,7 @@
           <div class="mb-4 flex gap-4 px-4">
             <div class="flex-1">
               <x-input-label for="natureOfRelationship" :value="__('Nature of relationship')" class="mb-1" />
-              <x-text-input class="block w-full" id="natureOfRelationship" placeholder="{{ __('Ex: Spouse, Girlfriend, Boyfriend, etc.') }}" wire:model="natureOfRelationship" type="text" required data-1p-ignore />
+              <x-text-input class="block w-full" id="natureOfRelationship" placeholder="{{ __('Ex: Spouse, Girlfriend, Boyfriend, etc.') }}" wire:model="natureOfRelationship" type="text" required />
               <x-input-error :messages="$errors->get('natureOfRelationship')" class="mt-2" />
             </div>
           </div>
