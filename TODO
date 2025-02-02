@@ -3,7 +3,8 @@ Todo:
   - fix data-1p-ignore: DONE
   - Fix active job being not refreshed on work history update: DONE
   - Refresh person list cache when updating information: DONE
-  - Fix contact deletion if the contact can't be deleted
+  - Fix contact deletion if the contact can't be deleted: DONE
+  - Add notifications
   - Add services to manage instance
   - Add passions to person
   - Add nationality to person and significant other

@@ -2,6 +2,7 @@
 /*
  * @var array $logs
  * @var bool $has_more_logs
+ * @var \App\Models\User $user
  */
 ?>
 
@@ -18,7 +19,7 @@
           {{ __('Profile') }}
         </h1>
 
-        {{-- <livewire:administration.manage-profile /> --}}
+        @include('administration.partials.avatar', ['user' => $user])
 
         <!-- Profile photo -->
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Profile photo') }}</h2>

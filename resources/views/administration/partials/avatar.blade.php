@@ -1,27 +1,25 @@
-<div class="mb-8">
-  <div
-    x-data="{
-      isFlipped: false,
-      frontHeight: 0,
-      backHeight: 0,
-      containerHeight: 0,
-      init() {
-        this.updateHeights()
-        this.$watch('isFlipped', () => this.updateHeights())
+<?php
+/*
+ * @var \App\Models\User $user
+ */
+?>
 
-        // Listen for the custom event from Livewire
-        Livewire.on('avatar-updated', () => {
-          this.isFlipped = false
-        })
-      },
-      updateHeights() {
-        this.frontHeight = this.$refs.frontFace.offsetHeight
-        this.backHeight = this.$refs.backFace.offsetHeight
-        this.containerHeight = this.isFlipped ? this.backHeight : this.frontHeight
-      },
-    }"
-    class="perspective-1000 relative"
-    :style="`height: ${containerHeight}px`">
+<div class="mb-8">
+  <div x-data="{
+    isFlipped: false,
+    frontHeight: 0,
+    backHeight: 0,
+    containerHeight: 0,
+    init() {
+      this.updateHeights()
+      this.$watch('isFlipped', () => this.updateHeights())
+    },
+    updateHeights() {
+      this.frontHeight = this.$refs.frontFace.offsetHeight
+      this.backHeight = this.$refs.backFace.offsetHeight
+      this.containerHeight = this.isFlipped ? this.backHeight : this.frontHeight
+    },
+  }" class="perspective-1000 relative" :style="`height: ${containerHeight}px`">
     <div
       class="relative w-full transition-all duration-500"
       :class="{
@@ -32,7 +30,7 @@
       <!-- Front face -->
       <div x-ref="frontFace" class="absolute w-full border border-gray-200 bg-white [backface-visibility:hidden] sm:rounded-lg">
         <div class="grid grid-cols-3 items-center rounded-t-lg p-3 last:rounded-b-lg hover:bg-blue-50">
-          <img width="58" height="58" class="col-span-2 h-16 w-16 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ $avatarUrl }}" alt="{{ $user->name }}" wire:key="avatar-{{ $user->id }}" />
+          <img width="58" height="58" class="col-span-2 h-16 w-16 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ $user->getAvatar(58) }}" alt="{{ $user->name }}" wire:key="avatar-{{ $user->id }}" />
           <div class="justify-self-end">
             <x-button.invisible @click="isFlipped = true" class="text-sm">
               {{ __('Upload a new photo') }}
@@ -43,10 +41,13 @@
 
       <!-- Back face -->
       <div x-cloak x-ref="backFace" class="absolute w-full [transform:rotateY(-180deg)] border border-gray-200 bg-white [backface-visibility:hidden] sm:rounded-lg">
-        <form wire:submit.prevent="store">
+        <form action="{{ route('administration.avatar.update') }}" method="post" enctype="multipart/form-data">
+          @csrf
+          @method('put')
+
           <div class="flex flex-col justify-between">
             <div class="items-center rounded-t-lg p-3 hover:bg-blue-50">
-              <input type="file" wire:model="photo" x-ref="photo" accept="image/jpeg,image/png,image/gif,image/webp,image/avif" />
+              <input name="photo" type="file" x-ref="photo" accept="image/jpeg,image/png,image/gif,image/webp,image/avif" />
               @error('photo')
                 <div class="mt-2 space-y-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</div>
               @enderror

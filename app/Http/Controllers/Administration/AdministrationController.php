@@ -32,6 +32,7 @@ class AdministrationController extends Controller
         return view('administration.index', [
             'logs' => $logs,
             'has_more_logs' => $has_more_logs,
+            'user' => Auth::user(),
         ]);
     }
 }
