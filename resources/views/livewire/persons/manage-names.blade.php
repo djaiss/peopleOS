@@ -4,7 +4,7 @@
     <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="prefix" :value="__('Prefix')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full" id="prefix" name="prefix" wire:model="prefix" type="text" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full" id="prefix" name="prefix" wire:model="prefix" type="text" @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('prefix')" />
       </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="first_name" :value="__('First name')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full" id="first_name" name="first_name" wire:model="firstName" type="text" required @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full" id="first_name" name="first_name" wire:model="firstName" type="text" required @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
       </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="middle_name" :value="__('Middle name')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full" id="middle_name" name="middle_name" wire:model="middleName" type="text" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full" id="middle_name" name="middle_name" wire:model="middleName" type="text" @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('middle_name')" />
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="nickname" :value="__('Nickname')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full" id="nickname" name="nickname" wire:model="nickName" type="text" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full" id="nickname" name="nickname" wire:model="nickName" type="text" @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('nickname')" />
       </div>
     </div>
@@ -40,7 +40,7 @@
     <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="last_name" :value="__('Last name')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full" id="last_name" name="last_name" wire:model="lastName" type="text" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full" id="last_name" name="last_name" wire:model="lastName" type="text" @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
       </div>
     </div>
@@ -49,7 +49,7 @@
     <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="maiden_name" :value="__('Maiden name')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full placeholder-shown:bg-gray-50" id="maiden_name" name="maiden_name" wire:model="maidenName" type="text" placeholder="{{ __('No maiden name defined') }}" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full placeholder-shown:bg-gray-50" id="maiden_name" name="maiden_name" wire:model="maidenName" type="text" placeholder="{{ __('No maiden name defined') }}" @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('maiden_name')" />
       </div>
     </div>
@@ -58,7 +58,7 @@
     <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
       <x-input-label for="suffix" :value="__('Suffix')" class="col-span-2" />
       <div class="w-full justify-self-end">
-        <x-text-input class="block w-full" id="suffix" name="suffix" wire:model="suffix" type="text" @focus="showActions = true" @blur="showActions = false" data-1p-ignore />
+        <x-text-input class="block w-full" id="suffix" name="suffix" wire:model="suffix" type="text" @focus="showActions = true" @blur="showActions = false" />
         <x-input-error class="mt-2" :messages="$errors->get('suffix')" />
       </div>
     </div>

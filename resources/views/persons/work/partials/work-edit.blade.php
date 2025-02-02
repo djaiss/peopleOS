@@ -12,12 +12,12 @@
   <div class="mb-4 flex gap-4 px-4 pt-4">
     <div class="flex-1">
       <x-input-label for="title" :value="__('Job title')" class="mb-2" />
-      <x-text-input class="block w-full" id="title" name="title" type="text" required data-1p-ignore value="{{ old('title', $workHistory->job_title) }}" />
+      <x-text-input class="block w-full" id="title" name="title" type="text" required value="{{ old('title', $workHistory->job_title) }}" />
       <x-input-error :messages="$errors->get('title')" class="mt-2" />
     </div>
     <div class="flex-1">
       <x-input-label optional for="company" :value="__('Company')" class="mb-1" />
-      <x-text-input class="block w-full" id="company" name="company" type="text" data-1p-ignore value="{{ old('company', $workHistory->company_name) }}" />
+      <x-text-input class="block w-full" id="company" name="company" type="text" value="{{ old('company', $workHistory->company_name) }}" />
       <x-input-error :messages="$errors->get('company')" class="mt-2" />
     </div>
   </div>
