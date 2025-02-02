@@ -19,6 +19,6 @@ class AdministrationPruneAccountController extends Controller
         ))->execute();
 
         return redirect()->route('administration.account.index')
-            ->with('success', trans('The account has been pruned'));
+            ->with('status', trans('The account has been pruned'));
     }
 }

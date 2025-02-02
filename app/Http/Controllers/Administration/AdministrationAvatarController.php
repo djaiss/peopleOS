@@ -23,6 +23,7 @@ class AdministrationAvatarController extends Controller
             photo: $validated['photo'],
         ))->execute();
 
-        return redirect()->route('administration.index');
+        return redirect()->route('administration.index')
+            ->with('status', trans('The avatar has been updated'));
     }
 }

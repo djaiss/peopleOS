@@ -88,7 +88,7 @@ class PersonControllerTest extends TestCase
             'account_id' => $user->account_id,
         ]);
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/persons', [
                 'first_name' => 'Monica',
                 'last_name' => 'Geller',
@@ -103,6 +103,8 @@ class PersonControllerTest extends TestCase
             ->assertRedirectToRoute('persons.show', [
                 'slug' => Person::orderBy('id', 'desc')->first()->slug,
             ]);
+
+        $response->assertSessionHas('status', 'The person has been created');
     }
 
     #[Test]

@@ -20,6 +20,8 @@
       <main>
         {{ $slot }}
       </main>
+
+      @include('components.toaster')
     </div>
   </body>
 </html>

@@ -34,6 +34,7 @@ class AdministrationAvatarControllerTest extends TestCase
             ]);
 
         $response->assertRedirect('/administration');
+        $response->assertSessionHas('status', 'The avatar has been updated');
     }
 
     #[Test]
