@@ -117,4 +117,23 @@ class PersonTest extends TestCase
         ]);
         $this->assertFalse($monica->hasActiveLoveRelationship());
     }
+
+    #[Test]
+    public function it_gets_the_job_title(): void
+    {
+        $ross = Person::factory()->create();
+        WorkHistory::factory()->create([
+            'person_id' => $ross->id,
+            'job_title' => 'Developer',
+        ]);
+
+        $this->assertEquals('Developer', $ross->job());
+    }
+
+    #[Test]
+    public function it_returns_null_if_no_active_job(): void
+    {
+        $ross = Person::factory()->create();
+        $this->assertNull($ross->job());
+    }
 }
