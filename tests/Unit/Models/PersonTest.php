@@ -125,6 +125,7 @@ class PersonTest extends TestCase
         WorkHistory::factory()->create([
             'person_id' => $ross->id,
             'job_title' => 'Developer',
+            'active' => true,
         ]);
 
         $this->assertEquals('Developer', $ross->job());
