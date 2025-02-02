@@ -8,10 +8,9 @@ use App\Models\User;
 use App\Services\ToggleBirthdate as ToggleBirthdateService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
-use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class ToggleBirthdate extends Component
+class ToggleBirthdate
 {
     #[Locked]
     public User $user;

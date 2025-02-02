@@ -7,7 +7,7 @@
 <div class="flex h-[calc(100vh-48px)] flex-col overflow-hidden bg-white">
   <!-- Contact Header -->
   <div class="border-b border-gray-200 p-6">
-    <livewire:persons.display-person-information :person="$person" />
+    {{-- <livewire:persons.display-person-information :person="$person" /> --}}
 
     <!-- Personal Details -->
     <div class="space-y-2">

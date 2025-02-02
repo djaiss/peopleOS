@@ -72,7 +72,7 @@ class PersonSettingsController extends Controller
         ))->execute();
 
         return redirect()->route('persons.settings.index', $person->slug)
-            ->success(trans('Person updated successfully'));
+            ->with('success', trans('Person updated successfully'));
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -85,6 +85,6 @@ class PersonSettingsController extends Controller
         ))->execute();
 
         return redirect()->route('persons.index')
-            ->success(trans('Person deleted successfully'));
+            ->with('success', trans('Person deleted successfully'));
     }
 }

@@ -8,14 +8,10 @@ use App\Models\User;
 use App\Services\UpdateProfilePicture;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
-use Livewire\Component;
-use Livewire\WithFileUploads;
 use Masmerise\Toaster\Toaster;
 
-class ManageAvatar extends Component
+class ManageAvatar
 {
-    use WithFileUploads;
-
     public $photo;
 
     public $avatarUrl;

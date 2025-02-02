@@ -11,13 +11,13 @@
           {{ __('Profile') }}
         </h1>
 
-        <livewire:administration.manage-profile />
+        {{-- <livewire:administration.manage-profile /> --}}
 
         <!-- Profile photo -->
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Profile photo') }}</h2>
         <p class="mb-4 text-sm text-zinc-500">{{ __('You can upload a profile photo to use as your avatar, or use the default avatar.') }}</p>
 
-        <livewire:administration.manage-avatar />
+        {{-- <livewire:administration.manage-avatar /> --}}
 
         <!-- Preferences -->
         <h2 class="font-semi-bold mb-4 text-lg">
@@ -49,7 +49,7 @@
             </div>
 
             <div class="justify-self-end">
-              <livewire:administration.toggle-birthdate />
+              {{-- <livewire:administration.toggle-birthdate /> --}}
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
           {{ __('Last activity') }}
         </h2>
 
-        <livewire:administration.list-logs lazy />
+        {{-- <livewire:administration.list-logs lazy /> --}}
       </div>
     </div>
   </div>

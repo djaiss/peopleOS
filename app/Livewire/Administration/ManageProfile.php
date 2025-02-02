@@ -8,10 +8,9 @@ use App\Models\User;
 use App\Services\UpdateUserInformation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class ManageProfile extends Component
+class ManageProfile
 {
     public string $first_name = '';
 

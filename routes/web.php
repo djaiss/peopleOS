@@ -55,6 +55,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
             // work and passion
             Route::get('persons/{slug}/work', [PersonWorkController::class, 'index'])->name('persons.work.index');
+            Route::get('persons/{slug}/work/new', [PersonWorkController::class, 'new'])->name('persons.work.new');
+            Route::post('persons/{slug}/work', [PersonWorkController::class, 'store'])->name('persons.work.store');
 
             // family
             Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('persons.family.index');

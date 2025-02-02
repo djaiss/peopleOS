@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\PersonalAccessToken;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
-class ManageApiKeys extends Component
+class ManageApiKeys
 {
     #[Locked]
     public User $user;

@@ -9,9 +9,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
-use Livewire\Component;
 
-class ListLogs extends Component
+class ListLogs
 {
     #[Locked]
     public Collection $logs;

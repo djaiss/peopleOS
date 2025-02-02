@@ -8,7 +8,6 @@ use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Masmerise\Toaster\Toaster;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -84,7 +83,6 @@ class PersonControllerTest extends TestCase
     #[Test]
     public function a_user_can_create_a_person(): void
     {
-        Toaster::fake();
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
@@ -105,8 +103,6 @@ class PersonControllerTest extends TestCase
             ->assertRedirectToRoute('persons.show', [
                 'slug' => Person::orderBy('id', 'desc')->first()->slug,
             ]);
-
-        Toaster::assertDispatched('The person has been created');
     }
 
     #[Test]
