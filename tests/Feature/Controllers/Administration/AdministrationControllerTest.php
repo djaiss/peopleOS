@@ -24,5 +24,8 @@ class AdministrationControllerTest extends TestCase
             ->get('/administration');
 
         $response->assertStatus(200);
+
+        $this->assertArrayHasKey('logs', $response);
+        $this->assertArrayHasKey('has_more_logs', $response);
     }
 }
