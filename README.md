@@ -1,6 +1,6 @@
 ## Installation
 
-peopleos is a regular Laravel application; it's build on top of Laravel and uses Vue / Tailwind CSS for the frontend. We stick to the Laravel conventions as much as possible.
+peopleos is a regular Laravel application; it's build on top of Laravel and uses regular Blade / Tailwind CSS for the frontend, sprinkled with Alpine.js and Alpine AJAX for some interactivity. We stick to the Laravel conventions as much as possible.
 
 In terms of local development, you can use the following requirements:
 

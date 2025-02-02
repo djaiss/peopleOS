@@ -28,43 +28,51 @@
     <!-- Job List -->
     <div id="work-history-list" class="divide-y divide-gray-200">
       @forelse ($workHistories as $history)
-      <div id="work-history-{{ $history['id'] }}" class="group flex items-center justify-between p-4">
-        <div class="flex items-center gap-3">
-          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-            <x-lucide-briefcase class="h-4 w-4 text-blue-600" />
-          </span>
-          <div>
-            <h3 class="font-medium mb-1">
-              {{ $history['title'] }}
-              @if ($history['is_current'])
-                <span class="rounded-full bg-green-100 ml-1 px-2 py-1 text-xs font-medium text-green-800">{{ __('Current') }}</span>
-              @endif
-            </h3>
-            <p class="text-sm text-gray-600 [&>span:not(:last-child)]:after:mx-1 [&>span:not(:last-child)]:after:content-['•']">
-              @if ($history['company'])
-                <span>{{ $history['company'] }}</span>
-              @endif
+        <div id="work-history-{{ $history['id'] }}" class="group flex items-center justify-between p-4">
+          <div class="flex items-center gap-3">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
+              <x-lucide-briefcase class="h-4 w-4 text-blue-600" />
+            </span>
+            <div>
+              <h3 class="mb-1 font-medium">
+                {{ $history['title'] }}
+                @if ($history['is_current'])
+                  <span class="ml-1 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">{{ __('Current') }}</span>
+                @endif
+              </h3>
+              <p class="text-sm text-gray-600 [&>span:not(:last-child)]:after:mx-1 [&>span:not(:last-child)]:after:content-['•']">
+                @if ($history['company'])
+                  <span>{{ $history['company'] }}</span>
+                @endif
 
-              @if ($history['duration'])
-                <span>{{ $history['duration'] }}</span>
-              @endif
+                @if ($history['duration'])
+                  <span>{{ $history['duration'] }}</span>
+                @endif
 
-              @if ($history['salary'])
-                <span>{{ $history['salary'] }}</span>
-              @endif
-            </p>
+                @if ($history['salary'])
+                  <span>{{ $history['salary'] }}</span>
+                @endif
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <x-button.invisible x-target="work-history-{{ $history['id'] }}" href="{{ route('persons.work.edit', [$person->slug, $history['id']]) }}" class="hidden text-sm group-hover:block">
+              {{ __('Edit') }}
+            </x-button.invisible>
+
+            <form x-target="work-history-{{ $history['id'] }}" x-on:ajax:before="
+              confirm('Are you sure you want to proceed? This can not be undone.') ||
+                $event.preventDefault()
+            " action="{{ route('persons.work.destroy', [$person->slug, $history['id']]) }}" method="POST">
+              @csrf
+              @method('DELETE')
+
+              <x-button.invisible class="hidden text-sm group-hover:block">
+                {{ __('Delete') }}
+              </x-button.invisible>
+            </form>
           </div>
         </div>
-        <div class="flex gap-2">
-          <x-button.invisible x-target="work-history-{{ $history['id'] }}" href="{{ route('persons.work.edit', [$person->slug, $history['id']]) }}" class="hidden text-sm group-hover:block">
-            {{ __('Edit') }}
-          </x-button.invisible>
-
-          <x-button.invisible wire:confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" class="hidden text-sm group-hover:block">
-            {{ __('Delete') }}
-          </x-button.invisible>
-        </div>
-      </div>
       @empty
         <div class="flex flex-col items-center justify-center p-6 text-center">
           <span class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">

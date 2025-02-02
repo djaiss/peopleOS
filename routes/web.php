@@ -59,6 +59,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
             Route::post('persons/{slug}/work', [PersonWorkController::class, 'store'])->name('persons.work.store');
             Route::get('persons/{slug}/work/{entry}/edit', [PersonWorkController::class, 'edit'])->name('persons.work.edit');
             Route::put('persons/{slug}/work/{entry}', [PersonWorkController::class, 'update'])->name('persons.work.update');
+            Route::delete('persons/{slug}/work/{entry}', [PersonWorkController::class, 'destroy'])->name('persons.work.destroy');
 
             // family
             Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('persons.family.index');

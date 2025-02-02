@@ -8,6 +8,7 @@ use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\WorkHistory;
 use App\Services\CreateWorkHistory;
+use App\Services\DestroyWorkHistory;
 use App\Services\UpdateWorkHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,8 +60,13 @@ class PersonWorkController extends Controller
             'company' => 'nullable|string|min:3|max:255',
             'duration' => 'nullable|string|min:3|max:255',
             'salary' => 'nullable|string|min:3|max:255',
-            'is_current' => 'sometimes|integer',
+            'is_current' => 'nullable',
         ]);
+
+        $active = false;
+        if (array_key_exists('is_current', $validated) && ($validated['is_current'] === 'on' || $validated['is_current'] === '1')) {
+            $active = true;
+        }
 
         (new CreateWorkHistory(
             user: Auth::user(),
@@ -69,7 +75,7 @@ class PersonWorkController extends Controller
             jobTitle: $validated['title'],
             estimatedSalary: $validated['salary'],
             duration: $validated['duration'],
-            active: ($validated['is_current'] ?? 0) === 1,
+            active: $active,
         ))->execute();
 
         return redirect()->route('persons.work.index', $person->slug);
@@ -102,8 +108,13 @@ class PersonWorkController extends Controller
             'company' => 'nullable|string|min:3|max:255',
             'duration' => 'nullable|string|min:3|max:255',
             'salary' => 'nullable|string|min:3|max:255',
-            'is_current' => 'sometimes|integer',
+            'is_current' => 'nullable',
         ]);
+
+        $active = false;
+        if (array_key_exists('is_current', $validated) && ($validated['is_current'] === 'on' || $validated['is_current'] === 1)) {
+            $active = true;
+        }
 
         (new UpdateWorkHistory(
             user: Auth::user(),
@@ -112,7 +123,23 @@ class PersonWorkController extends Controller
             jobTitle: $validated['title'],
             estimatedSalary: $validated['salary'],
             duration: $validated['duration'],
-            active: ($validated['is_current'] ?? 0) === 1,
+            active: $active,
+        ))->execute();
+
+        return redirect()->route('persons.work.index', $person->slug);
+    }
+
+    public function destroy(Request $request)
+    {
+        $person = $request->attributes->get('person');
+        $workHistoryId = (int) $request->route()->parameter('entry');
+
+        $workHistory = WorkHistory::where('person_id', $person->id)
+            ->findOrFail($workHistoryId);
+
+        (new DestroyWorkHistory(
+            user: Auth::user(),
+            workHistory: $workHistory,
         ))->execute();
 
         return redirect()->route('persons.work.index', $person->slug);
