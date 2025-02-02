@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
@@ -28,6 +29,7 @@ class DestroyPerson
 
         $this->updateUserLastActivityDate();
         $this->logUserAction($personName);
+        $this->refreshCache();
     }
 
     private function validate(): void
@@ -53,5 +55,12 @@ class DestroyPerson
             action: 'person_deletion',
             description: 'Deleted the person called '.$personName,
         );
+    }
+
+    private function refreshCache(): void
+    {
+        PeopleListCache::make(
+            accountId: $this->user->account_id,
+        )->refresh();
     }
 }

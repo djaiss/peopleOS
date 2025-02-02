@@ -82,7 +82,7 @@ class PersonController extends Controller
             maidenName: $validated['maiden_name'],
             prefix: $validated['prefix'],
             suffix: $validated['suffix'],
-            isListed: $validated['is_listed'],
+            isListed: true,
         ))->execute();
 
         return redirect()->route('persons.show', [

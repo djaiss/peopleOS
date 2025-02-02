@@ -35,7 +35,7 @@ final class PeopleListCache extends CacheHelper
 
     protected function generate(): Collection
     {
-        return Person::where('account_id', Auth::user()->account_id)
+        return Person::where('account_id', $this->identifier)
             ->where('is_listed', true)
             ->get()
             ->map(fn (Person $person): array => [
