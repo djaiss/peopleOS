@@ -60,7 +60,7 @@
             {{ __('Edit') }}
           </x-button.invisible>
 
-          <x-button.invisible wire:click="delete({{ $history['id'] }})" wire:confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" class="hidden text-sm group-hover:block">
+          <x-button.invisible wire:confirm="{{ __('Are you sure you want to proceed? This can not be undone.') }}" class="hidden text-sm group-hover:block">
             {{ __('Delete') }}
           </x-button.invisible>
         </div>

@@ -4,18 +4,18 @@
  */
 ?>
 
-<form x-target="work-history-list add-work-form" x-target.302="_self" id="add-work-form" action="{{ route('persons.work.store', $person->slug) }}" method="POST">
+<form x-target="work-history-list add-work-form" x-target.422="add-work-form" id="add-work-form" action="{{ route('persons.work.store', $person->slug) }}" method="POST">
   @csrf
 
   <div class="mb-4 flex gap-4 px-4 pt-4">
     <div class="flex-1">
       <x-input-label for="title" :value="__('Job title')" class="mb-2" />
-      <x-text-input class="block w-full" id="title" name="title" type="text" required data-1p-ignore  />
+      <x-text-input class="block w-full" id="title" name="title" type="text" required data-1p-ignore value="{{ old('title') }}" />
       <x-input-error :messages="$errors->get('title')" class="mt-2" />
     </div>
     <div class="flex-1">
       <x-input-label optional for="company" :value="__('Company')" class="mb-1" />
-      <x-text-input class="block w-full" id="company" name="company" type="text" data-1p-ignore  />
+      <x-text-input class="block w-full" id="company" name="company" type="text" data-1p-ignore value="{{ old('company') }}" />
       <x-input-error :messages="$errors->get('company')" class="mt-2" />
     </div>
   </div>
@@ -23,12 +23,12 @@
   <div class="mb-4 flex gap-4 px-4">
     <div class="flex-1">
       <x-input-label optional for="duration" :value="__('Duration')" class="mb-1" />
-      <x-text-input class="block w-full" id="duration" name="duration" type="text"  />
+      <x-text-input class="block w-full" id="duration" name="duration" type="text" value="{{ old('duration') }}" />
       <x-input-error :messages="$errors->get('duration')" class="mt-2" />
     </div>
     <div class="flex-1">
       <x-input-label optional for="salary" :value="__('Estimated salary')" class="mb-1" />
-      <x-text-input class="block w-full" id="salary" name="salary" type="text"  />
+      <x-text-input class="block w-full" id="salary" name="salary" type="text" value="{{ old('salary') }}" />
       <x-input-error :messages="$errors->get('salary')" class="mt-2" />
     </div>
   </div>
