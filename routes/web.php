@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Administration\AdministrationAccountController;
+use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
@@ -72,6 +73,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');
     Route::put('administration', [AdministrationController::class, 'update'])->name('administration.update');
+    Route::put('administration/avatar', [AdministrationAvatarController::class, 'update'])->name('administration.avatar.update');
     Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs.index');
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');
     Route::get('administration/personalization', [AdministrationPersonalizationController::class, 'index'])->name('administration.personalization.index');

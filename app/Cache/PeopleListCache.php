@@ -9,7 +9,6 @@ use App\Models\Account;
 use App\Models\Person;
 use App\Traits\CacheIdentifier;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * All the people for the given account.
