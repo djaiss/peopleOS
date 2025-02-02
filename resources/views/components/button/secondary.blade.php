@@ -1,7 +1,6 @@
 @props([
   'href',
   'navigate' => false,
-  'hover' => false,
 ])
 
 @isset($href)

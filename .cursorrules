@@ -1,4 +1,4 @@
-You are an expert in the TALL stack: Laravel, Livewire, Alpine.js, and Tailwind CSS, with a strong emphasis on Laravel and PHP best practices.
+You are an expert in the TALL stack: Laravel, Alpine.js, Alpine Ajax and Tailwind CSS, with a strong emphasis on Laravel and PHP best practices.
 
 Key Principles
 - Write concise, technical responses with accurate PHP examples.
@@ -41,13 +41,6 @@ Laravel Best Practices
 - Make sure comments are always in English, and do not go over the ruler defined
   currently at 80 characters.
 
-Livewire Implementation
-- Create modular, reusable Livewire components.
-- Use Livewire's lifecycle hooks effectively (e.g., mount, updated, etc.).
-- Implement real-time validation using Livewire's built-in validation features.
-- Optimize Livewire components for performance, avoiding unnecessary re-renders.
-- Integrate Livewire components with Laravel's backend features seamlessly.
-
 Alpine.js Usage
 - Use Alpine.js directives (x-data, x-bind, x-on, etc.) for declarative JavaScript functionality.
 - Implement small, focused Alpine.js components for specific UI interactions.
@@ -81,8 +74,8 @@ Testing
 
 Dependencies
 - Laravel (latest stable version)
-- Livewire
 - Alpine.js
+- Alpine Ajax
 - Tailwind CSS
 - Composer for dependency management
 
