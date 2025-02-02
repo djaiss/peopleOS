@@ -99,7 +99,7 @@ class PersonWorkControllerTest extends TestCase
                 'company' => 'Ralph Lauren',
                 'duration' => '3 years',
                 'salary' => '$75,000',
-                'is_current' => 1,
+                'is_current' => 'on',
             ])
             ->assertRedirectToRoute('persons.work.index', $person->slug);
 
@@ -163,5 +163,170 @@ class PersonWorkControllerTest extends TestCase
             'title' => 'The title field must not be greater than 255 characters.',
             'company' => 'The company field must not be greater than 255 characters.',
         ]);
+    }
+
+    #[Test]
+    public function a_user_can_visit_the_edit_work_page(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Joey',
+            'last_name' => 'Tribbiani',
+        ]);
+        $workHistory = WorkHistory::factory()->create([
+            'person_id' => $person->id,
+            'job_title' => 'Actor',
+            'company_name' => 'Days of Our Lives',
+            'duration' => '1 year',
+            'estimated_salary' => '$100,000',
+            'active' => true,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get('/persons/'.$person->slug.'/work/'.$workHistory->id.'/edit')
+            ->assertOk();
+
+        $this->assertArrayHasKey('person', $response);
+        $this->assertArrayHasKey('workHistory', $response);
+    }
+
+    #[Test]
+    public function a_user_cannot_visit_edit_page_for_work_history_that_doesnt_exist(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $this->actingAs($user)
+            ->get('/persons/'.$person->slug.'/work/999/edit')
+            ->assertNotFound();
+    }
+
+    #[Test]
+    public function a_user_can_update_a_work_history(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Joey',
+            'last_name' => 'Tribbiani',
+        ]);
+        $workHistory = WorkHistory::factory()->create([
+            'person_id' => $person->id,
+            'job_title' => 'Actor',
+            'company_name' => 'Days of Our Lives',
+            'duration' => '1 year',
+            'estimated_salary' => '$100,000',
+            'active' => true,
+        ]);
+
+        $this->actingAs($user)
+            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+                'title' => 'Lead Actor',
+                'company' => 'Days of Our Lives',
+                'duration' => '2 years',
+                'salary' => '$150,000',
+                'is_current' => 'on',
+            ])
+            ->assertRedirectToRoute('persons.work.index', $person->slug);
+
+        $this->assertDatabaseHas('work_information', [
+            'person_id' => $person->id,
+        ]);
+
+        $workHistory = WorkHistory::where('person_id', $person->id)->first();
+        $this->assertEquals('Lead Actor', $workHistory->job_title);
+        $this->assertEquals('Days of Our Lives', $workHistory->company_name);
+        $this->assertEquals('2 years', $workHistory->duration);
+        $this->assertEquals('$150,000', $workHistory->estimated_salary);
+        $this->assertTrue($workHistory->active);
+    }
+
+    #[Test]
+    public function it_validates_required_fields_when_updating_work_history(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $workHistory = WorkHistory::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+                'title' => '',
+                'company' => '',
+                'duration' => '',
+                'salary' => '',
+            ]);
+
+        $response->assertInvalid(['title' => 'required']);
+    }
+
+    #[Test]
+    public function it_validates_field_lengths_when_updating(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $workHistory = WorkHistory::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+                'title' => 'a',
+                'company' => 'a',
+            ]);
+
+        $response->assertInvalid([
+            'title' => 'The title field must be at least 3 characters.',
+            'company' => 'The company field must be at least 3 characters.',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+                'title' => str_repeat('a', 256),
+                'company' => str_repeat('a', 256),
+            ]);
+
+        $response->assertInvalid([
+            'title' => 'The title field must not be greater than 255 characters.',
+            'company' => 'The company field must not be greater than 255 characters.',
+        ]);
+    }
+
+    #[Test]
+    public function a_user_can_destroy_a_work_history(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Joey',
+            'last_name' => 'Tribbiani',
+        ]);
+        $workHistory = WorkHistory::factory()->create([
+            'person_id' => $person->id,
+            'job_title' => 'Actor',
+            'company_name' => 'Days of Our Lives',
+            'duration' => '1 year',
+            'estimated_salary' => '$100,000',
+            'active' => true,
+        ]);
+
+        $this->actingAs($user)
+            ->delete('/persons/'.$person->slug.'/work/'.$workHistory->id)
+            ->assertRedirectToRoute('persons.work.index', $person->slug);
+
+        $this->assertDatabaseMissing('work_information', [
+            'person_id' => $person->id,
+        ]);
+
+        $workHistory = WorkHistory::where('person_id', $person->id)->first();
+        $this->assertNull($workHistory);
     }
 }
