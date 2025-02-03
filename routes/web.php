@@ -9,6 +9,7 @@ use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
@@ -29,9 +30,7 @@ Route::get('/', function () {
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitations.accept');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // upgrade
     Route::get('upgrade', [UpgradeAccountController::class, 'index'])->name('upgrade.index');

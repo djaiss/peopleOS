@@ -1,7 +1,7 @@
 <div class="border-r border-gray-300 bg-gray-100">
   <div class="flex flex-col px-6 pt-8">
     <!-- back to dashboard -->
-    <a href="{{ route('dashboard') }}" class="mb-4">
+    <a href="{{ route('dashboard.index') }}" class="mb-4">
       <div class="flex h-8 items-center justify-between gap-3 rounded-lg px-2 text-sm leading-5 text-zinc-600 hover:bg-zinc-950/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white">
         <div class="flex items-center gap-2">
           <x-lucide-chevron-left class="size-3 min-w-3" />
