@@ -75,8 +75,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::put('administration', [AdministrationController::class, 'update'])->name('administration.update');
     Route::put('administration/avatar', [AdministrationAvatarController::class, 'update'])->name('administration.avatar.update');
     Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs.index');
+
+    // security
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');
+    Route::get('administration/security/new', [AdministrationSecurityController::class, 'new'])->name('administration.security.new');
+    Route::post('administration/security', [AdministrationSecurityController::class, 'store'])->name('administration.security.store');
+    Route::delete('administration/security/{apiKeyId}', [AdministrationSecurityController::class, 'destroy'])->name('administration.security.destroy');
+
+    // personalization
     Route::get('administration/personalization', [AdministrationPersonalizationController::class, 'index'])->name('administration.personalization.index');
+
+    // account
     Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');
     Route::put('administration/prune', [AdministrationPruneAccountController::class, 'update'])->name('administration.account.prune');
     Route::delete('administration/account', [AdministrationAccountController::class, 'destroy'])->name('administration.account.destroy');
