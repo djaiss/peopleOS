@@ -3,7 +3,7 @@
   <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-gray-200 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
     <div class="flex items-center gap-x-10">
       <!-- Logo and brand -->
-      <a href="{{ route('dashboard') }}" class="flex items-center gap-x-2">
+      <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2">
         <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-600 p-1">
           <x-lucide-users class="h-5 w-5 text-white" />
         </div>
@@ -12,6 +12,13 @@
 
       <!-- Main navigation -->
       <div class="flex items-center gap-x-6">
+        <a data-instant href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2">
+          <x-lucide-home class="h-4 w-4 text-gray-700" />
+          <p class="text-sm text-gray-700">
+            {{ __('Dashboard') }}
+          </p>
+        </a>
+
         <a data-instant href="{{ route('persons.index') }}" class="flex items-center gap-x-2">
           <x-lucide-users-round class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
