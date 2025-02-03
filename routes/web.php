@@ -54,6 +54,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
             // persons notes
             Route::get('persons/{slug}/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
+            Route::post('persons/{slug}/notes', [PersonNoteController::class, 'store'])->name('persons.notes.store');
+            Route::middleware(['note'])->group(function (): void {
+                Route::get('persons/{slug}/notes/{note}/edit', [PersonNoteController::class, 'edit'])->name('persons.notes.edit');
+                Route::put('persons/{slug}/notes/{note}', [PersonNoteController::class, 'update'])->name('persons.notes.update');
+                Route::delete('persons/{slug}/notes/{note}', [PersonNoteController::class, 'destroy'])->name('persons.notes.destroy');
+            });
 
             // work and passions
             Route::get('persons/{slug}/work', [PersonWorkController::class, 'index'])->name('persons.work.index');
