@@ -1,6 +1,7 @@
 <?php
 /*
  * @var array $genders
+ * @var array $maritalStatuses
  */
 ?>
 
@@ -18,15 +19,7 @@
 
         @include('administration.personalization.partials.genders', ['genders' => $genders])
 
-        <h2 class="font-semi-bold mb-1 text-lg">
-          {{ __('All the marital statuses in the account') }}
-        </h2>
-
-        <p class="mb-4 text-sm text-zinc-500">
-          {{ __('You can drag and drop the marital statuses to change their order.') }}
-        </p>
-
-        {{-- <livewire:administration.personalization.manage-marital-statuses /> --}}
+        @include('administration.personalization.partials.marital-statuses', ['maritalStatuses' => $maritalStatuses])
       </div>
     </div>
   </div>

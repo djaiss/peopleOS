@@ -89,7 +89,7 @@ class MaritalStatusController extends Controller
     /**
      * Create a marital status.
      *
-     * A marital status categorizes the marital status of a person.
+     * A marital status represents the marital status of a person.
      * Marital statuses are ordered by position. When you create a new marital status, it will be
      * added to the end of the list by default - ie after the max marital status
      * position.

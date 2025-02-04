@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -21,8 +22,17 @@ class AdministrationPersonalizationController extends Controller
                 'name' => $gender->name,
             ]);
 
+        $maritalStatuses = MaritalStatus::where('account_id', Auth::user()->account_id)
+            ->orderBy('position')
+            ->get()
+            ->map(fn (MaritalStatus $maritalStatus): array => [
+                'id' => $maritalStatus->id,
+                'name' => $maritalStatus->name,
+            ]);
+
         return view('administration.personalization.index', [
             'genders' => $genders,
+            'maritalStatuses' => $maritalStatuses,
         ]);
     }
 }
