@@ -19,13 +19,13 @@
           {{ __('Profile') }}
         </h1>
 
-        @include('administration.partials.avatar', ['user' => $user])
+        @include('administration.partials.profile', ['user' => $user])
 
         <!-- Profile photo -->
         <h2 class="font-semi-bold mb-1 text-lg">{{ __('Profile photo') }}</h2>
         <p class="mb-4 text-sm text-zinc-500">{{ __('You can upload a profile photo to use as your avatar, or use the default avatar.') }}</p>
 
-        {{-- <livewire:administration.manage-avatar /> --}}
+        @include('administration.partials.avatar', ['user' => $user])
 
         <!-- Preferences -->
         <h2 class="font-semi-bold mb-4 text-lg">
