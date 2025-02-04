@@ -41,7 +41,11 @@ jobs:
           POSTGRES_DB: peopleos
         ports:
           - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout sources
@@ -115,7 +119,8 @@ jobs:
       - name: Create pgsql database
         if: matrix.connection == 'pgsql'
         run: |
-          sudo systemctl start postgresql.service
+          sudo systemctl start postgresql
+          sudo pg_ctlcluster 14 main start
           sudo -u postgres psql --command="CREATE USER peopleos PASSWORD 'secret'" --command="\du"
           sudo -u postgres createdb --owner=peopleos peopleos
           PGPASSWORD=secret psql --username=peopleos --host=localhost --list peopleos
