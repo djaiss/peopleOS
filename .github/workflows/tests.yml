@@ -32,21 +32,6 @@ jobs:
         testsuite: [Unit]
         coverage: [true] # run test with coverage, if 'coverage-with' match with the connection
 
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: peopleos
-          POSTGRES_PASSWORD: secret
-          POSTGRES_DB: peopleos
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
@@ -119,8 +104,7 @@ jobs:
       - name: Create pgsql database
         if: matrix.connection == 'pgsql'
         run: |
-          sudo systemctl start postgresql
-          sudo pg_ctlcluster 14 main start
+          sudo systemctl start postgresql.service
           sudo -u postgres psql --command="CREATE USER peopleos PASSWORD 'secret'" --command="\du"
           sudo -u postgres createdb --owner=peopleos peopleos
           PGPASSWORD=secret psql --username=peopleos --host=localhost --list peopleos
