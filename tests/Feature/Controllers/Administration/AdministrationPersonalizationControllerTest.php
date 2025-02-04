@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Administration;
 
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,6 +24,11 @@ class AdministrationPersonalizationControllerTest extends TestCase
             'name' => 'Male',
             'position' => 1,
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+            'name' => 'Single',
+            'position' => 1,
+        ]);
 
         $response = $this->actingAs($user)
             ->get('/administration/personalization');
@@ -30,12 +36,19 @@ class AdministrationPersonalizationControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('administration.personalization.index');
         $this->assertArrayHasKey('genders', $response);
-
+        $this->assertArrayHasKey('maritalStatuses', $response);
         $genders = $response['genders'];
         $this->assertCount(1, $genders);
         $this->assertEquals([
             'id' => $gender->id,
             'name' => 'Male',
         ], $genders[0]);
+
+        $maritalStatuses = $response['maritalStatuses'];
+        $this->assertCount(1, $maritalStatuses);
+        $this->assertEquals([
+            'id' => $maritalStatus->id,
+            'name' => 'Single',
+        ], $maritalStatuses[0]);
     }
 }
