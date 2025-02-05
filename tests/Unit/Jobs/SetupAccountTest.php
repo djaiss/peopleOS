@@ -24,13 +24,13 @@ class SetupAccountTest extends TestCase
             3,
             DB::table('genders')->count()
         );
+        $this->assertEquals(
+            11,
+            DB::table('marital_statuses')->count()
+        );
         // $this->assertEquals(
         //     21,
         //     DB::table('ethnicities')->count()
-        // );
-        // $this->assertEquals(
-        //     10,
-        //     DB::table('marital_statuses')->count()
         // );
     }
 }

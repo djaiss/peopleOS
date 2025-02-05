@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Persons;
 
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -64,6 +65,10 @@ class PersonControllerTest extends TestCase
             'account_id' => $user->account_id,
             'name' => 'Male',
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+            'name' => 'Married',
+        ]);
 
         $response = $this->actingAs($user)
             ->get('/persons/new')
@@ -71,12 +76,20 @@ class PersonControllerTest extends TestCase
             ->assertOk();
 
         $this->assertArrayHasKey('genders', $response);
+        $this->assertArrayHasKey('maritalStatuses', $response);
         $this->assertEquals(
             [
                 'id' => $gender->id,
                 'name' => 'Male',
             ],
             $response['genders']->toArray()[0]
+        );
+        $this->assertEquals(
+            [
+                'id' => $maritalStatus->id,
+                'name' => 'Married',
+            ],
+            $response['maritalStatuses']->toArray()[0]
         );
     }
 
@@ -87,12 +100,16 @@ class PersonControllerTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
 
         $response = $this->actingAs($user)
             ->post('/persons', [
                 'first_name' => 'Monica',
                 'last_name' => 'Geller',
                 'gender_id' => $gender->id,
+                'marital_status_id' => $maritalStatus->id,
                 'nickname' => '',
                 'middle_name' => '',
                 'maiden_name' => '',

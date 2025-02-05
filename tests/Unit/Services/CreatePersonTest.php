@@ -7,6 +7,7 @@ namespace Tests\Unit\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\CreatePerson;
@@ -27,7 +28,10 @@ class CreatePersonTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $this->executeService($user, $gender);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $this->executeService($user, $gender, $maritalStatus);
     }
 
     #[Test]
@@ -37,16 +41,33 @@ class CreatePersonTest extends TestCase
 
         $user = User::factory()->create();
         $gender = Gender::factory()->create();
-        $this->executeService($user, $gender);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $this->executeService($user, $gender, $maritalStatus);
     }
 
-    private function executeService(User $user, Gender $gender): void
+    #[Test]
+    public function it_fails_if_marital_status_doesnt_belong_to_account(): void
+    {
+        $this->expectException(ModelNotFoundException::class);
+
+        $user = User::factory()->create();
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $maritalStatus = MaritalStatus::factory()->create();
+        $this->executeService($user, $gender, $maritalStatus);
+    }
+
+    private function executeService(User $user, Gender $gender, MaritalStatus $maritalStatus): void
     {
         Queue::fake();
 
         $person = (new CreatePerson(
             user: $user,
             gender: $gender,
+            maritalStatus: $maritalStatus,
             firstName: 'Ross',
             lastName: 'Geller',
             middleName: '',
@@ -62,6 +83,7 @@ class CreatePersonTest extends TestCase
             'id' => $person->id,
             'account_id' => $user->account_id,
             'gender_id' => $gender->id,
+            'marital_status_id' => $maritalStatus->id,
             'can_be_deleted' => true,
             'is_listed' => true,
         ]);

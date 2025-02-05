@@ -24,6 +24,7 @@ class Person extends Model
     protected $fillable = [
         'account_id',
         'gender_id',
+        'marital_status_id',
         'slug',
         'first_name',
         'middle_name',
@@ -71,6 +72,14 @@ class Person extends Model
     public function gender(): BelongsTo
     {
         return $this->belongsTo(Gender::class);
+    }
+
+    /**
+     * Get the marital status associated with the person.
+     */
+    public function maritalStatus(): BelongsTo
+    {
+        return $this->belongsTo(MaritalStatus::class);
     }
 
     /**

@@ -28,6 +28,7 @@ class AdministrationPersonalizationControllerTest extends TestCase
             'account_id' => $user->account_id,
             'name' => 'Single',
             'position' => 1,
+            'can_be_deleted' => true,
         ]);
 
         $response = $this->actingAs($user)
@@ -49,6 +50,7 @@ class AdministrationPersonalizationControllerTest extends TestCase
         $this->assertEquals([
             'id' => $maritalStatus->id,
             'name' => 'Single',
+            'can_be_deleted' => true,
         ], $maritalStatuses[0]);
     }
 }

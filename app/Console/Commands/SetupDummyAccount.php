@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\CreateAccount;
@@ -774,6 +775,7 @@ class SetupDummyAccount extends Command
         $person = (new CreatePerson(
             user: $this->firstUser,
             gender: Gender::inRandomOrder()->first(),
+            maritalStatus: MaritalStatus::inRandomOrder()->first(),
             firstName: $character['first_name'],
             lastName: $character['last_name'],
             middleName: null,

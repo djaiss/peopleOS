@@ -17,7 +17,7 @@ final class PeopleListCache extends CacheHelper
 {
     use CacheIdentifier;
 
-    protected string $key = 'account.people:%s';
+    protected string $key = 'account.people-list:%s';
 
     protected int $ttl = 604800; // 1 week
 

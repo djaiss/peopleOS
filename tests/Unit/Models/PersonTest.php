@@ -7,6 +7,7 @@ namespace Tests\Unit\Models;
 use App\Models\Account;
 use App\Models\Gender;
 use App\Models\LoveRelationship;
+use App\Models\MaritalStatus;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\WorkHistory;
@@ -38,6 +39,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->gender()->exists());
+    }
+
+    #[Test]
+    public function it_belongs_to_one_marital_status(): void
+    {
+        $maritalStatus = MaritalStatus::factory()->create();
+        $person = Person::factory()->create([
+            'marital_status_id' => $maritalStatus->id,
+        ]);
+
+        $this->assertTrue($person->maritalStatus()->exists());
     }
 
     #[Test]

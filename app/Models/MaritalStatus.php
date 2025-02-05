@@ -21,8 +21,10 @@ class MaritalStatus extends Model
      */
     protected $fillable = [
         'account_id',
+        'type',
         'name',
         'position',
+        'can_be_deleted',
     ];
 
     /**
@@ -33,8 +35,10 @@ class MaritalStatus extends Model
     protected function casts(): array
     {
         return [
+            'type' => 'encrypted',
             'name' => 'encrypted',
             'position' => 'integer',
+            'can_be_deleted' => 'boolean',
         ];
     }
 

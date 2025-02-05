@@ -8,6 +8,7 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MaritalStatus;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DestroyMaritalStatus
@@ -33,6 +34,10 @@ class DestroyMaritalStatus
     {
         if ($this->user->account_id !== $this->maritalStatus->account_id) {
             throw new ModelNotFoundException();
+        }
+
+        if ($this->maritalStatus->can_be_deleted === false) {
+            throw new Exception('Marital status cannot be deleted');
         }
     }
 

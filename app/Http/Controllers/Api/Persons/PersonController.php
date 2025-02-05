@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PersonCollection;
 use App\Http\Resources\PersonResource;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Services\CreatePerson;
 use App\Services\DestroyPerson;
@@ -31,6 +32,7 @@ class PersonController extends Controller
      * settings.
      *
      * @bodyParam gender_id integer The gender object associated with the person. This object must be a valid Gender object. Example: 1
+     * @bodyParam marital_status_id integer The marital status object associated with the person. This object must be a valid MaritalStatus object. Example: 1
      * @bodyParam first_name string required The first name of the person. Max 255 characters. Example: Ross
      * @bodyParam last_name string The last name of the person. Max 255 characters. Example: Geller
      * @bodyParam middle_name string The middle name of the person. Max 255 characters. Example: Gary
@@ -77,6 +79,7 @@ class PersonController extends Controller
     {
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',
+            'marital_status_id' => 'nullable|exists:marital_statuses,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'middle_name' => 'nullable|string|max:255',
@@ -91,6 +94,7 @@ class PersonController extends Controller
         $person = (new CreatePerson(
             user: Auth::user(),
             gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
+            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             middleName: $validated['middle_name'],
@@ -117,6 +121,7 @@ class PersonController extends Controller
      * @urlParam person required The id of the person. Example: 1
      *
      * @bodyParam gender_id integer The gender associated with the person. This object must be a valid Gender object. Example: 1
+     * @bodyParam marital_status_id integer The marital status associated with the person. This object must be a valid MaritalStatus object. Example: 1
      * @bodyParam first_name string required The first name of the person. Max 255 characters. Example: Michael
      * @bodyParam last_name string The last name of the person. Max 255 characters. Example: Scott
      * @bodyParam middle_name string The middle name of the person. Max 255 characters. Example: Gary
@@ -165,6 +170,7 @@ class PersonController extends Controller
 
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',
+            'marital_status_id' => 'nullable|exists:marital_statuses,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'middle_name' => 'nullable|string|max:255',
@@ -182,6 +188,7 @@ class PersonController extends Controller
             user: Auth::user(),
             person: $person,
             gender: $validated['gender_id'] ? Gender::find($validated['gender_id']) : null,
+            maritalStatus: $validated['marital_status_id'] ? MaritalStatus::find($validated['marital_status_id']) : null,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             middleName: $validated['middle_name'],

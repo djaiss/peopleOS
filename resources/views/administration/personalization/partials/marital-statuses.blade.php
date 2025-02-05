@@ -31,23 +31,25 @@
       <div id="marital-status-{{ $maritalStatus['id'] }}" class="group flex items-center justify-between p-3 transition-colors duration-200 last:rounded-b-lg">
         <p class="border border-transparent py-1 text-sm font-semibold">{{ $maritalStatus['name'] }}</p>
 
-        <div class="flex gap-2">
-          <x-button.invisible x-target="marital-status-{{ $maritalStatus['id'] }}" href="{{ route('administration.personalization.marital-statuses.edit', $maritalStatus['id']) }}" class="hidden text-sm group-hover:block">
-            {{ __('Edit') }}
-          </x-button.invisible>
-
-          <form x-target="marital-status-{{ $maritalStatus['id'] }}" x-on:ajax:before="
-            confirm('Are you sure you want to proceed? This can not be undone.') ||
-              $event.preventDefault()
-          " action="{{ route('administration.personalization.marital-statuses.destroy', $maritalStatus['id']) }}" method="POST">
-            @csrf
-            @method('DELETE')
-
-            <x-button.invisible class="hidden text-sm group-hover:block">
-              {{ __('Delete') }}
+        @if ($maritalStatus['can_be_deleted'])
+          <div class="flex gap-2">
+            <x-button.invisible x-target="marital-status-{{ $maritalStatus['id'] }}" href="{{ route('administration.personalization.marital-statuses.edit', $maritalStatus['id']) }}" class="hidden text-sm group-hover:block">
+              {{ __('Edit') }}
             </x-button.invisible>
-          </form>
-        </div>
+
+            <form x-target="marital-status-{{ $maritalStatus['id'] }}" x-on:ajax:before="
+              confirm('Are you sure you want to proceed? This can not be undone.') ||
+                $event.preventDefault()
+            " action="{{ route('administration.personalization.marital-statuses.destroy', $maritalStatus['id']) }}" method="POST">
+              @csrf
+              @method('DELETE')
+
+              <x-button.invisible class="hidden text-sm group-hover:block">
+                {{ __('Delete') }}
+              </x-button.invisible>
+            </form>
+          </div>
+        @endif
       </div>
     @empty
       <div class="flex flex-col items-center justify-center p-6 text-center">

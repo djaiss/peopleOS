@@ -50,6 +50,19 @@
             <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
           </div>
 
+          <!-- marital status -->
+          <div class="relative mb-5">
+            <x-input-label for="marital_status_id" :value="__('Marital status')" />
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" id="marital_status_id" name="marital_status_id">
+              @foreach ($maritalStatuses as $maritalStatus)
+                <option value="{{ $maritalStatus['id'] }}">{{ $maritalStatus['name'] }}</option>
+              @endforeach
+            </select>
+            <p class="mt-1 text-xs text-gray-500">
+              {{ __('Marital statuses can be managed in the administration area.') }}
+            </p>
+          </div>
+
           <!-- middle name -->
           <div x-cloak x-show="showMiddleName" x-transition class="relative mb-5">
             <x-input-label for="middle_name" :value="__('Middle name')" :optional="true" />

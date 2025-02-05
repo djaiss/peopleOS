@@ -28,6 +28,7 @@ class AdministrationPersonalizationController extends Controller
             ->map(fn (MaritalStatus $maritalStatus): array => [
                 'id' => $maritalStatus->id,
                 'name' => $maritalStatus->name,
+                'can_be_deleted' => $maritalStatus->can_be_deleted,
             ]);
 
         return view('administration.personalization.index', [

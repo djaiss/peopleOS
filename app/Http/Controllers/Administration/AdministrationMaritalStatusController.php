@@ -33,7 +33,7 @@ class AdministrationMaritalStatusController extends Controller
         ))->execute();
 
         return redirect()->route('administration.personalization.index')
-        ->with('status', __('Marital status created'));
+            ->with('status', __('Marital status created'));
     }
 
     public function edit(Request $request, MaritalStatus $maritalStatus): View
@@ -65,7 +65,7 @@ class AdministrationMaritalStatusController extends Controller
         ))->execute();
 
         return redirect()->route('administration.personalization.index')
-        ->with('status', __('Marital status updated'));
+            ->with('status', __('Marital status updated'));
     }
 
     public function destroy(Request $request, MaritalStatus $maritalStatus): RedirectResponse
@@ -80,6 +80,6 @@ class AdministrationMaritalStatusController extends Controller
         ))->execute();
 
         return redirect()->route('administration.personalization.index')
-        ->with('status', __('Marital status deleted'));
+            ->with('status', __('Marital status deleted'));
     }
 }
