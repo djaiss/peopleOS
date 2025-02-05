@@ -9,6 +9,7 @@ use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MaritalStatus;
 use App\Models\User;
 use App\Services\DestroyMaritalStatus;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
@@ -57,6 +58,24 @@ class DestroyMaritalStatusTest extends TestCase
         $maritalStatus = MaritalStatus::factory()->create();
 
         $this->expectException(ModelNotFoundException::class);
+
+        (new DestroyMaritalStatus(
+            user: $user,
+            maritalStatus: $maritalStatus,
+        ))->execute();
+    }
+
+    #[Test]
+    public function it_fails_if_marital_status_cannot_be_deleted(): void
+    {
+        $user = User::factory()->create();
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+            'can_be_deleted' => false,
+        ]);
+
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Marital status cannot be deleted');
 
         (new DestroyMaritalStatus(
             user: $user,

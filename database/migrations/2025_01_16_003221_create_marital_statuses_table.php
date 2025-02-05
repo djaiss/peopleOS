@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('marital_statuses', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->text('type');
             $table->text('name');
             $table->integer('position');
+            $table->boolean('can_be_deleted')->default(true);
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });

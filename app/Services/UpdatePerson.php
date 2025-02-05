@@ -8,6 +8,7 @@ use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,6 +20,7 @@ class UpdatePerson
         private readonly User $user,
         private readonly Person $person,
         private readonly ?Gender $gender,
+        private readonly ?MaritalStatus $maritalStatus,
         private readonly string $firstName,
         private readonly ?string $lastName,
         private readonly ?string $middleName,
@@ -53,12 +55,19 @@ class UpdatePerson
             Gender::where('account_id', $this->user->account_id)
                 ->findOrFail($this->gender->id);
         }
+
+        // make sure the marital status exists and belongs to the account
+        if ($this->maritalStatus instanceof MaritalStatus) {
+            MaritalStatus::where('account_id', $this->user->account_id)
+                ->findOrFail($this->maritalStatus->id);
+        }
     }
 
     private function update(): void
     {
         $this->person->update([
             'gender_id' => $this->gender?->id,
+            'marital_status_id' => $this->maritalStatus?->id,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
             'middle_name' => $this->middleName,

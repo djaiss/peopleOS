@@ -7,6 +7,7 @@ namespace Tests\Unit\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
+use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\UpdatePerson;
@@ -29,6 +30,9 @@ class UpdatePersonTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
         ]);
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Ross',
@@ -39,6 +43,7 @@ class UpdatePersonTest extends TestCase
             user: $user,
             person: $person,
             gender: $gender,
+            maritalStatus: $maritalStatus,
             firstName: 'Monica',
             lastName: 'Geller',
             middleName: 'E',
@@ -54,6 +59,7 @@ class UpdatePersonTest extends TestCase
             'id' => $person->id,
             'account_id' => $user->account_id,
             'gender_id' => $gender->id,
+            'marital_status_id' => $maritalStatus->id,
             'can_be_deleted' => false,
             'is_listed' => false,
         ]);
@@ -90,6 +96,7 @@ class UpdatePersonTest extends TestCase
             user: $user,
             person: $person,
             gender: null,
+            maritalStatus: null,
             firstName: 'Monica',
             lastName: 'Geller',
             middleName: null,
@@ -110,6 +117,9 @@ class UpdatePersonTest extends TestCase
             'account_id' => $user->account_id,
         ]);
         $gender = Gender::factory()->create();
+        $maritalStatus = MaritalStatus::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
 
         $this->expectException(ModelNotFoundException::class);
 
@@ -117,6 +127,38 @@ class UpdatePersonTest extends TestCase
             user: $user,
             person: $person,
             gender: $gender,
+            maritalStatus: $maritalStatus,
+            firstName: 'Monica',
+            lastName: 'Geller',
+            middleName: null,
+            nickname: null,
+            maidenName: null,
+            prefix: null,
+            suffix: null,
+            canBeDeleted: false,
+            isListed: false,
+        ))->execute();
+    }
+
+    #[Test]
+    public function it_fails_if_marital_status_doesnt_belong_to_account(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $gender = Gender::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $maritalStatus = MaritalStatus::factory()->create();
+
+        $this->expectException(ModelNotFoundException::class);
+
+        (new UpdatePerson(
+            user: $user,
+            person: $person,
+            gender: $gender,
+            maritalStatus: $maritalStatus,
             firstName: 'Monica',
             lastName: 'Geller',
             middleName: null,

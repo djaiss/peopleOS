@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\MaritalStatusType;
 use App\Models\Account;
 use App\Models\Gender;
 use App\Models\MaritalStatus;
@@ -30,8 +31,10 @@ class MaritalStatusFactory extends Factory
     {
         return [
             'account_id' => Account::factory(),
-            'name' => fake()->randomElement(['Married', 'Divorced', 'Single']),
-            'position' => fake()->numberBetween(1, 100),
+            'name' => $this->faker->word(),
+            'position' => $this->faker->numberBetween(1, 100),
+            'can_be_deleted' => true,
+            'type' => MaritalStatusType::COUPLE->value,
         ];
     }
 }

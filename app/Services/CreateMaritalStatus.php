@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\MaritalStatusType;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MaritalStatus;
@@ -25,6 +26,7 @@ class CreateMaritalStatus
             'account_id' => $this->user->account_id,
             'name' => $this->name,
             'position' => $position,
+            'type' => MaritalStatusType::COUPLE->value,
         ]);
 
         $this->updateUserLastActivityDate();
