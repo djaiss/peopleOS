@@ -1,3 +1,16 @@
+## What is this?
+
+PeopleOS is the spiritual successor of Monica, the personal CRM.
+
+How is PeopleOS different?
+
+- it's designed to be much simpler, more focused.
+- data is fully encrypted at rest. This comes with severe drawbacks, but at least data is secure.
+- it's not using Javascript frameworks for the frontend. We use JS to enhance the user experience, but the core is still server-side rendered.
+- the code is simple, and predictable.
+- it's designed to be self-hosted.
+- it's designed to be API-driven.
+
 ## Installation
 
 peopleos is a regular Laravel application; it's build on top of Laravel and uses regular Blade / Tailwind CSS for the frontend, sprinkled with Alpine.js and Alpine AJAX for some interactivity. We stick to the Laravel conventions as much as possible.
