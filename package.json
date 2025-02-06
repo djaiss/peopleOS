@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@alpinejs/mask": "^3.14.8",
-    "@imacrayon/alpine-ajax": "https://github.com/imacrayon/alpine-ajax.git#new-statuses",
+    "@imacrayon/alpine-ajax": "github:imacrayon/alpine-ajax#new-statuses",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.0.3",
     "@tailwindcss/typography": "^0.5.16",
