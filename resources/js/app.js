@@ -1,7 +1,7 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 import mask from '@alpinejs/mask';
-import ajax from '@imacrayon/alpine-ajax';
+import ajax from '@imacrayon/alpine-ajax/src/index.js';
 import intersect from '@alpinejs/intersect';
 
 window.Alpine = Alpine;
