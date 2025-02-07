@@ -8,7 +8,6 @@ use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -20,7 +19,8 @@ class CreatePerson
     public function __construct(
         public User $user,
         public ?Gender $gender,
-        public ?MaritalStatus $maritalStatus,
+        public string $maritalStatus,
+        public string $kidsStatus,
         public string $firstName,
         public ?string $lastName,
         public ?string $middleName,
@@ -51,11 +51,6 @@ class CreatePerson
             Gender::where('account_id', $this->user->account_id)
                 ->findOrFail($this->gender->id);
         }
-
-        if ($this->maritalStatus instanceof MaritalStatus) {
-            MaritalStatus::where('account_id', $this->user->account_id)
-                ->findOrFail($this->maritalStatus->id);
-        }
     }
 
     private function createPerson(): void
@@ -63,7 +58,8 @@ class CreatePerson
         $this->person = Person::create([
             'account_id' => $this->user->account_id,
             'gender_id' => $this->gender?->id,
-            'marital_status_id' => $this->maritalStatus?->id,
+            'marital_status' => $this->maritalStatus,
+            'kids_status' => $this->kidsStatus,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName ?? null,
             'middle_name' => $this->middleName ?? null,

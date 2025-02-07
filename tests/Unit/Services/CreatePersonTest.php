@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
+use App\Enums\KidsStatusType;
+use App\Enums\MaritalStatusType;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\CreatePerson;
@@ -28,10 +29,7 @@ class CreatePersonTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-        $this->executeService($user, $gender, $maritalStatus);
+        $this->executeService($user, $gender);
     }
 
     #[Test]
@@ -41,33 +39,18 @@ class CreatePersonTest extends TestCase
 
         $user = User::factory()->create();
         $gender = Gender::factory()->create();
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-        $this->executeService($user, $gender, $maritalStatus);
+        $this->executeService($user, $gender);
     }
 
-    #[Test]
-    public function it_fails_if_marital_status_doesnt_belong_to_account(): void
-    {
-        $this->expectException(ModelNotFoundException::class);
-
-        $user = User::factory()->create();
-        $gender = Gender::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-        $maritalStatus = MaritalStatus::factory()->create();
-        $this->executeService($user, $gender, $maritalStatus);
-    }
-
-    private function executeService(User $user, Gender $gender, MaritalStatus $maritalStatus): void
+    private function executeService(User $user, Gender $gender): void
     {
         Queue::fake();
 
         $person = (new CreatePerson(
             user: $user,
             gender: $gender,
-            maritalStatus: $maritalStatus,
+            maritalStatus: MaritalStatusType::UNKNOWN->value,
+            kidsStatus: KidsStatusType::UNKNOWN->value,
             firstName: 'Ross',
             lastName: 'Geller',
             middleName: '',
@@ -83,7 +66,6 @@ class CreatePersonTest extends TestCase
             'id' => $person->id,
             'account_id' => $user->account_id,
             'gender_id' => $gender->id,
-            'marital_status_id' => $maritalStatus->id,
             'can_be_deleted' => true,
             'is_listed' => true,
         ]);
@@ -91,6 +73,8 @@ class CreatePersonTest extends TestCase
         $this->assertEquals('Ross', $person->first_name);
         $this->assertEquals('Geller', $person->last_name);
         $this->assertEquals($person->id.'-ross-geller', $person->slug);
+        $this->assertEquals(MaritalStatusType::UNKNOWN->value, $person->marital_status);
+        $this->assertEquals(KidsStatusType::UNKNOWN->value, $person->kids_status);
 
         $this->assertInstanceOf(
             Person::class,

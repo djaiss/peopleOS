@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api\Persons;
 
+use App\Enums\KidsStatusType;
+use App\Enums\MaritalStatusType;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -48,9 +49,6 @@ class PersonControllerTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
 
         Sanctum::actingAs($user);
 
@@ -59,7 +57,8 @@ class PersonControllerTest extends TestCase
             'last_name' => 'Bing',
             'nickname' => 'Chan Chan Man',
             'gender_id' => $gender->id,
-            'marital_status_id' => $maritalStatus->id,
+            'marital_status' => MaritalStatusType::UNKNOWN->value,
+            'kids_status' => KidsStatusType::UNKNOWN->value,
             'middle_name' => 'Muriel',
             'maiden_name' => null,
             'prefix' => 'Mr',
@@ -84,9 +83,6 @@ class PersonControllerTest extends TestCase
         $gender = Gender::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $maritalStatus = MaritalStatus::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Rachel',
@@ -106,7 +102,8 @@ class PersonControllerTest extends TestCase
             'suffix' => null,
             'can_be_deleted' => true,
             'is_listed' => true,
-            'marital_status_id' => $maritalStatus->id,
+            'marital_status' => MaritalStatusType::UNKNOWN->value,
+            'kids_status' => KidsStatusType::UNKNOWN->value,
         ]);
 
         $response->assertStatus(200);

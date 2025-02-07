@@ -7,7 +7,6 @@ use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
-use App\Http\Controllers\Administration\AdministrationMaritalStatusController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
@@ -98,13 +97,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::get('administration/personalization/genders/{gender}/edit', [AdministrationGenderController::class, 'edit'])->name('administration.personalization.genders.edit');
     Route::put('administration/personalization/genders/{gender}', [AdministrationGenderController::class, 'update'])->name('administration.personalization.genders.update');
     Route::delete('administration/personalization/genders/{gender}', [AdministrationGenderController::class, 'destroy'])->name('administration.personalization.genders.destroy');
-
-    // marital statuses
-    Route::get('administration/personalization/marital-statuses/new', [AdministrationMaritalStatusController::class, 'new'])->name('administration.personalization.marital-statuses.new');
-    Route::post('administration/personalization/marital-statuses', [AdministrationMaritalStatusController::class, 'store'])->name('administration.personalization.marital-statuses.store');
-    Route::get('administration/personalization/marital-statuses/{maritalStatus}/edit', [AdministrationMaritalStatusController::class, 'edit'])->name('administration.personalization.marital-statuses.edit');
-    Route::put('administration/personalization/marital-statuses/{maritalStatus}', [AdministrationMaritalStatusController::class, 'update'])->name('administration.personalization.marital-statuses.update');
-    Route::delete('administration/personalization/marital-statuses/{maritalStatus}', [AdministrationMaritalStatusController::class, 'destroy'])->name('administration.personalization.marital-statuses.destroy');
 
     // account
     Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');

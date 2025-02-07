@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\KidsStatusType;
+use App\Enums\MaritalStatusType;
 use App\Models\Account;
 use App\Models\Gender;
 use App\Models\Person;
@@ -33,6 +35,8 @@ class PersonFactory extends Factory
             'account_id' => Account::factory(),
             'slug' => fake()->slug(),
             'gender_id' => Gender::factory(),
+            'marital_status' => MaritalStatusType::UNKNOWN->value,
+            'kids_status' => KidsStatusType::UNKNOWN->value,
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'can_be_deleted' => true,
