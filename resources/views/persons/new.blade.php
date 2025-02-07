@@ -28,6 +28,7 @@
           showRelationshipStatus: false,
           showKids: false,
           selectedRelationship: 'Unknown',
+          selectedKidsStatus: 'Unknown',
         }">
           <!-- prefix -->
           <div x-cloak x-show="showPrefix" x-transition class="relative mb-5">
@@ -54,57 +55,84 @@
           </div>
 
           <!-- couple -->
-          <div class="text-sm font-medium dark:text-gray-300 text-gray-700 mb-2 flex items-center justify-between" :class="{ 'mb-5': !showRelationshipStatus }">
-            <div>{{ __('Relationship status') }}</div>
+          <div class="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showRelationshipStatus }">
+            <div class="flex items-center gap-x-2">
+              <x-lucide-heart class="h-4 w-4 text-rose-500" />
+              <span>{{ __('Relationship status') }}</span>
+            </div>
 
-            <div class="flex items-center gap-x-1 cursor-pointer" x-on:click="showRelationshipStatus = !showRelationshipStatus">
-              <p class="text-xs text-gray-500" x-text="selectedRelationship">
-              </p>
+            <div class="flex cursor-pointer items-center gap-x-1" x-on:click="showRelationshipStatus = !showRelationshipStatus">
+              <p class="text-xs text-gray-500" x-text="selectedRelationship"></p>
               <x-lucide-chevron-down x-show="!showRelationshipStatus" class="size-4 transition" />
               <x-lucide-chevron-up x-show="showRelationshipStatus" class="size-4 transition" />
             </div>
           </div>
 
-          <div x-cloak x-show="showRelationshipStatus" x-transition class="rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-blue-900 mb-5">
-            <div class="flex items-center gap-x-3 p-3 border-b border-gray-200 dark:border-gray-700">
-              <input id="push-everything" name="relationship" type="radio" checked="checked" x-on:click="selectedRelationship = '{{ __('Unknown') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-              <label for="push-everything" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
+          <x-input-error class="mt-2" :messages="$errors->get('marital_status')" />
+
+          <div x-cloak x-show="showRelationshipStatus" x-transition class="mb-5 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-blue-900">
+            <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
+              <input
+                id="unknown"
+                value="unknown"
+                name="marital_status"
+                type="radio"
+                checked="checked"
+                x-on:click="selectedRelationship = '{{ __('Unknown') }}'"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="unknown" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
             </div>
-            <div class="flex items-center gap-x-3 p-3 border-b border-gray-200 dark:border-gray-700">
-              <input id="push-email" name="relationship" type="radio" x-on:click="selectedRelationship = '{{ __('Single') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-              <label for="push-email" class="block text-sm/6 font-medium text-gray-900">{{ __('Single') }}</label>
+            <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
+              <input id="single" value="single" name="marital_status" type="radio" x-on:click="selectedRelationship = '{{ __('Single') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="single" class="block text-sm/6 font-medium text-gray-900">{{ __('Single') }}</label>
             </div>
             <div class="flex items-center gap-x-3 p-3">
-              <input id="push-nothing" name="relationship" type="radio" x-on:click="selectedRelationship = '{{ __('In a relationship') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-              <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">{{ __('In a relationship') }}</label>
+              <input
+                id="in-relationship"
+                value="in-relationship"
+                name="marital_status"
+                type="radio"
+                x-on:click="selectedRelationship = '{{ __('In a relationship') }}'"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="in-relationship" class="block text-sm/6 font-medium text-gray-900">{{ __('In a relationship') }}</label>
             </div>
           </div>
 
           <!-- kids -->
-          <div class="text-sm font-medium dark:text-gray-300 text-gray-700 mb-2 flex items-center justify-between"  :class="{ 'mb-5': !showRelationshipStatus }">
-            <div>{{ __('Kids status') }}</div>
+          <div class="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showRelationshipStatus }">
+            <div class="flex items-center gap-x-2">
+              <x-lucide-baby class="h-4 w-4 text-blue-500" />
+              <span>{{ __('Kids status') }}</span>
+            </div>
 
-            <div class="flex items-center gap-x-1 cursor-pointer" x-on:click="showKids = !showKids">
-              <p class="text-xs text-gray-500">
-                {{ __('Unknown') }}
-                </p>
-                <x-lucide-chevron-down x-show="!showKids" class="size-4 transition" />
-                <x-lucide-chevron-up x-show="showKids" class="size-4 transition" />
+            <div class="flex cursor-pointer items-center gap-x-1" x-on:click="showKids = !showKids">
+              <p class="text-xs text-gray-500" x-text="selectedKidsStatus"></p>
+              <x-lucide-chevron-down x-show="!showKids" class="size-4 transition" />
+              <x-lucide-chevron-up x-show="showKids" class="size-4 transition" />
             </div>
           </div>
 
-          <div x-cloak x-show="showKids" x-transition class="rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-blue-900 mb-5">
-            <div class="flex items-center gap-x-3 p-3 border-b border-gray-200 dark:border-gray-700">
-              <input id="push-everything" name="kids" type="radio" checked="checked" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-              <label for="push-everything" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
+          <x-input-error class="mt-2" :messages="$errors->get('kids_status')" />
+
+          <div x-cloak x-show="showKids" x-transition class="mb-5 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-blue-900">
+            <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
+              <input
+                id="unknown-kids"
+                value="unknown"
+                name="kids_status"
+                type="radio"
+                checked="checked"
+                x-on:click="selectedKidsStatus = '{{ __('Unknown') }}'"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="unknown-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
             </div>
-            <div class="flex items-center gap-x-3 p-3 border-b border-gray-200 dark:border-gray-700">
-              <input id="push-email" name="kids" type="radio" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-              <label for="push-email" class="block text-sm/6 font-medium text-gray-900">{{ __('Do not have kids') }}</label>
+            <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
+              <input id="no-kids" value="no-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Do not have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="no-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Do not have kids') }}</label>
             </div>
             <div class="flex items-center gap-x-3 p-3">
-              <input id="push-nothing" name="kids" type="radio" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-              <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">{{ __('Have kids') }}</label>
+              <input id="have-kids" value="have-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="have-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Have kids') }}</label>
             </div>
           </div>
 

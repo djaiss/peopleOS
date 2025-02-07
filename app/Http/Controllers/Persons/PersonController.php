@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Persons;
 use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
-use App\Models\MaritalStatus;
 use App\Models\Person;
 use App\Services\CreatePerson;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +19,6 @@ class PersonController extends Controller
     public function index(): View
     {
         $personsQuery = Person::where('account_id', Auth::user()->account_id)
-            ->with('maritalStatus')
             ->where('is_listed', true)
             ->orderBy('first_name')
             ->get();
@@ -55,17 +53,8 @@ class PersonController extends Controller
                 'name' => $gender->name,
             ]);
 
-        $maritalStatuses = MaritalStatus::where('account_id', Auth::user()->account_id)
-            ->orderBy('position')
-            ->get()
-            ->map(fn (MaritalStatus $maritalStatus): array => [
-                'id' => $maritalStatus->id,
-                'name' => $maritalStatus->name,
-            ]);
-
         return view('persons.new', [
             'genders' => $genders,
-            'maritalStatuses' => $maritalStatuses,
         ]);
     }
 
@@ -73,7 +62,8 @@ class PersonController extends Controller
     {
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',
-            'marital_status_id' => 'nullable|exists:marital_statuses,id',
+            'marital_status' => ['required', 'string', 'in:unknown,single,in-relationship'],
+            'kids_status' => ['required', 'string', 'in:unknown,no-kids,has-kids'],
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
@@ -87,7 +77,8 @@ class PersonController extends Controller
         $person = (new CreatePerson(
             user: Auth::user(),
             gender: isset($validated['gender_id']) ? Gender::find($validated['gender_id']) : null,
-            maritalStatus: isset($validated['marital_status_id']) ? MaritalStatus::find($validated['marital_status_id']) : null,
+            maritalStatus: $validated['marital_status'],
+            kidsStatus: $validated['kids_status'],
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
             nickname: $validated['nickname'],

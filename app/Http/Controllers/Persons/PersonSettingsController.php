@@ -67,7 +67,8 @@ class PersonSettingsController extends Controller
             prefix: $validated['prefix'],
             maidenName: $validated['maiden_name'],
             gender: $gender,
-            maritalStatus: $person->maritalStatus,
+            maritalStatus: $person->marital_status,
+            kidsStatus: $person->kids_status,
             canBeDeleted: $person->can_be_deleted,
             isListed: $person->is_listed,
         ))->execute();

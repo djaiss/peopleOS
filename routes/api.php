@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
 use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Api\Administration\GenderController;
-use App\Http\Controllers\Api\Administration\MaritalStatusController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
@@ -56,10 +55,4 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::post('administration/genders', [GenderController::class, 'create'])->name('administration.genders.create');
     Route::put('administration/genders/{gender}', [GenderController::class, 'update'])->name('administration.genders.update');
     Route::delete('administration/genders/{gender}', [GenderController::class, 'destroy'])->name('administration.genders.destroy');
-
-    // marital statuses
-    Route::get('administration/marital-statuses', [MaritalStatusController::class, 'index'])->name('administration.marital-statuses.index');
-    Route::post('administration/marital-statuses', [MaritalStatusController::class, 'create'])->name('administration.marital-statuses.create');
-    Route::put('administration/marital-statuses/{maritalStatus}', [MaritalStatusController::class, 'update'])->name('administration.marital-statuses.update');
-    Route::delete('administration/marital-statuses/{maritalStatus}', [MaritalStatusController::class, 'destroy'])->name('administration.marital-statuses.destroy');
 });

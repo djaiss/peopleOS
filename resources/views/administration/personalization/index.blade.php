@@ -1,7 +1,6 @@
 <?php
 /*
  * @var array $genders
- * @var array $maritalStatuses
  */
 ?>
 
@@ -18,8 +17,6 @@
         </h1>
 
         @include('administration.personalization.partials.genders', ['genders' => $genders])
-
-        @include('administration.personalization.partials.marital-statuses', ['maritalStatuses' => $maritalStatuses])
       </div>
     </div>
   </div>

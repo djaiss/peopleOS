@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('gender_id')->nullable();
-            $table->unsignedBigInteger('marital_status_id')->nullable();
+            $table->text('marital_status')->nullable();
+            $table->text('kids_status')->nullable();
             $table->text('slug')->nullable();
             $table->text('first_name')->nullable();
             $table->text('middle_name')->nullable();
@@ -31,7 +32,6 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
-            $table->foreign('marital_status_id')->references('id')->on('marital_statuses')->onDelete('set null');
         });
 
         Schema::table('users', function (Blueprint $table): void {
