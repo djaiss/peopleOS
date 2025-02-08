@@ -34,6 +34,10 @@ class Person extends Model
         'maiden_name',
         'suffix',
         'prefix',
+        'how_we_met_shown',
+        'how_we_met',
+        'how_we_met_location',
+        'how_we_met_first_impressions',
         'can_be_deleted',
         'is_listed',
     ];
@@ -56,6 +60,10 @@ class Person extends Model
             'maiden_name' => 'encrypted',
             'suffix' => 'encrypted',
             'prefix' => 'encrypted',
+            'how_we_met_shown' => 'boolean',
+            'how_we_met' => 'encrypted',
+            'how_we_met_location' => 'encrypted',
+            'how_we_met_first_impressions' => 'encrypted',
             'can_be_deleted' => 'boolean',
             'is_listed' => 'boolean',
         ];

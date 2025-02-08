@@ -150,7 +150,7 @@ class PersonController extends Controller
      *  "prefix": "Mr.",
      *  "suffix": "Jr.",
      *  "can_be_deleted": 1,
-     *  "is_listed": 1
+     *  "is_listed": 1,
      *  "created_at": 1514764800,
      *  "updated_at": 1514764800,
      * }
@@ -269,7 +269,7 @@ class PersonController extends Controller
      * @responseField prefix The prefix of the person.
      * @responseField suffix The suffix of the person.
      * @responseField can_be_deleted Whether the person can be deleted.
-     * @responseField can_be_deleted Whether the person is listed in the contact list.
+     * @responseField is_listed Whether the person is listed in the contact list.
      * @responseField created_at The date the person was created. Represented as a Unix timestamp.
      * @responseField updated_at The date the person was last updated. Represented as a Unix timestamp.
      */

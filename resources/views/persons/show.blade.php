@@ -11,9 +11,13 @@
     @include('persons.partials.persons-list', ['persons' => $persons, 'person' => $person])
 
     <!-- Section B: Contact Overview -->
-    @include('persons.partials.profile', ['person' => $person])
+    @include('persons.partials.profile')
 
     <!-- Section C: Detail View -->
-    <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">contact</div>
+    <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
+      <div class="mx-auto max-w-3xl p-6">
+        @include('persons.overview.index', ['person' => $person])
+      </div>
+    </div>
   </div>
 </x-app-layout>
