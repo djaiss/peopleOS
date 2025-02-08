@@ -27,6 +27,7 @@ class PersonResource extends JsonResource
             'maiden_name' => $this->maiden_name,
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,
+            'how_we_met' => $this->how_we_met,
             'can_be_deleted' => $this->can_be_deleted,
             'is_listed' => $this->is_listed,
             'created_at' => $this->created_at->timestamp,

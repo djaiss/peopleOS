@@ -10,7 +10,7 @@
     "@alpinejs/mask": "^3.14.8",
     "@imacrayon/alpine-ajax": "^0.11.0",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.0.3",
+    "@tailwindcss/postcss": "^4.0.4",
     "@tailwindcss/typography": "^0.5.16",
     "alpinejs": "^3.14.8",
     "axios": "^1.7.9",
@@ -20,7 +20,7 @@
     "prettier": "^3.4.2",
     "prettier-plugin-blade": "^2.1.19",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.3",
+    "tailwindcss": "^4.0.4",
     "vite": "^5.4.14"
   },
   "dependencies": {

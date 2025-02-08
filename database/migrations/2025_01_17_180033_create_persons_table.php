@@ -27,6 +27,10 @@ return new class extends Migration
             $table->text('maiden_name')->nullable();
             $table->text('suffix')->nullable();
             $table->text('prefix')->nullable();
+            $table->boolean('how_we_met_shown')->default(true);
+            $table->text('how_we_met')->nullable();
+            $table->text('how_we_met_location')->nullable();
+            $table->text('how_we_met_first_impressions')->nullable();
             $table->boolean('can_be_deleted')->default(true);
             $table->boolean('is_listed')->default(true);
             $table->timestamps();

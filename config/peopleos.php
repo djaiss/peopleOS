@@ -41,9 +41,6 @@ return [
         'gender_creation' => 'Gender creation',
         'gender_update' => 'Gender update',
         'gender_deletion' => 'Gender deletion',
-        'marital_status_creation' => 'Marital status creation',
-        'marital_status_update' => 'Marital status update',
-        'marital_status_deletion' => 'Marital status deletion',
         'person_creation' => 'Person creation',
         'person_update' => 'Person update',
         'person_deletion' => 'Person deletion',
@@ -57,6 +54,7 @@ return [
         'love_relationship_creation' => 'Love relationship creation',
         'love_relationship_update' => 'Love relationship update',
         'love_relationship_deletion' => 'Love relationship deletion',
+        'how_i_met_information_update' => 'How I Met Information update',
     ],
 
 ];
