@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full" x-data="{ mobileMenuOpen: false }">
   <!-- main nav -->
   <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-gray-200 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
     <!-- Logo -->
@@ -11,8 +11,17 @@
       </a>
     </div>
 
-    <!-- Main navigation - centered -->
-    <div class="flex flex-1 justify-center">
+    <!-- Mobile menu button -->
+    <div class="flex lg:hidden">
+      <button type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center rounded-md p-2 text-gray-700">
+        <span class="sr-only">Open main menu</span>
+        <x-lucide-menu class="h-6 w-6" x-show="!mobileMenuOpen" />
+        <x-lucide-x class="h-6 w-6" x-show="mobileMenuOpen" />
+      </button>
+    </div>
+
+    <!-- Main navigation - centered (hidden on mobile) -->
+    <div class="hidden flex-1 justify-center lg:flex">
       <div class="flex items-center gap-x-2">
         <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2 border border-b-3 px-2 py-1 rounded-sm hover:bg-white border-transparent hover:border-gray-400 transition-colors duration-150 group">
           <x-lucide-message-circle-question class="h-4 w-4 text-blue-600 group-hover:text-blue-700" />
@@ -59,6 +68,7 @@
     </div>
 
     <!-- Right side - user menu -->
+    <div class="hidden flex-1 justify-center lg:flex">
     @if (Auth::check())
       <div class="relative ms-3 flex items-center gap-x-3">
         <x-lucide-bell class="h-4 w-4 text-gray-500" />
@@ -106,5 +116,53 @@
         </a>
       </div>
     @endif
+    </div>
   </nav>
+
+  <!-- Mobile menu (off-canvas) -->
+  <div x-show="mobileMenuOpen" class="lg:hidden" style="display: none;">
+    <div class="fixed inset-0 z-50"></div>
+    <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+      <!-- Add this button for closing -->
+      <div class="flex justify-end mb-4">
+        <button @click="mobileMenuOpen = false" class="rounded-md p-2 text-gray-500 hover:bg-gray-100">
+          <x-lucide-x class="h-6 w-6" />
+          <span class="sr-only">Close menu</span>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-y-4">
+        @if (Auth::check())
+        <a href="{{ route('login') }}" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-user class="h-5 w-5 text-blue-600" />
+          {{ __('Login to your account') }}
+        </a>
+        @endif
+        <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-message-circle-question class="h-5 w-5 text-blue-600" />
+          {{ __('Why PeopleOS') }}
+        </a>
+        <a href="{{ route('persons.index') }}" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-layout-grid class="h-5 w-5 text-purple-600" />
+          {{ __('Products') }}
+        </a>
+        <a href="" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-credit-card class="h-5 w-5 text-green-600" />
+          {{ __('Pricing') }}
+        </a>
+        <a href="" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-book-open class="h-5 w-5 text-amber-600" />
+          {{ __('Docs') }}
+        </a>
+        <a href="" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-users-2 class="h-5 w-5 text-rose-600" />
+          {{ __('Community') }}
+        </a>
+        <a href="" class="flex items-center gap-x-2 py-2 text-base font-semibold leading-7 text-gray-900">
+          <x-lucide-building class="h-5 w-5 text-indigo-600" />
+          {{ __('Company') }}
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
