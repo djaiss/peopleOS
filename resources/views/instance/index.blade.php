@@ -11,7 +11,7 @@
   <nav class="border-b border-gray-200 bg-white">
     <div class="mx-auto flex max-w-7xl items-center gap-x-3 px-4 py-3 sm:px-6 lg:px-8">
       <div class="flex items-center gap-x-3 text-sm text-gray-500">
-        <a wire:navigate href="{{ route('dashboard.index') }}" class="hover:text-gray-700">{{ __('Dashboard') }}</a>
+        <a href="{{ route('dashboard.index') }}" class="hover:text-gray-700">{{ __('Dashboard') }}</a>
         <x-lucide-chevron-right class="h-4 w-4" />
         <span class="text-gray-700">{{ __('Instance Administration') }}</span>
       </div>

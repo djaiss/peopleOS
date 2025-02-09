@@ -3,8 +3,8 @@
   <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-gray-200 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
     <div class="flex items-center gap-x-10">
       <!-- Logo and brand -->
-      <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2">
-        <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-600 p-1">
+      <a href="{{ route('dashboard.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
+        <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-600 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
           <x-lucide-users class="h-5 w-5 text-white" />
         </div>
         <span class="text-lg font-semibold text-gray-900 dark:text-white">{{ config('app.name') }}</span>
@@ -12,21 +12,21 @@
 
       <!-- Main navigation -->
       <div class="flex items-center gap-x-6">
-        <a data-instant href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2">
+        <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2">
           <x-lucide-home class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
             {{ __('Dashboard') }}
           </p>
         </a>
 
-        <a data-instant href="{{ route('persons.index') }}" class="flex items-center gap-x-2">
+        <a href="{{ route('persons.index') }}" class="flex items-center gap-x-2">
           <x-lucide-users-round class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
             {{ __('People') }}
           </p>
         </a>
 
-        <a wire:navigate href="" class="flex items-center gap-x-2">
+        <a href="" class="flex items-center gap-x-2">
           <x-lucide-book-open-text class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
             {{ __('Journal') }}
@@ -39,7 +39,7 @@
             <div class="rounded-md border border-yellow-300 bg-yellow-50 px-3 py-1">
               <p class="text-sm text-yellow-800">{{ round(now()->diffInDays(Auth::user()->account->trial_ends_at)) }} days left in your trial</p>
             </div>
-            <a wire:navigate href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
+            <a href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
               {{ __('Upgrade') }}
             </a>
           </div>
