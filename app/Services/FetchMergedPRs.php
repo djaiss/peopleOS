@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Str;
 
 class FetchMergedPRs
 {
@@ -49,7 +50,11 @@ class FetchMergedPRs
             return [
                 'title' => $pr['title'],
                 'number' => $pr['number'],
-                'body' => $pr['body'],
+                'body' => str_replace(
+                    ["'", "\n", "\r", "é", "è", "à", "ù"],
+                    ["\\'", "\\n", "", "e", "e", "a", "u"],
+                    Str::markdown($pr['body'] ?? 'No description provided.')
+                ),
                 'merged_at' => $pr['merged_at'] ? now()->parse($pr['merged_at'])->diffForHumans() : null,
             ];
         }, $this->pullRequests);

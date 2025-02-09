@@ -127,19 +127,34 @@
           {{ __('We deliver features so fast that Github can\'t keep up.') }}
         </p>
       </div>
-      <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2" x-data="{
+        selectedPR: {
+          number: 32,
+          title: 'feat: add a person',
+          merged_at: 'Merged 3 days ago',
+          body: 'Add a person to the database.'
+        }
+      }">
         <!-- list of pr -->
         <ul>
           @foreach ($pullRequests as $pr)
-          <li class="flex justify-between items-center gap-x-2 border border-transparent hover:border-gray-200 hover:bg-white rounded-lg p-2">
+          <li
+            @click="selectedPR = {
+              number: '{{ $pr['number'] }}',
+              title: '{{ $pr['title'] }}',
+              merged_at: '{{ $pr['merged_at'] }}',
+              body: '{{ $pr['body'] ?? 'No description provided.' }}'
+            }"
+            class="flex justify-between items-center gap-x-2 border border-transparent hover:border-gray-200 hover:bg-white rounded-lg p-2 cursor-pointer"
+          >
             <div class="flex items-center gap-x-2">
               <x-lucide-check-circle class="w-4 h-4 text-green-600" />
               <span>{{ $pr['title'] }}</span>
-              <span class="font-mono text-sm rounded-lg bg-green-100 px-2 py-1">#{{ $pr['number'] }}</span>
+              <span class="font-mono text-xs rounded-lg bg-green-100 px-2 py-1">#{{ $pr['number'] }}</span>
             </div>
 
             <div class="flex items-center gap-x-2">
-              <span class="font-mono text-sm">{{ $pr['merged_at'] }}</span>
+              <span class="font-mono text-xs">{{ $pr['merged_at'] }}</span>
               <x-lucide-chevron-right class="w-4 h-4 text-gray-600" />
             </div>
           </li>
@@ -147,16 +162,14 @@
         </ul>
 
         <!-- details of the pr -->
-        <div class="col-span-2 bg-white rounded-lg border border-gray-200">
+        <div class="col-span-1 bg-white rounded-lg border border-gray-200">
           <div class="p-4 border-b border-gray-200 flex justify-between items-center">
-            <div class="text-xl">feat: add a person</div>
+            <div class="text-xl" x-text="selectedPR.title"></div>
             <div>
-              <span class="font-mono text-xs">Merged 3 days ago</span>
+              <span class="font-mono text-xs" x-text="selectedPR.merged_at"></span>
             </div>
           </div>
-          <div class="p-4 border-b border-gray-200">
-            Add a person to the database.
-          </div>
+          <div class="p-4 border-b border-gray-200 prose" x-html="selectedPR.body"></div>
           <div class="px-4 py-2 text-center">
             <a href="" class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 px-3 py-2 transition-colors duration-150 border-gray-400 hover:bg-gray-50">
               <x-lucide-github class="w-4 h-4 text-gray-600" />
