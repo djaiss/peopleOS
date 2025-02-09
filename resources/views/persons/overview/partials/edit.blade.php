@@ -1,16 +1,51 @@
-<form x-target="edit-how-we-met-form" id="edit-how-we-met-form" action="{{ route('persons.how-we-met.update', $person->slug) }}" method="POST" class="space-y-4 rounded-lg border border-gray-200 bg-white p-4">
+<form x-target="edit-how-we-met-form" id="edit-how-we-met-form" action="{{ route('persons.how-we-met.update', $person->slug) }}" method="POST" x-data="{ dateType: 'unknown' }" class="space-y-4 rounded-lg border border-gray-200 bg-white p-4">
   @csrf
   @method('PUT')
 
-  <h2 class="text-lg font-medium text-gray-900">
-    {{ __('How did you meet :name?', ['name' => $person->first_name]) }}
-  </h2>
-
   <!-- Date -->
-  <div>
-    <x-input-label for="met_date" :value="__('When did you meet?')" />
-    <x-text-input x-mask="99/99/9999" placeholder="MM/DD/YYYY" class="mt-1 block w-full" id="met_date" name="met_date" type="text" />
-    <x-input-error :messages="$errors->get('met_date')" class="mt-2" />
+  <div class="flex items-center gap-4">
+    <div class="flex items-center gap-x-3">
+      <input id="unknown" value="unknown" name="date" type="radio" x-model="dateType" checked="checked" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+      <label for="unknown" class="block text-sm/6 font-medium text-gray-900">{{ __('I don\'t know when I met :name', ['name' => $person->first_name]) }}</label>
+    </div>
+
+    <div class="flex items-center gap-x-3">
+      <input id="known" value="known" name="date" type="radio" x-model="dateType" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+      <label for="known" class="block text-sm/6 font-medium text-gray-900">{{ __('I know when I met :name', ['name' => $person->first_name]) }}</label>
+    </div>
+  </div>
+
+  <div x-show="dateType === 'known'" x-transition.duration.100ms class="rounded-lg border border-gray-200 bg-gray-50 p-3">
+    <div class="mb-3 grid grid-cols-3 gap-4">
+      <div>
+        <x-input-label for="met_year" optional :value="__('Year')" />
+        <x-text-input x-mask="9999" placeholder="YYYY" class="mt-1 block w-full" id="met_year" name="met_year" type="text" />
+        <x-input-error :messages="$errors->get('met_year')" class="mt-2" />
+      </div>
+      <div>
+        <x-input-label for="met_month" optional :value="__('Month')" />
+        <x-text-input x-mask="99" placeholder="MM" class="mt-1 block w-full" id="met_month" name="met_month" type="text" />
+        <x-input-error :messages="$errors->get('met_month')" class="mt-2" />
+      </div>
+      <div>
+        <x-input-label for="met_day" optional :value="__('Day')" />
+        <x-text-input x-mask="99" placeholder="DD" class="mt-1 block w-full" id="met_day" name="met_day" type="text" />
+        <x-input-error :messages="$errors->get('met_day')" class="mt-2" />
+      </div>
+    </div>
+
+    <div class="flex gap-2">
+      <div class="flex h-6 shrink-0 items-center">
+        <div class="group grid size-4 grid-cols-1">
+          <input checked value="1" id="is_current" name="is_current" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+        </div>
+      </div>
+      <div class="text-sm/6">
+        <label for="is_current" class="font-medium text-gray-900">{{ __('Mark as current job') }}</label>
+        <p id="is_current-description" class="text-gray-500">{{ __('This job will be highlighted in the list.') }}</p>
+        <x-input-error :messages="$errors->get('is_current')" class="mt-2" />
+      </div>
+    </div>
   </div>
 
   <!-- Location -->
