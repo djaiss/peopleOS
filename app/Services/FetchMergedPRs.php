@@ -37,7 +37,7 @@ class FetchMergedPRs
                 'state' => 'closed',
                 'sort' => 'updated',
                 'direction' => 'desc',
-                'per_page' => 5, // Adjust the number of PRs you want to fetch
+                'per_page' => 10, // Adjust the number of PRs you want to fetch
             ],
         ]);
 
@@ -56,6 +56,7 @@ class FetchMergedPRs
                     Str::markdown($pr['body'] ?? 'No description provided.')
                 ),
                 'merged_at' => $pr['merged_at'] ? now()->parse($pr['merged_at'])->diffForHumans() : null,
+                'url' => "https://github.com/djaiss/peopleOS/pull/{$pr['number']}",
             ];
         }, $this->pullRequests);
     }

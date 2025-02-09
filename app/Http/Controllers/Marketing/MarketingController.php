@@ -15,7 +15,9 @@ class MarketingController extends Controller
     {
         $accountNumbers = Account::where('created_at', '>=', now()->subWeek())->count();
 
-        $pullRequests = (new FetchMergedPRs())->execute();
+        $pullRequests = cache()->remember('github_pull_requests', now()->addHours(24), function () {
+            return (new FetchMergedPRs())->execute();
+        });
 
         return view('marketing.index', [
             'accountNumbers' => $accountNumbers,

@@ -68,53 +68,53 @@
     </div>
 
     <!-- Right side - user menu -->
-      @if (Auth::check())
-        <div class="relative ms-3 flex items-center gap-x-3">
-          <x-lucide-bell class="h-4 w-4 text-gray-500" />
+    @if (Auth::check())
+      <div class="relative ms-3 flex items-center gap-x-3">
+        <x-lucide-bell class="h-4 w-4 text-gray-500" />
 
-          <x-dropdown align="right" width="48">
-            <x-slot name="trigger">
-              <button class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
-                <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
-              </button>
-            </x-slot>
+        <x-dropdown align="right" width="48">
+          <x-slot name="trigger">
+            <button class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
+              <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
+            </button>
+          </x-slot>
 
-            <x-slot name="content">
-              <!-- Account Management -->
-              <div class="block px-4 py-2 text-xs text-gray-400">
-                {{ __('Manage Account') }}
-              </div>
+          <x-slot name="content">
+            <!-- Account Management -->
+            <div class="block px-4 py-2 text-xs text-gray-400">
+              {{ __('Manage Account') }}
+            </div>
 
-              <x-dropdown-link href="{{ route('administration.index') }}">
-                {{ __('Administration') }}
+            <x-dropdown-link href="{{ route('administration.index') }}">
+              {{ __('Administration') }}
+            </x-dropdown-link>
+
+            @if (Auth::user()->is_instance_admin)
+              <x-dropdown-link href="{{ route('instance.index') }}">
+                {{ __('Instance administration') }}
               </x-dropdown-link>
+            @endif
 
-              @if (Auth::user()->is_instance_admin)
-                <x-dropdown-link href="{{ route('instance.index') }}">
-                  {{ __('Instance administration') }}
-                </x-dropdown-link>
-              @endif
+            <div class="border-t border-gray-200 dark:border-gray-600"></div>
 
-              <div class="border-t border-gray-200 dark:border-gray-600"></div>
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}" x-data>
+              @csrf
 
-              <!-- Authentication -->
-              <form method="POST" action="{{ route('logout') }}" x-data>
-                @csrf
-
-                <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                  {{ __('Log Out') }}
-                </x-dropdown-link>
-              </form>
-            </x-slot>
-          </x-dropdown>
-        </div>
-      @else
-        <div class="flex items-center gap-x-3">
-          <a href="{{ route('login') }}" class="text-sm text-gray-700">
-            {{ __('Sign in') }}
-          </a>
-        </div>
-      @endif
+              <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                {{ __('Log Out') }}
+              </x-dropdown-link>
+            </form>
+          </x-slot>
+        </x-dropdown>
+      </div>
+    @else
+      <div class="flex items-center gap-x-3">
+        <a href="{{ route('login') }}" class="text-sm text-gray-700">
+          {{ __('Sign in') }}
+        </a>
+      </div>
+    @endif
   </nav>
 
   <!-- Mobile menu (off-canvas) -->
