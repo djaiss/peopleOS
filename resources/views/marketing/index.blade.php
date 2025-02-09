@@ -1,20 +1,37 @@
 <x-marketing-layout>
   <!-- Hero Section -->
-  <div class="relative isolate bg-white">
+  <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Remember what matters about the people you care about</h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600">
-          {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
-        </p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-          <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-            {{ __('Get started for free') }}
-          </a>
-          <a href="#features" class="text-sm leading-6 font-semibold text-gray-900">
-            {{ __('Learn more') }}
-            <span aria-hidden="true">→</span>
-          </a>
+      <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
+        <!-- Left side - Text content -->
+        <div class="max-w-2xl">
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
+          </p>
+          <div class="mt-10 flex items-center gap-x-6">
+            <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+              {{ __('Get started for free') }}
+            </a>
+            <a href="#features" class="text-sm leading-6 font-semibold text-gray-900">
+              {{ __('Learn more') }}
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right side - Image -->
+        <div class="relative">
+          <img
+            src="{{ asset('marketing/homepage.png') }}"
+            alt="PeopleOS Screenshot"
+            class="rounded-xl shadow-xl ring-1 ring-gray-400/10"
+          />
+          <!-- Optional decorative elements -->
+          <div class="absolute -z-10 hidden lg:block">
+            <div class="absolute -top-16 -right-16 bg-blue-50 w-72 h-72 rounded-full mix-blend-multiply blur-2xl opacity-70"></div>
+            <div class="absolute -bottom-16 -left-16 bg-purple-50 w-72 h-72 rounded-full mix-blend-multiply blur-2xl opacity-70"></div>
+          </div>
         </div>
       </div>
     </div>
