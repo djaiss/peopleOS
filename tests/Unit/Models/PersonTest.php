@@ -9,6 +9,7 @@ use App\Models\Gender;
 use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
+use App\Models\SpecialDate;
 use App\Models\WorkHistory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -86,6 +87,17 @@ class PersonTest extends TestCase
             'person_id' => $ross->id,
         ]);
         $this->assertTrue($ross->loveRelationships()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_special_dates(): void
+    {
+        $person = Person::factory()->create();
+        SpecialDate::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->specialDates()->exists());
     }
 
     #[Test]
