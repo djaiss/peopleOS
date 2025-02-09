@@ -7,7 +7,6 @@ namespace Database\Factories;
 use App\Models\Account;
 use App\Models\Person;
 use App\Models\SpecialDate;
-use App\Models\WorkHistory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

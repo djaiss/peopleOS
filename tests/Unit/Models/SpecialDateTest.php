@@ -7,11 +7,10 @@ namespace Tests\Unit\Models;
 use App\Models\Account;
 use App\Models\Person;
 use App\Models\SpecialDate;
-use App\Models\WorkHistory;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
-use Carbon\Carbon;
 
 class SpecialDateTest extends TestCase
 {
