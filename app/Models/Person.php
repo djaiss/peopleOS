@@ -113,6 +113,14 @@ class Person extends Model
     }
 
     /**
+     * Get the special dates associated with the person.
+     */
+    public function specialDates(): HasMany
+    {
+        return $this->hasMany(SpecialDate::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute
