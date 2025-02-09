@@ -11,8 +11,6 @@ class FetchMergedPRs
 {
     private $pullRequests;
 
-    public function __construct() {}
-
     public function execute(): mixed
     {
         $this->fetch();
@@ -46,18 +44,16 @@ class FetchMergedPRs
 
     private function format(): void
     {
-        $this->pullRequests = array_map(function ($pr) {
-            return [
-                'title' => $pr['title'],
-                'number' => $pr['number'],
-                'body' => str_replace(
-                    ["'", "\n", "\r", "é", "è", "à", "ù"],
-                    ["\\'", "\\n", "", "e", "e", "a", "u"],
-                    Str::markdown($pr['body'] ?? 'No description provided.')
-                ),
-                'merged_at' => $pr['merged_at'] ? now()->parse($pr['merged_at'])->diffForHumans() : null,
-                'url' => "https://github.com/djaiss/peopleOS/pull/{$pr['number']}",
-            ];
-        }, $this->pullRequests);
+        $this->pullRequests = array_map(fn ($pr): array => [
+            'title' => $pr['title'],
+            'number' => $pr['number'],
+            'body' => str_replace(
+                ["'", "\n", "\r", 'é', 'è', 'à', 'ù'],
+                ["\\'", '\\n', '', 'e', 'e', 'a', 'u'],
+                Str::markdown($pr['body'] ?? 'No description provided.')
+            ),
+            'merged_at' => $pr['merged_at'] ? now()->parse($pr['merged_at'])->diffForHumans() : null,
+            'url' => "https://github.com/djaiss/peopleOS/pull/{$pr['number']}",
+        ], $this->pullRequests);
     }
 }

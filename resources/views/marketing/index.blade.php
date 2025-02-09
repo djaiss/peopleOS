@@ -206,36 +206,69 @@
       <h3 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         {{ __('Privacy and transparency is at the core of what we do.') }}
       </h3>
-      <p class="text-xl mb-10">{{ __('You are not our product. You are the reason we exist.') }}</p>
+      <p class="mb-10 text-xl">{{ __('You are not our product. You are the reason we exist.') }}</p>
 
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4">
-        <div class="bg-gray-50 rounded-lg p-4">
-          <div class="flex justify-center mb-2">
+        <div class="rounded-lg bg-gray-50 p-4">
+          <div class="mb-2 flex justify-center">
             <x-lucide-eye class="h-6 w-6 text-green-600" />
           </div>
-          <h4 class="text-lg text-center font-bold mb-3">{{ __('Transparent by nature') }}</h4>
+          <h4 class="mb-3 text-center text-lg font-bold">{{ __('Transparent by nature') }}</h4>
           <p>{{ __('Our code is open source. This means you can see exactly how we build the software. We can\'t imagine a better way to build trust with our users.') }}</p>
         </div>
-        <div class="bg-gray-50 rounded-lg p-4">
-          <div class="flex justify-center mb-2">
+        <div class="rounded-lg bg-gray-50 p-4">
+          <div class="mb-2 flex justify-center">
             <x-lucide-lock class="h-6 w-6 text-green-600" />
           </div>
-          <h4 class="text-lg text-center font-bold mb-3">{{ __('Data is encrypted at rest') }}</h4>
+          <h4 class="mb-3 text-center text-lg font-bold">{{ __('Data is encrypted at rest') }}</h4>
           <p>{{ __('We use industry-standard encryption to protect your data. If someone would steal the database, they would only see a bunch of gibberish.') }}</p>
         </div>
-        <div class="bg-gray-50 rounded-lg p-4">
-          <div class="flex justify-center mb-2">
+        <div class="rounded-lg bg-gray-50 p-4">
+          <div class="mb-2 flex justify-center">
             <x-lucide-eye-off class="h-6 w-6 text-green-600" />
           </div>
-          <h4 class="text-lg text-center font-bold mb-3">{{ __('We do not track you') }}</h4>
+          <h4 class="mb-3 text-center text-lg font-bold">{{ __('We do not track you') }}</h4>
           <p>{{ __('There is no javascript trackers or ads on this website. We do not try to upsell you anything. We do track the number of page views to improve the website, but that\'s it.') }}</p>
         </div>
-        <div class="bg-gray-50 rounded-lg p-4">
-          <div class="flex justify-center mb-2">
+        <div class="rounded-lg bg-gray-50 p-4">
+          <div class="mb-2 flex justify-center">
             <x-lucide-brain class="h-6 w-6 text-green-600" />
           </div>
-          <h4 class="text-lg text-center font-bold mb-3">{{ __('No AI bullshit') }}</h4>
+          <h4 class="mb-3 text-center text-lg font-bold">{{ __('No AI bullshit') }}</h4>
           <p>{{ __('We are not super fancy, and do not rely on AI in the application, as it is not ready for prime time and would currently lead to many privacy issues.') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- you will hate it -->
+  <div id="hate" class="bg-gray-50 py-12 sm:py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto mb-10 max-w-7xl">
+        <h3 class="mt-2 mb-10 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          {{ __('Warning: PeopleOS is probably not for you if...') }}
+        </h3>
+
+        <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4">
+          <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
+            <p class="text-xl">You have a good memory</p>
+            <p class="text-sm">If you can remember everything about everyone you know, you probably don't need this tool.</p>
+          </div>
+
+          <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
+            <p class="text-xl">You like expensive, reccuring subscriptions</p>
+            <p class="text-sm">We offer the a one-time payment for the software. No subscriptions, no hidden fees.</p>
+          </div>
+
+          <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
+            <p class="text-xl">You like ads and tracking</p>
+            <p class="text-sm">We do not use any tracking or ads, and don't profile our users. We probably would make more money if we did, but we don't.</p>
+          </div>
+
+          <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
+            <p class="text-xl">You like being locked in</p>
+            <p class="text-sm">We strongly advocate that you don't use our hosted version, and that you self-host the software on a server of your own.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -246,10 +279,10 @@
     <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
       <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
         <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          {{ __('Start building better relationships today') }}
+          {{ __('Take control of your relationships and go out there. Life is not lived in front of a computer screen.') }}
         </h2>
         <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-          {{ __('Join thousands of users who use PeopleOS to maintain meaningful connections with the people who matter most.') }}
+          {{ __('But if you can\'t or are too shy about it, we can help you by providing a simple tool to do so.') }}
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a href="{{ route('register') }}" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
