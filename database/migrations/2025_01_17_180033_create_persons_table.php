@@ -31,11 +31,13 @@ return new class extends Migration
             $table->text('how_we_met')->nullable();
             $table->text('how_we_met_location')->nullable();
             $table->text('how_we_met_first_impressions')->nullable();
+            $table->unsignedBigInteger('how_we_met_special_date_id')->nullable();
             $table->boolean('can_be_deleted')->default(true);
             $table->boolean('is_listed')->default(true);
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
+            $table->foreign('how_we_met_special_date_id')->references('id')->on('special_dates')->onDelete('set null');
         });
 
         Schema::table('users', function (Blueprint $table): void {

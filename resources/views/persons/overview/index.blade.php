@@ -5,7 +5,7 @@
 ?>
 
 <!-- How We Met Section -->
-@if ($person->how_we_met && $person->how_we_met_location && $person->how_we_met_first_impressions)
+@if ($person->how_we_met || $person->how_we_met_location || $person->how_we_met_first_impressions || $person->howWeMetSpecialDate())
   <section id="edit-how-we-met-form" x-data="{
     expanded: {{ $person->how_we_met_shown ? 'true' : 'false' }},
   }" class="mb-8">
@@ -33,7 +33,9 @@
         <div class="flex shrink-0 items-center gap-3 text-sm text-gray-500">
           <div class="flex items-center gap-1">
             <x-lucide-calendar class="h-4 w-4" />
-            <span>Sep 15, 2019</span>
+            <x-tooltip text="{{ $person->howWeMetSpecialDate?->age }}">
+              <span>{{ $person->howWeMetSpecialDate?->date }}</span>
+            </x-tooltip>
           </div>
           <div class="flex items-center gap-1">
             <x-lucide-map-pin class="h-4 w-4" />
@@ -52,7 +54,13 @@
           <!-- Date -->
           <div class="flex items-center gap-2">
             <x-lucide-calendar class="h-4 w-4 text-gray-400" />
-            <span class="text-sm text-gray-600">{{ __('Met on September 15, 2019') }}</span>
+            @if ($person->howWeMetSpecialDate)
+              <x-tooltip text="{{ $person->howWeMetSpecialDate?->age }}">
+                <span class="text-sm text-gray-600">{{ $person->howWeMetSpecialDate?->date }}</span>
+              </x-tooltip>
+            @else
+              <span class="text-sm text-gray-600">{{ __('Unknown') }}</span>
+            @endif
           </div>
 
           <!-- Location -->

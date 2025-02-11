@@ -24,6 +24,7 @@ class Person extends Model
     protected $fillable = [
         'account_id',
         'gender_id',
+        'how_we_met_special_date_id',
         'marital_status',
         'kids_status',
         'slug',
@@ -118,6 +119,15 @@ class Person extends Model
     public function specialDates(): HasMany
     {
         return $this->hasMany(SpecialDate::class);
+    }
+
+    /**
+     * Get the special date associated with the How I Met occasion with this
+     * person.
+     */
+    public function howWeMetSpecialDate(): BelongsTo
+    {
+        return $this->belongsTo(SpecialDate::class, 'how_we_met_special_date_id');
     }
 
     /**
