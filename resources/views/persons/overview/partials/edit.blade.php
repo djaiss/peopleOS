@@ -72,13 +72,6 @@
     <x-input-error :messages="$errors->get('how_we_met')" class="mt-2" />
   </div>
 
-  <!-- Topics Discussed -->
-  <div>
-    <x-input-label for="topics" :value="__('Topics you discussed')" />
-    <x-text-input class="mt-1 block w-full" id="topics" name="topics" type="text" placeholder="{{ __('Separate topics with commas (e.g. Photography, Travel, Music)') }}" />
-    <x-input-error :messages="$errors->get('topics')" class="mt-2" />
-  </div>
-
   <div class="mt-6 flex justify-end gap-3">
     <x-button.secondary x-target="edit-how-we-met-form" href="{{ route('persons.show', $person->slug) }}">
       {{ __('Cancel') }}
