@@ -5,7 +5,7 @@
 ?>
 
 <!-- How We Met Section -->
-@if ($person->how_we_met || $person->how_we_met_location || $person->how_we_met_first_impressions || $person->howWeMetSpecialDate())
+@if ($person->how_we_met || $person->how_we_met_location || $person->how_we_met_first_impressions || $person->howWeMetSpecialDate)
   <section id="edit-how-we-met-form" x-data="{
     expanded: {{ $person->how_we_met_shown ? 'true' : 'false' }},
   }" class="mb-8">
