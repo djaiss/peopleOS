@@ -20,8 +20,6 @@ class HowWeMetControllerTest extends TestCase
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Rachel',
-            'last_name' => 'Green',
         ]);
 
         $response = $this->actingAs($user)
@@ -37,9 +35,6 @@ class HowWeMetControllerTest extends TestCase
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Monica',
-            'last_name' => 'Geller',
-            'how_we_met' => 'At Central Perk',
             'how_we_met_shown' => false,
         ]);
 
@@ -56,8 +51,6 @@ class HowWeMetControllerTest extends TestCase
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Chandler',
-            'last_name' => 'Bing',
         ]);
 
         $response = $this->actingAs($user)
@@ -65,6 +58,10 @@ class HowWeMetControllerTest extends TestCase
                 'how_we_met' => 'Met at college',
                 'how_we_met_location' => 'NYU',
                 'how_we_met_first_impressions' => 'Funny guy',
+                'how_we_met_year' => 2010,
+                'how_we_met_month' => 1,
+                'how_we_met_day' => 1,
+                'add_yearly_reminder' => true,
             ])
             ->assertRedirectToRoute('persons.show', $person->slug);
 

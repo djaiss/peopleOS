@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
+use App\Services\ToggleHowIMetVisibility;
 use App\Services\UpdateHowIMetInformation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,13 +30,9 @@ class HowWeMetController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        (new UpdateHowIMetInformation(
+        (new ToggleHowIMetVisibility(
             user: Auth::user(),
             person: $person,
-            howIMet: $person->how_we_met,
-            howIMetLocation: $person->how_we_met_location,
-            howIMetFirstImpressions: $person->how_we_met_first_impressions,
-            howIMetShown: ! $person->how_we_met_shown,
         ))->execute();
 
         return redirect()->route('persons.show', $person->slug);
@@ -49,7 +46,13 @@ class HowWeMetController extends Controller
             'how_we_met' => 'nullable|string',
             'how_we_met_location' => 'nullable|string',
             'how_we_met_first_impressions' => 'nullable|string',
+            'how_we_met_year' => 'nullable|integer|min:0|max:'.date('Y'),
+            'how_we_met_month' => 'nullable|integer|min:0|max:12',
+            'how_we_met_day' => 'nullable|integer|min:0|max:31',
+            'add_yearly_reminder' => 'nullable|boolean',
         ]);
+
+        $dateSet = $request->input('date') !== 'unknown';
 
         (new UpdateHowIMetInformation(
             user: Auth::user(),
@@ -58,6 +61,10 @@ class HowWeMetController extends Controller
             howIMetLocation: $validated['how_we_met_location'],
             howIMetFirstImpressions: $validated['how_we_met_first_impressions'],
             howIMetShown: $person->how_we_met_shown,
+            howIMetYear: $dateSet ? (int) $validated['how_we_met_year'] ?? null : null,
+            howIMetMonth: $dateSet ? (int) $validated['how_we_met_month'] ?? null : null,
+            howIMetDay: $dateSet ? (int) $validated['how_we_met_day'] ?? null : null,
+            addYearlyReminder: $validated['add_yearly_reminder'] ?? false,
         ))->execute();
 
         return redirect()->route('persons.show', $person->slug)

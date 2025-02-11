@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -68,17 +69,57 @@ class SpecialDate extends Model
     protected function age(): Attribute
     {
         return Attribute::make(
-            get: function (mixed $value, array $attributes): int {
+            get: function (mixed $value, array $attributes): string {
                 if (! $this->year) {
-                    return 0;
+                    return 'Unknown';
                 }
 
                 $day = $attributes['day'] ?? 1;
                 $month = $attributes['month'] ?? 1;
 
-                $date = Carbon::createFromDate($this->year, $month, $day);
+                return Carbon::createFromDate($this->year, $month, $day)->diffForHumans();
+            }
+        );
+    }
 
-                return (int) now()->diffInYears($date, true);
+    /**
+     * Get the special date's friendly date.
+     */
+    protected function date(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attributes): string {
+                if ($this->year && $this->month && $this->day) {
+                    $date = CarbonImmutable::createFromDate($this->year, $this->month, $this->day);
+
+                    return $date->format('M j, Y');
+                }
+
+                if ($this->year && ! $this->month && ! $this->day) {
+                    $date = CarbonImmutable::createFromDate($this->year, 1, 1);
+
+                    return $date->format('Y');
+                }
+
+                if ($this->year && $this->month && ! $this->day) {
+                    $date = CarbonImmutable::createFromDate($this->year, $this->month, 1);
+
+                    return $date->format('M j, Y');
+                }
+
+                if ($this->year && ! $this->month && $this->day) {
+                    $date = CarbonImmutable::createFromDate($this->year, 1, $this->day);
+
+                    return $date->format('Y');
+                }
+
+                if (! $this->year && $this->month && $this->day) {
+                    $date = CarbonImmutable::createFromDate(1, $this->month, $this->day);
+
+                    return $date->format('M j');
+                }
+
+                return '';
             }
         );
     }

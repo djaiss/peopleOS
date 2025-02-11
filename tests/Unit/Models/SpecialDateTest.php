@@ -50,7 +50,7 @@ class SpecialDateTest extends TestCase
             'day' => 15,
         ]);
 
-        $this->assertEquals(29, $specialDate->age);
+        $this->assertEquals('29 years ago', $specialDate->age);
 
         // Test with only year provided
         $specialDate = SpecialDate::factory()->create([
@@ -59,7 +59,7 @@ class SpecialDateTest extends TestCase
             'day' => null,
         ]);
 
-        $this->assertEquals(30, $specialDate->age);
+        $this->assertEquals('30 years ago', $specialDate->age);
 
         // Test with no year provided
         $specialDate = SpecialDate::factory()->create([
@@ -68,6 +68,42 @@ class SpecialDateTest extends TestCase
             'day' => 15,
         ]);
 
-        $this->assertEquals(0, $specialDate->age);
+        $this->assertEquals('Unknown', $specialDate->age);
+    }
+
+    #[Test]
+    public function it_gets_the_friendly_date(): void
+    {
+        $specialDate = SpecialDate::factory()->create([
+            'year' => 1994,
+            'month' => 6,
+            'day' => 15,
+        ]);
+
+        $this->assertEquals('Jun 15, 1994', $specialDate->date);
+
+        $specialDate = SpecialDate::factory()->create([
+            'year' => 1994,
+            'month' => null,
+            'day' => null,
+        ]);
+
+        $this->assertEquals('1994', $specialDate->date);
+
+        $specialDate = SpecialDate::factory()->create([
+            'year' => null,
+            'month' => 6,
+            'day' => 15,
+        ]);
+
+        $this->assertEquals('Jun 15', $specialDate->date);
+
+        $specialDate = SpecialDate::factory()->create([
+            'year' => null,
+            'month' => null,
+            'day' => 15,
+        ]);
+
+        $this->assertEquals('', $specialDate->date);
     }
 }
