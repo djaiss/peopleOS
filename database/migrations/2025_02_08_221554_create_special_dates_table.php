@@ -26,6 +26,11 @@ return new class extends Migration
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
         });
+
+        Schema::table('persons', function (Blueprint $table): void {
+            $table->unsignedBigInteger('how_we_met_special_date_id')->nullable()->after('how_we_met_first_impressions');
+            $table->foreign('how_we_met_special_date_id')->references('id')->on('special_dates')->onDelete('set null');
+        });
     }
 
     /**
@@ -34,5 +39,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('special_dates');
+
+        Schema::table('persons', function (Blueprint $table): void {
+            $table->dropForeign(['how_we_met_special_date_id']);
+            $table->dropColumn('how_we_met_special_date_id');
+        });
     }
 };
