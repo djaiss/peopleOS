@@ -64,10 +64,12 @@
           </div>
 
           <!-- Location -->
-          <div class="flex items-center gap-2">
-            <x-lucide-map-pin class="h-4 w-4 text-gray-400" />
-            <span class="text-sm text-gray-600">{{ $person->how_we_met_location }}</span>
-          </div>
+          @if ($person->how_we_met_location)
+            <div class="flex items-center gap-2">
+              <x-lucide-map-pin class="h-4 w-4 text-gray-400" />
+              <span class="text-sm text-gray-600">{{ $person->how_we_met_location }}</span>
+            </div>
+          @endif
 
           <!-- Introduced By -->
           <div class="flex items-center gap-2">
@@ -77,27 +79,20 @@
         </div>
 
         <!-- First Impressions -->
-        <div class="border-t pt-4">
-          <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('First Impressions') }}</h3>
-          <p class="text-sm text-gray-600">{{ $person->how_we_met_first_impressions }}</p>
-        </div>
-
-        <!-- Topics Discussed -->
-        <div class="border-t pt-4">
-          <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('Topics We Discussed') }}</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="rounded-full bg-purple-50 px-2 py-1 text-xs text-purple-700">Photography</span>
-            <span class="rounded-full bg-purple-50 px-2 py-1 text-xs text-purple-700">Indie Music</span>
-            <span class="rounded-full bg-purple-50 px-2 py-1 text-xs text-purple-700">Seattle Coffee Shops</span>
-            <span class="rounded-full bg-purple-50 px-2 py-1 text-xs text-purple-700">Travel</span>
+        @if ($person->how_we_met_first_impressions)
+          <div class="border-t pt-4">
+            <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('First Impressions') }}</h3>
+            <p class="text-sm text-gray-600">{{ $person->how_we_met_first_impressions }}</p>
           </div>
-        </div>
+        @endif
 
         <!-- Story -->
-        <div class="border-t pt-4">
-          <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('The Story') }}</h3>
-          <p class="text-sm whitespace-pre-wrap text-gray-600">{{ $person->how_we_met }}</p>
-        </div>
+        @if ($person->how_we_met)
+          <div class="border-t pt-4">
+            <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('The Story') }}</h3>
+            <p class="text-sm whitespace-pre-wrap text-gray-600">{{ $person->how_we_met }}</p>
+          </div>
+        @endif
       </div>
     </div>
   </section>
