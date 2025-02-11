@@ -19,6 +19,7 @@ class PersonController extends Controller
     public function index(): View
     {
         $personsQuery = Person::where('account_id', Auth::user()->account_id)
+            ->with('howWeMetSpecialDate')
             ->where('is_listed', true)
             ->orderBy('first_name')
             ->get();
