@@ -27,7 +27,6 @@ class CheckPerson
 
         try {
             $person = Person::where('account_id', Auth::user()->account_id)
-                ->with('howWeMetSpecialDate')
                 ->findOrFail($id);
 
             $request->attributes->add(['person' => $person]);

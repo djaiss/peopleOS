@@ -65,7 +65,8 @@
     "test": [
       "@peopleos:rector",
       "@peopleos:unit",
-      "@peopleos:static"
+      "@peopleos:static",
+      "@peopleos:update"
     ],
     "precommit": [
       "@test",

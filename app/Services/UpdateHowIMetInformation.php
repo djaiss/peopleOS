@@ -51,6 +51,8 @@ class UpdateHowIMetInformation
         if ($this->person->howWeMetSpecialDate) {
             $this->specialDate = $this->person->howWeMetSpecialDate;
             $this->updateExistingSpecialDate();
+
+            return;
         }
 
         if ($this->howIMetYear || $this->howIMetMonth || $this->howIMetDay) {
