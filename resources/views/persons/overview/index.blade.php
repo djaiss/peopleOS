@@ -29,7 +29,7 @@
 
     <!-- Collapsed State -->
     <div x-show="!expanded" x-transition class="rounded-lg border border-gray-200 bg-white">
-      <div class="flex items-center gap-4 p-4">
+      <div class="flex items-center gap-4 p-4 relative">
         <div class="flex shrink-0 items-center gap-3 text-sm text-gray-500">
           <div class="flex items-center gap-1">
             <x-lucide-calendar class="h-4 w-4" />
@@ -43,6 +43,12 @@
           </div>
         </div>
         <p class="line-clamp-1 flex-1 text-sm text-gray-600">{{ $person->how_we_met }}</p>
+
+        @if ($person->howWeMetSpecialDate?->should_be_reminded)
+          <div class="absolute -right-1 -top-2 bg-white rounded-full p-1 border border-gray-200">
+            <x-lucide-bell-ring class="h-4 w-4 text-gray-400" />
+          </div>
+        @endif
       </div>
     </div>
 
@@ -77,6 +83,14 @@
             <span class="text-sm text-gray-600">sdfs</span>
           </div>
         </div>
+
+        <!-- Reminder -->
+        @if ($person->howWeMetSpecialDate?->should_be_reminded)
+          <div class="border-t pt-4">
+            <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('Reminder') }}</h3>
+            <p class="text-sm text-gray-600">{{ __('A reminder will be sent to you on :date.', ['date' => $person->howWeMetSpecialDate?->date]) }}</p>
+          </div>
+        @endif
 
         <!-- First Impressions -->
         @if ($person->how_we_met_first_impressions)

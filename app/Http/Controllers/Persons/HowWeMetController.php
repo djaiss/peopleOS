@@ -49,10 +49,10 @@ class HowWeMetController extends Controller
             'how_we_met_year' => 'nullable|integer|min:0|max:'.date('Y'),
             'how_we_met_month' => 'nullable|integer|min:0|max:12',
             'how_we_met_day' => 'nullable|integer|min:0|max:31',
-            'add_yearly_reminder' => 'nullable|boolean',
         ]);
 
         $dateSet = $request->input('date') !== 'unknown';
+        $reminderSet = $request->input('reminder') === 'reminded';
 
         (new UpdateHowIMetInformation(
             user: Auth::user(),
@@ -64,7 +64,7 @@ class HowWeMetController extends Controller
             howIMetYear: $dateSet ? (int) $validated['how_we_met_year'] ?? null : null,
             howIMetMonth: $dateSet ? (int) $validated['how_we_met_month'] ?? null : null,
             howIMetDay: $dateSet ? (int) $validated['how_we_met_day'] ?? null : null,
-            addYearlyReminder: $validated['add_yearly_reminder'] ?? false,
+            addYearlyReminder: $reminderSet,
         ))->execute();
 
         return redirect()->route('persons.show', $person->slug)

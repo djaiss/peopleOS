@@ -40,13 +40,12 @@
     <div class="flex gap-2">
       <div class="flex h-6 shrink-0 items-center">
         <div class="group grid size-4 grid-cols-1">
-          <input value="1" id="is_current" name="is_current" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+          <input @checked(old('reminder', $person->howWeMetSpecialDate?->should_be_reminded)) value="reminded" id="reminder" name="reminder" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
         </div>
       </div>
       <div class="text-sm/6">
-        <label for="is_current" class="font-medium text-gray-900">{{ __('Add a yearly reminder') }}</label>
-        <p id="is_current-description" class="text-gray-500">{{ __('This will add a yearly reminder to your calendar.') }}</p>
-        <x-input-error :messages="$errors->get('is_current')" class="mt-2" />
+        <label for="reminder" class="font-medium text-gray-900">{{ __('Add a yearly reminder') }}</label>
+        <x-input-error :messages="$errors->get('reminder')" class="mt-2" />
       </div>
     </div>
   </div>

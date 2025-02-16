@@ -61,7 +61,7 @@ class HowWeMetControllerTest extends TestCase
                 'how_we_met_year' => 2010,
                 'how_we_met_month' => 1,
                 'how_we_met_day' => 1,
-                'add_yearly_reminder' => true,
+                'reminder' => true,
             ])
             ->assertRedirectToRoute('persons.show', $person->slug);
 
