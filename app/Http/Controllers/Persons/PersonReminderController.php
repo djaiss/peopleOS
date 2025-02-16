@@ -6,15 +6,10 @@ namespace App\Http\Controllers\Persons;
 
 use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
-use App\Models\Gender;
-use App\Services\DestroyPerson;
-use App\Services\UpdatePerson;
-use Illuminate\Http\RedirectResponse;
+use App\Models\SpecialDate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\SpecialDate;
-use Illuminate\Support\Collection;
 
 class PersonReminderController extends Controller
 {
@@ -50,14 +45,14 @@ class PersonReminderController extends Controller
         $months = $specialDates
             ->pluck('month')
             ->unique()
-            ->map(fn($monthNumber): array => [
+            ->map(fn ($monthNumber): array => [
                 'number' => $monthNumber,
                 'name' => date('F', mktime(0, 0, 0, $monthNumber, 1)),
                 'color' => $this->monthColors[$monthNumber],
                 'reminders' => $specialDates
                     ->where('month', $monthNumber)
                     ->sortBy('day')
-                    ->map(fn(SpecialDate $specialDate): array => [
+                    ->map(fn (SpecialDate $specialDate): array => [
                         'id' => $specialDate->id,
                         'day' => $specialDate->day,
                         'date' => $specialDate->date,

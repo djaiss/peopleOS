@@ -29,16 +29,17 @@
 
     <!-- Collapsed State -->
     <div x-show="!expanded" x-transition class="rounded-lg border border-gray-200 bg-white">
-      <div class="flex items-center gap-4 p-4 relative">
+      <div class="relative flex items-center gap-4 p-4">
         <div class="flex shrink-0 items-center gap-3 text-sm text-gray-500">
           @if ($person->howWeMetSpecialDate)
-          <div class="flex items-center gap-1">
-            <x-lucide-calendar class="h-4 w-4" />
-            <x-tooltip text="{{ $person->howWeMetSpecialDate?->age }}">
-              <span>{{ $person->howWeMetSpecialDate?->date }}</span>
-            </x-tooltip>
-          </div>
+            <div class="flex items-center gap-1">
+              <x-lucide-calendar class="h-4 w-4" />
+              <x-tooltip text="{{ $person->howWeMetSpecialDate?->age }}">
+                <span>{{ $person->howWeMetSpecialDate?->date }}</span>
+              </x-tooltip>
+            </div>
           @endif
+
           <div class="flex items-center gap-1">
             <x-lucide-map-pin class="h-4 w-4" />
             <span>{{ $person->how_we_met_location }}</span>
@@ -47,7 +48,7 @@
         <p class="line-clamp-1 flex-1 text-sm text-gray-600">{{ $person->how_we_met }}</p>
 
         @if ($person->howWeMetSpecialDate?->should_be_reminded)
-          <div class="absolute -right-1 -top-2 bg-white rounded-full p-1 border border-gray-200">
+          <div class="absolute -top-2 -right-1 rounded-full border border-gray-200 bg-white p-1">
             <x-lucide-bell-ring class="h-4 w-4 text-gray-400" />
           </div>
         @endif

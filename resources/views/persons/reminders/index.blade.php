@@ -31,8 +31,8 @@
           @foreach ($months as $month)
             <div class="rounded-lg border border-gray-200 bg-white">
               <!-- Month Header -->
-              <div class="border-b border-gray-200 rounded-t-lg bg-{{ $month['color'] }}-50 px-4 py-3">
-                <h2 class="font-semibold text-{{ $month['color'] }}-700">{{ $month['name'] }}</h2>
+              <div class="bg-{{ $month['color'] }}-50 rounded-t-lg border-b border-gray-200 px-4 py-3">
+                <h2 class="text-{{ $month['color'] }}-700 font-semibold">{{ $month['name'] }}</h2>
               </div>
 
               <!-- Reminders List -->
@@ -40,7 +40,7 @@
                 @forelse ($month['reminders'] as $reminder)
                   <div class="flex items-center justify-between p-4">
                     <div class="flex items-center gap-4">
-                      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-{{ $month['color'] }}-100">
+                      <div class="bg-{{ $month['color'] }}-100 flex h-10 w-10 items-center justify-center rounded-full">
                         {{ $reminder['day'] == 0 ? 1 : $reminder['day'] }}
                       </div>
                       <div>
@@ -50,10 +50,10 @@
                     </div>
 
                     <div class="flex items-center gap-2">
-                      <button type="button" class="rounded-md bg-{{ $month['color'] }}-50 p-2 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100">
+                      <button type="button" class="bg-{{ $month['color'] }}-50 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100 rounded-md p-2">
                         <x-lucide-mail class="h-4 w-4" />
                       </button>
-                      <button type="button" class="rounded-md bg-{{ $month['color'] }}-50 p-2 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100">
+                      <button type="button" class="bg-{{ $month['color'] }}-50 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100 rounded-md p-2">
                         <x-lucide-bell-off class="h-4 w-4" />
                       </button>
                     </div>
