@@ -785,7 +785,7 @@ class SetupDummyAccount extends Command
             maidenName: $character['maiden_name'],
             prefix: null,
             suffix: null,
-            canBeDeleted: false,
+            canBeDeleted: true,
         ))->execute();
 
         $this->createNotes($person);
