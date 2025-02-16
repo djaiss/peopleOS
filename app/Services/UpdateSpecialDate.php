@@ -48,8 +48,8 @@ class UpdateSpecialDate
         $this->specialDate->update([
             'name' => $this->name,
             'year' => $this->year ?? null,
-            'month' => $this->month ?? null,
-            'day' => $this->day ?? null,
+            'month' => $this->month ?? 1,
+            'day' => $this->day ?? 1,
             'should_be_reminded' => $this->shouldBeReminded,
         ]);
     }

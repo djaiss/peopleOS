@@ -31,12 +31,14 @@
     <div x-show="!expanded" x-transition class="rounded-lg border border-gray-200 bg-white">
       <div class="flex items-center gap-4 p-4 relative">
         <div class="flex shrink-0 items-center gap-3 text-sm text-gray-500">
+          @if ($person->howWeMetSpecialDate)
           <div class="flex items-center gap-1">
             <x-lucide-calendar class="h-4 w-4" />
             <x-tooltip text="{{ $person->howWeMetSpecialDate?->age }}">
               <span>{{ $person->howWeMetSpecialDate?->date }}</span>
             </x-tooltip>
           </div>
+          @endif
           <div class="flex items-center gap-1">
             <x-lucide-map-pin class="h-4 w-4" />
             <span>{{ $person->how_we_met_location }}</span>
