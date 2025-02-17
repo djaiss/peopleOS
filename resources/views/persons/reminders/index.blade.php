@@ -50,12 +50,15 @@
                     </div>
 
                     <div class="flex items-center gap-2">
-                      <button type="button" class="bg-{{ $month['color'] }}-50 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100 rounded-md p-2">
-                        <x-lucide-mail class="h-4 w-4" />
-                      </button>
-                      <button type="button" class="bg-{{ $month['color'] }}-50 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100 rounded-md p-2">
-                        <x-lucide-bell-off class="h-4 w-4" />
-                      </button>
+                      <form x-target="reminder-{{ $reminder['id'] }}" id="reminder-{{ $reminder['id'] }}" action="{{ route('persons.reminders.test', ['slug' => $person->slug, 'specialDate' => $reminder['id']]) }}" method="POST">
+                        @csrf
+
+                        <x-tooltip text="{{ __('Send a test reminder') }}">
+                          <button type="submit" class="bg-{{ $month['color'] }}-50 text-{{ $month['color'] }}-600 hover:bg-{{ $month['color'] }}-100 cursor-pointer rounded-md p-2">
+                            <x-lucide-mail class="h-4 w-4" />
+                          </button>
+                        </x-tooltip>
+                      </form>
                     </div>
                   </div>
                 @empty
