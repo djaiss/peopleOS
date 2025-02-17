@@ -22,6 +22,7 @@ use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
+use App\Http\Controllers\Persons\PersonSendTestReminderController;
 use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
@@ -58,6 +59,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
             // reminders
             Route::get('persons/{slug}/reminders', [PersonReminderController::class, 'index'])->name('persons.reminders.index');
+            Route::post('persons/{slug}/reminders/{specialDate}/test', [PersonSendTestReminderController::class, 'store'])->name('persons.reminders.test');
 
             // persons notes
             Route::get('persons/{slug}/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
