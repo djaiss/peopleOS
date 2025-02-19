@@ -46,7 +46,7 @@ class PersonSeenReport extends Model
      */
     public function account(): BelongsTo
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Account::class);
     }
 
     /**
