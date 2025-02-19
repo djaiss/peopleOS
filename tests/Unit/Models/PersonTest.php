@@ -9,6 +9,7 @@ use App\Models\Gender;
 use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
+use App\Models\PersonSeenReport;
 use App\Models\SpecialDate;
 use App\Models\WorkHistory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -98,6 +99,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->specialDates()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_person_seen_reports(): void
+    {
+        $person = Person::factory()->create();
+        PersonSeenReport::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->personSeenReports()->exists());
     }
 
     #[Test]

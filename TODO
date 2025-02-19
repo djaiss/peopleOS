@@ -5,9 +5,13 @@ Todo:
   - Refresh person list cache when updating information: DONE
   - Fix contact deletion if the contact can't be deleted: DONE
   - Add notifications: DONE
-  - Add "how we met" to person
+  - Add "how we met" to person: DONE
   - Add services to manage instance
   - Add passions to person
   - Add nationality to person and significant other
   - Add hobbies to person
   - Add languages to person
+
+  Country born - city born
+  Country/place studies
+
