@@ -68,6 +68,8 @@ return [
         'love_relationship_update' => 'Love relationship update',
         'love_relationship_deletion' => 'Love relationship deletion',
         'how_i_met_information_update' => 'How I Met Information update',
+        'person_seen_report_creation' => 'Person seen report creation',
+        'person_seen_report_update' => 'Person seen report update',
+        'person_seen_report_deletion' => 'Person seen report deletion',
     ],
-
 ];

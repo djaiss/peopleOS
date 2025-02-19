@@ -131,6 +131,14 @@ class Person extends Model
     }
 
     /**
+     * Get the person seen report associated with person.
+     */
+    public function personSeenReports(): HasMany
+    {
+        return $this->hasMany(PersonSeenReport::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute

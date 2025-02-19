@@ -1,7 +1,7 @@
 {
   "preset": "laravel",
   "ignore": {
-    "words": ["php", "config", "namespace", "prev", "peopleos", "organizationos", "personalization", "birthdate", "laquo", "raquo"],
+    "words": ["php", "config", "namespace", "prev", "peopleos", "personalization", "birthdate", "laquo", "raquo"],
     "paths": []
   }
 }

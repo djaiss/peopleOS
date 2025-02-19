@@ -70,6 +70,14 @@ class Account extends Model
     }
 
     /**
+     * Get the person seen reports associated with the account.
+     */
+    public function personSeenReports(): HasMany
+    {
+        return $this->hasMany(PersonSeenReport::class);
+    }
+
+    /**
      * Check if the account is in trial.
      */
     public function isInTrial(): bool

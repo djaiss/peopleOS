@@ -2,9 +2,19 @@
 
 PeopleOS is the spiritual successor of Monica, the personal CRM.
 
+### Features
+
+* A powerful contact management system, with features like adding family information, work information, etc...
+* A powerful, and fully customizable journal system, that lets you document your life.
+
+Data is also fully encrypted at rest, which is nice in case someone wants to peak into the database.
+
+### Why a Monica sequel?
+
 How is PeopleOS different?
 
 - it's designed to be much simpler, more focused.
+- it's designed to be really fast.
 - data is fully encrypted at rest. This comes with severe drawbacks, but at least data is secure.
 - it's not using Javascript frameworks for the frontend. We use JS to enhance the user experience, but the core is still server-side rendered.
 - the code is simple, and predictable.
@@ -13,7 +23,7 @@ How is PeopleOS different?
 
 ## Installation
 
-peopleos is a regular Laravel application; it's build on top of Laravel and uses regular Blade / Tailwind CSS for the frontend, sprinkled with Alpine.js and Alpine AJAX for some interactivity. We stick to the Laravel conventions as much as possible.
+peopleOS is a regular Laravel application; it's build on top of Laravel and uses regular Blade / Tailwind CSS for the frontend, sprinkled with Alpine.js and Alpine AJAX for some interactivity. We stick to the Laravel conventions as much as possible.
 
 In terms of local development, you can use the following requirements:
 
@@ -82,7 +92,7 @@ php artisan serve
 
 > Note: By default, emails are sent to the `log` driver. You can change this in the `.env` file to something like `mailtrap`.
 
-# Specific instructions
+## Specific instructions
 
 ## API Doc
 
@@ -95,3 +105,33 @@ php artisan scribe:generate
 Once the documentation is generated, the API is available at `/docs`.
 
 If you need to test the API, we provide a [Bruno](https://www.usebruno.com/) collection in the `docs/bruno` directory. You can import this collection into Bruno.
+
+## Note for developers
+
+This project uses the following languages:
+
+* PHP (always the most recent version),
+* CSS with Tailwind almost exclusively,
+* Blade for the templating language,
+* HTML, of course
+* Javascript with AlpineJS,
+* Ajax-like behaviour with Alpine Ajax,
+* PHPUnit.
+
+These are simple languages, chosen on purpose. They lower the barriers to entry for newcomers who want to help on the project. They are very easy to debug. They are very easy to install on any machines. They are very light in terms of resources.
+
+We believe this project is a nice project to learn how to code and to contribute to an open source project.
+
+### General guidelines
+
+* This project is meant to be simple to read, simple to maintain and simple to debug.
+* As a consequence, the code must be the simplest it can be. I can't put emphasis this point enough.
+* Use comments to explain what you are doing.
+* Write easy to understand code. Do not write lines of code that takes minutes to understand, like crazy loops and recursive stuff that make you appear smart, but waste everyone's time. 
+* Yes, I'm not a great developer, but I'm also the one who will maintain this project on the long run. Please help me doing so.
+
+### Guidelines for development
+
+* All models and controllers should be fully tested. We use PHPUnit.
+* Avoid writing custom CSS as much as possible. Tailwind provides everything we need in 99.9999% of the case.
+* Do not add dependencies. Dependencies are the devil. It puts the project at risk in many ways.
