@@ -102,7 +102,7 @@
           </div>
           @if($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
             <p class="text-xs text-gray-500">
-              {{ __('Last updated: :date', ['date' => $lastModified->format('F j, Y')]) }}
+              {{ __('This page was last updated on :date.', ['date' => $lastModified->format('F j, Y')]) }}
             </p>
           @endif
         </div>
