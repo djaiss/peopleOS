@@ -1,0 +1,33 @@
+name: Update Page Timestamps
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'resources/views/marketing/**'
+
+jobs:
+  update-timestamps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # This ensures we have the git history
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Update page timestamps
+        run: php artisan marketing:update-timestamps
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add config/marketing-timestamps.php
+          git commit -m "chore: Update marketing page timestamps" || exit 0
+          git push
