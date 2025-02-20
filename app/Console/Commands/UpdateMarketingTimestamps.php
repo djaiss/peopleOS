@@ -8,6 +8,12 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Process;
 
+/**
+ * This command updates the last modified timestamps for all marketing pages.
+ * It uses the git log command to get the last commit date for each file.
+ * It stores both the original date format (with slashes) and the date format
+ * with dots (for compatibility with the `config/marketing-timestamps.php` file).
+ */
 class UpdateMarketingTimestamps extends Command
 {
     protected $signature = 'marketing:update-timestamps';
