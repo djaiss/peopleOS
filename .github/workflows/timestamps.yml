@@ -40,5 +40,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add config/marketing-timestamps.php
-          git commit -m "chore: update marketing page timestamps"
+          git commit -m "chore: update marketing page timestamps [skip actions]"
           git push
