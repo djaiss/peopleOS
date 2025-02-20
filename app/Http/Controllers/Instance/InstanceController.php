@@ -13,8 +13,13 @@ class InstanceController extends Controller
 {
     public function index(): View
     {
-        // get the number of total accounts
-        $totalAccounts = Account::count();
+        $totalAccounts = Account::query()->count();
+        $last30DaysAccounts = Account::query()
+            ->where('created_at', '>=', now()->subDays(30))
+            ->count();
+        $last7DaysAccounts = Account::query()
+            ->where('created_at', '>=', now()->subDays(7))
+            ->count();
 
         $accounts = Account::query()
             ->with(['users' => function ($query): void {
@@ -40,6 +45,8 @@ class InstanceController extends Controller
         return view('instance.index', [
             'accounts' => $accounts,
             'totalAccounts' => $totalAccounts,
+            'last30DaysAccounts' => $last30DaysAccounts,
+            'last7DaysAccounts' => $last7DaysAccounts,
         ]);
     }
 

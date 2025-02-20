@@ -1,9 +1,18 @@
+<?php
+/*
+ * @var int $totalAccounts
+ * @var int $last30DaysAccounts
+ * @var int $last7DaysAccounts
+ * @var array $accounts
+ */
+?>
+
 <x-app-layout>
   <!-- Admin Panel Indicator -->
   <div class="border-b border-yellow-200 bg-yellow-50">
     <div class="mx-auto flex max-w-7xl items-center justify-center gap-x-3 px-4 py-2 sm:px-6 lg:px-8">
       <x-lucide-shield class="h-4 w-4 text-yellow-600" />
-      <span class="text-sm font-medium text-yellow-800">{{ __('Instance Administration Area') }}</span>
+      <span class="text-sm font-medium text-yellow-800">{{ __('Instance administration area') }}</span>
     </div>
   </div>
 
@@ -13,7 +22,7 @@
       <div class="flex items-center gap-x-3 text-sm text-gray-500">
         <a href="{{ route('dashboard.index') }}" class="hover:text-gray-700">{{ __('Dashboard') }}</a>
         <x-lucide-chevron-right class="h-4 w-4" />
-        <span class="text-gray-700">{{ __('Instance Administration') }}</span>
+        <span class="text-gray-700">{{ __('Instance administration') }}</span>
       </div>
     </div>
   </nav>
@@ -39,8 +48,8 @@
         <div class="rounded-lg border border-gray-200 bg-white p-4">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600">{{ __('New This Month') }}</p>
-              <p class="text-2xl font-semibold">147</p>
+              <p class="text-sm text-gray-600">{{ __('New accounts last 30 days') }}</p>
+              <p class="text-2xl font-semibold">{{ $last30DaysAccounts }}</p>
             </div>
             <div class="rounded-sm bg-blue-100 p-2">
               <x-lucide-calendar class="h-5 w-5 text-blue-600" />
@@ -52,8 +61,8 @@
         <div class="rounded-lg border border-gray-200 bg-white p-4">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600">{{ __('New This Week') }}</p>
-              <p class="text-2xl font-semibold">32</p>
+              <p class="text-sm text-gray-600">{{ __('New accounts last 7 days') }}</p>
+              <p class="text-2xl font-semibold">{{ $last7DaysAccounts }}</p>
             </div>
             <div class="rounded-sm bg-purple-100 p-2">
               <x-lucide-trending-up class="h-5 w-5 text-purple-600" />
