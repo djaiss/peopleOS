@@ -10,7 +10,10 @@ class MarketingHelper
 {
     public static function getLastModified(string $view): ?Carbon
     {
-        $timestamp = config("marketing-timestamps.pages.{$view}");
+        // Convert route name (dots) to file path (slashes)
+        $viewPath = str_replace('.', '/', $view);
+
+        $timestamp = config("marketing-timestamps.pages.{$viewPath}");
 
         return $timestamp ? Carbon::parse($timestamp) : null;
     }
