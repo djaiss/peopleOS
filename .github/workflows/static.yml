@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   phpstan:
+    name: PHPStan
     runs-on: ubuntu-latest
 
     steps:

@@ -29,6 +29,7 @@ use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MarketingMarketingController::class, 'index'])->name('marketing.index');
+Route::get('/about', [MarketingMarketingController::class, 'index'])->name('marketing.index');
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitations.accept');
 
