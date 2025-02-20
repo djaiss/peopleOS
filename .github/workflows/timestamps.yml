@@ -6,8 +6,16 @@ on:
       - 'resources/views/marketing/**'
     types: [opened, synchronize]
 
+# Only allow one timestamps update to run at a time per PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   update-timestamps:
+    # Wait for other CI checks to pass
+    needs: [phpunit, pest, static-analysis]
+    if: ${{ always() && !contains(github.event.pull_request.labels.*.name, 'skip-timestamps') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
