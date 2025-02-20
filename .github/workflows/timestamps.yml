@@ -14,7 +14,7 @@ concurrency:
 jobs:
   update-timestamps:
     # Wait for other CI checks to pass
-    needs: [PHPStan, Check spelling, PHP 8.4 + sqlite, PHP 8.4 + mysql, PHP 8.4 + pgsql]
+    needs: [Check spelling, PHP 8.4 + sqlite, PHP 8.4 + mysql, PHP 8.4 + pgsql]
     if: ${{ always() && !contains(github.event.pull_request.labels.*.name, 'skip-timestamps') }}
     runs-on: ubuntu-latest
     permissions:
