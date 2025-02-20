@@ -109,7 +109,7 @@
     <div class="mx-auto max-w-2xl rounded-lg bg-green-100 px-6 py-4">
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:items-center">
         <div class="col-span-2">
-          <h2 class="mb-3 text-xl leading-7 font-semibold text-green-600">{{ __('Why the hell should you use PeopleOS?') }}</h2>
+          <h2 class="mb-3 text-xl leading-7 font-semibold text-green-600">{{ __('Why should you use PeopleOS?') }}</h2>
           <p class="mb-2">Monica is for people who have jobs, a family, and are busy trying to find a good work/life balance. So busy, that they don't have time anymore to remember to call a friend, say happy birthday to a nephew, or remember to invite someone special for dinner next week. The older we get, the more life gets in the way. It's sad, but it's the reality.</p>
           <p class="mb-2">I've created PeopleOS to remember all these little, but so important, things.</p>
           <p>
@@ -118,8 +118,26 @@
             .
           </p>
         </div>
-        <div class="flex flex-col items-center lg:col-span-1 lg:items-start">
-          <img src="{{ asset('marketing/regis.jpg') }}" alt="Monica" class="mb-3 w-40 rounded-lg lg:rotate-4" />
+        <div class="flex flex-col items-center lg:col-span-1 lg:items-start" x-data="{ isRotating: false }">
+          <div class="relative">
+            <img
+              src="{{ asset('marketing/regis.jpg') }}"
+              alt="Monica"
+              class="mb-3 w-40 rounded-lg lg:rotate-4 hover:scale-110 hover:rotate-[360deg] transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+              @mouseenter="isRotating = true"
+              @mouseleave="isRotating = false"
+              @transitionend="isRotating = false"
+            />
+
+            <!-- Tooltip -->
+            <div
+              x-show="isRotating"
+              x-transition.opacity
+              class="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-75 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap"
+            >
+              Please stooooop this! 😵‍💫
+            </div>
+          </div>
           <p class="text-xs text-gray-600 lg:rotate-4">Régis Freyd. I created PeopleOS. Sorry.</p>
         </div>
       </div>
@@ -261,8 +279,8 @@
           </div>
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like ads and tracking</p>
-            <p class="text-sm">We do not use any tracking or ads, and don't profile our users. We probably would make more money if we did, but we don't.</p>
+            <p class="text-xl">You like being tracked for ads purposes</p>
+            <p class="text-sm">We do track users to serve ads, and don't profile our users. We hate ads as much as you do.</p>
           </div>
 
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">

@@ -91,13 +91,20 @@
     <!-- Bottom section -->
     <div class="mt-16 border-t border-gray-900/10 pt-8">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-x-2">
-          <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
-            <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-600 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-              <x-lucide-users class="h-5 w-5 text-white" />
-            </div>
-          </a>
-          <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually our trademark is not registerd but we probably should write that to do like the big boys.') }}</p>
+        <div class="flex flex-col gap-y-2">
+          <div class="flex items-center gap-x-2">
+            <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
+              <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-600 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+                <x-lucide-users class="h-5 w-5 text-white" />
+              </div>
+            </a>
+            <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually our trademark is not registerd but we probably should write that to do like the big boys.') }}</p>
+          </div>
+          @if($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
+            <p class="text-xs text-gray-500">
+              {{ __('Last updated: :date', ['date' => $lastModified->format('F j, Y')]) }}
+            </p>
+          @endif
         </div>
         <div class="flex gap-x-4">
           <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Privacy') }}</a>

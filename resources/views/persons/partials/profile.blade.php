@@ -15,8 +15,12 @@
       <div class="min-w-0">
         <h1 class="truncate text-xl font-semibold">{{ $person->name }}</h1>
         <div class="mt-1 flex flex-col gap-0">
-          @if ($person->job())
-            <span class="text-sm text-gray-600">{{ $person->job() }}</span>
+          @php
+            $job = $person->job();
+          @endphp
+
+          @if ($job)
+            <span class="text-sm text-gray-600">{{ $job }}</span>
           @endif
 
           <span class="text-sm text-gray-600">32 years old</span>
