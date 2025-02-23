@@ -13,6 +13,7 @@ use Symfony\Component\Process\Process;
  * It uses the git log command to get the last commit date for each file.
  * It stores both the original date format (with slashes) and the date format
  * with dots (for compatibility with the `config/marketing-timestamps.php` file).
+ * That way we can use the same format for the last modified date in the blade file.
  */
 class UpdateMarketingTimestamps extends Command
 {
