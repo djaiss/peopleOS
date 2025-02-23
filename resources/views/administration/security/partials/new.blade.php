@@ -1,4 +1,4 @@
-<form id="add-api-key-form" x-target="api-key-list add-api-key-form api-key-notification notifications" x-target.422="add-api-key-form" action="{{ route('administration.security.store') }}" method="POST" class="space-y-5 border-b border-gray-200 p-4 hover:bg-blue-50">
+<form id="add-api-key-form" x-target="api-key-list add-api-key-form api-key-notification notifications" x-target.back="add-api-key-form" action="{{ route('administration.security.store') }}" method="POST" class="space-y-5 border-b border-gray-200 p-4 hover:bg-blue-50">
   @csrf
 
   <div class="relative">

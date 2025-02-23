@@ -7,7 +7,7 @@
 <section class="mb-8">
   <div class="mb-4 flex items-center justify-between">
     <div class="flex items-center gap-2">
-      <x-lucide-eye class="h-5 w-5 text-indigo-500" />
+      <x-lucide-eye class="h-5 w-5 text-amber-500" />
       <h2 class="text-lg font-semibold text-gray-900">{{ __('Encounters') }}</h2>
     </div>
   </div>

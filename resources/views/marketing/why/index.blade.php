@@ -2,12 +2,12 @@
   <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[1fr_250px]">
       <!-- Main content -->
-      <div class="sm:border-r sm:border-gray-200 py-16 sm:pr-10">
-        <div class="prose max-w-none mb-10">
+      <div class="py-16 sm:border-r sm:border-gray-200 sm:pr-10">
+        <div class="prose mb-10 max-w-none">
           <h1 id="introduction" class="text-xl font-normal">Why should you use PeopleOS?</h1>
 
           <h2 id="problems" class="flex items-center gap-x-3">
-            <x-lucide-frown class="h-6 w-6 text-amber-500 flex-shrink-0" />
+            <x-lucide-frown class="h-6 w-6 flex-shrink-0 text-amber-500" />
             What kind of problem does PeopleOS solve?
           </h2>
 
@@ -49,7 +49,7 @@
           <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look. We are humans like you. We personally hate all the shitshows that big companies do with our data. We would never do that to you.</p>
         </div>
 
-        <div class="border rounded-lg p-4 flex justify-between text-sm">
+        <div class="flex justify-between rounded-lg border p-4 text-sm">
           <div>
             <p class="mb-1">This page was last updated on :date.</p>
             <a href="https://github.com/djaiss/peopleos" class="text-blue-600 hover:text-blue-500">Edit this page on Github</a>

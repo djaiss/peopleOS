@@ -4,7 +4,7 @@
  */
 ?>
 
-<form x-target="work-history-list add-work-form notifications" x-target.422="add-work-form" id="add-work-form" action="{{ route('persons.work.store', $person->slug) }}" method="POST">
+<form x-target="work-history-list add-work-form notifications" x-target.back="add-work-form" id="add-work-form" action="{{ route('persons.work.store', $person->slug) }}" method="POST">
   @csrf
 
   <div class="mb-4 flex gap-4 px-4 pt-4">
