@@ -1,4 +1,4 @@
-<footer class="bg-white py-16">
+<footer class="border-t border-gray-200 bg-white py-16">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
       <!-- Products Column -->
@@ -100,7 +100,7 @@
             </a>
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually our trademark is not registerd but we probably should write that to do like the big boys.') }}</p>
           </div>
-          @if($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
+          @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
             <p class="text-xs text-gray-500">
               {{ __('This page was last updated on :date.', ['date' => $lastModified->format('F j, Y')]) }}
             </p>

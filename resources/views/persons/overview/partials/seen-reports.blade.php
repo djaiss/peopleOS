@@ -12,16 +12,15 @@
     </div>
   </div>
 
-  <div class="rounded-lg border border-gray-200 bg-white flex gap-4">
+  <div class="flex gap-4 rounded-lg border border-gray-200 bg-white">
     <div class="flex flex-col gap-4 border-r border-gray-200 p-4">
-
-        <p class="text-sm text-gray-600">{{ __('Times seen') }}</p>
-        <div class="flex items-baseline gap-2">
-          <p class="text-2xl font-semibold">24</p>
-          <p class="text-sm text-gray-500">{{ __('in :year', ['year' => date('Y')]) }}</p>
-          <span class="text-gray-400">·</span>
-          <p class="text-sm text-gray-500">31 {{ __('in :year', ['year' => date('Y')-1]) }}</p>
-        </div>
+      <p class="text-sm text-gray-600">{{ __('Times seen') }}</p>
+      <div class="flex items-baseline gap-2">
+        <p class="text-2xl font-semibold">24</p>
+        <p class="text-sm text-gray-500">{{ __('in :year', ['year' => date('Y')]) }}</p>
+        <span class="text-gray-400">·</span>
+        <p class="text-sm text-gray-500">31 {{ __('in :year', ['year' => date('Y') - 1]) }}</p>
+      </div>
     </div>
     <div class="p-4">
       <p class="mb-3 text-sm text-gray-600">{{ __('Have you seen :name lately?', ['name' => $person->first_name]) }}</p>
@@ -29,7 +28,7 @@
       <div class="flex flex-wrap gap-2">
         <form action="" method="POST" class="inline">
           @csrf
-          <input type="hidden" name="seen_at" value="{{ now() }}">
+          <input type="hidden" name="seen_at" value="{{ now() }}" />
           <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
             {{ __('Today') }}
           </button>
@@ -37,7 +36,7 @@
 
         <form action="" method="POST" class="inline">
           @csrf
-          <input type="hidden" name="seen_at" value="{{ now()->subDay() }}">
+          <input type="hidden" name="seen_at" value="{{ now()->subDay() }}" />
           <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
             {{ __('Yesterday') }}
           </button>
@@ -45,13 +44,13 @@
 
         <form action="" method="POST" class="inline">
           @csrf
-          <input type="hidden" name="seen_at" value="{{ now()->subDays(2) }}">
+          <input type="hidden" name="seen_at" value="{{ now()->subDays(2) }}" />
           <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
             {{ __('2 days ago') }}
           </button>
         </form>
 
-        <button type="button" x-data="" x-on:click="$dispatch('open-modal', 'custom-date')" class="inline-flex items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+        <button type="button" x-data="" x-on:click="$dispatch('open-modal', 'custom-date')" class="inline-flex items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
           <x-lucide-calendar-plus class="h-4 w-4" />
           {{ __('Custom date') }}
         </button>
@@ -63,12 +62,7 @@
   <div class="mt-4 rounded-lg border border-gray-200 bg-white">
     <h3 class="border-b border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">{{ __('Recent encounters') }}</h3>
     <div class="divide-y divide-gray-200">
-      @foreach ([
-        ['date' => now()->subDays(2), 'period' => 'At Central Perk'],
-        ['date' => now()->subDays(5), 'period' => 'Birthday party'],
-        ['date' => now()->subDays(12), 'period' => 'Coffee meeting'],
-        ['date' => now()->subDays(25), 'period' => 'Dinner at Monica\'s'],
-      ] as $encounter)
+      @foreach ([['date' => now()->subDays(2), 'period' => 'At Central Perk'], ['date' => now()->subDays(5), 'period' => 'Birthday party'], ['date' => now()->subDays(12), 'period' => 'Coffee meeting'], ['date' => now()->subDays(25), 'period' => 'Dinner at Monica\'s']] as $encounter)
         <div class="flex items-center justify-between p-4">
           <div class="flex items-center gap-3">
             <div class="rounded-full bg-indigo-50 p-2">

@@ -31,7 +31,7 @@
       @foreach ($persons as $currentPerson)
         <a href="{{ route('persons.show', $currentPerson['slug']) }}" class="{{ isset($person) && $person && $currentPerson['id'] === $person->id ? 'bg-blue-50' : '' }} flex cursor-pointer items-center gap-3 p-3 hover:bg-blue-50">
           <div class="shrink-0">
-            <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="https://i.pravatar.cc/32?u={{ $currentPerson['id'] }}" alt="" />
+            <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="https://i.pravatar.cc/32?u={{ $currentPerson['id'] }}" alt="" />
           </div>
           <div class="min-w-0">
             <p class="truncate font-medium">{{ $currentPerson['name'] }}</p>

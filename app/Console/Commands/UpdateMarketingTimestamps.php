@@ -50,7 +50,7 @@ class UpdateMarketingTimestamps extends Command
 
             if ($process->isSuccessful()) {
                 $timestamp = trim($process->getOutput());
-                if ($timestamp) {
+                if ($timestamp !== '' && $timestamp !== '0') {
                     // Store both formats - with slashes and with dots
                     $timestamps[$relativePath] = $timestamp;
                     $timestamps[str_replace('/', '.', $relativePath)] = $timestamp;

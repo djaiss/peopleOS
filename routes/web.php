@@ -14,7 +14,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
-use App\Http\Controllers\Marketing\MarketingController as MarketingMarketingController;
+use App\Http\Controllers\Marketing\MarketingController;
+use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Persons\HowWeMetController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonFamilyController;
@@ -28,8 +29,9 @@ use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [MarketingMarketingController::class, 'index'])->name('marketing.index');
-Route::get('/about', [MarketingMarketingController::class, 'index'])->name('marketing.index');
+Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
+Route::get('/about', [MarketingController::class, 'index'])->name('marketing.index');
+Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitations.accept');
 

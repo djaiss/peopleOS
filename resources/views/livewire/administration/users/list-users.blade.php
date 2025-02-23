@@ -16,7 +16,7 @@
           '{{ strtolower($user['email']) }}'.includes(search.toLowerCase())
       ">
         <div class="flex items-center gap-3">
-          <img src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}" class="h-8 w-8 shrink-0 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" />
+          <img src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}" class="h-8 w-8 shrink-0 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" />
           <div>
             <p class="flex items-center gap-1 font-bold">
               {{ $user['name'] }}

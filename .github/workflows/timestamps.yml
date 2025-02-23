@@ -22,8 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # This ensures we have the git history
-          ref: ${{ github.head_ref }}  # Checkout the PR branch
+          fetch-depth: 0 # This ensures we have the git history
+          ref: ${{ github.head_ref }} # Checkout the PR branch
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2

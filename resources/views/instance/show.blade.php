@@ -57,7 +57,7 @@
                 <span class="text-xs font-medium">{{ __('Account Owner') }}</span>
               </div>
               <div class="flex items-center gap-3">
-                <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ $firstUser->getAvatar(64) }}" alt="{{ $firstUser->name }}" />
+                <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $firstUser->getAvatar(64) }}" alt="{{ $firstUser->name }}" />
                 <div>
                   <p class="font-medium text-gray-900">{{ $firstUser->name }}</p>
                   <p class="text-sm text-gray-600">{{ $firstUser->email }}</p>

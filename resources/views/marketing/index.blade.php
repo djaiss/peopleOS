@@ -1,6 +1,7 @@
 <?php
 /*
  * @var int $accountNumbers
+ * @var array $pullRequests
  */
 ?>
 
@@ -35,7 +36,7 @@
 
         <!-- Right side - Image -->
         <div class="relative">
-          <img src="{{ asset('marketing/homepage.png') }}" alt="PeopleOS Screenshot" class="rounded-xl ring-1 shadow-xl ring-gray-400/10" />
+          <img src="{{ asset('marketing/homepage.png') }}" alt="PeopleOS Screenshot" class="rounded-xl shadow-xl ring-1 ring-gray-400/10" />
           <!-- Optional decorative elements -->
           <div class="absolute -z-10 hidden lg:block">
             <div class="absolute -top-16 -right-16 h-72 w-72 rounded-full bg-blue-50 opacity-70 mix-blend-multiply blur-2xl"></div>
@@ -120,23 +121,10 @@
         </div>
         <div class="flex flex-col items-center lg:col-span-1 lg:items-start" x-data="{ isRotating: false }">
           <div class="relative">
-            <img
-              src="{{ asset('marketing/regis.jpg') }}"
-              alt="Monica"
-              class="mb-3 w-40 rounded-lg lg:rotate-4 hover:scale-110 hover:rotate-[360deg] transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]"
-              @mouseenter="isRotating = true"
-              @mouseleave="isRotating = false"
-              @transitionend="isRotating = false"
-            />
+            <img src="{{ asset('marketing/regis.jpg') }}" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" />
 
             <!-- Tooltip -->
-            <div
-              x-show="isRotating"
-              x-transition.opacity
-              class="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-75 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap"
-            >
-              Please stooooop this! 😵‍💫
-            </div>
+            <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 left-full ml-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Please stooooop this! 😵‍💫</div>
           </div>
           <p class="text-xs text-gray-600 lg:rotate-4">Régis Freyd. I created PeopleOS. Sorry.</p>
         </div>
