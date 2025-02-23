@@ -1,0 +1,50 @@
+name: Update marketing page timestamps
+
+on:
+  pull_request:
+    paths:
+      - 'resources/views/marketing/**'
+    types: [opened, synchronize]
+
+# Only allow one timestamps update to run at a time per PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-timestamps:
+    if: ${{ always() && !contains(github.event.pull_request.labels.*.name, 'skip-timestamps') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # This ensures we have the git history
+          ref: ${{ github.head_ref }} # Checkout the PR branch
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Update page timestamps
+        run: php artisan marketing:update-timestamps
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add config/marketing-timestamps.php
+          git commit -m "chore: update marketing page timestamps [skip actions]"
+          git push

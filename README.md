@@ -4,8 +4,8 @@ PeopleOS is the spiritual successor of Monica, the personal CRM.
 
 ### Features
 
-* A powerful contact management system, with features like adding family information, work information, etc...
-* A powerful, and fully customizable journal system, that lets you document your life.
+- A powerful contact management system, with features like adding family information, work information, etc...
+- A powerful, and fully customizable journal system, that lets you document your life.
 
 Data is also fully encrypted at rest, which is nice in case someone wants to peak into the database.
 
@@ -110,13 +110,13 @@ If you need to test the API, we provide a [Bruno](https://www.usebruno.com/) col
 
 This project uses the following languages:
 
-* PHP (always the most recent version),
-* CSS with Tailwind almost exclusively,
-* Blade for the templating language,
-* HTML, of course
-* Javascript with AlpineJS,
-* Ajax-like behaviour with Alpine Ajax,
-* PHPUnit.
+- PHP (always the most recent version),
+- CSS with Tailwind almost exclusively,
+- Blade for the templating language,
+- HTML, of course
+- Javascript with AlpineJS,
+- Ajax-like behaviour with Alpine Ajax,
+- PHPUnit.
 
 These are simple languages, chosen on purpose. They lower the barriers to entry for newcomers who want to help on the project. They are very easy to debug. They are very easy to install on any machines. They are very light in terms of resources.
 
@@ -124,14 +124,14 @@ We believe this project is a nice project to learn how to code and to contribute
 
 ### General guidelines
 
-* This project is meant to be simple to read, simple to maintain and simple to debug.
-* As a consequence, the code must be the simplest it can be. I can't put emphasis this point enough.
-* Use comments to explain what you are doing.
-* Write easy to understand code. Do not write lines of code that takes minutes to understand, like crazy loops and recursive stuff that make you appear smart, but waste everyone's time. 
-* Yes, I'm not a great developer, but I'm also the one who will maintain this project on the long run. Please help me doing so.
+- This project is meant to be simple to read, simple to maintain and simple to debug.
+- As a consequence, the code must be the simplest it can be. I can't put emphasis this point enough.
+- Use comments to explain what you are doing.
+- Write easy to understand code. Do not write lines of code that takes minutes to understand, like crazy loops and recursive stuff that make you appear smart, but waste everyone's time.
+- Yes, I'm not a great developer, but I'm also the one who will maintain this project on the long run. Please help me doing so.
 
 ### Guidelines for development
 
-* All models and controllers should be fully tested. We use PHPUnit.
-* Avoid writing custom CSS as much as possible. Tailwind provides everything we need in 99.9999% of the case.
-* Do not add dependencies. Dependencies are the devil. It puts the project at risk in many ways.
+- All models and controllers should be fully tested. We use PHPUnit.
+- Avoid writing custom CSS as much as possible. Tailwind provides everything we need in 99.9999% of the case.
+- Do not add dependencies. Dependencies are the devil. It puts the project at risk in many ways.

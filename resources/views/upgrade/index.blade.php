@@ -18,7 +18,7 @@
       </div>
 
       <!-- Main Card -->
-      <div class="mt-12 rounded-2xl bg-white p-8 ring-1 shadow-sm ring-gray-200">
+      <div class="mt-12 rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-2xl font-bold tracking-tight text-gray-900">{{ __('Lifetime Access') }}</h2>

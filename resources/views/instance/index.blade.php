@@ -112,7 +112,7 @@
               <div class="col-span-5">
                 <div class="flex items-center gap-2">
                   <div class="h-6 w-6 rounded-full bg-gray-200 sm:h-8 sm:w-8">
-                    <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" :src="account.avatar" />
+                    <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" :src="account.avatar" />
                   </div>
                   <div class="min-w-0 flex-1">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:gap-2">

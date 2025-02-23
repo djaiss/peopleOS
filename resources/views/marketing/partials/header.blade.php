@@ -23,7 +23,7 @@
     <!-- Main navigation - centered (hidden on mobile) -->
     <div class="hidden flex-1 justify-center lg:flex">
       <div class="flex items-center gap-x-2">
-        <a href="{{ route('dashboard.index') }}" class="group flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
+        <a href="{{ route('marketing.why.index') }}" class="group flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-message-circle-question class="h-4 w-4 text-blue-600 group-hover:text-blue-700" />
           <p class="text-sm text-gray-700 group-hover:text-gray-900">
             {{ __('Why PeopleOS') }}
@@ -75,7 +75,7 @@
         <x-dropdown align="right" width="48">
           <x-slot name="trigger">
             <button class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
-              <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] ring-1 shadow-sm ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
+              <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
             </button>
           </x-slot>
 
