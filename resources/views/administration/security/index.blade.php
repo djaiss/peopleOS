@@ -61,7 +61,7 @@
         </div>
 
         <div class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
-          <div id="add-api-key-form" class="flex items-center justify-between rounded-t-lg border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
+          <div id="add-api-key-form" class="flex items-center justify-between rounded-t-lg p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
             @if ($apiKeys->isEmpty())
               <p class="text-sm text-zinc-500">{{ __('No API keys created') }}</p>
             @else
@@ -75,7 +75,7 @@
 
           <div id="api-key-list">
             @foreach ($apiKeys as $apiKey)
-              <div class="group flex items-center justify-between border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0">
+              <div class="group flex items-center justify-between first:border-t border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0">
                 <div class="flex items-center justify-between gap-3">
                   <div class="rounded-sm bg-zinc-100 p-2">
                     <x-lucide-key class="h-4 w-4 text-zinc-500" />
