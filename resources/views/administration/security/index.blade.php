@@ -75,7 +75,7 @@
 
           <div id="api-key-list">
             @foreach ($apiKeys as $apiKey)
-              <div class="group flex items-center justify-between first:border-t border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0">
+              <div class="group flex items-center justify-between border-b border-gray-200 p-3 first:border-t last:rounded-b-lg last:border-b-0">
                 <div class="flex items-center justify-between gap-3">
                   <div class="rounded-sm bg-zinc-100 p-2">
                     <x-lucide-key class="h-4 w-4 text-zinc-500" />
