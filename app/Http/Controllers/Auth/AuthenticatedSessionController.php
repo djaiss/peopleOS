@@ -18,7 +18,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $quotes = config('quotes');
+        $randomQuote = $quotes[array_rand($quotes)];
+
+        return view('auth.login', [
+            'quote' => $randomQuote,
+        ]);
     }
 
     /**

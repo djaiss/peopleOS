@@ -1,6 +1,6 @@
 <div class="w-full" x-data="{ mobileMenuOpen: false }">
   <!-- main nav -->
-  <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-gray-200 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
+  <nav class="max-w-8xl mx-auto flex h-12 items-center justify-between border-b border-gray-300 bg-zinc-100 px-3 sm:px-6 dark:border-slate-600 dark:bg-gray-800 dark:text-slate-200">
     <!-- Logo -->
     <div class="flex items-center">
       <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
@@ -109,9 +109,12 @@
         </x-dropdown>
       </div>
     @else
-      <div class="flex items-center gap-x-3">
+      <div class="flex items-center gap-x-5">
         <a href="{{ route('login') }}" class="text-sm text-gray-700">
           {{ __('Sign in') }}
+        </a>
+        <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          {{ __('Get started') }}
         </a>
       </div>
     @endif
