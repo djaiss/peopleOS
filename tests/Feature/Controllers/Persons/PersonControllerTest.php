@@ -126,5 +126,6 @@ class PersonControllerTest extends TestCase
 
         $this->assertArrayHasKey('person', $response);
         $this->assertArrayHasKey('persons', $response);
+        $this->assertArrayHasKey('personSeenReports', $response);
     }
 }

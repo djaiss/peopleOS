@@ -16,7 +16,7 @@ use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
-use App\Http\Controllers\Persons\HowWeMetController;
+use App\Http\Controllers\Persons\PersonHowWeMetController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonFamilyController;
 use App\Http\Controllers\Persons\PersonGiftController;
@@ -50,9 +50,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
         Route::middleware(['person'])->group(function (): void {
             Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
-            Route::get('persons/{slug}/how-we-met', [HowWeMetController::class, 'edit'])->name('persons.how-we-met.edit');
-            Route::get('persons/{slug}/how-we-met/toggle', [HowWeMetController::class, 'post'])->name('persons.how-we-met.post');
-            Route::put('persons/{slug}/how-we-met', [HowWeMetController::class, 'update'])->name('persons.how-we-met.update');
+            Route::get('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'edit'])->name('persons.how-we-met.edit');
+            Route::get('persons/{slug}/how-we-met/toggle', [PersonHowWeMetController::class, 'post'])->name('persons.how-we-met.post');
+            Route::put('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'update'])->name('persons.how-we-met.update');
 
             // person settings
             Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');

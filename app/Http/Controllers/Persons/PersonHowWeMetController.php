@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class HowWeMetController extends Controller
+class PersonHowWeMetController extends Controller
 {
     public function edit(Request $request): View
     {
