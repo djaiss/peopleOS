@@ -71,11 +71,11 @@ return [
         'description' => 'Ross\'s repeated instruction while attempting to move a couch up the stairs.',
     ],
     [
-        'sentence' => 'Could I BE any more...?',
+        'sentence' => 'I say more dumb things before 9 a.m. than most people say all day.',
         'character' => 'Chandler Bing',
         'file' => 'chandler',
         'tv_show' => 'Friends',
-        'season_episode' => 'Various',
+        'season_episode' => 'Season 3, Episode 24',
         'description' => 'Chandler\'s sarcastic way of emphasizing a point.',
     ],
     [
