@@ -1,22 +1,13 @@
 <x-app-layout>
   <div class="flex h-[calc(100vh-48px)] flex-col items-center justify-center bg-gray-50 px-4 text-center sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-md">
-      <!-- SVG Illustration -->
-      <svg class="mx-auto h-48 w-48 text-gray-300" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="250" cy="150" r="100" stroke="currentColor" stroke-width="20" />
-        <circle cx="250" cy="450" r="180" stroke="currentColor" stroke-width="20" stroke-dasharray="20 20" />
-        <path d="M175 220 L100 450" stroke="currentColor" stroke-width="16" />
-        <path d="M325 220 L400 450" stroke="currentColor" stroke-width="16" />
-        <path d="M250 250 L250 450" stroke="currentColor" stroke-width="16" />
-      </svg>
-
+    <div class="mx-auto max-w-md mb-6 p-10 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
       <!-- Text content -->
-      <h3 class="mt-6 text-2xl font-semibold text-gray-900">
+      <h3 class="text-2xl font-semibold text-gray-900">
         {{ __('Welcome to :name', ['name' => config('app.name')]) }}
       </h3>
 
       <p class="mt-4 text-base text-gray-600">
-        {{ __('Start recording what you know about the people you care about. Add your first contact to begin building meaningful relationships.') }}
+        {{ __('Add your first contact to begin building meaningful relationships.') }}
       </p>
 
       <!-- Call to action -->

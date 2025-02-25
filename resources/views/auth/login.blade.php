@@ -18,14 +18,19 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Title -->
-        <div class="mb-8">
+        <div class="mb-8 flex items-center gap-x-2">
+          <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
+            <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-500 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+              <x-lucide-users class="h-5 w-5 text-white" />
+            </div>
+          </a>
           <h1 class="text-2xl font-semibold text-gray-900">
             {{ __('Welcome back') }}
           </h1>
         </div>
 
         <!-- Login Form -->
-        <div class="mt-6 mb-12 w-full overflow-hidden bg-white p-4 shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-900">
+        <div class="mt-6 mb-12 w-full overflow-hidden bg-white p-4 shadow-md sm:max-w-md rounded-lg dark:bg-gray-900">
           <form method="POST" action="{{ route('login') }}">
             @csrf
 
