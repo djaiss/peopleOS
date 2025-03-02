@@ -41,11 +41,6 @@ class PersonController extends Controller
         return redirect()->route('persons.show', [
             'slug' => $persons[0]['slug'],
         ]);
-
-        // return view('persons.show', [
-        //     'person' => $personsQuery->first(),
-        //     'persons' => $persons,
-        // ]);
     }
 
     public function new(): View
@@ -108,7 +103,7 @@ class PersonController extends Controller
         )->value();
 
         $currentYear = date('Y');
-        $previousYear = (int)$currentYear - 1;
+        $previousYear = (int) $currentYear - 1;
 
         $personSeenReports = [
             'currentYearCount' => $person->personSeenReports()

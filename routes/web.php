@@ -23,6 +23,8 @@ use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
+use App\Http\Controllers\Persons\PersonSeenReportController;
+use App\Http\Controllers\Persons\PersonSeenReportToggleController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
 use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonWorkController;
@@ -51,8 +53,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
         Route::middleware(['person'])->group(function (): void {
             Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
             Route::get('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'edit'])->name('persons.how-we-met.edit');
-            Route::get('persons/{slug}/how-we-met/toggle', [PersonHowWeMetController::class, 'post'])->name('persons.how-we-met.post');
+            Route::get('persons/{slug}/how-we-met/toggle', [PersonHowWeMetController::class, 'store'])->name('persons.how-we-met.store');
             Route::put('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'update'])->name('persons.how-we-met.update');
+
+            Route::post('persons/{slug}/encounters', [PersonSeenReportController::class, 'store'])->name('persons.encounters.store');
+            Route::get('persons/{slug}/encounters/toggle', [PersonSeenReportToggleController::class, 'store'])->name('persons.encounters.toggle');
+            Route::get('persons/{slug}/encounters/{encounter}/edit', [PersonSeenReportController::class, 'edit'])->name('persons.encounters.edit');
+            Route::put('persons/{slug}/encounters/{encounter}', [PersonSeenReportController::class, 'update'])->name('persons.encounters.update');
+            Route::delete('persons/{slug}/encounters/{encounter}', [PersonSeenReportController::class, 'destroy'])->name('persons.encounters.destroy');
 
             // person settings
             Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');

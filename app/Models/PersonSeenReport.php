@@ -37,6 +37,7 @@ class PersonSeenReport extends Model
     protected function casts(): array
     {
         return [
+            'seen_at' => 'datetime',
             'period_of_time' => 'encrypted',
         ];
     }

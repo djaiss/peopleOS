@@ -4,7 +4,7 @@
  */
 ?>
 
-<section class="mb-8" x-data="{
+<section id="encounters-section" class="mb-8" x-data="{
     encountersExpanded: {{ $person->encounters_shown ? 'true' : 'false' }},
   }">
   <div class="mb-4 flex items-center justify-between">
@@ -13,11 +13,11 @@
       <h2 class="text-lg font-semibold text-gray-900">{{ __('Encounters') }}</h2>
     </div>
     <div class="flex items-center gap-2">
-      <div @click="encountersExpanded = !encountersExpanded" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
+      <a x-target="encounters-section" href="{{ route('persons.encounters.toggle', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
         <span x-text="encountersExpanded ? '{{ __('Show less') }}' : '{{ __('Show more') }}'"></span>
         <x-lucide-chevron-down x-show="!encountersExpanded" class="h-4 w-4" />
         <x-lucide-chevron-up x-show="encountersExpanded" class="h-4 w-4" />
-      </div>
+      </a>
     </div>
   </div>
 
@@ -38,26 +38,26 @@
       <p class="mb-3 text-sm text-gray-600">{{ __('Have you seen :name lately?', ['name' => $person->first_name]) }}</p>
 
       <div class="flex flex-wrap gap-2">
-        <form action="" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('persons.encounters.store', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now() }}" />
-          <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
+          <button type="submit" class="cursor-pointer inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
             {{ __('Today') }}
           </button>
         </form>
 
-        <form action="" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('persons.encounters.store', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDay() }}" />
-          <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
+          <button type="submit" class="cursor-pointer inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
             {{ __('Yesterday') }}
           </button>
         </form>
 
-        <form action="" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('persons.encounters.store', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDays(2) }}" />
-          <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
+          <button type="submit" class="cursor-pointer inline-flex items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
             {{ __('2 days ago') }}
           </button>
         </form>
@@ -71,19 +71,40 @@
   </div>
 
   <!-- Recent encounters -->
-  <div x-cloak x-show="encountersExpanded" class="mt-4 rounded-lg border border-gray-200 bg-white">
+  <div x-cloak x-show="encountersExpanded" id="encounters-list" class="mt-4 rounded-lg border border-gray-200 bg-white">
     <h3 class="border-b border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">{{ __('Recent encounters') }}</h3>
     <div class="divide-y divide-gray-200">
       @forelse ($personSeenReports['latestSeen'] as $encounter)
-        <div class="flex items-center justify-between p-4">
+        <div id="seen-report-{{ $encounter['id'] }}" class="flex items-center justify-between p-4 group">
           <div class="flex items-center gap-3">
             <div class="rounded-full bg-indigo-50 p-2">
               <x-lucide-eye class="h-4 w-4 text-indigo-600" />
             </div>
             <div>
-              <p class="text-sm font-medium text-gray-900">{{ $encounter->period }}</p>
+              @if ($encounter->period_of_time)
+              <p class="text-sm font-medium text-gray-900">period</p>
+              @endif
               <p class="text-sm text-gray-500">{{ $encounter->seen_at->diffForHumans() }}</p>
             </div>
+          </div>
+
+          <!-- actions -->
+          <div class="flex gap-2">
+            <x-button.invisible x-target="seen-report-{{ $encounter['id'] }}" href="{{ route('persons.encounters.edit', [$person->slug, $encounter['id']]) }}" class="hidden text-sm group-hover:block">
+              {{ __('Edit') }}
+            </x-button.invisible>
+
+            <form x-target="seen-report-{{ $encounter['id'] }}" x-on:ajax:before="
+              confirm('Are you sure you want to proceed? This can not be undone.') ||
+                $event.preventDefault()
+            " action="{{ route('persons.encounters.destroy', [$person->slug, $encounter['id']]) }}" method="POST">
+              @csrf
+              @method('DELETE')
+
+              <x-button.invisible class="hidden text-sm group-hover:block">
+                {{ __('Delete') }}
+              </x-button.invisible>
+            </form>
           </div>
         </div>
       @empty

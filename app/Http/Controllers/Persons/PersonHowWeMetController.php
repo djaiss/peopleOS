@@ -26,7 +26,7 @@ class PersonHowWeMetController extends Controller
     /**
      * This is just used to update the how we met toggle.
      */
-    public function post(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $person = $request->attributes->get('person');
 
