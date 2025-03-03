@@ -75,14 +75,16 @@
     <h3 class="border-b border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">{{ __('Recent encounters') }}</h3>
     <div class="divide-y divide-gray-200">
       @forelse ($encounters['latestSeen'] as $encounter)
-        <div id="seen-report-{{ $encounter['id'] }}" class="group flex items-center justify-between p-4">
+        <div id="encounter-{{ $encounter['id'] }}" class="group flex items-center justify-between p-4">
           <div class="flex items-center gap-3">
             <div class="rounded-full bg-indigo-50 p-2">
               <x-lucide-eye class="h-4 w-4 text-indigo-600" />
             </div>
             <div>
-              @if ($encounter->period_of_time)
-                <p class="text-sm font-medium text-gray-900">period</p>
+              @if ($encounter->context)
+                <p class="text-sm font-medium text-gray-900">{{ $encounter->context }}</p>
+              @else
+                <a x-target="encounter-{{ $encounter['id'] }}" href="{{ route('persons.encounters.edit', [$person->slug, $encounter['id']]) }}" class="border-b border-dashed border-gray-600 text-sm font-medium text-gray-600">{{ __('Add context') }}</a>
               @endif
 
               <p class="text-sm text-gray-500">{{ $encounter->seen_at->diffForHumans() }}</p>
@@ -91,11 +93,11 @@
 
           <!-- actions -->
           <div class="flex gap-2">
-            <x-button.invisible x-target="seen-report-{{ $encounter['id'] }}" href="{{ route('persons.encounters.edit', [$person->slug, $encounter['id']]) }}" class="hidden text-sm group-hover:block">
+            <x-button.invisible x-target="encounter-{{ $encounter['id'] }}" href="{{ route('persons.encounters.edit', [$person->slug, $encounter['id']]) }}" class="hidden text-sm group-hover:block">
               {{ __('Edit') }}
             </x-button.invisible>
 
-            <form x-target="seen-report-{{ $encounter['id'] }}" x-on:ajax:before="
+            <form x-target="encounter-{{ $encounter['id'] }}" x-on:ajax:before="
               confirm('Are you sure you want to proceed? This can not be undone.') ||
                 $event.preventDefault()
             " action="{{ route('persons.encounters.destroy', [$person->slug, $encounter['id']]) }}" method="POST">
@@ -139,9 +141,9 @@
     </div>
 
     <div class="mt-6">
-      <x-input-label for="period_of_time" :value="__('Additional details (optional)')" />
-      <x-text-input id="period_of_time" name="period_of_time" type="text" class="mt-1 block w-full" placeholder="{{ __('e.g. Coffee meeting, Birthday party') }}" />
-      <x-input-error :messages="$errors->get('period_of_time')" class="mt-2" />
+      <x-input-label for="context" :value="__('Additional details (optional)')" />
+      <x-text-input id="context" name="context" type="text" class="mt-1 block w-full" placeholder="{{ __('e.g. Coffee meeting, Birthday party') }}" />
+      <x-input-error :messages="$errors->get('context')" class="mt-2" />
     </div>
 
     <div class="mt-6 flex justify-end gap-3">
