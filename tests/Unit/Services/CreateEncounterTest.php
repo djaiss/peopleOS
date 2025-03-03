@@ -35,13 +35,12 @@ class CreateEncounterTest extends TestCase
         ]);
 
         $seenAt = Carbon::now();
-        $periodOfTime = 'morning';
 
         $report = (new CreateEncounter(
             user: $user,
             person: $person,
             seenAt: $seenAt,
-            periodOfTime: $periodOfTime,
+            context: 'morning',
         ))->execute();
 
         $this->assertDatabaseHas('encounters', [
@@ -49,8 +48,6 @@ class CreateEncounterTest extends TestCase
             'person_id' => $person->id,
             'seen_at' => $seenAt,
         ]);
-
-        $this->assertEquals($periodOfTime, 'morning');
 
         $this->assertInstanceOf(
             Encounter::class,

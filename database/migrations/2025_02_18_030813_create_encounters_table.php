@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('person_id');
             $table->datetime('seen_at');
-            $table->text('period_of_time')->nullable();
+            $table->text('context')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');

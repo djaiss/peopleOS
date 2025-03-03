@@ -17,7 +17,7 @@ class UpdateEncounter
         private readonly User $user,
         private readonly Encounter $encounter,
         private readonly Carbon $seenAt,
-        private readonly ?string $periodOfTime = null,
+        private readonly ?string $context = null,
     ) {}
 
     public function execute(): Encounter
@@ -41,7 +41,7 @@ class UpdateEncounter
     {
         $this->encounter->update([
             'seen_at' => $this->seenAt,
-            'period_of_time' => $this->periodOfTime ?? null,
+            'context' => $this->context ?? null,
         ]);
     }
 

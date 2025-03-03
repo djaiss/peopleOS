@@ -32,7 +32,7 @@ class EncounterFactory extends Factory
             'account_id' => Account::factory(),
             'person_id' => Person::factory(),
             'seen_at' => fake()->dateTimeThisCentury(),
-            'period_of_time' => fake()->text(),
+            'context' => fake()->text(),
         ];
     }
 }

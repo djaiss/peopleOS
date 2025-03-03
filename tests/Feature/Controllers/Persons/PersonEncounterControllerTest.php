@@ -31,27 +31,4 @@ class PersonEncounterControllerTest extends TestCase
             ->assertRedirectToRoute('persons.show', $person->slug)
             ->assertSessionHas('status', 'Encounter reported');
     }
-
-    // #[Test]
-    // public function a_user_can_visit_the_create_person_page(): void
-    // {
-    //     $user = User::factory()->create();
-    //     $gender = Gender::factory()->create([
-    //         'account_id' => $user->account_id,
-    //         'name' => 'Male',
-    //     ]);
-    //     $response = $this->actingAs($user)
-    //         ->get('/persons/new')
-    //         ->assertSee('Add a person')
-    //         ->assertOk();
-
-    //     $this->assertArrayHasKey('genders', $response);
-    //     $this->assertEquals(
-    //         [
-    //             'id' => $gender->id,
-    //             'name' => 'Male',
-    //         ],
-    //         $response['genders']->toArray()[0]
-    //     );
-    // }
 }

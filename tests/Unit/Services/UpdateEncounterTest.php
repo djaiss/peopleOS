@@ -38,13 +38,13 @@ class UpdateEncounterTest extends TestCase
         ]);
 
         $newSeenAt = Carbon::create(2024, 1, 1, 12, 0, 0);
-        $newPeriodOfTime = 'At Central Perk';
+        $newContext = 'At Central Perk';
 
         $updatedReport = (new UpdateEncounter(
             user: $user,
             encounter: $encounter,
             seenAt: $newSeenAt,
-            periodOfTime: $newPeriodOfTime,
+            context: $newContext,
         ))->execute();
 
         $this->assertDatabaseHas('encounters', [
@@ -53,8 +53,8 @@ class UpdateEncounterTest extends TestCase
             'person_id' => $person->id,
         ]);
 
-        $this->assertEquals($newSeenAt, $updatedReport->seen_at);
-        $this->assertEquals($newPeriodOfTime, $updatedReport->period_of_time);
+        $this->assertEquals('2024-01-01 12:00:00', $updatedReport->seen_at);
+        $this->assertEquals('At Central Perk', $updatedReport->context);
 
         $this->assertInstanceOf(
             Encounter::class,
@@ -84,7 +84,7 @@ class UpdateEncounterTest extends TestCase
             user: $user,
             encounter: $encounter,
             seenAt: now(),
-            periodOfTime: 'At Central Perk',
+            context: 'At Central Perk',
         ))->execute();
     }
 }

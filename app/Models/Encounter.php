@@ -26,7 +26,7 @@ class Encounter extends Model
         'account_id',
         'person_id',
         'seen_at',
-        'period_of_time',
+        'context',
     ];
 
     /**
@@ -38,7 +38,7 @@ class Encounter extends Model
     {
         return [
             'seen_at' => 'datetime',
-            'period_of_time' => 'encrypted',
+            'context' => 'encrypted',
         ];
     }
 

@@ -20,7 +20,7 @@ class CreateEncounter
         public User $user,
         public Person $person,
         public Carbon $seenAt,
-        public ?string $periodOfTime = null,
+        public ?string $context = null,
     ) {}
 
     public function execute(): Encounter
@@ -46,7 +46,7 @@ class CreateEncounter
             'account_id' => $this->user->account_id,
             'person_id' => $this->person->id,
             'seen_at' => $this->seenAt,
-            'period_of_time' => $this->periodOfTime ?? null,
+            'context' => $this->context ?? null,
         ]);
     }
 

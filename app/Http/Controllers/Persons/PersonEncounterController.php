@@ -27,7 +27,7 @@ class PersonEncounterController extends Controller
             user: Auth::user(),
             person: $person,
             seenAt: Carbon::parse($validated['seen_at']),
-            periodOfTime: null,
+            context: null,
         ))->execute();
 
         $person->encounters_shown = true;
