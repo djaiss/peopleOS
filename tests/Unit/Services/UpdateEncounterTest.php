@@ -42,6 +42,7 @@ class UpdateEncounterTest extends TestCase
 
         $updatedReport = (new UpdateEncounter(
             user: $user,
+            person: $person,
             encounter: $encounter,
             seenAt: $newSeenAt,
             context: $newContext,
@@ -76,12 +77,16 @@ class UpdateEncounterTest extends TestCase
     public function it_fails_if_user_is_not_in_the_same_account(): void
     {
         $user = User::factory()->create();
-        $encounter = Encounter::factory()->create();
+        $person = Person::factory()->create();
+        $encounter = Encounter::factory()->create([
+            'person_id' => $person->id,
+        ]);
 
         $this->expectException(ModelNotFoundException::class);
 
         (new UpdateEncounter(
             user: $user,
+            person: $person,
             encounter: $encounter,
             seenAt: now(),
             context: 'At Central Perk',
