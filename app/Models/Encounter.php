@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * This model tracks when the user has seen a specific person.
  */
-class PersonSeenReport extends Model
+class Encounter extends Model
 {
     use HasFactory;
 
-    protected $table = 'person_seen_reports';
+    protected $table = 'encounters';
 
     /**
      * The attributes that are mass assignable.

@@ -30,7 +30,7 @@
         </div>
 
         <!-- Login Form -->
-        <div class="mt-6 mb-12 w-full overflow-hidden bg-white p-4 shadow-md sm:max-w-md rounded-lg dark:bg-gray-900">
+        <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-4 shadow-md sm:max-w-md dark:bg-gray-900">
           <form method="POST" action="{{ route('login') }}">
             @csrf
 

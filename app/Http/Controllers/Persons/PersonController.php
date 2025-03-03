@@ -105,14 +105,14 @@ class PersonController extends Controller
         $currentYear = date('Y');
         $previousYear = (int) $currentYear - 1;
 
-        $personSeenReports = [
-            'currentYearCount' => $person->personSeenReports()
+        $encounters = [
+            'currentYearCount' => $person->encounters()
                 ->whereYear('seen_at', $currentYear)
                 ->count(),
-            'previousYearCount' => $person->personSeenReports()
+            'previousYearCount' => $person->encounters()
                 ->whereYear('seen_at', $previousYear)
                 ->count(),
-            'latestSeen' => $person->personSeenReports()
+            'latestSeen' => $person->encounters()
                 ->orderBy('seen_at', 'desc')
                 ->take(5)
                 ->get(),
@@ -121,7 +121,7 @@ class PersonController extends Controller
         return view('persons.show', [
             'person' => $person,
             'persons' => $persons,
-            'personSeenReports' => $personSeenReports,
+            'encounters' => $encounters,
         ]);
     }
 }

@@ -9,9 +9,8 @@ use App\Services\TogglePersonSeenReportListVisibility;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
-class PersonSeenReportToggleController extends Controller
+class PersonEncounterToggleController extends Controller
 {
     /**
      * This is just used to update the how we met toggle.

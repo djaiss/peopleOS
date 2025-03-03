@@ -7,7 +7,7 @@
 <x-guest-layout>
   <div class="grid min-h-screen w-screen grid-cols-1 lg:grid-cols-3">
     <!-- Left side - Registration Form (1/3) -->
-    <div class="mx-auto flex w-full max-w-xl flex-1 col-span-2 flex-col justify-center px-5 py-10 sm:px-6">
+    <div class="col-span-2 mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-5 py-10 sm:px-6">
       <div class="w-full">
         <p class="group mb-10 flex items-center gap-x-1 text-sm text-gray-600">
           <x-lucide-arrow-left class="h-4 w-4 transition-transform duration-150 group-hover:-translate-x-1" />
@@ -16,26 +16,26 @@
 
         <!-- Title -->
         <div class="mb-8">
-        <div class="flex items-center gap-x-2">
-          <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
-            <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-500 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-              <x-lucide-users class="h-5 w-5 text-white" />
-            </div>
-          </a>
-          <h1 class="text-2xl font-semibold text-gray-900">
-            {{ __('Sign up for an account') }}
-          </h1>
-        </div>
-        <p class="mt-2 text-sm text-gray-500">{{ __('You will be the administrator of this account.') }}</p>
+          <div class="flex items-center gap-x-2">
+            <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
+              <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-500 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+                <x-lucide-users class="h-5 w-5 text-white" />
+              </div>
+            </a>
+            <h1 class="text-2xl font-semibold text-gray-900">
+              {{ __('Sign up for an account') }}
+            </h1>
+          </div>
+          <p class="mt-2 text-sm text-gray-500">{{ __('You will be the administrator of this account.') }}</p>
         </div>
 
         <!-- Registration Form -->
-        <div class="mt-6 mb-12 w-full overflow-hidden bg-white p-6 shadow-md rounded-lg dark:bg-gray-900">
+        <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-6 shadow-md dark:bg-gray-900">
           <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex flex-col gap-4 sm:flex-row">
               <div class="mb-4 w-full">
                 <x-input-label for="first_name" :value="__('First name')" class="mb-2" />
                 <x-text-input id="first_name" class="block w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Password -->
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex flex-col gap-4 sm:flex-row">
               <div class="mb-4 w-full">
                 <x-input-label for="password" :value="__('Password')" class="mb-2" />
                 <x-text-input id="password" class="block w-full" type="password" name="password" required autocomplete="password" passwordrules="minlength: 20; required: lower; required: upper; required: digit; required: [-];" />
@@ -97,7 +97,7 @@
     </div>
 
     <!-- Right side - Background and Quote (2/3) -->
-    <div class="login-image relative hidden col-span-1 lg:block">
+    <div class="login-image relative col-span-1 hidden lg:block">
       <!-- Quote Box -->
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="relative rounded-lg border-2 border-white/70 bg-white/90 p-1 shadow-lg backdrop-blur-sm">

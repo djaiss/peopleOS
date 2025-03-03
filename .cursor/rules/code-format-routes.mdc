@@ -1,0 +1,19 @@
+---
+description: Guidelines to manage routes
+globs: routes/*.php
+alwaysApply: false
+---
+
+# Your routes
+
+- Web routes are always stored in routes/web.php
+- Api routes are always stored in routes/api.php
+- Routes must follow the Ruby on Rails guidelines for naming routes.
+- Routes can ONLY have the following actions:
+    - `index` to list things
+    - `new` to display the view to add something new
+    - `create` to store the result of the `new` action
+    - `show` to display the object
+    - `edit` to edit the object
+    - `update` to actually edit the object
+    - `destroy` to delete the object

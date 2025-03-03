@@ -6,10 +6,10 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
+use App\Models\Encounter;
 use App\Models\Person;
-use App\Models\PersonSeenReport;
 use App\Models\User;
-use App\Services\CreatePersonSeenReport;
+use App\Services\UpdateEncounter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -17,15 +17,14 @@ use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class CreatePersonSeenReportTest extends TestCase
+class UpdateEncounterTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_a_person_seen_report(): void
+    public function it_updates_an_encounter(): void
     {
         Queue::fake();
-        Carbon::setTestNow(Carbon::create(2024, 1, 1));
 
         $user = User::factory()->create();
         $person = Person::factory()->create([
@@ -33,28 +32,33 @@ class CreatePersonSeenReportTest extends TestCase
             'first_name' => 'Ross',
             'last_name' => 'Geller',
         ]);
-
-        $seenAt = Carbon::now();
-        $periodOfTime = 'morning';
-
-        $report = (new CreatePersonSeenReport(
-            user: $user,
-            person: $person,
-            seenAt: $seenAt,
-            periodOfTime: $periodOfTime,
-        ))->execute();
-
-        $this->assertDatabaseHas('person_seen_reports', [
+        $encounter = Encounter::factory()->create([
             'account_id' => $user->account_id,
             'person_id' => $person->id,
-            'seen_at' => $seenAt,
         ]);
 
-        $this->assertEquals($periodOfTime, 'morning');
+        $newSeenAt = Carbon::create(2024, 1, 1, 12, 0, 0);
+        $newPeriodOfTime = 'At Central Perk';
+
+        $updatedReport = (new UpdateEncounter(
+            user: $user,
+            encounter: $encounter,
+            seenAt: $newSeenAt,
+            periodOfTime: $newPeriodOfTime,
+        ))->execute();
+
+        $this->assertDatabaseHas('encounters', [
+            'id' => $encounter->id,
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertEquals($newSeenAt, $updatedReport->seen_at);
+        $this->assertEquals($newPeriodOfTime, $updatedReport->period_of_time);
 
         $this->assertInstanceOf(
-            PersonSeenReport::class,
-            $report
+            Encounter::class,
+            $updatedReport
         );
 
         Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
@@ -62,24 +66,25 @@ class CreatePersonSeenReportTest extends TestCase
         });
 
         Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'person_seen_report_creation'
+            return $job->action === 'encounter_update'
                 && $job->user->id === $user->id
-                && $job->description === 'Logged having seen Ross Geller';
+                && $job->description === 'Updated having seen Ross Geller';
         });
     }
 
     #[Test]
-    public function it_fails_if_user_and_person_are_not_in_the_same_account(): void
+    public function it_fails_if_user_is_not_in_the_same_account(): void
     {
         $user = User::factory()->create();
-        $person = Person::factory()->create();
+        $encounter = Encounter::factory()->create();
 
         $this->expectException(ModelNotFoundException::class);
 
-        (new CreatePersonSeenReport(
+        (new UpdateEncounter(
             user: $user,
-            person: $person,
-            seenAt: Carbon::now(),
+            encounter: $encounter,
+            seenAt: now(),
+            periodOfTime: 'At Central Perk',
         ))->execute();
     }
 }

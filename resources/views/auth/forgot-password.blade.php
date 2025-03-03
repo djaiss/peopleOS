@@ -21,7 +21,7 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Password Reset Form -->
-        <div class="mt-6 mb-12 w-full overflow-hidden bg-white p-6 shadow-md rounded-lg dark:bg-gray-900">
+        <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-6 shadow-md dark:bg-gray-900">
           <form method="POST" action="{{ route('password.email') }}">
             @csrf
 

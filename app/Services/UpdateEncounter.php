@@ -6,35 +6,43 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\PersonSeenReport;
+use App\Models\Encounter;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class DestroyPersonSeenReport
+class UpdateEncounter
 {
     public function __construct(
         private readonly User $user,
-        private readonly PersonSeenReport $personSeenReport,
+        private readonly Encounter $encounter,
+        private readonly Carbon $seenAt,
+        private readonly ?string $periodOfTime = null,
     ) {}
 
-    public function execute(): void
+    public function execute(): Encounter
     {
         $this->validate();
-        $this->delete();
+        $this->update();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
+
+        return $this->encounter;
     }
 
     private function validate(): void
     {
-        if ($this->user->account_id !== $this->personSeenReport->account_id) {
+        if ($this->user->account_id !== $this->encounter->account_id) {
             throw new ModelNotFoundException();
         }
     }
 
-    private function delete(): void
+    private function update(): void
     {
-        $this->personSeenReport->delete();
+        $this->encounter->update([
+            'seen_at' => $this->seenAt,
+            'period_of_time' => $this->periodOfTime ?? null,
+        ]);
     }
 
     private function updateUserLastActivityDate(): void
@@ -46,8 +54,8 @@ class DestroyPersonSeenReport
     {
         LogUserAction::dispatch(
             user: $this->user,
-            action: 'person_seen_report_deletion',
-            description: 'Deleted having seen '.$this->personSeenReport->person->name,
+            action: 'encounter_update',
+            description: 'Updated having seen '.$this->encounter->person->name,
         );
     }
 }

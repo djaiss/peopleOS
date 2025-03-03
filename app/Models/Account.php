@@ -70,11 +70,11 @@ class Account extends Model
     }
 
     /**
-     * Get the person seen reports associated with the account.
+     * Get the encounters associated with the account.
      */
-    public function personSeenReports(): HasMany
+    public function encounters(): HasMany
     {
-        return $this->hasMany(PersonSeenReport::class);
+        return $this->hasMany(Encounter::class);
     }
 
     /**

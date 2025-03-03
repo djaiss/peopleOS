@@ -6,6 +6,8 @@ Todo:
   - Fix contact deletion if the contact can't be deleted: DONE
   - Add notifications: DONE
   - Add "how we met" to person: DONE
+  - rename all `store` to `create` in controllers
+  - remove all stuff from controllers
   - Add services to manage instance
   - Add passions to person
   - Add nationality to person and significant other
@@ -14,4 +16,3 @@ Todo:
 
   Country born - city born
   Country/place studies
-

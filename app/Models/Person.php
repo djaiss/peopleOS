@@ -137,7 +137,7 @@ class Person extends Model
      */
     public function encounters(): HasMany
     {
-        return $this->hasMany(PersonSeenReport::class);
+        return $this->hasMany(Encounter::class);
     }
 
     /**
