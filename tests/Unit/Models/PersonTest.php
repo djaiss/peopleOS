@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
+use App\Models\Encounter;
 use App\Models\Gender;
 use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
-use App\Models\PersonSeenReport;
 use App\Models\SpecialDate;
 use App\Models\WorkHistory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -102,14 +102,14 @@ class PersonTest extends TestCase
     }
 
     #[Test]
-    public function it_has_many_person_seen_reports(): void
+    public function it_has_many_encounters(): void
     {
         $person = Person::factory()->create();
-        PersonSeenReport::factory()->create([
+        Encounter::factory()->create([
             'person_id' => $person->id,
         ]);
 
-        $this->assertTrue($person->personSeenReports()->exists());
+        $this->assertTrue($person->encounters()->exists());
     }
 
     #[Test]

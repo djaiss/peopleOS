@@ -16,7 +16,7 @@ use Illuminate\View\View;
 
 class PersonController extends Controller
 {
-    public function index(): View
+    public function index()
     {
         $personsQuery = Person::where('account_id', Auth::user()->account_id)
             ->with('howWeMetSpecialDate')
@@ -38,9 +38,8 @@ class PersonController extends Controller
             return view('persons.blank');
         }
 
-        return view('persons.show', [
-            'person' => $personsQuery->first(),
-            'persons' => $persons,
+        return redirect()->route('persons.show', [
+            'slug' => $persons[0]['slug'],
         ]);
     }
 
@@ -103,9 +102,26 @@ class PersonController extends Controller
             accountId: Auth::user()->account_id,
         )->value();
 
+        $currentYear = date('Y');
+        $previousYear = (int) $currentYear - 1;
+
+        $encounters = [
+            'currentYearCount' => $person->encounters()
+                ->whereYear('seen_at', $currentYear)
+                ->count(),
+            'previousYearCount' => $person->encounters()
+                ->whereYear('seen_at', $previousYear)
+                ->count(),
+            'latestSeen' => $person->encounters()
+                ->orderBy('seen_at', 'desc')
+                ->take(5)
+                ->get(),
+        ];
+
         return view('persons.show', [
             'person' => $person,
             'persons' => $persons,
+            'encounters' => $encounters,
         ]);
     }
 }

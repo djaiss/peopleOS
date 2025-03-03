@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * This model tracks when the user has seen a specific person.
  */
-class PersonSeenReport extends Model
+class Encounter extends Model
 {
     use HasFactory;
 
-    protected $table = 'person_seen_reports';
+    protected $table = 'encounters';
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +26,7 @@ class PersonSeenReport extends Model
         'account_id',
         'person_id',
         'seen_at',
-        'period_of_time',
+        'context',
     ];
 
     /**
@@ -37,7 +37,8 @@ class PersonSeenReport extends Model
     protected function casts(): array
     {
         return [
-            'period_of_time' => 'encrypted',
+            'seen_at' => 'datetime',
+            'context' => 'encrypted',
         ];
     }
 

@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Account;
+use App\Models\Encounter;
 use App\Models\Person;
-use App\Models\PersonSeenReport;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<PersonSeenReport>
+ * @extends Factory<Encounter>
  */
-class PersonSeenReportFactory extends Factory
+class EncounterFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = PersonSeenReport::class;
+    protected $model = Encounter::class;
 
     /**
      * Define the model's default state.
@@ -32,7 +32,7 @@ class PersonSeenReportFactory extends Factory
             'account_id' => Account::factory(),
             'person_id' => Person::factory(),
             'seen_at' => fake()->dateTimeThisCentury(),
-            'period_of_time' => fake()->text(),
+            'context' => fake()->text(),
         ];
     }
 }

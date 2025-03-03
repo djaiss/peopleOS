@@ -1,7 +1,7 @@
 <form x-target="edit-how-we-met-form" id="edit-how-we-met-form" action="{{ route('persons.how-we-met.update', $person->slug) }}" method="POST" x-data="{
   dateType:
     '{{ is_null($person->howWeMetSpecialDate) ? 'unknown' : 'known' }}',
-}" class="space-y-4 rounded-lg border border-gray-200 bg-white p-4">
+}" class="mb-8 space-y-4 rounded-lg border border-gray-200 bg-white p-4">
   @csrf
   @method('PUT')
 

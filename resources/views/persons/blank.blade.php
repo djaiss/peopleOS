@@ -1,6 +1,6 @@
 <x-app-layout>
   <div class="flex h-[calc(100vh-48px)] flex-col items-center justify-center bg-gray-50 px-4 text-center sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-md mb-6 p-10 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
+    <div class="mx-auto mb-6 max-w-md overflow-hidden rounded-lg border border-gray-200 bg-white p-10 shadow-md dark:border-gray-700 dark:bg-gray-900">
       <!-- Text content -->
       <h3 class="text-2xl font-semibold text-gray-900">
         {{ __('Welcome to :name', ['name' => config('app.name')]) }}

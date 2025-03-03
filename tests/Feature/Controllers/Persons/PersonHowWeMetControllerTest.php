@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class HowWeMetControllerTest extends TestCase
+class PersonHowWeMetControllerTest extends TestCase
 {
     use RefreshDatabase;
 

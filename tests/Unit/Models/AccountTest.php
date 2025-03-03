@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
+use App\Models\Encounter;
 use App\Models\Gender;
 use App\Models\Log;
 use App\Models\Person;
-use App\Models\PersonSeenReport;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -63,14 +63,14 @@ class AccountTest extends TestCase
     }
 
     #[Test]
-    public function it_has_many_person_seen_reports(): void
+    public function it_has_many_encounters(): void
     {
         $account = Account::factory()->create();
-        PersonSeenReport::factory()->count(2)->create([
+        Encounter::factory()->count(2)->create([
             'account_id' => $account->id,
         ]);
 
-        $this->assertTrue($account->personSeenReports()->exists());
+        $this->assertTrue($account->encounters()->exists());
     }
 
     #[Test]

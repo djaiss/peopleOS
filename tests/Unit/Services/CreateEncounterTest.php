@@ -6,10 +6,10 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
+use App\Models\Encounter;
 use App\Models\Person;
-use App\Models\PersonSeenReport;
 use App\Models\User;
-use App\Services\CreatePersonSeenReport;
+use App\Services\CreateEncounter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class CreatePersonSeenReportTest extends TestCase
+class CreateEncounterTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_a_person_seen_report(): void
+    public function it_creates_an_encounter(): void
     {
         Queue::fake();
         Carbon::setTestNow(Carbon::create(2024, 1, 1));
@@ -35,25 +35,22 @@ class CreatePersonSeenReportTest extends TestCase
         ]);
 
         $seenAt = Carbon::now();
-        $periodOfTime = 'morning';
 
-        $report = (new CreatePersonSeenReport(
+        $report = (new CreateEncounter(
             user: $user,
             person: $person,
             seenAt: $seenAt,
-            periodOfTime: $periodOfTime,
+            context: 'morning',
         ))->execute();
 
-        $this->assertDatabaseHas('person_seen_reports', [
+        $this->assertDatabaseHas('encounters', [
             'account_id' => $user->account_id,
             'person_id' => $person->id,
             'seen_at' => $seenAt,
         ]);
 
-        $this->assertEquals($periodOfTime, 'morning');
-
         $this->assertInstanceOf(
-            PersonSeenReport::class,
+            Encounter::class,
             $report
         );
 
@@ -62,7 +59,7 @@ class CreatePersonSeenReportTest extends TestCase
         });
 
         Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'person_seen_report_creation'
+            return $job->action === 'encounter_creation'
                 && $job->user->id === $user->id
                 && $job->description === 'Logged having seen Ross Geller';
         });
@@ -76,7 +73,7 @@ class CreatePersonSeenReportTest extends TestCase
 
         $this->expectException(ModelNotFoundException::class);
 
-        (new CreatePersonSeenReport(
+        (new CreateEncounter(
             user: $user,
             person: $person,
             seenAt: Carbon::now(),

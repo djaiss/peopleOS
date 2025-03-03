@@ -6,42 +6,47 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\PersonSeenReport;
+use App\Models\Encounter;
+use App\Models\Person;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class UpdatePersonSeenReport
+class CreateEncounter
 {
+    private Encounter $encounter;
+
     public function __construct(
-        private readonly User $user,
-        private readonly PersonSeenReport $personSeenReport,
-        private readonly Carbon $seenAt,
-        private readonly ?string $periodOfTime = null,
+        public User $user,
+        public Person $person,
+        public Carbon $seenAt,
+        public ?string $context = null,
     ) {}
 
-    public function execute(): PersonSeenReport
+    public function execute(): Encounter
     {
         $this->validate();
-        $this->update();
+        $this->create();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
-        return $this->personSeenReport;
+        return $this->encounter;
     }
 
     private function validate(): void
     {
-        if ($this->user->account_id !== $this->personSeenReport->account_id) {
+        if ($this->person->account_id !== $this->user->account_id) {
             throw new ModelNotFoundException();
         }
     }
 
-    private function update(): void
+    private function create(): void
     {
-        $this->personSeenReport->update([
+        $this->encounter = Encounter::create([
+            'account_id' => $this->user->account_id,
+            'person_id' => $this->person->id,
             'seen_at' => $this->seenAt,
-            'period_of_time' => $this->periodOfTime ?? null,
+            'context' => $this->context ?? null,
         ]);
     }
 
@@ -54,8 +59,8 @@ class UpdatePersonSeenReport
     {
         LogUserAction::dispatch(
             user: $this->user,
-            action: 'person_seen_report_update',
-            description: 'Updated having seen '.$this->personSeenReport->person->name,
+            action: 'encounter_creation',
+            description: 'Logged having seen '.$this->person->name,
         );
     }
 }

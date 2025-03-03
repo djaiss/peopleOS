@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class HowWeMetController extends Controller
+class PersonHowWeMetController extends Controller
 {
     public function edit(Request $request): View
     {
@@ -26,7 +26,7 @@ class HowWeMetController extends Controller
     /**
      * This is just used to update the how we met toggle.
      */
-    public function post(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $person = $request->attributes->get('person');
 

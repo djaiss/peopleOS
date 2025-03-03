@@ -35,6 +35,7 @@ class Person extends Model
         'maiden_name',
         'suffix',
         'prefix',
+        'encounters_shown',
         'how_we_met_shown',
         'how_we_met',
         'how_we_met_location',
@@ -61,6 +62,7 @@ class Person extends Model
             'maiden_name' => 'encrypted',
             'suffix' => 'encrypted',
             'prefix' => 'encrypted',
+            'encounters_shown' => 'boolean',
             'how_we_met_shown' => 'boolean',
             'how_we_met' => 'encrypted',
             'how_we_met_location' => 'encrypted',
@@ -131,11 +133,11 @@ class Person extends Model
     }
 
     /**
-     * Get the person seen report associated with person.
+     * Get the encounters associated with person.
      */
-    public function personSeenReports(): HasMany
+    public function encounters(): HasMany
     {
-        return $this->hasMany(PersonSeenReport::class);
+        return $this->hasMany(Encounter::class);
     }
 
     /**

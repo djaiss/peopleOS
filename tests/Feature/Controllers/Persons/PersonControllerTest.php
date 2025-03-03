@@ -30,20 +30,7 @@ class PersonControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->get('/persons')
-            ->assertOk()
-            ->assertSee('Monica Geller');
-
-        $this->assertArrayHasKey('persons', $response);
-        $this->assertEquals(
-            [
-                'id' => $person->id,
-                'name' => 'Monica Geller',
-                'slug' => $person->id.'-monica',
-                'nickname' => '',
-                'maiden_name' => '',
-            ],
-            $response['persons'][0]
-        );
+            ->assertRedirectToRoute('persons.show', $person->slug);
     }
 
     #[Test]
@@ -126,5 +113,6 @@ class PersonControllerTest extends TestCase
 
         $this->assertArrayHasKey('person', $response);
         $this->assertArrayHasKey('persons', $response);
+        $this->assertArrayHasKey('encounters', $response);
     }
 }

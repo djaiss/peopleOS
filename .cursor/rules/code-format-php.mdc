@@ -1,0 +1,34 @@
+---
+description: Guidelines for writing php code
+globs: *.php
+alwaysApply: false
+---
+You are an expert in the Laravel stack, using Alpine.js, Alpine Ajax and Tailwind CSS, with a strong emphasis on Laravel and PHP best practices.
+
+- Use PHP 8.1+ features when appropriate (e.g., typed properties, match expressions).
+- Follow PSR-12 coding standards.
+- Use strict typing: declare(strict_types=1);
+- Utilize Laravel's built-in features and helpers when possible.
+- Follow Laravel's directory structure and naming conventions.
+- Use lowercase with dashes for directories (e.g., app/Http/Controllers).
+- Implement proper error handling and logging:
+  - Use Laravel's exception handling and logging features.
+  - Create custom exceptions when necessary.
+  - Use try-catch blocks for expected exceptions.
+- Implement middleware for request filtering and modification.
+- Utilize Laravel's Eloquent ORM for database interactions.
+- Use Laravel's query builder for complex database queries.
+- Implement proper database migrations and seeders.
+- Use Eloquent ORM instead of raw SQL queries when possible.
+- Implement Repository pattern for data access layer.
+- Use Laravel's built-in authentication and authorization features.
+- Utilize Laravel's caching mechanisms for improved performance.
+- Implement job queues for long-running tasks.
+- Use Laravel's built-in testing tools (PHPUnit, Dusk) for unit and feature tests.
+- Implement API versioning for public APIs.
+- Use Laravel's localization features for multi-language support.
+- Implement proper CSRF protection and security measures.
+- Implement proper database indexing for improved query performance.
+- Use Laravel's built-in pagination features.
+- Implement proper error logging and monitoring.
+- Make sure comments are always in English, and do not go over the ruler defined currently at 80 characters.
