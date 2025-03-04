@@ -113,15 +113,24 @@
     </div>
   </section>
 @else
-  <section class="mb-8">
+  <section id="edit-how-we-met-form" class="mb-8" x-data="{
+    expanded: {{ $person->how_we_met_shown ? 'true' : 'false' }},
+  }">
     <div class="mb-4 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <x-lucide-footprints class="h-5 w-5 text-purple-500" />
         <h2 class="text-lg font-semibold text-gray-900">{{ __('How we met') }}</h2>
       </div>
+
+      <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.store', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
+        <span x-text="expanded ? '{{ __('Show less') }}' : '{{ __('Show more') }}'"></span>
+        <x-lucide-chevron-down x-show="!expanded" class="h-4 w-4" />
+        <x-lucide-chevron-up x-show="expanded" class="h-4 w-4" />
+      </a>
     </div>
 
-    <div id="edit-how-we-met-form" class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
+    <!-- expanded state -->
+    <div x-cloak x-show="expanded" x-transition class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
       <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-purple-100">
         <x-lucide-footprints class="h-6 w-6 text-purple-600" />
       </div>
@@ -135,6 +144,21 @@
           {{ __('Add your story') }}
         </a>
       </div>
+    </div>
+
+    <!-- collapsed state -->
+    <div x-show="!expanded" x-transition class="flex gap-8 items-center justify-between rounded-lg border border-gray-200 bg-white p-4 text-center">
+      <div class="flex items-center justify-center gap-8">
+      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100">
+        <x-lucide-footprints class="h-4 w-4 text-purple-600" />
+      </div>
+      <h3 class="text-sm font-semibold text-gray-900">{{ __('No meeting story yet') }}</h3>
+      </div>
+      <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.edit', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-purple-50 px-3 py-2 text-sm font-medium text-purple-600 hover:bg-purple-100">
+          <x-lucide-plus class="h-4 w-4" />
+          {{ __('Add your story') }}
+        </a>
+
     </div>
   </section>
 @endif
