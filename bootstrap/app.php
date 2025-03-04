@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Middleware\CheckInstanceAdministrator;
+use App\Http\Middleware\CheckMarketingSiteEnabled;
 use App\Http\Middleware\CheckNote;
 use App\Http\Middleware\CheckPerson;
 use App\Http\Middleware\CheckPersonApi;
@@ -27,6 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'note' => CheckNote::class,
             'work_history' => CheckWorkHistory::class,
             'instance.admin' => CheckInstanceAdministrator::class,
+            'marketing' => CheckMarketingSiteEnabled::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
