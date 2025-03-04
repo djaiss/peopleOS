@@ -41,6 +41,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/docs/api/introduction', [MarketingDocsController::class, 'introduction'])->name('marketing.docs.api.introduction');
         Route::get('/docs/api/authentication', [MarketingDocsController::class, 'authentication'])->name('marketing.docs.api.authentication');
         Route::get('/docs/api/errors', [MarketingDocsController::class, 'errors'])->name('marketing.docs.api.errors');
+        Route::get('/docs/api/profile', [MarketingDocsController::class, 'profile'])->name('marketing.docs.api.profile');
     }
 );
 
