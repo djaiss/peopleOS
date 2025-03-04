@@ -31,9 +31,14 @@ use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
-Route::get('/about', [MarketingController::class, 'index'])->name('marketing.index');
-Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
+
+Route::middleware(['marketing'])->group(
+    function (): void {
+        Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
+        Route::get('/about', [MarketingController::class, 'index'])->name('marketing.index');
+        Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
+    }
+);
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitations.accept');
 
