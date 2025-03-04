@@ -8,11 +8,11 @@
 <x-marketing-layout>
   <!-- Hero Section -->
   <div class="relative bg-white">
-    <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-0">
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
         <!-- Left side - Text content -->
         <div class="max-w-2xl">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
+          <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
           <p class="mt-6 text-lg leading-8 text-gray-600">
             {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
           </p>
@@ -49,7 +49,7 @@
 
   <!-- Feature Section -->
   <div id="features" class="bg-gray-50 py-12">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <!-- Title -->
       <div class="mx-auto max-w-2xl lg:text-center">
         <h2 class="text-base leading-7 font-semibold text-green-600">{{ __('Your personal CRM') }}</h2>
@@ -134,7 +134,7 @@
 
   <!-- Github section -->
   <div id="github" class="bg-gray-50 py-12 sm:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           {{ __('We deliver features so fast that Github can\'t keep up.') }}
@@ -208,7 +208,7 @@
 
   <!-- CTA Section -->
   <div id="privacy" class="bg-white py-12 sm:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <h3 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         {{ __('Privacy and transparency is at the core of what we do.') }}
       </h3>
@@ -249,7 +249,7 @@
 
   <!-- you will hate it -->
   <div id="hate" class="bg-gray-50 py-12 sm:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-10 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           {{ __('Warning: PeopleOS is probably not for you if...') }}
@@ -282,7 +282,7 @@
 
   <!-- Testimonials -->
   <div class="bg-white">
-    <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-0">
       <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
         <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
           {{ __('Take control of your relationships and go out there. Life is not lived in front of a computer screen.') }}

@@ -15,6 +15,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Marketing\MarketingController;
+use App\Http\Controllers\Marketing\MarketingDocsController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
@@ -36,6 +37,10 @@ Route::middleware(['marketing'])->group(
         Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
         Route::get('/about', [MarketingController::class, 'index'])->name('marketing.index');
         Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
+        Route::get('/docs', [MarketingDocsController::class, 'index'])->name('marketing.docs.index');
+        Route::get('/docs/api/introduction', [MarketingDocsController::class, 'introduction'])->name('marketing.docs.api.introduction');
+        Route::get('/docs/api/authentication', [MarketingDocsController::class, 'authentication'])->name('marketing.docs.api.authentication');
+        Route::get('/docs/api/errors', [MarketingDocsController::class, 'errors'])->name('marketing.docs.api.errors');
     }
 );
 

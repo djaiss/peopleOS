@@ -1,9 +1,18 @@
 <x-marketing-layout>
-  <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+  <!-- breadcrumb -->
+  <div class="border-b border-gray-200 py-3 text-sm">
+    <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-0">
+      <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>
+      <span class="text-gray-500">&gt;</span>
+      <span class="text-gray-600">{{ __('Why PeopleOS?') }}</span>
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-0">
     <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[1fr_250px]">
       <!-- Main content -->
       <div class="py-16 sm:border-r sm:border-gray-200 sm:pr-10">
-        <div class="prose mb-10 max-w-none">
+        <div class="prose mb-5 max-w-none">
           <h1 id="introduction" class="text-xl font-normal">Why should you use PeopleOS?</h1>
 
           <h2 id="problems" class="flex items-center gap-x-3">
@@ -49,16 +58,11 @@
           <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look. We are humans like you. We personally hate all the shitshows that big companies do with our data. We would never do that to you.</p>
         </div>
 
-        <div class="flex justify-between rounded-lg border p-4 text-sm">
-          <div>
-            <p class="mb-1">This page was last updated on :date.</p>
-            <a href="https://github.com/djaiss/peopleos" class="text-blue-600 hover:text-blue-500">Edit this page on Github</a>
-          </div>
-        </div>
+        <x-marketing.edit-github />
       </div>
 
       <!-- Sidebar -->
-      <div class="reasonable:sticky reasonable:top-[108px] mb-10 hidden w-full flex-shrink-0 flex-col justify-self-end lg:flex">
+      <div class="mb-10 hidden w-full flex-shrink-0 flex-col justify-self-end lg:flex">
         <div class="bg-light dark:bg-dark z-10 pt-16">
           <div class="mb-1 flex items-center justify-between">
             <p class="text-xs">Written by...</p>

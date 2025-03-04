@@ -92,19 +92,6 @@ php artisan serve
 
 > Note: By default, emails are sent to the `log` driver. You can change this in the `.env` file to something like `mailtrap`.
 
-## Specific instructions
-
-## API Doc
-
-We use Scribe to generate the API documentation. To generate the documentation, run the following command:
-
-```bash
-php artisan scribe:generate
-```
-
-Once the documentation is generated, the API is available at `/docs`.
-
-If you need to test the API, we provide a [Bruno](https://www.usebruno.com/) collection in the `docs/bruno` directory. You can import this collection into Bruno.
 
 ## Note for developers
 

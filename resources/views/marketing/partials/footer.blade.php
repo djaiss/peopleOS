@@ -1,5 +1,5 @@
-<footer class="border-t border-gray-200 bg-white py-16">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<footer class="border-t border-gray-200 bg-white pt-12 pb-8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-0">
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
       <!-- Products Column -->
       <div>
@@ -87,9 +87,11 @@
         </ul>
       </div>
     </div>
+  </div>
 
-    <!-- Bottom section -->
-    <div class="mt-16 border-t border-gray-900/10 pt-8">
+  <!-- Bottom section -->
+  <div class="mt-12 border-t border-gray-900/10 pt-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <div class="flex items-center justify-between">
         <div class="flex flex-col gap-y-2">
           <div class="flex items-center gap-x-2">
@@ -100,15 +102,27 @@
             </a>
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually our trademark is not registerd but we probably should write that to do like the big boys.') }}</p>
           </div>
+
           @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
             <p class="text-xs text-gray-500">
               {{ __('This page was last updated on :date.', ['date' => $lastModified->format('F j, Y')]) }}
             </p>
           @endif
         </div>
-        <div class="flex gap-x-4">
-          <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Privacy') }}</a>
-          <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Terms') }}</a>
+        <div class="">
+          <div class="mb-2 flex gap-x-4">
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Privacy') }}</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Terms') }}</a>
+          </div>
+
+          <p class="flex gap-x-2 text-xs text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" width="48" height="48" viewBox="0 0 9600 4800">
+              <title>Flag of Canada</title>
+              <path fill="#f00" d="m0 0h2400l99 99h4602l99-99h2400v4800h-2400l-99-99h-4602l-99 99H0z" />
+              <path fill="#fff" d="m2400 0h4800v4800h-4800zm2490 4430-45-863a95 95 0 0 1 111-98l859 151-116-320a65 65 0 0 1 20-73l941-762-212-99a65 65 0 0 1-34-79l186-572-542 115a65 65 0 0 1-73-38l-105-247-423 454a65 65 0 0 1-111-57l204-1052-327 189a65 65 0 0 1-91-27l-332-652-332 652a65 65 0 0 1-91 27l-327-189 204 1052a65 65 0 0 1-111 57l-423-454-105 247a65 65 0 0 1-73 38l-542-115 186 572a65 65 0 0 1-34 79l-212 99 941 762a65 65 0 0 1 20 73l-116 320 859-151a95 95 0 0 1 111 98l-45 863z" />
+            </svg>
+            Proudly Canadian
+          </p>
         </div>
       </div>
     </div>
