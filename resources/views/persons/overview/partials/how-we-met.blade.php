@@ -147,18 +147,17 @@
     </div>
 
     <!-- collapsed state -->
-    <div x-show="!expanded" x-transition class="flex gap-8 items-center justify-between rounded-lg border border-gray-200 bg-white p-4 text-center">
+    <div x-show="!expanded" x-transition class="flex items-center justify-between gap-8 rounded-lg border border-gray-200 bg-white p-4 text-center">
       <div class="flex items-center justify-center gap-8">
-      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100">
-        <x-lucide-footprints class="h-4 w-4 text-purple-600" />
-      </div>
-      <h3 class="text-sm font-semibold text-gray-900">{{ __('No meeting story yet') }}</h3>
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100">
+          <x-lucide-footprints class="h-4 w-4 text-purple-600" />
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900">{{ __('No meeting story yet') }}</h3>
       </div>
       <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.edit', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-purple-50 px-3 py-2 text-sm font-medium text-purple-600 hover:bg-purple-100">
-          <x-lucide-plus class="h-4 w-4" />
-          {{ __('Add your story') }}
-        </a>
-
+        <x-lucide-plus class="h-4 w-4" />
+        {{ __('Add your story') }}
+      </a>
     </div>
   </section>
 @endif

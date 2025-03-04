@@ -47,7 +47,7 @@ class MeController extends Controller
             'last_name' => $request->user()->last_name,
             'nickname' => $request->user()->nickname,
             'email' => $request->user()->email,
-            'born_at' => $request->user()->born_at->format('Y-m-d'),
+            'born_at' => $request->user()->born_at?->format('Y-m-d'),
         ];
 
         return response()->json($response);

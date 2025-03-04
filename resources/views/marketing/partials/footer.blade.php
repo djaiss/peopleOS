@@ -1,5 +1,5 @@
-<footer class="border-t border-gray-200 bg-white py-16">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<footer class="border-t border-gray-200 bg-white pt-16 pb-8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-0">
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
       <!-- Products Column -->
       <div>
@@ -87,9 +87,11 @@
         </ul>
       </div>
     </div>
+  </div>
 
-    <!-- Bottom section -->
-    <div class="mt-16 border-t border-gray-900/10 pt-8">
+  <!-- Bottom section -->
+  <div class="mt-16 border-t border-gray-900/10 pt-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <div class="flex items-center justify-between">
         <div class="flex flex-col gap-y-2">
           <div class="flex items-center gap-x-2">

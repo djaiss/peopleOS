@@ -22,7 +22,6 @@
     "barryvdh/laravel-debugbar": "^3.13",
     "brianium/paratest": "^7.7",
     "fakerphp/faker": "^1.23",
-    "knuckleswtf/scribe": "^4.37",
     "larastan/larastan": "^2.9",
     "laravel/breeze": "^2.1",
     "laravel/dusk": "^8.2",
@@ -71,11 +70,9 @@
     "precommit": [
       "@test",
       "@peopleos:lint",
-      "@peopleos:docs",
       "@peopleos:prettier",
       "@peopleos:typos"
     ],
-    "peopleos:docs": "php artisan scribe:generate",
     "peopleos:lint": "./vendor/bin/pint",
     "peopleos:prettier": "npx prettier --write resources/",
     "peopleos:rector": "./vendor/bin/rector",
