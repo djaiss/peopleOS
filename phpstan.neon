@@ -25,6 +25,5 @@ parameters:
         - app/Http/Resources/*.php
         - app/Livewire/*
 
-#
 #    checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
