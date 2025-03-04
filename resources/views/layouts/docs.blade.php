@@ -31,15 +31,28 @@
           </div>
 
           <!-- sub menu -->
-          <div x-show="openApiDocumentation" class="ml-3 flex flex-col gap-y-2">
-            <div class="group">
-              <a href="{{ route('marketing.docs.api.introduction') }}" class="{{ request()->routeIs('marketing.docs.api.introduction') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Introduction') }}</a>
+          <div x-show="openApiDocumentation" class="mb-10 ml-3">
+            <div class="mb-3 flex flex-col gap-y-2">
+              <div>
+                <a href="{{ route('marketing.docs.api.introduction') }}" class="{{ request()->routeIs('marketing.docs.api.introduction') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Introduction') }}</a>
+              </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.authentication') }}" class="{{ request()->routeIs('marketing.docs.api.authentication') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Authentication') }}</a>
+              </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.errors') }}" class="{{ request()->routeIs('marketing.docs.api.errors') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Errors') }}</a>
+              </div>
             </div>
-            <div>
-              <a href="{{ route('marketing.docs.api.authentication') }}" class="{{ request()->routeIs('marketing.docs.api.authentication') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Authentication') }}</a>
-            </div>
-            <div>
-              <a href="{{ route('marketing.docs.api.errors') }}" class="{{ request()->routeIs('marketing.docs.api.errors') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Errors') }}</a>
+
+            <!-- account management -->
+            <p class="mb-1 border-l-2 border-l-transparent pl-3 text-xs text-gray-500 uppercase">{{ __('Account management') }}</p>
+            <div class="flex flex-col gap-y-2">
+              <div>
+                <a href="{{ route('marketing.docs.api.profile') }}" class="{{ request()->routeIs('marketing.docs.api.profile') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Profile') }}</a>
+              </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.introduction') }}" class="{{ request()->routeIs('marketing.docs.api.introduction') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Profile') }}</a>
+              </div>
             </div>
           </div>
         </div>

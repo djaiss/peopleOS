@@ -41,7 +41,7 @@ class MeControllerTest extends TestCase
                 'last_name' => 'Schrute',
                 'nickname' => 'Dwight',
                 'email' => 'dwight.schrute@dundermifflin.com',
-                'born_at' => '1985-03-15',
+                'born_at' => 479692800,
             ]
         );
     }
@@ -76,7 +76,7 @@ class MeControllerTest extends TestCase
                 'last_name' => 'Scott',
                 'email' => 'michael.scott@dundermifflin.com',
                 'nickname' => 'Michael',
-                'born_at' => '1985-03-15',
+                'born_at' => 479692800,
             ],
             $response->json()
         );

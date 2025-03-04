@@ -11,7 +11,7 @@
     </div>
     <div>
       <p class="mb-2">
-        <x-marketing.code>curl -X GET "https://api.peopleos.com/api/v1/persons" \ -H "Authorization: Bearer YOUR_API_KEY"</x-marketing.code>
+        <x-marketing.code>curl -X GET "{{ config('app.url') }}/api/persons" \ -H "Authorization: Bearer YOUR_API_KEY"</x-marketing.code>
       </p>
     </div>
   </div>

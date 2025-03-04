@@ -92,7 +92,6 @@ php artisan serve
 
 > Note: By default, emails are sent to the `log` driver. You can change this in the `.env` file to something like `mailtrap`.
 
-
 ## Note for developers
 
 This project uses the following languages:

@@ -17,6 +17,7 @@ parameters:
         - '#Cannot call method format\(\) on string\.#'
         - '#Cannot call method isFuture\(\) on string\.#'
         - '#Cannot call method isPast\(\) on string\.#'
+        - '#Cannot access property \$timestamp on string\.#'
 
     excludePaths:
         - app/Http/Controllers/Auth/VerifyEmailController.php
@@ -24,6 +25,5 @@ parameters:
         - app/Http/Resources/*.php
         - app/Livewire/*
 
-#
 #    checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false

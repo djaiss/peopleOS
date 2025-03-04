@@ -33,4 +33,9 @@ class MarketingDocsController extends Controller
     {
         return view('marketing.docs.api.errors');
     }
+
+    public function profile(): View
+    {
+        return view('marketing.docs.api.profile');
+    }
 }

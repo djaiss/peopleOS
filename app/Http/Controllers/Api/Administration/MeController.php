@@ -20,24 +20,6 @@ class MeController extends Controller
 {
     /**
      * Get the information about the logged user.
-     *
-     * This endpoint gets the information about the logged user.
-     *
-     * @response 200 {
-     *  "id": 4,
-     *  "first_name": "Ross",
-     *  "last_name": "Geller",
-     *  "nickname": "Ross",
-     *  "email": "ross.geller@friends.com",
-     *  "born_at": "1985-03-15"
-     * }
-     *
-     * @responseField id The ID of the user.
-     * @responseField first_name The first name of the user.
-     * @responseField last_name The last name of the user.
-     * @responseField nickname The nickname of the user.
-     * @responseField email The email of the user.
-     * @responseField born_at The birth date of the user. Format: YYYY-MM-DD
      */
     public function show(Request $request): JsonResponse
     {
@@ -47,7 +29,7 @@ class MeController extends Controller
             'last_name' => $request->user()->last_name,
             'nickname' => $request->user()->nickname,
             'email' => $request->user()->email,
-            'born_at' => $request->user()->born_at?->format('Y-m-d'),
+            'born_at' => $request->user()->born_at?->timestamp,
         ];
 
         return response()->json($response);
@@ -55,36 +37,6 @@ class MeController extends Controller
 
     /**
      * Update your profile.
-     *
-     * This lets you update your profile. Only you can change these fields.
-     *
-     * If you change your email, the system will send a new verification email to
-     * verify the new email address.
-     *
-     * Please note that your password can not be changed through the API at
-     * the moment.
-     *
-     * @bodyParam first_name string required The first name of the user. Max 255 characters. Example: Dwight
-     * @bodyParam last_name string required The last name of the user. Max 255 characters. Example: Schrute
-     * @bodyParam email string required The email of the user. Max 255 characters. Example: dwight.schrute@dundermifflin.com
-     * @bodyParam nickname string The nickname of the user. Max 255 characters. Example: Dwight
-     * @bodyParam born_at string The birth date of the user. Format: YYYY-MM-DD. Example: 1985-03-15
-     *
-     * @response 200 {
-     *  "id": 4,
-     *  "first_name": "Ross",
-     *  "last_name": "Geller",
-     *  "nickname": "Ross",
-     *  "email": "ross.geller@friends.com",
-     *  "born_at": "1985-03-15"
-     * }
-     *
-     * @responseField id The ID of the user.
-     * @responseField first_name The first name of the user.
-     * @responseField last_name The last name of the user.
-     * @responseField email The email of the user.
-     * @responseField nickname The nickname of the user.
-     * @responseField born_at The birth date of the user. Format: YYYY-MM-DD
      */
     public function update(Request $request)
     {
@@ -111,7 +63,7 @@ class MeController extends Controller
             'last_name' => $request->user()->last_name,
             'email' => $request->user()->email,
             'nickname' => $request->user()->nickname,
-            'born_at' => $request->user()->born_at->format('Y-m-d'),
+            'born_at' => $request->user()->born_at?->timestamp,
         ];
 
         return response()->json($response);
