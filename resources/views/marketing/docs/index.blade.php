@@ -25,7 +25,7 @@
           </div>
 
           <!-- api documentation -->
-          <div @click="openApiDocumentation = !openApiDocumentation" class="mb-2 flex items-center cursor-pointer justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
+          <div @click="openApiDocumentation = !openApiDocumentation" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
             <h3>API documentation</h3>
             <x-lucide-chevron-right x-bind:class="openApiDocumentation ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
           </div>
@@ -36,7 +36,7 @@
               <a href="" class="hover:underline">Introduction</a>
             </div>
             <div>
-              <a href="">Authentication</a>
+              <a href="{{ route('marketing.docs.api.authentication') }}">Authentication</a>
             </div>
             <div>
               <a href="">Errors</a>

@@ -1,5 +1,5 @@
 <x-marketing-docs-layout>
-  <h1 class="text-2xl font-bold mb-6">API reference</h1>
+  <h1 class="mb-6 text-2xl font-bold">API reference</h1>
 
   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
     <div>
@@ -8,7 +8,7 @@
       <p class="mb-10">The PeopleOS API doesn’t support bulk updates. You can work on only one object per request.</p>
     </div>
     <div>
-      <h2 class="text-lg font-bold mb-2">Base URL</h2>
+      <h2 class="mb-2 text-lg font-bold">Base URL</h2>
       <x-marketing.code>{{ config('app.url') }}/api</x-marketing.code>
     </div>
   </div>

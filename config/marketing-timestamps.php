@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'pages' => [
         'marketing/docs/api/introduction' => '2025-03-04T07:08:54-05:00',
