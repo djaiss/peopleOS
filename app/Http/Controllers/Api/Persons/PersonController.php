@@ -42,7 +42,7 @@ class PersonController extends Controller
      * @bodyParam nickname string The nickname of the person. Max 255 characters. Example: Bear
      * @bodyParam maiden_name string The maiden name of the person, important in some cultures, where a woman’s surname changes after marriage. Max 255 characters. Example: Johnson
      * @bodyParam prefix string The prefix of the person. Max 255 characters. Example: Mr.
-     * @bodyParam suffix string The suffix of the person. Max 255 characters. Example: Jr.
+     * @bodyParam suffix string The suffix of the person. Max 255 characters. Example: Jr.s
      * @bodyParam can_be_deleted boolean Whether the person can be deleted. 0 for false, 1 for true. Example: 1
      * @bodyParam is_listed boolean Whether the person should be listed in the person list. 0 for false, 1 for true. Example: 1
      *
