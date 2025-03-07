@@ -15,9 +15,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * @group Genders
- */
 class GenderController extends Controller
 {
     /**
