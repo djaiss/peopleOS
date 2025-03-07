@@ -27,6 +27,7 @@ use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
+use App\Http\Controllers\Persons\PersonSettingsAvatarController;
 use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
@@ -75,7 +76,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
             // person settings
             Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');
             Route::put('persons/{slug}/settings', [PersonSettingsController::class, 'update'])->name('persons.settings.update');
-
+            Route::put('persons/{slug}/settings/avatar', [PersonSettingsAvatarController::class, 'update'])->name('persons.settings.avatar.update');
             Route::delete('persons/{slug}', [PersonSettingsController::class, 'destroy'])->name('persons.settings.destroy');
 
             // reminders

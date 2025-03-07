@@ -10,7 +10,7 @@
     <!-- name + title + age -->
     <div id="profile-header" class="mb-6 flex items-center gap-4">
       <div class="h-16 w-16 shrink-0">
-        <img class="h-16 w-16 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="https://i.pravatar.cc/64" alt="" />
+        <img class="h-16 w-16 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person->getAvatar(64) }}" alt="{{ $person->name }}" />
       </div>
       <div class="min-w-0">
         <h1 class="truncate text-xl font-semibold">{{ $person->name }}</h1>

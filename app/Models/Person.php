@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Person extends Model
 {
@@ -35,6 +36,7 @@ class Person extends Model
         'maiden_name',
         'suffix',
         'prefix',
+        'profile_photo_path',
         'encounters_shown',
         'how_we_met_shown',
         'how_we_met',
@@ -174,5 +176,28 @@ class Person extends Model
         return $this->workHistories()
             ->where('active', true)
             ->first()?->job_title;
+    }
+
+    public function getAvatar(int $size = 64): string
+    {
+        return $this->profile_photo_path
+            ? Storage::disk(config('filesystems.default'))->url($this->profile_photo_path)
+            : $this->defaultAvatar($size);
+    }
+
+    /**
+     * Get the default profile photo URL if no profile photo has been uploaded.
+     */
+    protected function defaultAvatar(int $size = 64): string
+    {
+        // Get first letter of each word in the name and join them with spaces
+        $nameArray = explode(' ', $this->name);
+        $initials = [];
+        foreach ($nameArray as $namePart) {
+            $initials[] = mb_substr($namePart, 0, 1);
+        }
+        $name = mb_trim(implode(' ', $initials));
+
+        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
     }
 }
