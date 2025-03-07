@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
+use App\Http\Controllers\Api\Administration\AdministrationLogsController;
 use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Api\Administration\GenderController;
 use App\Http\Controllers\Api\Administration\MeController;
@@ -46,6 +47,9 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
 
     // prune account
     Route::put('administration/prune', [AdministrationPruneAccountController::class, 'update'])->name('account.prune');
+
+    // logs
+    Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs.index');
 
     // users
     Route::put('administration/users/{user}/invite', [AdministrationInviteUserAgainController::class, 'update'])->name('users.invite');

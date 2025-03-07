@@ -14,7 +14,7 @@
       <div class="mx-auto max-w-2xl px-2 py-2 sm:px-0">
         <!-- Profile -->
         <h1 class="font-semi-bold mb-4 text-2xl">
-          {{ __('Last activity') }}
+          {{ __('All activity in the account') }}
         </h1>
 
         <div id="logs-container" x-merge="append" class="mb-8 border border-gray-200 bg-white sm:rounded-lg">

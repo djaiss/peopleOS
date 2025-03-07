@@ -124,10 +124,10 @@
         </div>
 
         <div x-show="open" x-transition>
-          <x-marketing.attribute name="first_name" type="string" description="The first name of the user. Max 255 characters." />
-          <x-marketing.attribute name="last_name" type="string" description="The last name of the user. Max 255 characters." />
+          <x-marketing.attribute name="first_name" required="true" type="string" description="The first name of the user. Max 255 characters." />
+          <x-marketing.attribute name="last_name" required="true" type="string" description="The last name of the user. Max 255 characters." />
           <x-marketing.attribute name="nickname" type="string" description="The nickname of the user. Max 255 characters." />
-          <x-marketing.attribute name="email" type="string" description="The email of the user. This email should be unique in the instance, and we will validate the email format. Max 255 characters." />
+          <x-marketing.attribute name="email" required="true" type="string" description="The email of the user. This email should be unique in the instance, and we will validate the email format. Max 255 characters." />
           <x-marketing.attribute name="born_at" type="string" description="The birth date of the user. Format: YYYY-MM-DD. Example: 1985-03-15" />
         </div>
       </div>

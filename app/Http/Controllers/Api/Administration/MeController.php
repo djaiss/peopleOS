@@ -11,11 +11,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-/**
- * @group Administration
- *
- * You can modify your profile information here.
- */
 class MeController extends Controller
 {
     /**
@@ -53,8 +48,8 @@ class MeController extends Controller
             email: $validated['email'],
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
-            nickname: $validated['nickname'],
-            bornAt: $validated['born_at'],
+            nickname: $validated['nickname'] ?? null,
+            bornAt: $validated['born_at'] ?? null,
         ))->execute();
 
         $response = [
