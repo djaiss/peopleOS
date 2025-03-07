@@ -23,6 +23,8 @@
 
         @include('persons.settings.partials.information', ['person' => $person, 'genders' => $genders])
 
+        @include('persons.settings.partials.avatar', ['person' => $person])
+
         <h2 class="font-semi-bold mb-1 text-lg">
           {{ __('Delete person') }}
         </h2>

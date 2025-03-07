@@ -70,5 +70,6 @@ return [
         'how_i_met_information_update' => 'How I Met Information update',
         'encounter_creation' => 'Encounter creation',
         'encounter_deletion' => 'Encounter deletion',
+        'person_avatar_update' => 'Person avatar update',
     ],
 ];
