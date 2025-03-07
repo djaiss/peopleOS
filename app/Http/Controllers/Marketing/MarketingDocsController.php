@@ -38,4 +38,9 @@ class MarketingDocsController extends Controller
     {
         return view('marketing.docs.api.profile');
     }
+
+    public function logs(): View
+    {
+        return view('marketing.docs.api.logs');
+    }
 }
