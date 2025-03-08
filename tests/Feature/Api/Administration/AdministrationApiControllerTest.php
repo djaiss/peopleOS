@@ -55,14 +55,12 @@ class AdministrationApiControllerTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Check that the API key was created in the database
         $this->assertDatabaseHas('personal_access_tokens', [
             'name' => 'New API Key',
             'tokenable_id' => $user->id,
             'tokenable_type' => User::class,
         ]);
 
-        // Check that the response contains the expected API key data
         $response->assertJsonStructure([
             'id',
             'object',
@@ -78,7 +76,6 @@ class AdministrationApiControllerTest extends TestCase
             'name' => 'New API Key',
         ]);
 
-        // Verify the token is a valid string
         $this->assertIsString($response->json('token'));
         $this->assertNotEmpty($response->json('token'));
     }
@@ -130,7 +127,6 @@ class AdministrationApiControllerTest extends TestCase
             'message' => 'API key deleted',
         ]);
 
-        // Verify the token was deleted from the database
         $this->assertDatabaseMissing('personal_access_tokens', [
             'id' => $tokenId,
         ]);
@@ -169,7 +165,6 @@ class AdministrationApiControllerTest extends TestCase
             'error' => 'API key not found',
         ]);
 
-        // Verify the token still exists in the database
         $this->assertDatabaseHas('personal_access_tokens', [
             'id' => $tokenId,
         ]);
@@ -186,7 +181,6 @@ class AdministrationApiControllerTest extends TestCase
 
         $response->assertStatus(401);
 
-        // Verify the token still exists in the database
         $this->assertDatabaseHas('personal_access_tokens', [
             'id' => $tokenId,
         ]);
