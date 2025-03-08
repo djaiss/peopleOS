@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\Administration\AdministrationApiController;
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
 use App\Http\Controllers\Api\Administration\AdministrationLogsController;
 use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController;
@@ -44,6 +45,11 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::delete('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'destroy'])->name('persons.work-history.destroy');
         });
     });
+
+    // api keys
+    Route::get('administration/api', [AdministrationApiController::class, 'index'])->name('administration.api.index');
+    Route::post('administration/api', [AdministrationApiController::class, 'create'])->name('administration.api.create');
+    Route::delete('administration/api/{id}', [AdministrationApiController::class, 'destroy'])->name('administration.api.destroy');
 
     // prune account
     Route::put('administration/prune', [AdministrationPruneAccountController::class, 'update'])->name('account.prune');

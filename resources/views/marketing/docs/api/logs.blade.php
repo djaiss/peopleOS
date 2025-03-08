@@ -1,15 +1,12 @@
 <x-marketing-docs-layout>
-  <h1 class="mb-6 text-2xl font-bold">Profile</h1>
+  <h1 class="mb-6 text-2xl font-bold">Logs</h1>
 
   <div class="mb-8 rounded-lg border p-4">
     <p class="mb-2 text-xs">Table of contents</p>
 
     <ul>
       <li>
-        <a href="#get-the-information-about-the-logged-user" class="text-blue-500 hover:underline">Get the information about the logged user</a>
-      </li>
-      <li>
-        <a href="#update-the-information-about-the-logged-user" class="text-blue-500 hover:underline">Update the information about the logged user</a>
+        <a href="#get-the-logs-of-the-current-user" class="text-blue-500 hover:underline">Get the logs of the current user</a>
       </li>
     </ul>
   </div>

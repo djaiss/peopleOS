@@ -43,4 +43,9 @@ class MarketingDocsController extends Controller
     {
         return view('marketing.docs.api.logs');
     }
+
+    public function apiManagement(): View
+    {
+        return view('marketing.docs.api.api-management');
+    }
 }
