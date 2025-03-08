@@ -39,16 +39,22 @@ class SetupAccount implements ShouldQueue
                 'account_id' => $this->user->account_id,
                 'position' => 1,
                 'name' => Crypt::encryptString('Man'),
+                'created_at' => now(),
+                'updated_at' => null,
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 2,
                 'name' => Crypt::encryptString('Woman'),
+                'created_at' => now(),
+                'updated_at' => null,
             ],
             [
                 'account_id' => $this->user->account_id,
                 'position' => 3,
                 'name' => Crypt::encryptString('Other'),
+                'created_at' => now(),
+                'updated_at' => null,
             ],
         ]);
     }

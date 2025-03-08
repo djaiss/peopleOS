@@ -11,7 +11,7 @@ use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class GenderControllerTest extends TestCase
+class AdministrationGenderControllerTest extends TestCase
 {
     use RefreshDatabase;
 
