@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_YCh2fteZUd
+createdAt: 2025-03-07T22:43:40.231616
+updatedAt: 2025-03-08T14:27:12.579369
+workspaceId: wk_IQZH5RHjkM
+folderId: fl_3vEyB3eXJj
+authentication:
+  token: ${[ Bearer ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers:
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
+method: GET
+name: ''
+sortPriority: 0.0
+url: https://peopleos.test/api/me
+urlParameters: []

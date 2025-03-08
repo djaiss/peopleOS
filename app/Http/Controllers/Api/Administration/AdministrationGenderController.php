@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdministrationGenderController extends Controller
 {
-
     public function index(): JsonResource
     {
         $genders = Gender::where('account_id', Auth::user()->account_id)
@@ -52,7 +51,7 @@ class AdministrationGenderController extends Controller
             user: $request->user(),
             gender: $gender,
             name: $data['name'],
-            position: $data['position'],
+            position: (int) $data['position'],
         ))->execute();
 
         return new GenderResource($gender);

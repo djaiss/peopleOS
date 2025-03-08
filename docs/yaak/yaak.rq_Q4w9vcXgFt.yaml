@@ -1,0 +1,35 @@
+type: http_request
+model: http_request
+id: rq_Q4w9vcXgFt
+createdAt: 2025-03-08T14:31:16.393696
+updatedAt: 2025-03-08T14:31:36.145347
+workspaceId: wk_IQZH5RHjkM
+folderId: fl_v6SALLBwmt
+authentication:
+  token: ${[ Bearer ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers:
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
+method: POST
+name: ''
+sortPriority: 0.001
+url: https://peopleos.test/api/administration/genders
+urlParameters:
+- enabled: true
+  name: name
+  value: Fucker
+  id: e9qu0PzTED
+- enabled: true
+  name: ''
+  value: ''
+  id: XFP5xHUEgp
