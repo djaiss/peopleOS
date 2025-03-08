@@ -6,10 +6,13 @@
 
     <ul>
       <li>
-        <a href="#get-the-information-about-the-logged-user" class="text-blue-500 hover:underline">Get the information about the logged user</a>
+        <a href="#get-the-list-of-api-keys-in-the-account" class="text-blue-500 hover:underline">Get the list of API keys in the account</a>
       </li>
       <li>
-        <a href="#update-the-information-about-the-logged-user" class="text-blue-500 hover:underline">Update the information about the logged user</a>
+        <a href="#create-a-new-api-key" class="text-blue-500 hover:underline">Create a new API key</a>
+      </li>
+      <li>
+        <a href="#delete-an-api-key" class="text-blue-500 hover:underline">Delete an API key</a>
       </li>
     </ul>
   </div>
