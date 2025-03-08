@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdministrationGenderController extends Controller
 {
-
     public function index(): JsonResource
     {
         $genders = Gender::where('account_id', Auth::user()->account_id)
