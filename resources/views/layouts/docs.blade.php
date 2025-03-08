@@ -12,7 +12,10 @@
     <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[250px_1fr]">
       <!-- Sidebar -->
       <div class="hidden w-full flex-shrink-0 flex-col justify-self-end sm:border-r sm:border-gray-200 sm:pr-3 lg:flex">
-        <div x-data="{ openApiDocumentation: true, accountManagementDocumentation: true }" class="bg-light dark:bg-dark z-10 pt-16">
+        <div x-data="{
+          openApiDocumentation: true,
+          accountManagementDocumentation: true,
+        }" class="bg-light dark:bg-dark z-10 pt-16">
           <!-- api documentation -->
           <div @click="open = !open" class="mb-2 flex items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
             <h3>{{ __('Person management') }}</h3>
@@ -45,7 +48,7 @@
             </div>
 
             <!-- account management -->
-            <div @click="accountManagementDocumentation = !accountManagementDocumentation" class="pl-3 mb-2 text-xs text-gray-500 uppercase flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
+            <div @click="accountManagementDocumentation = !accountManagementDocumentation" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 pl-3 text-xs text-gray-500 uppercase hover:border-gray-200">
               <h3>{{ __('Account management') }}</h3>
               <x-lucide-chevron-right x-bind:class="accountManagementDocumentation ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
             </div>
