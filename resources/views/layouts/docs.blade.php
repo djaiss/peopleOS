@@ -56,6 +56,9 @@
               <div>
                 <a href="{{ route('marketing.docs.api.api-management') }}" class="{{ request()->routeIs('marketing.docs.api.api-management') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('API management') }}</a>
               </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.genders') }}" class="{{ request()->routeIs('marketing.docs.api.genders') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Genders') }}</a>
+              </div>
             </div>
           </div>
         </div>

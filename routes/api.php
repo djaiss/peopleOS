@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Api\Administration\AdministrationApiController;
+use App\Http\Controllers\Api\Administration\AdministrationGenderController;
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
 use App\Http\Controllers\Api\Administration\AdministrationLogsController;
 use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController;
-use App\Http\Controllers\Api\Administration\GenderController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
@@ -61,8 +61,8 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::put('administration/users/{user}/invite', [AdministrationInviteUserAgainController::class, 'update'])->name('users.invite');
 
     // genders
-    Route::get('administration/genders', [GenderController::class, 'index'])->name('administration.genders.index');
-    Route::post('administration/genders', [GenderController::class, 'create'])->name('administration.genders.create');
-    Route::put('administration/genders/{gender}', [GenderController::class, 'update'])->name('administration.genders.update');
-    Route::delete('administration/genders/{gender}', [GenderController::class, 'destroy'])->name('administration.genders.destroy');
+    Route::get('administration/genders', [AdministrationGenderController::class, 'index'])->name('administration.genders.index');
+    Route::post('administration/genders', [AdministrationGenderController::class, 'create'])->name('administration.genders.create');
+    Route::put('administration/genders/{gender}', [AdministrationGenderController::class, 'update'])->name('administration.genders.update');
+    Route::delete('administration/genders/{gender}', [AdministrationGenderController::class, 'destroy'])->name('administration.genders.destroy');
 });

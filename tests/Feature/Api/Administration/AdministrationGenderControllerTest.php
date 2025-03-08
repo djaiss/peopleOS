@@ -11,7 +11,7 @@ use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class GenderControllerTest extends TestCase
+class AdministrationGenderControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -109,7 +109,7 @@ class GenderControllerTest extends TestCase
 
         $response = $this->json('DELETE', '/api/administration/genders/'.$gender->id);
 
-        $response->assertStatus(204);
+        $response->assertStatus(200);
         $this->assertDatabaseMissing('genders', [
             'id' => $gender->id,
         ]);

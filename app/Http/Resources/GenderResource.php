@@ -22,6 +22,7 @@ class GenderResource extends JsonResource
             'name' => $this->name,
             'position' => $this->position,
             'created_at' => $this->created_at->timestamp,
+            'updated_at' => $this->updated_at?->timestamp,
         ];
     }
 }

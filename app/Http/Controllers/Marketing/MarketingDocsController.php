@@ -48,4 +48,9 @@ class MarketingDocsController extends Controller
     {
         return view('marketing.docs.api.api-management');
     }
+
+    public function genders(): View
+    {
+        return view('marketing.docs.api.genders');
+    }
 }
