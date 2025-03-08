@@ -6,13 +6,16 @@
 
     <ul>
       <li>
-        <a href="#get-the-list-of-api-keys-in-the-account" class="text-blue-500 hover:underline">Get the list of API keys in the account</a>
+        <a href="#get-the-list-of-genders" class="text-blue-500 hover:underline">Get the list of genders in the account</a>
       </li>
       <li>
-        <a href="#create-a-new-api-key" class="text-blue-500 hover:underline">Create a new API key</a>
+        <a href="#create-a-new-gender" class="text-blue-500 hover:underline">Create a new gender</a>
       </li>
       <li>
-        <a href="#delete-an-api-key" class="text-blue-500 hover:underline">Delete an API key</a>
+        <a href="#update-a-gender" class="text-blue-500 hover:underline">Update a gender</a>
+      </li>
+      <li>
+        <a href="#delete-a-gender" class="text-blue-500 hover:underline">Delete a gender</a>
       </li>
     </ul>
   </div>
