@@ -22,7 +22,7 @@
               @method('put')
 
               <x-button.secondary type="submit" class="mr-2 text-sm">
-                {{ __('Delete all persons') }}
+                {{ __('Prune account') }}
               </x-button.secondary>
             </form>
           </div>
