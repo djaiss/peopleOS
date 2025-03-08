@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_M5GTtLawJY
+createdAt: 2025-03-08T02:21:20.008979
+updatedAt: 2025-03-08T14:27:25.129940
+workspaceId: wk_IQZH5RHjkM
+folderId: fl_v6SALLBwmt
+authentication:
+  token: ${[ Bearer ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers:
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
+method: GET
+name: ''
+sortPriority: 0.0
+url: https://peopleos.test/api/administration/genders
+urlParameters: []

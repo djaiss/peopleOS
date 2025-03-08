@@ -52,7 +52,7 @@ class AdministrationGenderController extends Controller
             user: $request->user(),
             gender: $gender,
             name: $data['name'],
-            position: $data['position'],
+            position: (int) $data['position'],
         ))->execute();
 
         return new GenderResource($gender);
