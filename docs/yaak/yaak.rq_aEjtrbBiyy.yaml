@@ -12,28 +12,28 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: PUT
 name: ''
 sortPriority: 0.002
 url: https://peopleos.test/api/administration/genders/7
 urlParameters:
-- enabled: true
-  name: name
-  value: Fuckers
-  id: e9qu0PzTED
-- enabled: true
-  name: position
-  value: '4'
-  id: c70tVZT6MY
-- enabled: true
-  name: ''
-  value: ''
-  id: KAdWuDFGtr
+  - enabled: true
+    name: name
+    value: Fuckers
+    id: e9qu0PzTED
+  - enabled: true
+    name: position
+    value: '4'
+    id: c70tVZT6MY
+  - enabled: true
+    name: ''
+    value: ''
+    id: KAdWuDFGtr

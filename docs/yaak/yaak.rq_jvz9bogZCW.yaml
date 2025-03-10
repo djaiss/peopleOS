@@ -12,24 +12,24 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: POST
 name: ''
 sortPriority: 1000.0
 url: https://peopleos.test/api/administration/api
 urlParameters:
-- enabled: true
-  name: label
-  value: production
-  id: 82q43xK3J8
-- enabled: true
-  name: ''
-  value: ''
-  id: EQem2B0RQ8
+  - enabled: true
+    name: label
+    value: production
+    id: 82q43xK3J8
+  - enabled: true
+    name: ''
+    value: ''
+    id: EQem2B0RQ8
