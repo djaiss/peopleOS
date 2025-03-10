@@ -51,7 +51,7 @@ class MarketingHelperTest extends TestCase
         $filePath = resource_path('views/test/word-count.blade.php');
 
         // Create test directory if it doesn't exist
-        if (!file_exists(dirname($filePath))) {
+        if (! file_exists(dirname($filePath))) {
             mkdir(dirname($filePath), 0777, true);
         }
 
@@ -80,7 +80,7 @@ class MarketingHelperTest extends TestCase
         $filePath = resource_path('views/test/blade-syntax.blade.php');
 
         // Create test directory if it doesn't exist
-        if (!file_exists(dirname($filePath))) {
+        if (! file_exists(dirname($filePath))) {
             mkdir(dirname($filePath), 0777, true);
         }
 
@@ -146,7 +146,7 @@ class MarketingHelperTest extends TestCase
         $content = 'This is a test file with some content.';
         $filePath = resource_path('views/test/stats.blade.php');
 
-        if (!file_exists(dirname($filePath))) {
+        if (! file_exists(dirname($filePath))) {
             mkdir(dirname($filePath), 0777, true);
         }
         file_put_contents($filePath, $content);

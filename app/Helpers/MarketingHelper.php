@@ -36,24 +36,24 @@ class MarketingHelper
 
         // Remove Blade syntax (@if, @foreach, etc)
         $content = preg_replace('/@\w+\s*\([^)]*\)/', '', $content);
-        $content = preg_replace('/@\w+/', '', $content);
+        $content = preg_replace('/@\w+/', '', (string) $content);
 
         // Remove HTML comments
-        $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+        $content = preg_replace('/<!--[\s\S]*?-->/', '', (string) $content);
 
         // Remove PHP tags and their contents
-        $content = preg_replace('/<\?php[\s\S]*?\?>/', '', $content);
+        $content = preg_replace('/<\?php[\s\S]*?\?>/', '', (string) $content);
 
         // Remove HTML tags
-        $content = strip_tags($content);
+        $content = strip_tags((string) $content);
 
         // Remove {{ }} and {!! !!} Blade expressions
         $content = preg_replace('/\{{2}[\s\S]*?\}{2}/', '', $content);
-        $content = preg_replace('/\{!{2}[\s\S]*?!}\}/', '', $content);
+        $content = preg_replace('/\{!{2}[\s\S]*?!}\}/', '', (string) $content);
 
         // Remove extra whitespace
-        $content = preg_replace('/\s+/', ' ', $content);
-        $content = trim($content);
+        $content = preg_replace('/\s+/', ' ', (string) $content);
+        $content = trim((string) $content);
 
         // Count words
         return str_word_count($content);
@@ -80,55 +80,55 @@ class MarketingHelper
     {
         $popularBooks = [
             [
-                "title" => "Don Quixote",
-                "author" => "Miguel de Cervantes",
-                "word_count" => 430000
+                'title' => 'Don Quixote',
+                'author' => 'Miguel de Cervantes',
+                'word_count' => 430000,
             ],
             [
-                "title" => "A Tale of Two Cities",
-                "author" => "Charles Dickens",
-                "word_count" => 135000
+                'title' => 'A Tale of Two Cities',
+                'author' => 'Charles Dickens',
+                'word_count' => 135000,
             ],
             [
-                "title" => "The Lord of the Rings",
-                "author" => "J.R.R. Tolkien",
-                "word_count" => 455000
+                'title' => 'The Lord of the Rings',
+                'author' => 'J.R.R. Tolkien',
+                'word_count' => 455000,
             ],
             [
-                "title" => "The Little Prince",
-                "author" => "Antoine de Saint-Exupéry",
-                "word_count" => 16000
+                'title' => 'The Little Prince',
+                'author' => 'Antoine de Saint-Exupéry',
+                'word_count' => 16000,
             ],
             [
-                "title" => "Harry Potter and the Philosopher's Stone",
-                "author" => "J.K. Rowling",
-                "word_count" => 77000
+                'title' => "Harry Potter and the Philosopher's Stone",
+                'author' => 'J.K. Rowling',
+                'word_count' => 77000,
             ],
             [
-                "title" => "The Hobbit",
-                "author" => "J.R.R. Tolkien",
-                "word_count" => 95000
+                'title' => 'The Hobbit',
+                'author' => 'J.R.R. Tolkien',
+                'word_count' => 95000,
             ],
             [
-                "title" => "And Then There Were None",
-                "author" => "Agatha Christie",
-                "word_count" => 66000
+                'title' => 'And Then There Were None',
+                'author' => 'Agatha Christie',
+                'word_count' => 66000,
             ],
             [
-                "title" => "Dream of the Red Chamber",
-                "author" => "Cao Xueqin",
-                "word_count" => 845000
+                'title' => 'Dream of the Red Chamber',
+                'author' => 'Cao Xueqin',
+                'word_count' => 845000,
             ],
             [
-                "title" => "The Catcher in the Rye",
-                "author" => "J.D. Salinger",
-                "word_count" => 73000
+                'title' => 'The Catcher in the Rye',
+                'author' => 'J.D. Salinger',
+                'word_count' => 73000,
             ],
             [
-                "title" => "The Da Vinci Code",
-                "author" => "Dan Brown",
-                "word_count" => 138000
-            ]
+                'title' => 'The Da Vinci Code',
+                'author' => 'Dan Brown',
+                'word_count' => 138000,
+            ],
         ];
 
         $randomBook = Arr::random($popularBooks);
