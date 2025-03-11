@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use App\Helpers\MarketingHelper;
 
 class MarketingHandbookController extends Controller
 {
@@ -16,7 +17,7 @@ class MarketingHandbookController extends Controller
 
     public function project(): View
     {
-        $stats = \App\Helpers\MarketingHelper::getStats('marketing.company.handbook.project');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.project');
 
         return view('marketing.company.handbook.project', [
             'stats' => $stats,
@@ -25,7 +26,7 @@ class MarketingHandbookController extends Controller
 
     public function principles(): View
     {
-        $stats = \App\Helpers\MarketingHelper::getStats('marketing.company.handbook.principles');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.principles');
 
         return view('marketing.company.handbook.principles', [
             'stats' => $stats,

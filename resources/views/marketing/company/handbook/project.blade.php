@@ -28,7 +28,7 @@
 
     <p class="mb-2">I believe in open source. Most of the time, I work on Linux. I use many OSS tools every day. I need to make money to run this project, and also to help justify the (significant) personal time I put into this project, but it's not the driving force behind the project. I like closed source projects too. I'm not a purist. But I use so many open source project that I need to give back somehow. Also, would you trust a closed source project to store this kind of data? Lol.</p>
 
-    <p class="mb-10">I've launched this project for the journey, not the destination. I'm not sure where it will go. I'm not sure if it will be a success. But I'm sure it will be a fun ride.</p>
+    <p class="mb-10">I have launched this project for the journey, not the destination. I'm not sure where it will go. I'm not sure if it will be a success. But I'm sure it will be a fun ride.</p>
   </div>
 
   <div>
