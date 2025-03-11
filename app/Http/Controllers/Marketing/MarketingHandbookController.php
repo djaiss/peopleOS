@@ -16,6 +16,19 @@ class MarketingHandbookController extends Controller
 
     public function project(): View
     {
-        return view('marketing.company.handbook.project');
+        $stats = \App\Helpers\MarketingHelper::getStats('marketing.company.handbook.project');
+
+        return view('marketing.company.handbook.project', [
+            'stats' => $stats,
+        ]);
+    }
+
+    public function principles(): View
+    {
+        $stats = \App\Helpers\MarketingHelper::getStats('marketing.company.handbook.principles');
+
+        return view('marketing.company.handbook.principles', [
+            'stats' => $stats,
+        ]);
     }
 }

@@ -139,6 +139,17 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
+    public function it_returns_random_fact()
+    {
+        // Act
+        $fact = MarketingHelper::getRandomFact();
+
+        // Assert
+        $this->assertIsString($fact);
+        $this->assertNotEmpty($fact);
+    }
+
+    #[Test]
     public function it_returns_complete_stats()
     {
         // Arrange
@@ -155,10 +166,17 @@ class MarketingHelperTest extends TestCase
         $stats = MarketingHelper::getStats($view);
 
         // Assert
-        $this->assertArrayHasKeys(['word_count', 'reading_time', 'comparison'], $stats);
+        $this->assertArrayHasKeys([
+            'word_count',
+            'reading_time',
+            'comparison',
+            'random_fact'
+        ], $stats);
         $this->assertEquals(8, $stats['word_count']);
         $this->assertEquals(1, $stats['reading_time']);
         $this->assertArrayHasKeys(['title', 'author', 'percentage'], $stats['comparison']);
+        $this->assertIsString($stats['random_fact']);
+        $this->assertNotEmpty($stats['random_fact']);
 
         // Cleanup
         unlink($filePath);

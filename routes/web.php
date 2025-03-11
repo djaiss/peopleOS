@@ -43,6 +43,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/company', [MarketingCompanyController::class, 'index'])->name('marketing.company.index');
         Route::get('/company/handbook', [MarketingHandbookController::class, 'index'])->name('marketing.company.handbook.index');
         Route::get('/company/handbook/project', [MarketingHandbookController::class, 'project'])->name('marketing.company.handbook.project');
+        Route::get('/company/handbook/principles', [MarketingHandbookController::class, 'principles'])->name('marketing.company.handbook.principles');
 
         Route::get('/docs', [MarketingDocsController::class, 'index'])->name('marketing.docs.index');
         Route::get('/docs/api/introduction', [MarketingDocsController::class, 'introduction'])->name('marketing.docs.api.introduction');
