@@ -170,7 +170,7 @@ class MarketingHelperTest extends TestCase
             'word_count',
             'reading_time',
             'comparison',
-            'random_fact'
+            'random_fact',
         ], $stats);
         $this->assertEquals(8, $stats['word_count']);
         $this->assertEquals(1, $stats['reading_time']);
