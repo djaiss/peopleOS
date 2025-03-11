@@ -103,7 +103,9 @@
             </div>
           @empty
             <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
-              <x-lucide-book-open class="h-12 w-12 text-gray-400" />
+              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
+                <x-lucide-book-open class="h-6 w-6 text-amber-600" />
+              </div>
               <h3 class="mt-2 text-sm font-semibold text-gray-900">{{ __('No notes yet') }}</h3>
               <p class="mt-1 text-sm text-gray-500">
                 {{ __('Start writing notes about this person to keep track of important details and memories.') }}
