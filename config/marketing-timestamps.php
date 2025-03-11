@@ -4,8 +4,10 @@ return [
     'pages' => [
         'marketing/company/handbook/index' => '2025-03-10T19:30:06-04:00',
         'marketing.company.handbook.index' => '2025-03-10T19:30:06-04:00',
-        'marketing/company/handbook/project' => '2025-03-10T19:30:06-04:00',
-        'marketing.company.handbook.project' => '2025-03-10T19:30:06-04:00',
+        'marketing/company/handbook/principles' => '2025-03-10T20:00:55-04:00',
+        'marketing.company.handbook.principles' => '2025-03-10T20:00:55-04:00',
+        'marketing/company/handbook/project' => '2025-03-10T20:00:55-04:00',
+        'marketing.company.handbook.project' => '2025-03-10T20:00:55-04:00',
         'marketing/company/index' => '2025-03-10T17:04:33-04:00',
         'marketing.company.index' => '2025-03-10T17:04:33-04:00',
         'marketing/docs/api/api-management' => '2025-03-07T21:12:58-05:00',
