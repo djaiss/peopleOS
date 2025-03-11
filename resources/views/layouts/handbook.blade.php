@@ -18,22 +18,22 @@
       {!!
         $breadcrumb ??
           '
-                                                              <a href="' .
+                                                                              <a href="' .
             route('marketing.index') .
             '" class="text-blue-500 hover:underline">' .
             __('Home') .
             '</a>
-                                                              <span class="text-gray-500">&gt;</span>
-                                                              <a href="' .
+                                                                              <span class="text-gray-500">&gt;</span>
+                                                                              <a href="' .
             route('marketing.company.index') .
             '" class="text-blue-500 hover:underline">' .
             __('Company') .
             '</a>
-                                                              <span class="text-gray-500">&gt;</span>
-                                                              <span class="text-gray-600">' .
+                                                                              <span class="text-gray-500">&gt;</span>
+                                                                              <span class="text-gray-600">' .
             __('Handbook') .
             '</span>
-                                                              '
+                                                                              '
       !!}
     </div>
   </div>
@@ -69,7 +69,7 @@
                 <a href="{{ route('marketing.company.handbook.principles') }}" class="{{ request()->routeIs('marketing.company.handbook.principles') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Principles') }}</a>
               </div>
               <div>
-                <a href="{{ route('marketing.docs.api.errors') }}" class="{{ request()->routeIs('marketing.docs.api.errors') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Shipping is better than not shipping') }}</a>
+                <a href="{{ route('marketing.company.handbook.shipping') }}" class="{{ request()->routeIs('marketing.company.handbook.shipping') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Shipping is better than not shipping') }}</a>
               </div>
               <div>
                 <a href="{{ route('marketing.docs.api.errors') }}" class="{{ request()->routeIs('marketing.docs.api.errors') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('How does this project make money') }}</a>

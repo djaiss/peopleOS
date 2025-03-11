@@ -32,4 +32,11 @@ class MarketingHandbookControllerTest extends TestCase
         $this->get('/company/handbook/principles')
             ->assertOk();
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_shipping(): void
+    {
+        $this->get('/company/handbook/shipping')
+            ->assertOk();
+    }
 }

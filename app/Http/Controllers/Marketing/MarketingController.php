@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Marketing;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Services\FetchMergedPRs;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
 
 class MarketingController extends Controller
 {
