@@ -1,0 +1,10 @@
+type: workspace
+model: workspace
+id: wk_Z4rHHQtvUP
+createdAt: 2025-03-04T19:01:20.150530876
+updatedAt: 2025-03-04T19:04:18
+name: PeopleOS
+description: ''
+settingValidateCertificates: true
+settingFollowRedirects: true
+settingRequestTimeout: 0

@@ -12,24 +12,24 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: POST
 name: ''
 sortPriority: 0.001
 url: https://peopleos.test/api/administration/genders
 urlParameters:
-- enabled: true
-  name: name
-  value: Fucker
-  id: e9qu0PzTED
-- enabled: true
-  name: ''
-  value: ''
-  id: XFP5xHUEgp
+  - enabled: true
+    name: name
+    value: Fucker
+    id: e9qu0PzTED
+  - enabled: true
+    name: ''
+    value: ''
+    id: XFP5xHUEgp
