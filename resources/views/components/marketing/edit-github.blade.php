@@ -1,7 +1,10 @@
 <div class="flex flex-col items-center justify-between rounded-lg border p-4 text-sm sm:flex-row">
   <div class="mb-4 sm:mb-0">
     @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
-      <p class="mb-1">{{ __('This page was last updated on :date.', ['date' => $lastModified->format('F j, Y')]) }}</p>
+      <p class="mb-1">
+        <span class="text-gray-500">Last updated on</span>
+        {{ $lastModified->format('F j, Y') }}.
+      </p>
     @endif
 
     <a href="https://github.com/djaiss/peopleos" class="text-blue-600 hover:text-blue-500">Edit this page on Github</a>

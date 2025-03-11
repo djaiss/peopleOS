@@ -12,32 +12,32 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: PUT
 name: ''
 sortPriority: 1000.0
 url: https://peopleos.test/api/me
 urlParameters:
-- enabled: true
-  name: first_name
-  value: Henri
-  id: uiufsHbJpJ
-- enabled: true
-  name: last_name
-  value: Troyatte
-  id: J8dSSy4C7Y
-- enabled: true
-  name: email
-  value: henri@troyat.com
-  id: 4JNPIiJkNT
-- enabled: true
-  name: ''
-  value: ''
-  id: AXkGxcrRyf
+  - enabled: true
+    name: first_name
+    value: Henri
+    id: uiufsHbJpJ
+  - enabled: true
+    name: last_name
+    value: Troyatte
+    id: J8dSSy4C7Y
+  - enabled: true
+    name: email
+    value: henri@troyat.com
+    id: 4JNPIiJkNT
+  - enabled: true
+    name: ''
+    value: ''
+    id: AXkGxcrRyf
