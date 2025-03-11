@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Download PR info
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v3
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -67,7 +67,7 @@ jobs:
             echo "should_run=false" >> $GITHUB_OUTPUT
           fi
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         if: steps.check-marketing.outputs.should_run == 'true'
         with:
           fetch-depth: 0
