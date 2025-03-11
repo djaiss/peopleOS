@@ -1,0 +1,21 @@
+name: Save PR Info
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  save-pr-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Save PR number
+        run: |
+          mkdir -p ./pr-info
+          echo ${{ github.event.pull_request.number }} > ./pr-info/pr-number
+
+      - name: Upload PR info
+        uses: actions/upload-artifact@v3
+        with:
+          name: pr-info
+          path: ./pr-info
+          retention-days: 1

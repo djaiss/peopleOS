@@ -1,42 +1,94 @@
 name: Update marketing page timestamps
 
 on:
-  pull_request:
-    paths:
-      - 'resources/views/marketing/**'
-    types: [opened, synchronize]
+  workflow_run:
+    workflows: ["Unit tests", "Static analysis"]
+    types:
+      - completed
+    branches:
+      - '**'
 
 # Only allow one timestamps update to run at a time per PR
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch }}
   cancel-in-progress: true
 
 jobs:
   update-timestamps:
-    if: ${{ always() && !contains(github.event.pull_request.labels.*.name, 'skip-timestamps') }}
+    # Only run if the triggering workflow succeeded and it's a PR that modified marketing files
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Download PR info
+        uses: dawidd6/action-download-artifact@v2
         with:
-          fetch-depth: 0 # This ensures we have the git history
-          ref: ${{ github.head_ref }} # Checkout the PR branch
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: pr-info
+          path: ./pr-info
+          if_no_artifact_found: ignore
+
+      - name: Check if PR modified marketing files
+        id: check-marketing
+        run: |
+          if [ ! -f "./pr-info/pr-number" ]; then
+            echo "No PR info found, skipping"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          PR_NUMBER=$(cat ./pr-info/pr-number)
+          echo "PR number: $PR_NUMBER"
+
+          # Check if this PR has the skip-timestamps label
+          LABELS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/$PR_NUMBER/labels" | jq -r '.[].name')
+
+          if echo "$LABELS" | grep -q "skip-timestamps"; then
+            echo "PR has skip-timestamps label, skipping"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Check if PR modified marketing files
+          CHANGED_FILES=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/files" | jq -r '.[].filename')
+
+          if echo "$CHANGED_FILES" | grep -q "resources/views/marketing/"; then
+            echo "PR modified marketing files, should run"
+            echo "should_run=true" >> $GITHUB_OUTPUT
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          else
+            echo "PR did not modify marketing files, skipping"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: actions/checkout@v3
+        if: steps.check-marketing.outputs.should_run == 'true'
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Set up PHP
+        if: steps.check-marketing.outputs.should_run == 'true'
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
 
       - name: Install dependencies
+        if: steps.check-marketing.outputs.should_run == 'true'
         run: composer install --prefer-dist --no-progress
 
       - name: Update page timestamps
+        if: steps.check-marketing.outputs.should_run == 'true'
         run: php artisan marketing:update-timestamps
 
       - name: Commit changes
+        if: steps.check-marketing.outputs.should_run == 'true'
         run: |
           if git diff --quiet; then
             echo "No changes to commit"
