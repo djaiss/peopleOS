@@ -32,7 +32,14 @@
       </div>
       <div>
         <x-input-label for="how_we_met_day" optional :value="__('Day')" />
-        <x-text-input x-mask="99" value="{{ old('how_we_met_day', $person->howWeMetSpecialDate?->day) }}" placeholder="DD" class="mt-1 block w-full" id="how_we_met_day" name="how_we_met_day" type="text"
+        <x-text-input
+          x-mask="99"
+          value="{{ old('how_we_met_day', $person->howWeMetSpecialDate?->day) }}"
+          placeholder="DD"
+          class="mt-1 block w-full"
+          id="how_we_met_day"
+          name="how_we_met_day"
+          type="text"
           x-on:input="
             const dayValue = $el.value.trim();
             const monthValue = document.getElementById('how_we_met_month').value.trim();
