@@ -6,8 +6,8 @@ namespace Tests\Feature\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
