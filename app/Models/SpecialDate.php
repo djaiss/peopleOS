@@ -89,34 +89,46 @@ class SpecialDate extends Model
     {
         return Attribute::make(
             get: function (mixed $value, array $attributes): string {
+                // we have the year, month, and day
                 if ($this->year && $this->month && $this->day) {
                     $date = CarbonImmutable::createFromDate($this->year, $this->month, $this->day);
 
                     return $date->format('M j, Y');
                 }
 
+                // we have the year, but no month or day
                 if ($this->year && ! $this->month && ! $this->day) {
                     $date = CarbonImmutable::createFromDate($this->year, 1, 1);
 
                     return $date->format('Y');
                 }
 
+                // we have the year, and month, but no day
                 if ($this->year && $this->month && ! $this->day) {
                     $date = CarbonImmutable::createFromDate($this->year, $this->month, 1);
 
                     return $date->format('M j, Y');
                 }
 
+                // we have the year, and day, but no month
                 if ($this->year && ! $this->month && $this->day) {
                     $date = CarbonImmutable::createFromDate($this->year, 1, $this->day);
 
                     return $date->format('Y');
                 }
 
+                // we have the month and day, but no year
                 if (! $this->year && $this->month && $this->day) {
                     $date = CarbonImmutable::createFromDate(1, $this->month, $this->day);
 
                     return $date->format('M j');
+                }
+
+                // we have the day, but no year or month
+                if (! $this->year && ! $this->month && $this->day) {
+                    $date = CarbonImmutable::createFromDate(1, 1, $this->day);
+
+                    return $date->format('j');
                 }
 
                 return '';
