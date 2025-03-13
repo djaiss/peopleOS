@@ -36,7 +36,7 @@ class AdministrationSecurityController extends Controller
         return view('administration.security.partials.new');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'label' => 'required|string|min:3|max:255',

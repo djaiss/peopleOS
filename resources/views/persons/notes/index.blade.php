@@ -19,7 +19,7 @@
       <div class="p-6">
         <!-- Add note form -->
         <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
-          <form id="add-note-form" x-target="notes-list add-note-form" action="{{ route('persons.notes.store', $person->slug) }}" method="POST">
+          <form id="add-note-form" x-target="notes-list add-note-form" action="{{ route('persons.notes.create', $person->slug) }}" method="POST">
             @csrf
 
             <div class="mb-4">

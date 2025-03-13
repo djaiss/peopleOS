@@ -59,7 +59,7 @@ class PersonController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',

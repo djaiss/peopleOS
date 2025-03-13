@@ -6,9 +6,15 @@ Todo:
   - Fix contact deletion if the contact can't be deleted: DONE
   - Add notifications: DONE
   - Add "how we met" to person: DONE
-  - rename all `store` to `create` in controllers
+  - rename all `store` to `create` in controllers: DONE
+  - add life events
+  - add todos
+  - add addresses
+  - add social networks
+  - add phone numbers
   - remove all stuff from controllers
   - Add services to manage instance
+  - Add ability to broadcast a message to all users
   - Add passions to person
   - Add nationality to person and significant other
   - Add hobbies to person

@@ -38,7 +38,7 @@
       <p class="mb-3 text-sm text-gray-600">{{ __('Have you seen :name lately?', ['name' => $person->first_name]) }}</p>
 
       <div class="flex flex-wrap gap-2">
-        <form x-target="encounters-section" action="{{ route('persons.encounters.store', $person->slug) }}" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now() }}" />
           <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
@@ -46,7 +46,7 @@
           </button>
         </form>
 
-        <form x-target="encounters-section" action="{{ route('persons.encounters.store', $person->slug) }}" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDay() }}" />
           <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
@@ -54,7 +54,7 @@
           </button>
         </form>
 
-        <form x-target="encounters-section" action="{{ route('persons.encounters.store', $person->slug) }}" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDays(2) }}" />
           <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
