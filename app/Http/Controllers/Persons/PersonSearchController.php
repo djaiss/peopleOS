@@ -13,7 +13,7 @@ use Illuminate\View\View;
 
 class PersonSearchController extends Controller
 {
-    public function store(Request $request): View
+    public function create(Request $request): View
     {
         $validated = $request->validate([
             'term' => 'required|string|max:255',

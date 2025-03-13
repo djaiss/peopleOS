@@ -51,7 +51,7 @@ class PersonWorkController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $person = $request->attributes->get('person');
 

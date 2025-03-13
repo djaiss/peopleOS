@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class PersonSendTestReminderController extends Controller
 {
-    public function store(Request $request, string $slug, int $specialDateId): RedirectResponse
+    public function create(Request $request, string $slug, int $specialDateId): RedirectResponse
     {
         $person = $request->attributes->get('person');
         $specialDate = SpecialDate::where('person_id', $person->id)

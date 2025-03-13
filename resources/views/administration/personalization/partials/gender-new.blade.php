@@ -1,4 +1,4 @@
-<form x-target="gender-list add-gender-form" x-target.back="add-gender-form" id="add-gender-form" action="{{ route('administration.personalization.genders.store') }}" method="POST" class="space-y-5 rounded-lg p-4 hover:bg-blue-50">
+<form x-target="gender-list add-gender-form" x-target.back="add-gender-form" id="add-gender-form" action="{{ route('administration.personalization.genders.create') }}" method="POST" class="space-y-5 rounded-lg p-4 hover:bg-blue-50">
   @csrf
   @method('POST')
 

@@ -14,7 +14,7 @@
         <h2 class="text-lg font-semibold text-gray-900">{{ __('How we met') }}</h2>
       </div>
       <div class="flex items-center gap-2">
-        <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.store', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
+        <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.create', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
           <span x-text="expanded ? '{{ __('Show less') }}' : '{{ __('Show more') }}'"></span>
           <x-lucide-chevron-down x-show="!expanded" class="h-4 w-4" />
           <x-lucide-chevron-up x-show="expanded" class="h-4 w-4" />
@@ -122,7 +122,7 @@
         <h2 class="text-lg font-semibold text-gray-900">{{ __('How we met') }}</h2>
       </div>
 
-      <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.store', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
+      <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.create', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
         <span x-text="expanded ? '{{ __('Show less') }}' : '{{ __('Show more') }}'"></span>
         <x-lucide-chevron-down x-show="!expanded" class="h-4 w-4" />
         <x-lucide-chevron-up x-show="expanded" class="h-4 w-4" />
