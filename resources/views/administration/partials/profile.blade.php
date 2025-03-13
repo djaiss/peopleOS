@@ -4,6 +4,10 @@
  */
 ?>
 
+<h1 class="font-semi-bold mb-4 text-2xl">
+  {{ __('Profile') }}
+</h1>
+
 <form action="{{ route('administration.update') }}" method="post" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
   @csrf
   @method('put')

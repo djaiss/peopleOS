@@ -8,17 +8,19 @@ Todo:
   - Add "how we met" to person: DONE
   - rename all `store` to `create` in controllers: DONE
   - add life events
+  - add a block
+    - add addresses
+    - add languages spoken
+    - add social networks
+    - add phone numbers
+    - add nationalities
+  - add support zone
   - add todos
-  - add addresses
-  - add social networks
-  - add phone numbers
   - remove all stuff from controllers
   - Add services to manage instance
   - Add ability to broadcast a message to all users
   - Add passions to person
-  - Add nationality to person and significant other
   - Add hobbies to person
-  - Add languages to person
 
   Country born - city born
   Country/place studies
