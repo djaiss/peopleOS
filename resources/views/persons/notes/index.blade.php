@@ -54,10 +54,9 @@
         <!-- Notes list -->
         <div id="notes-list">
           @forelse ($notes as $note)
-            <div id="note-{{ $note['id'] }}" class="group mb-4 overflow-hidden rounded-lg border border-gray-200 bg-white hover:shadow-sm transition hover:border-gray-300">
+            <div id="note-{{ $note['id'] }}" class="group mb-4 overflow-hidden rounded-lg border border-gray-200 bg-white transition hover:border-gray-300 hover:shadow-sm">
               <div class="first:rounded-t-lg last:rounded-b-lg">
                 <div class="flex items-center justify-between border-b border-gray-200 bg-gray-50/50 px-4 py-2">
-
                   <!-- note header -->
                   <div class="flex items-center gap-2">
                     <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100">
