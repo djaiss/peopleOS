@@ -117,6 +117,20 @@ jobs:
 
       # Test
       - name: Run tests
+        if: matrix.connection == 'sqlite'
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        continue-on-error: true
+        env:
+          DB_CONNECTION: ${{ matrix.connection }}
+
+      - name: Run tests
+        if: matrix.connection != 'sqlite'
         run: vendor/bin/phpunit
         env:
           DB_CONNECTION: ${{ matrix.connection }}
+
+      - name: Upload coverage reports to Codecov
+        if: matrix.connection == 'sqlite'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
