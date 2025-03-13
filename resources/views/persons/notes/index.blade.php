@@ -54,15 +54,17 @@
         <!-- Notes list -->
         <div id="notes-list">
           @forelse ($notes as $note)
-            <div id="note-{{ $note['id'] }}" class="group mb-4 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition hover:border-gray-300">
+            <div id="note-{{ $note['id'] }}" class="group mb-4 overflow-hidden rounded-lg border border-gray-200 bg-white hover:shadow-sm transition hover:border-gray-300">
               <div class="first:rounded-t-lg last:rounded-b-lg">
-                <div class="flex items-center justify-between border-b border-gray-200 bg-gray-50/50 px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-                      <x-lucide-book-open class="h-4 w-4 text-blue-600" />
+                <div class="flex items-center justify-between border-b border-gray-200 bg-gray-50/50 px-4 py-2">
+
+                  <!-- note header -->
+                  <div class="flex items-center gap-2">
+                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100">
+                      <x-lucide-book-open class="h-3 w-3 text-blue-600" />
                     </span>
                     <div>
-                      <p class="text-sm text-gray-600">
+                      <p class="text-xs text-gray-600">
                         {{ $note['created_at'] }}
                       </p>
                     </div>
