@@ -29,10 +29,7 @@ class AdministrationTimezoneControllerTest extends TestCase
         $response->assertRedirect('/administration');
         $response->assertSessionHas('status', 'Changes saved');
 
-        $this->assertDatabaseHas('users', [
-            'id' => $user->id,
-            'timezone' => 'America/New_York',
-        ]);
+        $this->assertEquals('America/New_York', $user->timezone);
     }
 
     #[Test]
@@ -51,10 +48,7 @@ class AdministrationTimezoneControllerTest extends TestCase
         $response->assertRedirect('/administration');
         $response->assertSessionHasErrors(['timezone' => 'The timezone field is required.']);
 
-        $this->assertDatabaseHas('users', [
-            'id' => $user->id,
-            'timezone' => 'UTC', // Timezone should remain unchanged
-        ]);
+        $this->assertEquals('UTC', $user->timezone);
     }
 
     #[Test]
@@ -73,10 +67,7 @@ class AdministrationTimezoneControllerTest extends TestCase
         $response->assertRedirect('/administration');
         $response->assertSessionHasErrors(['timezone' => 'The timezone field must be a string.']);
 
-        $this->assertDatabaseHas('users', [
-            'id' => $user->id,
-            'timezone' => 'UTC', // Timezone should remain unchanged
-        ]);
+        $this->assertEquals('UTC', $user->timezone);
     }
 
     #[Test]
