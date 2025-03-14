@@ -20,7 +20,7 @@ class AdministrationTimezoneController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'timezone' => ['required', 'string', 'max:255'],
+            'timezone' => ['required', 'string', 'timezone:all'],
         ]);
 
         (new UpdateTimezone(
