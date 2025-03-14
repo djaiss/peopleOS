@@ -10,6 +10,7 @@ use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
+use App\Http\Controllers\Administration\AdministrationTimezoneController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
@@ -121,6 +122,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');
     Route::put('administration', [AdministrationController::class, 'update'])->name('administration.update');
+    Route::put('administration/timezone', [AdministrationTimezoneController::class, 'update'])->name('administration.timezone.update');
     Route::put('administration/avatar', [AdministrationAvatarController::class, 'update'])->name('administration.avatar.update');
     Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs.index');
 

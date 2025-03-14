@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'pages' => [
         'marketing/company/handbook/index' => '2025-03-10T20:51:59-04:00',
@@ -10,8 +8,8 @@ return [
         'marketing.company.handbook.principles' => '2025-03-10T20:51:59-04:00',
         'marketing/company/handbook/project' => '2025-03-10T20:51:59-04:00',
         'marketing.company.handbook.project' => '2025-03-10T20:51:59-04:00',
-        'marketing/company/handbook/shipping' => '2025-03-10T20:58:47-04:00',
-        'marketing.company.handbook.shipping' => '2025-03-10T20:58:47-04:00',
+        'marketing/company/handbook/shipping' => '2025-03-10T21:02:25-04:00',
+        'marketing.company.handbook.shipping' => '2025-03-10T21:02:25-04:00',
         'marketing/company/index' => '2025-03-10T20:51:59-04:00',
         'marketing.company.index' => '2025-03-10T20:51:59-04:00',
         'marketing/docs/api/api-management' => '2025-03-07T21:12:58-05:00',
@@ -26,8 +24,8 @@ return [
         'marketing.docs.api.introduction' => '2025-03-08T15:31:01-05:00',
         'marketing/docs/api/logs' => '2025-03-07T21:10:04-05:00',
         'marketing.docs.api.logs' => '2025-03-07T21:10:04-05:00',
-        'marketing/docs/api/profile' => '2025-03-07T17:54:03-05:00',
-        'marketing.docs.api.profile' => '2025-03-07T17:54:03-05:00',
+        'marketing/docs/api/profile' => '2025-03-13T21:15:49-04:00',
+        'marketing.docs.api.profile' => '2025-03-13T21:15:49-04:00',
         'marketing/docs/index' => '2025-03-04T09:10:33-05:00',
         'marketing.docs.index' => '2025-03-04T09:10:33-05:00',
         'marketing/index' => '2025-03-10T20:51:59-04:00',

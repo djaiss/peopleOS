@@ -22,13 +22,13 @@ A paragraph describing what changed and its impact.
 
 We prioritize readability and maintainability in our codebase:
 
-* We use 4 spaces for indentation in PHP files and 2 spaces for JS/CSS
-* We follow Laravel conventions for PHP code
-* We use Blade for views and minimize logic in templates
-* We use Tailwind CSS for styling with Alpine.js for frontend interactivity
-* We always put spaces after list items, method parameters, and around operators
-* We use type hints and return types in PHP wherever possible
-* We follow PSR-12 coding standards
+- We use 4 spaces for indentation in PHP files and 2 spaces for JS/CSS
+- We follow Laravel conventions for PHP code
+- We use Blade for views and minimize logic in templates
+- We use Tailwind CSS for styling with Alpine.js for frontend interactivity
+- We always put spaces after list items, method parameters, and around operators
+- We use type hints and return types in PHP wherever possible
+- We follow PSR-12 coding standards
 
 Remember this is open source software - write your code with future readers in mind. Make it clean, well-documented, and easy to understand.
 
