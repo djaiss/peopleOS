@@ -100,7 +100,7 @@
                 <x-lucide-users class="h-5 w-5 text-white" />
               </div>
             </a>
-            <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually our trademark is not registerd but we probably should write that to do like the big boys.') }}</p>
+            <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually, our trademark is not registered, but we probably should write that to do like the big boys.') }}</p>
           </div>
 
           @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
