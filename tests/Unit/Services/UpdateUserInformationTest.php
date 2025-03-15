@@ -8,6 +8,7 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use App\Services\UpdateUserInformation;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
@@ -99,7 +100,7 @@ class UpdateUserInformationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Birth date cannot be in the future');
 
-        $this->executeService($user, 'ross.geller@friends.com', '03/15/2025');
+        $this->executeService($user, 'ross.geller@friends.com', Carbon::now()->addDay()->format('m/d/Y'));
     }
 
     #[Test]
@@ -110,7 +111,7 @@ class UpdateUserInformationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Birth date must be in MM/DD/YYYY format');
 
-        $this->executeService($user, 'ross.geller@friends.com', '2025-03-15');
+        $this->executeService($user, 'ross.geller@friends.com', Carbon::now()->addDay()->format('d-m-Y'));
     }
 
     private function executeService(User $user, string $email = 'dwight@dundermifflin.com', ?string $bornAt = null): void
