@@ -35,7 +35,7 @@
 
         <!-- upgrade -->
         @if (Auth::user()->account->isInTrial())
-          <div class="flex items-center gap-x-2">
+          <div class="flex items-center gap-x-2 ml-12">
             <div class="rounded-md border border-yellow-300 bg-yellow-50 px-3 py-1">
               <p class="text-sm text-yellow-800">{{ round(now()->diffInDays(Auth::user()->account->trial_ends_at)) }} days left in your trial</p>
             </div>
