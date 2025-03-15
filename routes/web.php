@@ -19,6 +19,7 @@ use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
 use App\Http\Controllers\Marketing\MarketingHandbookController;
+use App\Http\Controllers\Marketing\MarketingPricingController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
@@ -41,6 +42,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
         Route::get('/about', [MarketingController::class, 'index'])->name('marketing.about.index');
         Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
+        Route::get('/pricing', [MarketingPricingController::class, 'index'])->name('marketing.pricing.index');
         Route::get('/company', [MarketingCompanyController::class, 'index'])->name('marketing.company.index');
         Route::get('/company/handbook', [MarketingHandbookController::class, 'index'])->name('marketing.company.handbook.index');
         Route::get('/company/handbook/project', [MarketingHandbookController::class, 'project'])->name('marketing.company.handbook.project');
