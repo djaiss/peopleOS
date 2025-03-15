@@ -27,12 +27,31 @@
       </div>
       <div>
         <x-input-label for="how_we_met_month" optional :value="__('Month')" />
-        <x-text-input x-mask="99" value="{{ old('how_we_met_month', $person->howWeMetSpecialDate?->month) }}" placeholder="MM" class="mt-1 block w-full" id="how_we_met_month" name="how_we_met_month" type="text" />
+        <x-text-input x-mask="99" value="{{ old('how_we_met_month', $person->howWeMetSpecialDate?->month) }}" placeholder="MM" class="mt-1 block w-full" id="how_we_met_month" name="how_we_met_month" type="text" x-on:input="document.getElementById('how_we_met_day').dispatchEvent(new Event('input'))" />
         <x-input-error :messages="$errors->get('how_we_met_month')" class="mt-2" />
       </div>
       <div>
         <x-input-label for="how_we_met_day" optional :value="__('Day')" />
-        <x-text-input x-mask="99" value="{{ old('how_we_met_day', $person->howWeMetSpecialDate?->day) }}" placeholder="DD" class="mt-1 block w-full" id="how_we_met_day" name="how_we_met_day" type="text" />
+        <x-text-input
+          x-mask="99"
+          value="{{ old('how_we_met_day', $person->howWeMetSpecialDate?->day) }}"
+          placeholder="DD"
+          class="mt-1 block w-full"
+          id="how_we_met_day"
+          name="how_we_met_day"
+          type="text"
+          x-on:input="
+            const dayValue = $el.value.trim();
+            const monthValue = document.getElementById('how_we_met_month').value.trim();
+
+            if (dayValue && !monthValue) {
+              $el.setCustomValidity('If you specify a day, you must also specify a month');
+            } else if (!dayValue && monthValue) {
+              $el.setCustomValidity('If you specify a month, you must also specify a day');
+            } else {
+              $el.setCustomValidity('');
+            }
+          " />
         <x-input-error :messages="$errors->get('how_we_met_day')" class="mt-2" />
       </div>
     </div>

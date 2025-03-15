@@ -100,10 +100,10 @@ class SpecialDateTest extends TestCase
 
         $specialDate = SpecialDate::factory()->create([
             'year' => null,
-            'month' => null,
+            'month' => 0,
             'day' => 15,
         ]);
 
-        $this->assertEquals('', $specialDate->date);
+        $this->assertEquals('15', $specialDate->date);
     }
 }

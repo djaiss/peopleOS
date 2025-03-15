@@ -11,6 +11,12 @@
       <li>
         <a href="#update-the-information-about-the-logged-user" class="text-blue-500 hover:underline">Update the information about the logged user</a>
       </li>
+      <li>
+        <a href="#get-the-timezone-of-the-logged-user" class="text-blue-500 hover:underline">Get the timezone of the logged user</a>
+      </li>
+      <li>
+        <a href="#update-the-timezone-of-the-logged-user" class="text-blue-500 hover:underline">Update the timezone of the logged user</a>
+      </li>
     </ul>
   </div>
 
@@ -29,6 +35,14 @@
           <a href="#update-the-information-about-the-logged-user">
             <span class="text-orange-500">PUT</span>
             /api/me
+          </a>
+          <a href="#get-the-timezone-of-the-logged-user">
+            <span class="text-blue-700">GET</span>
+            /api/me/timezone
+          </a>
+          <a href="#update-the-timezone-of-the-logged-user">
+            <span class="text-orange-500">PUT</span>
+            /api/me/timezone
           </a>
         </div>
       </x-marketing.code>
@@ -180,6 +194,91 @@
         <div class="pl-4">
           "born_at":
           <span class="text-rose-800">479692800</span>
+        </div>
+        <div>}</div>
+      </x-marketing.code>
+    </div>
+  </div>
+
+  <!-- GET /api/me/timezone -->
+  <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
+    <div>
+      <h3 id="get-the-timezone-of-the-logged-user" class="mb-2 text-lg font-bold">Get the timezone of the logged user</h3>
+      <p class="mb-10">This endpoint retrieves the timezone information of the currently logged in user.</p>
+
+      <!-- parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-10">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">This endpoint does not have any parameters.</p>
+        </div>
+      </div>
+
+      <!-- response attributes -->
+      <div x-cloak x-data="{ open: false }">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Response attributes</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition>
+          <x-marketing.attribute name="timezone" type="string" description="The timezone of the user in IANA format." />
+        </div>
+      </div>
+    </div>
+    <div>
+      <x-marketing.code title="/api/me/timezone" verb="GET" verbClass="text-blue-700">
+        <div>{</div>
+        <div class="pl-4">
+          "timezone":
+          <span class="text-lime-700">"America/New_York"</span>
+        </div>
+        <div>}</div>
+      </x-marketing.code>
+    </div>
+  </div>
+
+  <!-- PUT /api/me/timezone -->
+  <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
+    <div>
+      <h3 id="update-the-timezone-of-the-logged-user" class="mb-2 text-lg font-bold">Update the timezone of the logged user</h3>
+      <p class="mb-2">This endpoint updates the timezone of the currently logged in user.</p>
+      <p class="mb-10">The timezone must be a valid IANA timezone identifier (e.g., "America/New_York", "Europe/London").</p>
+
+      <!-- parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-10">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition>
+          <x-marketing.attribute name="timezone" required="true" type="string" description="The timezone of the user in IANA format (e.g., 'America/New_York', 'Europe/London')." />
+        </div>
+      </div>
+
+      <!-- response attributes -->
+      <div x-cloak x-data="{ open: false }">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Response attributes</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition>
+          <x-marketing.attribute name="timezone" type="string" description="The updated timezone of the user in IANA format." />
+        </div>
+      </div>
+    </div>
+    <div>
+      <x-marketing.code title="/api/me/timezone" verb="PUT" verbClass="text-orange-500">
+        <div>{</div>
+        <div class="pl-4">
+          "timezone":
+          <span class="text-lime-700">"Europe/London"</span>
         </div>
         <div>}</div>
       </x-marketing.code>

@@ -40,6 +40,7 @@ class UserFactory extends Factory
             'born_at' => null,
             'does_display_age' => false,
             'is_instance_admin' => false,
+            'timezone' => 'UTC',
         ];
     }
 

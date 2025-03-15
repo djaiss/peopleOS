@@ -19,7 +19,7 @@
       <div class="p-6">
         <!-- Add note form -->
         <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
-          <form id="add-note-form" x-target="notes-list add-note-form" action="{{ route('persons.notes.store', $person->slug) }}" method="POST">
+          <form id="add-note-form" x-target="notes-list add-note-form" action="{{ route('persons.notes.create', $person->slug) }}" method="POST">
             @csrf
 
             <div class="mb-4">
@@ -54,15 +54,16 @@
         <!-- Notes list -->
         <div id="notes-list">
           @forelse ($notes as $note)
-            <div id="note-{{ $note['id'] }}" class="group mb-4 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition hover:border-gray-300">
+            <div id="note-{{ $note['id'] }}" class="group mb-4 overflow-hidden rounded-lg border border-gray-200 bg-white transition hover:border-gray-300 hover:shadow-sm">
               <div class="first:rounded-t-lg last:rounded-b-lg">
-                <div class="flex items-center justify-between border-b border-gray-200 bg-gray-50/50 px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-                      <x-lucide-book-open class="h-4 w-4 text-blue-600" />
+                <div class="flex items-center justify-between border-b border-gray-200 bg-gray-50/50 px-4 py-2">
+                  <!-- note header -->
+                  <div class="flex items-center gap-2">
+                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100">
+                      <x-lucide-book-open class="h-3 w-3 text-blue-600" />
                     </span>
                     <div>
-                      <p class="text-sm text-gray-600">
+                      <p class="text-xs text-gray-600">
                         {{ $note['created_at'] }}
                       </p>
                     </div>

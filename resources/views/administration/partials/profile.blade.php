@@ -4,6 +4,10 @@
  */
 ?>
 
+<h1 class="font-semi-bold mb-4 text-2xl">
+  {{ __('Profile') }}
+</h1>
+
 <form action="{{ route('administration.update') }}" method="post" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
   @csrf
   @method('put')
@@ -58,7 +62,7 @@
   </div>
 
   <div x-cloak x-show="showActions" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="-translate-y-2 transform opacity-0" x-transition:enter-end="translate-y-0 transform opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-y-0 transform opacity-100" x-transition:leave-end="-translate-y-2 transform opacity-0" class="flex justify-between border-t border-gray-200 p-3">
-    <x-button.secondary wire:click="toggleAddMode" class="mr-2">
+    <x-button.secondary @click="showActions = false" class="mr-2">
       {{ __('Cancel') }}
     </x-button.secondary>
 

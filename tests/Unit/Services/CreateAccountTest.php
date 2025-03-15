@@ -48,11 +48,11 @@ class CreateAccountTest extends TestCase
             'account_id' => $user->account_id,
             'email' => 'ross.geller@friends.com',
             'status' => UserStatus::ACTIVE->value,
-            'timezone' => 'UTC',
         ]);
 
         $this->assertEquals('Ross', $user->first_name);
         $this->assertEquals('Geller', $user->last_name);
+        $this->assertEquals('UTC', $user->timezone);
 
         $this->assertInstanceOf(
             User::class,

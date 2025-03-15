@@ -15,7 +15,7 @@ class PersonEncounterToggleController extends Controller
     /**
      * This is just used to update the how we met toggle.
      */
-    public function store(Request $request): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         $person = $request->attributes->get('person');
 

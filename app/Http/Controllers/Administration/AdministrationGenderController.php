@@ -21,7 +21,7 @@ class AdministrationGenderController extends Controller
         return view('administration.personalization.partials.gender-new');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',

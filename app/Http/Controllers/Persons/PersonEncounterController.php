@@ -17,7 +17,7 @@ use Illuminate\View\View;
 
 class PersonEncounterController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         $person = $request->attributes->get('person');
 

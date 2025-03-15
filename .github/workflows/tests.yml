@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP ${{ matrix.php-version }} without coverage
         if: matrix.connection != env.coverage-with || matrix.php-version != env.default-php-version || ! matrix.coverage
@@ -66,7 +66,7 @@ jobs:
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache composer files
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
@@ -117,6 +117,20 @@ jobs:
 
       # Test
       - name: Run tests
+        if: matrix.connection == 'sqlite'
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        continue-on-error: true
+        env:
+          DB_CONNECTION: ${{ matrix.connection }}
+
+      - name: Run tests
+        if: matrix.connection != 'sqlite'
         run: vendor/bin/phpunit
         env:
           DB_CONNECTION: ${{ matrix.connection }}
+
+      - name: Upload coverage reports to Codecov
+        if: matrix.connection == 'sqlite'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

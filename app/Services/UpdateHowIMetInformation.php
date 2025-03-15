@@ -59,7 +59,7 @@ class UpdateHowIMetInformation
             $this->specialDate = (new CreateSpecialDate(
                 user: $this->user,
                 person: $this->person,
-                name: 'How I Met',
+                name: 'How we met',
                 year: $this->howIMetYear ?? null,
                 month: $this->howIMetMonth ?? null,
                 day: $this->howIMetDay ?? null,

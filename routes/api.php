@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainControl
 use App\Http\Controllers\Api\Administration\AdministrationLogsController;
 use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Api\Administration\MeController;
+use App\Http\Controllers\Api\Administration\MeTimezoneController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
@@ -17,6 +18,8 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     // logged user
     Route::get('me', [MeController::class, 'show'])->name('me');
     Route::put('me', [MeController::class, 'update'])->name('me.update');
+    Route::get('me/timezone', [MeTimezoneController::class, 'show'])->name('me.timezone.show');
+    Route::put('me/timezone', [MeTimezoneController::class, 'update'])->name('me.timezone.update');
 
     // persons
     Route::get('persons', [PersonController::class, 'index'])->name('persons.index');

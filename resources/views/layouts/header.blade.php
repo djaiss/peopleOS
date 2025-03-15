@@ -12,21 +12,21 @@
 
       <!-- Main navigation -->
       <div class="flex items-center gap-x-6">
-        <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2">
+        <a href="{{ route('dashboard.index') }}" class="flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-home class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
             {{ __('Dashboard') }}
           </p>
         </a>
 
-        <a href="{{ route('persons.index') }}" class="flex items-center gap-x-2">
+        <a href="{{ route('persons.index') }}" class="flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-users-round class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
             {{ __('People') }}
           </p>
         </a>
 
-        <a href="" class="flex items-center gap-x-2">
+        <a href="" class="flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-book-open-text class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
             {{ __('Journal') }}
