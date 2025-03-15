@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['marketing'])->group(
     function (): void {
         Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
-        Route::get('/about', [MarketingController::class, 'index'])->name('marketing.index');
+        Route::get('/about', [MarketingController::class, 'index'])->name('marketing.about.index');
         Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
         Route::get('/company', [MarketingCompanyController::class, 'index'])->name('marketing.company.index');
         Route::get('/company/handbook', [MarketingHandbookController::class, 'index'])->name('marketing.company.handbook.index');
