@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'resources/views/marketing/**'
-    types: [opened, synchronize]
+    types: [opened, synchronize, labeled]
 
 # Only allow one timestamps update to run at a time per PR
 concurrency:
@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   update-timestamps:
-    if: ${{ always() && !contains(github.event.pull_request.labels.*.name, 'skip-timestamps') }}
+    if: ${{ always() && contains(github.event.pull_request.labels.*.name, 'marketing') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
