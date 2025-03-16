@@ -111,11 +111,11 @@
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:items-center">
         <div class="col-span-2">
           <h2 class="mb-3 text-xl leading-7 font-semibold text-green-600">{{ __('Why should you use PeopleOS?') }}</h2>
-          <p class="mb-2">Monica is for people who have jobs, a family, and are busy trying to find a good work/life balance. So busy, that they don't have time anymore to remember to call a friend, say happy birthday to a nephew, or remember to invite someone special for dinner next week. The older we get, the more life gets in the way. It's sad, but it's the reality.</p>
+          <p class="mb-2">PeopleOS is designed for people with jobs, families, and busy lives who are striving to maintain a good work–life balance. They're often so busy that they forget to call a friend, wish a nephew a happy birthday, or invite someone special to dinner next week. As we grow older, life increasingly gets in the way. It's unfortunate, but it's the reality.</p>
           <p class="mb-2">I've created PeopleOS to remember all these little, but so important, things.</p>
           <p>
             Read more about
-            <a href="" class="text-blue-600 hover:text-blue-500">{{ __('why this tool exists') }}</a>
+            <a href="{{ route('marketing.why.index') }}" class="text-blue-600 hover:text-blue-500">{{ __('why this tool exists') }}</a>
             .
           </p>
         </div>
@@ -252,27 +252,39 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-10 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          {{ __('Warning: PeopleOS is probably not for you if...') }}
+          Warning: PeopleOS is probably <span class="bg-amber-500 text-white px-2 py-1 rounded-md">not for you</span> if...
         </h3>
 
         <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4">
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You have a good memory</p>
+            <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/good_memory.png') }}" alt="Good memory" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You have a good memory</p>
             <p class="text-sm">If you can remember everything about everyone you know, you probably don't need this tool.</p>
           </div>
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like expensive, reccuring subscriptions</p>
+          <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/recurring.png') }}" alt="Expensive subscriptions" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You like expensive, reccuring subscriptions</p>
             <p class="text-sm">We offer the a one-time payment for the software. No subscriptions, no hidden fees.</p>
           </div>
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like being tracked for ads purposes</p>
+            <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/ads.png') }}" alt="Ads" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You like being tracked for ads purposes</p>
             <p class="text-sm">We do track users to serve ads, and don't profile our users. We hate ads as much as you do.</p>
           </div>
 
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like being locked in</p>
+            <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/prison.png') }}" alt="Prison" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You like being locked in</p>
             <p class="text-sm">We strongly advocate that you don't use our hosted version, and that you self-host the software on a server of your own.</p>
           </div>
         </div>

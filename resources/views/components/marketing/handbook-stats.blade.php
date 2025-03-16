@@ -28,7 +28,7 @@
     <p class="text-gray-600">
       This represents only
       <code class="rounded-md border border-gray-200 px-1">{{ $stats['comparison']['percentage'] }}%</code>
-      of the number of pages in
+      of the number of words in
       <span class="font-semibold">{{ $stats['comparison']['title'] }}</span>
       by
       <span class="font-semibold">{{ $stats['comparison']['author'] }}</span>

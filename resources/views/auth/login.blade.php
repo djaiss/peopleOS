@@ -20,8 +20,8 @@
         <!-- Title -->
         <div class="mb-8 flex items-center gap-x-2">
           <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
-            <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-500 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-              <x-lucide-users class="h-5 w-5 text-white" />
+            <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+              <img src="{{ asset('marketing/logo.png') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.png') }} 1x, {{ asset('marketing/logo@2x.png') }} 2x" />
             </div>
           </a>
           <h1 class="text-2xl font-semibold text-gray-900">

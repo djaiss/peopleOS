@@ -4,8 +4,8 @@
     <!-- Logo -->
     <div class="flex items-center">
       <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
-        <div class="flex h-7 w-7 items-center justify-center rounded-sm bg-blue-500 p-1 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-          <x-lucide-users class="h-5 w-5 text-white" />
+        <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+          <img src="{{ asset('marketing/logo.png') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.png') }} 1x, {{ asset('marketing/logo@2x.png') }} 2x" />
         </div>
         <span class="text-lg font-semibold text-gray-900 dark:text-white">{{ config('app.name') }}</span>
       </a>
@@ -33,11 +33,11 @@
         <a href="{{ route('persons.index') }}" class="group flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-layout-grid class="h-4 w-4 text-purple-600 group-hover:text-purple-700" />
           <p class="text-sm text-gray-700 group-hover:text-gray-900">
-            {{ __('Products') }}
+            {{ __('Features') }}
           </p>
         </a>
 
-        <a href="" class="group flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
+        <a href="{{ route('marketing.pricing.index') }}" class="group flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-credit-card class="h-4 w-4 text-green-600 group-hover:text-green-700" />
           <p class="text-sm text-gray-700 group-hover:text-gray-900">
             {{ __('Pricing') }}
