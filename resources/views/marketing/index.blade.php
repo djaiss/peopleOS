@@ -252,12 +252,15 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-10 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          {{ __('Warning: PeopleOS is probably not for you if...') }}
+          Warning: PeopleOS is probably <span class="bg-amber-500 text-white px-2 py-1 rounded-md">not for you</span> if...
         </h3>
 
         <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4">
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You have a good memory</p>
+            <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/good_memory.png') }}" alt="Good memory" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You have a good memory</p>
             <p class="text-sm">If you can remember everything about everyone you know, you probably don't need this tool.</p>
           </div>
 
