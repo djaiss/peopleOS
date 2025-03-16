@@ -19,7 +19,7 @@
           <x-lucide-chevron-down x-show="!expanded" class="h-4 w-4" />
           <x-lucide-chevron-up x-show="expanded" class="h-4 w-4" />
         </a>
-        <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.edit', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-purple-50 px-3 py-2 text-sm font-medium text-purple-600 hover:bg-purple-100">
+        <a x-target="edit-how-we-met-form" href="{{ route('persons.how-we-met.edit', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-purple-50 px-2 py-1 text-sm font-medium text-purple-600 hover:bg-purple-100">
           <x-lucide-pencil class="mr-1 h-3 w-3" />
           {{ __('Edit') }}
         </a>
@@ -89,7 +89,6 @@
         <!-- Reminder -->
         @if ($person->howWeMetSpecialDate?->should_be_reminded)
           <div class="border-t pt-4">
-            <h3 class="mb-2 text-sm font-medium text-gray-900">{{ __('Reminder') }}</h3>
             <p class="text-sm text-gray-600">{{ __('A reminder will be sent to you on :date.', ['date' => $person->howWeMetSpecialDate?->date]) }}</p>
           </div>
         @endif

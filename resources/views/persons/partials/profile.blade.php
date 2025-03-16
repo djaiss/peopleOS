@@ -12,19 +12,18 @@
       <div class="h-16 w-16 shrink-0">
         <img class="h-16 w-16 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person->getAvatar(64) }}" alt="{{ $person->name }}" />
       </div>
-      <div class="min-w-0">
+      <div class="flex min-w-0 flex-col gap-1">
         <h1 class="truncate text-xl font-semibold">{{ $person->name }}</h1>
-        <div class="mt-1 flex flex-col gap-0">
-          @php
-            $job = $person->job();
-          @endphp
 
-          @if ($job)
-            <span class="text-sm text-gray-600">{{ $job }}</span>
-          @endif
+        @php
+          $job = $person->job();
+        @endphp
 
-          <span class="text-sm text-gray-600">32 years old</span>
-        </div>
+        @if ($job)
+          <span class="text-sm text-gray-600">{{ $job }}</span>
+        @endif
+
+        <span class="text-sm text-gray-600">32 years old</span>
       </div>
     </div>
 
