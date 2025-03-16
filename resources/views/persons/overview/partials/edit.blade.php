@@ -90,7 +90,7 @@
     <x-input-error :messages="$errors->get('how_we_met')" class="mt-2" />
   </div>
 
-  <div class="mt-6 flex justify-end gap-3">
+  <div class="flex items-center justify-between">
     <x-button.secondary x-target="edit-how-we-met-form" href="{{ route('persons.show', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>

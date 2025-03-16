@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'pages' => [
         'marketing/company/handbook/index' => '2025-03-10T20:51:59-04:00',

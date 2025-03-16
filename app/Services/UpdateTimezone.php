@@ -7,11 +7,6 @@ namespace App\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
-use Carbon\Carbon;
-use Carbon\Exceptions\InvalidDateException;
-use Carbon\Exceptions\InvalidFormatException;
-use Illuminate\Auth\Events\Registered;
-use InvalidArgumentException;
 
 class UpdateTimezone
 {

@@ -12,7 +12,6 @@
     <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[1fr_250px]">
       <!-- Main content -->
       <div class="py-16 sm:border-r sm:border-gray-200 sm:pr-10">
-
         <p>We have three plans.</p>
         <p>They are all a one-time fee, and not a subscription.</p>
         <p>I repeat, because it's really rare these days. They are all a one-time fee.</p>

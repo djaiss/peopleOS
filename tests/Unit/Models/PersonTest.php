@@ -12,6 +12,7 @@ use App\Models\Note;
 use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\WorkHistory;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -75,6 +76,21 @@ class PersonTest extends TestCase
         $this->assertEquals(
             'Ross Geller',
             $person->name
+        );
+    }
+
+    #[Test]
+    public function it_gets_the_current_time(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
+
+        $person = Person::factory()->create([
+            'timezone' => 'America/New_York',
+        ]);
+
+        $this->assertEquals(
+            '6:00 am',
+            $person->currentTime
         );
     }
 

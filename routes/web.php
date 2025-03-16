@@ -27,6 +27,7 @@ use App\Http\Controllers\Persons\PersonEncounterToggleController;
 use App\Http\Controllers\Persons\PersonFamilyController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
+use App\Http\Controllers\Persons\PersonInformationController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
@@ -80,6 +81,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
             Route::get('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'edit'])->name('persons.how-we-met.edit');
             Route::get('persons/{slug}/how-we-met/toggle', [PersonHowWeMetController::class, 'create'])->name('persons.how-we-met.create');
             Route::put('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'update'])->name('persons.how-we-met.update');
+
+            Route::get('persons/{slug}/information/edit', [PersonInformationController::class, 'edit'])->name('persons.information.edit');
+            Route::put('persons/{slug}/information', [PersonInformationController::class, 'update'])->name('persons.information.update');
 
             Route::post('persons/{slug}/encounters', [PersonEncounterController::class, 'create'])->name('persons.encounters.create');
             Route::get('persons/{slug}/encounters/toggle', [PersonEncounterToggleController::class, 'create'])->name('persons.encounters.toggle');

@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-between rounded-lg border text-sm">
-  <div class=" p-4 mb-2 flex flex-col items-center justify-center gap-y-4 border-b border-gray-200 pb-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
+  <div class="mb-2 flex flex-col items-center justify-center gap-y-4 border-b border-gray-200 p-4 pb-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
     <a href="" class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:bg-white">
       <x-lucide-thumbs-up class="h-4 w-4 transform text-green-600 transition-transform group-hover:-rotate-12 group-hover:text-green-700" />
       <span class="text-sm text-gray-700 group-hover:text-gray-900">

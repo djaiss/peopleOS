@@ -44,6 +44,9 @@ class Person extends Model
         'how_we_met_first_impressions',
         'can_be_deleted',
         'is_listed',
+        'timezone',
+        'nationalities',
+        'languages',
     ];
 
     /**
@@ -71,6 +74,9 @@ class Person extends Model
             'how_we_met_first_impressions' => 'encrypted',
             'can_be_deleted' => 'boolean',
             'is_listed' => 'boolean',
+            'timezone' => 'encrypted',
+            'nationalities' => 'encrypted',
+            'languages' => 'encrypted',
         ];
     }
 
@@ -155,6 +161,16 @@ class Person extends Model
 
                 return $firstName.$separator.$lastName;
             }
+        );
+    }
+
+    /**
+     * Get the person's current time, based on their timezone.
+     */
+    protected function currentTime(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes): string => now($this->timezone)->format('g:i a')
         );
     }
 

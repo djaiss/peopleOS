@@ -72,5 +72,6 @@ return [
         'encounter_deletion' => 'Encounter deletion',
         'person_avatar_update' => 'Person avatar update',
         'timezone_update' => 'Timezone update',
+        'person_information_update' => 'Person information update',
     ],
 ];
