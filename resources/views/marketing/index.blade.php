@@ -265,17 +265,26 @@
           </div>
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like expensive, reccuring subscriptions</p>
+          <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/recurring.png') }}" alt="Expensive subscriptions" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You like expensive, reccuring subscriptions</p>
             <p class="text-sm">We offer the a one-time payment for the software. No subscriptions, no hidden fees.</p>
           </div>
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like being tracked for ads purposes</p>
+            <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/ads.png') }}" alt="Ads" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You like being tracked for ads purposes</p>
             <p class="text-sm">We do track users to serve ads, and don't profile our users. We hate ads as much as you do.</p>
           </div>
 
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
-            <p class="text-xl">You like being locked in</p>
+            <div class="flex items-center justify-center mb-2">
+              <img src="{{ asset('marketing/prison.png') }}" alt="Prison" width="200" height="300" />
+            </div>
+            <p class="text-xl mb-3">You like being locked in</p>
             <p class="text-sm">We strongly advocate that you don't use our hosted version, and that you self-host the software on a server of your own.</p>
           </div>
         </div>
