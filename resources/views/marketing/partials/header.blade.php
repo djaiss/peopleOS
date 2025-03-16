@@ -33,7 +33,7 @@
         <a href="{{ route('persons.index') }}" class="group flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-layout-grid class="h-4 w-4 text-purple-600 group-hover:text-purple-700" />
           <p class="text-sm text-gray-700 group-hover:text-gray-900">
-            {{ __('Products') }}
+            {{ __('Features') }}
           </p>
         </a>
 

@@ -111,11 +111,11 @@
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:items-center">
         <div class="col-span-2">
           <h2 class="mb-3 text-xl leading-7 font-semibold text-green-600">{{ __('Why should you use PeopleOS?') }}</h2>
-          <p class="mb-2">Monica is for people who have jobs, a family, and are busy trying to find a good work/life balance. So busy, that they don't have time anymore to remember to call a friend, say happy birthday to a nephew, or remember to invite someone special for dinner next week. The older we get, the more life gets in the way. It's sad, but it's the reality.</p>
+          <p class="mb-2">PeopleOS is designed for people with jobs, families, and busy lives who are striving to maintain a good work–life balance. They're often so busy that they forget to call a friend, wish a nephew a happy birthday, or invite someone special to dinner next week. As we grow older, life increasingly gets in the way. It's unfortunate, but it's the reality.</p>
           <p class="mb-2">I've created PeopleOS to remember all these little, but so important, things.</p>
           <p>
             Read more about
-            <a href="" class="text-blue-600 hover:text-blue-500">{{ __('why this tool exists') }}</a>
+            <a href="{{ route('marketing.why.index') }}" class="text-blue-600 hover:text-blue-500">{{ __('why this tool exists') }}</a>
             .
           </p>
         </div>
