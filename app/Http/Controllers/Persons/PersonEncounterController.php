@@ -17,19 +17,29 @@ use Illuminate\View\View;
 
 class PersonEncounterController extends Controller
 {
+    public function new(Request $request): View
+    {
+        $person = $request->attributes->get('person');
+
+        return view('persons.overview.partials.add-encounter', [
+            'person' => $person,
+        ]);
+    }
+
     public function create(Request $request): RedirectResponse
     {
         $person = $request->attributes->get('person');
 
         $validated = $request->validate([
             'seen_at' => 'required|date',
+            'context' => 'nullable|string',
         ]);
 
         (new CreateEncounter(
             user: Auth::user(),
             person: $person,
             seenAt: Carbon::parse($validated['seen_at']),
-            context: null,
+            context: $validated['context'] ?? null,
         ))->execute();
 
         $person->encounters_shown = true;
