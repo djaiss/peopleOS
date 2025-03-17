@@ -215,6 +215,6 @@ class Person extends Model
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name). '&color=333333&background=' . $this->color . '&size='.$size;
+        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=333333&background='.$this->color.'&size='.$size;
     }
 }
