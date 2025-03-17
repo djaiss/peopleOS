@@ -75,6 +75,8 @@ class CreatePersonTest extends TestCase
         $this->assertEquals($person->id.'-ross-geller', $person->slug);
         $this->assertEquals(MaritalStatusType::UNKNOWN->value, $person->marital_status);
         $this->assertEquals(KidsStatusType::UNKNOWN->value, $person->kids_status);
+        $this->assertNotNull($person->color);
+        $this->assertMatchesRegularExpression('/^[0-9a-f]{6}$/', $person->color);
 
         $this->assertInstanceOf(
             Person::class,
