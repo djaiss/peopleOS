@@ -85,6 +85,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
             Route::get('persons/{slug}/information/edit', [PersonInformationController::class, 'edit'])->name('persons.information.edit');
             Route::put('persons/{slug}/information', [PersonInformationController::class, 'update'])->name('persons.information.update');
 
+            Route::get('persons/{slug}/encounters/new', [PersonEncounterController::class, 'new'])->name('persons.encounters.new');
             Route::post('persons/{slug}/encounters', [PersonEncounterController::class, 'create'])->name('persons.encounters.create');
             Route::get('persons/{slug}/encounters/toggle', [PersonEncounterToggleController::class, 'create'])->name('persons.encounters.toggle');
             Route::get('persons/{slug}/encounters/{encounter}/edit', [PersonEncounterController::class, 'edit'])->name('persons.encounters.edit');

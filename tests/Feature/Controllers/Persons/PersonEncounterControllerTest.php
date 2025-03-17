@@ -30,6 +30,22 @@ class PersonEncounterControllerTest extends TestCase
     }
 
     #[Test]
+    public function a_user_can_see_the_add_encounter_form(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get('/persons/'.$person->slug.'/encounters/new')
+            ->assertOk();
+
+        $response->assertViewIs('persons.overview.partials.add-encounter');
+        $response->assertViewHas('person', $person);
+    }
+
+    #[Test]
     public function a_user_can_create_an_encounter(): void
     {
         $user = User::factory()->create();
@@ -109,6 +125,28 @@ class PersonEncounterControllerTest extends TestCase
         $this->assertDatabaseMissing('encounters', [
             'id' => $encounter->id,
         ]);
+    }
+
+    #[Test]
+    public function a_user_can_see_the_edit_encounter_form(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $encounter = $person->encounters()->create([
+            'account_id' => $user->account_id,
+            'seen_at' => '2025-01-01',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get('/persons/'.$person->slug.'/encounters/'.$encounter->id.'/edit')
+            ->assertOk();
+
+        $response->assertViewIs('persons.overview.partials.edit-encounter');
+        $response->assertViewHas('person', $person);
+        $response->assertViewHas('encounter', $encounter);
     }
 
     #[Test]
