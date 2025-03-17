@@ -41,7 +41,7 @@
         <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now() }}" />
-          <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
+          <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
             {{ __('Today') }}
           </button>
         </form>
@@ -49,7 +49,7 @@
         <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDay() }}" />
-          <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
+          <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
             {{ __('Yesterday') }}
           </button>
         </form>
@@ -57,12 +57,12 @@
         <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDays(2) }}" />
-          <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-100">
+          <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
             {{ __('2 days ago') }}
           </button>
         </form>
 
-        <button type="button" x-data="" x-on:click="$dispatch('open-modal', 'custom-date')" class="inline-flex items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
+        <button type="button" x-data="" x-on:click="$dispatch('open-modal', 'custom-date')" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
           <x-lucide-calendar-plus class="h-4 w-4" />
           {{ __('Custom date') }}
         </button>
