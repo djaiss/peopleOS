@@ -69,6 +69,7 @@ class CreatePerson
             'prefix' => $this->prefix ?? null,
             'can_be_deleted' => $this->canBeDeleted,
             'is_listed' => $this->isListed,
+            'color' => $this->generateColor(),
         ]);
     }
 
@@ -79,6 +80,27 @@ class CreatePerson
 
         $this->person->slug = $slug;
         $this->person->save();
+    }
+
+    /**
+     * The color is used for the background of the default avatar in the UI.
+     */
+    private function generateColor(): string
+    {
+        $colorPalette = [
+            'ffc1c1',
+            'ffd8b1',
+            'fff2b1',
+            'dfffb1',
+            'b1e0ff',
+            'b1c8ff',
+            'e1b1ff',
+            'ffe1e8',
+            'b1ffd8',
+            'e6e1ff',
+        ];
+
+        return $colorPalette[array_rand($colorPalette)];
     }
 
     private function updateUserLastActivityDate(): void

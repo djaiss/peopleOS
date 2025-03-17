@@ -47,6 +47,7 @@ class Person extends Model
         'timezone',
         'nationalities',
         'languages',
+        'color',
     ];
 
     /**
@@ -214,6 +215,6 @@ class Person extends Model
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
+        return 'https://ui-avatars.com/api/?name='.urlencode($name). '&color=333333&background=' . $this->color . '&size='.$size;
     }
 }
