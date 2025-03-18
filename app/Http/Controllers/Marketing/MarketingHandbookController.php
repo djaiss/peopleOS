@@ -41,4 +41,40 @@ class MarketingHandbookController extends Controller
             'stats' => $stats,
         ]);
     }
+
+    public function money(): View
+    {
+        $stats = MarketingHelper::getStats('marketing.company.handbook.money');
+
+        return view('marketing.company.handbook.money', [
+            'stats' => $stats,
+        ]);
+    }
+
+    public function why(): View
+    {
+        $stats = MarketingHelper::getStats('marketing.company.handbook.why-open-source');
+
+        return view('marketing.company.handbook.why-open-source', [
+            'stats' => $stats,
+        ]);
+    }
+
+    public function where(): View
+    {
+        $stats = MarketingHelper::getStats('marketing.company.handbook.where');
+
+        return view('marketing.company.handbook.where', [
+            'stats' => $stats,
+        ]);
+    }
+
+    public function marketing(): View
+    {
+        $stats = MarketingHelper::getStats('marketing.company.handbook.marketing');
+
+        return view('marketing.company.handbook.marketing', [
+            'stats' => $stats,
+        ]);
+    }
 }
