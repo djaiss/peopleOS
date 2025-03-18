@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Administration\MeTimezoneController;
 use App\Http\Controllers\Api\Persons\PersonController;
+use App\Http\Controllers\Api\Persons\PersonGiftController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::get('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'show']);
             Route::put('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'update']);
             Route::delete('persons/{person}/work-history/{entry}', [PersonWorkHistoryController::class, 'destroy']);
+        });
+
+        // gifts
+        Route::get('persons/{person}/gifts', [PersonGiftController::class, 'index']);
+        Route::post('persons/{person}/gifts', [PersonGiftController::class, 'create']);
+        Route::middleware(['gift'])->group(function (): void {
+            Route::get('persons/{person}/gifts/{gift}', [PersonGiftController::class, 'show']);
+            Route::put('persons/{person}/gifts/{gift}', [PersonGiftController::class, 'update']);
+            Route::delete('persons/{person}/gifts/{gift}', [PersonGiftController::class, 'destroy']);
         });
     });
 

@@ -18,22 +18,22 @@
       {!!
         $breadcrumb ??
           '
-                                                                                                                                                                              <a href="' .
+                                                                                                                                                                                                                              <a href="' .
             route('marketing.index') .
             '" class="text-blue-500 hover:underline">' .
             __('Home') .
             '</a>
-                                                                                                                                                                              <span class="text-gray-500">&gt;</span>
-                                                                                                                                                                              <a href="' .
+                                                                                                                                                                                                                              <span class="text-gray-500">&gt;</span>
+                                                                                                                                                                                                                              <a href="' .
             route('marketing.company.index') .
             '" class="text-blue-500 hover:underline">' .
             __('Company') .
             '</a>
-                                                                                                                                                                              <span class="text-gray-500">&gt;</span>
-                                                                                                                                                                              <span class="text-gray-600">' .
+                                                                                                                                                                                                                              <span class="text-gray-500">&gt;</span>
+                                                                                                                                                                                                                              <span class="text-gray-600">' .
             __('Handbook') .
             '</span>
-                                                                                                                                                                              '
+                                                                                                                                                                                                                              '
       !!}
     </div>
   </div>
@@ -42,20 +42,22 @@
     <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[300px_1fr_250px]">
       <!-- Sidebar -->
       <div class="hidden w-full flex-shrink-0 flex-col justify-self-end sm:border-r sm:border-gray-200 sm:pr-3 lg:flex">
-        <div x-data="{
-          generalInformation:
-            {{ request()->routeIs('marketing.company.handbook.project') ? 'true' : 'false' }},
-          marketing:
-            {{ request()->routeIs('marketing.company.handbook.marketing') ? 'true' : 'false' }},
-          productManagement:
-            {{ request()->routeIs('marketing.company.handbook.product-management') ? 'true' : 'false' }},
-          support:
-            {{ request()->routeIs('marketing.company.handbook.support') ? 'true' : 'false' }},
-          sales:
-            {{ request()->routeIs('marketing.company.handbook.sales') ? 'true' : 'false' }},
-          development:
-            {{ request()->routeIs('marketing.company.handbook.development') ? 'true' : 'false' }},
-        }" class="bg-light dark:bg-dark z-10 pt-16">
+        <div
+          x-data="{
+            generalInformation:
+              {{ request()->routeIs('marketing.company.handbook.project') ? 'true' : 'false' }},
+            marketing:
+              {{ request()->routeIs('marketing.company.handbook.marketing') ? 'true' : 'false' }},
+            productManagement:
+              {{ request()->routeIs('marketing.company.handbook.product-management') ? 'true' : 'false' }},
+            support:
+              {{ request()->routeIs('marketing.company.handbook.support') ? 'true' : 'false' }},
+            sales:
+              {{ request()->routeIs('marketing.company.handbook.sales') ? 'true' : 'false' }},
+            development:
+              {{ request()->routeIs('marketing.company.handbook.development') ? 'true' : 'false' }},
+          }"
+          class="bg-light dark:bg-dark z-10 pt-16">
           <!-- api documentation -->
           <div class="mb-2 flex items-center justify-between rounded-md px-2 py-1">
             <a href="{{ route('marketing.company.handbook.index') }}" class="hover:underline">{{ __('Table of contents') }}</a>

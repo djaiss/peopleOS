@@ -30,6 +30,7 @@ class Gift extends Model
         'occasion',
         'url',
         'image_path',
+        'gifted_at',
     ];
 
     /**
@@ -40,10 +41,10 @@ class Gift extends Model
     protected function casts(): array
     {
         return [
-            'status' => 'encrypted',
             'name' => 'encrypted',
             'occasion' => 'encrypted',
             'url' => 'encrypted',
+            'gifted_at' => 'datetime',
         ];
     }
 

@@ -26,6 +26,7 @@ use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
 use App\Http\Controllers\Persons\PersonFamilyController;
 use App\Http\Controllers\Persons\PersonGiftController;
+use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
 use App\Http\Controllers\Persons\PersonInformationController;
 use App\Http\Controllers\Persons\PersonNoteController;
@@ -62,6 +63,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/docs/api/logs', [MarketingDocsController::class, 'logs'])->name('marketing.docs.api.logs');
         Route::get('/docs/api/api-management', [MarketingDocsController::class, 'apiManagement'])->name('marketing.docs.api.api-management');
         Route::get('/docs/api/genders', [MarketingDocsController::class, 'genders'])->name('marketing.docs.api.genders');
+        Route::get('/docs/api/gifts', [MarketingDocsController::class, 'gifts'])->name('marketing.docs.api.gifts');
     }
 );
 
@@ -125,10 +127,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
             // family
             Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('persons.family.index');
-        });
 
-        // persons gifts
-        Route::get('persons/gifts', [PersonGiftController::class, 'index'])->name('persons.gifts.index');
+            // gifts
+            Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('persons.gifts.index');
+            Route::get('persons/{slug}/gifts/new', [PersonGiftController::class, 'new'])->name('persons.gifts.new');
+            Route::post('persons/{slug}/gifts', [PersonGiftController::class, 'create'])->name('persons.gifts.create');
+            Route::get('persons/{slug}/gifts/tab/{status}', [PersonGiftTabController::class, 'update'])->name('persons.gifts.tab.update');
+        });
     });
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');

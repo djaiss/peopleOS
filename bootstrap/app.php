@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\CheckGift;
 use App\Http\Middleware\CheckInstanceAdministrator;
 use App\Http\Middleware\CheckMarketingSiteEnabled;
 use App\Http\Middleware\CheckNote;
@@ -27,6 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'person.api' => CheckPersonApi::class,
             'note' => CheckNote::class,
             'work_history' => CheckWorkHistory::class,
+            'gift' => CheckGift::class,
             'instance.admin' => CheckInstanceAdministrator::class,
             'marketing' => CheckMarketingSiteEnabled::class,
         ]);

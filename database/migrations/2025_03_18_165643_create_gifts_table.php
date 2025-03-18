@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Enums\GiftStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,13 +23,14 @@ return new class extends Migration
             $table->text('occasion')->nullable();
             $table->text('url')->nullable();
             $table->string('image_path', 2048)->nullable();
+            $table->datetime('gifted_at')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
         });
 
         Schema::table('persons', function (Blueprint $table): void {
-            $table->string('gift_tab_shown')->nullable()->after('encounters_shown');
+            $table->string('gift_tab_shown')->nullable()->after('encounters_shown')->default(GiftStatus::IDEA->value);
         });
     }
 

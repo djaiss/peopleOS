@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
-use App\Models\Encounter;
 use App\Models\Gift;
 use App\Models\Person;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

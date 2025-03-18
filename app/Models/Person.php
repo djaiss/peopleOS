@@ -151,6 +151,14 @@ class Person extends Model
     }
 
     /**
+     * Get the gifts associated with the person.
+     */
+    public function gifts(): HasMany
+    {
+        return $this->hasMany(Gift::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute
