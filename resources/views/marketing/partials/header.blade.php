@@ -70,6 +70,11 @@
     <!-- Right side - user menu -->
     @if (Auth::check())
       <div class="relative ms-3 flex items-center gap-x-3">
+        <a href="{{ route('login') }}" class="group flex items-center gap-x-2 rounded-sm border border-b-3 px-2 py-1 transition-colors duration-150 border-gray-400 hover:bg-white">
+          <x-lucide-door-open class="h-4 w-4 text-gray-500" />
+          {{ __('Go to your account') }}
+        </a>
+
         <x-lucide-bell class="h-4 w-4 text-gray-500" />
 
         <x-dropdown align="right" width="48">
