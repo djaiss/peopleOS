@@ -39,4 +39,32 @@ class MarketingHandbookControllerTest extends TestCase
         $this->get('/company/handbook/shipping')
             ->assertOk();
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_money(): void
+    {
+        $this->get('/company/handbook/money')
+            ->assertOk();
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_why(): void
+    {
+        $this->get('/company/handbook/why-open-source')
+            ->assertOk();
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_where(): void
+    {
+        $this->get('/company/handbook/where-am-I-going-with-this')
+            ->assertOk();
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_marketing(): void
+    {
+        $this->get('/company/handbook/marketing')
+            ->assertOk();
+    }
 }
