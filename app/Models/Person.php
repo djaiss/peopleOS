@@ -48,6 +48,7 @@ class Person extends Model
         'nationalities',
         'languages',
         'color',
+        'gift_tab_shown',
     ];
 
     /**
