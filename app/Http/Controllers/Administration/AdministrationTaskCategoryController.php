@@ -51,10 +51,6 @@ class AdministrationTaskCategoryController extends Controller
 
     public function update(Request $request, TaskCategory $taskCategory): RedirectResponse
     {
-        if ($taskCategory->account_id !== Auth::user()->account_id) {
-            abort(404);
-        }
-
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',
             'color' => 'required|string|min:3|max:30',
@@ -73,10 +69,6 @@ class AdministrationTaskCategoryController extends Controller
 
     public function destroy(Request $request, TaskCategory $taskCategory): RedirectResponse
     {
-        if ($taskCategory->account_id !== Auth::user()->account_id) {
-            abort(404);
-        }
-
         (new DestroyTaskCategory(
             user: Auth::user(),
             taskCategory: $taskCategory,
