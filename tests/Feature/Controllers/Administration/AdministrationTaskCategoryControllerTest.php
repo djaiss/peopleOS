@@ -20,6 +20,12 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
+            ->get('/administration/personalization/task-categories/new');
+
+        $response->assertStatus(200);
+        $response->assertViewIs('administration.personalization.partials.task-category-new');
+
+        $response = $this->actingAs($user)
             ->from('/administration/personalization/task-categories/new')
             ->post('/administration/personalization/task-categories', [
                 'name' => 'Email',
