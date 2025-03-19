@@ -133,6 +133,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
             Route::get('persons/{slug}/gifts/new', [PersonGiftController::class, 'new'])->name('persons.gifts.new');
             Route::post('persons/{slug}/gifts', [PersonGiftController::class, 'create'])->name('persons.gifts.create');
             Route::get('persons/{slug}/gifts/tab/{status}', [PersonGiftTabController::class, 'update'])->name('persons.gifts.tab.update');
+            Route::middleware(['gift'])->group(function (): void {
+                Route::get('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'edit'])->name('persons.gifts.edit');
+                Route::put('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'update'])->name('persons.gifts.update');
+                Route::delete('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'destroy'])->name('persons.gifts.destroy');
+            });
         });
     });
 

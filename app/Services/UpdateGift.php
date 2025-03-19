@@ -57,7 +57,7 @@ class UpdateGift
             'name' => $this->name ?? $this->gift->name,
             'occasion' => $this->occasion,
             'url' => $this->url,
-            'gifted_at' => $this->giftedAt !== null && $this->giftedAt !== '' && $this->giftedAt !== '0' ? Carbon::parse($this->giftedAt) : $this->gift->gifted_at,
+            'gifted_at' => $this->giftedAt !== null && $this->giftedAt !== '' && $this->giftedAt !== '0' ? Carbon::parse($this->giftedAt) : null,
         ]);
     }
 
