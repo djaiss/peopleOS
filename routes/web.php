@@ -64,6 +64,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/docs/api/logs', [MarketingDocsController::class, 'logs'])->name('marketing.docs.api.logs');
         Route::get('/docs/api/api-management', [MarketingDocsController::class, 'apiManagement'])->name('marketing.docs.api.api-management');
         Route::get('/docs/api/genders', [MarketingDocsController::class, 'genders'])->name('marketing.docs.api.genders');
+        Route::get('/docs/api/task-categories', [MarketingDocsController::class, 'taskCategories'])->name('marketing.docs.api.task-categories');
         Route::get('/docs/api/gifts', [MarketingDocsController::class, 'gifts'])->name('marketing.docs.api.gifts');
     }
 );

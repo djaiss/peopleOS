@@ -54,6 +54,11 @@ class MarketingDocsController extends Controller
         return view('marketing.docs.api.genders');
     }
 
+    public function taskCategories(): View
+    {
+        return view('marketing.docs.api.task-categories');
+    }
+
     public function gifts(): View
     {
         return view('marketing.docs.api.gifts');

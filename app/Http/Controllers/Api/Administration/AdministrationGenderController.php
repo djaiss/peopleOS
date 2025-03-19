@@ -10,11 +10,10 @@ use App\Models\Gender;
 use App\Services\CreateGender;
 use App\Services\DestroyGender;
 use App\Services\UpdateGender;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class AdministrationGenderController extends Controller
 {
