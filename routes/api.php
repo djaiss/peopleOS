@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Administration\AdministrationGenderController;
 use App\Http\Controllers\Api\Administration\AdministrationInviteUserAgainController;
 use App\Http\Controllers\Api\Administration\AdministrationLogsController;
 use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController;
+use App\Http\Controllers\Api\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Administration\MeTimezoneController;
 use App\Http\Controllers\Api\Persons\PersonController;
@@ -78,4 +79,10 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::post('administration/genders', [AdministrationGenderController::class, 'create']);
     Route::put('administration/genders/{gender}', [AdministrationGenderController::class, 'update']);
     Route::delete('administration/genders/{gender}', [AdministrationGenderController::class, 'destroy']);
+
+    // task categories
+    Route::get('administration/task-categories', [AdministrationTaskCategoryController::class, 'index']);
+    Route::post('administration/task-categories', [AdministrationTaskCategoryController::class, 'create']);
+    Route::put('administration/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'update']);
+    Route::delete('administration/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'destroy']);
 });

@@ -109,7 +109,7 @@ class AdministrationGenderControllerTest extends TestCase
 
         $response = $this->json('DELETE', '/api/administration/genders/'.$gender->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
         $this->assertDatabaseMissing('genders', [
             'id' => $gender->id,
         ]);
