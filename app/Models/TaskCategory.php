@@ -41,7 +41,7 @@ class TaskCategory extends Model
     }
 
     /**
-     * Get the account associated with the person seen report.
+     * Get the account that owns this task category.
      */
     public function account(): BelongsTo
     {
