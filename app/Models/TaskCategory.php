@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * This model tracks when the user has seen a specific person.
+ * This model represents a task category within an account.
  */
 class TaskCategory extends Model
 {
