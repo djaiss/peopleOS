@@ -83,6 +83,18 @@ class AdministrationTaskCategoryControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_cant_edit_a_task_category_from_another_account(): void
+    {
+        $user = User::factory()->create();
+        $taskCategory = TaskCategory::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->get('/administration/personalization/task-categories/' . $taskCategory->id . '/edit');
+
+        $response->assertStatus(404);
+    }
+
+    #[Test]
     public function it_can_delete_a_task_category(): void
     {
         $user = User::factory()->create();
@@ -105,5 +117,18 @@ class AdministrationTaskCategoryControllerTest extends TestCase
             ->get('/administration/personalization');
 
         $response->assertDontSee('Email');
+    }
+
+    #[Test]
+    public function it_cant_delete_a_task_category_from_another_account(): void
+    {
+        $user = User::factory()->create();
+        $taskCategory = TaskCategory::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->from('/administration/personalization')
+            ->delete('/administration/personalization/task-categories/'.$taskCategory->id);
+
+        $response->assertStatus(404);
     }
 }
