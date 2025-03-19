@@ -9,7 +9,7 @@ use App\Models\TaskCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Encounter>
+ * @extends Factory<TaskCategory>
  */
 class TaskCategoryFactory extends Factory
 {
