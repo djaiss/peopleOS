@@ -7,6 +7,7 @@ namespace Tests\Unit\Models;
 use App\Models\Account;
 use App\Models\Encounter;
 use App\Models\Gender;
+use App\Models\Gift;
 use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
@@ -63,6 +64,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->workHistories()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_gifts(): void
+    {
+        $person = Person::factory()->create();
+        Gift::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->gifts()->exists());
     }
 
     #[Test]

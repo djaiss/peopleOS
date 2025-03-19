@@ -73,5 +73,8 @@ return [
         'person_avatar_update' => 'Person avatar update',
         'timezone_update' => 'Timezone update',
         'person_information_update' => 'Person information update',
+        'gift_creation' => 'Gift creation',
+        'gift_update' => 'Gift update',
+        'gift_deletion' => 'Gift deletion',
     ],
 ];

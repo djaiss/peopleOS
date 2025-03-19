@@ -72,9 +72,9 @@
         <x-lucide-bell class="{{ request()->routeIs('persons.reminders.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
         <span class="{{ request()->routeIs('persons.reminders.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Reminders') }}</span>
       </a>
-      <a href="{{ route('persons.gifts.index') }}" class="flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-gift class="h-4 w-4 text-gray-500" />
-        <span class="text-sm font-medium text-gray-600">Gifts</span>
+      <a href="{{ route('persons.gifts.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('persons.gifts.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-gift class="{{ request()->routeIs('persons.gifts.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+        <span class="{{ request()->routeIs('persons.gifts.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Gifts</span>
       </a>
       <a href="#" class="flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-folder class="h-4 w-4 text-gray-500" />

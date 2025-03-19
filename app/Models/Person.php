@@ -48,6 +48,7 @@ class Person extends Model
         'nationalities',
         'languages',
         'color',
+        'gift_tab_shown',
     ];
 
     /**
@@ -147,6 +148,14 @@ class Person extends Model
     public function encounters(): HasMany
     {
         return $this->hasMany(Encounter::class);
+    }
+
+    /**
+     * Get the gifts associated with the person.
+     */
+    public function gifts(): HasMany
+    {
+        return $this->hasMany(Gift::class);
     }
 
     /**

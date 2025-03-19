@@ -13,6 +13,7 @@
     "php": "^8.3",
     "bacon/bacon-qr-code": "^3.0",
     "laravel/framework": "^11.9",
+    "laravel/octane": "^2.8",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
     "mallardduck/blade-lucide-icons": "^1.23",

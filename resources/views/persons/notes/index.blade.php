@@ -76,7 +76,7 @@
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div x-show="open" @click.away="open = false" class="absolute right-0 z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-1 shadow-lg">
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 z-100 mt-1 w-48 rounded-md border border-gray-200 bg-white py-1 shadow-lg">
                       <a href="{{ route('persons.notes.edit', ['slug' => $person->slug, 'note' => $note['id']]) }}" x-target="note-{{ $note['id'] }}" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                         <x-lucide-pencil class="h-4 w-4" />
                         {{ __('Edit') }}

@@ -10,7 +10,7 @@
   @csrf
 
   <div class="mb-4 flex gap-2 border-b border-gray-200 px-4 pt-4 pb-4">
-    <div class="">
+    <div>
       <x-input-label for="seen_at" :value="__('Date')" />
       <x-text-input id="seen_at" name="seen_at" type="date" class="mt-1 block w-full" required value="{{ $encounter->seen_at->format('Y-m-d') }}" />
       <x-input-error :messages="$errors->get('seen_at')" class="mt-2" />
