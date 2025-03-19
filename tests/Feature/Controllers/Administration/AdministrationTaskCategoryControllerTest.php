@@ -68,9 +68,12 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         $response = $this->actingAs($user)
             ->from('/administration/personalization/task-categories/'.$taskCategory->id.'/edit')
             ->put('/administration/personalization/task-categories/'.$taskCategory->id, [
-                'name' => 'Email',
-                'color' => 'bg-blue-500',
+                'name' => 'Updated Email',
+                'color' => 'bg-green-500',
             ]);
+
+        $this->assertEquals('Updated Email', $taskCategory->refresh()->name);
+        $this->assertEquals('bg-green-500', $taskCategory->refresh()->color);
 
         $response->assertRedirect('/administration/personalization');
         $response->assertSessionHas('status', __('Task category updated'));
