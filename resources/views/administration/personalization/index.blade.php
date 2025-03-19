@@ -1,6 +1,7 @@
 <?php
 /*
  * @var array $genders
+ * @var array $taskCategories
  */
 ?>
 
@@ -17,6 +18,8 @@
         </h1>
 
         @include('administration.personalization.partials.genders', ['genders' => $genders])
+
+        @include('administration.personalization.partials.task-categories', ['taskCategories' => $taskCategories])
       </div>
     </div>
   </div>

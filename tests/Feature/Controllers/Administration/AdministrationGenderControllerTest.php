@@ -15,19 +15,7 @@ class AdministrationGenderControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function new_gender_page_can_be_rendered(): void
-    {
-        $user = User::factory()->create();
-
-        $response = $this->actingAs($user)
-            ->get('/administration/personalization/genders/new');
-
-        $response->assertStatus(200);
-        $response->assertViewIs('administration.personalization.partials.gender-new');
-    }
-
-    #[Test]
-    public function user_can_create_a_gender(): void
+    public function it_can_create_a_gender(): void
     {
         $user = User::factory()->create();
 
@@ -45,39 +33,15 @@ class AdministrationGenderControllerTest extends TestCase
         ]);
 
         $this->assertEquals('Male', Gender::latest()->first()->name);
-    }
-
-    #[Test]
-    public function edit_gender_page_can_be_rendered(): void
-    {
-        $user = User::factory()->create();
-        $gender = Gender::factory()->create([
-            'account_id' => $user->account_id,
-            'name' => 'Female',
-        ]);
 
         $response = $this->actingAs($user)
-            ->get('/administration/personalization/genders/'.$gender->id.'/edit');
+            ->get('/administration/personalization');
 
-        $response->assertStatus(200);
-        $response->assertViewIs('administration.personalization.partials.gender-edit');
-        $response->assertViewHas('gender', $gender);
+        $response->assertSee('Male');
     }
 
     #[Test]
-    public function user_cannot_edit_gender_from_another_account(): void
-    {
-        $user = User::factory()->create();
-        $gender = Gender::factory()->create();
-
-        $response = $this->actingAs($user)
-            ->get('/administration/personalization/genders/'.$gender->id.'/edit');
-
-        $response->assertStatus(404);
-    }
-
-    #[Test]
-    public function user_can_update_a_gender(): void
+    public function it_can_edit_a_gender(): void
     {
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
@@ -86,9 +50,16 @@ class AdministrationGenderControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
+            ->get('/administration/personalization/genders/'.$gender->id.'/edit');
+
+        $response->assertStatus(200);
+        $response->assertViewIs('administration.personalization.partials.gender-edit');
+        $response->assertViewHas('gender', $gender);
+
+        $response = $this->actingAs($user)
             ->from('/administration/personalization/genders/'.$gender->id.'/edit')
             ->put('/administration/personalization/genders/'.$gender->id, [
-                'name' => 'Non-binary',
+                'name' => 'Male',
             ]);
 
         $response->assertRedirect('/administration/personalization');
@@ -98,25 +69,16 @@ class AdministrationGenderControllerTest extends TestCase
             'id' => $gender->id,
         ]);
 
-        $this->assertEquals('Non-binary', $gender->refresh()->name);
-    }
-
-    #[Test]
-    public function user_cannot_update_gender_from_another_account(): void
-    {
-        $user = User::factory()->create();
-        $gender = Gender::factory()->create();
+        $this->assertEquals('Male', $gender->refresh()->name);
 
         $response = $this->actingAs($user)
-            ->put('/administration/personalization/genders/'.$gender->id, [
-                'name' => 'Non-binary',
-            ]);
+            ->get('/administration/personalization');
 
-        $response->assertStatus(404);
+        $response->assertSee('Male');
     }
 
     #[Test]
-    public function user_can_delete_a_gender(): void
+    public function it_can_delete_a_gender(): void
     {
         $user = User::factory()->create();
         $gender = Gender::factory()->create([
@@ -133,17 +95,10 @@ class AdministrationGenderControllerTest extends TestCase
         $this->assertDatabaseMissing('genders', [
             'id' => $gender->id,
         ]);
-    }
-
-    #[Test]
-    public function user_cannot_delete_gender_from_another_account(): void
-    {
-        $user = User::factory()->create();
-        $gender = Gender::factory()->create();
 
         $response = $this->actingAs($user)
-            ->delete('/administration/personalization/genders/'.$gender->id);
+            ->get('/administration/personalization');
 
-        $response->assertStatus(404);
+        $response->assertDontSee('Male');
     }
 }

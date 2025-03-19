@@ -24,9 +24,9 @@ class SetupAccountTest extends TestCase
             3,
             DB::table('genders')->count()
         );
-        // $this->assertEquals(
-        //     21,
-        //     DB::table('ethnicities')->count()
-        // );
+        $this->assertEquals(
+            6,
+            DB::table('task_categories')->count()
+        );
     }
 }

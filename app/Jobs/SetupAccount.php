@@ -30,6 +30,7 @@ class SetupAccount implements ShouldQueue
     public function handle(): void
     {
         $this->createGenders();
+        $this->createTaskCategories();
     }
 
     private function createGenders(): void
@@ -53,6 +54,54 @@ class SetupAccount implements ShouldQueue
                 'account_id' => $this->user->account_id,
                 'position' => 3,
                 'name' => Crypt::encryptString('Other'),
+                'created_at' => now(),
+                'updated_at' => null,
+            ],
+        ]);
+    }
+
+    private function createTaskCategories(): void
+    {
+        DB::table('task_categories')->insert([
+            [
+                'account_id' => $this->user->account_id,
+                'name' => Crypt::encryptString('Birthday'),
+                'color' => 'bg-purple-100',
+                'created_at' => now(),
+                'updated_at' => null,
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'name' => Crypt::encryptString('Call'),
+                'color' => 'bg-blue-100',
+                'created_at' => now(),
+                'updated_at' => null,
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'name' => Crypt::encryptString('Email'),
+                'color' => 'bg-green-100',
+                'created_at' => now(),
+                'updated_at' => null,
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'name' => Crypt::encryptString('Follow up'),
+                'color' => 'bg-yellow-100',
+                'created_at' => now(),
+                'updated_at' => null,
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'name' => Crypt::encryptString('Lunch'),
+                'color' => 'bg-orange-100',
+                'created_at' => now(),
+                'updated_at' => null,
+            ],
+            [
+                'account_id' => $this->user->account_id,
+                'name' => Crypt::encryptString('Thank you'),
+                'color' => 'bg-red-100',
                 'created_at' => now(),
                 'updated_at' => null,
             ],
