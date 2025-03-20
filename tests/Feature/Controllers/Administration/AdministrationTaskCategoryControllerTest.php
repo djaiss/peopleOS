@@ -82,8 +82,8 @@ class AdministrationTaskCategoryControllerTest extends TestCase
             'id' => $taskCategory->id,
         ]);
 
-        $this->assertEquals('Email', $taskCategory->refresh()->name);
-        $this->assertEquals('bg-blue-500', $taskCategory->refresh()->color);
+        $this->assertEquals('Updated Email', $taskCategory->refresh()->name);
+        $this->assertEquals('bg-green-500', $taskCategory->refresh()->color);
 
         $response = $this->actingAs($user)
             ->get('/administration/personalization');
