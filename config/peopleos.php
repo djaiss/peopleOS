@@ -79,5 +79,9 @@ return [
         'task_category_creation' => 'Task category creation',
         'task_category_update' => 'Task category update',
         'task_category_deletion' => 'Task category deletion',
+        'task_creation' => 'Task creation',
+        'task_update' => 'Task update',
+        'task_toggle' => 'Task toggle',
+        'task_deletion' => 'Task deletion',
     ],
 ];

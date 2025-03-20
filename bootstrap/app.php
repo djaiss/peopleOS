@@ -9,6 +9,7 @@ use App\Http\Middleware\CheckNote;
 use App\Http\Middleware\CheckPerson;
 use App\Http\Middleware\CheckPersonApi;
 use App\Http\Middleware\CheckSubscription;
+use App\Http\Middleware\CheckTask;
 use App\Http\Middleware\CheckWorkHistory;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -29,6 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'note' => CheckNote::class,
             'work_history' => CheckWorkHistory::class,
             'gift' => CheckGift::class,
+            'task' => CheckTask::class,
             'instance.admin' => CheckInstanceAdministrator::class,
             'marketing' => CheckMarketingSiteEnabled::class,
         ]);

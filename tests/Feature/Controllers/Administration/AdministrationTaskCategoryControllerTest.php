@@ -98,7 +98,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         $taskCategory = TaskCategory::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get('/administration/personalization/task-categories/' . $taskCategory->id . '/edit');
+            ->get('/administration/personalization/task-categories/'.$taskCategory->id.'/edit');
 
         $response->assertStatus(404);
     }
