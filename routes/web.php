@@ -10,6 +10,7 @@ use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
+use App\Http\Controllers\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Administration\AdministrationTimezoneController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
@@ -63,6 +64,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/docs/api/logs', [MarketingDocsController::class, 'logs'])->name('marketing.docs.api.logs');
         Route::get('/docs/api/api-management', [MarketingDocsController::class, 'apiManagement'])->name('marketing.docs.api.api-management');
         Route::get('/docs/api/genders', [MarketingDocsController::class, 'genders'])->name('marketing.docs.api.genders');
+        Route::get('/docs/api/task-categories', [MarketingDocsController::class, 'taskCategories'])->name('marketing.docs.api.task-categories');
         Route::get('/docs/api/gifts', [MarketingDocsController::class, 'gifts'])->name('marketing.docs.api.gifts');
     }
 );
@@ -162,6 +164,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::get('administration/personalization/genders/{gender}/edit', [AdministrationGenderController::class, 'edit'])->name('administration.personalization.genders.edit');
     Route::put('administration/personalization/genders/{gender}', [AdministrationGenderController::class, 'update'])->name('administration.personalization.genders.update');
     Route::delete('administration/personalization/genders/{gender}', [AdministrationGenderController::class, 'destroy'])->name('administration.personalization.genders.destroy');
+
+    // task categories
+    Route::get('administration/personalization/task-categories/new', [AdministrationTaskCategoryController::class, 'new'])->name('administration.personalization.task-categories.new');
+    Route::post('administration/personalization/task-categories', [AdministrationTaskCategoryController::class, 'create'])->name('administration.personalization.task-categories.create');
+    Route::get('administration/personalization/task-categories/{taskCategory}/edit', [AdministrationTaskCategoryController::class, 'edit'])->name('administration.personalization.task-categories.edit');
+    Route::put('administration/personalization/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'update'])->name('administration.personalization.task-categories.update');
+    Route::delete('administration/personalization/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'destroy'])->name('administration.personalization.task-categories.destroy');
 
     // account
     Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');

@@ -10,9 +10,9 @@ use App\Models\Gender;
 use App\Services\CreateGender;
 use App\Services\DestroyGender;
 use App\Services\UpdateGender;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AdministrationGenderController extends Controller
@@ -57,15 +57,13 @@ class AdministrationGenderController extends Controller
         return new GenderResource($gender);
     }
 
-    public function destroy(Request $request, Gender $gender): JsonResponse
+    public function destroy(Request $request, Gender $gender): Response
     {
         (new DestroyGender(
             user: $request->user(),
             gender: $gender,
         ))->execute();
 
-        return response()->json([
-            'message' => 'Gender deleted',
-        ]);
+        return response()->noContent();
     }
 }

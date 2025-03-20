@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
+use App\Models\TaskCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -21,8 +22,17 @@ class AdministrationPersonalizationController extends Controller
                 'name' => $gender->name,
             ]);
 
+        $taskCategories = TaskCategory::where('account_id', Auth::user()->account_id)
+            ->get()
+            ->map(fn (TaskCategory $taskCategory): array => [
+                'id' => $taskCategory->id,
+                'name' => $taskCategory->name,
+                'color' => $taskCategory->color,
+            ]);
+
         return view('administration.personalization.index', [
             'genders' => $genders,
+            'taskCategories' => $taskCategories,
         ]);
     }
 }

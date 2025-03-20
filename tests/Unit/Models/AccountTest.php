@@ -9,6 +9,7 @@ use App\Models\Encounter;
 use App\Models\Gender;
 use App\Models\Log;
 use App\Models\Person;
+use App\Models\TaskCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -71,6 +72,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->encounters()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_task_categories(): void
+    {
+        $account = Account::factory()->create();
+        TaskCategory::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->taskCategories()->exists());
     }
 
     #[Test]

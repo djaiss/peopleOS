@@ -69,6 +69,13 @@ class MarketingDocsControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_returns_ok_response_for_api_task_categories(): void
+    {
+        $this->get('/docs/api/task-categories')
+            ->assertOk();
+    }
+
+    #[Test]
     public function it_returns_ok_response_for_api_gifts(): void
     {
         $this->get('/docs/api/gifts')

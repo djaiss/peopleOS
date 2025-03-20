@@ -76,5 +76,8 @@ return [
         'gift_creation' => 'Gift creation',
         'gift_update' => 'Gift update',
         'gift_deletion' => 'Gift deletion',
+        'task_category_creation' => 'Task category creation',
+        'task_category_update' => 'Task category update',
+        'task_category_deletion' => 'Task category deletion',
     ],
 ];

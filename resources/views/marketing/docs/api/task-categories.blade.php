@@ -1,61 +1,60 @@
 <x-marketing-docs-layout>
-  <h1 class="mb-6 text-2xl font-bold">Genders</h1>
+  <h1 class="mb-6 text-2xl font-bold">Task categories</h1>
 
   <div class="mb-8 rounded-lg border p-4">
     <p class="mb-2 text-xs">Table of contents</p>
 
     <ul>
       <li>
-        <a href="#get-the-list-of-genders" class="text-blue-500 hover:underline">Get the list of genders in the account</a>
+        <a href="#get-the-list-of-task-categories" class="text-blue-500 hover:underline">Get the list of task categories in the account</a>
       </li>
       <li>
-        <a href="#create-a-new-gender" class="text-blue-500 hover:underline">Create a new gender</a>
+        <a href="#create-a-new-task-category" class="text-blue-500 hover:underline">Create a new task category</a>
       </li>
       <li>
-        <a href="#update-a-gender" class="text-blue-500 hover:underline">Update a gender</a>
+        <a href="#update-a-task-category" class="text-blue-500 hover:underline">Update a task category</a>
       </li>
       <li>
-        <a href="#delete-a-gender" class="text-blue-500 hover:underline">Delete a gender</a>
+        <a href="#delete-a-task-category" class="text-blue-500 hover:underline">Delete a task category</a>
       </li>
     </ul>
   </div>
 
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
-      <p class="mb-2">This endpoint lets you manage the genders in your account.</p>
-      <p class="mb-10">Genders are used to identify the gender of a person. You can define as many genders as you want. An account comes with a default set of genders, but feel free to add more to your liking.</p>
+      <p class="mb-2">This endpoint lets you manage the task categories in your account.</p>
+      <p class="mb-10">Task categories help you organize and classify different types of tasks. Each category can have a name and a color to help visually distinguish them.</p>
     </div>
     <div>
       <x-marketing.code title="Endpoints">
         <div class="flex flex-col gap-y-2">
-          <a href="#get-the-list-of-genders">
+          <a href="#get-the-list-of-task-categories">
             <span class="text-blue-700">GET</span>
-            /api/administration/genders
+            /api/administration/task-categories
           </a>
-          <a href="#create-a-new-gender">
+          <a href="#create-a-new-task-category">
             <span class="text-green-700">POST</span>
-            /api/administration/genders
+            /api/administration/task-categories
           </a>
-          <a href="#update-a-gender">
+          <a href="#update-a-task-category">
             <span class="text-yellow-700">PUT</span>
-            /api/administration/genders/{id}
+            /api/administration/task-categories/{id}
           </a>
-          <a href="#delete-a-gender">
+          <a href="#delete-a-task-category">
             <span class="text-red-700">DELETE</span>
-            /api/administration/genders/{id}
+            /api/administration/task-categories/{id}
           </a>
         </div>
       </x-marketing.code>
     </div>
   </div>
 
-  <!-- GET /api/administration/genders -->
+  <!-- GET /api/administration/task-categories -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
-      <h3 id="get-the-list-of-genders" class="mb-2 text-lg font-bold">Get the list of genders</h3>
-      <p class="mb-2">This endpoint gets the list of genders in the account.</p>
-      <p class="mb-2">Genders are ordered by position.</p>
-      <p class="mb-10">This call is not paginated, since there should not be too many genders in the account.</p>
+      <h3 id="get-the-list-of-task-categories" class="mb-2 text-lg font-bold">Get the list of task categories</h3>
+      <p class="mb-2">This endpoint gets the list of task categories in the account.</p>
+      <p class="mb-10">This call is not paginated, since there should not be too many task categories in the account.</p>
 
       <!-- parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
@@ -77,17 +76,17 @@
         </div>
 
         <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the gender." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'gender'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the gender." />
-          <x-marketing.attribute name="position" type="integer" description="The position of the gender." />
+          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
           <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
           <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
         </div>
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/administration/genders" verb="GET" verbClass="text-blue-700">
+      <x-marketing.code title="/api/administration/task-categories" verb="GET" verbClass="text-blue-700">
         <div>{</div>
         <div class="pl-4">
           "id":
@@ -96,17 +95,17 @@
         </div>
         <div class="pl-4">
           "object":
-          <span class="text-lime-700">"gender"</span>
+          <span class="text-lime-700">"task_category"</span>
           ,
         </div>
         <div class="pl-4">
           "name":
-          <span class="text-lime-700">"Man"</span>
+          <span class="text-lime-700">"Personal"</span>
           ,
         </div>
         <div class="pl-4">
-          "position":
-          <span class="text-rose-800">1</span>
+          "color":
+          <span class="text-lime-700">"#FF0000"</span>
           ,
         </div>
         <div class="pl-4">
@@ -124,11 +123,11 @@
     </div>
   </div>
 
-  <!-- POST /api/administration/genders -->
+  <!-- POST /api/administration/task-categories -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
-      <h3 id="create-a-new-gender" class="mb-2 text-lg font-bold">Create a new gender</h3>
-      <p class="mb-10">This endpoint creates a new gender. It will return the gender in the response.</p>
+      <h3 id="create-a-new-task-category" class="mb-2 text-lg font-bold">Create a new task category</h3>
+      <p class="mb-10">This endpoint creates a new task category. It will return the task category in the response.</p>
 
       <!-- parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
@@ -138,7 +137,8 @@
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="name" type="string" description="The name of the gender. Maximum 255 characters." />
+          <x-marketing.attribute required name="name" type="string" description="The name of the task category. Maximum 255 characters." />
+          <x-marketing.attribute required name="color" type="string" description="The color of the task category. Maximum 30 characters." />
         </div>
       </div>
 
@@ -150,17 +150,17 @@
         </div>
 
         <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the gender." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'gender'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the gender." />
-          <x-marketing.attribute name="position" type="integer" description="The position of the gender." />
+          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
           <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
           <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
         </div>
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/administration/genders" verb="POST" verbClass="text-green-700">
+      <x-marketing.code title="/api/administration/task-categories" verb="POST" verbClass="text-green-700">
         <div>{</div>
         <div class="pl-4">
           "id":
@@ -169,17 +169,17 @@
         </div>
         <div class="pl-4">
           "object":
-          <span class="text-lime-700">"gender"</span>
+          <span class="text-lime-700">"task_category"</span>
           ,
         </div>
         <div class="pl-4">
           "name":
-          <span class="text-lime-700">"Man"</span>
+          <span class="text-lime-700">"Personal"</span>
           ,
         </div>
         <div class="pl-4">
-          "position":
-          <span class="text-rose-800">1</span>
+          "color":
+          <span class="text-lime-700">"#FF0000"</span>
           ,
         </div>
         <div class="pl-4">
@@ -197,11 +197,11 @@
     </div>
   </div>
 
-  <!-- PUT /api/administration/genders/{id} -->
+  <!-- PUT /api/administration/task-categories/{id} -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
-      <h3 id="update-a-gender" class="mb-2 text-lg font-bold">Update a gender</h3>
-      <p class="mb-10">This endpoint updates a gender. It will return the gender in the response.</p>
+      <h3 id="update-a-task-category" class="mb-2 text-lg font-bold">Update a task category</h3>
+      <p class="mb-10">This endpoint updates a task category. It will return the task category in the response.</p>
 
       <!-- parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
@@ -211,8 +211,8 @@
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="name" type="string" description="The name of the gender. Maximum 255 characters." />
-          <x-marketing.attribute required name="position" type="integer" description="The position of the gender." />
+          <x-marketing.attribute required name="name" type="string" description="The name of the task category. Maximum 255 characters." />
+          <x-marketing.attribute required name="color" type="string" description="The color of the task category. Maximum 30 characters." />
         </div>
       </div>
 
@@ -224,17 +224,17 @@
         </div>
 
         <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the gender." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'gender'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the gender." />
-          <x-marketing.attribute name="position" type="integer" description="The position of the gender." />
+          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
           <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
           <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
         </div>
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/administration/genders/{id}" verb="PUT" verbClass="text-yellow-700">
+      <x-marketing.code title="/api/administration/task-categories/{id}" verb="PUT" verbClass="text-yellow-700">
         <div>{</div>
         <div class="pl-4">
           "id":
@@ -243,17 +243,17 @@
         </div>
         <div class="pl-4">
           "object":
-          <span class="text-lime-700">"gender"</span>
+          <span class="text-lime-700">"task_category"</span>
           ,
         </div>
         <div class="pl-4">
           "name":
-          <span class="text-lime-700">"Man"</span>
+          <span class="text-lime-700">"Personal"</span>
           ,
         </div>
         <div class="pl-4">
-          "position":
-          <span class="text-rose-800">1</span>
+          "color":
+          <span class="text-lime-700">"#FF0000"</span>
           ,
         </div>
         <div class="pl-4">
@@ -271,11 +271,11 @@
     </div>
   </div>
 
-  <!-- DELETE /api/administration/api/{id} -->
+  <!-- DELETE /api/administration/task-categories/{id} -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
-      <h3 id="delete-a-gender" class="mb-2 text-lg font-bold">Delete a gender</h3>
-      <p class="mb-10">This endpoint deletes a gender. It will return a 204 No Content response.</p>
+      <h3 id="delete-a-task-category" class="mb-2 text-lg font-bold">Delete a task category</h3>
+      <p class="mb-10">This endpoint deletes a task category. It will return a 204 No Content response.</p>
 
       <!-- parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
@@ -285,7 +285,7 @@
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="id" type="integer" description="The ID of the gender." />
+          <x-marketing.attribute required name="id" type="integer" description="The ID of the task category." />
         </div>
       </div>
 
@@ -302,7 +302,7 @@
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/administration/genders/{id}" verb="DELETE" verbClass="text-red-700">
+      <x-marketing.code title="/api/administration/task-categories/{id}" verb="DELETE" verbClass="text-red-700">
         <div class="text-gray-500">204 No Content</div>
       </x-marketing.code>
     </div>

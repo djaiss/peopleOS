@@ -78,6 +78,14 @@ class Account extends Model
     }
 
     /**
+     * Get the task categories associated with the account.
+     */
+    public function taskCategories(): HasMany
+    {
+        return $this->hasMany(TaskCategory::class);
+    }
+
+    /**
      * Check if the account is in trial.
      */
     public function isInTrial(): bool
