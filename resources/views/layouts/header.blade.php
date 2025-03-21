@@ -52,7 +52,7 @@
 
       <x-dropdown align="right" width="48">
         <x-slot name="trigger">
-          <button class="cursor-pointer flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
+          <button class="flex cursor-pointer rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
             <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ Auth::user()->getAvatar(64) }}" alt="{{ Auth::user()->name }}" />
           </button>
         </x-slot>

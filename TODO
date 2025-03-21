@@ -7,14 +7,15 @@ Todo:
   - Add notifications: DONE
   - Add "how we met" to person: DONE
   - rename all `store` to `create` in controllers: DONE
-  - add a color palette to person (for the background of the avatar)
+  - add a color palette to person (for the background of the avatar): DONE
+  - replace $request->user() with Auth::user() in all controllers
   - add life events
   - add a block
     - add addresses
-    - add languages spoken
+    - add languages spoken: DONE
     - add social networks
     - add phone numbers
-    - add nationalities
+    - add nationalities: DONE
   - add support zone
   - add todos
   - remove all stuff from controllers

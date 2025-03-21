@@ -80,6 +80,9 @@
               <div>
                 <a href="{{ route('marketing.docs.api.gifts') }}" class="{{ request()->routeIs('marketing.docs.api.gifts') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Gifts') }}</a>
               </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.tasks') }}" class="{{ request()->routeIs('marketing.docs.api.tasks') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Tasks for persons') }}</a>
+              </div>
             </div>
           </div>
         </div>

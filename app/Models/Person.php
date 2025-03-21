@@ -159,6 +159,14 @@ class Person extends Model
     }
 
     /**
+     * Get the tasks associated with the person.
+     */
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute

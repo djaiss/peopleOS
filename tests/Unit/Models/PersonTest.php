@@ -12,6 +12,7 @@ use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\SpecialDate;
+use App\Models\Task;
 use App\Models\WorkHistory;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -75,6 +76,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->gifts()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_tasks(): void
+    {
+        $person = Person::factory()->create();
+        Task::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->tasks()->exists());
     }
 
     #[Test]

@@ -7,16 +7,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * This model represents a task category within an account.
+ * This model represents a task within an account.
  */
-class TaskCategory extends Model
+class Task extends Model
 {
     use HasFactory;
 
-    protected $table = 'task_categories';
+    protected $table = 'tasks';
 
     /**
      * The attributes that are mass assignable.
@@ -25,8 +24,12 @@ class TaskCategory extends Model
      */
     protected $fillable = [
         'account_id',
+        'person_id',
+        'task_category_id',
         'name',
-        'color',
+        'is_completed',
+        'due_at',
+        'completed_at',
     ];
 
     /**
@@ -38,11 +41,14 @@ class TaskCategory extends Model
     {
         return [
             'name' => 'encrypted',
+            'due_at' => 'datetime',
+            'completed_at' => 'datetime',
+            'is_completed' => 'boolean',
         ];
     }
 
     /**
-     * Get the account that owns this task category.
+     * Get the account that owns this task.
      */
     public function account(): BelongsTo
     {
@@ -50,10 +56,18 @@ class TaskCategory extends Model
     }
 
     /**
-     * Get the tasks associated with the task category.
+     * Get the person that owns this task.
      */
-    public function tasks(): HasMany
+    public function person(): BelongsTo
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Person::class);
+    }
+
+    /**
+     * Get the task category that owns this task.
+     */
+    public function taskCategory(): BelongsTo
+    {
+        return $this->belongsTo(TaskCategory::class);
     }
 }

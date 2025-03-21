@@ -243,5 +243,5 @@ bg-stone-700
 bg-stone-800
 bg-stone-900
 bg-stone-950
-      bg-black: #000;
-      bg-white: #fff;
+bg-black
+bg-white

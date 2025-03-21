@@ -13,7 +13,9 @@ use App\Http\Controllers\Api\Administration\MeTimezoneController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonGiftController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
+use App\Http\Controllers\Api\Persons\PersonTaskController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
+use App\Http\Controllers\Api\ToggleTaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
@@ -26,6 +28,8 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     // persons
     Route::get('persons', [PersonController::class, 'index']);
     Route::post('persons', [PersonController::class, 'create']);
+
+    Route::put('tasks/{task}/toggle', [ToggleTaskController::class, 'update']);
 
     Route::middleware(['person.api'])->group(function (): void {
         Route::get('persons/{person}', [PersonController::class, 'show']);
@@ -57,6 +61,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::get('persons/{person}/gifts/{gift}', [PersonGiftController::class, 'show']);
             Route::put('persons/{person}/gifts/{gift}', [PersonGiftController::class, 'update']);
             Route::delete('persons/{person}/gifts/{gift}', [PersonGiftController::class, 'destroy']);
+        });
+
+        // tasks
+        Route::get('persons/{person}/tasks', [PersonTaskController::class, 'index']);
+        Route::post('persons/{person}/tasks', [PersonTaskController::class, 'create']);
+        Route::middleware(['task'])->group(function (): void {
+            Route::get('persons/{person}/tasks/{task}', [PersonTaskController::class, 'show']);
+            Route::put('persons/{person}/tasks/{task}', [PersonTaskController::class, 'update']);
+            Route::delete('persons/{person}/tasks/{task}', [PersonTaskController::class, 'destroy']);
         });
     });
 
