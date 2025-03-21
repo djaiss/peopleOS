@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Api\Persons;
+namespace Tests\Feature\Api;
 
 use App\Models\Task;
 use App\Models\User;

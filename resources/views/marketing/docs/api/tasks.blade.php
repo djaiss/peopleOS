@@ -125,67 +125,10 @@
     <!-- example response -->
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks" verb="GET" verbClass="text-blue-700">
-        <div>{</div>
+      <div>{</div>
         <div class="pl-4">"data": [</div>
         <div class="pl-8">{</div>
-        <div class="pl-12">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "object":
-          <span class="text-lime-700">"task"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "name":
-          <span class="text-lime-700">"Call mom"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "is_completed":
-          <span class="text-rose-800">false</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "due_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "completed_at":
-          <span class="text-rose-800">1731143600</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "task_category": {
-        </div>
-        <div class="pl-16">
-            "id":
-            <span class="text-rose-800">1</span>
-            ,
-        </div>
-        <div class="pl-16">
-          "name":
-          <span class="text-lime-700">"Personal"</span>,
-        </div>
-        <div class="pl-16">
-          "color":
-          <span class="text-lime-700">"#000000"</span>,
-        </div>
-        <div class="pl-12">
-          },
-        </div>
-        <div class="pl-12">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-        </div>
+        @include('marketing.docs.api.partials.task-response')
         <div class="pl-8">}</div>
         <div class="pl-4">]</div>
         <div>}</div>
@@ -247,45 +190,10 @@
     </div>
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks" verb="POST" verbClass="text-green-700">
-        <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Call mom"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "is_completed":
-          <span class="text-rose-800">false</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "due_at":
-          <span class="text-rose-800">null</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "task_category":
-          <span class="text-lime-700">"Personal"</span>
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-        </div>
+      <div>{</div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.task-response')
+        <div class="pl-8">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -333,49 +241,9 @@
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks/{task}" verb="GET" verbClass="text-blue-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Call mom"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "is_completed":
-          <span class="text-rose-800">false</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "due_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "completed_at":
-          <span class="text-rose-800">null</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "task_category":
-          <span class="text-lime-700">"Personal"</span>
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-        </div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.task-response')
+        <div class="pl-8">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -426,50 +294,10 @@
     </div>
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks/{task}" verb="PUT" verbClass="text-yellow-700">
-        <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Call mom - updated"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "is_completed":
-          <span class="text-rose-800">true</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "due_at":
-          <span class="text-rose-800">1715145700</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "completed_at":
-          <span class="text-rose-800">1715145700</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "task_category":
-          <span class="text-lime-700">"Personal"</span>
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145700</span>
-        </div>
+      <div>{</div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.task-response')
+        <div class="pl-8">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -513,7 +341,7 @@
     </div>
   </div>
 
-  <!-- PUT /api/persons/{person}/tasks/{task} -->
+  <!-- PUT /api/tasks/{task}/toggle -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <h3 id="toggle-a-task" class="mb-2 text-lg font-bold">Toggle a task</h3>
@@ -553,51 +381,7 @@
     </div>
     <div>
       <x-marketing.code title="/api/tasks/{task}/toggle" verb="PUT" verbClass="text-yellow-700">
-        <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Call mom - updated"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "is_completed":
-          <span class="text-rose-800">true</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "due_at":
-          <span class="text-rose-800">1715145700</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "completed_at":
-          <span class="text-rose-800">1715145700</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "task_category":
-          <span class="text-lime-700">"Personal"</span>
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145700</span>
-        </div>
-        <div>}</div>
+        @include('marketing.docs.api.partials.task-response')
       </x-marketing.code>
     </div>
   </div>
