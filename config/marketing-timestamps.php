@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'pages' => [
         'marketing/company/handbook/index' => '2025-03-10T20:51:59-04:00',
@@ -40,6 +38,8 @@ return [
         'marketing.docs.api.profile' => '2025-03-13T21:21:04-04:00',
         'marketing/docs/api/task-categories' => '2025-03-19T20:29:04-04:00',
         'marketing.docs.api.task-categories' => '2025-03-19T20:29:04-04:00',
+        'marketing/docs/api/tasks' => '2025-03-20T12:53:42-04:00',
+        'marketing.docs.api.tasks' => '2025-03-20T12:53:42-04:00',
         'marketing/docs/index' => '2025-03-04T09:10:33-05:00',
         'marketing.docs.index' => '2025-03-04T09:10:33-05:00',
         'marketing/index' => '2025-03-16T17:31:20-04:00',

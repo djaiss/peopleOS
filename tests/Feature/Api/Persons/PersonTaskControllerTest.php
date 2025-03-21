@@ -32,6 +32,7 @@ class PersonTaskControllerTest extends TestCase
         $taskCategory = TaskCategory::factory()->create([
             'account_id' => $user->account_id,
             'name' => 'Personal',
+            'color' => 'bg-blue-500',
         ]);
 
         Sanctum::actingAs($user);
@@ -54,7 +55,11 @@ class PersonTaskControllerTest extends TestCase
                 'is_completed' => false,
                 'due_at' => 1609459200,
                 'completed_at' => null,
-                'task_category' => 'Personal',
+                'task_category' => [
+                    'id' => $taskCategory->id,
+                    'name' => 'Personal',
+                    'color' => 'bg-blue-500',
+                ],
                 'created_at' => 1742428800,
                 'updated_at' => 1742428800,
             ],
@@ -79,6 +84,7 @@ class PersonTaskControllerTest extends TestCase
         $taskCategory = TaskCategory::factory()->create([
             'account_id' => $user->account_id,
             'name' => 'Personal',
+            'color' => 'bg-blue-500',
         ]);
 
         Sanctum::actingAs($user);
@@ -98,7 +104,11 @@ class PersonTaskControllerTest extends TestCase
                 'is_completed' => false,
                 'due_at' => 1609459200,
                 'completed_at' => null,
-                'task_category' => 'Personal',
+                'task_category' => [
+                    'id' => $taskCategory->id,
+                    'name' => 'Personal',
+                    'color' => 'bg-blue-500',
+                ],
                 'created_at' => 1742428800,
                 'updated_at' => 1742428800,
             ],

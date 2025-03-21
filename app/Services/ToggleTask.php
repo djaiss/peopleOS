@@ -23,9 +23,11 @@ class ToggleTask
 
         $taskName = $this->task->name;
 
+        $status = $this->task->is_completed;
+
         $this->task->update([
-            'is_completed' => ! $this->task->is_completed,
-            'completed_at' => $this->task->is_completed ? null : now(),
+            'is_completed' => ! $status,
+            'completed_at' => $status ? null : now(),
         ]);
 
         $this->updateUserLastActivityDate();

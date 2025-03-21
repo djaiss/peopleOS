@@ -7,10 +7,12 @@ namespace App\Http\Controllers\Api\Persons;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TaskCollection;
 use App\Http\Resources\TaskResource;
+use App\Models\Task;
 use App\Models\TaskCategory;
 use App\Services\CreateTask;
 use App\Services\DestroyTask;
 use App\Services\UpdateTask;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
@@ -29,13 +31,12 @@ class PersonTaskController extends Controller
         return new TaskCollection($tasks);
     }
 
-    public function create(Request $request): JsonResource
+    public function create(Request $request): JsonResponse
     {
         $person = $request->attributes->get('person');
 
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'is_completed' => ['required', 'boolean'],
             'due_at' => ['nullable', 'date'],
             'task_category_id' => ['nullable', 'exists:task_categories,id'],
         ]);
@@ -48,7 +49,15 @@ class PersonTaskController extends Controller
             taskCategory: isset($data['task_category_id']) ? TaskCategory::find($data['task_category_id']) : null,
         ))->execute();
 
-        return new TaskResource($task);
+        // We need to load the task category and person as lazy loading
+        // is disabled in the project - see AppServiceProvider.php
+        $task = Task::with('taskCategory')
+            ->with('person')
+            ->find($task->id);
+
+        return (new TaskResource($task))
+            ->response()
+            ->setStatusCode(201);
     }
 
     public function show(Request $request): JsonResource

@@ -23,7 +23,15 @@ class TaskResource extends JsonResource
             'is_completed' => $this->is_completed,
             'due_at' => $this->due_at?->timestamp,
             'completed_at' => $this->completed_at?->timestamp,
-            'task_category' => $this->taskCategory?->name,
+            'task_category' => $this->taskCategory ? [
+                'id' => $this->taskCategory->id,
+                'name' => $this->taskCategory->name,
+                'color' => $this->taskCategory->color,
+            ] : null,
+            'person' => $this->person ? [
+                'id' => $this->person->id,
+                'name' => $this->person->name,
+            ] : null,
             'created_at' => $this->created_at->timestamp,
             'updated_at' => $this->updated_at?->timestamp,
         ];
