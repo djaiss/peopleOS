@@ -24,7 +24,7 @@ return new class extends Migration
             $table->datetime('completed_at')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-            $table->foreign('person_id')->references('id')->on('people')->onDelete('set null');
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('set null');
             $table->foreign('task_category_id')->references('id')->on('task_categories')->onDelete('set null');
         });
     }
