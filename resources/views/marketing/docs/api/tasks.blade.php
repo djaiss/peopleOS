@@ -95,9 +95,7 @@
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">
-            No query parameters are available for this endpoint.
-          </p>
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
@@ -125,7 +123,7 @@
     <!-- example response -->
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks" verb="GET" verbClass="text-blue-700">
-      <div>{</div>
+        <div>{</div>
         <div class="pl-4">"data": [</div>
         <div class="pl-8">{</div>
         @include('marketing.docs.api.partials.task-response')
@@ -190,7 +188,7 @@
     </div>
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks" verb="POST" verbClass="text-green-700">
-      <div>{</div>
+        <div>{</div>
         <div class="pl-4">"data": {</div>
         @include('marketing.docs.api.partials.task-response')
         <div class="pl-8">}</div>
@@ -294,7 +292,7 @@
     </div>
     <div>
       <x-marketing.code title="/api/persons/{person}/tasks/{task}" verb="PUT" verbClass="text-yellow-700">
-      <div>{</div>
+        <div>{</div>
         <div class="pl-4">"data": {</div>
         @include('marketing.docs.api.partials.task-response')
         <div class="pl-8">}</div>
