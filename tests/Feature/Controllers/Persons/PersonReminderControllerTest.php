@@ -6,6 +6,8 @@ namespace Tests\Feature\Controllers\Persons;
 
 use App\Models\Person;
 use App\Models\SpecialDate;
+use App\Models\Task;
+use App\Models\TaskCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -21,8 +23,6 @@ class PersonReminderControllerTest extends TestCase
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Ross',
-            'last_name' => 'Geller',
         ]);
         $specialDate = SpecialDate::factory()->create([
             'person_id' => $person->id,
@@ -33,6 +33,18 @@ class PersonReminderControllerTest extends TestCase
             'year' => 1967,
             'should_be_reminded' => true,
         ]);
+        $taskCategory = TaskCategory::factory()->create([
+            'account_id' => $user->account_id,
+            'name' => 'Work',
+            'color' => 'blue',
+        ]);
+        $task = Task::factory()->create([
+            'person_id' => $person->id,
+            'account_id' => $user->account_id,
+            'name' => 'Call mom',
+            'task_category_id' => $taskCategory->id,
+            'due_at' => '2024-03-15',
+        ]);
 
         $response = $this->actingAs($user)
             ->get('/persons/'.$person->slug.'/reminders')
@@ -42,6 +54,7 @@ class PersonReminderControllerTest extends TestCase
         $this->assertArrayHasKey('persons', $response);
         $this->assertArrayHasKey('months', $response);
         $this->assertArrayHasKey('totalReminders', $response);
+        $this->assertArrayHasKey('tasks', $response);
 
         $months = $response['months'];
         $this->assertCount(1, $months);
@@ -59,6 +72,18 @@ class PersonReminderControllerTest extends TestCase
                 ],
             ]),
         ], $months->first());
+
+        $this->assertCount(1, $response['tasks']);
+        $this->assertEquals([
+            'id' => $task->id,
+            'name' => 'Call mom',
+            'due_at' => '2024-03-15',
+            'task_category' => [
+                'id' => $taskCategory->id,
+                'name' => 'Work',
+                'color' => 'blue',
+            ],
+        ], $response['tasks'][0]);
     }
 
     #[Test]
