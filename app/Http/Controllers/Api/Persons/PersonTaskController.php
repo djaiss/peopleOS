@@ -42,7 +42,7 @@ class PersonTaskController extends Controller
         ]);
 
         $task = (new CreateTask(
-            user: $request->user(),
+            user: Auth::user(),
             person: $person,
             name: $data['name'] ?? null,
             dueAt: $data['due_at'] ?? null,

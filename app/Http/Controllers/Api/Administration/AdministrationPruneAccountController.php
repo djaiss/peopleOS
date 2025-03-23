@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\PruneAccount;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group Administration
@@ -26,8 +27,8 @@ class AdministrationPruneAccountController extends Controller
     public function update(Request $request): Response
     {
         (new PruneAccount(
-            user: $request->user(),
-            account: $request->user()->account,
+            user: Auth::user(),
+            account: Auth::user()->account,
         ))->execute();
 
         return response()->noContent();

@@ -8,7 +8,7 @@ Todo:
   - Add "how we met" to person: DONE
   - rename all `store` to `create` in controllers: DONE
   - add a color palette to person (for the background of the avatar): DONE
-  - replace $request->user() with Auth::user() in all controllers
+  - replace $request->user() with Auth::user() in all controllers: DONE
   - replace all route names from plural to singular
   - add life events
   - add a block

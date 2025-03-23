@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Services\UpdateUserInformation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class MeController extends Controller
@@ -19,12 +20,12 @@ class MeController extends Controller
     public function show(Request $request): JsonResponse
     {
         $response = [
-            'id' => $request->user()->id,
-            'first_name' => $request->user()->first_name,
-            'last_name' => $request->user()->last_name,
-            'nickname' => $request->user()->nickname,
-            'email' => $request->user()->email,
-            'born_at' => $request->user()->born_at?->timestamp,
+            'id' => Auth::user()->id,
+            'first_name' => Auth::user()->first_name,
+            'last_name' => Auth::user()->last_name,
+            'nickname' => Auth::user()->nickname,
+            'email' => Auth::user()->email,
+            'born_at' => Auth::user()->born_at?->timestamp,
         ];
 
         return response()->json($response);
@@ -38,13 +39,13 @@ class MeController extends Controller
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore(Auth::user()->id)],
             'nickname' => ['nullable', 'string', 'max:255'],
             'born_at' => ['nullable', 'date'],
         ]);
 
         (new UpdateUserInformation(
-            user: $request->user(),
+            user: Auth::user(),
             email: $validated['email'],
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
@@ -53,12 +54,12 @@ class MeController extends Controller
         ))->execute();
 
         $response = [
-            'id' => $request->user()->id,
-            'first_name' => $request->user()->first_name,
-            'last_name' => $request->user()->last_name,
-            'email' => $request->user()->email,
-            'nickname' => $request->user()->nickname,
-            'born_at' => $request->user()->born_at?->timestamp,
+            'id' => Auth::user()->id,
+            'first_name' => Auth::user()->first_name,
+            'last_name' => Auth::user()->last_name,
+            'email' => Auth::user()->email,
+            'nickname' => Auth::user()->nickname,
+            'born_at' => Auth::user()->born_at?->timestamp,
         ];
 
         return response()->json($response);
