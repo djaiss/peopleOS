@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\UpdateTimezone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class MeTimezoneController extends Controller
 {
     /**
