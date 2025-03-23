@@ -21,6 +21,7 @@ class Account extends Model
      */
     protected $fillable = [
         'has_lifetime_access',
+        'emails_sent',
         'trial_ends_at',
     ];
 
