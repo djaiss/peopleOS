@@ -8,8 +8,12 @@
   </p>
 
   <p align="center">
-    [![codecov](https://codecov.io/gh/djaiss/peopleOS/graph/badge.svg?token=7aoDgGFZQr)](https://codecov.io/gh/djaiss/peopleOS)
-    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    <a href="https://codecov.io/gh/djaiss/peopleOS">
+      <img src="https://codecov.io/gh/djaiss/peopleOS/graph/badge.svg?token=7aoDgGFZQr" alt="codecov">
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+    </a>
   </p>
 </p>
 
