@@ -50,5 +50,10 @@ class DestroyApiKeyTest extends TestCase
         Mail::assertQueued(ApiKeyDestroyed::class, function (ApiKeyDestroyed $job): bool {
             return $job->label === 'Test API Key';
         });
+
+        $this->assertDatabaseHas('accounts', [
+            'id' => $user->account_id,
+            'emails_sent' => 1,
+        ]);
     }
 }

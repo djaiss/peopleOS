@@ -29,6 +29,7 @@ class DestroyApiKey
         $this->updateUserLastActivityDate();
         $this->log();
         $this->sendMail($label);
+        $this->incrementEmailSent();
     }
 
     private function updateUserLastActivityDate(): void
@@ -49,5 +50,10 @@ class DestroyApiKey
     {
         Mail::to($this->user->email)
             ->queue(new ApiKeyDestroyed($label));
+    }
+
+    private function incrementEmailSent(): void
+    {
+        $this->user->account->increment('emails_sent');
     }
 }

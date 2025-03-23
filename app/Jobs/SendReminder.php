@@ -44,5 +44,7 @@ class SendReminder implements ShouldQueue
                 date: $this->specialDate->date,
                 age: $this->specialDate->age,
             ));
+
+        $user->account->increment('emails_sent');
     }
 }

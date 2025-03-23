@@ -26,6 +26,7 @@ class CreateApiKey
         $this->updateUserLastActivityDate();
         $this->log();
         $this->sendMail();
+        $this->incrementEmailsSent();
 
         return $token;
     }
@@ -48,5 +49,10 @@ class CreateApiKey
     {
         Mail::to($this->user->email)
             ->queue(new ApiKeyCreated($this->label));
+    }
+
+    private function incrementEmailsSent(): void
+    {
+        $this->user->account->increment('emails_sent');
     }
 }

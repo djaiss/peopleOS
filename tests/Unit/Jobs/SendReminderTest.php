@@ -51,5 +51,10 @@ class SendReminderTest extends TestCase
         Mail::assertQueued(ReminderSent::class, function (ReminderSent $mail): bool {
             return $mail->hasTo('ross.geller@friends.com');
         });
+
+        $this->assertDatabaseHas('accounts', [
+            'id' => $account->id,
+            'emails_sent' => 1,
+        ]);
     }
 }
