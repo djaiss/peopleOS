@@ -5,7 +5,7 @@
  */
 ?>
 
-<form x-target="encounter-{{ $encounter['id'] }}" x-target.back="encounter-{{ $encounter['id'] }}" id="encounter-{{ $encounter['id'] }}" action="{{ route('persons.encounters.update', [$person->slug, $encounter['id']]) }}" method="POST">
+<form x-target="encounter-{{ $encounter['id'] }}" x-target.back="encounter-{{ $encounter['id'] }}" id="encounter-{{ $encounter['id'] }}" action="{{ route('person.encounter.update', [$person->slug, $encounter['id']]) }}" method="POST">
   @method('PUT')
   @csrf
 
@@ -24,7 +24,7 @@
   </div>
 
   <div class="flex items-center justify-between px-4 pb-4">
-    <x-button.secondary x-target="encounter-{{ $encounter['id'] }}" href="{{ route('persons.show', $person->slug) }}">
+    <x-button.secondary x-target="encounter-{{ $encounter['id'] }}" href="{{ route('person.show', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

@@ -39,7 +39,7 @@ class PersonController extends Controller
             return view('persons.blank');
         }
 
-        return redirect()->route('persons.show', [
+        return redirect()->route('person.show', [
             'slug' => $persons[0]['slug'],
         ]);
     }
@@ -90,7 +90,7 @@ class PersonController extends Controller
             isListed: true,
         ))->execute();
 
-        return redirect()->route('persons.show', [
+        return redirect()->route('person.show', [
             'slug' => $person->slug,
         ])->with('status', trans('The person has been created'));
     }

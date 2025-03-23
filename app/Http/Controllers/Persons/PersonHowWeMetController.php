@@ -35,7 +35,7 @@ class PersonHowWeMetController extends Controller
             person: $person,
         ))->execute();
 
-        return redirect()->route('persons.show', $person->slug);
+        return redirect()->route('person.show', $person->slug);
     }
 
     public function update(Request $request): RedirectResponse
@@ -67,7 +67,7 @@ class PersonHowWeMetController extends Controller
             addYearlyReminder: $reminderSet,
         ))->execute();
 
-        return redirect()->route('persons.show', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', trans('Changes saved'));
     }
 }

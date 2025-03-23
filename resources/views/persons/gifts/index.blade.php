@@ -28,7 +28,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-              <a x-target="add-gift-form" href="{{ route('persons.gifts.new', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100">
+              <a x-target="add-gift-form" href="{{ route('person.gift.new', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100">
                 <x-lucide-plus class="mr-1 h-3 w-3" />
                 {{ __('Add') }}
               </a>
@@ -44,7 +44,7 @@
               <div class="flex gap-x-8">
                 <!-- tabs -->
                 <div class="flex flex-col gap-2">
-                  <a x-target="gift-list" href="{{ route('persons.gifts.tab.update', [$person->slug, 'idea']) }}" class="{{ $person->gift_tab_shown === 'idea' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
+                  <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'idea']) }}" class="{{ $person->gift_tab_shown === 'idea' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
                     <div class="flex items-center gap-2">
                       <x-lucide-gift class="h-4 w-4 text-blue-500" />
                       <p class="text-gray-900">{{ __('Ideas') }}</p>
@@ -53,7 +53,7 @@
                     <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $ideaGiftsCount }}</div>
                   </a>
 
-                  <a x-target="gift-list" href="{{ route('persons.gifts.tab.update', [$person->slug, 'received']) }}" class="{{ $person->gift_tab_shown === 'received' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
+                  <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'received']) }}" class="{{ $person->gift_tab_shown === 'received' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
                     <div class="flex items-center gap-2">
                       <x-lucide-hand-heart class="h-4 w-4 text-blue-500" />
                       <p class="text-gray-900">{{ __('Received') }}</p>
@@ -62,7 +62,7 @@
                     <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $receivedGiftsCount }}</div>
                   </a>
 
-                  <a x-target="gift-list" href="{{ route('persons.gifts.tab.update', [$person->slug, 'given']) }}" class="{{ $person->gift_tab_shown === 'given' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
+                  <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'given']) }}" class="{{ $person->gift_tab_shown === 'given' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
                     <div class="flex items-center gap-2">
                       <x-lucide-hand-coins class="h-4 w-4 text-blue-500" />
                       <p class="text-gray-900">{{ __('Offered') }}</p>
@@ -105,14 +105,14 @@
                           </div>
                         </div>
                         <div class="flex gap-0 p-4">
-                          <x-button.invisible x-target="gift-{{ $gift->id }}" href="{{ route('persons.gifts.edit', [$person->slug, $gift->id]) }}" class="hidden text-sm group-hover:block">
+                          <x-button.invisible x-target="gift-{{ $gift->id }}" href="{{ route('person.gift.edit', [$person->slug, $gift->id]) }}" class="hidden text-sm group-hover:block">
                             {{ __('Edit') }}
                           </x-button.invisible>
 
                           <form x-target="gift-{{ $gift->id }}" x-on:ajax:before="
                             confirm('Are you sure you want to proceed? This can not be undone.') ||
                               $event.preventDefault()
-                          " action="{{ route('persons.gifts.destroy', [$person->slug, $gift->id]) }}" method="POST">
+                          " action="{{ route('person.gift.destroy', [$person->slug, $gift->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
 

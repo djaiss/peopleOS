@@ -28,6 +28,6 @@ class PersonGiftTabController extends Controller
             status: $giftStatus,
         ))->execute();
 
-        return redirect()->route('persons.gifts.index', $person->slug);
+        return redirect()->route('person.gift.index', $person->slug);
     }
 }

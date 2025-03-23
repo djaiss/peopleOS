@@ -4,7 +4,7 @@
  */
 ?>
 
-<form x-target="encounters-section" x-target.back="encounters-section" id="add-encounter" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="mt-4 rounded-lg border border-gray-200 bg-white">
+<form x-target="encounters-section" x-target.back="encounters-section" id="add-encounter" action="{{ route('person.encounter.create', $person->slug) }}" method="POST" class="mt-4 rounded-lg border border-gray-200 bg-white">
   @csrf
 
   <div class="mb-4 flex gap-2 border-b border-gray-200 px-4 pt-4 pb-4">
@@ -22,7 +22,7 @@
   </div>
 
   <div class="flex items-center justify-between px-4 pb-4">
-    <x-button.secondary x-target="encounters-section" href="{{ route('persons.show', $person->slug) }}">
+    <x-button.secondary x-target="encounters-section" href="{{ route('person.show', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

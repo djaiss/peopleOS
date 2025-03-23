@@ -1,5 +1,5 @@
 <div id="information-details" class="rounded-lg border border-gray-200 bg-white">
-  <form x-target="information-details" x-target.back="information-form" id="information-form" action="{{ route('persons.information.update', $person->slug) }}" method="post">
+  <form x-target="information-details" x-target.back="information-form" id="information-form" action="{{ route('person.information.update', $person->slug) }}" method="post">
     @csrf
     @method('put')
 
@@ -79,7 +79,7 @@
 
     <!-- actions -->
     <div class="flex justify-between border-t border-gray-200 p-3">
-      <x-button.secondary x-target="information-details" href="{{ route('persons.index', $person->slug) }}" class="mr-2">
+      <x-button.secondary x-target="information-details" href="{{ route('person.index', $person->slug) }}" class="mr-2">
         {{ __('Cancel') }}
       </x-button.secondary>
 

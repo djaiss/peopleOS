@@ -45,7 +45,7 @@
 
       <!-- Back face -->
       <div x-cloak x-ref="backFace" class="absolute w-full [transform:rotateY(-180deg)] border border-gray-200 bg-white [backface-visibility:hidden] sm:rounded-lg">
-        <form action="{{ route('persons.settings.avatar.update', ['slug' => $person->slug]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('person.settings.avatar.update', ['slug' => $person->slug]) }}" method="post" enctype="multipart/form-data">
           @csrf
           @method('put')
 

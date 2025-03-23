@@ -10,7 +10,7 @@
   <form x-data="{
     showDueDate: {{ $task->due_at ? 'true' : 'false' }},
     showCategory: {{ $task->task_category_id ? 'true' : 'false' }},
-  }" x-target="tasks-list task-{{ $task->id }} notifications" x-target.back="task-{{ $task->id }}" action="{{ route('persons.tasks.update', [$person->slug, $task->id]) }}" method="POST" class="border-b border-gray-200">
+  }" x-target="tasks-list task-{{ $task->id }} notifications" x-target.back="task-{{ $task->id }}" action="{{ route('person.task.update', [$person->slug, $task->id]) }}" method="POST" class="border-b border-gray-200">
     @csrf
     @method('PUT')
 
@@ -74,7 +74,7 @@
     </div>
 
     <div class="flex items-center justify-between border-t border-gray-200 px-4 py-4">
-      <x-button.secondary x-target="task-{{ $task->id }}" href="{{ route('persons.reminders.index', $person->slug) }}">
+      <x-button.secondary x-target="task-{{ $task->id }}" href="{{ route('person.reminder.index', $person->slug) }}">
         {{ __('Cancel') }}
       </x-button.secondary>
 
@@ -87,7 +87,7 @@
   <form x-target="task-{{ $task->id }}" x-on:ajax:before="
     confirm('Are you sure you want to proceed? This can not be undone.') ||
       $event.preventDefault()
-  " action="{{ route('persons.tasks.destroy', [$person->slug, $task->id]) }}" method="POST" class="p-4">
+  " action="{{ route('person.task.destroy', [$person->slug, $task->id]) }}" method="POST" class="p-4">
     @csrf
     @method('DELETE')
     <button type="submit" class="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline-offset-2 focus-visible:outline-red-600">

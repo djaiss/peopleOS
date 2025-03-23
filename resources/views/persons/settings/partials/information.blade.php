@@ -13,7 +13,7 @@
   {{ __('Edit the person details here.') }}
 </p>
 
-<form action="{{ route('persons.settings.update', $person->slug) }}" method="post" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
+<form action="{{ route('person.settings.update', $person->slug) }}" method="post" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
   @csrf
   @method('put')
 

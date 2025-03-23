@@ -19,7 +19,7 @@
       <div class="p-6">
         <!-- Add note form -->
         <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
-          <form id="add-note-form" x-target="notes-list add-note-form" action="{{ route('persons.notes.create', $person->slug) }}" method="POST">
+          <form id="add-note-form" x-target="notes-list add-note-form" action="{{ route('person.note.create', $person->slug) }}" method="POST">
             @csrf
 
             <div class="mb-4">
@@ -77,7 +77,7 @@
 
                     <!-- Dropdown menu -->
                     <div x-show="open" @click.away="open = false" class="absolute right-0 z-100 mt-1 w-48 rounded-md border border-gray-200 bg-white py-1 shadow-lg">
-                      <a href="{{ route('persons.notes.edit', ['slug' => $person->slug, 'note' => $note['id']]) }}" x-target="note-{{ $note['id'] }}" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      <a href="{{ route('person.note.edit', ['slug' => $person->slug, 'note' => $note['id']]) }}" x-target="note-{{ $note['id'] }}" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                         <x-lucide-pencil class="h-4 w-4" />
                         {{ __('Edit') }}
                       </a>
@@ -85,7 +85,7 @@
                       <form x-target="note-{{ $note['id'] }}" x-on:ajax:before="
                         confirm('Are you sure you want to proceed? This can not be undone.') ||
                           $event.preventDefault()
-                      " action="{{ route('persons.notes.destroy', ['slug' => $person->slug, 'note' => $note['id']]) }}" method="POST">
+                      " action="{{ route('person.note.destroy', ['slug' => $person->slug, 'note' => $note['id']]) }}" method="POST">
                         @csrf
                         @method('DELETE')
 

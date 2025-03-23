@@ -40,7 +40,7 @@ class PersonHowWeMetControllerTest extends TestCase
 
         $this->actingAs($user)
             ->get('/persons/'.$person->slug.'/how-we-met/toggle')
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
 
         $this->assertTrue($person->fresh()->how_we_met_shown);
     }
@@ -63,7 +63,7 @@ class PersonHowWeMetControllerTest extends TestCase
                 'how_we_met_day' => 1,
                 'reminder' => true,
             ])
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
 
         $response->assertSessionHas('status', trans('Changes saved'));
 

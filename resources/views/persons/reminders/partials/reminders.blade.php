@@ -41,7 +41,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-              <form x-target="reminder-{{ $reminder['id'] }}" id="reminder-{{ $reminder['id'] }}" action="{{ route('persons.reminders.test', ['slug' => $person->slug, 'specialDate' => $reminder['id']]) }}" method="POST">
+              <form x-target="reminder-{{ $reminder['id'] }}" id="reminder-{{ $reminder['id'] }}" action="{{ route('person.reminder.test', ['slug' => $person->slug, 'specialDate' => $reminder['id']]) }}" method="POST">
                 @csrf
 
                 <x-tooltip text="{{ __('Send a test reminder') }}">

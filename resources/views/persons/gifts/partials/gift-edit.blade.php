@@ -5,7 +5,7 @@
  */
 ?>
 
-<form x-target="gift-list notifications" x-target.back="gift-{{ $gift->id }}" id="gift-{{ $gift->id }}" action="{{ route('persons.gifts.update', [$person->slug, $gift->id]) }}" method="POST" class="rounded-lg border-b border-gray-200 bg-white">
+<form x-target="gift-list notifications" x-target.back="gift-{{ $gift->id }}" id="gift-{{ $gift->id }}" action="{{ route('person.gift.update', [$person->slug, $gift->id]) }}" method="POST" class="rounded-lg border-b border-gray-200 bg-white">
   @csrf
   @method('PUT')
 
@@ -68,7 +68,7 @@
   </div>
 
   <div class="flex items-center justify-between border-t border-gray-200 px-4 py-4">
-    <x-button.secondary x-target="gift-{{ $gift->id }}" href="{{ route('persons.gifts.index', $person->slug) }}">
+    <x-button.secondary x-target="gift-{{ $gift->id }}" href="{{ route('person.gift.index', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

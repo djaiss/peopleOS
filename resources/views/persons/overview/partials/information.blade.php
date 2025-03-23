@@ -12,7 +12,7 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <a x-target="information-details" href="{{ route('persons.information.edit', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100">
+      <a x-target="information-details" href="{{ route('person.information.edit', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100">
         <x-lucide-pencil class="mr-1 h-3 w-3" />
         {{ __('Edit') }}
       </a>

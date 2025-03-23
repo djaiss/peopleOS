@@ -42,7 +42,7 @@ class PersonSettingsControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->delete('/persons/'.$person->slug)
-            ->assertRedirectToRoute('persons.index');
+            ->assertRedirectToRoute('person.index');
 
         $response->assertSessionHas('status', 'Person deleted successfully');
     }

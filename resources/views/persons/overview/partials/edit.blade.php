@@ -1,4 +1,4 @@
-<form x-target="edit-how-we-met-form" id="edit-how-we-met-form" action="{{ route('persons.how-we-met.update', $person->slug) }}" method="POST" x-data="{
+<form x-target="edit-how-we-met-form" id="edit-how-we-met-form" action="{{ route('person.how-we-met.update', $person->slug) }}" method="POST" x-data="{
   dateType:
     '{{ is_null($person->howWeMetSpecialDate) ? 'unknown' : 'known' }}',
 }" class="mb-8 space-y-4 rounded-lg border border-gray-200 bg-white p-4">
@@ -91,7 +91,7 @@
   </div>
 
   <div class="flex items-center justify-between">
-    <x-button.secondary x-target="edit-how-we-met-form" href="{{ route('persons.show', $person->slug) }}">
+    <x-button.secondary x-target="edit-how-we-met-form" href="{{ route('person.show', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

@@ -24,6 +24,6 @@ class PersonEncounterToggleController extends Controller
             person: $person,
         ))->execute();
 
-        return redirect()->route('persons.show', $person->slug);
+        return redirect()->route('person.show', $person->slug);
     }
 }

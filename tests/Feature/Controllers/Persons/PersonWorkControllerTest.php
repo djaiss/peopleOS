@@ -101,7 +101,7 @@ class PersonWorkControllerTest extends TestCase
                 'salary' => '$75,000',
                 'is_current' => 'on',
             ])
-            ->assertRedirectToRoute('persons.work.index', $person->slug);
+            ->assertRedirectToroute('person.work.index', $person->slug);
 
         $this->assertDatabaseHas('work_information', [
             'person_id' => $person->id,
@@ -232,7 +232,7 @@ class PersonWorkControllerTest extends TestCase
                 'salary' => '$150,000',
                 'is_current' => 'on',
             ])
-            ->assertRedirectToRoute('persons.work.index', $person->slug);
+            ->assertRedirectToroute('person.work.index', $person->slug);
 
         $this->assertDatabaseHas('work_information', [
             'person_id' => $person->id,
@@ -324,7 +324,7 @@ class PersonWorkControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->delete('/persons/'.$person->slug.'/work/'.$workHistory->id)
-            ->assertRedirectToRoute('persons.work.index', $person->slug);
+            ->assertRedirectToroute('person.work.index', $person->slug);
 
         $response->assertSessionHas('status', 'The work history has been deleted');
 

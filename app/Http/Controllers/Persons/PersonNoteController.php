@@ -56,7 +56,7 @@ class PersonNoteController extends Controller
             content: $validated['content'],
         ))->execute();
 
-        return redirect()->route('persons.notes.index', $person->slug)
+        return redirect()->route('person.note.index', $person->slug)
             ->with('status', __('Note created'));
     }
 
@@ -86,7 +86,7 @@ class PersonNoteController extends Controller
             content: $validated['content'],
         ))->execute();
 
-        return redirect()->route('persons.notes.index', $person->slug)
+        return redirect()->route('person.note.index', $person->slug)
             ->with('status', __('Note updated'));
     }
 
@@ -100,7 +100,7 @@ class PersonNoteController extends Controller
             note: $note,
         ))->execute();
 
-        return redirect()->route('persons.notes.index', $person->slug)
+        return redirect()->route('person.note.index', $person->slug)
             ->with('status', __('Note deleted'));
     }
 }

@@ -29,12 +29,12 @@ class PersonTaskToggleControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put(route('persons.tasks.toggle', [
+            ->put(route('person.task.toggle', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]));
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', trans('Changes saved'));
 
         $this->assertDatabaseHas('tasks', [
@@ -57,12 +57,12 @@ class PersonTaskToggleControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put(route('persons.tasks.toggle', [
+            ->put(route('person.task.toggle', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]));
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', trans('Changes saved'));
 
         $this->assertDatabaseHas('tasks', [
@@ -86,7 +86,7 @@ class PersonTaskToggleControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put(route('persons.tasks.toggle', [
+            ->put(route('person.task.toggle', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]));

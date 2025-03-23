@@ -26,7 +26,7 @@ class PersonSettingsAvatarController extends Controller
             photo: $validated['photo'],
         ))->execute();
 
-        return redirect()->route('persons.settings.index', ['slug' => $person->slug])
+        return redirect()->route('person.settings.index', ['slug' => $person->slug])
             ->with('status', trans('The avatar has been updated'));
     }
 }

@@ -59,7 +59,7 @@ class PersonEncounterControllerTest extends TestCase
             ->post('/persons/'.$person->slug.'/encounters', [
                 'seen_at' => '2025-01-01',
             ])
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
 
         $response->assertSessionHas('status', 'Encounter reported');
 
@@ -118,7 +118,7 @@ class PersonEncounterControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->delete('/persons/'.$person->slug.'/encounters/'.$encounter->id)
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
 
         $response->assertSessionHas('status', 'Encounter deleted');
 
@@ -170,7 +170,7 @@ class PersonEncounterControllerTest extends TestCase
                 'seen_at' => '2025-02-01',
                 'context' => 'At Joey\'s apartment',
             ])
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
 
         $response->assertSessionHas('status', 'Encounter updated');
 

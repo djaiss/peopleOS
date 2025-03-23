@@ -30,7 +30,7 @@ class PersonControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->get('/persons')
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
     }
 
     #[Test]
@@ -90,7 +90,7 @@ class PersonControllerTest extends TestCase
                 'suffix' => '',
                 'is_listed' => true,
             ])
-            ->assertRedirectToRoute('persons.show', [
+            ->assertRedirectToRoute('person.show', [
                 'slug' => Person::orderBy('id', 'desc')->first()->slug,
             ]);
 

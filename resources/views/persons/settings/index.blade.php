@@ -36,7 +36,7 @@
         <!--  -->
         <div class="mb-6 rounded-lg border border-gray-200 bg-white">
           @if ($person->can_be_deleted)
-            <form action="{{ route('persons.settings.destroy', ['slug' => $person->slug]) }}" method="post">
+            <form action="{{ route('person.settings.destroy', ['slug' => $person->slug]) }}" method="post">
               @csrf
               @method('delete')
 

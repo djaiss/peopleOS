@@ -78,7 +78,7 @@ class PersonWorkController extends Controller
             active: $active,
         ))->execute();
 
-        return redirect()->route('persons.work.index', $person->slug)
+        return redirect()->route('person.work.index', $person->slug)
             ->with('status', trans('The work history has been created'));
     }
 
@@ -127,7 +127,7 @@ class PersonWorkController extends Controller
             active: $active,
         ))->execute();
 
-        return redirect()->route('persons.work.index', $person->slug)
+        return redirect()->route('person.work.index', $person->slug)
             ->with('status', trans('The work history has been updated'));
     }
 
@@ -144,7 +144,7 @@ class PersonWorkController extends Controller
             workHistory: $workHistory,
         ))->execute();
 
-        return redirect()->route('persons.work.index', $person->slug)
+        return redirect()->route('person.work.index', $person->slug)
             ->with('status', trans('The work history has been deleted'));
     }
 }
