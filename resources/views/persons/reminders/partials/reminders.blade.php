@@ -7,8 +7,11 @@
 ?>
 
 <!-- Header -->
-<div class="mb-2 flex items-center justify-between">
-  <h1 class="font-semi-bold mb-4 text-2xl">{{ __('Yearly reminders') }}</h1>
+<div class="mb-4 flex items-center justify-between">
+  <div class="flex items-center gap-2">
+    <x-lucide-bell class="h-5 w-5 text-blue-500" />
+    <h2 class="text-lg font-semibold text-gray-900">{{ __('Reminders') }}</h2>
+  </div>
   <span class="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-600">
     {{ __(':count active', ['count' => $totalReminders]) }}
   </span>
