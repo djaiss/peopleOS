@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Persons;
 
 use App\Models\Person;
+use App\Models\Task;
 use App\Models\TaskCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -72,5 +73,93 @@ class PersonTaskControllerTest extends TestCase
 
         $response->assertRedirect(route('persons.reminders.index', $person->slug));
         $response->assertSessionHas('status', trans('The task has been created'));
+    }
+
+    #[Test]
+    public function it_can_see_the_task_edit_form(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $task = Task::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get(route('persons.tasks.edit', [
+                'slug' => $person->slug,
+                'task' => $task->id,
+            ]));
+
+        $response->assertStatus(200);
+        $response->assertViewIs('persons.reminders.partials.task-edit');
+        $response->assertViewHas('task', $task);
+        $response->assertViewHas('person', $person);
+        $response->assertViewHas('taskCategories');
+    }
+
+    #[Test]
+    public function it_can_update_a_task(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $taskCategory = TaskCategory::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $task = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'name' => 'Original task',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put(route('persons.tasks.update', [
+                'slug' => $person->slug,
+                'task' => $task->id,
+            ]), [
+                'name' => 'Updated task name',
+                'due_at' => '2024-03-16',
+                'task_category_id' => $taskCategory->id,
+                'has_due_date' => true,
+                'has_category' => true,
+            ]);
+
+        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertSessionHas('status', trans('The task has been updated'));
+    }
+
+    #[Test]
+    public function user_can_update_a_task_removing_due_date_and_category(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $taskCategory = TaskCategory::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $task = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'name' => 'Original task',
+            'due_at' => '2024-03-15',
+            'task_category_id' => $taskCategory->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put(route('persons.tasks.update', [
+                'slug' => $person->slug,
+                'task' => $task->id,
+            ]), [
+                'name' => 'Updated task name',
+                'due_at' => '2024-03-16',
+                'task_category_id' => $taskCategory->id,
+            ]);
+
+        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertSessionHas('status', trans('The task has been updated'));
     }
 }
