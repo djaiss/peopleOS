@@ -41,7 +41,7 @@ class PersonGiftController extends Controller
         ]);
 
         $gift = (new CreateGift(
-            user: $request->user(),
+            user: Auth::user(),
             person: $person,
             name: $data['name'] ?? null,
             occasion: $data['occasion'] ?? null,

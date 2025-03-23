@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Services\SendNewInvitation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class AdministrationInviteUserAgainController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class AdministrationInviteUserAgainController extends Controller
     public function update(Request $request, User $user): JsonResponse
     {
         (new SendNewInvitation(
-            user: $request->user(),
+            user: Auth::user(),
             invitedUser: $user,
         ))->execute();
 
