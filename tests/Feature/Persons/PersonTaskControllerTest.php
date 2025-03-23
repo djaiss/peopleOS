@@ -162,4 +162,30 @@ class PersonTaskControllerTest extends TestCase
         $response->assertRedirect(route('persons.reminders.index', $person->slug));
         $response->assertSessionHas('status', trans('The task has been updated'));
     }
+
+    #[Test]
+    public function user_can_delete_a_task(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $task = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->delete(route('persons.tasks.destroy', [
+                'slug' => $person->slug,
+                'task' => $task->id,
+            ]));
+
+        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertSessionHas('status', __('Task deleted'));
+
+        $this->assertDatabaseMissing('tasks', [
+            'id' => $task->id,
+        ]);
+    }
 }
