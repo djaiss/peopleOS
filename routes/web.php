@@ -37,6 +37,7 @@ use App\Http\Controllers\Persons\PersonSendTestReminderController;
 use App\Http\Controllers\Persons\PersonSettingsAvatarController;
 use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonTaskController;
+use App\Http\Controllers\Persons\PersonTaskToggleController;
 use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
@@ -118,6 +119,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
             Route::middleware(['task'])->group(function (): void {
                 Route::get('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'edit'])->name('persons.tasks.edit');
                 Route::put('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'update'])->name('persons.tasks.update');
+                Route::put('persons/{slug}/tasks/{task}/toggle', [PersonTaskToggleController::class, 'update'])->name('persons.tasks.toggle');
                 Route::delete('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'destroy'])->name('persons.tasks.destroy');
             });
 

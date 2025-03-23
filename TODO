@@ -9,6 +9,7 @@ Todo:
   - rename all `store` to `create` in controllers: DONE
   - add a color palette to person (for the background of the avatar): DONE
   - replace $request->user() with Auth::user() in all controllers
+  - replace all route names from plural to singular
   - add life events
   - add a block
     - add addresses
@@ -18,7 +19,7 @@ Todo:
     - add nationalities: DONE
   - add support zone
   - add task categories: DONE
-  - add tasks
+  - manage tasks: DONE
   - remove all stuff from controllers
   - Add services to manage instance
   - Add ability to broadcast a message to all users

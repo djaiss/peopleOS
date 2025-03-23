@@ -41,6 +41,7 @@ class PersonReminderControllerTest extends TestCase
         $task = Task::factory()->create([
             'person_id' => $person->id,
             'account_id' => $user->account_id,
+            'is_completed' => false,
             'name' => 'Call mom',
             'task_category_id' => $taskCategory->id,
             'due_at' => '2024-03-15',
@@ -78,6 +79,7 @@ class PersonReminderControllerTest extends TestCase
             'id' => $task->id,
             'name' => 'Call mom',
             'due_at' => '2024-03-15',
+            'is_completed' => false,
             'task_category' => [
                 'id' => $taskCategory->id,
                 'name' => 'Work',

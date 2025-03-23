@@ -44,6 +44,7 @@ class PersonReminderController extends Controller
                 'id' => $task->id,
                 'name' => $task->name,
                 'due_at' => $task->due_at?->format('Y-m-d'),
+                'is_completed' => $task->is_completed,
                 'task_category' => $task->taskCategory ? [
                     'id' => $task->taskCategory->id,
                     'name' => $task->taskCategory->name,
