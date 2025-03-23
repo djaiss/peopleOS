@@ -41,7 +41,7 @@
           <!-- list of gifts -->
           <div id="gift-list">
             @if ($ideaGiftsCount > 0 || $receivedGiftsCount > 0 || $offeredGiftsCount > 0)
-              <div class="flex gap-x-4">
+              <div class="flex gap-x-8">
                 <!-- tabs -->
                 <div class="flex flex-col gap-2">
                   <a x-target="gift-list" href="{{ route('persons.gifts.tab.update', [$person->slug, 'idea']) }}" class="{{ $person->gift_tab_shown === 'idea' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
@@ -104,7 +104,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="flex gap-2 p-4">
+                        <div class="flex gap-0 p-4">
                           <x-button.invisible x-target="gift-{{ $gift->id }}" href="{{ route('persons.gifts.edit', [$person->slug, $gift->id]) }}" class="hidden text-sm group-hover:block">
                             {{ __('Edit') }}
                           </x-button.invisible>
@@ -124,7 +124,7 @@
                       </div>
                     @empty
                       <!-- blank state -->
-                      <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-6 text-center">
+                      <div class="flex flex-col items-center justify-center rounded-lg bg-white p-6 text-center">
                         <span class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
                           <x-lucide-gift class="h-6 w-6 text-blue-600" />
                         </span>

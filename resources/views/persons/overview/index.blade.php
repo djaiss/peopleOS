@@ -5,6 +5,10 @@
  */
 ?>
 
+<h1 class="font-semi-bold mb-4 text-2xl">
+  {{ __('Overview') }}
+</h1>
+
 @include('persons.overview.partials.information')
 
 @include('persons.overview.partials.how-we-met')

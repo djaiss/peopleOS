@@ -55,7 +55,7 @@
               </p>
             </div>
           </div>
-          <div class="flex gap-2">
+          <div class="flex gap-0">
             <x-button.invisible x-target="work-history-{{ $history['id'] }}" href="{{ route('persons.work.edit', [$person->slug, $history['id']]) }}" class="hidden text-sm group-hover:block">
               {{ __('Edit') }}
             </x-button.invisible>

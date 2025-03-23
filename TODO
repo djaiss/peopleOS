@@ -17,12 +17,14 @@ Todo:
     - add phone numbers
     - add nationalities: DONE
   - add support zone
-  - add todos
+  - add task categories: DONE
+  - add tasks
   - remove all stuff from controllers
   - Add services to manage instance
   - Add ability to broadcast a message to all users
   - Add passions to person
   - Add hobbies to person
+  - log the number of emails sent, both at the account level and instance level
 
   Country born - city born
   Country/place studies
