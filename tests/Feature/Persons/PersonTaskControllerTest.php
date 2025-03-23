@@ -25,7 +25,7 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get(route('persons.tasks.new', $person->slug));
+            ->get(route('person.task.new', $person->slug));
 
         $response->assertStatus(200);
         $response->assertViewIs('persons.reminders.partials.task-add');
@@ -45,7 +45,7 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post(route('persons.tasks.create', $person->slug), [
+            ->post(route('person.task.create', $person->slug), [
                 'name' => 'Call mom',
                 'due_at' => '2024-03-15',
                 'task_category_id' => $taskCategory->id,
@@ -53,7 +53,7 @@ class PersonTaskControllerTest extends TestCase
                 'has_category' => true,
             ]);
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', trans('The task has been created'));
     }
 
@@ -66,12 +66,12 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post(route('persons.tasks.create', $person->slug), [
+            ->post(route('person.task.create', $person->slug), [
                 'name' => 'Call mom',
                 'due_at' => '2024-03-15',
             ]);
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', trans('The task has been created'));
     }
 
@@ -87,7 +87,7 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get(route('persons.tasks.edit', [
+            ->get(route('person.task.edit', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]));
@@ -116,7 +116,7 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put(route('persons.tasks.update', [
+            ->put(route('person.task.update', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]), [
@@ -127,7 +127,7 @@ class PersonTaskControllerTest extends TestCase
                 'has_category' => true,
             ]);
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', trans('The task has been updated'));
     }
 
@@ -150,7 +150,7 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put(route('persons.tasks.update', [
+            ->put(route('person.task.update', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]), [
@@ -159,7 +159,7 @@ class PersonTaskControllerTest extends TestCase
                 'task_category_id' => $taskCategory->id,
             ]);
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', trans('The task has been updated'));
     }
 
@@ -176,12 +176,12 @@ class PersonTaskControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete(route('persons.tasks.destroy', [
+            ->delete(route('person.task.destroy', [
                 'slug' => $person->slug,
                 'task' => $task->id,
             ]));
 
-        $response->assertRedirect(route('persons.reminders.index', $person->slug));
+        $response->assertRedirect(route('person.reminder.index', $person->slug));
         $response->assertSessionHas('status', __('Task deleted'));
 
         $this->assertDatabaseMissing('tasks', [

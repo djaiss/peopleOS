@@ -39,7 +39,7 @@ class SendReminder implements ShouldQueue
         Mail::to($user->email)
             ->queue(new ReminderSent(
                 name: $this->specialDate->name,
-                slug: route('persons.show', $this->specialDate->person->slug),
+                slug: route('person.show', $this->specialDate->person->slug),
                 personName: $this->specialDate->person->name,
                 date: $this->specialDate->date,
                 age: $this->specialDate->age,

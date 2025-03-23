@@ -21,7 +21,7 @@ class PersonSendTestReminderController extends Controller
 
         SendReminder::dispatch($specialDate);
 
-        return redirect()->route('persons.reminders.index', $person->slug)
+        return redirect()->route('person.reminder.index', $person->slug)
             ->with('status', __('Mail sent'));
     }
 }

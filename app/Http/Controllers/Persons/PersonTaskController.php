@@ -50,7 +50,7 @@ class PersonTaskController extends Controller
             taskCategory: $taskCategory,
         ))->execute();
 
-        return redirect()->route('persons.reminders.index', $person->slug)
+        return redirect()->route('person.reminder.index', $person->slug)
             ->with('status', trans('The task has been created'));
     }
 
@@ -93,7 +93,7 @@ class PersonTaskController extends Controller
             taskCategory: $taskCategory,
         ))->execute();
 
-        return redirect()->route('persons.reminders.index', $person->slug)
+        return redirect()->route('person.reminder.index', $person->slug)
             ->with('status', trans('The task has been updated'));
     }
 
@@ -107,7 +107,7 @@ class PersonTaskController extends Controller
             task: $task,
         ))->execute();
 
-        return redirect()->route('persons.reminders.index', $person->slug)
+        return redirect()->route('person.reminder.index', $person->slug)
             ->with('status', __('Task deleted'));
     }
 }

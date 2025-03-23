@@ -6,7 +6,7 @@
 ?>
 
 <!-- add task form -->
-<form x-data="{ showDueDate: false, showCategory: false }" x-target="tasks-list add-task-form notifications" x-target.back="add-task-form" id="add-task-form" action="{{ route('persons.tasks.create', $person->slug) }}" method="POST" class="mb-4 rounded-lg border border-gray-200 bg-white">
+<form x-data="{ showDueDate: false, showCategory: false }" x-target="tasks-list add-task-form notifications" x-target.back="add-task-form" id="add-task-form" action="{{ route('person.task.create', $person->slug) }}" method="POST" class="mb-4 rounded-lg border border-gray-200 bg-white">
   @csrf
 
   <!-- Hidden fields to track shown sections -->
@@ -63,7 +63,7 @@
   </div>
 
   <div class="flex items-center justify-between border-t border-gray-200 px-4 py-4">
-    <x-button.secondary x-target="add-task-form" href="{{ route('persons.reminders.index', $person->slug) }}">
+    <x-button.secondary x-target="add-task-form" href="{{ route('person.reminder.index', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

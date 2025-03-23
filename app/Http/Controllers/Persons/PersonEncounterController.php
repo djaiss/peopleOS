@@ -45,7 +45,7 @@ class PersonEncounterController extends Controller
         $person->encounters_shown = true;
         $person->save();
 
-        return redirect()->route('persons.show', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', trans('Encounter reported'));
     }
 
@@ -80,7 +80,7 @@ class PersonEncounterController extends Controller
             context: $validated['context'],
         ))->execute();
 
-        return redirect()->route('persons.show', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', trans('Encounter updated'));
     }
 
@@ -95,7 +95,7 @@ class PersonEncounterController extends Controller
             encounter: $encounter,
         ))->execute();
 
-        return redirect()->route('persons.show', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', trans('Encounter deleted'));
     }
 }

@@ -73,7 +73,7 @@ class PersonSettingsController extends Controller
             isListed: $person->is_listed,
         ))->execute();
 
-        return redirect()->route('persons.settings.index', $person->slug)
+        return redirect()->route('person.settings.index', $person->slug)
             ->with('status', trans('Person updated successfully'));
     }
 
@@ -86,7 +86,7 @@ class PersonSettingsController extends Controller
             person: $person,
         ))->execute();
 
-        return redirect()->route('persons.index')
+        return redirect()->route('person.index')
             ->with('status', trans('Person deleted successfully'));
     }
 }

@@ -7,7 +7,7 @@
 <x-app-layout>
   <main class="grid min-h-[calc(100vh-48px)] place-items-center bg-gray-50">
     <div class="mx-auto w-full max-w-lg px-2 py-2 sm:py-6">
-      <form method="post" action="{{ route('persons.create') }}" class="mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
+      <form method="post" action="{{ route('person.create') }}" class="mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
         @csrf
         @method('post')
 
@@ -216,7 +216,7 @@
 
         <!-- actions -->
         <div class="flex justify-between p-5">
-          <x-button.secondary navigate href="{{ route('persons.index') }}">
+          <x-button.secondary navigate href="{{ route('person.index') }}">
             {{ __('Cancel') }}
           </x-button.secondary>
 

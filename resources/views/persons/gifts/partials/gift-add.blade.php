@@ -4,7 +4,7 @@
  */
 ?>
 
-<form x-target="gift-list add-gift-form notifications" x-target.back="add-gift-form" id="add-gift-form" action="{{ route('persons.gifts.create', $person->slug) }}" method="POST" class="mb-10 rounded-lg border border-gray-200 bg-white">
+<form x-target="gift-list add-gift-form notifications" x-target.back="add-gift-form" id="add-gift-form" action="{{ route('person.gift.create', $person->slug) }}" method="POST" class="mb-10 rounded-lg border border-gray-200 bg-white">
   @csrf
 
   <div class="border-b border-gray-200 px-4 pt-4 pb-4">
@@ -64,7 +64,7 @@
   </div>
 
   <div class="flex items-center justify-between border-t border-gray-200 px-4 py-4">
-    <x-button.secondary x-target="add-gift-form" href="{{ route('persons.gifts.index', $person->slug) }}">
+    <x-button.secondary x-target="add-gift-form" href="{{ route('person.gift.index', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

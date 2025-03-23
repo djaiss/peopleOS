@@ -4,7 +4,7 @@
  */
 ?>
 
-<form x-target="work-history-list add-work-form notifications" x-target.back="add-work-form" id="add-work-form" action="{{ route('persons.work.create', $person->slug) }}" method="POST">
+<form x-target="work-history-list add-work-form notifications" x-target.back="add-work-form" id="add-work-form" action="{{ route('person.work.create', $person->slug) }}" method="POST">
   @csrf
 
   <div class="mb-4 flex gap-4 px-4 pt-4">
@@ -47,7 +47,7 @@
   </div>
 
   <div class="flex items-center justify-between px-4 pb-4">
-    <x-button.secondary x-target="add-work-form" href="{{ route('persons.work.index', $person->slug) }}">
+    <x-button.secondary x-target="add-work-form" href="{{ route('person.work.index', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

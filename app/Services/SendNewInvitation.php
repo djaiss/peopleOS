@@ -49,7 +49,7 @@ class SendNewInvitation
     private function sendInvitation(): void
     {
         $temporarySignedRoute = URL::temporarySignedRoute(
-            'invitations.accept', now()->addDays(3), ['user' => $this->invitedUser->id]
+            'invitation.accept', now()->addDays(3), ['user' => $this->invitedUser->id]
         );
 
         Mail::to($this->invitedUser->email)

@@ -40,7 +40,7 @@ class PersonInformationController extends Controller
             languages: $validated['languages'],
         ))->execute();
 
-        return redirect()->route('persons.show', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', trans('Changes saved'));
     }
 }

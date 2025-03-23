@@ -22,7 +22,7 @@ class PersonTaskToggleController extends Controller
             task: $task,
         ))->execute();
 
-        return redirect()->route('persons.reminders.index', $person->slug)
+        return redirect()->route('person.reminder.index', $person->slug)
             ->with('status', trans('Changes saved'));
     }
 }

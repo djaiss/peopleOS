@@ -18,7 +18,7 @@
     <!-- Add Job Form -->
     <div class="border-b border-gray-200">
       <div id="add-work-form" class="p-4">
-        <a href="{{ route('persons.work.new', $person->slug) }}" x-target="add-work-form" class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50">
+        <a href="{{ route('person.work.new', $person->slug) }}" x-target="add-work-form" class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50">
           <x-lucide-plus class="h-4 w-4" />
           {{ __('Add work information') }}
         </a>
@@ -56,14 +56,14 @@
             </div>
           </div>
           <div class="flex gap-0">
-            <x-button.invisible x-target="work-history-{{ $history['id'] }}" href="{{ route('persons.work.edit', [$person->slug, $history['id']]) }}" class="hidden text-sm group-hover:block">
+            <x-button.invisible x-target="work-history-{{ $history['id'] }}" href="{{ route('person.work.edit', [$person->slug, $history['id']]) }}" class="hidden text-sm group-hover:block">
               {{ __('Edit') }}
             </x-button.invisible>
 
             <form x-target="work-history-{{ $history['id'] }}" x-on:ajax:before="
               confirm('Are you sure you want to proceed? This can not be undone.') ||
                 $event.preventDefault()
-            " action="{{ route('persons.work.destroy', [$person->slug, $history['id']]) }}" method="POST">
+            " action="{{ route('person.work.destroy', [$person->slug, $history['id']]) }}" method="POST">
               @csrf
               @method('DELETE')
 

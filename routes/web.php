@@ -72,7 +72,7 @@ Route::middleware(['marketing'])->group(
     }
 );
 
-Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitations.accept');
+Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -82,76 +82,76 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
 
     Route::middleware(['subscription'])->group(function (): void {
         // persons
-        Route::get('persons', [PersonController::class, 'index'])->name('persons.index');
-        Route::get('persons/new', [PersonController::class, 'new'])->name('persons.new');
-        Route::post('persons', [PersonController::class, 'create'])->name('persons.create');
-        Route::post('persons/search', [PersonSearchController::class, 'create'])->name('persons.search');
+        Route::get('persons', [PersonController::class, 'index'])->name('person.index');
+        Route::get('persons/new', [PersonController::class, 'new'])->name('person.new');
+        Route::post('persons', [PersonController::class, 'create'])->name('person.create');
+        Route::post('persons/search', [PersonSearchController::class, 'create'])->name('person.search');
 
         Route::middleware(['person'])->group(function (): void {
-            Route::get('persons/{slug}', [PersonController::class, 'show'])->name('persons.show');
-            Route::get('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'edit'])->name('persons.how-we-met.edit');
-            Route::get('persons/{slug}/how-we-met/toggle', [PersonHowWeMetController::class, 'create'])->name('persons.how-we-met.create');
-            Route::put('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'update'])->name('persons.how-we-met.update');
+            Route::get('persons/{slug}', [PersonController::class, 'show'])->name('person.show');
+            Route::get('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'edit'])->name('person.how-we-met.edit');
+            Route::get('persons/{slug}/how-we-met/toggle', [PersonHowWeMetController::class, 'create'])->name('person.how-we-met.create');
+            Route::put('persons/{slug}/how-we-met', [PersonHowWeMetController::class, 'update'])->name('person.how-we-met.update');
 
-            Route::get('persons/{slug}/information/edit', [PersonInformationController::class, 'edit'])->name('persons.information.edit');
-            Route::put('persons/{slug}/information', [PersonInformationController::class, 'update'])->name('persons.information.update');
+            Route::get('persons/{slug}/information/edit', [PersonInformationController::class, 'edit'])->name('person.information.edit');
+            Route::put('persons/{slug}/information', [PersonInformationController::class, 'update'])->name('person.information.update');
 
-            Route::get('persons/{slug}/encounters/new', [PersonEncounterController::class, 'new'])->name('persons.encounters.new');
-            Route::post('persons/{slug}/encounters', [PersonEncounterController::class, 'create'])->name('persons.encounters.create');
-            Route::get('persons/{slug}/encounters/toggle', [PersonEncounterToggleController::class, 'create'])->name('persons.encounters.toggle');
-            Route::get('persons/{slug}/encounters/{encounter}/edit', [PersonEncounterController::class, 'edit'])->name('persons.encounters.edit');
-            Route::put('persons/{slug}/encounters/{encounter}', [PersonEncounterController::class, 'update'])->name('persons.encounters.update');
-            Route::delete('persons/{slug}/encounters/{encounter}', [PersonEncounterController::class, 'destroy'])->name('persons.encounters.destroy');
+            Route::get('persons/{slug}/encounters/new', [PersonEncounterController::class, 'new'])->name('person.encounter.new');
+            Route::post('persons/{slug}/encounters', [PersonEncounterController::class, 'create'])->name('person.encounter.create');
+            Route::get('persons/{slug}/encounters/toggle', [PersonEncounterToggleController::class, 'create'])->name('person.encounter.toggle');
+            Route::get('persons/{slug}/encounters/{encounter}/edit', [PersonEncounterController::class, 'edit'])->name('person.encounter.edit');
+            Route::put('persons/{slug}/encounters/{encounter}', [PersonEncounterController::class, 'update'])->name('person.encounter.update');
+            Route::delete('persons/{slug}/encounters/{encounter}', [PersonEncounterController::class, 'destroy'])->name('person.encounter.destroy');
 
             // person settings
-            Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('persons.settings.index');
-            Route::put('persons/{slug}/settings', [PersonSettingsController::class, 'update'])->name('persons.settings.update');
-            Route::put('persons/{slug}/settings/avatar', [PersonSettingsAvatarController::class, 'update'])->name('persons.settings.avatar.update');
-            Route::delete('persons/{slug}', [PersonSettingsController::class, 'destroy'])->name('persons.settings.destroy');
+            Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('person.settings.index');
+            Route::put('persons/{slug}/settings', [PersonSettingsController::class, 'update'])->name('person.settings.update');
+            Route::put('persons/{slug}/settings/avatar', [PersonSettingsAvatarController::class, 'update'])->name('person.settings.avatar.update');
+            Route::delete('persons/{slug}', [PersonSettingsController::class, 'destroy'])->name('person.settings.destroy');
 
             // reminders
-            Route::get('persons/{slug}/reminders', [PersonReminderController::class, 'index'])->name('persons.reminders.index');
-            Route::post('persons/{slug}/reminders/{specialDate}/test', [PersonSendTestReminderController::class, 'create'])->name('persons.reminders.test');
+            Route::get('persons/{slug}/reminders', [PersonReminderController::class, 'index'])->name('person.reminder.index');
+            Route::post('persons/{slug}/reminders/{specialDate}/test', [PersonSendTestReminderController::class, 'create'])->name('person.reminder.test');
 
             // tasks
-            Route::get('persons/{slug}/tasks/new', [PersonTaskController::class, 'new'])->name('persons.tasks.new');
-            Route::post('persons/{slug}/tasks', [PersonTaskController::class, 'create'])->name('persons.tasks.create');
+            Route::get('persons/{slug}/tasks/new', [PersonTaskController::class, 'new'])->name('person.task.new');
+            Route::post('persons/{slug}/tasks', [PersonTaskController::class, 'create'])->name('person.task.create');
             Route::middleware(['task'])->group(function (): void {
-                Route::get('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'edit'])->name('persons.tasks.edit');
-                Route::put('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'update'])->name('persons.tasks.update');
-                Route::put('persons/{slug}/tasks/{task}/toggle', [PersonTaskToggleController::class, 'update'])->name('persons.tasks.toggle');
-                Route::delete('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'destroy'])->name('persons.tasks.destroy');
+                Route::get('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'edit'])->name('person.task.edit');
+                Route::put('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'update'])->name('person.task.update');
+                Route::put('persons/{slug}/tasks/{task}/toggle', [PersonTaskToggleController::class, 'update'])->name('person.task.toggle');
+                Route::delete('persons/{slug}/tasks/{task}', [PersonTaskController::class, 'destroy'])->name('person.task.destroy');
             });
 
             // persons notes
-            Route::get('persons/{slug}/notes', [PersonNoteController::class, 'index'])->name('persons.notes.index');
-            Route::post('persons/{slug}/notes', [PersonNoteController::class, 'create'])->name('persons.notes.create');
+            Route::get('persons/{slug}/notes', [PersonNoteController::class, 'index'])->name('person.note.index');
+            Route::post('persons/{slug}/notes', [PersonNoteController::class, 'create'])->name('person.note.create');
             Route::middleware(['note'])->group(function (): void {
-                Route::get('persons/{slug}/notes/{note}/edit', [PersonNoteController::class, 'edit'])->name('persons.notes.edit');
-                Route::put('persons/{slug}/notes/{note}', [PersonNoteController::class, 'update'])->name('persons.notes.update');
-                Route::delete('persons/{slug}/notes/{note}', [PersonNoteController::class, 'destroy'])->name('persons.notes.destroy');
+                Route::get('persons/{slug}/notes/{note}/edit', [PersonNoteController::class, 'edit'])->name('person.note.edit');
+                Route::put('persons/{slug}/notes/{note}', [PersonNoteController::class, 'update'])->name('person.note.update');
+                Route::delete('persons/{slug}/notes/{note}', [PersonNoteController::class, 'destroy'])->name('person.note.destroy');
             });
 
             // work and passions
-            Route::get('persons/{slug}/work', [PersonWorkController::class, 'index'])->name('persons.work.index');
-            Route::get('persons/{slug}/work/new', [PersonWorkController::class, 'new'])->name('persons.work.new');
-            Route::post('persons/{slug}/work', [PersonWorkController::class, 'create'])->name('persons.work.create');
-            Route::get('persons/{slug}/work/{entry}/edit', [PersonWorkController::class, 'edit'])->name('persons.work.edit');
-            Route::put('persons/{slug}/work/{entry}', [PersonWorkController::class, 'update'])->name('persons.work.update');
-            Route::delete('persons/{slug}/work/{entry}', [PersonWorkController::class, 'destroy'])->name('persons.work.destroy');
+            Route::get('persons/{slug}/work', [PersonWorkController::class, 'index'])->name('person.work.index');
+            Route::get('persons/{slug}/work/new', [PersonWorkController::class, 'new'])->name('person.work.new');
+            Route::post('persons/{slug}/work', [PersonWorkController::class, 'create'])->name('person.work.create');
+            Route::get('persons/{slug}/work/{entry}/edit', [PersonWorkController::class, 'edit'])->name('person.work.edit');
+            Route::put('persons/{slug}/work/{entry}', [PersonWorkController::class, 'update'])->name('person.work.update');
+            Route::delete('persons/{slug}/work/{entry}', [PersonWorkController::class, 'destroy'])->name('person.work.destroy');
 
             // family
-            Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('persons.family.index');
+            Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('person.family.index');
 
             // gifts
-            Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('persons.gifts.index');
-            Route::get('persons/{slug}/gifts/new', [PersonGiftController::class, 'new'])->name('persons.gifts.new');
-            Route::post('persons/{slug}/gifts', [PersonGiftController::class, 'create'])->name('persons.gifts.create');
-            Route::get('persons/{slug}/gifts/tab/{status}', [PersonGiftTabController::class, 'update'])->name('persons.gifts.tab.update');
+            Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');
+            Route::get('persons/{slug}/gifts/new', [PersonGiftController::class, 'new'])->name('person.gift.new');
+            Route::post('persons/{slug}/gifts', [PersonGiftController::class, 'create'])->name('person.gift.create');
+            Route::get('persons/{slug}/gifts/tab/{status}', [PersonGiftTabController::class, 'update'])->name('person.gift.tab.update');
             Route::middleware(['gift'])->group(function (): void {
-                Route::get('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'edit'])->name('persons.gifts.edit');
-                Route::put('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'update'])->name('persons.gifts.update');
-                Route::delete('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'destroy'])->name('persons.gifts.destroy');
+                Route::get('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'edit'])->name('person.gift.edit');
+                Route::put('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'update'])->name('person.gift.update');
+                Route::delete('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'destroy'])->name('person.gift.destroy');
             });
         });
     });

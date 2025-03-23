@@ -53,7 +53,7 @@ class PersonNoteControllerTest extends TestCase
             ->post('/persons/'.$person->slug.'/notes', [
                 'content' => 'Monica is a clean freak',
             ])
-            ->assertRedirectToRoute('persons.notes.index', $person->slug);
+            ->assertRedirectToroute('person.note.index', $person->slug);
 
         $response->assertSessionHas('status', __('Note created'));
 
@@ -102,7 +102,7 @@ class PersonNoteControllerTest extends TestCase
             ->put('/persons/'.$person->slug.'/notes/'.$note->id, [
                 'content' => 'Smelly Cat, Smelly Cat',
             ])
-            ->assertRedirectToRoute('persons.notes.index', $person->slug);
+            ->assertRedirectToroute('person.note.index', $person->slug);
 
         $response->assertSessionHas('status', __('Note updated'));
 
@@ -128,7 +128,7 @@ class PersonNoteControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->delete('/persons/'.$person->slug.'/notes/'.$note->id)
-            ->assertRedirectToRoute('persons.notes.index', $person->slug);
+            ->assertRedirectToroute('person.note.index', $person->slug);
 
         $response->assertSessionHas('status', __('Note deleted'));
         $this->assertDatabaseMissing('notes', [

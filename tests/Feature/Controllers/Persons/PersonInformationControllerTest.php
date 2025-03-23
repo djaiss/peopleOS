@@ -42,7 +42,7 @@ class PersonInformationControllerTest extends TestCase
                 'nationalities' => 'American',
                 'languages' => 'English, Spanish',
             ])
-            ->assertRedirectToRoute('persons.show', $person->slug);
+            ->assertRedirectToRoute('person.show', $person->slug);
 
         $response->assertSessionHas('status', trans('Changes saved'));
 

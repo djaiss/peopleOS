@@ -5,7 +5,7 @@
  */
 ?>
 
-<form x-target="work-history-{{ $workHistory->id }} notifications" x-target.back="work-history-{{ $workHistory->id }}" id="work-history-{{ $workHistory->id }}" action="{{ route('persons.work.update', [$person->slug, $workHistory->id]) }}" method="POST">
+<form x-target="work-history-{{ $workHistory->id }} notifications" x-target.back="work-history-{{ $workHistory->id }}" id="work-history-{{ $workHistory->id }}" action="{{ route('person.work.update', [$person->slug, $workHistory->id]) }}" method="POST">
   @csrf
   @method('PUT')
 
@@ -49,7 +49,7 @@
   </div>
 
   <div class="flex items-center justify-between px-4 pb-4">
-    <x-button.secondary x-target="work-history-{{ $workHistory->id }}" href="{{ route('persons.work.index', $person->slug) }}">
+    <x-button.secondary x-target="work-history-{{ $workHistory->id }}" href="{{ route('person.work.index', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 

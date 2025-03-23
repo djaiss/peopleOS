@@ -29,7 +29,7 @@ class PersonGiftControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get(route('persons.gifts.index', $person->slug));
+            ->get(route('person.gift.index', $person->slug));
 
         $response->assertStatus(200);
         $response->assertViewIs('persons.gifts.index');
@@ -47,7 +47,7 @@ class PersonGiftControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get(route('persons.gifts.new', $person->slug));
+            ->get(route('person.gift.new', $person->slug));
 
         $response->assertStatus(200);
         $response->assertViewIs('persons.gifts.partials.gift-add');
@@ -63,7 +63,7 @@ class PersonGiftControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post(route('persons.gifts.create', $person->slug), [
+            ->post(route('person.gift.create', $person->slug), [
                 'status' => GiftStatus::IDEA->value,
                 'name' => 'PlayStation 5',
                 'occasion' => 'Birthday',
@@ -72,7 +72,7 @@ class PersonGiftControllerTest extends TestCase
                 'gifted_at' => '2024-03-15',
             ]);
 
-        $response->assertRedirect(route('persons.gifts.index', $person->slug));
+        $response->assertRedirect(route('person.gift.index', $person->slug));
         $response->assertSessionHas('status', trans('The gift has been created'));
 
         $this->assertDatabaseHas('gifts', [
@@ -99,7 +99,7 @@ class PersonGiftControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get(route('persons.gifts.edit', [
+            ->get(route('person.gift.edit', [
                 'slug' => $person->slug,
                 'gift' => $gift->id,
             ]));
@@ -124,7 +124,7 @@ class PersonGiftControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put(route('persons.gifts.update', [
+            ->put(route('person.gift.update', [
                 'slug' => $person->slug,
                 'gift' => $gift->id,
             ]), [
@@ -136,7 +136,7 @@ class PersonGiftControllerTest extends TestCase
                 'date' => 'known',
             ]);
 
-        $response->assertRedirect(route('persons.gifts.index', $person->slug));
+        $response->assertRedirect(route('person.gift.index', $person->slug));
         $response->assertSessionHas('status', trans('The gift has been updated'));
 
         $this->assertDatabaseHas('gifts', [
@@ -164,12 +164,12 @@ class PersonGiftControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete(route('persons.gifts.destroy', [
+            ->delete(route('person.gift.destroy', [
                 'slug' => $person->slug,
                 'gift' => $gift->id,
             ]));
 
-        $response->assertRedirect(route('persons.gifts.index', $person->slug));
+        $response->assertRedirect(route('person.gift.index', $person->slug));
         $response->assertSessionHas('status', __('Gift deleted'));
 
         $this->assertDatabaseMissing('gifts', [

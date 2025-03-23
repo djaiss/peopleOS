@@ -13,7 +13,7 @@
       <h2 class="text-lg font-semibold text-gray-900">{{ __('Encounters') }}</h2>
     </div>
     <div class="flex items-center gap-2">
-      <a x-target="encounters-section" href="{{ route('persons.encounters.toggle', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
+      <a x-target="encounters-section" href="{{ route('person.encounter.toggle', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
         <span x-text="encountersExpanded ? '{{ __('Show less') }}' : '{{ __('Show more') }}'"></span>
         <x-lucide-chevron-down x-show="!encountersExpanded" class="h-4 w-4" />
         <x-lucide-chevron-up x-show="encountersExpanded" class="h-4 w-4" />
@@ -38,7 +38,7 @@
       <p class="mb-3 text-sm text-gray-600">{{ __('Have you seen :name lately?', ['name' => $person->first_name]) }}</p>
 
       <div class="flex flex-wrap gap-2">
-        <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('person.encounter.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now() }}" />
           <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
@@ -46,7 +46,7 @@
           </button>
         </form>
 
-        <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('person.encounter.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDay() }}" />
           <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
@@ -54,7 +54,7 @@
           </button>
         </form>
 
-        <form x-target="encounters-section" action="{{ route('persons.encounters.create', $person->slug) }}" method="POST" class="inline">
+        <form x-target="encounters-section" action="{{ route('person.encounter.create', $person->slug) }}" method="POST" class="inline">
           @csrf
           <input type="hidden" name="seen_at" value="{{ now()->subDays(2) }}" />
           <button type="submit" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
@@ -62,7 +62,7 @@
           </button>
         </form>
 
-        <a href="{{ route('persons.encounters.new', $person->slug) }}" x-target="add-encounter" type="button" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
+        <a href="{{ route('person.encounter.new', $person->slug) }}" x-target="add-encounter" type="button" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-600 ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
           <x-lucide-calendar-plus class="h-4 w-4" />
           {{ __('Custom date') }}
         </a>
@@ -86,7 +86,7 @@
               @if ($encounter->context)
                 <p class="text-sm font-medium text-gray-900">{{ $encounter->context }}</p>
               @else
-                <a x-target="encounter-{{ $encounter['id'] }}" href="{{ route('persons.encounters.edit', [$person->slug, $encounter['id']]) }}" class="border-b border-dashed border-gray-600 text-sm font-medium text-gray-600">{{ __('Add context') }}</a>
+                <a x-target="encounter-{{ $encounter['id'] }}" href="{{ route('person.encounter.edit', [$person->slug, $encounter['id']]) }}" class="border-b border-dashed border-gray-600 text-sm font-medium text-gray-600">{{ __('Add context') }}</a>
               @endif
 
               <p class="text-sm text-gray-500">{{ $encounter->seen_at->diffForHumans() }}</p>
@@ -95,14 +95,14 @@
 
           <!-- actions -->
           <div class="flex gap-2">
-            <x-button.invisible x-target="encounter-{{ $encounter['id'] }}" href="{{ route('persons.encounters.edit', [$person->slug, $encounter['id']]) }}" class="hidden text-sm group-hover:block">
+            <x-button.invisible x-target="encounter-{{ $encounter['id'] }}" href="{{ route('person.encounter.edit', [$person->slug, $encounter['id']]) }}" class="hidden text-sm group-hover:block">
               {{ __('Edit') }}
             </x-button.invisible>
 
             <form x-target="encounter-{{ $encounter['id'] }}" x-on:ajax:before="
               confirm('Are you sure you want to proceed? This can not be undone.') ||
                 $event.preventDefault()
-            " action="{{ route('persons.encounters.destroy', [$person->slug, $encounter['id']]) }}" method="POST">
+            " action="{{ route('person.encounter.destroy', [$person->slug, $encounter['id']]) }}" method="POST">
               @csrf
               @method('DELETE')
 

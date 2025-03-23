@@ -95,7 +95,7 @@ class PersonGiftController extends Controller
             status: $validated['status'],
         ))->execute();
 
-        return redirect()->route('persons.gifts.index', $person->slug)
+        return redirect()->route('person.gift.index', $person->slug)
             ->with('status', trans('The gift has been created'));
     }
 
@@ -144,7 +144,7 @@ class PersonGiftController extends Controller
             status: $validated['status'],
         ))->execute();
 
-        return redirect()->route('persons.gifts.index', $person->slug)
+        return redirect()->route('person.gift.index', $person->slug)
             ->with('status', trans('The gift has been updated'));
     }
 
@@ -158,7 +158,7 @@ class PersonGiftController extends Controller
             gift: $gift,
         ))->execute();
 
-        return redirect()->route('persons.gifts.index', $person->slug)
+        return redirect()->route('person.gift.index', $person->slug)
             ->with('status', __('Gift deleted'));
     }
 }

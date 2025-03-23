@@ -40,7 +40,7 @@ class PersonSendTestReminderControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->post('/persons/'.$person->slug.'/reminders/'.$specialDate->id.'/test')
-            ->assertRedirectToRoute('persons.reminders.index', $person->slug);
+            ->assertRedirectToroute('person.reminder.index', $person->slug);
 
         $response->assertSessionHas('status', __('Mail sent'));
 

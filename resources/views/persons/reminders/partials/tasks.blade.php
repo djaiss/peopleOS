@@ -13,7 +13,7 @@
   </div>
 
   <div class="flex items-center gap-2">
-    <a x-target="add-task-form" href="{{ route('persons.tasks.new', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-amber-200 px-2 py-1 text-sm font-medium text-amber-600 hover:bg-amber-300">
+    <a x-target="add-task-form" href="{{ route('person.task.new', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-amber-200 px-2 py-1 text-sm font-medium text-amber-600 hover:bg-amber-300">
       <x-lucide-plus class="mr-1 h-3 w-3" />
       {{ __('Add') }}
     </a>
@@ -30,7 +30,7 @@
         <div class="flex gap-2">
           <!-- checkbox -->
           <div class="flex h-6 shrink-0 items-center">
-            <form x-target="task-{{ $task['id'] }}" action="{{ route('persons.tasks.toggle', [$person->slug, $task['id']]) }}" method="POST" class="group grid size-4 grid-cols-1">
+            <form x-target="task-{{ $task['id'] }}" action="{{ route('person.task.toggle', [$person->slug, $task['id']]) }}" method="POST" class="group grid size-4 grid-cols-1">
               @csrf
               @method('PUT')
               <input @checked($task['is_completed']) type="checkbox" x-on:change="$el.form.requestSubmit()" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
@@ -38,7 +38,7 @@
           </div>
 
           <!-- task details -->
-          <a x-target="task-{{ $task['id'] }}" href="{{ route('persons.tasks.edit', [$person->slug, $task['id']]) }}" class="flex items-center gap-2 text-sm/6">
+          <a x-target="task-{{ $task['id'] }}" href="{{ route('person.task.edit', [$person->slug, $task['id']]) }}" class="flex items-center gap-2 text-sm/6">
             @if ($task['task_category'])
               <span class="{{ $task['task_category']['color'] }} rounded-md px-2 text-gray-500">{{ $task['task_category']['name'] }}</span>
             @endif

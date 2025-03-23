@@ -5,7 +5,7 @@
  */
 ?>
 
-<form x-target="note-{{ $note->id }}" id="note-{{ $note->id }}" action="{{ route('persons.notes.update', ['slug' => $person->slug, 'note' => $note->id]) }}" method="POST" class="mb-4 rounded-lg border border-gray-200 bg-white p-4">
+<form x-target="note-{{ $note->id }}" id="note-{{ $note->id }}" action="{{ route('person.note.update', ['slug' => $person->slug, 'note' => $note->id]) }}" method="POST" class="mb-4 rounded-lg border border-gray-200 bg-white p-4">
   @csrf
   @method('PUT')
 
@@ -15,7 +15,7 @@
   </div>
 
   <div class="flex items-center justify-between">
-    <x-button.secondary x-target="note-{{ $note->id }}" href="{{ route('persons.notes.index', $person->slug) }}">
+    <x-button.secondary x-target="note-{{ $note->id }}" href="{{ route('person.note.index', $person->slug) }}">
       {{ __('Cancel') }}
     </x-button.secondary>
 
