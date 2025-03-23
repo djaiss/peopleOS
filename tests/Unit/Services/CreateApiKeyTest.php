@@ -49,5 +49,10 @@ class CreateApiKeyTest extends TestCase
         Mail::assertQueued(ApiKeyCreated::class, function (ApiKeyCreated $job): bool {
             return $job->label === 'Test API Key';
         });
+
+        $this->assertDatabaseHas('accounts', [
+            'id' => $user->account_id,
+            'emails_sent' => 1,
+        ]);
     }
 }
