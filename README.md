@@ -1,3 +1,18 @@
+<p align="center">
+  <a href="https://github.com/djaiss/peopleos">
+   <img src="docs/github/background-github.png" alt="Logo">
+  </a>
+
+  <p align="center">
+    A simple, bullshit and AI free, open-source personal CRM.
+  </p>
+
+  <p align="center">
+    [![codecov](https://codecov.io/gh/djaiss/peopleOS/graph/badge.svg?token=7aoDgGFZQr)](https://codecov.io/gh/djaiss/peopleOS)
+    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  </p>
+</p>
+
 ## What is this?
 
 PeopleOS is the spiritual successor of Monica, the personal CRM.
