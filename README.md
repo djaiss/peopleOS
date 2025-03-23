@@ -3,10 +3,8 @@
    <img src="docs/github/background-github.png" alt="Logo">
   </a>
 
-  <h3 align="center">PeopleOS</h3>
-
   <p align="center">
-    An open-source personal CRM.
+    A simple, bullshit and AI free, open-source personal CRM.
   </p>
 
   <p align="center">
