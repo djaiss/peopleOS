@@ -1,3 +1,15 @@
+<p align="center">
+  <a href="https://github.com/djaiss/peopleos">
+   <img src="https://private-user-images.githubusercontent.com/61099/425857712-0f8f4e3b-289c-4efb-a3bb-85e4034b877f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI3NTc3NjAsIm5iZiI6MTc0Mjc1NzQ2MCwicGF0aCI6Ii82MTA5OS80MjU4NTc3MTItMGY4ZjRlM2ItMjg5Yy00ZWZiLWEzYmItODVlNDAzNGI4NzdmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIzVDE5MTc0MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU5NGNlZGE1YTEzNTAwNGQ5OWUzNjhlMGVlNjUzZGE0ZTI0YzIzMzc3OTg5OWFjNjE2MzQ3OTYxNDZkZDExN2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.b619vabPlNcWNHPKqZfBvvjJvIR5sq8IVT_zlrQSx9Q" alt="Logo">
+  </a>
+
+  <h3 align="center">PeopleOS</h3>
+
+  <p align="center">
+    An open-source personal CRM.
+  </p>
+</p>
+
 ## What is this?
 
 PeopleOS is the spiritual successor of Monica, the personal CRM.
