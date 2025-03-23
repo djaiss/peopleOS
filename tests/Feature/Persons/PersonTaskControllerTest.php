@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Persons;
+namespace Tests\Feature\Controllers\Persons;
 
 use App\Models\Person;
 use App\Models\Task;
