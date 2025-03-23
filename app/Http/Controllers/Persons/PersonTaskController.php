@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Persons;
 use App\Http\Controllers\Controller;
 use App\Models\TaskCategory;
 use App\Services\CreateTask;
+use App\Services\DestroyTask;
 use App\Services\UpdateTask;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -94,5 +95,19 @@ class PersonTaskController extends Controller
 
         return redirect()->route('persons.reminders.index', $person->slug)
             ->with('status', trans('The task has been updated'));
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        $person = $request->attributes->get('person');
+        $task = $request->attributes->get('task');
+
+        (new DestroyTask(
+            user: Auth::user(),
+            task: $task,
+        ))->execute();
+
+        return redirect()->route('persons.reminders.index', $person->slug)
+            ->with('status', __('Task deleted'));
     }
 }
