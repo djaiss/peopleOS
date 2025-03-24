@@ -25,5 +25,6 @@ class AdministrationPersonalizationControllerTest extends TestCase
         $response->assertViewIs('administration.personalization.index');
         $response->assertViewHas('taskCategories');
         $response->assertViewHas('genders');
+        $response->assertViewHas('journalTemplates');
     }
 }
