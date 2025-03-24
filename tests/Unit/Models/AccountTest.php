@@ -7,6 +7,7 @@ namespace Tests\Unit\Models;
 use App\Models\Account;
 use App\Models\Encounter;
 use App\Models\Gender;
+use App\Models\JournalTemplate;
 use App\Models\Log;
 use App\Models\Person;
 use App\Models\Task;
@@ -95,6 +96,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->tasks()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_journal_templates(): void
+    {
+        $account = Account::factory()->create();
+        JournalTemplate::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->journalTemplates()->exists());
     }
 
     #[Test]
