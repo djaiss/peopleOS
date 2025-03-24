@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
+use App\Models\JournalTemplate;
 use App\Models\TaskCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -30,9 +31,17 @@ class AdministrationPersonalizationController extends Controller
                 'color' => $taskCategory->color,
             ]);
 
+        $journalTemplates = JournalTemplate::where('account_id', Auth::user()->account_id)
+            ->get()
+            ->map(fn (JournalTemplate $journalTemplate): array => [
+                'id' => $journalTemplate->id,
+                'name' => $journalTemplate->name,
+            ]);
+
         return view('administration.personalization.index', [
             'genders' => $genders,
             'taskCategories' => $taskCategories,
+            'journalTemplates' => $journalTemplates,
         ]);
     }
 }

@@ -95,6 +95,14 @@ class Account extends Model
     }
 
     /**
+     * Get the journal templates associated with the account.
+     */
+    public function journalTemplates(): HasMany
+    {
+        return $this->hasMany(JournalTemplate::class);
+    }
+
+    /**
      * Check if the account is in trial.
      */
     public function isInTrial(): bool
