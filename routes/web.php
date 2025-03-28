@@ -8,6 +8,7 @@ use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
+use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationTaskCategoryController;
@@ -184,6 +185,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::get('administration/personalization/task-categories/{taskCategory}/edit', [AdministrationTaskCategoryController::class, 'edit'])->name('administration.personalization.task-categories.edit');
     Route::put('administration/personalization/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'update'])->name('administration.personalization.task-categories.update');
     Route::delete('administration/personalization/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'destroy'])->name('administration.personalization.task-categories.destroy');
+
+    // journal templates
+    Route::get('administration/personalization/journal-templates/new', [AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
+    Route::post('administration/personalization/journal-templates', [AdministrationPersonalizationJournalTemplateController::class, 'create'])->name('administration.personalization.journal-templates.create');
+    Route::get('administration/personalization/journal-templates/{journalTemplate}/edit', [AdministrationPersonalizationJournalTemplateController::class, 'edit'])->name('administration.personalization.journal-templates.edit');
+    Route::put('administration/personalization/journal-templates/{journalTemplate}', [AdministrationPersonalizationJournalTemplateController::class, 'update'])->name('administration.personalization.journal-templates.update');
+    Route::delete('administration/personalization/journal-templates/{journalTemplate}', [AdministrationPersonalizationJournalTemplateController::class, 'destroy'])->name('administration.personalization.journal-templates.destroy');
 
     // account
     Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');

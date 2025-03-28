@@ -13,10 +13,14 @@ class ValidateYamlStructure
 
     private const int MAX_COLUMNS = 3;
 
-    public function execute(string $yamlContent): array
+    public function __construct(
+        private readonly string $yamlContent,
+    ) {}
+
+    public function execute(): array
     {
         try {
-            $data = Yaml::parse($yamlContent);
+            $data = Yaml::parse($this->yamlContent);
         } catch (ParseException) {
             return ['valid' => false, 'error' => 'Invalid YAML format'];
         }

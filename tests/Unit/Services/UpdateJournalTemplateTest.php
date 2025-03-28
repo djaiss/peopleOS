@@ -24,6 +24,19 @@ class UpdateJournalTemplateTest extends TestCase
     {
         Queue::fake();
 
+        $validYaml = <<<'YAML'
+template:
+  name: "Daily Reflection"
+  columns:
+    - name: "Morning"
+      questions:
+        - name: "Sleep quality"
+          answers:
+            type: "range"
+            range: [1, 5]
+            comment_allowed: true
+YAML;
+
         $user = User::factory()->create();
         $journalTemplate = JournalTemplate::factory()->create([
             'account_id' => $user->account_id,
@@ -35,7 +48,7 @@ class UpdateJournalTemplateTest extends TestCase
             user: $user,
             journalTemplate: $journalTemplate,
             name: 'New name',
-            content: 'New content',
+            content: $validYaml,
         ))->execute();
 
         $this->assertDatabaseHas('journal_templates', [
@@ -44,7 +57,7 @@ class UpdateJournalTemplateTest extends TestCase
         ]);
 
         $this->assertEquals('New name', $updatedTemplate->name);
-        $this->assertEquals('New content', $updatedTemplate->content);
+        $this->assertEquals($validYaml, $updatedTemplate->content);
 
         Queue::assertPushed(UpdateUserLastActivityDate::class);
         Queue::assertPushed(LogUserAction::class, function ($job) {
