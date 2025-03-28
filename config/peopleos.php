@@ -83,5 +83,8 @@ return [
         'task_update' => 'Task update',
         'task_toggle' => 'Task toggle',
         'task_deletion' => 'Task deletion',
+        'journal_template_creation' => 'Journal template creation',
+        'journal_template_update' => 'Journal template update',
+        'journal_template_deletion' => 'Journal template deletion',
     ],
 ];
