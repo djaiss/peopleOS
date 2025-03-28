@@ -8,6 +8,7 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\JournalTemplate;
 use App\Models\User;
+use Exception;
 
 class CreateJournalTemplate
 {
@@ -31,7 +32,11 @@ class CreateJournalTemplate
 
     private function validate(): void
     {
-        (new ValidateYamlStructure($this->content))->execute();
+        $validation = (new ValidateYamlStructure($this->content))->execute();
+
+        if (! $validation['valid']) {
+            throw new Exception($validation['error']);
+        }
     }
 
     private function create(): void

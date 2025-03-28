@@ -26,7 +26,7 @@
     </x-button.secondary>
   </div>
 
-  <div id="category-list" class="divide-y divide-gray-200">
+  <div id="journal-template-list" class="divide-y divide-gray-200">
     @forelse ($journalTemplates as $template)
       <div id="journal-template-{{ $template['id'] }}" class="group flex items-center justify-between p-3 transition-colors duration-200 last:rounded-b-lg">
         <div class="flex items-center gap-2">
@@ -34,13 +34,14 @@
         </div>
 
         <div class="flex gap-2">
-          <x-button.invisible x-target="journal-template-{{ $template['id'] }}" href="{{ route('administration.personalization.journal-templates.edit', $template['id']) }}" class="hidden text-sm group-hover:block">
+          <x-button.invisible href="{{ route('administration.personalization.journal-templates.edit', $template['id']) }}" class="hidden text-sm group-hover:block">
             {{ __('Edit') }}
           </x-button.invisible>
 
-          <form x-target="journal-template-{{ $template['id'] }}" x-on:ajax:before="
-            confirm('Are you sure you want to proceed? This can not be undone.') ||
-              $event.preventDefault()
+          <form x-target="journal-template-{{ $template['id'] }} journal-template-list" x-on:ajax:before="
+            confirm(
+              '{{ __('Are you sure you want to proceed? This can not be undone.') }}',
+            ) || $event.preventDefault()
           " action="{{ route('administration.personalization.journal-templates.destroy', $template['id']) }}" method="POST">
             @csrf
             @method('DELETE')

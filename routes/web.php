@@ -189,6 +189,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     // journal templates
     Route::get('administration/personalization/journal-templates/new', [AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
     Route::post('administration/personalization/journal-templates', [AdministrationPersonalizationJournalTemplateController::class, 'create'])->name('administration.personalization.journal-templates.create');
+    Route::get('administration/personalization/journal-templates/{journalTemplate}/edit', [AdministrationPersonalizationJournalTemplateController::class, 'edit'])->name('administration.personalization.journal-templates.edit');
+    Route::put('administration/personalization/journal-templates/{journalTemplate}', [AdministrationPersonalizationJournalTemplateController::class, 'update'])->name('administration.personalization.journal-templates.update');
+    Route::delete('administration/personalization/journal-templates/{journalTemplate}', [AdministrationPersonalizationJournalTemplateController::class, 'destroy'])->name('administration.personalization.journal-templates.destroy');
 
     // account
     Route::get('administration/account', [AdministrationAccountController::class, 'index'])->name('administration.account.index');

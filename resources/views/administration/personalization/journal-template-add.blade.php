@@ -26,13 +26,13 @@
 
             <div class="p-6">
               <x-input-error :messages="$errors->get('name')" class="mt-2" />
-              <x-input-error :messages="$errors->get('content')" class="mt-2" />
+              <x-input-error :messages="$errors->get('content')" class="mt-2 mb-4" />
 
               <x-input-label for="name" :value="__('Name')" class="mb-1" />
-              <x-text-input id="name" class="mt-1 mb-4" type="text" name="name" required />
+              <x-text-input id="name" class="mt-1 mb-4" value="{{ old('name') }}" type="text" name="name" required />
 
               <x-input-label for="content" :value="__('Content')" class="mb-1" />
-              <x-textarea id="content" name="content" class="w-full" :height="'min-h-[600px]'" required />
+              <x-textarea id="content" name="content" class="w-full" :height="'min-h-[600px]'" required>{{ old('content') }}</x-textarea>
               <p class="mt-1 text-xs text-gray-600">{{ __('This should be a valid YAML file.') }}</p>
             </div>
           </div>
@@ -44,7 +44,7 @@
                 {{ __('Save') }}
               </x-button.primary>
 
-              <x-button.secondary class="w-full text-center">
+              <x-button.secondary href="{{ route('administration.personalization.index') }}" class="w-full text-center">
                 {{ __('Cancel') }}
               </x-button.secondary>
             </div>
