@@ -21,11 +21,17 @@ class CreateJournalTemplate
 
     public function execute(): JournalTemplate
     {
+        $this->validate();
         $this->create();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
         return $this->journalTemplate;
+    }
+
+    private function validate(): void
+    {
+        (new ValidateYamlStructure($this->content))->execute();
     }
 
     private function create(): void

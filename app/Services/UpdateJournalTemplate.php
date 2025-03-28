@@ -34,6 +34,8 @@ class UpdateJournalTemplate
         if ($this->user->account_id !== $this->journalTemplate->account_id) {
             throw new ModelNotFoundException();
         }
+
+        (new ValidateYamlStructure($this->content))->execute();
     }
 
     private function update(): void

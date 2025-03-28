@@ -34,7 +34,7 @@ template:
             options: ["High", "Medium", "Low"]
             comment_allowed: false
 YAML;
-        $result = (new ValidateYamlStructure())->execute($this->validYaml);
+        $result = (new ValidateYamlStructure($this->validYaml))->execute();
         $this->assertTrue($result['valid']);
     }
 
@@ -47,7 +47,7 @@ template:
     syntax:
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($invalidYaml);
+        $result = (new ValidateYamlStructure($invalidYaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Invalid YAML format', $result['error']);
     }
@@ -56,7 +56,7 @@ YAML;
     public function it_fails_without_template_root(): void
     {
         $yaml = 'name: "Test"';
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
 
         $this->assertFalse($result['valid']);
         $this->assertEquals('Missing template root element', $result['error']);
@@ -70,7 +70,7 @@ template:
   columns: []
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Template name is required', $result['error']);
     }
@@ -104,7 +104,7 @@ template:
             type: "textarea"
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Maximum 3 columns allowed', $result['error']);
     }
@@ -122,7 +122,7 @@ template:
             type: "textarea"
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Column 1 missing name', $result['error']);
     }
@@ -138,7 +138,7 @@ template:
       questions: []
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Column 1 must have at least one question', $result['error']);
     }
@@ -157,7 +157,7 @@ template:
             type: "invalid_type"
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals("Invalid answer type 'invalid_type' in column 1, question 1", $result['error']);
     }
@@ -176,7 +176,7 @@ template:
             type: "choice"
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Choice type requires options array in column 1, question 1', $result['error']);
     }
@@ -195,7 +195,7 @@ template:
             type: "range"
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Range type requires valid range array [min, max] in column 1, question 1', $result['error']);
     }
@@ -215,7 +215,7 @@ template:
             range: [1]
 YAML;
 
-        $result = (new ValidateYamlStructure())->execute($yaml);
+        $result = (new ValidateYamlStructure($yaml))->execute();
         $this->assertFalse($result['valid']);
         $this->assertEquals('Range type requires valid range array [min, max] in column 1, question 1', $result['error']);
     }

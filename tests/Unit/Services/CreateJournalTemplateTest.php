@@ -28,10 +28,23 @@ class CreateJournalTemplateTest extends TestCase
         $user->account_id = $account->id;
         $user->save();
 
+        $validYaml = <<<'YAML'
+template:
+  name: "Daily Reflection"
+  columns:
+    - name: "Morning"
+      questions:
+        - name: "Sleep quality"
+          answers:
+            type: "range"
+            range: [1, 5]
+            comment_allowed: true
+YAML;
+
         $journalTemplate = (new CreateJournalTemplate(
             user: $user,
             name: 'Test template',
-            content: 'Test content',
+            content: $validYaml,
         ))->execute();
 
         $this->assertDatabaseHas('journal_templates', [
@@ -40,7 +53,7 @@ class CreateJournalTemplateTest extends TestCase
         ]);
 
         $this->assertEquals('Test template', $journalTemplate->name);
-        $this->assertEquals('Test content', $journalTemplate->content);
+        $this->assertEquals($validYaml, $journalTemplate->content);
 
         Queue::assertPushed(UpdateUserLastActivityDate::class);
         Queue::assertPushed(LogUserAction::class, function ($job) {
