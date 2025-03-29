@@ -7,7 +7,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Symfony\Component\Yaml\Yaml;
 
+/**
+ * A journal template is a template for a journal entry.
+ * It has a name and a content, which is a YAML file.
+ * The YAML file contains a number of columns, and each column has a number of questions.
+ */
 class JournalTemplate extends Model
 {
     use HasFactory;
@@ -44,5 +50,34 @@ class JournalTemplate extends Model
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
+    }
+
+    /**
+     * Get the details of the journal template:
+     * - number of columns
+     * - number of questions
+     */
+    public function getDetails(): array
+    {
+        $content = Yaml::parse($this->content);
+
+        if (!isset($content['template']['columns'])) {
+            return [
+                'columns' => 0,
+                'questions' => 0,
+            ];
+        }
+
+        $columns = count($content['template']['columns']);
+        $questions = 0;
+
+        foreach ($content['template']['columns'] as $column) {
+            $questions += count($column['questions'] ?? []);
+        }
+
+        return [
+            'columns' => $columns,
+            'questions' => $questions,
+        ];
     }
 }

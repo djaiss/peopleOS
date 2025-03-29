@@ -24,4 +24,41 @@ class JournalTemplateTest extends TestCase
 
         $this->assertTrue($journalTemplate->account()->exists());
     }
+
+    #[Test]
+    public function it_gets_the_details_of_the_journal_template(): void
+    {
+        $yaml = <<<'YAML'
+        template:
+          columns:
+            - name: "Morning"
+              questions:
+                - name: "Sleep quality"
+                  answers:
+                    type: "range"
+                    range: [1, 5]
+                    comment_allowed: true
+                - name: "Sleep quality"
+                  answers:
+                    type: "range"
+                    range: [1, 5]
+                    comment_allowed: true
+            - name: "Afternoon"
+              questions:
+                - name: "Sleep quality"
+                  answers:
+                    type: "range"
+                    range: [1, 5]
+                    comment_allowed: true
+        YAML;
+
+        $journalTemplate = JournalTemplate::factory()->create([
+            'content' => $yaml,
+        ]);
+
+        $this->assertEquals([
+            'columns' => 2,
+            'questions' => 3,
+        ], $journalTemplate->getDetails());
+    }
 }

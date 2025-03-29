@@ -61,7 +61,7 @@
             <div class="flex items-center gap-2">
               <x-lucide-settings class="size-4 min-w-3" />
               <span>
-                {{ __('Account administration') }}
+                {{ __('Administration') }}
               </span>
             </div>
           </div>
