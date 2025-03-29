@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
+use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
@@ -155,6 +156,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
                 Route::delete('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'destroy'])->name('person.gift.destroy');
             });
         });
+
+        // journal
+        Route::get('journal', [JournalController::class, 'index'])->name('journal.index');
     });
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -61,7 +62,7 @@ class JournalTemplate extends Model
     {
         try {
             $content = Yaml::parse($this->content);
-        } catch (\Exception $e) {
+        } catch (Exception) {
             return [
                 'columns' => 0,
                 'questions' => 0,
