@@ -61,7 +61,7 @@ class JournalTemplate extends Model
     {
         $content = Yaml::parse($this->content);
 
-        if (!isset($content['template']['columns'])) {
+        if (! isset($content['template']['columns'])) {
             return [
                 'columns' => 0,
                 'questions' => 0,
