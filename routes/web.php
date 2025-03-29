@@ -71,6 +71,7 @@ Route::middleware(['marketing'])->group(
         Route::get('/docs/api/task-categories', [MarketingDocsController::class, 'taskCategories'])->name('marketing.docs.api.task-categories');
         Route::get('/docs/api/gifts', [MarketingDocsController::class, 'gifts'])->name('marketing.docs.api.gifts');
         Route::get('/docs/api/tasks', [MarketingDocsController::class, 'tasks'])->name('marketing.docs.api.tasks');
+        Route::get('/docs/api/journals', [MarketingDocsController::class, 'journals'])->name('marketing.docs.api.journals');
     }
 );
 
