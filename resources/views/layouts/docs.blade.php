@@ -69,6 +69,9 @@
               <div>
                 <a href="{{ route('marketing.docs.api.task-categories') }}" class="{{ request()->routeIs('marketing.docs.api.task-categories') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Task categories') }}</a>
               </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.journals') }}" class="{{ request()->routeIs('marketing.docs.api.journals') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Journals') }}</a>
+              </div>
             </div>
 
             <!-- persons -->

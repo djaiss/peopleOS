@@ -68,4 +68,9 @@ class MarketingDocsController extends Controller
     {
         return view('marketing.docs.api.tasks');
     }
+
+    public function journals(): View
+    {
+        return view('marketing.docs.api.journals');
+    }
 }
