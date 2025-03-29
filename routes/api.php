@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController
 use App\Http\Controllers\Api\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Administration\MeTimezoneController;
+use App\Http\Controllers\Api\Journal\JournalController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonGiftController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
@@ -31,7 +32,7 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
 
     Route::put('tasks/{task}/toggle', [ToggleTaskController::class, 'update']);
 
-    Route::middleware(['person.api'])->group(function (): void {
+    Route::middleware(['person.api', 'subscription'])->group(function (): void {
         Route::get('persons/{person}', [PersonController::class, 'show']);
         Route::put('persons/{person}', [PersonController::class, 'update']);
         Route::delete('persons/{person}', [PersonController::class, 'destroy']);
@@ -70,6 +71,17 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::get('persons/{person}/tasks/{task}', [PersonTaskController::class, 'show']);
             Route::put('persons/{person}/tasks/{task}', [PersonTaskController::class, 'update']);
             Route::delete('persons/{person}/tasks/{task}', [PersonTaskController::class, 'destroy']);
+        });
+    });
+
+    // journal
+    Route::middleware(['subscription'])->group(function (): void {
+        Route::get('journals', [JournalController::class, 'index']);
+        Route::post('journals', [JournalController::class, 'create']);
+        Route::middleware(['journal'])->group(function (): void {
+            Route::get('journals/{journal}', [JournalController::class, 'show']);
+            Route::put('journals/{journal}', [JournalController::class, 'update']);
+            Route::delete('journals/{journal}', [JournalController::class, 'destroy']);
         });
     });
 
