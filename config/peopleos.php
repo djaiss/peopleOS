@@ -86,5 +86,8 @@ return [
         'journal_template_creation' => 'Journal template creation',
         'journal_template_update' => 'Journal template update',
         'journal_template_deletion' => 'Journal template deletion',
+        'journal_creation' => 'Journal creation',
+        'journal_update' => 'Journal update',
+        'journal_deletion' => 'Journal deletion',
     ],
 ];
