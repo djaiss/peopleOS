@@ -36,6 +36,8 @@ class AdministrationPersonalizationController extends Controller
             ->map(fn (JournalTemplate $journalTemplate): array => [
                 'id' => $journalTemplate->id,
                 'name' => $journalTemplate->name,
+                'columns' => $journalTemplate->getDetails()['columns'],
+                'questions' => $journalTemplate->getDetails()['questions'],
             ]);
 
         return view('administration.personalization.index', [

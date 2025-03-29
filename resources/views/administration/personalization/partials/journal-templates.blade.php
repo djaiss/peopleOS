@@ -16,9 +16,9 @@
   <!-- nb of categories + action -->
   <div id="add-category-form" class="flex items-center justify-between rounded-t-lg border-b border-gray-200 p-3 last:rounded-b-lg last:border-b-0 hover:bg-blue-50">
     @if ($journalTemplates->isEmpty())
-      <p class="text-sm text-zinc-500">{{ __('No categories created') }}</p>
+      <p class="text-sm text-zinc-500">{{ __('No templates created') }}</p>
     @else
-      <p class="text-sm text-zinc-500">{{ __(':count category(s)', ['count' => $journalTemplates->count()]) }}</p>
+      <p class="text-sm text-zinc-500">{{ __(':count template(s)', ['count' => $journalTemplates->count()]) }}</p>
     @endif
 
     <x-button.secondary href="{{ route('administration.personalization.journal-templates.new') }}" class="mr-2 text-sm">
@@ -31,6 +31,7 @@
       <div id="journal-template-{{ $template['id'] }}" class="group flex items-center justify-between p-3 transition-colors duration-200 last:rounded-b-lg">
         <div class="flex items-center gap-2">
           <p class="border border-transparent py-1 text-sm font-semibold">{{ $template['name'] }}</p>
+          <p class="text-sm text-zinc-500">{{ __(':columns columns, :questions questions total', ['columns' => $template['columns'], 'questions' => $template['questions']]) }}</p>
         </div>
 
         <div class="flex gap-2">
