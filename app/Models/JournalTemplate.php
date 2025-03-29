@@ -59,9 +59,9 @@ class JournalTemplate extends Model
      */
     public function getDetails(): array
     {
-        $content = Yaml::parse($this->content);
-
-        if (! isset($content['template']['columns'])) {
+        try {
+            $content = Yaml::parse($this->content);
+        } catch (\Exception $e) {
             return [
                 'columns' => 0,
                 'questions' => 0,

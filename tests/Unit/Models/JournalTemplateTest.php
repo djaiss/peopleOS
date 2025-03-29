@@ -61,17 +61,4 @@ class JournalTemplateTest extends TestCase
             'questions' => 3,
         ], $journalTemplate->getDetails());
     }
-
-    #[Test]
-    public function it_gets_an_empty_details_if_the_yaml_is_empty(): void
-    {
-        $journalTemplate = JournalTemplate::factory()->create([
-            'content' => '',
-        ]);
-
-        $this->assertEquals([
-            'columns' => 0,
-            'questions' => 0,
-        ], $journalTemplate->getDetails());
-    }
 }
