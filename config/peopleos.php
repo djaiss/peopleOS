@@ -89,5 +89,8 @@ return [
         'journal_creation' => 'Journal creation',
         'journal_update' => 'Journal update',
         'journal_deletion' => 'Journal deletion',
+        'entry_creation' => 'Entry creation',
+        'entry_update' => 'Entry update',
+        'entry_deletion' => 'Entry deletion',
     ],
 ];

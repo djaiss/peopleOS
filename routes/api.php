@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController
 use App\Http\Controllers\Api\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Administration\MeTimezoneController;
+use App\Http\Controllers\Api\Journal\EntryController;
 use App\Http\Controllers\Api\Journal\JournalController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonGiftController;
@@ -82,6 +83,8 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::get('journals/{journal}', [JournalController::class, 'show']);
             Route::put('journals/{journal}', [JournalController::class, 'update']);
             Route::delete('journals/{journal}', [JournalController::class, 'destroy']);
+
+            Route::get('journals/{journal}/{year}/{month}/{day}', [EntryController::class, 'show']);
         });
     });
 

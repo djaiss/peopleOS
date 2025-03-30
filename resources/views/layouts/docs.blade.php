@@ -16,6 +16,7 @@
           openApiDocumentation: true,
           accountManagementDocumentation: true,
           personsDocumentation: true,
+          journalDocumentation: true,
         }" class="bg-light dark:bg-dark z-10 pt-16">
           <!-- api documentation -->
           <div @click="open = !open" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200 hover:bg-blue-50">
@@ -69,22 +70,33 @@
               <div>
                 <a href="{{ route('marketing.docs.api.task-categories') }}" class="{{ request()->routeIs('marketing.docs.api.task-categories') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Task categories') }}</a>
               </div>
-              <div>
-                <a href="{{ route('marketing.docs.api.journals') }}" class="{{ request()->routeIs('marketing.docs.api.journals') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Journals') }}</a>
-              </div>
             </div>
 
             <!-- persons -->
-            <div @click="personsDocumentation = !personsDocumentation" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 pl-3 text-xs text-gray-500 uppercase hover:border-gray-200 hover:bg-blue-50">
+            <div @click="personsDocumentation = !personsDocumentation" class="mb-3 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 pl-3 text-xs text-gray-500 uppercase hover:border-gray-200 hover:bg-blue-50">
               <h3>{{ __('Persons') }}</h3>
               <x-lucide-chevron-right x-bind:class="personsDocumentation ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
             </div>
-            <div x-show="personsDocumentation" class="flex flex-col gap-y-2">
+            <div x-show="personsDocumentation" class="mb-3 flex flex-col gap-y-2">
               <div>
                 <a href="{{ route('marketing.docs.api.gifts') }}" class="{{ request()->routeIs('marketing.docs.api.gifts') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Gifts') }}</a>
               </div>
               <div>
                 <a href="{{ route('marketing.docs.api.tasks') }}" class="{{ request()->routeIs('marketing.docs.api.tasks') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Tasks for persons') }}</a>
+              </div>
+            </div>
+
+            <!-- journal -->
+            <div @click="journalDocumentation = !journalDocumentation" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 pl-3 text-xs text-gray-500 uppercase hover:border-gray-200 hover:bg-blue-50">
+              <h3>{{ __('Journal') }}</h3>
+              <x-lucide-chevron-right x-bind:class="journalDocumentation ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+            </div>
+            <div x-show="journalDocumentation" class="flex flex-col gap-y-2">
+              <div>
+                <a href="{{ route('marketing.docs.api.journals') }}" class="{{ request()->routeIs('marketing.docs.api.journals') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Journals') }}</a>
+              </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.entries') }}" class="{{ request()->routeIs('marketing.docs.api.entries') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Entries') }}</a>
               </div>
             </div>
           </div>

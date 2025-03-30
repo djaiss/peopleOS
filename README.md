@@ -116,11 +116,11 @@ php artisan serve
 This project uses the following languages:
 
 - PHP (always the most recent version),
-- CSS with Tailwind almost exclusively,
-- Blade for the templating language,
+- CSS with [Tailwind](https://tailwindcss.com/) almost exclusively,
+- [Blade](https://laravel.com/docs/master/blade) for the templating language,
 - HTML, of course
-- Javascript with AlpineJS,
-- Ajax-like behaviour with Alpine Ajax,
+- Javascript with [AlpineJS](https://alpinejs.dev/),
+- Ajax-like behaviour with [Alpine Ajax](https://alpine-ajax.js.org/),
 - PHPUnit.
 
 These are simple languages, chosen on purpose. They lower the barriers to entry for newcomers who want to help on the project. They are very easy to debug. They are very easy to install on any machines. They are very light in terms of resources.
