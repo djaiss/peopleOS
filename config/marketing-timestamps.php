@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 return [
     'pages' => [
-        'marketing/company/handbook/index' => '2025-03-10T20:51:59-04:00',
-        'marketing.company.handbook.index' => '2025-03-10T20:51:59-04:00',
+        'marketing/company/handbook/index' => '2025-03-30T00:55:19+00:00',
+        'marketing.company.handbook.index' => '2025-03-30T00:55:19+00:00',
         'marketing/company/handbook/marketing' => '2025-03-18T11:46:21-04:00',
         'marketing.company.handbook.marketing' => '2025-03-18T11:46:21-04:00',
         'marketing/company/handbook/money' => '2025-03-18T11:46:21-04:00',
@@ -16,8 +16,8 @@ return [
         'marketing.company.handbook.project' => '2025-03-10T20:51:59-04:00',
         'marketing/company/handbook/shipping' => '2025-03-10T21:02:25-04:00',
         'marketing.company.handbook.shipping' => '2025-03-10T21:02:25-04:00',
-        'marketing/company/handbook/where' => '2025-03-18T11:46:21-04:00',
-        'marketing.company.handbook.where' => '2025-03-18T11:46:21-04:00',
+        'marketing/company/handbook/where' => '2025-03-30T00:55:19+00:00',
+        'marketing.company.handbook.where' => '2025-03-30T00:55:19+00:00',
         'marketing/company/handbook/why-open-source' => '2025-03-18T11:46:21-04:00',
         'marketing.company.handbook.why-open-source' => '2025-03-18T11:46:21-04:00',
         'marketing/company/index' => '2025-03-10T20:51:59-04:00',
