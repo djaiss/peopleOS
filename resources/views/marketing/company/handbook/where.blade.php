@@ -31,7 +31,7 @@
 
     <p class="mb-2">A great project is the direct result of all the no's, not the yes's. For one yes, there should be a thousand no.</p>
 
-    <p class="mb-2">I don't want PeopleOS to become a software where everything is configurable through an option. The more options, the harder it is for testing the software with all the possible edge cases. Options are generally bad in consumer products. We'll make a new option only if we have no choice.</p>
+    <p class="mb-10">I don't want PeopleOS to become a software where everything is configurable through an option. The more options, the harder it is for testing the software with all the possible edge cases. Options are generally bad in consumer products. We'll make a new option only if we have no choice.</p>
   </div>
 
   <div>
