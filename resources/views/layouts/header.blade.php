@@ -60,7 +60,7 @@
         <x-slot name="content">
           <!-- Account Management -->
           <div class="block px-4 py-2 text-xs text-gray-400">
-            {{ __('Manage Account') }}
+            {{ __('Manage account') }}
           </div>
 
           <x-dropdown-link href="{{ route('administration.index') }}">
@@ -75,12 +75,27 @@
 
           <div class="border-t border-gray-200 dark:border-gray-600"></div>
 
+          <!-- Account Management -->
+          <div class="block px-4 py-2 text-xs text-gray-400">
+            {{ __('External links') }}
+          </div>
+
+          <x-dropdown-link href="{{ route('marketing.docs.index') }}">
+            {{ __('Documentation') }}
+          </x-dropdown-link>
+
+          <x-dropdown-link href="{{ route('marketing.docs.api.introduction') }}">
+            {{ __('API documentation') }}
+          </x-dropdown-link>
+
+          <div class="border-t border-gray-200 dark:border-gray-600"></div>
+
           <!-- Authentication -->
           <form method="POST" action="{{ route('logout') }}" x-data>
             @csrf
 
             <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-              {{ __('Log Out') }}
+              {{ __('Log out') }}
             </x-dropdown-link>
           </form>
         </x-slot>
