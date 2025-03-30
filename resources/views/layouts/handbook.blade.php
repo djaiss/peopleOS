@@ -18,22 +18,22 @@
       {!!
         $breadcrumb ??
           '
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <a href="' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <a href="' .
             route('marketing.index') .
             '" class="text-blue-500 hover:underline">' .
             __('Home') .
             '</a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-gray-500">&gt;</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <a href="' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-gray-500">&gt;</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <a href="' .
             route('marketing.company.index') .
             '" class="text-blue-500 hover:underline">' .
             __('Company') .
             '</a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-gray-500">&gt;</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-gray-600">' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-gray-500">&gt;</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-gray-600">' .
             __('Handbook') .
             '</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      '
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      '
       !!}
     </div>
   </div>
@@ -45,7 +45,7 @@
         <div
           x-data="{
             generalInformation:
-              {{ request()->routeIs('marketing.company.handbook.project') ? 'true' : 'false' }},
+              {{ request()->routeIs('marketing.company.handbook.*') ? 'true' : 'false' }},
             marketing:
               {{ request()->routeIs('marketing.company.handbook.marketing') ? 'true' : 'false' }},
             productManagement:
@@ -65,33 +65,33 @@
 
           <div @click="generalInformation = !generalInformation" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200 hover:bg-blue-50">
             <h3>{{ __('General information') }}</h3>
-            <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+            <x-lucide-chevron-right x-bind:class="generalInformation ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
           </div>
 
-          <div x-show="generalInformation" class="mb-10 ml-3">
+          <div x-show="generalInformation" class="mb-4 ml-3">
             <div class="mb-3 flex flex-col gap-y-2">
               <div>
-                <a href="{{ route('marketing.company.handbook.project') }}" class="{{ request()->routeIs('marketing.company.handbook.project') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Who I am and what is this project') }}</a>
+                <a href="{{ route('marketing.company.handbook.project') }}" class="{{ request()->routeIs('marketing.company.handbook.project') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Who I am and what is this project') }}</a>
               </div>
               <div>
-                <a href="{{ route('marketing.company.handbook.principles') }}" class="{{ request()->routeIs('marketing.company.handbook.principles') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Principles') }}</a>
+                <a href="{{ route('marketing.company.handbook.principles') }}" class="{{ request()->routeIs('marketing.company.handbook.principles') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Principles') }}</a>
               </div>
               <div>
-                <a href="{{ route('marketing.company.handbook.shipping') }}" class="{{ request()->routeIs('marketing.company.handbook.shipping') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Shipping is better than not shipping') }}</a>
+                <a href="{{ route('marketing.company.handbook.shipping') }}" class="{{ request()->routeIs('marketing.company.handbook.shipping') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Shipping is better than not shipping') }}</a>
               </div>
               <div>
-                <a href="{{ route('marketing.company.handbook.money') }}" class="{{ request()->routeIs('marketing.company.handbook.money') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('How does this project make money') }}</a>
+                <a href="{{ route('marketing.company.handbook.money') }}" class="{{ request()->routeIs('marketing.company.handbook.money') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('How does this project make money') }}</a>
               </div>
               <div>
-                <a href="{{ route('marketing.company.handbook.why-open-source') }}" class="{{ request()->routeIs('marketing.company.handbook.why-open-source') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Why open source') }}</a>
+                <a href="{{ route('marketing.company.handbook.why-open-source') }}" class="{{ request()->routeIs('marketing.company.handbook.why-open-source') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Why open source') }}</a>
               </div>
               <div>
-                <a href="{{ route('marketing.company.handbook.where') }}" class="{{ request()->routeIs('marketing.company.handbook.where') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Where am I going with this') }}</a>
+                <a href="{{ route('marketing.company.handbook.where') }}" class="{{ request()->routeIs('marketing.company.handbook.where') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Where am I going with this') }}</a>
               </div>
             </div>
           </div>
 
-          <div @click="marketing = !marketing" class="mb-2 flex items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200 hover:bg-blue-50">
+          <div @click="marketing = !marketing" class="mb-2 flex cursor-pointer items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200 hover:bg-blue-50">
             <h3>{{ __('Marketing') }}</h3>
             <x-lucide-chevron-right x-bind:class="marketing ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
           </div>
