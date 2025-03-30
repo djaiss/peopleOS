@@ -29,7 +29,8 @@
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <p class="mb-2">This endpoint lets you manage the journals in your account.</p>
-      <p class="mb-10">Journals help you document and track various aspects of your life. Each journal can be based on a template to provide structure and guidance.</p>
+      <p class="mb-2">Journals help you document and track various aspects of your life. Each journal is based on a template to provide structure for each entry.</p>
+      <p class="mb-10">Upon account creation, a journal is created for you. You can then create new journals or delete the existing one.</p>
     </div>
     <div>
       <x-marketing.code title="Endpoints">

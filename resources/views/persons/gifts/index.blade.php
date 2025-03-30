@@ -46,7 +46,6 @@
                 <div class="flex flex-col gap-2">
                   <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'idea']) }}" class="{{ $person->gift_tab_shown === 'idea' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
                     <div class="flex items-center gap-2">
-                      <x-lucide-gift class="h-4 w-4 text-blue-500" />
                       <p class="text-gray-900">{{ __('Ideas') }}</p>
                     </div>
 
@@ -55,7 +54,6 @@
 
                   <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'received']) }}" class="{{ $person->gift_tab_shown === 'received' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
                     <div class="flex items-center gap-2">
-                      <x-lucide-hand-heart class="h-4 w-4 text-blue-500" />
                       <p class="text-gray-900">{{ __('Received') }}</p>
                     </div>
 
@@ -64,7 +62,6 @@
 
                   <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'given']) }}" class="{{ $person->gift_tab_shown === 'given' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
                     <div class="flex items-center gap-2">
-                      <x-lucide-hand-coins class="h-4 w-4 text-blue-500" />
                       <p class="text-gray-900">{{ __('Offered') }}</p>
                     </div>
 

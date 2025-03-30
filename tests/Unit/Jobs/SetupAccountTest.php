@@ -32,5 +32,9 @@ class SetupAccountTest extends TestCase
             1,
             DB::table('journal_templates')->count()
         );
+        $this->assertEquals(
+            1,
+            DB::table('journals')->count()
+        );
     }
 }

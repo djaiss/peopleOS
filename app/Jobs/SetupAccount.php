@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
+use App\Models\JournalTemplate;
 use App\Models\User;
+use App\Services\CreateJournal;
 use App\Services\CreateJournalTemplate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\DB;
 class SetupAccount implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private JournalTemplate $journalTemplate;
 
     /**
      * Create a new job instance.
@@ -33,6 +37,7 @@ class SetupAccount implements ShouldQueue
         $this->createGenders();
         $this->createTaskCategories();
         $this->createJournalTemplate();
+        $this->createJournal();
     }
 
     private function createGenders(): void
@@ -131,10 +136,20 @@ template:
             options: ["High", "Medium", "Low"]
             comment_allowed: false
 YAML;
-        (new CreateJournalTemplate(
+
+        $this->journalTemplate = (new CreateJournalTemplate(
             user: $this->user,
             name: 'My first template',
             content: $template,
+        ))->execute();
+    }
+
+    private function createJournal(): void
+    {
+        (new CreateJournal(
+            user: $this->user,
+            journalTemplate: $this->journalTemplate,
+            name: 'My first journal',
         ))->execute();
     }
 }
