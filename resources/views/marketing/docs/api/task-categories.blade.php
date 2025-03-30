@@ -78,36 +78,7 @@
     <div>
       <x-marketing.code title="Example" verbClass="text-blue-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">4</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task_category"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Personal"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "color":
-          <span class="text-lime-700">"#FF0000"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
+        @include('marketing.docs.api.partials.task-category-response')
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -120,15 +91,27 @@
       <p class="mb-2">This endpoint gets the list of task categories in the account.</p>
       <p class="mb-10">This call is not paginated, since there should not be too many task categories in the account.</p>
 
-      <!-- parameters -->
+      <!-- url parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
+          <p class="text-gray-500">No URL parameters are required for this endpoint.</p>
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
@@ -152,36 +135,11 @@
     <div>
       <x-marketing.code title="/api/administration/task-categories" verb="GET" verbClass="text-blue-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">4</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task_category"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Personal"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "color":
-          <span class="text-lime-700">"#FF0000"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
+        <div class="pl-4">"data": [</div>
+        <div class="pl-8">{</div>
+        @include('marketing.docs.api.partials.task-category-response')
+        <div class="pl-8">}</div>
+        <div class="pl-4">]</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -193,10 +151,22 @@
       <h3 id="create-a-new-task-category" class="mb-2 text-lg font-bold">Create a new task category</h3>
       <p class="mb-10">This endpoint creates a new task category. It will return the task category in the response.</p>
 
-      <!-- parameters -->
+      <!-- url parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No URL parameters are required for this endpoint.</p>
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
@@ -226,36 +196,9 @@
     <div>
       <x-marketing.code title="/api/administration/task-categories" verb="POST" verbClass="text-green-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">4</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task_category"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Personal"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "color":
-          <span class="text-lime-700">"#FF0000"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.task-category-response')
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -267,10 +210,22 @@
       <h3 id="update-a-task-category" class="mb-2 text-lg font-bold">Update a task category</h3>
       <p class="mb-10">This endpoint updates a task category. It will return the task category in the response.</p>
 
-      <!-- parameters -->
+      <!-- url parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to update." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
@@ -300,36 +255,9 @@
     <div>
       <x-marketing.code title="/api/administration/task-categories/{id}" verb="PUT" verbClass="text-yellow-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">4</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"task_category"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Personal"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "color":
-          <span class="text-lime-700">"#FF0000"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.task-category-response')
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -341,15 +269,27 @@
       <h3 id="delete-a-task-category" class="mb-2 text-lg font-bold">Delete a task category</h3>
       <p class="mb-10">This endpoint deletes a task category. It will return a 204 No Content response.</p>
 
-      <!-- parameters -->
+      <!-- url parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="id" type="integer" description="The ID of the task category." />
+          <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to delete." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 

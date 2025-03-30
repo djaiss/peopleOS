@@ -63,15 +63,27 @@
       <p class="mb-2">This endpoint gets the list of gifts for a specific person.</p>
       <p class="mb-10">Gifts are ordered by creation date, with the most recent first.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="person" type="integer" description="The ID of the person." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
@@ -100,50 +112,7 @@
         <div>{</div>
         <div class="pl-4">"data": [</div>
         <div class="pl-8">{</div>
-        <div class="pl-12">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "object":
-          <span class="text-lime-700">"gift"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "name":
-          <span class="text-lime-700">"Birthday present"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "occasion":
-          <span class="text-lime-700">"Birthday"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "url":
-          <span class="text-lime-700">"https://example.com/gift"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "status":
-          <span class="text-lime-700">"idea"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "gifted_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-        </div>
+        @include('marketing.docs.api.partials.gift-response')
         <div class="pl-8">}</div>
         <div class="pl-4">]</div>
         <div>}</div>
@@ -157,15 +126,26 @@
       <h3 id="create-a-new-gift" class="mb-2 text-lg font-bold">Create a new gift</h3>
       <p class="mb-10">This endpoint creates a new gift for a specific person. It will return the gift in the response.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="person" type="integer" description="The ID of the person." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="name" type="string" description="The name of the gift. Maximum 255 characters." />
           <x-marketing.attribute name="occasion" type="string" description="The occasion for the gift." />
           <x-marketing.attribute name="url" type="string" description="The URL associated with the gift. Maximum 255 characters." />
@@ -197,50 +177,9 @@
     <div>
       <x-marketing.code title="/api/persons/{person}/gifts" verb="POST" verbClass="text-green-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"gift"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Birthday present"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "occasion":
-          <span class="text-lime-700">"Birthday"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "url":
-          <span class="text-lime-700">"https://example.com/gift"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "status":
-          <span class="text-lime-700">"idea"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "gifted_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-        </div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.gift-response')
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -252,16 +191,28 @@
       <h3 id="get-a-specific-gift" class="mb-2 text-lg font-bold">Get a specific gift</h3>
       <p class="mb-10">This endpoint retrieves a specific gift for a person.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="person" type="integer" description="The ID of the person." />
           <x-marketing.attribute required name="gift" type="integer" description="The ID of the gift." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
@@ -288,50 +239,9 @@
     <div>
       <x-marketing.code title="/api/persons/{person}/gifts/{gift}" verb="GET" verbClass="text-blue-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"gift"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Birthday present"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "occasion":
-          <span class="text-lime-700">"Birthday"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "url":
-          <span class="text-lime-700">"https://example.com/gift"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "status":
-          <span class="text-lime-700">"idea"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "gifted_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145600</span>
-        </div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.gift-response')
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -343,16 +253,27 @@
       <h3 id="update-a-gift" class="mb-2 text-lg font-bold">Update a gift</h3>
       <p class="mb-10">This endpoint updates a specific gift for a person. It will return the updated gift in the response.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="person" type="integer" description="The ID of the person." />
           <x-marketing.attribute required name="gift" type="integer" description="The ID of the gift." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="name" type="string" description="The name of the gift. Maximum 255 characters." />
           <x-marketing.attribute name="occasion" type="string" description="The occasion for the gift." />
           <x-marketing.attribute name="url" type="string" description="The URL associated with the gift. Maximum 255 characters." />
@@ -384,50 +305,9 @@
     <div>
       <x-marketing.code title="/api/persons/{person}/gifts/{gift}" verb="PUT" verbClass="text-yellow-700">
         <div>{</div>
-        <div class="pl-4">
-          "id":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "object":
-          <span class="text-lime-700">"gift"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "name":
-          <span class="text-lime-700">"Updated gift name"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "occasion":
-          <span class="text-lime-700">"Christmas"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "url":
-          <span class="text-lime-700">"https://example.com/updated-gift"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "status":
-          <span class="text-lime-700">"given"</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "gifted_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "created_at":
-          <span class="text-rose-800">1715145600</span>
-          ,
-        </div>
-        <div class="pl-4">
-          "updated_at":
-          <span class="text-rose-800">1715145700</span>
-        </div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.gift-response')
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -439,16 +319,28 @@
       <h3 id="delete-a-gift" class="mb-2 text-lg font-bold">Delete a gift</h3>
       <p class="mb-10">This endpoint deletes a specific gift for a person. It will return a 204 No Content response on success.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <x-marketing.attribute required name="person" type="integer" description="The ID of the person." />
           <x-marketing.attribute required name="gift" type="integer" description="The ID of the gift." />
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
