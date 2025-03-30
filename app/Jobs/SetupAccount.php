@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Jobs;
 
 use App\Models\User;
+use App\Services\CreateJournalTemplate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -31,6 +32,7 @@ class SetupAccount implements ShouldQueue
     {
         $this->createGenders();
         $this->createTaskCategories();
+        $this->createJournalTemplate();
     }
 
     private function createGenders(): void
@@ -106,5 +108,33 @@ class SetupAccount implements ShouldQueue
                 'updated_at' => null,
             ],
         ]);
+    }
+
+    private function createJournalTemplate(): void
+    {
+        $template = <<<'YAML'
+template:
+  name: "Daily Reflection"
+  columns:
+    - name: "Morning"
+      questions:
+        - name: "Sleep quality"
+          answers:
+            type: "range"
+            range: [1, 5]
+            comment_allowed: true
+    - name: "Afternoon"
+      questions:
+        - name: "Productivity"
+          answers:
+            type: "choice"
+            options: ["High", "Medium", "Low"]
+            comment_allowed: false
+YAML;
+        (new CreateJournalTemplate(
+            user: $this->user,
+            name: 'My first template',
+            content: $template,
+        ))->execute();
     }
 }

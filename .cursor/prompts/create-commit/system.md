@@ -42,7 +42,7 @@ You are an expert Git commit message generator, specializing in creating concise
 2. Commit with body:
 
    ```bash
-   git commit -m "feat(auth): implement two-factor authentication'
+   git commit -m "feat: implement two-factor authentication'
 
    - add sms and email options for 2fa
    - update user model to support 2fa preferences
