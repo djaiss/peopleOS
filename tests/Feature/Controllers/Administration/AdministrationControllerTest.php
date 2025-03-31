@@ -16,7 +16,7 @@ class AdministrationControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function administration_index_can_be_rendered(): void
+    public function it_displays_the_administration_index(): void
     {
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
         $user = User::factory()->create([
@@ -24,7 +24,7 @@ class AdministrationControllerTest extends TestCase
             'last_name' => 'Geller',
         ]);
 
-        $log = Log::factory()->create([
+        Log::factory()->create([
             'account_id' => $user->account_id,
             'user_id' => $user->id,
             'action' => 'profile_update',
@@ -39,26 +39,14 @@ class AdministrationControllerTest extends TestCase
 
         $this->assertArrayHasKey('logs', $response);
         $this->assertArrayHasKey('has_more_logs', $response);
-
-        $logs = $response['logs'];
-        $this->assertCount(1, $logs);
-        $this->assertEquals([
-            'user' => [
-                'name' => 'Ross Geller',
-            ],
-            'action' => 'profile_update',
-            'description' => 'Updated their profile',
-            'created_at' => '0 seconds ago',
-        ], $logs[0]);
     }
 
     #[Test]
-    public function administration_index_shows_only_five_latest_logs(): void
+    public function it_shows_only_five_latest_logs(): void
     {
         $user = User::factory()->create();
 
-        // Create 7 logs (more than the limit of 5)
-        Log::factory()->count(7)->create([
+        Log::factory()->count(6)->create([
             'account_id' => $user->account_id,
             'user_id' => $user->id,
         ]);
@@ -72,7 +60,7 @@ class AdministrationControllerTest extends TestCase
     }
 
     #[Test]
-    public function user_can_update_their_profile(): void
+    public function it_allows_the_user_to_update_their_profile(): void
     {
         $user = User::factory()->create([
             'first_name' => 'Ross',

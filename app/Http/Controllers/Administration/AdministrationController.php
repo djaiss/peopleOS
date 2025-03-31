@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
-use App\Models\Log;
 use App\Models\User;
+use App\Services\GetSubsetOfLogs;
 use App\Services\UpdateUserInformation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,27 +18,9 @@ class AdministrationController extends Controller
 {
     public function index(): View
     {
-        $logs = Log::where('user_id', Auth::user()->id)
-            ->with('user')
-            ->take(5)
-            ->orderBy('created_at', 'desc')
-            ->get()
-            ->map(fn (Log $log): array => [
-                'user' => [
-                    'name' => $log->name,
-                ],
-                'action' => $log->action,
-                'description' => $log->description,
-                'created_at' => $log->created_at->diffForHumans(),
-            ]);
+        $viewData = (new GetSubsetOfLogs())->execute();
 
-        $has_more_logs = Log::where('user_id', Auth::user()->id)->count() > 5;
-
-        return view('administration.index', [
-            'logs' => $logs,
-            'has_more_logs' => $has_more_logs,
-            'user' => Auth::user(),
-        ]);
+        return view('administration.index', $viewData);
     }
 
     public function update(Request $request): RedirectResponse

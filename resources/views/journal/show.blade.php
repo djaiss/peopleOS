@@ -35,7 +35,5 @@
     </div>
   </div>
 
-  <p>
-    {{ $entry->day }} {{ $entry->month }} {{ $entry->year }}
-  </p>
+  <p>{{ $entry->day }} {{ $entry->month }} {{ $entry->year }}</p>
 </x-app-layout>
