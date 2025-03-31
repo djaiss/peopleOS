@@ -132,7 +132,7 @@ class MarketingHelperTest extends TestCase
         $result = MarketingHelper::compareBookLength(50000);
 
         // Assert
-        $this->assertArrayHasKeys(['title', 'author', 'percentage'], $result);
+        $this->assertArrayHasKeys($result, ['title', 'author', 'percentage']);
         $this->assertIsString($result['title']);
         $this->assertIsString($result['author']);
         $this->assertIsFloat($result['percentage']);
@@ -166,15 +166,15 @@ class MarketingHelperTest extends TestCase
         $stats = MarketingHelper::getStats($view);
 
         // Assert
-        $this->assertArrayHasKeys([
+        $this->assertArrayHasKeys($stats, [
             'word_count',
             'reading_time',
             'comparison',
             'random_fact',
-        ], $stats);
+        ]);
         $this->assertEquals(8, $stats['word_count']);
         $this->assertEquals(1, $stats['reading_time']);
-        $this->assertArrayHasKeys(['title', 'author', 'percentage'], $stats['comparison']);
+        $this->assertArrayHasKeys($stats['comparison'], ['title', 'author', 'percentage']);
         $this->assertIsString($stats['random_fact']);
         $this->assertNotEmpty($stats['random_fact']);
 
@@ -182,13 +182,6 @@ class MarketingHelperTest extends TestCase
         unlink($filePath);
         if (is_dir(dirname($filePath)) && count(scandir(dirname($filePath))) <= 2) {
             rmdir(dirname($filePath));
-        }
-    }
-
-    private function assertArrayHasKeys(array $keys, array $array): void
-    {
-        foreach ($keys as $key) {
-            $this->assertArrayHasKey($key, $array);
         }
     }
 }

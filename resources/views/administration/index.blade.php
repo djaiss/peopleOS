@@ -2,7 +2,6 @@
 /*
  * @var array $logs
  * @var bool $has_more_logs
- * @var \App\Models\User $user
  */
 ?>
 
@@ -15,13 +14,13 @@
     <div class="relative bg-gray-50 px-6 pt-8 lg:px-12">
       <div class="mx-auto max-w-2xl px-2 py-2 sm:px-0">
         <!-- Profile -->
-        @include('administration.partials.profile', ['user' => $user])
+        @include('administration.partials.profile')
 
         <!-- Profile photo -->
-        @include('administration.partials.avatar', ['user' => $user])
+        @include('administration.partials.avatar')
 
         <!-- Timezone -->
-        @include('administration.partials.timezone', ['user' => $user])
+        @include('administration.partials.timezone')
 
         <!-- Last activity -->
         @include('administration.partials.logs', ['has_more_logs' => $has_more_logs, 'logs' => $logs])

@@ -1,9 +1,3 @@
-<?php
-/*
- * @var \App\Models\User $user
- */
-?>
-
 <h2 class="font-semi-bold mb-1 text-lg">{{ __('Profile photo') }}</h2>
 <p class="mb-4 text-sm text-zinc-500">{{ __('You can upload a profile photo to use as your avatar, or use the default avatar.') }}</p>
 
@@ -33,7 +27,7 @@
       <!-- Front face -->
       <div x-ref="frontFace" class="absolute w-full border border-gray-200 bg-white [backface-visibility:hidden] sm:rounded-lg">
         <div class="grid grid-cols-3 items-center rounded-t-lg p-3 last:rounded-b-lg hover:bg-blue-50">
-          <img width="58" height="58" class="col-span-2 h-16 w-16 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $user->getAvatar(58) }}" alt="{{ $user->name }}" wire:key="avatar-{{ $user->id }}" />
+          <img width="58" height="58" class="col-span-2 h-16 w-16 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ auth()->user()->getAvatar(58) }}" alt="{{ auth()->user()->name }}" wire:key="avatar-{{ auth()->user()->id }}" />
           <div class="justify-self-end">
             <x-button.invisible @click="isFlipped = true" class="text-sm">
               {{ __('Upload a new photo') }}
