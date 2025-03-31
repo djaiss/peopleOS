@@ -18,7 +18,9 @@ class AdministrationController extends Controller
 {
     public function index(): View
     {
-        $viewData = (new GetSubsetOfLogs())->execute();
+        $viewData = (new GetSubsetOfLogs(
+            user: Auth::user(),
+        ))->execute();
 
         return view('administration.index', $viewData);
     }

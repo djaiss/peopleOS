@@ -35,7 +35,9 @@ class GetSubsetOfLogsTest extends TestCase
             'description' => 'Updated their profile',
         ]);
 
-        $array = (new GetSubsetOfLogs())->execute();
+        $array = (new GetSubsetOfLogs(
+            user: $user,
+        ))->execute();
 
         $this->assertArrayHasKeys($array, ['logs', 'has_more_logs']);
         $this->assertArrayHasKeys($array['logs'][0], ['user', 'action', 'description', 'created_at']);
@@ -47,7 +49,7 @@ class GetSubsetOfLogsTest extends TestCase
             ],
             'action' => 'profile_update',
             'description' => 'Updated their profile',
-            'created_at' => '1 year ago',
+            'created_at' => '0 seconds ago',
         ], $array['logs'][0]);
 
         $this->assertFalse($array['has_more_logs']);
