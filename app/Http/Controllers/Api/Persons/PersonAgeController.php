@@ -42,7 +42,7 @@ class PersonAgeController extends Controller
         ))->execute();
 
         return response()->json([
-            'data' => new PersonResource($person),
+            'data' => new PersonResource($person->refresh()),
         ], 200);
     }
 }
