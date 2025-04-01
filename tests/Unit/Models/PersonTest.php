@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
+use App\Enums\AgeType;
 use App\Models\Account;
 use App\Models\Encounter;
 use App\Models\Gender;
@@ -168,6 +169,21 @@ class PersonTest extends TestCase
     }
 
     #[Test]
+    public function it_has_one_special_date_associated_with_the_age_of_the_person(): void
+    {
+        $person = Person::factory()->create();
+        $specialDate = SpecialDate::factory()->create([
+            'account_id' => $person->account_id,
+            'person_id' => $person->id,
+            'name' => 'Age',
+        ]);
+        $person->age_special_date_id = $specialDate->id;
+        $person->save();
+
+        $this->assertTrue($person->ageSpecialDate()->exists());
+    }
+
+    #[Test]
     public function it_checks_if_person_has_active_love_relationship(): void
     {
         $ross = Person::factory()->create();
@@ -215,5 +231,47 @@ class PersonTest extends TestCase
     {
         $ross = Person::factory()->create();
         $this->assertNull($ross->job());
+    }
+
+    #[Test]
+    public function it_gets_the_estimated_age(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
+        $ross = Person::factory()->create([
+            'estimated_age' => 30,
+            'age_estimated_at' => Carbon::parse('2020-01-01'),
+        ]);
+
+        $this->assertEquals(35, $ross->getEstimatedAge());
+    }
+
+    #[Test]
+    public function it_returns_the_exact_age(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
+        $ross = Person::factory()->create([
+            'age_type' => AgeType::EXACT->value,
+        ]);
+        $specialDate = SpecialDate::factory()->create([
+            'person_id' => $ross->id,
+            'year' => 1990,
+            'month' => 10,
+            'day' => 29,
+        ]);
+        $ross->age_special_date_id = $specialDate->id;
+        $ross->save();
+
+        $this->assertEquals('34 years old', $ross->age);
+    }
+
+    #[Test]
+    public function it_returns_the_age_bracket(): void
+    {
+        $ross = Person::factory()->create([
+            'age_type' => AgeType::BRACKET->value,
+            'age_bracket' => '20-29',
+        ]);
+
+        $this->assertEquals('20-29', $ross->age);
     }
 }

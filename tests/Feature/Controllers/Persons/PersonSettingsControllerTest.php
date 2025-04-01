@@ -40,7 +40,7 @@ class PersonSettingsControllerTest extends TestCase
             'account_id' => $user->account_id,
         ]);
         // create another person so we can check that seeing a person still works
-        $person2 =Person::factory()->create([
+        $person2 = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Ross',
             'last_name' => 'Geller',

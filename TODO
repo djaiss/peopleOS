@@ -26,6 +26,7 @@ Todo:
   - Add passions to person
   - Add hobbies to person
   - log the number of emails sent, both at the account level and instance level
+    - the emails_sent column is already in the database
 
   Country born - city born
   Country/place studies

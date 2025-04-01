@@ -72,6 +72,19 @@ class SpecialDateTest extends TestCase
     }
 
     #[Test]
+    public function it_gets_the_age_old(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
+        $specialDate = SpecialDate::factory()->create([
+            'year' => 1994,
+            'month' => 6,
+            'day' => 15,
+        ]);
+
+        $this->assertEquals('30 years old', $specialDate->ageOld);
+    }
+
+    #[Test]
     public function it_gets_the_friendly_date(): void
     {
         $specialDate = SpecialDate::factory()->create([
