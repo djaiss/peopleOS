@@ -82,6 +82,24 @@ class SpecialDateTest extends TestCase
         ]);
 
         $this->assertEquals('30 years old', $specialDate->ageOld);
+
+        // Test with no year provided
+        $specialDate = SpecialDate::factory()->create([
+            'year' => null,
+            'month' => 6,
+            'day' => 15,
+        ]);
+
+        $this->assertEquals('Unknown', $specialDate->ageOld);
+
+        // Test with only year provided
+        $specialDate = SpecialDate::factory()->create([
+            'year' => 1994,
+            'month' => null,
+            'day' => null,
+        ]);
+
+        $this->assertEquals('31 years old', $specialDate->ageOld);
     }
 
     #[Test]

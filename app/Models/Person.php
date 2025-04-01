@@ -215,7 +215,7 @@ class Person extends Model
     {
         return Attribute::make(
             get: fn (mixed $value, array $attributes): mixed => match ($this->age_type) {
-                AgeType::EXACT->value => $this->ageSpecialDate->ageOld,
+                AgeType::EXACT->value => $this->ageSpecialDate ? $this->ageSpecialDate->ageOld : 'Unknown',
                 AgeType::ESTIMATED->value => $this->getEstimatedAge(),
                 default => $this->age_bracket,
             }
