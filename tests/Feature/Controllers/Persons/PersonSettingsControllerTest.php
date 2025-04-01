@@ -39,11 +39,24 @@ class PersonSettingsControllerTest extends TestCase
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
         ]);
+        // create another person so we can check that seeing a person still works
+        Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
+            'slug' => 'ross',
+        ]);
 
         $response = $this->actingAs($user)
             ->delete('/persons/'.$person->slug)
             ->assertRedirectToRoute('person.index');
 
         $response->assertSessionHas('status', 'Person deleted successfully');
+
+        $this->actingAs($user)
+            ->get('/persons')
+            ->assertRedirectToRoute('person.show', [
+                'slug' => '2-ross',
+            ]);
     }
 }
