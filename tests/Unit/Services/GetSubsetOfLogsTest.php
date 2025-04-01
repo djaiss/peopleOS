@@ -9,7 +9,6 @@ use App\Models\User;
 use App\Services\GetSubsetOfLogs;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -20,7 +19,6 @@ class GetSubsetOfLogsTest extends TestCase
     #[Test]
     public function it_returns_a_subset_of_logs(): void
     {
-        Queue::fake();
         Carbon::setTestNow(Carbon::create(2018, 1, 1));
 
         $user = User::factory()->create([

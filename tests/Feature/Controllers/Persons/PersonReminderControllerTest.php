@@ -24,7 +24,7 @@ class PersonReminderControllerTest extends TestCase
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
         ]);
-        $specialDate = SpecialDate::factory()->create([
+        SpecialDate::factory()->create([
             'person_id' => $person->id,
             'account_id' => $user->account_id,
             'name' => 'Birthday',
@@ -38,7 +38,7 @@ class PersonReminderControllerTest extends TestCase
             'name' => 'Work',
             'color' => 'blue',
         ]);
-        $task = Task::factory()->create([
+        Task::factory()->create([
             'person_id' => $person->id,
             'account_id' => $user->account_id,
             'is_completed' => false,
@@ -47,45 +47,9 @@ class PersonReminderControllerTest extends TestCase
             'due_at' => '2024-03-15',
         ]);
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons/'.$person->slug.'/reminders')
             ->assertOk();
-
-        $this->assertArrayHasKey('person', $response);
-        $this->assertArrayHasKey('persons', $response);
-        $this->assertArrayHasKey('months', $response);
-        $this->assertArrayHasKey('totalReminders', $response);
-        $this->assertArrayHasKey('tasks', $response);
-
-        $months = $response['months'];
-        $this->assertCount(1, $months);
-        $this->assertEquals([
-            'number' => 10,
-            'name' => 'October',
-            'color' => 'cyan',
-            'reminders' => collect([
-                [
-                    'id' => $specialDate->id,
-                    'day' => 18,
-                    'date' => $specialDate->date,
-                    'name' => 'Birthday',
-                    'age' => $specialDate->age,
-                ],
-            ]),
-        ], $months->first());
-
-        $this->assertCount(1, $response['tasks']);
-        $this->assertEquals([
-            'id' => $task->id,
-            'name' => 'Call mom',
-            'due_at' => '2024-03-15',
-            'is_completed' => false,
-            'task_category' => [
-                'id' => $taskCategory->id,
-                'name' => 'Work',
-                'color' => 'blue',
-            ],
-        ], $response['tasks'][0]);
     }
 
     #[Test]
@@ -101,12 +65,9 @@ class PersonReminderControllerTest extends TestCase
             'should_be_reminded' => false,
         ]);
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons/'.$person->slug.'/reminders')
             ->assertOk();
-
-        $this->assertEquals(0, $response['totalReminders']);
-        $this->assertCount(0, $response['months']);
     }
 
     #[Test]

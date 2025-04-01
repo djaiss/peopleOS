@@ -2,6 +2,7 @@
 /*
  * @var array $genders
  * @var array $taskCategories
+ * @var array $journalTemplates
  */
 ?>
 

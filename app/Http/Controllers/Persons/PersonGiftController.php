@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
-use App\Cache\PeopleListCache;
-use App\Enums\GiftStatus;
 use App\Http\Controllers\Controller;
-use App\Models\Gift;
 use App\Services\CreateGift;
 use App\Services\DestroyGift;
+use App\Services\GetGiftsListing;
 use App\Services\UpdateGift;
 use App\Services\UpdatePersonGiftTab;
 use Carbon\Carbon;
@@ -24,34 +22,12 @@ class PersonGiftController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $persons = PeopleListCache::make(
-            accountId: Auth::user()->account_id,
-        )->value();
+        $viewData = (new GetGiftsListing(
+            user: Auth::user(),
+            person: $person,
+        ))->execute();
 
-        $gifts = Gift::where('person_id', $person->id)
-            ->where('status', $person->gift_tab_shown)
-            ->orderBy('gifted_at', 'desc')
-            ->get();
-
-        // count the number of gifts for each status
-        $ideaGiftsCount = Gift::where('person_id', $person->id)
-            ->where('status', GiftStatus::IDEA->value)
-            ->count();
-        $receivedGiftsCount = Gift::where('person_id', $person->id)
-            ->where('status', GiftStatus::RECEIVED->value)
-            ->count();
-        $offeredGiftsCount = Gift::where('person_id', $person->id)
-            ->where('status', GiftStatus::GIVEN->value)
-            ->count();
-
-        return view('persons.gifts.index', [
-            'persons' => $persons,
-            'person' => $person,
-            'gifts' => $gifts,
-            'ideaGiftsCount' => $ideaGiftsCount,
-            'receivedGiftsCount' => $receivedGiftsCount,
-            'offeredGiftsCount' => $offeredGiftsCount,
-        ]);
+        return view('persons.gifts.index', $viewData);
     }
 
     public function new(Request $request): View

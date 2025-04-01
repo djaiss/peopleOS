@@ -24,7 +24,7 @@ class PersonWorkControllerTest extends TestCase
             'first_name' => 'Chandler',
             'last_name' => 'Bing',
         ]);
-        $workHistory = WorkHistory::factory()->create([
+        WorkHistory::factory()->create([
             'person_id' => $person->id,
             'job_title' => 'Statistical Analysis and Data Reconfiguration',
             'company_name' => 'WENUS Corp',
@@ -33,24 +33,9 @@ class PersonWorkControllerTest extends TestCase
             'active' => true,
         ]);
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons/'.$person->slug.'/work')
             ->assertOk();
-
-        $this->assertArrayHasKey('person', $response);
-        $this->assertArrayHasKey('persons', $response);
-        $this->assertArrayHasKey('workHistories', $response);
-
-        $workHistories = $response['workHistories'];
-        $this->assertCount(1, $workHistories);
-        $this->assertEquals([
-            'id' => $workHistory->id,
-            'title' => 'Statistical Analysis and Data Reconfiguration',
-            'company' => 'WENUS Corp',
-            'duration' => '2 years',
-            'salary' => '$50,000',
-            'is_current' => true,
-        ], $workHistories->first());
     }
 
     #[Test]

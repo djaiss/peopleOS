@@ -2,7 +2,7 @@
 /*
  * @var \App\Models\Person $person
  * @var array $months
- * @var int $totalReminders
+ * @var int $total_reminders
  */
 ?>
 
@@ -13,7 +13,7 @@
     <h2 class="text-lg font-semibold text-gray-900">{{ __('Reminders') }}</h2>
   </div>
   <span class="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-600">
-    {{ __(':count active', ['count' => $totalReminders]) }}
+    {{ __(':count active', ['count' => $total_reminders]) }}
   </span>
 </div>
 
@@ -65,7 +65,7 @@
   @endforeach
 
   <!-- Empty State (when no reminders at all) -->
-  @if ($totalReminders === 0)
+  @if ($total_reminders === 0)
     <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
       <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
         <x-lucide-bell class="h-6 w-6 text-blue-600" />

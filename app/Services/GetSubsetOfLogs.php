@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Models\Log;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class GetSubsetOfLogs
 {
