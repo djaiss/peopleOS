@@ -21,7 +21,7 @@
 
   <div id="information-details" class="rounded-lg border border-gray-200 bg-white">
     <div class="grid grid-cols-3 gap-0">
-      <div class="flex flex-col border-r border-gray-200 p-4">
+      <div class="flex flex-col border-r border-gray-200 px-4 py-2">
         <span class="text-xs text-gray-500">{{ __('Local time') }}</span>
 
         @if ($person->timezone)
@@ -31,7 +31,7 @@
         @endif
       </div>
 
-      <div class="flex flex-col border-r border-gray-200 p-4">
+      <div class="flex flex-col border-r border-gray-200 px-4 py-2">
         <span class="text-xs text-gray-500">{{ __('Nationalities') }}</span>
 
         @if ($person->nationalities)
@@ -41,7 +41,7 @@
         @endif
       </div>
 
-      <div class="flex flex-col p-4">
+      <div class="flex flex-col px-4 py-2">
         <span class="text-xs text-gray-500">{{ __('Languages') }}</span>
 
         @if ($person->languages)
