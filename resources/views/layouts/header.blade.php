@@ -44,7 +44,7 @@
               <a href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
                 {{ __('Unlock') }}
               </a>
-              <div x-show="showTooltip" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="translate-y-1 opacity-0" x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-1 opacity-0" class="absolute top-full right-0 z-50 mt-2 flex w-96 items-center gap-x-3 rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
+              <div x-cloak x-show="showTooltip" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="translate-y-1 opacity-0" x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-1 opacity-0" class="absolute top-full right-0 z-50 mt-2 flex w-96 items-center gap-x-3 rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
                 <img src="{{ asset('marketing/vandamme.png') }}" alt="One-time fee" class="h-20 w-20 rounded-full" />
                 <div class="flex flex-col">
                   <p class="text-sm text-gray-600">It's a one-time fee, and will unlock everything!</p>
