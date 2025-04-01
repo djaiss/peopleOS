@@ -50,7 +50,8 @@ class UpdateAgeOfAPerson
         match ($this->ageType) {
             AgeType::EXACT->value => $this->updateExactAge(),
             AgeType::ESTIMATED->value => $this->updateEstimatedAge(),
-            default => $this->updateAgeBracket(),
+            AgeType::BRACKET->value => $this->updateAgeBracket(),
+            default => throw new \Exception('Invalid age type'),
         };
     }
 
@@ -61,7 +62,7 @@ class UpdateAgeOfAPerson
         }
 
         if ($this->ageYear || $this->ageMonth || $this->ageDay) {
-            (new CreateSpecialDate(
+            $specialDate = (new CreateSpecialDate(
                 user: $this->user,
                 person: $this->person,
                 name: 'Birthday',
@@ -70,6 +71,9 @@ class UpdateAgeOfAPerson
                 day: $this->ageDay ?? null,
                 shouldBeReminded: $this->addYearlyReminder,
             ))->execute();
+
+            $this->person->age_special_date_id = $specialDate->id;
+            $this->person->save();
         }
     }
 

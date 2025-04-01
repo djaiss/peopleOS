@@ -15,6 +15,23 @@ The project I'm building is a personal CRM. Every action that the user or the ap
 - Write comments when necessary, ie if the code is not self-explanatory.
 - Most services do one thing and have one responsibility.
 - When using dates, make sure to set a date using Carbon, like `Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'))` set at the right time.
+- Tests MUST use the attribute #[Test].
+- Functions should not use a setUp() method.
+- You should use `$this->json('POST')` and not `$this->patchJson()`. Same for the other HTTP verbs.
+- Code should use spaces accordingly, like so:
+
+DO NOT DO THIS:
+```php
+$this->assertEquals(AgeType::EXACT->value, $this->person->fresh()->age_type);
+```
+
+DO THIS INSTEAD:
+```php
+$this->assertEquals(
+    AgeType::EXACT->value,
+    $this->person->fresh()->age_type
+);
+```
 
 # STEPS
 

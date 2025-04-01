@@ -12,6 +12,7 @@ API methods are written in the `app/Http/Controllers/Api` folder.
 - Routes names MUST be one of the following: `index`, `new`, `show`, `create`, `edit`, `update`, `destroy`.
 - Object resource must contain a `object` field named after the Model it supports.
 - Some API classes do not have all the methods, like `destroy` or `update`.
+- The API methods must match the service class they are based on. For instance, if there are services classes like `CreatePerson`, `UpdatePerson`, `DestroyPerson`, you must create the corresponding API methods in the Controller class. If there is only an Update service class, the only API method you must create is the `update` method.
 
 # STEPS
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonTaskController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
 use App\Http\Controllers\Api\ToggleTaskController;
+use App\Http\Controllers\Api\Persons\PersonAgeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
@@ -37,6 +38,9 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
         Route::get('persons/{person}', [PersonController::class, 'show']);
         Route::put('persons/{person}', [PersonController::class, 'update']);
         Route::delete('persons/{person}', [PersonController::class, 'destroy']);
+
+        // age
+        Route::patch('persons/{person}/age', [PersonAgeController::class, 'update']);
 
         // notes
         Route::get('persons/{person}/notes', [PersonNoteController::class, 'index']);

@@ -62,6 +62,7 @@ class UpdateAgeOfAPersonTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('special_dates', [
+            'id' => $person->refresh()->ageSpecialDate->id,
             'person_id' => $person->id,
             'year' => 1967,
             'month' => 10,
