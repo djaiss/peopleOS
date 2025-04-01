@@ -40,7 +40,7 @@ class PersonSettingsControllerTest extends TestCase
             'account_id' => $user->account_id,
         ]);
         // create another person so we can check that seeing a person still works
-        Person::factory()->create([
+        $person2 =Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Ross',
             'last_name' => 'Geller',
@@ -55,8 +55,6 @@ class PersonSettingsControllerTest extends TestCase
 
         $this->actingAs($user)
             ->get('/persons')
-            ->assertRedirectToRoute('person.show', [
-                'slug' => '2-ross',
-            ]);
+            ->assertRedirectToRoute('person.show', $person2->slug);
     }
 }
