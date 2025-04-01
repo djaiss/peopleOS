@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Persons;
 
 use App\Http\Controllers\Controller;
-use App\Models\Person;
-use App\Models\User;
+use App\Http\Resources\PersonResource;
 use App\Services\UpdateAgeOfAPerson;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Resources\PersonResource;
 use Illuminate\Support\Facades\Auth;
 
 class PersonAgeController extends Controller

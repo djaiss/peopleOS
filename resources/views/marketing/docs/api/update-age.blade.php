@@ -15,10 +15,7 @@
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <p class="mb-2">This endpoint lets you update the age information of a person.</p>
-      <p class="mb-10">
-        You can set an exact age (with birth date), an estimated age, or an age bracket. When setting an exact age,
-        you can optionally add a yearly reminder for the person's birthday.
-      </p>
+      <p class="mb-10">You can set an exact age (with birth date), an estimated age, or an age bracket. When setting an exact age, you can optionally add a yearly reminder for the person's birthday.</p>
     </div>
     <div>
       <x-marketing.code title="Endpoints">

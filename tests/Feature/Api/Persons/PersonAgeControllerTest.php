@@ -8,10 +8,10 @@ use App\Enums\AgeType;
 use App\Models\Person;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PersonAgeControllerTest extends TestCase
 {

@@ -9,6 +9,7 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateAgeOfAPerson
@@ -51,7 +52,7 @@ class UpdateAgeOfAPerson
             AgeType::EXACT->value => $this->updateExactAge(),
             AgeType::ESTIMATED->value => $this->updateEstimatedAge(),
             AgeType::BRACKET->value => $this->updateAgeBracket(),
-            default => throw new \Exception('Invalid age type'),
+            default => throw new Exception('Invalid age type'),
         };
     }
 

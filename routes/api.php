@@ -12,13 +12,13 @@ use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Administration\MeTimezoneController;
 use App\Http\Controllers\Api\Journal\EntryController;
 use App\Http\Controllers\Api\Journal\JournalController;
+use App\Http\Controllers\Api\Persons\PersonAgeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonGiftController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonTaskController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
 use App\Http\Controllers\Api\ToggleTaskController;
-use App\Http\Controllers\Api\Persons\PersonAgeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
