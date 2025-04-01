@@ -92,5 +92,6 @@ return [
         'entry_creation' => 'Entry creation',
         'entry_update' => 'Entry update',
         'entry_deletion' => 'Entry deletion',
+        'age_update' => 'Age update',
     ],
 ];

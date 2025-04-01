@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\AgeType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,7 @@ class Person extends Model
         'account_id',
         'gender_id',
         'how_we_met_special_date_id',
+        'age_special_date_id',
         'marital_status',
         'kids_status',
         'slug',
@@ -49,6 +51,11 @@ class Person extends Model
         'languages',
         'color',
         'gift_tab_shown',
+        'age_type',
+        'estimated_age',
+        'age_bracket',
+        'age_estimated_at',
+        'emails_sent',
     ];
 
     /**
@@ -79,6 +86,10 @@ class Person extends Model
             'timezone' => 'encrypted',
             'nationalities' => 'encrypted',
             'languages' => 'encrypted',
+            'age_type' => 'encrypted',
+            'estimated_age' => 'encrypted',
+            'age_bracket' => 'encrypted',
+            'age_estimated_at' => 'datetime',
         ];
     }
 
@@ -143,6 +154,14 @@ class Person extends Model
     }
 
     /**
+     * Get the special date associated with the age of the person.
+     */
+    public function ageSpecialDate(): BelongsTo
+    {
+        return $this->belongsTo(SpecialDate::class, 'age_special_date_id');
+    }
+
+    /**
      * Get the encounters associated with person.
      */
     public function encounters(): HasMany
@@ -190,6 +209,29 @@ class Person extends Model
         return Attribute::make(
             get: fn (mixed $value, array $attributes): string => now($this->timezone)->format('g:i a')
         );
+    }
+
+    protected function age(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes): mixed => match ($this->age_type) {
+                AgeType::EXACT->value => $this->ageSpecialDate ? $this->ageSpecialDate->ageOld : 'Unknown',
+                AgeType::ESTIMATED->value => $this->getEstimatedAge(),
+                default => $this->age_bracket,
+            }
+        );
+    }
+
+    /**
+     * The estimated age of the person needs to be calculated
+     * based on the estimated age and the date it was estimated.
+     */
+    public function getEstimatedAge(): int
+    {
+        // get the number of years between the age_estimated_at and now
+        $years = (int) now()->diffInYears($this->age_estimated_at, true);
+
+        return (int) $this->estimated_age + $years;
     }
 
     /**

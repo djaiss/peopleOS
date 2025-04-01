@@ -78,4 +78,9 @@ class MarketingDocsController extends Controller
     {
         return view('marketing.docs.api.entries');
     }
+
+    public function updateAge(): View
+    {
+        return view('marketing.docs.api.update-age');
+    }
 }

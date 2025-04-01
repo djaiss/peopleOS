@@ -62,7 +62,7 @@ class SpecialDate extends Model
     }
 
     /**
-     * Get the special date's age.
+     * Get the special date's age, like "29 years ago".
      * The age is usually calculated based on the year, month, and day.
      * If the date is not exact, the age is calculated based on the year.
      */
@@ -78,6 +78,29 @@ class SpecialDate extends Model
                 $month = $attributes['month'] ?? 1;
 
                 return Carbon::createFromDate($this->year, $month, $day)->diffForHumans();
+            }
+        );
+    }
+
+    /**
+     * Get the special date's age, like "29 years old".
+     * The age is usually calculated based on the year, month, and day.
+     * If the date is not exact, the age is calculated based on the year.
+     */
+    protected function ageOld(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attributes): string {
+                if (! $this->year) {
+                    return 'Unknown';
+                }
+
+                $day = $attributes['day'] ?? 1;
+                $month = $attributes['month'] ?? 1;
+
+                $age = Carbon::createFromDate($this->year, $month, $day)->age;
+
+                return trans_choice(':count year old|:count years old', $age, ['count' => $age]);
             }
         );
     }

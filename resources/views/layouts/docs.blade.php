@@ -84,6 +84,9 @@
               <div>
                 <a href="{{ route('marketing.docs.api.tasks') }}" class="{{ request()->routeIs('marketing.docs.api.tasks') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Tasks for persons') }}</a>
               </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.update-age') }}" class="{{ request()->routeIs('marketing.docs.api.update-age') ? 'border-l-blue-400' : 'border-l-transparent' }} border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Update a person\'s age') }}</a>
+              </div>
             </div>
 
             <!-- journal -->

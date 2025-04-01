@@ -102,4 +102,11 @@ class MarketingDocsControllerTest extends TestCase
         $this->get('/docs/api/entries')
             ->assertOk();
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_api_update_age(): void
+    {
+        $this->get('/docs/api/update-age')
+            ->assertOk();
+    }
 }
