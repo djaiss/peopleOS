@@ -35,13 +35,24 @@
 
         <!-- upgrade -->
         @if (Auth::user()->account->isInTrial())
-          <div class="ml-12 flex items-center gap-x-2">
-            <div class="rounded-md border border-yellow-300 bg-yellow-50 px-3 py-1">
+          <div class="ml-12 flex items-center gap-x-2" x-data="{ showTooltip: false }" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
+            <div class="flex items-center gap-x-2 rounded-lg bg-[#F7BE38]/70 px-3 py-1 text-center text-sm font-medium text-gray-900 hover:bg-[#F7BE38]/90 focus:ring-4 focus:ring-[#F7BE38]/50 focus:outline-none dark:focus:ring-[#F7BE38]/50">
+              <x-lucide-hourglass class="h-4 w-4 text-yellow-800" />
               <p class="text-sm text-yellow-800">{{ round(now()->diffInDays(Auth::user()->account->trial_ends_at)) }} days left in your trial</p>
             </div>
-            <a href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
-              {{ __('Upgrade') }}
-            </a>
+            <div class="relative">
+              <a href="{{ route('upgrade.index') }}" class="text-sm text-blue-500">
+                {{ __('Unlock') }}
+              </a>
+              <div x-show="showTooltip" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="translate-y-1 opacity-0" x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-1 opacity-0" class="absolute top-full right-0 z-50 mt-2 flex w-96 items-center gap-x-3 rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
+                <img src="{{ asset('marketing/vandamme.png') }}" alt="One-time fee" class="h-20 w-20 rounded-full" />
+                <div class="flex flex-col">
+                  <p class="text-sm text-gray-600">It's a one-time fee, and will unlock everything!</p>
+                  <p class="text-sm text-gray-600">It kicks ass.</p>
+                  <p class="text-sm font-semibold text-gray-600">Van Damme would be proud of you.</p>
+                </div>
+              </div>
+            </div>
           </div>
         @endif
       </div>
