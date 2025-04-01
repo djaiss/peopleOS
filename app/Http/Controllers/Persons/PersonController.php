@@ -26,10 +26,16 @@ class PersonController extends Controller
             return view('persons.blank');
         }
 
-        $person = Person::where('account_id', Auth::user()->account_id)
-            ->where('id', Auth::user()->last_person_seen_id)
-            ->select('slug')
-            ->first();
+        if (Auth::user()->last_person_seen_id) {
+            $person = Person::where('account_id', Auth::user()->account_id)
+                ->where('id', Auth::user()->last_person_seen_id)
+                ->select('slug')
+                ->first();
+        } else {
+            $person = Person::where('account_id', Auth::user()->account_id)
+                ->orderBy('created_at', 'desc')
+                ->first();
+        }
 
         return redirect()->route('person.show', [
             'slug' => $person->slug,

@@ -34,6 +34,20 @@ class PersonControllerTest extends TestCase
     }
 
     #[Test]
+    public function it_redirects_the_user_to_the_first_person_if_no_last_person_seen_is_set(): void
+    {
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'slug' => 'monica-geller',
+        ]);
+
+        $this->actingAs($user)
+            ->get('/persons')
+            ->assertRedirectToRoute('person.show', $person->slug);
+    }
+
+    #[Test]
     public function a_user_can_see_a_blank_page_when_there_are_no_persons(): void
     {
         config(['app.name' => 'PeopleOS']);
