@@ -1,7 +1,7 @@
 <?php
 /*
  * @var \App\Models\Person $person
- * @var Collection $workHistories
+ * @var Collection $work_histories
  */
 ?>
 
@@ -27,7 +27,7 @@
 
     <!-- Job List -->
     <div id="work-history-list" class="divide-y divide-gray-200">
-      @forelse ($workHistories as $history)
+      @forelse ($work_histories as $history)
         <div id="work-history-{{ $history['id'] }}" class="group flex items-center justify-between p-4">
           <div class="flex items-center gap-3">
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bf85d782e0054286376fe041a75c13d",
+    "content-hash": "095c1f9879a120a6520d79a8710e5914",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7601,80 +7601,6 @@
                 }
             ],
             "time": "2025-03-14T22:37:40+00:00"
-        },
-        {
-            "name": "peckphp/peck",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/peckphp/peck.git",
-                "reference": "571398fa2596c52fe848d55e5f7c5912df33d425"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/peckphp/peck/zipball/571398fa2596c52fe848d55e5f7c5912df33d425",
-                "reference": "571398fa2596c52fe848d55e5f7c5912df33d425",
-                "shasum": ""
-            },
-            "require": {
-                "nunomaduro/termwind": "^1.17.0|^2.3.0",
-                "php": "^8.3.0",
-                "symfony/console": "^6.4.17|^7.2.1",
-                "symfony/finder": "^6.4.17|^7.2.2"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.20.0",
-                "pestphp/pest": "^2.36|^3.7.4",
-                "pestphp/pest-plugin-type-coverage": "^2.8.7|^3.2.3",
-                "phpstan/phpstan": "^1.12.16",
-                "rector/rector": "^1.2.10",
-                "symfony/var-dumper": "^7.2.0"
-            },
-            "bin": [
-                "bin/peck"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Peck\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nuno Maduro",
-                    "email": "enunomaduro@gmail.com"
-                }
-            ],
-            "description": "Peck is a powerful CLI tool designed to identify pure wording or spelling (grammar) mistakes in your codebase.",
-            "keywords": [
-                "checker",
-                "codebase",
-                "php",
-                "spelling"
-            ],
-            "support": {
-                "issues": "https://github.com/peckphp/peck/issues",
-                "source": "https://github.com/peckphp/peck/tree/v0.1.2"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.com/paypalme/enunomaduro",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/nunomaduro",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/nunomaduro",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2025-01-27T19:31:29+00:00"
         },
         {
             "name": "phar-io/manifest",

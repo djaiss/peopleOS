@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
-use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
-use App\Models\Note;
 use App\Services\CreateNote;
 use App\Services\DestroyNote;
+use App\Services\GetNotesListing;
 use App\Services\UpdateNote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,25 +20,12 @@ class PersonNoteController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $persons = PeopleListCache::make(
-            accountId: Auth::user()->account_id,
-        )->value();
+        $viewData = (new GetNotesListing(
+            user: Auth::user(),
+            person: $person,
+        ))->execute();
 
-        $notes = Note::where('person_id', $person->id)
-            ->orderBy('created_at', 'desc')
-            ->get()
-            ->map(fn (Note $note): array => [
-                'id' => $note->id,
-                'content' => $note->content,
-                'created_at' => $note->created_at->format('M j, Y'),
-                'is_new' => false,
-            ]);
-
-        return view('persons.notes.index', [
-            'notes' => $notes,
-            'persons' => $persons,
-            'person' => $person,
-        ]);
+        return view('persons.notes.index', $viewData);
     }
 
     public function create(Request $request): RedirectResponse

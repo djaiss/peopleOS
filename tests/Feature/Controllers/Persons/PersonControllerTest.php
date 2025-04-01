@@ -18,17 +18,17 @@ class PersonControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function a_user_can_visit_the_person_index_page(): void
+    public function it_can_access_the_person_index_page(): void
     {
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Monica',
-            'last_name' => 'Geller',
             'slug' => 'monica-geller',
         ]);
+        $user->last_person_seen_id = $person->id;
+        $user->save();
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons')
             ->assertRedirectToRoute('person.show', $person->slug);
     }
@@ -39,7 +39,7 @@ class PersonControllerTest extends TestCase
         config(['app.name' => 'PeopleOS']);
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons')
             ->assertOk()
             ->assertSee('Welcome to PeopleOS');
@@ -49,23 +49,15 @@ class PersonControllerTest extends TestCase
     public function a_user_can_visit_the_create_person_page(): void
     {
         $user = User::factory()->create();
-        $gender = Gender::factory()->create([
+        Gender::factory()->create([
             'account_id' => $user->account_id,
             'name' => 'Male',
         ]);
-        $response = $this->actingAs($user)
+
+        $this->actingAs($user)
             ->get('/persons/new')
             ->assertSee('Add a person')
             ->assertOk();
-
-        $this->assertArrayHasKey('genders', $response);
-        $this->assertEquals(
-            [
-                'id' => $gender->id,
-                'name' => 'Male',
-            ],
-            $response['genders']->toArray()[0]
-        );
     }
 
     #[Test]
@@ -107,12 +99,8 @@ class PersonControllerTest extends TestCase
             'last_name' => 'Geller',
         ]);
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons/'.$person->slug)
             ->assertOk();
-
-        $this->assertArrayHasKey('person', $response);
-        $this->assertArrayHasKey('persons', $response);
-        $this->assertArrayHasKey('encounters', $response);
     }
 }

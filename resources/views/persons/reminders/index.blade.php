@@ -3,7 +3,7 @@
  * @var array $persons
  * @var \App\Models\Person $person
  * @var array $months
- * @var int $totalReminders
+ * @var int $total_reminders
  * @var array $tasks
  */
 ?>
@@ -38,7 +38,7 @@
           [
             'person' => $person,
             'months' => $months,
-            'totalReminders' => $totalReminders,
+            'total_reminders' => $total_reminders,
           ]
         )
       </div>

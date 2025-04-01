@@ -2,7 +2,7 @@
 /*
  * @var array $persons
  * @var \App\Models\Person $person
- * @var Collection $workHistories
+ * @var Collection $work_histories
  */
 ?>
 
@@ -22,7 +22,7 @@
           {{ __('Work & Passions') }}
         </h1>
 
-        @include('persons.work.partials.work', ['person' => $person, 'workHistories' => $workHistories])
+        @include('persons.work.partials.work', ['person' => $person, 'work_histories' => $work_histories])
 
         <!-- Passions Section -->
         <h2 class="font-semi-bold mb-1 text-lg">

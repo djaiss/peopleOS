@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
-use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
 use App\Models\Person;
 use App\Services\CreatePerson;
+use App\Services\GetCreatePersonData;
+use App\Services\GetPersonDetails;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,45 +19,30 @@ class PersonController extends Controller
 {
     public function index()
     {
-        $personsQuery = Person::where('account_id', Auth::user()->account_id)
-            ->with('howWeMetSpecialDate')
-            ->where('is_listed', true)
-            ->orderBy('first_name')
-            ->get();
+        $personsCount = Person::where('account_id', Auth::user()->account_id)
+            ->count();
 
-        $persons = $personsQuery
-            ->map(fn (Person $person): array => [
-                'id' => $person->id,
-                'name' => $person->name,
-                'maiden_name' => $person->maiden_name,
-                'nickname' => $person->nickname,
-                'slug' => $person->slug,
-                'avatar' => $person->getAvatar(64),
-            ])
-            ->sortBy('name');
-
-        if (count($persons) === 0) {
+        if ($personsCount === 0) {
             return view('persons.blank');
         }
 
+        $person = Person::where('account_id', Auth::user()->account_id)
+            ->where('id', Auth::user()->last_person_seen_id)
+            ->select('slug')
+            ->first();
+
         return redirect()->route('person.show', [
-            'slug' => $persons[0]['slug'],
+            'slug' => $person->slug,
         ]);
     }
 
     public function new(): View
     {
-        $genders = Gender::where('account_id', Auth::user()->account_id)
-            ->orderBy('position')
-            ->get()
-            ->map(fn (Gender $gender): array => [
-                'id' => $gender->id,
-                'name' => $gender->name,
-            ]);
+        $viewData = (new GetCreatePersonData(
+            user: Auth::user(),
+        ))->execute();
 
-        return view('persons.new', [
-            'genders' => $genders,
-        ]);
+        return view('persons.new', $viewData);
     }
 
     public function create(Request $request): RedirectResponse
@@ -99,30 +85,11 @@ class PersonController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $persons = PeopleListCache::make(
-            accountId: Auth::user()->account_id,
-        )->value();
+        $viewData = (new GetPersonDetails(
+            user: Auth::user(),
+            person: $person,
+        ))->execute();
 
-        $currentYear = date('Y');
-        $previousYear = (int) $currentYear - 1;
-
-        $encounters = [
-            'currentYearCount' => $person->encounters()
-                ->whereYear('seen_at', $currentYear)
-                ->count(),
-            'previousYearCount' => $person->encounters()
-                ->whereYear('seen_at', $previousYear)
-                ->count(),
-            'latestSeen' => $person->encounters()
-                ->orderBy('seen_at', 'desc')
-                ->take(5)
-                ->get(),
-        ];
-
-        return view('persons.show', [
-            'person' => $person,
-            'persons' => $persons,
-            'encounters' => $encounters,
-        ]);
+        return view('persons.show', $viewData);
     }
 }

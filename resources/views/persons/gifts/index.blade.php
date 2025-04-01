@@ -3,9 +3,9 @@
  * @var Person $person
  * @var Collection $persons
  * @var Collection $gifts
- * @var int $ideaGiftsCount
- * @var int $receivedGiftsCount
- * @var int $offeredGiftsCount
+ * @var int $idea_gifts_count
+ * @var int $received_gifts_count
+ * @var int $offered_gifts_count
  */
 ?>
 
@@ -40,7 +40,7 @@
 
           <!-- list of gifts -->
           <div id="gift-list">
-            @if ($ideaGiftsCount > 0 || $receivedGiftsCount > 0 || $offeredGiftsCount > 0)
+            @if ($idea_gifts_count > 0 || $received_gifts_count > 0 || $offered_gifts_count > 0)
               <div class="flex gap-x-8">
                 <!-- tabs -->
                 <div class="flex flex-col gap-2">
@@ -49,7 +49,7 @@
                       <p class="text-gray-900">{{ __('Ideas') }}</p>
                     </div>
 
-                    <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $ideaGiftsCount }}</div>
+                    <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $idea_gifts_count }}</div>
                   </a>
 
                   <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'received']) }}" class="{{ $person->gift_tab_shown === 'received' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
@@ -57,7 +57,7 @@
                       <p class="text-gray-900">{{ __('Received') }}</p>
                     </div>
 
-                    <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $receivedGiftsCount }}</div>
+                    <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $received_gifts_count }}</div>
                   </a>
 
                   <a x-target="gift-list" href="{{ route('person.gift.tab.update', [$person->slug, 'given']) }}" class="{{ $person->gift_tab_shown === 'given' ? 'border-blue-200 bg-blue-50' : 'border-transparent hover:border-blue-200 hover:bg-blue-50' }} group flex cursor-pointer items-center justify-between gap-2 rounded-lg border px-2 py-1">
@@ -65,7 +65,7 @@
                       <p class="text-gray-900">{{ __('Offered') }}</p>
                     </div>
 
-                    <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $offeredGiftsCount }}</div>
+                    <div class="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 group-hover:bg-blue-200">{{ $offered_gifts_count }}</div>
                   </a>
                 </div>
 

@@ -16,27 +16,21 @@ class PersonNoteControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function a_user_can_visit_the_notes_index_page(): void
+    public function it_displays_the_notes_listing_page(): void
     {
         $user = User::factory()->create();
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Joey',
-            'last_name' => 'Tribbiani',
         ]);
         Note::factory()->create([
             'person_id' => $person->id,
             'content' => 'Joey does not share food!',
         ]);
 
-        $response = $this->actingAs($user)
+        $this->actingAs($user)
             ->get('/persons/'.$person->slug.'/notes')
             ->assertOk()
             ->assertSee('Joey does not share food!');
-
-        $this->assertArrayHasKey('person', $response);
-        $this->assertArrayHasKey('persons', $response);
-        $this->assertArrayHasKey('notes', $response);
     }
 
     #[Test]

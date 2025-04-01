@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
-use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Models\WorkHistory;
 use App\Services\CreateWorkHistory;
 use App\Services\DestroyWorkHistory;
+use App\Services\GetWorkInformationListing;
 use App\Services\UpdateWorkHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,26 +20,12 @@ class PersonWorkController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $persons = PeopleListCache::make(
-            accountId: Auth::user()->account_id,
-        )->value();
+        $viewData = (new GetWorkInformationListing(
+            user: Auth::user(),
+            person: $person,
+        ))->execute();
 
-        $workHistories = WorkHistory::where('person_id', $person->id)
-            ->get()
-            ->map(fn (WorkHistory $history): array => [
-                'id' => $history->id,
-                'title' => $history->job_title,
-                'company' => $history?->company_name,
-                'duration' => $history?->duration,
-                'salary' => $history?->estimated_salary,
-                'is_current' => $history->active,
-            ]);
-
-        return view('persons.work.index', [
-            'persons' => $persons,
-            'person' => $person,
-            'workHistories' => $workHistories,
-        ]);
+        return view('persons.work.index', $viewData);
     }
 
     public function new(Request $request): View
