@@ -7,13 +7,16 @@ namespace App\Http\Controllers\Marketing;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Services\FetchMergedPRs;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class MarketingController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $marketingPage = $request->attributes->get('marketingPage');
+
         $accountNumbers = Account::where('created_at', '>=', now()->subWeek())->count();
 
         $pullRequests = Cache::remember(
@@ -25,6 +28,7 @@ class MarketingController extends Controller
         return view('marketing.index', [
             'accountNumbers' => $accountNumbers,
             'pullRequests' => $pullRequests,
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
         ]);
     }
 }

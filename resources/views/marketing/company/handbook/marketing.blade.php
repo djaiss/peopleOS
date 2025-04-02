@@ -1,10 +1,11 @@
 <?php
 /*
  * @var array $stats
+ * @var string $pageviews
  */
 ?>
 
-<x-marketing-handbook-layout>
+<x-marketing-handbook-layout :pageviews="$pageviews">
   <x-slot name="breadcrumb">
     <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>
     <span class="text-gray-500">&gt;</span>

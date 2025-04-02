@@ -9,11 +9,14 @@ use Illuminate\View\View;
 
 class MarketingLayout extends Component
 {
-    /**
-     * Get the view / contents that represents the component.
-     */
+    public function __construct(
+        public ?string $pageviews = '',
+    ) {}
+
     public function render(): View
     {
-        return view('layouts.marketing');
+        return view('layouts.marketing', [
+            'pageviews' => $this->pageviews,
+        ]);
     }
 }

@@ -1,3 +1,9 @@
+<?php
+/*
+ * @var int $pageviews
+ */
+?>
+
 <footer class="border-t border-gray-200 bg-white pt-12 pb-8">
   <div class="mx-auto max-w-7xl px-6 lg:px-0">
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
@@ -105,7 +111,7 @@
 
           @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
             <p class="text-xs text-gray-500">
-              {{ __('This page was last updated on :date.', ['date' => $lastModified->format('F j, Y')]) }}
+              {{ __('This page was last updated on :date, and has been viewed :views times since its creation.', ['date' => $lastModified->format('F j, Y'), 'views' => $pageviews]) }}
             </p>
           @endif
         </div>
