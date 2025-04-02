@@ -66,7 +66,7 @@ class CreateWorkHistory
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -75,6 +75,6 @@ class CreateWorkHistory
             user: $this->user,
             action: 'work_history_creation',
             description: 'Created a work history entry for '.$this->person->name,
-        );
+        )->onQueue('low');
     }
 }

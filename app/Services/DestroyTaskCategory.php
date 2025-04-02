@@ -38,7 +38,7 @@ class DestroyTaskCategory
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $taskCategoryName): void
@@ -47,6 +47,6 @@ class DestroyTaskCategory
             user: $this->user,
             action: 'task_category_deletion',
             description: 'Deleted the task category called '.$taskCategoryName,
-        );
+        )->onQueue('low');
     }
 }

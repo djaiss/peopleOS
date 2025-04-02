@@ -34,7 +34,7 @@ class DestroyApiKey
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -43,7 +43,7 @@ class DestroyApiKey
             user: $this->user,
             action: 'api_key_deletion',
             description: 'Deleted an API key',
-        );
+        )->onQueue('low');
     }
 
     private function sendMail(string $label): void

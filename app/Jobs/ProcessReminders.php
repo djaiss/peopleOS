@@ -23,7 +23,7 @@ class ProcessReminders implements ShouldQueue
             ->get();
 
         foreach ($specialDates as $specialDate) {
-            SendReminder::dispatch($specialDate);
+            SendReminder::dispatch($specialDate)->onQueue('low');
         }
     }
 }

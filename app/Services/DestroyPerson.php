@@ -45,7 +45,7 @@ class DestroyPerson
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $personName): void
@@ -54,7 +54,7 @@ class DestroyPerson
             user: $this->user,
             action: 'person_deletion',
             description: 'Deleted the person called '.$personName,
-        );
+        )->onQueue('low');
     }
 
     private function refreshCache(): void

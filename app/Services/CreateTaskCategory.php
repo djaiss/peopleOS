@@ -33,7 +33,7 @@ class CreateTaskCategory
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(TaskCategory $taskCategory): void
@@ -42,6 +42,6 @@ class CreateTaskCategory
             user: $this->user,
             action: 'task_category_creation',
             description: 'Created the task category called '.$taskCategory->name,
-        );
+        )->onQueue('low');
     }
 }

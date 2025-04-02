@@ -105,7 +105,7 @@ class CreatePerson
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -114,7 +114,7 @@ class CreatePerson
             user: $this->user,
             action: 'person_creation',
             description: 'Created the person called '.$this->person->name,
-        );
+        )->onQueue('low');
     }
 
     private function refreshCache(): void

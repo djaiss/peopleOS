@@ -106,7 +106,7 @@ class UpdateAgeOfAPerson
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -115,6 +115,6 @@ class UpdateAgeOfAPerson
             user: $this->user,
             action: 'age_update',
             description: 'Updated the age of '.$this->person->name,
-        );
+        )->onQueue('low');
     }
 }

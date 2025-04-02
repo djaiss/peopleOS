@@ -77,7 +77,7 @@ class CreateLoveRelationship
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -86,6 +86,6 @@ class CreateLoveRelationship
             user: $this->user,
             action: 'love_relationship_creation',
             description: "Created a {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}"
-        );
+        )->onQueue('low');
     }
 }

@@ -35,7 +35,7 @@ class ToggleDisplayFullNames
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -44,6 +44,6 @@ class ToggleDisplayFullNames
             user: $this->user,
             action: 'display_full_names_toggle',
             description: 'Toggled display of full names',
-        );
+        )->onQueue('low');
     }
 }

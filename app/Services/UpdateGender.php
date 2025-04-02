@@ -43,7 +43,7 @@ class UpdateGender
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -52,6 +52,6 @@ class UpdateGender
             user: $this->user,
             action: 'gender_update',
             description: 'Updated the gender called '.$this->gender->name,
-        );
+        )->onQueue('low');
     }
 }

@@ -38,7 +38,7 @@ class ToggleBirthdate
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -47,6 +47,6 @@ class ToggleBirthdate
             user: $this->user,
             action: 'display_age_toggle',
             description: 'Toggled display of age',
-        );
+        )->onQueue('low');
     }
 }

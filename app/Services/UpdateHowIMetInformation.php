@@ -99,7 +99,7 @@ class UpdateHowIMetInformation
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -108,6 +108,6 @@ class UpdateHowIMetInformation
             user: $this->user,
             action: 'how_i_met_information_update',
             description: 'Updated the person called '.$this->person->name.' with the how I met information',
-        );
+        )->onQueue('low');
     }
 }

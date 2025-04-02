@@ -41,7 +41,7 @@ class UpdateNote
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -50,6 +50,6 @@ class UpdateNote
             user: $this->user,
             action: 'note_update',
             description: 'Updated the note for '.$this->note->person->name,
-        );
+        )->onQueue('low');
     }
 }

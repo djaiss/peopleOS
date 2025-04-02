@@ -48,7 +48,7 @@ class UpdateProfilePicture
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -57,6 +57,6 @@ class UpdateProfilePicture
             user: $this->user,
             action: 'profile_picture_update',
             description: 'Updated his/her profile picture',
-        );
+        )->onQueue('low');
     }
 }

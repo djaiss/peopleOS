@@ -59,12 +59,12 @@ class CreateAccount
 
     private function populateAccount(): void
     {
-        SetupAccount::dispatch($this->user);
+        SetupAccount::dispatch($this->user)->onQueue('high');
     }
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -73,6 +73,6 @@ class CreateAccount
             user: $this->user,
             action: 'account_creation',
             description: 'Created an account',
-        );
+        )->onQueue('low');
     }
 }

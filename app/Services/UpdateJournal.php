@@ -51,7 +51,7 @@ class UpdateJournal
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -60,6 +60,6 @@ class UpdateJournal
             user: $this->user,
             action: 'journal_update',
             description: 'Updated the journal called '.$this->journal->name,
-        );
+        )->onQueue('low');
     }
 }
