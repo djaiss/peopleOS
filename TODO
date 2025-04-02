@@ -10,6 +10,9 @@ Todo:
   - add a color palette to person (for the background of the avatar): DONE
   - replace $request->user() with Auth::user() in all controllers: DONE
   - replace all route names from plural to singular: DONE
+  - make sure all the queues are set to low priority
+  - show the number of views on the marketing pages
+  - add the ability to mark a page as helpful or not helpful
   - add life events
   - add a block
     - add addresses

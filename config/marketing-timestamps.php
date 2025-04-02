@@ -70,9 +70,9 @@ return [
         'marketing.partials.footer' => '2025-03-16T15:33:55-04:00',
         'marketing/partials/header' => '2025-03-30T01:02:59+00:00',
         'marketing.partials.header' => '2025-03-30T01:02:59+00:00',
-        'marketing/pricing/index' => '2025-03-16T17:31:20-04:00',
-        'marketing.pricing.index' => '2025-03-16T17:31:20-04:00',
-        'marketing/why/index' => '2025-03-10T20:51:59-04:00',
-        'marketing.why.index' => '2025-03-10T20:51:59-04:00',
+        'marketing/pricing/index' => '2025-04-02T01:10:35+00:00',
+        'marketing.pricing.index' => '2025-04-02T01:10:35+00:00',
+        'marketing/why/index' => '2025-04-02T01:10:35+00:00',
+        'marketing.why.index' => '2025-04-02T01:10:35+00:00',
     ],
 ];

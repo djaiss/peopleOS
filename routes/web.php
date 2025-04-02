@@ -44,7 +44,7 @@ use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['marketing'])->group(
+Route::middleware(['marketing', 'marketing.page'])->group(
     function (): void {
         Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
         Route::get('/about', [MarketingController::class, 'index'])->name('marketing.about.index');

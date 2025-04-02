@@ -21,11 +21,13 @@ The project I'm building is a personal CRM. Every action that the user or the ap
 - Code should use spaces accordingly, like so:
 
 DO NOT DO THIS:
+
 ```php
 $this->assertEquals(AgeType::EXACT->value, $this->person->fresh()->age_type);
 ```
 
 DO THIS INSTEAD:
+
 ```php
 $this->assertEquals(
     AgeType::EXACT->value,
