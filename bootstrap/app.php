@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Middleware\CheckGift;
 use App\Http\Middleware\CheckInstanceAdministrator;
 use App\Http\Middleware\CheckJournal;
+use App\Http\Middleware\CheckMarketingPage;
 use App\Http\Middleware\CheckMarketingSiteEnabled;
 use App\Http\Middleware\CheckNote;
 use App\Http\Middleware\CheckPerson;
@@ -35,6 +36,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'instance.admin' => CheckInstanceAdministrator::class,
             'marketing' => CheckMarketingSiteEnabled::class,
             'journal' => CheckJournal::class,
+            'marketing.page' => CheckMarketingPage::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
