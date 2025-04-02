@@ -1,4 +1,10 @@
-<x-marketing-handbook-layout>
+<?php
+/*
+ * @var string $pageviews
+ */
+?>
+
+<x-marketing-handbook-layout :pageviews="$pageviews">
   <h1 class="mb-6 text-2xl font-bold">Our handbook</h1>
 
   <p class="mb-6">This handbook explains what I do, how I think and how I want to move this project forward. Brace yourself, it's very good. At least I think so.</p>

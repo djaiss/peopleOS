@@ -13,17 +13,11 @@ class IncrementPageView implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        public string $url,
+        public MarketingPage $marketingPage,
     ) {}
 
     public function handle(): void
     {
-        $page = MarketingPage::where('url', $this->url)->firstOrCreate([
-            'url' => $this->url,
-        ]);
-
-        if ($page) {
-            $page->increment('pageviews');
-        }
+        $this->marketingPage->increment('pageviews');
     }
 }

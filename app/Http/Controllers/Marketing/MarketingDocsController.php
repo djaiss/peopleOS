@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
@@ -14,73 +15,129 @@ use Illuminate\View\View;
  */
 class MarketingDocsController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('marketing.docs.index');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.index', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function introduction(): View
+    public function introduction(Request $request): View
     {
-        return view('marketing.docs.api.introduction');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.introduction', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function authentication(): View
+    public function authentication(Request $request): View
     {
-        return view('marketing.docs.api.authentication');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.authentication', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function errors(): View
+    public function errors(Request $request): View
     {
-        return view('marketing.docs.api.errors');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.errors', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function profile(): View
+    public function profile(Request $request): View
     {
-        return view('marketing.docs.api.profile');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.profile', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function logs(): View
+    public function logs(Request $request): View
     {
-        return view('marketing.docs.api.logs');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.logs', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function apiManagement(): View
+    public function apiManagement(Request $request): View
     {
-        return view('marketing.docs.api.api-management');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.api-management', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function genders(): View
+    public function genders(Request $request): View
     {
-        return view('marketing.docs.api.genders');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.genders', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function taskCategories(): View
+    public function taskCategories(Request $request): View
     {
-        return view('marketing.docs.api.task-categories');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.task-categories', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function gifts(): View
+    public function gifts(Request $request): View
     {
-        return view('marketing.docs.api.gifts');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.gifts', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function tasks(): View
+    public function tasks(Request $request): View
     {
-        return view('marketing.docs.api.tasks');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.tasks', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function journals(): View
+    public function journals(Request $request): View
     {
-        return view('marketing.docs.api.journals');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.journals', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function entries(): View
+    public function entries(Request $request): View
     {
-        return view('marketing.docs.api.entries');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.entries', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 
-    public function updateAge(): View
+    public function updateAge(Request $request): View
     {
-        return view('marketing.docs.api.update-age');
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.update-age', [
+            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+        ]);
     }
 }

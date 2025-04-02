@@ -22,23 +22,9 @@ class IncrementPageViewTest extends TestCase
             'pageviews' => 0,
         ]);
 
-        (new IncrementPageView('https://friends.com'))->handle();
+        (new IncrementPageView($page))->handle();
 
         $this->assertEquals(1, $page->fresh()->pageviews);
-        $this->assertEquals(1, MarketingPage::count());
-    }
-
-    #[Test]
-    public function it_should_create_page_and_increment_pageview_when_page_does_not_exist()
-    {
-        $this->assertEquals(0, MarketingPage::count());
-        $url = 'https://friends.com';
-
-        (new IncrementPageView($url))->handle();
-
-        $page = MarketingPage::where('url', $url)->first();
-        $this->assertNotNull($page);
-        $this->assertEquals(1, $page->pageviews);
         $this->assertEquals(1, MarketingPage::count());
     }
 }

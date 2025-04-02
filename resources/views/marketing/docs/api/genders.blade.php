@@ -1,4 +1,10 @@
-<x-marketing-docs-layout>
+<?php
+/*
+ * @var string $pageviews
+ */
+?>
+
+<x-marketing-docs-layout :pageviews="$pageviews">
   <h1 class="mb-6 text-2xl font-bold">Genders</h1>
 
   <div class="mb-8 rounded-lg border p-4">

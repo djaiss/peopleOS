@@ -23,7 +23,7 @@
         {{ $slot }}
       </main>
 
-      @include('marketing.partials.footer')
+      @include('marketing.partials.footer', ['pageviews' => $pageviews])
       @include('components.toaster')
     </div>
   </body>
