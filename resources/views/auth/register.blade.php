@@ -110,7 +110,7 @@
                 <p class="text-sm font-semibold text-gray-600">Barney Stinson</p>
                 <p class="text-sm text-gray-600">
                   <span class="italic">from</span>
-                  How I Met Your Mother (Season 1, Episode 1)
+                  How I Met Your Mother
                 </p>
               </div>
             </div>

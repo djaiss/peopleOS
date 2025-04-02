@@ -22,12 +22,15 @@
 
           <p>Consider these common scenarios:</p>
 
-          <ul>
-            <li>You meet a friend's partner at a dinner party, have a great conversation about their recent trip to Japan, but completely forget these details the next time you meet.</li>
-            <li>Your colleague mentions their child's upcoming school play, but you forget to follow up and ask how it went.</li>
-            <li>You want to buy the perfect birthday gift for your nephew, but can't remember if he's still into dinosaurs or has moved on to space exploration.</li>
-            <li>A friend shares their struggle with a personal challenge, but you forget to check in on them a few weeks later.</li>
-          </ul>
+          <div class="flex items-center gap-x-2">
+            <img src="{{ asset('marketing/sherlock.png') }}" srcset="{{ asset('marketing/sherlock.png') }}, {{ asset('marketing/sherlock@2x.png') }} 2x" height="300" width="200" alt="Sherlock Holmes" class="" />
+            <ul>
+              <li>You meet a friend's partner at a dinner party, have a great conversation about their recent trip to Japan, but completely forget these details the next time you meet.</li>
+              <li>Your colleague mentions their child's upcoming school play, but you forget to follow up and ask how it went.</li>
+              <li>You want to buy the perfect birthday gift for your nephew, but can't remember if he's still into dinosaurs or has moved on to space exploration.</li>
+              <li>A friend shares their struggle with a personal challenge, but you forget to check in on them a few weeks later.</li>
+            </ul>
+          </div>
 
           <p>These missed opportunities for connection add up over time, gradually eroding the quality of our relationships. We're not failing because we don't care - we're failing because our brains aren't wired to keep track of hundreds of meaningful details about dozens of people.</p>
 
