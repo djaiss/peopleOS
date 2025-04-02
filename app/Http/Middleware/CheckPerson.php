@@ -34,7 +34,7 @@ class CheckPerson
             LogLastPersonSeen::dispatch(
                 user: Auth::user(),
                 person: $person
-            );
+            )->onQueue('low');
 
             return $next($request);
         } catch (ModelNotFoundException) {

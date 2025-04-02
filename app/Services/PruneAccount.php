@@ -43,7 +43,7 @@ class PruneAccount
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -52,6 +52,6 @@ class PruneAccount
             user: $this->user,
             action: 'account_pruning',
             description: 'Deleted all persons and related data from your account',
-        );
+        )->onQueue('low');
     }
 }

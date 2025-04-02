@@ -38,7 +38,7 @@ class DestroyJournal
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $journalName): void
@@ -47,6 +47,6 @@ class DestroyJournal
             user: $this->user,
             action: 'journal_deletion',
             description: 'Deleted the journal called '.$journalName,
-        );
+        )->onQueue('low');
     }
 }

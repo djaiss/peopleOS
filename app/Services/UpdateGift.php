@@ -63,7 +63,7 @@ class UpdateGift
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -72,6 +72,6 @@ class UpdateGift
             user: $this->user,
             action: 'gift_update',
             description: 'Updated a gift for '.$this->person->name,
-        );
+        )->onQueue('low');
     }
 }

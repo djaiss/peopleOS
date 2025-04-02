@@ -52,7 +52,7 @@ class CreateEncounter
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -61,6 +61,6 @@ class CreateEncounter
             user: $this->user,
             action: 'encounter_creation',
             description: 'Logged having seen '.$this->person->name,
-        );
+        )->onQueue('low');
     }
 }

@@ -38,7 +38,7 @@ class DestroyTask
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $taskName): void
@@ -47,6 +47,6 @@ class DestroyTask
             user: $this->user,
             action: 'task_deletion',
             description: 'Deleted a task called '.$taskName,
-        );
+        )->onQueue('low');
     }
 }

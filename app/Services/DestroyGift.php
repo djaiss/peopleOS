@@ -38,7 +38,7 @@ class DestroyGift
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $personName): void
@@ -47,6 +47,6 @@ class DestroyGift
             user: $this->user,
             action: 'gift_deletion',
             description: 'Deleted a gift for '.$personName,
-        );
+        )->onQueue('low');
     }
 }

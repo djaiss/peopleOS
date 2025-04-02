@@ -62,7 +62,7 @@ class SendNewInvitation
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -71,6 +71,6 @@ class SendNewInvitation
             user: $this->user,
             action: 'user_invitation_resend',
             description: 'Resent invitation to '.$this->invitedUser->email,
-        );
+        )->onQueue('low');
     }
 }

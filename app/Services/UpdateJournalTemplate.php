@@ -48,7 +48,7 @@ class UpdateJournalTemplate
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -57,6 +57,6 @@ class UpdateJournalTemplate
             user: $this->user,
             action: 'journal_template_update',
             description: 'Updated the journal template called '.$this->name,
-        );
+        )->onQueue('low');
     }
 }

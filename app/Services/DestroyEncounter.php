@@ -39,7 +39,7 @@ class DestroyEncounter
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -48,6 +48,6 @@ class DestroyEncounter
             user: $this->user,
             action: 'encounter_deletion',
             description: 'Deleted having seen '.$this->encounter->person->name,
-        );
+        )->onQueue('low');
     }
 }

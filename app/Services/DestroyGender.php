@@ -38,7 +38,7 @@ class DestroyGender
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $genderName): void
@@ -47,6 +47,6 @@ class DestroyGender
             user: $this->user,
             action: 'gender_deletion',
             description: 'Deleted the gender called '.$genderName,
-        );
+        )->onQueue('low');
     }
 }

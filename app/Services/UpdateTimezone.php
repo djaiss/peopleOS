@@ -33,7 +33,7 @@ class UpdateTimezone
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -42,6 +42,6 @@ class UpdateTimezone
             user: $this->user,
             action: 'timezone_update',
             description: 'Updated their timezone',
-        );
+        )->onQueue('low');
     }
 }

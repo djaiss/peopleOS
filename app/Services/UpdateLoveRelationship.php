@@ -61,7 +61,7 @@ class UpdateLoveRelationship
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -70,6 +70,6 @@ class UpdateLoveRelationship
             user: $this->user,
             action: 'love_relationship_update',
             description: "Updated the {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}"
-        );
+        )->onQueue('low');
     }
 }

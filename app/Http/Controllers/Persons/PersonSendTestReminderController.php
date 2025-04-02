@@ -19,7 +19,7 @@ class PersonSendTestReminderController extends Controller
             ->where('id', $specialDateId)
             ->firstOrFail();
 
-        SendReminder::dispatch($specialDate);
+        SendReminder::dispatch($specialDate)->onQueue('high');
 
         return redirect()->route('person.reminder.index', $person->slug)
             ->with('status', __('Mail sent'));

@@ -36,7 +36,7 @@ class DestroyNote
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -45,6 +45,6 @@ class DestroyNote
             user: $this->user,
             action: 'note_deletion',
             description: 'Deleted a note for '.$this->note->person->name,
-        );
+        )->onQueue('low');
     }
 }

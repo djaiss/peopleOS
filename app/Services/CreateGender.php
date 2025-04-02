@@ -35,7 +35,7 @@ class CreateGender
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(Gender $gender): void
@@ -44,6 +44,6 @@ class CreateGender
             user: $this->user,
             action: 'gender_creation',
             description: 'Created the gender called '.$gender->name,
-        );
+        )->onQueue('low');
     }
 }

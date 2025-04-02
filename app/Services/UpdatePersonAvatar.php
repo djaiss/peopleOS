@@ -52,7 +52,7 @@ class UpdatePersonAvatar
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -61,7 +61,7 @@ class UpdatePersonAvatar
             user: $this->user,
             action: 'person_avatar_update',
             description: 'Updated the avatar of '.$this->person->name,
-        );
+        )->onQueue('low');
     }
 
     private function refreshCache(): void

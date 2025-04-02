@@ -36,7 +36,7 @@ class DestroyWorkHistory
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -45,6 +45,6 @@ class DestroyWorkHistory
             user: $this->user,
             action: 'work_history_deletion',
             description: 'Deleted a work history entry for '.$this->workHistory->person->name,
-        );
+        )->onQueue('low');
     }
 }

@@ -72,7 +72,7 @@ class CreateOrRetrieveEntry
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -81,6 +81,6 @@ class CreateOrRetrieveEntry
             user: $this->user,
             action: 'entry_creation',
             description: 'Created the entry for the journal called '.$this->journal->name,
-        );
+        )->onQueue('low');
     }
 }

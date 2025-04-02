@@ -43,7 +43,7 @@ class UpdateTaskCategory
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -52,6 +52,6 @@ class UpdateTaskCategory
             user: $this->user,
             action: 'task_category_update',
             description: 'Updated the task category called '.$this->taskCategory->name,
-        );
+        )->onQueue('low');
     }
 }

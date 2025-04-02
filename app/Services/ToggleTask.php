@@ -43,7 +43,7 @@ class ToggleTask
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(string $taskName): void
@@ -52,6 +52,6 @@ class ToggleTask
             user: $this->user,
             action: 'task_toggle',
             description: 'Toggled a task called '.$taskName,
-        );
+        )->onQueue('low');
     }
 }

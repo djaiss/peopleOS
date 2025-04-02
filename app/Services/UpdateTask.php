@@ -60,7 +60,7 @@ class UpdateTask
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(): void
@@ -69,6 +69,6 @@ class UpdateTask
             user: $this->user,
             action: 'task_update',
             description: 'Updated the task called '.$this->task->name,
-        );
+        )->onQueue('low');
     }
 }

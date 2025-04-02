@@ -33,7 +33,7 @@ class CreateApiKey
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -42,7 +42,7 @@ class CreateApiKey
             user: $this->user,
             action: 'api_key_creation',
             description: 'Created an API key',
-        );
+        )->onQueue('low');
     }
 
     private function sendMail(): void

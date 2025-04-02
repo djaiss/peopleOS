@@ -67,7 +67,7 @@ class InviteUser
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function log(): void
@@ -76,6 +76,6 @@ class InviteUser
             user: $this->user,
             action: 'user_invitation',
             description: 'Invited '.$this->email.' to the account',
-        );
+        )->onQueue('low');
     }
 }

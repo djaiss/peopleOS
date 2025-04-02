@@ -59,7 +59,7 @@ class CreateTask
 
     private function updateUserLastActivityDate(): void
     {
-        UpdateUserLastActivityDate::dispatch($this->user);
+        UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
     }
 
     private function logUserAction(Task $task): void
@@ -68,6 +68,6 @@ class CreateTask
             user: $this->user,
             action: 'task_creation',
             description: 'Created the task called '.$task->name,
-        );
+        )->onQueue('low');
     }
 }
