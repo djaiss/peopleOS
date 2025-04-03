@@ -49,7 +49,7 @@
 
           <p>
             PeopleOS is
-            <a href="https://github.com/djaiss/peopleos" class="text-blue-600 hover:text-blue-500">100% open source</a>
+            <a href="https://github.com/djaiss/peopleos" class="text-blue-500 hover:underline">100% open source</a>
             . This means the source code is available for everyone to see, contribute or change.
           </p>
 

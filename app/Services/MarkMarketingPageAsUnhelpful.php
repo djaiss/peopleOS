@@ -34,5 +34,7 @@ class MarkMarketingPageAsUnhelpful
                 'helpful' => false,
             ]);
         }
+
+        $this->marketingPage->increment('marked_not_helpful');
     }
 }

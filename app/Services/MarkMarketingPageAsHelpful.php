@@ -34,5 +34,7 @@ class MarkMarketingPageAsHelpful
                 'helpful' => true,
             ]);
         }
+
+        $this->marketingPage->increment('marked_helpful');
     }
 }
