@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Marketing;
 
-use App\Services\FetchMergedPRs;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,8 +22,8 @@ class MarketingControllerTest extends TestCase
                 'title' => 'Test PR Title',
                 'merged_at' => '2024-03-20',
                 'body' => 'Test PR Description',
-                'url' => 'https://github.com/test/123'
-            ]
+                'url' => 'https://github.com/test/123',
+            ],
         ];
 
         Cache::partialMock()

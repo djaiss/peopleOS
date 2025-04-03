@@ -6,24 +6,24 @@
 
 <div class="flex flex-col justify-between rounded-lg border text-sm">
   <!-- buttons to vote -->
-  @if (! isset($rate) && ! isset($hasVoted))
-    <div class="relative" x-data="{ showTooltip: false }" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
+  @if (is_null($findHelpful) && ! session('hasVoted'))
+    <div id="thanks" class="relative" x-data="{ showTooltip: false }" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
       <div class="mb-2 flex flex-col items-center justify-center gap-y-4 border-b border-gray-200 p-4 pb-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
-        <form x-target="thanks" action="{{ route('marketing.vote-useful', ['page' => $marketingPage->id]) }}" method="POST">
+        <form x-target="thanks" action="{{ route('marketing.vote-helpful', ['page' => $marketingPage->id]) }}" method="POST">
           @csrf
           <button type="submit" @disabled(! Auth::check()) class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:border-green-700 hover:bg-white">
             <x-lucide-thumbs-up class="h-4 w-4 transform text-green-600 transition-transform group-hover:-rotate-12 group-hover:text-green-700" />
             <span class="text-sm text-gray-700 group-hover:text-gray-900">
-              {{ __('This page is useful') }}
+              {{ __('This page is helpful') }}
             </span>
           </button>
         </form>
-        <form x-target="thanks" action="{{ route('marketing.vote-unuseful', ['page' => $marketingPage->id]) }}" method="POST">
+        <form x-target="thanks" action="{{ route('marketing.vote-unhelpful', ['page' => $marketingPage->id]) }}" method="POST">
           @csrf
           <button type="submit" @disabled(! Auth::check()) class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:border-red-700 hover:bg-white">
             <x-lucide-thumbs-down class="h-4 w-4 transform text-red-600 transition-transform group-hover:rotate-12 group-hover:text-red-700" />
             <span class="text-sm text-gray-700 group-hover:text-gray-900">
-              {{ __('This page is not useful') }}
+              {{ __('This page is not helpful') }}
             </span>
           </button>
         </form>
@@ -43,7 +43,7 @@
   @endif
 
   <!-- thanks message -->
-  @if (isset($hasVoted))
+  @if (session('hasVoted'))
     <div id="thanks" class="flex items-center justify-center gap-x-8 border-b border-gray-200 p-4 pb-4">
       <img src="{{ asset('marketing/obama.webp') }}" srcset="{{ asset('marketing/obama@2x.webp') }} 2x" alt="Obama agreeing with you" height="100" width="100" />
 
@@ -55,9 +55,13 @@
     </div>
   @endif
 
-  @if (Auth::check() && isset($rate))
+  @if (Auth::check() && ! is_null($findHelpful))
     <div class="flex items-center justify-between gap-x-8 border-b border-gray-200 p-4 pb-4">
-      <p>You've marked this page as {{ $rate ? 'useful' : 'not useful' }} on {{ $ratingAt->format('F j, Y') }}.</p>
+      <p>
+        You've marked this page as
+        <span class="font-semibold">{{ $findHelpful ? 'useful' : 'not useful' }}</span>
+        on {{ $votedAt }}.
+      </p>
 
       <a href="" class="text-blue-500 hover:underline">{{ __('Remove vote') }}</a>
     </div>

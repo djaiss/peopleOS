@@ -23,8 +23,8 @@ use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
 use App\Http\Controllers\Marketing\MarketingHandbookController;
 use App\Http\Controllers\Marketing\MarketingPricingController;
-use App\Http\Controllers\Marketing\MarketingVoteUnusefulController;
-use App\Http\Controllers\Marketing\MarketingVoteUsefulController;
+use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
+use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
@@ -75,16 +75,16 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/docs/api/journals', [MarketingDocsController::class, 'journals'])->name('marketing.docs.api.journals');
     Route::get('/docs/api/entries', [MarketingDocsController::class, 'entries'])->name('marketing.docs.api.entries');
     Route::get('/docs/api/update-age', [MarketingDocsController::class, 'updateAge'])->name('marketing.docs.api.update-age');
-
-    Route::middleware(['throttle:60,1'])->group(function (): void {
-        Route::post('/vote/{page}/useful', [MarketingVoteUsefulController::class, 'update'])->name('marketing.vote-useful');
-        Route::post('/vote/{page}/unuseful', [MarketingVoteUnusefulController::class, 'update'])->name('marketing.vote-unuseful');
-    });
 });
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
 
 Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function (): void {
+    // marketing
+    Route::post('/vote/{page}/helpful', [MarketingVoteHelpfulController::class, 'update'])->name('marketing.vote-helpful');
+    Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');
+
+    // dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // upgrade
