@@ -56,14 +56,19 @@
   @endif
 
   @if (Auth::check() && ! is_null($findHelpful))
-    <div class="flex items-center justify-between gap-x-8 border-b border-gray-200 p-4 pb-4">
+    <div id="thanks" class="flex items-center justify-between gap-x-8 border-b border-gray-200 p-4 pb-4">
       <p>
         You've marked this page as
-        <span class="font-semibold">{{ $findHelpful ? 'useful' : 'not useful' }}</span>
+        <span class="font-semibold">{{ $findHelpful ? 'helpful' : 'not helpful' }}</span>
         on {{ $votedAt }}.
       </p>
 
-      <a href="" class="text-blue-500 hover:underline">{{ __('Remove vote') }}</a>
+      <form x-target="thanks" action="{{ route('marketing.destroy-vote', ['page' => $marketingPage->id]) }}" method="POST">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" class="cursor-pointer text-blue-500 hover:underline">{{ __('Remove vote') }}</button>
+      </form>
     </div>
   @endif
 

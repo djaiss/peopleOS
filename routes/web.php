@@ -23,6 +23,7 @@ use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
 use App\Http\Controllers\Marketing\MarketingHandbookController;
 use App\Http\Controllers\Marketing\MarketingPricingController;
+use App\Http\Controllers\Marketing\MarketingVoteController;
 use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
 use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
@@ -83,6 +84,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function
     // marketing
     Route::post('/vote/{page}/helpful', [MarketingVoteHelpfulController::class, 'update'])->name('marketing.vote-helpful');
     Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');
+    Route::delete('/vote/{page}', [MarketingVoteController::class, 'update'])->name('marketing.destroy-vote');
 
     // dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

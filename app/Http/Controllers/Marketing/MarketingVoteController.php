@@ -6,20 +6,20 @@ namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
 use App\Models\MarketingPage;
-use App\Services\MarkMarketingPageAsUnhelpful;
+use App\Services\DestroyMarketingVote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MarketingVoteUnhelpfulController extends Controller
+class MarketingVoteController extends Controller
 {
     public function update(Request $request, MarketingPage $page): RedirectResponse
     {
-        (new MarkMarketingPageAsUnhelpful(
+        (new DestroyMarketingVote(
             user: Auth::user(),
             marketingPage: $page
         ))->execute();
 
-        return redirect()->back()->with('hasVoted', true);
+        return redirect()->back();
     }
 }

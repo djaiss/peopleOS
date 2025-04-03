@@ -12,7 +12,8 @@ Todo:
   - replace all route names from plural to singular: DONE
   - make sure all the queues are set to low priority: DONE
   - show the number of views on the marketing pages: DONE
-  - add the ability to mark a marketing page as helpful or not helpful
+  - add the ability to mark a marketing page as helpful or not helpful: DONE
+  - ability to remove a vote: DONE
   - replace png images with webp
   - add the ability to add a comment to a marketingpage
   - add life events
