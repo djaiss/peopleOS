@@ -1,10 +1,10 @@
 <?php
 /*
- * @var string $pageviews
+ * @var \App\Models\MarketingPage $marketingPage
  */
 ?>
 
-<x-marketing-handbook-layout :pageviews="$pageviews">
+<x-marketing-handbook-layout :marketing-page="$marketingPage">
   <h1 class="mb-6 text-2xl font-bold">Our handbook</h1>
 
   <p class="mb-6">This handbook explains what I do, how I think and how I want to move this project forward. Brace yourself, it's very good. At least I think so.</p>
@@ -71,7 +71,7 @@
     </div>
 
     <div>
-      <x-marketing.edit-github />
+      <x-marketing-page-widget :marketing-page="$marketingPage" />
     </div>
   </div>
 </x-marketing-handbook-layout>

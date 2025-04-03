@@ -1,10 +1,10 @@
 <?php
 /*
- * @var string $pageviews
+ * @var \App\Models\MarketingPage $marketingPage
  */
 ?>
 
-<x-marketing-docs-layout :pageviews="$pageviews">
+<x-marketing-docs-layout :marketing-page="$marketingPage">
   <h1 class="mb-6 text-2xl font-bold">Entries</h1>
 
   <div class="mb-8 rounded-lg border p-4">
@@ -132,6 +132,6 @@
   </div>
 
   <div>
-    <x-marketing.edit-github />
+    <x-marketing-page-widget :marketing-page="$marketingPage" />
   </div>
 </x-marketing-docs-layout>

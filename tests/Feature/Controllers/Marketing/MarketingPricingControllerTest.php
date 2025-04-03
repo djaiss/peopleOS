@@ -15,7 +15,9 @@ class MarketingPricingControllerTest extends TestCase
     #[Test]
     public function it_returns_ok_response_for_pricing_index(): void
     {
-        $this->get('/pricing')
+        $response = $this->get('/pricing')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 }

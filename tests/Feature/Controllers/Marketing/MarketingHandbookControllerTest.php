@@ -15,56 +15,72 @@ class MarketingHandbookControllerTest extends TestCase
     #[Test]
     public function it_returns_ok_response_for_handbook_index(): void
     {
-        $this->get('/company/handbook')
+        $response = $this->get('/company/handbook')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_project(): void
     {
-        $this->get('/company/handbook/project')
+        $response = $this->get('/company/handbook/project')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_principles(): void
     {
-        $this->get('/company/handbook/principles')
+        $response = $this->get('/company/handbook/principles')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_shipping(): void
     {
-        $this->get('/company/handbook/shipping')
+        $response = $this->get('/company/handbook/shipping')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_money(): void
     {
-        $this->get('/company/handbook/money')
+        $response = $this->get('/company/handbook/money')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_why(): void
     {
-        $this->get('/company/handbook/why-open-source')
+        $response = $this->get('/company/handbook/why-open-source')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_where(): void
     {
-        $this->get('/company/handbook/where-am-I-going-with-this')
+        $response = $this->get('/company/handbook/where-am-I-going-with-this')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_handbook_marketing(): void
     {
-        $this->get('/company/handbook/marketing')
+        $response = $this->get('/company/handbook/marketing')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 }

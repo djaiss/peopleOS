@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * This controller is used to handle the marketing handbook pages.
+ * It should be one of the only controllers that does not follow the naming convention
+ * for methods in a controller.
+ */
 class MarketingHandbookController extends Controller
 {
     public function index(Request $request): View
@@ -16,7 +21,7 @@ class MarketingHandbookController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.company.handbook.index', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -27,7 +32,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.project', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -38,7 +43,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.principles', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -49,7 +54,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.shipping', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -60,7 +65,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.money', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -71,7 +76,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.why-open-source', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -82,7 +87,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.where', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -93,7 +98,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.marketing', [
             'stats' => $stats,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 }

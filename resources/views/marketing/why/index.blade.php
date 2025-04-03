@@ -1,10 +1,10 @@
 <?php
 /*
- * @var string $pageviews
+ * @var \App\Models\MarketingPage $marketingPage
  */
 ?>
 
-<x-marketing-layout :pageviews="$pageviews">
+<x-marketing-layout :marketing-page="$marketingPage">
   <!-- breadcrumb -->
   <div class="border-b border-gray-200 py-3 text-sm">
     <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-8 xl:px-0">
@@ -67,7 +67,7 @@
           <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look. We are humans like you. We personally hate all the shitshows that big companies do with our data. We would never do that to you.</p>
         </div>
 
-        <x-marketing.edit-github />
+        <x-marketing-page-widget :marketing-page="$marketingPage" />
       </div>
 
       <!-- Sidebar -->
@@ -80,7 +80,7 @@
             <a href="" class="border-light dark:border-dark text-primary dark:text-primary-dark hover:text-primary dark:hover:text-primary-dark relative flex justify-between rounded border hover:border-b-[4px] hover:transition-all active:top-[2px] active:border-b-1 md:mx-4">
               <div class="flex w-full flex-col justify-between gap-0.5 px-4 py-2">
                 <h3 class="mb-0 text-base leading-tight"><span>Régis Freyd</span></h3>
-                <p class="text-primary/50 dark:text-primary-dark/50 m-0 line-clamp-1 text-sm leading-tight">Founder</p>
+                <p class="text-primary/50 dark:text-primary-dark/50 m-0 line-clamp-1 text-sm leading-tight">Project maintainer</p>
               </div>
               <div class="flex-shrink-0 px-4 py-2">
                 <img src="{{ asset('marketing/regis.jpg') }}" alt="Regis" class="h-12 w-12 rounded-full" />

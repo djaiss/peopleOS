@@ -12,7 +12,9 @@ Todo:
   - replace all route names from plural to singular: DONE
   - make sure all the queues are set to low priority: DONE
   - show the number of views on the marketing pages: DONE
-  - add the ability to mark a page as helpful or not helpful
+  - add the ability to mark a marketing page as helpful or not helpful
+  - replace png images with webp
+  - add the ability to add a comment to a marketingpage
   - add life events
   - add a block
     - add addresses

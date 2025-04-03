@@ -2,11 +2,11 @@
 /*
  * @var int $accountNumbers
  * @var array $pullRequests
- * @var string $pageviews
+ * @var \App\Models\MarketingPage $marketingPage
  */
 ?>
 
-<x-marketing-layout :pageviews="$pageviews">
+<x-marketing-layout :marketing-page="$marketingPage">
   <!-- Hero Section -->
   <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 xl:px-0">

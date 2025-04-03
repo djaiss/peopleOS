@@ -15,7 +15,9 @@ class MarketingCompanyControllerTest extends TestCase
     #[Test]
     public function it_returns_ok_response_for_company_index(): void
     {
-        $this->get('/company')
+        $response = $this->get('/company')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 }

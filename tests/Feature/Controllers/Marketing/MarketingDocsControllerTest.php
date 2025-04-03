@@ -15,98 +15,126 @@ class MarketingDocsControllerTest extends TestCase
     #[Test]
     public function it_returns_ok_response_for_docs_index(): void
     {
-        $this->get('/docs')
+        $response = $this->get('/docs')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_introduction(): void
     {
-        $this->get('/docs/api/introduction')
+        $response = $this->get('/docs/api/introduction')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_authentication(): void
     {
-        $this->get('/docs/api/authentication')
+        $response = $this->get('/docs/api/authentication')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_errors(): void
     {
-        $this->get('/docs/api/errors')
+        $response = $this->get('/docs/api/errors')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_profile(): void
     {
-        $this->get('/docs/api/profile')
+        $response = $this->get('/docs/api/profile')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_logs(): void
     {
-        $this->get('/docs/api/logs')
+        $response = $this->get('/docs/api/logs')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_api_management(): void
     {
-        $this->get('/docs/api/api-management')
+        $response = $this->get('/docs/api/api-management')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_genders(): void
     {
-        $this->get('/docs/api/genders')
+        $response = $this->get('/docs/api/genders')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_task_categories(): void
     {
-        $this->get('/docs/api/task-categories')
+        $response = $this->get('/docs/api/task-categories')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_gifts(): void
     {
-        $this->get('/docs/api/gifts')
+        $response = $this->get('/docs/api/gifts')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_tasks(): void
     {
-        $this->get('/docs/api/tasks')
+        $response = $this->get('/docs/api/tasks')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_journals(): void
     {
-        $this->get('/docs/api/journals')
+        $response = $this->get('/docs/api/journals')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_entries(): void
     {
-        $this->get('/docs/api/entries')
+        $response = $this->get('/docs/api/entries')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 
     #[Test]
     public function it_returns_ok_response_for_api_update_age(): void
     {
-        $this->get('/docs/api/update-age')
+        $response = $this->get('/docs/api/update-age')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 }

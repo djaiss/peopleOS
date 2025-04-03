@@ -3,10 +3,10 @@
     <p class="text-xs">Written by...</p>
   </div>
   <div class="pt-1">
-    <a href="" class="border-light dark:border-dark text-primary dark:text-primary-dark hover:text-primary dark:hover:text-primary-dark relative flex justify-between rounded border hover:border-b-[4px] hover:transition-all active:top-[2px] active:border-b-1">
-      <div class="flex w-full flex-col justify-between gap-0.5 px-4 py-2">
-        <h3 class="mb-0 text-base leading-tight"><span>Régis Freyd</span></h3>
-        <p class="text-primary/50 dark:text-primary-dark/50 m-0 line-clamp-1 text-sm leading-tight">Founder</p>
+    <a href="" class="border-light dark:border-dark text-primary dark:text-primary-dark hover:text-primary dark:hover:text-primary-dark relative flex items-center justify-between rounded border hover:border-b-[4px] hover:transition-all active:top-[2px] active:border-b-1">
+      <div class="flex w-full flex-col justify-between gap-1 px-4 py-2">
+        <h3 class="mb-0 text-base"><span>Régis Freyd</span></h3>
+        <p class="text-primary/50 m-0 line-clamp-1 text-sm leading-tight text-gray-400">Main maintainer</p>
       </div>
       <div class="flex-shrink-0 px-4 py-2">
         <img src="{{ asset('marketing/regis.jpg') }}" alt="Regis" class="h-12 w-12 rounded-full" />

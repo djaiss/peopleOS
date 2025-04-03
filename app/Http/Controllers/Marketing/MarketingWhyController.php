@@ -15,7 +15,7 @@ class MarketingWhyController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.why.index', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 }
