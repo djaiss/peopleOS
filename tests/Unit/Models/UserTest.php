@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Log;
+use App\Models\MarketingPage;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -32,6 +33,16 @@ class UserTest extends TestCase
         ]);
 
         $this->assertTrue($dwight->logs()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_marketing_pages(): void
+    {
+        $dwight = User::factory()->create();
+        $marketingPage = MarketingPage::factory()->create();
+        $marketingPage->users()->attach($dwight);
+
+        $this->assertTrue($dwight->marketingPages()->exists());
     }
 
     #[Test]

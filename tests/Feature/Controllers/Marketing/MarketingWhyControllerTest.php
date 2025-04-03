@@ -15,7 +15,9 @@ class MarketingWhyControllerTest extends TestCase
     #[Test]
     public function it_returns_ok_response_for_why_index(): void
     {
-        $this->get('/why')
+        $response = $this->get('/why')
             ->assertOk();
+
+        $response->assertViewHas('marketingPage');
     }
 }

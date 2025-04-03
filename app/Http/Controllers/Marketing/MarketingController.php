@@ -28,7 +28,7 @@ class MarketingController extends Controller
         return view('marketing.index', [
             'accountNumbers' => $accountNumbers,
             'pullRequests' => $pullRequests,
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 }

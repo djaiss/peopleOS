@@ -10,7 +10,7 @@ use Illuminate\View\View;
 
 /**
  * This controller is used to handle the marketing documentation pages.
- * It should be the only controller that does not follow the naming convention
+ * It should be one of the only controllers that does not follow the naming convention
  * for methods in a controller.
  */
 class MarketingDocsController extends Controller
@@ -20,7 +20,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.index', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -29,7 +29,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.introduction', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -38,7 +38,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.authentication', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -47,7 +47,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.errors', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -56,7 +56,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.profile', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -65,7 +65,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.logs', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -74,7 +74,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.api-management', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -83,7 +83,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.genders', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -92,7 +92,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.task-categories', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -101,7 +101,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.gifts', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -110,7 +110,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.tasks', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -119,7 +119,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.journals', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -128,7 +128,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.entries', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 
@@ -137,7 +137,7 @@ class MarketingDocsController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.docs.api.update-age', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 }

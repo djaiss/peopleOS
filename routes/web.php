@@ -23,6 +23,8 @@ use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
 use App\Http\Controllers\Marketing\MarketingHandbookController;
 use App\Http\Controllers\Marketing\MarketingPricingController;
+use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
+use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
@@ -44,42 +46,45 @@ use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['marketing', 'marketing.page'])->group(
-    function (): void {
-        Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
-        Route::get('/about', [MarketingController::class, 'index'])->name('marketing.about.index');
-        Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
-        Route::get('/pricing', [MarketingPricingController::class, 'index'])->name('marketing.pricing.index');
-        Route::get('/company', [MarketingCompanyController::class, 'index'])->name('marketing.company.index');
-        Route::get('/company/handbook', [MarketingHandbookController::class, 'index'])->name('marketing.company.handbook.index');
-        Route::get('/company/handbook/project', [MarketingHandbookController::class, 'project'])->name('marketing.company.handbook.project');
-        Route::get('/company/handbook/principles', [MarketingHandbookController::class, 'principles'])->name('marketing.company.handbook.principles');
-        Route::get('/company/handbook/shipping', [MarketingHandbookController::class, 'shipping'])->name('marketing.company.handbook.shipping');
-        Route::get('/company/handbook/money', [MarketingHandbookController::class, 'money'])->name('marketing.company.handbook.money');
-        Route::get('/company/handbook/why-open-source', [MarketingHandbookController::class, 'why'])->name('marketing.company.handbook.why-open-source');
-        Route::get('/company/handbook/where-am-I-going-with-this', [MarketingHandbookController::class, 'where'])->name('marketing.company.handbook.where');
-        Route::get('/company/handbook/marketing', [MarketingHandbookController::class, 'marketing'])->name('marketing.company.handbook.marketing');
+Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
+    Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
+    Route::get('/about', [MarketingController::class, 'index'])->name('marketing.about.index');
+    Route::get('/why', [MarketingWhyController::class, 'index'])->name('marketing.why.index');
+    Route::get('/pricing', [MarketingPricingController::class, 'index'])->name('marketing.pricing.index');
+    Route::get('/company', [MarketingCompanyController::class, 'index'])->name('marketing.company.index');
+    Route::get('/company/handbook', [MarketingHandbookController::class, 'index'])->name('marketing.company.handbook.index');
+    Route::get('/company/handbook/project', [MarketingHandbookController::class, 'project'])->name('marketing.company.handbook.project');
+    Route::get('/company/handbook/principles', [MarketingHandbookController::class, 'principles'])->name('marketing.company.handbook.principles');
+    Route::get('/company/handbook/shipping', [MarketingHandbookController::class, 'shipping'])->name('marketing.company.handbook.shipping');
+    Route::get('/company/handbook/money', [MarketingHandbookController::class, 'money'])->name('marketing.company.handbook.money');
+    Route::get('/company/handbook/why-open-source', [MarketingHandbookController::class, 'why'])->name('marketing.company.handbook.why-open-source');
+    Route::get('/company/handbook/where-am-I-going-with-this', [MarketingHandbookController::class, 'where'])->name('marketing.company.handbook.where');
+    Route::get('/company/handbook/marketing', [MarketingHandbookController::class, 'marketing'])->name('marketing.company.handbook.marketing');
 
-        Route::get('/docs', [MarketingDocsController::class, 'index'])->name('marketing.docs.index');
-        Route::get('/docs/api/introduction', [MarketingDocsController::class, 'introduction'])->name('marketing.docs.api.introduction');
-        Route::get('/docs/api/authentication', [MarketingDocsController::class, 'authentication'])->name('marketing.docs.api.authentication');
-        Route::get('/docs/api/errors', [MarketingDocsController::class, 'errors'])->name('marketing.docs.api.errors');
-        Route::get('/docs/api/profile', [MarketingDocsController::class, 'profile'])->name('marketing.docs.api.profile');
-        Route::get('/docs/api/logs', [MarketingDocsController::class, 'logs'])->name('marketing.docs.api.logs');
-        Route::get('/docs/api/api-management', [MarketingDocsController::class, 'apiManagement'])->name('marketing.docs.api.api-management');
-        Route::get('/docs/api/genders', [MarketingDocsController::class, 'genders'])->name('marketing.docs.api.genders');
-        Route::get('/docs/api/task-categories', [MarketingDocsController::class, 'taskCategories'])->name('marketing.docs.api.task-categories');
-        Route::get('/docs/api/gifts', [MarketingDocsController::class, 'gifts'])->name('marketing.docs.api.gifts');
-        Route::get('/docs/api/tasks', [MarketingDocsController::class, 'tasks'])->name('marketing.docs.api.tasks');
-        Route::get('/docs/api/journals', [MarketingDocsController::class, 'journals'])->name('marketing.docs.api.journals');
-        Route::get('/docs/api/entries', [MarketingDocsController::class, 'entries'])->name('marketing.docs.api.entries');
-        Route::get('/docs/api/update-age', [MarketingDocsController::class, 'updateAge'])->name('marketing.docs.api.update-age');
-    }
-);
+    Route::get('/docs', [MarketingDocsController::class, 'index'])->name('marketing.docs.index');
+    Route::get('/docs/api/introduction', [MarketingDocsController::class, 'introduction'])->name('marketing.docs.api.introduction');
+    Route::get('/docs/api/authentication', [MarketingDocsController::class, 'authentication'])->name('marketing.docs.api.authentication');
+    Route::get('/docs/api/errors', [MarketingDocsController::class, 'errors'])->name('marketing.docs.api.errors');
+    Route::get('/docs/api/profile', [MarketingDocsController::class, 'profile'])->name('marketing.docs.api.profile');
+    Route::get('/docs/api/logs', [MarketingDocsController::class, 'logs'])->name('marketing.docs.api.logs');
+    Route::get('/docs/api/api-management', [MarketingDocsController::class, 'apiManagement'])->name('marketing.docs.api.api-management');
+    Route::get('/docs/api/genders', [MarketingDocsController::class, 'genders'])->name('marketing.docs.api.genders');
+    Route::get('/docs/api/task-categories', [MarketingDocsController::class, 'taskCategories'])->name('marketing.docs.api.task-categories');
+    Route::get('/docs/api/gifts', [MarketingDocsController::class, 'gifts'])->name('marketing.docs.api.gifts');
+    Route::get('/docs/api/tasks', [MarketingDocsController::class, 'tasks'])->name('marketing.docs.api.tasks');
+    Route::get('/docs/api/journals', [MarketingDocsController::class, 'journals'])->name('marketing.docs.api.journals');
+    Route::get('/docs/api/entries', [MarketingDocsController::class, 'entries'])->name('marketing.docs.api.entries');
+    Route::get('/docs/api/update-age', [MarketingDocsController::class, 'updateAge'])->name('marketing.docs.api.update-age');
+});
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
+Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function (): void {
+    // marketing
+    Route::post('/vote/{page}/helpful', [MarketingVoteHelpfulController::class, 'update'])->name('marketing.vote-helpful');
+    Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');
+
+    // dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // upgrade

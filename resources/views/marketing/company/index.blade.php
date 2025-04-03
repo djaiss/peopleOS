@@ -1,10 +1,10 @@
 <?php
 /*
- * @var string $pageviews
+ * @var \App\Models\MarketingPage $marketingPage
  */
 ?>
 
-<x-marketing-handbook-layout :pageviews="$pageviews">
+<x-marketing-handbook-layout :marketing-page="$marketingPage">
   <h1 class="mb-6 text-2xl font-bold">Our handbook</h1>
 
   <p>This handbook explains what I do, how I think and how I want to move this project forward.</p>

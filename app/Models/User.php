@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -111,8 +112,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the user's full name.
+     * Get the marketing pages associated with the user.
      */
+    public function marketingPages(): BelongsToMany
+    {
+        return $this->belongsToMany(MarketingPage::class, 'marketing_page_user', 'user_id', 'marketing_page_id')
+            ->using(MarketingPageUser::class)
+            ->withPivot('helpful', 'comment')
+            ->withTimestamps();
+    }
+
     protected function name(): Attribute
     {
         return Attribute::make(

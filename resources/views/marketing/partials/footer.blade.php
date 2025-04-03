@@ -109,11 +109,7 @@
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually, our trademark is not registered, but we probably should write that to do like the big boys.') }}</p>
           </div>
 
-          @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
-            <p class="text-xs text-gray-500">
-              {{ __('This page was last updated on :date, and has been viewed :views times since its creation.', ['date' => $lastModified->format('F j, Y'), 'views' => $pageviews]) }}
-            </p>
-          @endif
+          <x-marketing.marketing-footer-data :marketingPage="$marketingPage" />
         </div>
         <div class="">
           <div class="mb-2 flex gap-x-4">

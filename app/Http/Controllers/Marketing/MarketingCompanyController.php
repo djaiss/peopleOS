@@ -15,7 +15,7 @@ class MarketingCompanyController extends Controller
         $marketingPage = $request->attributes->get('marketingPage');
 
         return view('marketing.company.index', [
-            'pageviews' => number_format($marketingPage->pageviews ?? 0),
+            'marketingPage' => $marketingPage,
         ]);
     }
 }
