@@ -18,7 +18,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -27,7 +30,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/introduction')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -36,7 +42,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/authentication')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -45,7 +54,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/errors')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -54,7 +66,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/profile')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -63,7 +78,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/logs')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -72,7 +90,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/api-management')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -81,7 +102,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/genders')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -90,7 +114,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/task-categories')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -99,7 +126,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/gifts')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -108,7 +138,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/tasks')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -117,7 +150,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/journals')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -126,7 +162,10 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/entries')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -135,6 +174,9 @@ class MarketingDocsControllerTest extends TestCase
         $response = $this->get('/docs/api/update-age')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 }

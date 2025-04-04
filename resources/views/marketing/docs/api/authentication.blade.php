@@ -1,10 +1,11 @@
 <?php
 /*
  * @var \App\Models\MarketingPage $marketingPage
+ * @var string $viewName
  */
 ?>
 
-<x-marketing-docs-layout :marketing-page="$marketingPage">
+<x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Authentication</h1>
 
   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">

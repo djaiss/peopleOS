@@ -16,6 +16,7 @@ class MarketingPricingController extends Controller
 
         return view('marketing.pricing.index', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.pricing.index',
         ]);
     }
 }

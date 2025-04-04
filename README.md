@@ -100,7 +100,7 @@ npm run dev
 Also in a **separate terminal**, run the queue worker:
 
 ```bash
-php artisan queue:work
+php artisan queue:listen --queue=high,low
 ```
 
 Finally, start the development server:
@@ -140,3 +140,4 @@ We believe this project is a nice project to learn how to code and to contribute
 - All models and controllers should be fully tested. We use PHPUnit.
 - Avoid writing custom CSS as much as possible. Tailwind provides everything we need in 99.9999% of the case.
 - Do not add dependencies. Dependencies are the devil. It puts the project at risk in many ways.
+- We have two queues: `high` and `low`. High are strictly time-sensitive, like sending emails. Low are for any other tasks.

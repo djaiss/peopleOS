@@ -7,7 +7,6 @@ namespace App\View\Components\Marketing;
 use App\Helpers\MarketingHelper;
 use App\Models\MarketingPage;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 
 class MarketingFooterData extends Component
@@ -18,11 +17,12 @@ class MarketingFooterData extends Component
 
     public function __construct(
         public MarketingPage $marketingPage,
+        public string $viewName,
     ) {}
 
     public function render(): View
     {
-        $this->lastModified = MarketingHelper::getLastModified(Route::current()->getName())
+        $this->lastModified = MarketingHelper::getLastModified($this->viewName)
             ->format('F j, Y');
 
         $this->pageviews = number_format($this->marketingPage->pageviews ?? 0);

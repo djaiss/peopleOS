@@ -16,6 +16,7 @@ class MarketingCompanyController extends Controller
 
         return view('marketing.company.index', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.index',
         ]);
     }
 }
