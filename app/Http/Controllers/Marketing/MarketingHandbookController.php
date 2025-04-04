@@ -118,6 +118,43 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.social-media', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.social-media',
+        ]);
+    }
+
+    public function writing(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.writing');
+
+        return view('marketing.company.handbook.writing', [
+            'stats' => $stats,
+            'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.writing',
+        ]);
+    }
+
+    public function philosophy(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.product-philosophy');
+
+        return view('marketing.company.handbook.product-philosophy', [
+            'stats' => $stats,
+            'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.product-philosophy',
+        ]);
+    }
+
+    public function prioritize(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.marketing.prioritize');
+
+        return view('marketing.company.handbook.prioritize', [
+            'stats' => $stats,
+            'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.prioritize',
         ]);
     }
 }

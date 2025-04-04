@@ -14,19 +14,24 @@
     <span class="text-gray-500">&gt;</span>
     <a href="{{ route('marketing.company.handbook.index') }}" class="text-blue-500 hover:underline">{{ __('Handbook') }}</a>
     <span class="text-gray-500">&gt;</span>
-    <span class="text-gray-600">{{ __('Social media') }}</span>
+    <span class="text-gray-600">{{ __('Writing for PeopleOS') }}</span>
   </x-slot>
 
-  <h1 class="mb-6 text-2xl font-bold">Social media</h1>
+  <h1 class="mb-6 text-2xl font-bold">Writing for PeopleOS</h1>
 
   <div class="prose">
-    <p class="mb-2">On social media, we want to have a distinct, non serious voice. We should talk about two things: the product itself, and funny things.</p>
+    <p class="mb-2">There are two ways of writing for PeopleOS:</p>
 
-    <p class="mb-2">We should target our core audience. The problem is how difficult is to know our target audience. PeopleOS is used by many people with completely different background and context. How can we fine tune our message so it matches their interests?</p>
+    <ul>
+      <li>the user interface in the product,</li>
+      <li>the marketing material.</li>
+    </ul>
 
-    <p class="mb-2">The only audience I really know, is me. I would use PeopleOS. I know I'm a very specific niche: a nerd with some social anxiety. But I'll do like I create the product: I'll do something that matches my values and my personnality.</p>
+    <p class="mb-2">For the user interface, the tone should be simple, direct, informative, and serious. Actions in the user interface should use the imperative tone. For instance, we would say “Save” instead of “I save.”</p>
 
-    <p class="mb-10">If you have a business, you really should never follow my advice. The good thing is that PeopleOS is not a business for me.</p>
+    <p class="mb-2">For the marketing material, we should be really approachable, funny, give a lot of value, and don't take ourselves seriously at all.</p>
+
+    <p class="mb-10">In all cases though, we should remain extremely humble. We know nothing, really, and we merely exist for the sole purpose of helping others.</p>
   </div>
 
   <div>
