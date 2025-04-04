@@ -1,10 +1,11 @@
 <?php
 /*
  * @var \App\Models\MarketingPage $marketingPage
+ * @var string $viewName
  */
 ?>
 
-<x-marketing-docs-layout :marketing-page="$marketingPage">
+<x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Update a person's age</h1>
 
   <div class="mb-8 rounded-lg border p-4">

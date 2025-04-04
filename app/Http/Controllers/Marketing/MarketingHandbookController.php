@@ -22,6 +22,7 @@ class MarketingHandbookController extends Controller
 
         return view('marketing.company.handbook.index', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.index',
         ]);
     }
 
@@ -33,6 +34,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.project', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.project',
         ]);
     }
 
@@ -44,6 +46,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.principles', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.principles',
         ]);
     }
 
@@ -55,6 +58,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.shipping', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.shipping',
         ]);
     }
 
@@ -66,6 +70,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.money', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.money',
         ]);
     }
 
@@ -77,6 +82,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.why-open-source', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.why-open-source',
         ]);
     }
 
@@ -88,6 +94,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.where', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.where',
         ]);
     }
 
@@ -99,6 +106,7 @@ class MarketingHandbookController extends Controller
         return view('marketing.company.handbook.marketing', [
             'stats' => $stats,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.company.handbook.marketing',
         ]);
     }
 }

@@ -12,12 +12,14 @@ class MarketingLayout extends Component
 {
     public function __construct(
         public MarketingPage $marketingPage,
+        public string $viewName,
     ) {}
 
     public function render(): View
     {
         return view('layouts.marketing', [
             'marketingPage' => $this->marketingPage,
+            'viewName' => $this->viewName,
         ]);
     }
 }

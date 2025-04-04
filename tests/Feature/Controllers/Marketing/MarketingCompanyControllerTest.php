@@ -18,6 +18,9 @@ class MarketingCompanyControllerTest extends TestCase
         $response = $this->get('/company')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 }

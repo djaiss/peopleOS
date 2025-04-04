@@ -21,6 +21,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.index', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.index',
         ]);
     }
 
@@ -30,6 +31,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.introduction', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.introduction',
         ]);
     }
 
@@ -39,6 +41,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.authentication', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.authentication',
         ]);
     }
 
@@ -48,6 +51,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.errors', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.errors',
         ]);
     }
 
@@ -57,6 +61,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.profile', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.profile',
         ]);
     }
 
@@ -66,6 +71,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.logs', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.logs',
         ]);
     }
 
@@ -75,6 +81,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.api-management', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.api-management',
         ]);
     }
 
@@ -84,6 +91,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.genders', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.genders',
         ]);
     }
 
@@ -93,6 +101,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.task-categories', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.task-categories',
         ]);
     }
 
@@ -102,6 +111,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.gifts', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.gifts',
         ]);
     }
 
@@ -111,6 +121,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.tasks', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.tasks',
         ]);
     }
 
@@ -120,6 +131,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.journals', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.journals',
         ]);
     }
 
@@ -129,6 +141,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.entries', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.entries',
         ]);
     }
 
@@ -138,6 +151,7 @@ class MarketingDocsController extends Controller
 
         return view('marketing.docs.api.update-age', [
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.update-age',
         ]);
     }
 }
