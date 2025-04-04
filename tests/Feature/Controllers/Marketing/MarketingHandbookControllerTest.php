@@ -107,4 +107,52 @@ class MarketingHandbookControllerTest extends TestCase
             'viewName',
         ]);
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_social_media(): void
+    {
+        $response = $this->get('/company/handbook/social-media')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_writing(): void
+    {
+        $response = $this->get('/company/handbook/writing')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_prioritize(): void
+    {
+        $response = $this->get('/company/handbook/prioritize')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_philosophy(): void
+    {
+        $response = $this->get('/company/handbook/product-philosophy')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
 }
