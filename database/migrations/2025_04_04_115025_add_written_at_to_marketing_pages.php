@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('marketing_pages', function (Blueprint $table) {
+        Schema::table('marketing_pages', function (Blueprint $table): void {
             $table->datetime('written_at')->nullable()->after('marked_not_helpful');
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('marketing_pages', function (Blueprint $table) {
+        Schema::table('marketing_pages', function (Blueprint $table): void {
             $table->dropColumn('written_at');
         });
     }
