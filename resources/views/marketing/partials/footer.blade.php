@@ -1,6 +1,7 @@
 <?php
 /*
- * @var int $pageviews
+ * @var MarketingPage $marketingPage
+ * @var string $view
  */
 ?>
 
@@ -109,7 +110,7 @@
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually, our trademark is not registered, but we probably should write that to do like the big boys.') }}</p>
           </div>
 
-          <x-marketing.marketing-footer-data :marketingPage="$marketingPage" />
+          <x-marketing.marketing-footer-data :marketing-page="$marketingPage" :view-name="$viewName" />
         </div>
         <div class="">
           <div class="mb-2 flex gap-x-4">

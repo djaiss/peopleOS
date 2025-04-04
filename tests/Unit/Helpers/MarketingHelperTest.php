@@ -16,7 +16,7 @@ class MarketingHelperTest extends TestCase
     public function it_returns_carbon_instance_when_timestamp_exists()
     {
         // Arrange
-        $view = 'marketing.landing';
+        $view = 'marketing/landing';
         $expectedDate = '2023-05-15 10:00:00';
         Config::set('marketing-timestamps.pages.marketing/landing', $expectedDate);
 
@@ -32,7 +32,7 @@ class MarketingHelperTest extends TestCase
     public function it_returns_null_when_timestamp_does_not_exist()
     {
         // Arrange
-        $view = 'marketing.nonexistent';
+        $view = 'marketing/nonexistent';
         Config::set('marketing-timestamps.pages.marketing/nonexistent', null);
 
         // Act

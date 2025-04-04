@@ -29,6 +29,7 @@ class MarketingController extends Controller
             'accountNumbers' => $accountNumbers,
             'pullRequests' => $pullRequests,
             'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.index',
         ]);
     }
 }

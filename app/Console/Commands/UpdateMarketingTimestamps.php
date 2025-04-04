@@ -6,8 +6,6 @@ namespace App\Console\Commands;
 
 use App\Services\ExtractMarketingTimestamps;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
-use DateTimeInterface;
 
 /**
  * This command updates the last modified timestamps for all marketing pages.

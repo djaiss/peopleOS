@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Services;
 
 use App\Services\ExtractMarketingTimestamps;
 use Illuminate\Support\Facades\File;
-use Tests\TestCase;
 use Mockery;
+use Tests\TestCase;
 
 class ExtractMarketingTimestampsTest extends TestCase
 {
@@ -44,10 +46,11 @@ class ExtractMarketingTimestampsTest extends TestCase
             ->once()
             ->withArgs(function ($path, $content) use ($aboutTime, $contactTime) {
                 $this->assertEquals(config_path('marketing-timestamps.php'), $path);
-                $this->assertStringContainsString("marketing.about", $content);
+                $this->assertStringContainsString('marketing/about', $content);
                 $this->assertStringContainsString(date('Y-m-d H:i:s', $aboutTime), $content);
-                $this->assertStringContainsString("marketing.contact", $content);
+                $this->assertStringContainsString('marketing/contact', $content);
                 $this->assertStringContainsString(date('Y-m-d H:i:s', $contactTime), $content);
+
                 return true;
             });
 

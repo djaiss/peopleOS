@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\File;
  *
  * return [
  *     'pages' => [
- *         'marketing.about' => '2021-01-01 00:00:00',
+ *         'marketing/about' => '2021-01-01 00:00:00',
  *     ],
  * ];
  */
@@ -33,14 +33,14 @@ class ExtractMarketingTimestamps
         $directoryPath = resource_path('views/marketing');
         $filesInfo = [];
 
-        if (!File::isDirectory($directoryPath)) {
+        if (! File::isDirectory($directoryPath)) {
             return;
         }
 
         foreach (File::allFiles($directoryPath) as $file) {
             $relativePath = rtrim(str_replace(
                 [resource_path('views/'), '.blade.php', DIRECTORY_SEPARATOR],
-                ['', '.', '.'],
+                ['', '', '/'],
                 $file->getPathname()
             ), '.');
 
@@ -62,6 +62,7 @@ class ExtractMarketingTimestamps
         foreach ($pages as $path => $timestamp) {
             $output .= "        '{$path}' => '{$timestamp}',\n";
         }
-        return $output . "    ],\n];";
+
+        return $output."    ],\n];";
     }
 }
