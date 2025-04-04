@@ -101,4 +101,15 @@ class MarketingHandbookController extends Controller
             'marketingPage' => $marketingPage,
         ]);
     }
+
+    public function socialMedia(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.social-media');
+
+        return view('marketing.company.handbook.social-media', [
+            'stats' => $stats,
+            'marketingPage' => $marketingPage,
+        ]);
+    }
 }

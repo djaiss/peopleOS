@@ -60,7 +60,8 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/company/handbook/money', [MarketingHandbookController::class, 'money'])->name('marketing.company.handbook.money');
     Route::get('/company/handbook/why-open-source', [MarketingHandbookController::class, 'why'])->name('marketing.company.handbook.why-open-source');
     Route::get('/company/handbook/where-am-I-going-with-this', [MarketingHandbookController::class, 'where'])->name('marketing.company.handbook.where');
-    Route::get('/company/handbook/marketing', [MarketingHandbookController::class, 'marketing'])->name('marketing.company.handbook.marketing');
+    Route::get('/company/handbook/marketing', [MarketingHandbookController::class, 'marketing'])->name('marketing.company.handbook.marketing.envision');
+    Route::get('/company/handbook/social-media', [MarketingHandbookController::class, 'socialMedia'])->name('marketing.company.handbook.marketing.social-media');
 
     Route::get('/docs', [MarketingDocsController::class, 'index'])->name('marketing.docs.index');
     Route::get('/docs/api/introduction', [MarketingDocsController::class, 'introduction'])->name('marketing.docs.api.introduction');
