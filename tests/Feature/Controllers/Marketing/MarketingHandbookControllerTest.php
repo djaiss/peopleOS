@@ -143,4 +143,16 @@ class MarketingHandbookControllerTest extends TestCase
             'viewName',
         ]);
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_philosophy(): void
+    {
+        $response = $this->get('/company/handbook/product-philosophy')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
 }
