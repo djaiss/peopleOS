@@ -23,6 +23,16 @@ class UpdateMarketingTimestamps extends Command
 
     public function handle(): int
     {
+        $marketingPages =$this->getMarketingPages();
+
+        $this->info('Found ' . count($marketingPages) . ' marketing pages.');
+
+        foreach ($marketingPages as $marketingPage) {
+            $this->info('Updating timestamp for ' . $marketingPage->url);
+
+            $this->processMarketingPage($marketingPage);
+        }
+
         $marketingPath = resource_path('views/marketing');
         $timestamps = [];
 

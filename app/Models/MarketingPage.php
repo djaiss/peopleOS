@@ -24,6 +24,17 @@ class MarketingPage extends Model
         'pageviews',
         'marked_helpful',
         'marked_not_helpful',
+        'written_at',
+    ];
+
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string,string>
+     */
+    protected $casts = [
+        'written_at' => 'datetime',
     ];
 
     /**
