@@ -14,7 +14,7 @@
           <a href="{{ route('marketing.index') }}" class="group-hover:underline">Back to the marketing website</a>
         </p>
 
-        <!-- Session Status -->
+        <!-- Session status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Title -->
@@ -95,7 +95,7 @@
             <p class="mb-4 text-xl font-medium text-gray-900">"{{ $quote['sentence'] }}"</p>
 
             <div class="flex items-center gap-x-2">
-              <img src="{{ asset('marketing/quotes/' . $quote['file'] . '.png') }}" srcset="{{ asset('marketing/quotes/' . $quote['file'] . '.png') }}, {{ asset('marketing/quotes/' . $quote['file'] . '@2x.png') }} 2x" height="48" width="48" alt="{{ $quote['character'] }}" class="h-12 w-12 rounded-full border border-gray-200" />
+              <img src="{{ asset('marketing/quotes/' . $quote['file'] . '.webp') }}" srcset="{{ asset('marketing/quotes/' . $quote['file'] . '.webp') }}, {{ asset('marketing/quotes/' . $quote['file'] . '@2x.webp') }} 2x" height="48" width="48" alt="{{ $quote['character'] }}" class="h-12 w-12 rounded-full border border-gray-200" />
               <div class="flex flex-col gap-y-1">
                 <p class="text-sm font-semibold text-gray-600">{{ $quote['character'] }}</p>
                 <p class="text-sm text-gray-600">
