@@ -274,4 +274,15 @@ class PersonTest extends TestCase
 
         $this->assertEquals('20-29', $ross->age);
     }
+
+    #[Test]
+    public function it_checks_if_person_has_physical_details(): void
+    {
+        $ross = Person::factory()->create();
+        $this->assertFalse($ross->hasPhysicalDetails());
+
+        $ross->height = 180;
+        $ross->save();
+        $this->assertTrue($ross->hasPhysicalDetails());
+    }
 }

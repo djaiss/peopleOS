@@ -37,6 +37,7 @@ use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
 use App\Http\Controllers\Persons\PersonInformationController;
 use App\Http\Controllers\Persons\PersonNoteController;
+use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
@@ -113,6 +114,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function
 
             Route::get('persons/{slug}/information/edit', [PersonInformationController::class, 'edit'])->name('person.information.edit');
             Route::put('persons/{slug}/information', [PersonInformationController::class, 'update'])->name('person.information.update');
+
+            Route::get('persons/{slug}/physical-appearance/edit', [PersonPhysicalAppearanceController::class, 'edit'])->name('person.physical-appearance.edit');
+            Route::put('persons/{slug}/physical-appearance', [PersonPhysicalAppearanceController::class, 'update'])->name('person.physical-appearance.update');
 
             Route::get('persons/{slug}/encounters/new', [PersonEncounterController::class, 'new'])->name('person.encounter.new');
             Route::post('persons/{slug}/encounters', [PersonEncounterController::class, 'create'])->name('person.encounter.create');

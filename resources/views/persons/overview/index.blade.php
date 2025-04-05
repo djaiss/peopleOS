@@ -11,6 +11,8 @@
 
 @include('persons.overview.partials.information')
 
+@include('persons.overview.partials.physical-apperance')
+
 @include('persons.overview.partials.how-we-met')
 
 @include('persons.overview.partials.encounters')

@@ -66,6 +66,7 @@
       <x-input-label for="nationalities" :value="__('Nationalities')" class="col-span-1" />
       <div class="col-span-2 w-full justify-self-end">
         <x-text-input id="nationalities" name="nationalities" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" :value="$person->nationalities" />
+        <x-input-error class="mt-2" :messages="$errors->get('nationalities')" />
       </div>
     </div>
 
@@ -74,6 +75,7 @@
       <x-input-label for="languages" :value="__('Languages')" class="col-span-1" />
       <div class="col-span-2 w-full justify-self-end">
         <x-text-input id="languages" name="languages" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600" :value="$person->languages" />
+        <x-input-error class="mt-2" :messages="$errors->get('languages')" />
       </div>
     </div>
 

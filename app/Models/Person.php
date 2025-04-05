@@ -312,4 +312,12 @@ class Person extends Model
 
         return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=333333&background='.$this->color.'&size='.$size;
     }
+
+    /**
+     * Check if the person has any physical details.
+     */
+    public function hasPhysicalDetails(): bool
+    {
+        return $this->height || $this->weight || $this->build || $this->skin_tone || $this->face_shape || $this->eye_color || $this->eye_shape || $this->hair_color || $this->hair_type || $this->hair_length || $this->facial_hair || $this->scars || $this->tatoos || $this->piercings || $this->distinctive_marks || $this->glasses || $this->dress_style || $this->voice;
+    }
 }

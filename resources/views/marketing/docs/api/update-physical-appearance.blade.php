@@ -62,7 +62,7 @@
         </div>
 
         <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute name="height" type="string" description="The height of the person (e.g., '6'0\"')." />
+          <x-marketing.attribute name="height" type="string" description="The height of the person (e.g., '6'0&quot;')." />
           <x-marketing.attribute name="weight" type="string" description="The weight of the person (e.g., '175 lbs')." />
           <x-marketing.attribute name="build" type="string" description="The body build of the person (e.g., 'Athletic', 'Slim')." />
           <x-marketing.attribute name="skin_tone" type="string" description="The skin tone of the person." />
