@@ -73,13 +73,11 @@
   @endif
 
   <div class="flex items-center justify-between gap-x-4 p-4">
-    @if ($lastModified = \App\Helpers\MarketingHelper::getLastModified(Route::current()->getName()))
-      <p class="mb-1 flex items-center gap-x-1">
-        <x-lucide-calendar class="h-4 w-4 text-gray-500" />
-        <span class="text-gray-500">Last updated on</span>
-        {{ $lastModified->format('F j, Y') }}.
-      </p>
-    @endif
+    <p class="mb-1 flex items-center gap-x-1">
+      <x-lucide-calendar class="h-4 w-4 text-gray-500" />
+      <span class="text-gray-500">Last updated on</span>
+      {{ $lastModified }}.
+    </p>
 
     <div class="flex items-center gap-x-2">
       <x-lucide-github class="h-4 w-4 text-gray-500" />
