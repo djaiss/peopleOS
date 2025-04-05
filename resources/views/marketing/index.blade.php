@@ -262,7 +262,7 @@
         <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4">
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
             <div class="mb-2 flex items-center justify-center">
-                <img src="{{ asset('marketing/good_memory.webp') }}" srcset="{{ asset('marketing/good_memory.webp') }} 1x, {{ asset('marketing/good_memory@2x.webp') }} 2x" alt="Good memory" width="167" height="250" />
+              <img src="{{ asset('marketing/good_memory.webp') }}" srcset="{{ asset('marketing/good_memory.webp') }} 1x, {{ asset('marketing/good_memory@2x.webp') }} 2x" alt="Good memory" width="167" height="250" />
             </div>
             <p class="mb-3 text-xl">You have a good memory</p>
             <p class="text-sm">If you can remember everything about everyone you know, you probably don't need this tool.</p>
@@ -270,7 +270,7 @@
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
             <div class="mb-2 flex items-center justify-center">
-                <img src="{{ asset('marketing/recurring.webp') }}" srcset="{{ asset('marketing/recurring.webp') }} 1x, {{ asset('marketing/recurring@2x.webp') }} 2x" alt="Expensive subscriptions" width="167" height="250" />
+              <img src="{{ asset('marketing/recurring.webp') }}" srcset="{{ asset('marketing/recurring.webp') }} 1x, {{ asset('marketing/recurring@2x.webp') }} 2x" alt="Expensive subscriptions" width="167" height="250" />
             </div>
             <p class="mb-3 text-xl">You like expensive, reccuring subscriptions</p>
             <p class="text-sm">We offer the a one-time payment for the software. No subscriptions, no hidden fees.</p>
@@ -278,7 +278,7 @@
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
             <div class="mb-2 flex items-center justify-center">
-                <img src="{{ asset('marketing/ads.webp') }}" srcset="{{ asset('marketing/ads.webp') }} 1x, {{ asset('marketing/ads@2x.webp') }} 2x" alt="Ads" width="167" height="250" />
+              <img src="{{ asset('marketing/ads.webp') }}" srcset="{{ asset('marketing/ads.webp') }} 1x, {{ asset('marketing/ads@2x.webp') }} 2x" alt="Ads" width="167" height="250" />
             </div>
             <p class="mb-3 text-xl">You like being tracked for ads purposes</p>
             <p class="text-sm">We do track users to serve ads, and don't profile our users. We hate ads as much as you do.</p>
@@ -286,7 +286,7 @@
 
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
             <div class="mb-2 flex items-center justify-center">
-                <img src="{{ asset('marketing/prison.webp') }}" srcset="{{ asset('marketing/prison.webp') }} 1x, {{ asset('marketing/prison@2x.webp') }} 2x" alt="Prison" width="167" height="250" />
+              <img src="{{ asset('marketing/prison.webp') }}" srcset="{{ asset('marketing/prison.webp') }} 1x, {{ asset('marketing/prison@2x.webp') }} 2x" alt="Prison" width="167" height="250" />
             </div>
             <p class="mb-3 text-xl">You like being locked in</p>
             <p class="text-sm">We strongly advocate that you don't use our hosted version, and that you self-host the software on a server of your own.</p>

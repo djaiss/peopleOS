@@ -47,15 +47,23 @@ class UpdatePersonAvatarTest extends TestCase
             'profile_photo_path' => $path,
         ]);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user, $person): bool {
-            return $job->action === 'person_avatar_update'
-                && $job->user->id === $user->id
-                && $job->description === 'Updated the avatar of '.$person->name;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user, $person): bool {
+                return $job->action === 'person_avatar_update'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Updated the avatar of '.$person->name;
+            }
+        );
     }
 
     #[Test]

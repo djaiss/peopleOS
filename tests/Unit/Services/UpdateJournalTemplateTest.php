@@ -59,11 +59,17 @@ YAML;
         $this->assertEquals('New name', $updatedTemplate->name);
         $this->assertEquals($validYaml, $updatedTemplate->content);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class);
-        Queue::assertPushed(LogUserAction::class, function ($job) {
-            return $job->action === 'journal_template_update' &&
-                $job->description === 'Updated the journal template called New name';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+        );
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) {
+                return $job->action === 'journal_template_update' &&
+                    $job->description === 'Updated the journal template called New name';
+            });
     }
 
     #[Test]

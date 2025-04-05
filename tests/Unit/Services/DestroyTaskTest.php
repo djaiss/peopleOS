@@ -39,15 +39,23 @@ class DestroyTaskTest extends TestCase
             'id' => $task->id,
         ]);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'task_deletion'
-                && $job->user->id === $user->id
-                && $job->description === 'Deleted a task called Birthday';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'task_deletion'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Deleted a task called Birthday';
+            }
+        );
     }
 
     #[Test]

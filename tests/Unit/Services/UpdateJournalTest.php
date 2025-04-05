@@ -46,15 +46,23 @@ class UpdateJournalTest extends TestCase
 
         $this->assertEquals('New Travel Journal', $updatedJournal->name);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'journal_update'
-                && $job->user->id === $user->id
-                && $job->description === 'Updated the journal called New Travel Journal';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'journal_update'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Updated the journal called New Travel Journal';
+            }
+        );
     }
 
     #[Test]
