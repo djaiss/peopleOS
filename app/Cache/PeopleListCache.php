@@ -36,6 +36,16 @@ final class PeopleListCache extends CacheHelper
     {
         return Person::where('account_id', $this->identifier)
             ->where('is_listed', true)
+            ->select(
+                'id',
+                'first_name',
+                'last_name',
+                'maiden_name',
+                'nickname',
+                'slug',
+                'profile_photo_path',
+                'color'
+            )
             ->get()
             ->map(fn (Person $person): array => [
                 'id' => $person->id,
