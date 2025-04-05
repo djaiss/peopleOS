@@ -39,11 +39,23 @@ class DestroyJournalTemplateTest extends TestCase
             'id' => $journalTemplate->id,
         ]);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class);
-        Queue::assertPushed(LogUserAction::class, function ($job) {
-            return $job->action === 'journal_template_deletion' &&
-                $job->description === 'Deleted the journal template called Test template';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'journal_template_deletion'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Deleted the journal template called Test template';
+            }
+        );
     }
 
     #[Test]

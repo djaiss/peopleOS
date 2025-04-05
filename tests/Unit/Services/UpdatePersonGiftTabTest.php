@@ -27,7 +27,7 @@ class UpdatePersonGiftTabTest extends TestCase
             'account_id' => $user->account_id,
         ]);
 
-        $updatedPerson = (new UpdatePersonGiftTab(
+        (new UpdatePersonGiftTab(
             user: $user,
             person: $person,
             status: GiftStatus::GIVEN->value,

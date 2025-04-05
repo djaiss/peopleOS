@@ -64,14 +64,22 @@ class UpdateHowIMetInformationTest extends TestCase
         $this->assertTrue($person->how_we_met_shown);
         $this->assertTrue($person->howWeMetSpecialDate()->exists());
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function ($job) {
-            return $job->user->id === $this->user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) {
+                return $job->user->id === $this->user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function ($job) {
-            return $job->user->id === $this->user->id &&
-                $job->action === 'how_i_met_information_update';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) {
+                return $job->user->id === $this->user->id &&
+                    $job->action === 'how_i_met_information_update';
+            }
+        );
     }
 
     /** @test */

@@ -52,15 +52,23 @@ class SendNewInvitationTest extends TestCase
             $invitedUser
         );
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'user_invitation_resend'
-                && $job->user->id === $user->id
-                && $job->description === 'Resent invitation to ross.geller@friends.com';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'user_invitation_resend'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Resent invitation to ross.geller@friends.com';
+            }
+        );
 
         Mail::assertQueued(UserInvited::class);
     }

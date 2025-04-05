@@ -46,15 +46,23 @@ class UpdatePersonInformationTest extends TestCase
         $this->assertEquals('American, Canadian', $person->nationalities);
         $this->assertEquals('English, French', $person->languages);
 
-        Queue::assertPushed(LogUserAction::class, function ($job) use ($user, $person) {
-            return $job->action === 'person_information_update'
-                && $job->user->id === $user->id
-                && $job->description === 'Updated general information about '.$person->name;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user, $person) {
+                return $job->action === 'person_information_update'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Updated general information about '.$person->name;
+            }
+        );
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function ($job) use ($user) {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user) {
+                return $job->user->id === $user->id;
+            }
+        );
     }
 
     #[Test]

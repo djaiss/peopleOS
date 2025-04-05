@@ -67,15 +67,23 @@ class CreateLoveRelationshipTest extends TestCase
             $loveRelationship
         );
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function ($job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function ($job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function ($job) use ($user): bool {
-            return $job->action === 'love_relationship_creation'
-                && $job->user->id === $user->id
-                && $job->description === 'Created a Married relationship between Ross Geller and Rachel Green';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function ($job) use ($user): bool {
+                return $job->action === 'love_relationship_creation'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Created a Married relationship between Ross Geller and Rachel Green';
+            }
+        );
     }
 
     #[Test]

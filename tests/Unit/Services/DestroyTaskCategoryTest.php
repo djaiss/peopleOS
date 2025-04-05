@@ -39,15 +39,23 @@ class DestroyTaskCategoryTest extends TestCase
             'id' => $taskCategory->id,
         ]);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'task_category_deletion'
-                && $job->user->id === $user->id
-                && $job->description === 'Deleted the task category called Birthday';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'task_category_deletion'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Deleted the task category called Birthday';
+            }
+        );
     }
 
     #[Test]

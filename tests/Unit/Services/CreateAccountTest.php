@@ -59,14 +59,26 @@ class CreateAccountTest extends TestCase
             $user
         );
 
-        Queue::assertPushed(SetupAccount::class, fn ($job) => $job->user->id === $user->id);
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SetupAccount::class,
+            callback: fn ($job) => $job->user->id === $user->id
+        );
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'account_creation' && $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'account_creation' && $job->user->id === $user->id;
+            }
+        );
     }
 }
