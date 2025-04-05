@@ -2,10 +2,11 @@
 /*
  * @var array $stats
  * @var \App\Models\MarketingPage $marketingPage
+ * @var string $viewName
  */
 ?>
 
-<x-marketing-handbook-layout :marketing-page="$marketingPage">
+<x-marketing-handbook-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <x-slot name="breadcrumb">
     <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>
     <span class="text-gray-500">&gt;</span>
@@ -45,7 +46,7 @@
   </div>
 
   <div>
-    <x-marketing-page-widget :marketing-page="$marketingPage" />
+    <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
   </div>
 
   <x-slot name="rightSidebar">

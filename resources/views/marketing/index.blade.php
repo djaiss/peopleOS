@@ -3,10 +3,11 @@
  * @var int $accountNumbers
  * @var array $pullRequests
  * @var \App\Models\MarketingPage $marketingPage
+ * @var string $viewName
  */
 ?>
 
-<x-marketing-layout :marketing-page="$marketingPage">
+<x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <!-- Hero Section -->
   <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 xl:px-0">

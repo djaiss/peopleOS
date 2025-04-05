@@ -1,10 +1,11 @@
 <?php
 /*
  * @var \App\Models\MarketingPage $marketingPage
+ * @var string $viewName
  */
 ?>
 
-<x-marketing-layout :marketing-page="$marketingPage">
+<x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <!-- breadcrumb -->
   <div class="border-b border-gray-200 py-3 text-sm">
     <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-8 xl:px-0">
@@ -210,6 +211,6 @@
       </ul>
     </div>
 
-    <x-marketing-page-widget :marketing-page="$marketingPage" />
+    <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
   </div>
 </x-marketing-layout>

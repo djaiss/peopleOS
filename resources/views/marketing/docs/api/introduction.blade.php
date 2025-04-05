@@ -1,10 +1,11 @@
 <?php
 /*
  * @var \App\Models\MarketingPage $marketingPage
+ * @var string $viewName
  */
 ?>
 
-<x-marketing-docs-layout :marketing-page="$marketingPage">
+<x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">API reference</h1>
 
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
@@ -36,6 +37,6 @@
   </div>
 
   <div>
-    <x-marketing-page-widget :marketing-page="$marketingPage" />
+    <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
   </div>
 </x-marketing-docs-layout>

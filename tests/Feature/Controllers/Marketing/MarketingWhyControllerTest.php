@@ -18,6 +18,9 @@ class MarketingWhyControllerTest extends TestCase
         $response = $this->get('/why')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 }

@@ -18,7 +18,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -27,7 +30,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/project')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -36,7 +42,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/principles')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -45,7 +54,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/shipping')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -54,7 +66,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/money')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -63,7 +78,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/why-open-source')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -72,7 +90,10 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/where-am-I-going-with-this')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 
     #[Test]
@@ -81,6 +102,57 @@ class MarketingHandbookControllerTest extends TestCase
         $response = $this->get('/company/handbook/marketing')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_social_media(): void
+    {
+        $response = $this->get('/company/handbook/social-media')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_writing(): void
+    {
+        $response = $this->get('/company/handbook/writing')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_prioritize(): void
+    {
+        $response = $this->get('/company/handbook/prioritize')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
+
+    #[Test]
+    public function it_returns_ok_response_for_handbook_philosophy(): void
+    {
+        $response = $this->get('/company/handbook/product-philosophy')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 }

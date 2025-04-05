@@ -18,6 +18,9 @@ class MarketingPricingControllerTest extends TestCase
         $response = $this->get('/pricing')
             ->assertOk();
 
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
     }
 }

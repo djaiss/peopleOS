@@ -37,8 +37,11 @@ class MarketingControllerTest extends TestCase
         $response = $this->get('/')
             ->assertOk();
 
-        $response->assertViewHas('pullRequests', $mockPRs);
-        $response->assertViewHas('accountNumbers');
-        $response->assertViewHas('marketingPage');
+        $response->assertViewHasAll([
+            'pullRequests' => $mockPRs,
+            'accountNumbers',
+            'marketingPage',
+            'viewName' => 'marketing.index',
+        ]);
     }
 }
