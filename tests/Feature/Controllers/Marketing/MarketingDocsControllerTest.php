@@ -191,4 +191,16 @@ class MarketingDocsControllerTest extends TestCase
             'viewName',
         ]);
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_api_notes(): void
+    {
+        $response = $this->get('/docs/api/notes')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
 }

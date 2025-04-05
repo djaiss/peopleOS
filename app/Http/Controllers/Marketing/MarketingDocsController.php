@@ -164,4 +164,14 @@ class MarketingDocsController extends Controller
             'viewName' => 'marketing.docs.api.update-physical-appearance',
         ]);
     }
+
+    public function notes(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.notes', [
+            'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.notes',
+        ]);
+    }
 }

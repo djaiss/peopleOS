@@ -83,6 +83,7 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/docs/api/entries', [MarketingDocsController::class, 'entries'])->name('marketing.docs.api.entries');
     Route::get('/docs/api/update-age', [MarketingDocsController::class, 'updateAge'])->name('marketing.docs.api.update-age');
     Route::get('/docs/api/update-physical-appearance', [MarketingDocsController::class, 'updatePhysicalAppearance'])->name('marketing.docs.api.update-physical-appearance');
+    Route::get('/docs/api/notes', [MarketingDocsController::class, 'notes'])->name('marketing.docs.api.notes');
 });
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
