@@ -33,7 +33,7 @@
                   </div>
 
                   <div class="flex flex-col">
-                    <a href="{{ $marketingPage['url'] }}" target="_blank" class="text-sm font-semibold hover:underline hover:text-blue-500">{{ $marketingPage['url'] }}</a>
+                    <a href="{{ $marketingPage['url'] }}" target="_blank" class="text-sm font-semibold hover:text-blue-500 hover:underline">{{ $marketingPage['url'] }}</a>
                     <p class="font-mono text-xs text-zinc-500">{{ $marketingPage['voted_at'] }}</p>
                   </div>
                 </div>
