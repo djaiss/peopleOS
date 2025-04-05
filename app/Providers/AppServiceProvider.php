@@ -23,12 +23,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Enable strict mode for Eloquent models in non-production environments
         Model::shouldBeStrict(! app()->isProduction());
 
+        // Enable prohibition of destructive commands in production environments
         DB::prohibitDestructiveCommands(
             app()->isProduction(),
         );
 
+        // Enable lazy loading prevention in non-production environments
+        // This will throw an exception if a lazy loading query is attempted
         Model::preventLazyLoading(! app()->isProduction());
+
+        // Enable prevention of silently discarding attributes
+        // This will throw an exception if an attribute is silently discarded
+        Model::preventSilentlyDiscardingAttributes();
+
+        // Enable prevention of accessing missing attributes
+        // This will throw an exception if an attribute is accessed that does not exist
+        Model::preventAccessingMissingAttributes();
     }
 }
