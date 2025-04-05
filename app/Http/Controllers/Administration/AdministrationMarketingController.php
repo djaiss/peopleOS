@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Models\MarketingPage;
 use App\Services\DestroyMarketingVote;
 use App\Services\GetMarketingActivities;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class AdministrationMarketingController extends Controller
 {

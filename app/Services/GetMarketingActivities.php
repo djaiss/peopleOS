@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
 use App\Models\MarketingPage;
-use App\Models\Note;
-use App\Models\Person;
 use App\Models\User;
 
 class GetMarketingActivities

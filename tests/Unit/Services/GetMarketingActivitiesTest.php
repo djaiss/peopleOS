@@ -7,7 +7,6 @@ namespace Tests\Unit\Services;
 use App\Models\MarketingPage;
 use App\Models\User;
 use App\Services\GetMarketingActivities;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
