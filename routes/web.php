@@ -7,6 +7,7 @@ use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
+use App\Http\Controllers\Administration\AdministrationMarketingController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
@@ -189,6 +190,10 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function
 
     // personalization
     Route::get('administration/personalization', [AdministrationPersonalizationController::class, 'index'])->name('administration.personalization.index');
+
+    // marketing
+    Route::get('administration/marketing', [AdministrationMarketingController::class, 'index'])->name('administration.marketing.index');
+    Route::delete('administration/marketing/{page}', [AdministrationMarketingController::class, 'destroy'])->name('administration.marketing.destroy');
 
     // genders
     Route::get('administration/personalization/genders/new', [AdministrationGenderController::class, 'new'])->name('administration.personalization.genders.new');
