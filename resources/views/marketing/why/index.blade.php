@@ -30,7 +30,7 @@
           <p>Consider these common scenarios:</p>
 
           <div class="flex items-center gap-x-2">
-            <img src="{{ asset('marketing/sherlock.png') }}" srcset="{{ asset('marketing/sherlock.png') }}, {{ asset('marketing/sherlock@2x.png') }} 2x" height="300" width="200" alt="Sherlock Holmes" class="" />
+            <img src="{{ asset('marketing/sherlock.webp') }}" srcset="{{ asset('marketing/sherlock.webp') }}, {{ asset('marketing/sherlock@2x.webp') }} 2x" height="300" width="200" alt="Sherlock Holmes" class="" />
             <ul>
               <li>You meet a friend's partner at a dinner party, have a great conversation about their recent trip to Japan, but completely forget these details the next time you meet.</li>
               <li>Your colleague mentions their child's upcoming school play, but you forget to follow up and ask how it went.</li>
@@ -84,7 +84,7 @@
                 <p class="text-primary/50 dark:text-primary-dark/50 m-0 line-clamp-1 text-sm leading-tight">Project maintainer</p>
               </div>
               <div class="flex-shrink-0 px-4 py-2">
-                <img src="{{ asset('marketing/regis.jpg') }}" alt="Regis" class="h-12 w-12 rounded-full" />
+                <img src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }}, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Regis" class="h-12 w-12 rounded-full" />
               </div>
             </a>
           </div>
