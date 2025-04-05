@@ -14,7 +14,7 @@
           <a href="{{ route('marketing.index') }}" class="group-hover:underline">Back to the marketing website</a>
         </p>
 
-        <!-- Session Status -->
+        <!-- Session status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Title -->
