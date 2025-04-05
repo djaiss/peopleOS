@@ -68,7 +68,7 @@
           <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look. We are humans like you. We personally hate all the shitshows that big companies do with our data. We would never do that to you.</p>
         </div>
 
-        <x-marketing-page-widget :marketing-page="$marketingPage" />
+        <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
       </div>
 
       <!-- Sidebar -->

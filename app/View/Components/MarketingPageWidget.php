@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\View\Components;
 
+use App\Helpers\MarketingHelper;
 use App\Models\MarketingPage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -17,13 +18,19 @@ class MarketingPageWidget extends Component
 
     public ?string $comment = null;
 
+    public ?string $lastModified = null;
+
     public function __construct(
         public MarketingPage $marketingPage,
+        public string $viewName,
     ) {}
 
     public function render(): View
     {
         $this->getMarketingData();
+
+        $this->lastModified = MarketingHelper::getLastModified($this->viewName)
+            ->format('F j, Y');
 
         return view('components.marketing.marketing-page-widget');
     }

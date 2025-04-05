@@ -40,7 +40,7 @@
   </div>
 
   <div>
-    <x-marketing-page-widget :marketing-page="$marketingPage" />
+    <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
   </div>
 
   <x-slot name="rightSidebar">
