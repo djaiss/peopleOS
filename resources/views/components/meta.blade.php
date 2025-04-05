@@ -1,8 +1,8 @@
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
 
-<link rel="preconnect" href="https://rsms.me/" crossorigin>
-<link rel="preload" href="https://rsms.me/inter/inter.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://rsms.me/inter/inter.css"></noscript>
+<link rel="preconnect" href="https://rsms.me/" crossorigin />
+<link rel="preload" href="https://rsms.me/inter/inter.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://rsms.me/inter/inter.css" /></noscript>
 
 <style>
   /* Fallback font while Inter loads */

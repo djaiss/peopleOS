@@ -45,15 +45,23 @@ class DestroyGiftTest extends TestCase
             'id' => $gift->id,
         ]);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'gift_deletion'
-                && $job->user->id === $user->id
-                && $job->description === 'Deleted a gift for Ross Geller';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'gift_deletion'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Deleted a gift for Ross Geller';
+            }
+        );
     }
 
     #[Test]

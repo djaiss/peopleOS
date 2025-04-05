@@ -38,10 +38,10 @@ return [
         'marketing/docs/api/tasks' => '2025-04-05 00:03:42',
         'marketing/docs/api/update-age' => '2025-04-05 00:03:42',
         'marketing/docs/index' => '2025-04-05 00:03:42',
-        'marketing/index' => '2025-04-04 23:07:27',
+        'marketing/index' => '2025-04-05 02:05:59',
         'marketing/partials/footer' => '2025-04-04 23:07:27',
         'marketing/partials/header' => '2025-04-04 14:50:14',
         'marketing/pricing/index' => '2025-04-05 00:03:42',
-        'marketing/why/index' => '2025-04-05 00:03:42',
+        'marketing/why/index' => '2025-04-05 02:05:59',
     ],
 ];

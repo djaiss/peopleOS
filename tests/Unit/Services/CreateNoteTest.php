@@ -50,15 +50,23 @@ class CreateNoteTest extends TestCase
             $note
         );
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'note_creation'
-                && $job->user->id === $user->id
-                && $job->description === 'Created a note for Chandler Bing';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'note_creation'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Created a note for Chandler Bing';
+            }
+        );
     }
 
     #[Test]

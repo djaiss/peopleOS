@@ -42,15 +42,23 @@ class DestroyPersonTest extends TestCase
             'id' => $person->id,
         ]);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'person_deletion'
-                && $job->user->id === $user->id
-                && $job->description === 'Deleted the person called Ross Geller';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'person_deletion'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Deleted the person called Ross Geller';
+            }
+        );
     }
 
     #[Test]

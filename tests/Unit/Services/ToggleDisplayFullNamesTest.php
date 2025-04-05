@@ -32,14 +32,22 @@ class ToggleDisplayFullNamesTest extends TestCase
 
         $this->assertTrue($user->does_display_full_names);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'display_full_names_toggle'
-                && $job->user->id === $user->id
-                && $job->description === 'Toggled display of full names';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'display_full_names_toggle'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Toggled display of full names';
+            }
+        );
     }
 }

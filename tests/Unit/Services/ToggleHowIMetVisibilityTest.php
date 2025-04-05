@@ -45,9 +45,13 @@ class ToggleHowIMetVisibilityTest extends TestCase
 
         $this->assertFalse($person->how_we_met_shown);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function ($job) {
-            return $job->user->id === $this->user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) {
+                return $job->user->id === $this->user->id;
+            }
+        );
     }
 
     /** @test */

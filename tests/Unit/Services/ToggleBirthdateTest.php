@@ -32,14 +32,22 @@ class ToggleBirthdateTest extends TestCase
 
         $this->assertTrue($user->does_display_age);
 
-        Queue::assertPushed(UpdateUserLastActivityDate::class, function (UpdateUserLastActivityDate $job) use ($user): bool {
-            return $job->user->id === $user->id;
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdateUserLastActivityDate::class,
+            callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
+                return $job->user->id === $user->id;
+            }
+        );
 
-        Queue::assertPushed(LogUserAction::class, function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'display_age_toggle'
-                && $job->user->id === $user->id
-                && $job->description === 'Toggled display of age';
-        });
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: LogUserAction::class,
+            callback: function (LogUserAction $job) use ($user): bool {
+                return $job->action === 'display_age_toggle'
+                    && $job->user->id === $user->id
+                    && $job->description === 'Toggled display of age';
+            }
+        );
     }
 }
