@@ -179,4 +179,16 @@ class MarketingDocsControllerTest extends TestCase
             'viewName',
         ]);
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_api_update_physical_appearance(): void
+    {
+        $response = $this->get('/docs/api/update-physical-appearance')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
 }

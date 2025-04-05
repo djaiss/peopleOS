@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\Persons\PersonAgeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonGiftController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
+use App\Http\Controllers\Api\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Api\Persons\PersonTaskController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
 use App\Http\Controllers\Api\ToggleTaskController;
@@ -41,6 +42,9 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
 
         // age
         Route::patch('persons/{person}/age', [PersonAgeController::class, 'update']);
+
+        // physical appearance
+        Route::patch('persons/{person}/physical-appearance', [PersonPhysicalAppearanceController::class, 'update']);
 
         // notes
         Route::get('persons/{person}/notes', [PersonNoteController::class, 'index']);
