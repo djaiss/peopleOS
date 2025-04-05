@@ -10,6 +10,7 @@ use App\Models\Account;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\UpdatePersonPhysicalAppearance;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
@@ -20,176 +21,178 @@ class UpdatePersonPhysicalAppearanceTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private Account $account;
-    private User $user;
-    private Person $person;
-
     #[Test]
-    public function it_updates_physical_appearance_data(): void
+    public function it_updates_all_physical_appearance_attributes(): void
     {
+        Carbon::setTestNow(Carbon::parse('2025-04-05 14:30:00'));
+
+        $account = Account::factory()->create();
+        $user = User::factory()->create([
+            'account_id' => $account->id,
+        ]);
+        $person = Person::factory()->create([
+            'account_id' => $account->id,
+            'first_name' => 'Rachel',
+            'last_name' => 'Green',
+        ]);
+
         Queue::fake();
 
-        $this->createAccountAndUser();
-        $this->createPerson();
+        $service = new UpdatePersonPhysicalAppearance(
+            user: $user,
+            person: $person,
+            height: '5\'6"',
+            weight: '120 lbs',
+            build: 'slim',
+            skin_tone: 'fair',
+            face_shape: 'oval',
+            eye_color: 'blue',
+            eye_shape: 'almond',
+            hair_color: 'blonde',
+            hair_type: 'straight',
+            hair_length: 'shoulder-length',
+            facial_hair: 'none',
+            scars: 'small scar on right elbow',
+            tatoos: 'small star on wrist',
+            piercings: 'ears, belly button',
+            distinctive_marks: 'beauty mark above lip',
+            glasses: 'occasionally wears reading glasses',
+            dress_style: 'fashionable, trendy',
+            voice: 'soft, sometimes nasal when excited',
+        );
 
-        $request = [
-            'height' => '5\'8"',
-            'weight' => '130 lbs',
-            'build' => 'slim',
-            'skin_tone' => 'fair',
-            'face_shape' => 'oval',
-            'eye_color' => 'blue',
-            'eye_shape' => 'almond',
-            'hair_color' => 'blonde',
-            'hair_type' => 'wavy',
-            'hair_length' => 'long',
-            'facial_hair' => 'none',
-            'scars' => 'small scar on left cheek',
-            'tatoos' => 'butterfly on ankle',
-            'piercings' => 'ears, nose',
-            'distinctive_marks' => 'birthmark on right shoulder',
-            'glasses' => 'occasionally wears reading glasses',
-            'dress_style' => 'bohemian',
-            'voice' => 'melodic',
-        ];
+        $person = $service->execute();
 
-        (new UpdatePersonPhysicalAppearance(
-            user: $this->user,
-            person: $this->person,
-            height: $request['height'],
-            weight: $request['weight'],
-            build: $request['build'],
-            skin_tone: $request['skin_tone'],
-            face_shape: $request['face_shape'],
-            eye_color: $request['eye_color'],
-            eye_shape: $request['eye_shape'],
-            hair_color: $request['hair_color'],
-            hair_type: $request['hair_type'],
-            hair_length: $request['hair_length'],
-            facial_hair: $request['facial_hair'],
-            scars: $request['scars'],
-            tatoos: $request['tatoos'],
-            piercings: $request['piercings'],
-            distinctive_marks: $request['distinctive_marks'],
-            glasses: $request['glasses'],
-            dress_style: $request['dress_style'],
-            voice: $request['voice'],
-        ))->execute();
-
-        $person = $this->person->fresh();
-
-        $this->assertEquals($request['height'], $person->height);
-        $this->assertEquals($request['weight'], $person->weight);
-        $this->assertEquals($request['build'], $person->build);
-        $this->assertEquals($request['skin_tone'], $person->skin_tone);
-        $this->assertEquals($request['face_shape'], $person->face_shape);
-        $this->assertEquals($request['eye_color'], $person->eye_color);
-        $this->assertEquals($request['eye_shape'], $person->eye_shape);
-        $this->assertEquals($request['hair_color'], $person->hair_color);
-        $this->assertEquals($request['hair_type'], $person->hair_type);
-        $this->assertEquals($request['hair_length'], $person->hair_length);
-        $this->assertEquals($request['facial_hair'], $person->facial_hair);
-        $this->assertEquals($request['scars'], $person->scars);
-        $this->assertEquals($request['tatoos'], $person->tatoos);
-        $this->assertEquals($request['piercings'], $person->piercings);
-        $this->assertEquals($request['distinctive_marks'], $person->distinctive_marks);
-        $this->assertEquals($request['glasses'], $person->glasses);
-        $this->assertEquals($request['dress_style'], $person->dress_style);
-        $this->assertEquals($request['voice'], $person->voice);
+        $this->assertEquals('5\'6"', $person->height);
+        $this->assertEquals('120 lbs', $person->weight);
+        $this->assertEquals('slim', $person->build);
+        $this->assertEquals('fair', $person->skin_tone);
+        $this->assertEquals('oval', $person->face_shape);
+        $this->assertEquals('blue', $person->eye_color);
+        $this->assertEquals('almond', $person->eye_shape);
+        $this->assertEquals('blonde', $person->hair_color);
+        $this->assertEquals('straight', $person->hair_type);
+        $this->assertEquals('shoulder-length', $person->hair_length);
+        $this->assertEquals('none', $person->facial_hair);
+        $this->assertEquals('small scar on right elbow', $person->scars);
+        $this->assertEquals('small star on wrist', $person->tatoos);
+        $this->assertEquals('ears, belly button', $person->piercings);
+        $this->assertEquals('beauty mark above lip', $person->distinctive_marks);
+        $this->assertEquals('occasionally wears reading glasses', $person->glasses);
+        $this->assertEquals('fashionable, trendy', $person->dress_style);
+        $this->assertEquals(
+            'soft, sometimes nasal when excited',
+            $person->voice
+        );
 
         Queue::assertPushedOn(
-            queue: 'low',
-            job: UpdateUserLastActivityDate::class,
-            callback: function ($job) {
-                return $job->user->id === $this->user->id;
+            'low',
+            UpdateUserLastActivityDate::class,
+            function ($job) use ($user) {
+                return $job->user->id === $user->id;
             }
         );
 
         Queue::assertPushedOn(
-            queue: 'low',
-            job: LogUserAction::class,
-            callback: function ($job) {
-                return $job->user->id === $this->user->id &&
+            'low',
+            LogUserAction::class,
+            function ($job) use ($user) {
+                return $job->user->id === $user->id &&
                     $job->action === 'person_physical_appearance_update' &&
-                    $job->description === 'Updated physical appearance for ' . $this->person->name;
+                    $job->description === 'Updated physical appearance for Rachel Green';
             }
         );
     }
 
     #[Test]
-    public function it_updates_only_provided_physical_appearance_fields(): void
+    public function it_updates_only_specified_attributes(): void
     {
-        Queue::fake();
+        Carbon::setTestNow(Carbon::parse('2025-04-05 16:45:00'));
 
-        $this->createAccountAndUser();
-        $this->createPerson();
-
-        $this->person->update([
+        $account = Account::factory()->create();
+        $user = User::factory()->create([
+            'account_id' => $account->id,
+        ]);
+        $person = Person::factory()->create([
+            'account_id' => $account->id,
+            'first_name' => 'Chandler',
+            'last_name' => 'Bing',
             'height' => '6\'0"',
             'weight' => '175 lbs',
             'build' => 'average',
-            'skin_tone' => 'fair',
-            'face_shape' => 'square',
-            'eye_color' => 'blue',
+            'hair_color' => 'brown',
+            'hair_type' => 'straight',
+            'hair_length' => 'medium',
         ]);
 
-        (new UpdatePersonPhysicalAppearance(
-            user: $this->user,
-            person: $this->person,
-            hair_color: 'brown',
-            hair_type: 'straight',
-            hair_length: 'short'
-        ))->execute();
+        Queue::fake();
 
-        $person = $this->person->fresh();
+        $service = new UpdatePersonPhysicalAppearance(
+            user: $user,
+            person: $person,
+            hair_length: 'very short',
+            hair_type: 'spiky',
+        );
 
-        // Assert only hair-related fields were updated
-        $this->assertEquals('brown', $person->hair_color);
-        $this->assertEquals('straight', $person->hair_type);
-        $this->assertEquals('short', $person->hair_length);
+        $person = $service->execute();
 
-        // And other fields are set to null
+        // Assert updated fields
+        $this->assertEquals('very short', $person->hair_length);
+        $this->assertEquals('spiky', $person->hair_type);
+
+        // Assert other fields are null
         $this->assertNull($person->height);
         $this->assertNull($person->weight);
         $this->assertNull($person->build);
         $this->assertNull($person->skin_tone);
         $this->assertNull($person->face_shape);
         $this->assertNull($person->eye_color);
+        $this->assertNull($person->eye_shape);
+        $this->assertNull($person->facial_hair);
+        $this->assertNull($person->scars);
+        $this->assertNull($person->tatoos);
+        $this->assertNull($person->piercings);
+        $this->assertNull($person->distinctive_marks);
+        $this->assertNull($person->glasses);
+        $this->assertNull($person->dress_style);
+        $this->assertNull($person->voice);
+
+        Queue::assertPushedOn(
+            'low',
+            LogUserAction::class,
+            function ($job) {
+                return $job->action === 'person_physical_appearance_update';
+            }
+        );
     }
 
     #[Test]
-    public function it_fails_if_user_doesnt_belong_to_same_account(): void
+    public function it_throws_exception_when_user_is_not_from_same_account(): void
     {
-        $this->createAccountAndUser();
+        // Joey tries to update Monica's appearance but they're from different accounts
+        Carbon::setTestNow(Carbon::parse('2025-04-05 18:20:00'));
 
-        // Create another account with a person
-        $anotherAccount = Account::factory()->create();
-        $this->person = Person::factory()->create([
-            'account_id' => $anotherAccount->id,
+        $joeyAccount = Account::factory()->create();
+        $joeyUser = User::factory()->create([
+            'account_id' => $joeyAccount->id,
+        ]);
+
+        $monicaAccount = Account::factory()->create();
+        $monica = Person::factory()->create([
+            'account_id' => $monicaAccount->id,
+            'first_name' => 'Monica',
+            'last_name' => 'Geller',
         ]);
 
         $this->expectException(ModelNotFoundException::class);
 
-        (new UpdatePersonPhysicalAppearance(
-            user: $this->user,
-            person: $this->person,
-            height: '5\'9"',
-            weight: '180 lbs'
-        ))->execute();
-    }
+        $service = new UpdatePersonPhysicalAppearance(
+            user: $joeyUser,
+            person: $monica,
+            height: '5\'5"',
+            weight: '125 lbs',
+        );
 
-    private function createAccountAndUser(): void
-    {
-        $this->account = Account::factory()->create();
-        $this->user = User::factory()->create([
-            'account_id' => $this->account->id,
-        ]);
-    }
-
-    private function createPerson(): void
-    {
-        $this->person = Person::factory()->create([
-            'account_id' => $this->account->id,
-        ]);
+        $service->execute();
     }
 }

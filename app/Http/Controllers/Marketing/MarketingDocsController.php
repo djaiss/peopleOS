@@ -154,4 +154,14 @@ class MarketingDocsController extends Controller
             'viewName' => 'marketing.docs.api.update-age',
         ]);
     }
+
+    public function updatePhysicalAppearance(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.update-physical-appearance', [
+            'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.update-physical-appearance',
+        ]);
+    }
 }

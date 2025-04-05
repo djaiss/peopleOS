@@ -86,7 +86,7 @@ class UpdatePersonPhysicalAppearance
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_physical_appearance_update',
-            description: 'Updated physical appearance for ' . $this->person->name,
+            description: 'Updated physical appearance for '.$this->person->name,
         )->onQueue('low');
     }
 }
