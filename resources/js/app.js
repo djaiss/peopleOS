@@ -12,3 +12,14 @@ Alpine.plugin(ajax);
 Alpine.plugin(intersect);
 
 Alpine.start();
+
+function refreshCsrfToken() {
+  fetch('/refresh-csrf')
+    .then(response => response.json())
+    .then(data => {
+      document.querySelector('meta[name="csrf-token"]').setAttribute('content', data.csrfToken);
+    });
+}
+
+// Refresh CSRF token every 10 minutes (600,000 milliseconds)
+setInterval(refreshCsrfToken, 600000);
