@@ -26,9 +26,9 @@ class FetchMergedPRs
         $repo = 'peopleos';
         $token = env('GITHUB_TOKEN');
 
-        $response = $client->request('GET', "https://api.github.com/repos/$owner/$repo/pulls", [
+        $response = $client->request('GET', "https://api.github.com/repos/{$owner}/{$repo}/pulls", [
             'headers' => [
-                'Authorization' => "token $token",
+                'Authorization' => "token {$token}",
                 'Accept' => 'application/vnd.github.v3+json',
             ],
             'query' => [

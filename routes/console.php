@@ -12,5 +12,5 @@ Artisan::command('inspire', function (): void {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-Schedule::job(new CountDailyUsers)->dailyAt('00:00');
-Schedule::job(new ProcessReminders)->dailyAt('00:00');
+Schedule::job(new CountDailyUsers())->dailyAt('00:00');
+Schedule::job(new ProcessReminders())->dailyAt('00:00');

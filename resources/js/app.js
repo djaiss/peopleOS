@@ -15,8 +15,8 @@ Alpine.start();
 
 function refreshCsrfToken() {
   fetch('/refresh-csrf')
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       document.querySelector('meta[name="csrf-token"]').setAttribute('content', data.csrfToken);
     });
 }

@@ -43,7 +43,7 @@ class Encounter extends Model
     }
 
     /**
-     * Get the account associated with the person seen report.
+     * Get the account associated with the encounter.
      */
     public function account(): BelongsTo
     {
@@ -51,7 +51,7 @@ class Encounter extends Model
     }
 
     /**
-     * Get the person associated with the person seen report.
+     * Get the person associated with the encounter.
      */
     public function person(): BelongsTo
     {

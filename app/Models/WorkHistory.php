@@ -45,7 +45,7 @@ class WorkHistory extends Model
     }
 
     /**
-     * Get the person associated with the note.
+     * Get the person associated with the work history.
      */
     public function person(): BelongsTo
     {

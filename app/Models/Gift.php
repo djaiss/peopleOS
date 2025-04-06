@@ -49,7 +49,7 @@ class Gift extends Model
     }
 
     /**
-     * Get the account associated with the person seen report.
+     * Get the account associated with the gift.
      */
     public function account(): BelongsTo
     {
@@ -57,7 +57,7 @@ class Gift extends Model
     }
 
     /**
-     * Get the person associated with the person seen report.
+     * Get the person associated with the gift.
      */
     public function person(): BelongsTo
     {

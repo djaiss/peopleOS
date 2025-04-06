@@ -31,7 +31,8 @@ class SendReminder implements ShouldQueue
             ->with(['users' => function ($query): void {
                 $query->orderBy('created_at', 'asc')
                     ->limit(1);
-            }])
+            }]
+            )
             ->first()
             ->users
             ->first();

@@ -227,7 +227,7 @@ class Person extends Model
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: function (mixed $value, array $attributes): string {
+            get: function (): string {
                 $firstName = $this->first_name;
                 $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';
@@ -243,14 +243,14 @@ class Person extends Model
     protected function currentTime(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes): string => now($this->timezone)->format('g:i a')
+            get: fn (): string => now($this->timezone)->format('g:i a')
         );
     }
 
     protected function age(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes): mixed => match ($this->age_type) {
+            get: fn (): mixed => match ($this->age_type) {
                 AgeType::EXACT->value => $this->ageSpecialDate ? $this->ageSpecialDate->ageOld : 'Unknown',
                 AgeType::ESTIMATED->value => $this->getEstimatedAge(),
                 default => $this->age_bracket,
