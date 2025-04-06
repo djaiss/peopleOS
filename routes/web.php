@@ -88,6 +88,10 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
 
+Route::get('/refresh-csrf', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
+
 Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function (): void {
     // marketing
     Route::post('/vote/{page}/helpful', [MarketingVoteHelpfulController::class, 'update'])->name('marketing.vote-helpful');
