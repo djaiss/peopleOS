@@ -25,7 +25,8 @@ class InstanceController extends Controller
             ->with(['users' => function ($query): void {
                 $query->orderBy('created_at', 'asc')
                     ->limit(1);
-            }])
+            }]
+            )
             ->withCount('persons')
             ->get()
             ->map(function ($account): array {

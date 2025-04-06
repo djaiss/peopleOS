@@ -794,7 +794,7 @@ class SetupDummyAccount extends Command
     private function createNotes(Person $person): void
     {
         for ($i = 0; $i < random_int(0, 93); $i++) {
-            $note = (new CreateNote(
+            (new CreateNote(
                 user: $this->firstUser,
                 person: $person,
                 content: $this->faker->paragraphs(random_int(1, 3), true)

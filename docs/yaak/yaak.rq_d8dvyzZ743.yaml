@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_d8dvyzZ743
+createdAt: 2025-04-06T21:38:55.021721
+updatedAt: 2025-04-06T21:40:02.698520
+workspaceId: wk_IQZH5RHjkM
+folderId: fl_ygUEw2VGYR
+authentication:
+  token: ${[ Bearer ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers:
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
+method: GET
+name: ''
+sortPriority: 0.001
+url: https://peopleos.test/api/administration/task-categories
+urlParameters: []

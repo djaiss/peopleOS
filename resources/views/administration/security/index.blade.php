@@ -73,34 +73,36 @@
             </x-button.secondary>
           </div>
 
-          <div id="api-key-list">
-            @foreach ($apiKeys as $apiKey)
-              <div class="group flex items-center justify-between border-b border-gray-200 p-3 first:border-t last:rounded-b-lg last:border-b-0">
-                <div class="flex items-center justify-between gap-3">
-                  <div class="rounded-sm bg-zinc-100 p-2">
-                    <x-lucide-key class="h-4 w-4 text-zinc-500" />
+          @if (! $apiKeys->isEmpty())
+            <div id="api-key-list">
+              @foreach ($apiKeys as $apiKey)
+                <div class="group flex items-center justify-between border-b border-gray-200 p-3 first:border-t last:rounded-b-lg last:border-b-0">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="rounded-sm bg-zinc-100 p-2">
+                      <x-lucide-key class="h-4 w-4 text-zinc-500" />
+                    </div>
+
+                    <div class="flex flex-col">
+                      <p class="text-sm font-semibold">{{ $apiKey['name'] }}</p>
+                      <p class="font-mono text-xs text-zinc-500">{{ $apiKey['last_used'] }}</p>
+                    </div>
                   </div>
 
-                  <div class="flex flex-col">
-                    <p class="text-sm font-semibold">{{ $apiKey['name'] }}</p>
-                    <p class="font-mono text-xs text-zinc-500">{{ $apiKey['last_used'] }}</p>
-                  </div>
+                  <form x-target="api-key-list" action="{{ route('administration.security.destroy', $apiKey['id']) }}" method="POST" x-on:ajax:before="
+                    confirm('Are you sure you want to proceed? This can not be undone.') ||
+                      $event.preventDefault()
+                  ">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-button.invisible x-target="api-key-list" class="hidden text-sm group-hover:block">
+                      {{ __('Delete') }}
+                    </x-button.invisible>
+                  </form>
                 </div>
-
-                <form x-target="api-key-list" action="{{ route('administration.security.destroy', $apiKey['id']) }}" method="POST" x-on:ajax:before="
-                  confirm('Are you sure you want to proceed? This can not be undone.') ||
-                    $event.preventDefault()
-                ">
-                  @csrf
-                  @method('DELETE')
-
-                  <x-button.invisible x-target="api-key-list" class="hidden text-sm group-hover:block">
-                    {{ __('Delete') }}
-                  </x-button.invisible>
-                </form>
-              </div>
-            @endforeach
-          </div>
+              @endforeach
+            </div>
+          @endif
         </div>
       </div>
     </div>

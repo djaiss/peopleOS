@@ -6,25 +6,17 @@ namespace App\Http\Controllers\Api\Administration;
 
 use App\Http\Controllers\Controller;
 use App\Services\PruneAccount;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * @group Administration
- *
- * @subgroup Prune account
- */
 class AdministrationPruneAccountController extends Controller
 {
     /**
      * Prune the account.
      *
      * Prunes the account by deleting all persons and related data.
-     *
-     * @response 204
      */
-    public function update(Request $request): Response
+    public function update(): Response
     {
         (new PruneAccount(
             user: Auth::user(),

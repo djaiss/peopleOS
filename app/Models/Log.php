@@ -67,7 +67,7 @@ class Log extends Model
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: function ($value, $attributes): string {
+            get: function (): string {
                 $user = $this->user;
 
                 return $user ? $user->name : $this->user_name;

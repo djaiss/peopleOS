@@ -125,7 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: function (mixed $value, array $attributes): string {
+            get: function (): string {
                 $firstName = $this->first_name;
                 $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';

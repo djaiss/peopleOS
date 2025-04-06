@@ -1,10 +1,10 @@
 type: http_request
 model: http_request
-id: rq_PD4ALSeKYi
-createdAt: 2025-03-07T22:15:04.471681
-updatedAt: 2025-04-06T21:36:38.905339
+id: rq_d3Mx94NKXv
+createdAt: 2025-04-06T21:38:55.020366
+updatedAt: 2025-04-06T21:41:56.990125
 workspaceId: wk_IQZH5RHjkM
-folderId: fl_3vEyB3eXJj
+folderId: fl_ygUEw2VGYR
 authentication:
   token: ${[ Bearer ]}
 authenticationType: bearer
@@ -22,22 +22,18 @@ headers:
   id: null
 method: PUT
 name: ''
-sortPriority: 1000.0
-url: https://peopleos.test/api/me
+sortPriority: 0.003
+url: https://peopleos.test/api/administration/task-categories/13
 urlParameters:
 - enabled: true
-  name: first_name
-  value: Henri
-  id: uiufsHbJpJ
+  name: name
+  value: Office
+  id: e9qu0PzTED
 - enabled: true
-  name: last_name
-  value: Troyattese
-  id: J8dSSy4C7Y
-- enabled: true
-  name: email
-  value: henri@troyat.com
-  id: 4JNPIiJkNT
+  name: color
+  value: bg-purple-200
+  id: c70tVZT6MY
 - enabled: true
   name: ''
   value: ''
-  id: bSGVXqKdY8
+  id: JcwFcFUyDV
