@@ -141,3 +141,24 @@ We believe this project is a nice project to learn how to code and to contribute
 - Avoid writing custom CSS as much as possible. Tailwind provides everything we need in 99.9999% of the case.
 - Do not add dependencies. Dependencies are the devil. It puts the project at risk in many ways.
 - We have two queues: `high` and `low`. High are strictly time-sensitive, like sending emails. Low are for any other tasks.
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Regis Freyd](https://github.com/djaiss)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
