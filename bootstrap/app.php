@@ -13,6 +13,7 @@ use App\Http\Middleware\CheckPersonApi;
 use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\CheckTask;
 use App\Http\Middleware\CheckWorkHistory;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -37,6 +38,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'marketing' => CheckMarketingSiteEnabled::class,
             'journal' => CheckJournal::class,
             'marketing.page' => CheckMarketingPage::class,
+            'set.locale' => SetLocale::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

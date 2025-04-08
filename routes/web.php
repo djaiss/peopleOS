@@ -19,6 +19,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Journal\JournalController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
@@ -48,6 +49,14 @@ use App\Http\Controllers\Persons\PersonTaskToggleController;
 use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
+
+Route::get('/refresh-csrf', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
+
+Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update');
 
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
@@ -86,13 +95,7 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/docs/api/notes', [MarketingDocsController::class, 'notes'])->name('marketing.docs.api.notes');
 });
 
-Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
-
-Route::get('/refresh-csrf', function () {
-    return response()->json(['csrfToken' => csrf_token()]);
-});
-
-Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function (): void {
+Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->group(function (): void {
     // marketing
     Route::post('/vote/{page}/helpful', [MarketingVoteHelpfulController::class, 'update'])->name('marketing.vote-helpful');
     Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');

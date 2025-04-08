@@ -42,7 +42,7 @@
           <div class="flex items-start gap-3">
             <x-lucide-check class="h-6 w-6 flex-shrink-0 text-green-500" />
             <div>
-              <h3 class="font-medium text-gray-900">{{ __('All Features Included') }}</h3>
+              <h3 class="font-medium text-gray-900">{{ __('All features included') }}</h3>
               <p class="text-gray-500">{{ __('Get access to all current and future features we release.') }}</p>
             </div>
           </div>
@@ -50,7 +50,7 @@
           <div class="flex items-start gap-3">
             <x-lucide-check class="h-6 w-6 flex-shrink-0 text-green-500" />
             <div>
-              <h3 class="font-medium text-gray-900">{{ __('Priority Support') }}</h3>
+              <h3 class="font-medium text-gray-900">{{ __('Priority support') }}</h3>
               <p class="text-gray-500">{{ __('Get help when you need it with our priority support channel.') }}</p>
             </div>
           </div>
@@ -58,7 +58,7 @@
 
         <div class="mt-8">
           <a href="#" class="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
-            {{ __('Upgrade Now') }}
+            {{ __('Upgrade now') }}
           </a>
           <p class="mt-2 text-center text-sm text-gray-500">
             {{ __('Secure payment powered by Stripe') }}

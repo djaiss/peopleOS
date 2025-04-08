@@ -42,6 +42,7 @@ class UserFactory extends Factory
             'is_instance_admin' => false,
             'timezone' => 'UTC',
             'last_person_seen_id' => null,
+            'locale' => 'en',
         ];
     }
 
