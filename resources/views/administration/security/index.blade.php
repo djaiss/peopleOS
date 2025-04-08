@@ -104,6 +104,8 @@
             </div>
           @endif
         </div>
+
+        @include('administration.security.partials.auto-delete-account')
       </div>
     </div>
   </div>
