@@ -18,6 +18,8 @@
           {{ __('Personalization') }}
         </h1>
 
+        @include('administration.personalization.partials.create-task-on-reminder')
+
         @include('administration.personalization.partials.genders', ['genders' => $genders])
 
         @include('administration.personalization.partials.task-categories', ['taskCategories' => $taskCategories])

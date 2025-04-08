@@ -24,6 +24,7 @@ class Account extends Model
         'emails_sent',
         'trial_ends_at',
         'auto_delete_account',
+        'create_task_on_reminder',
     ];
 
     /**
@@ -37,6 +38,7 @@ class Account extends Model
             'has_lifetime_access' => 'boolean',
             'trial_ends_at' => 'datetime',
             'auto_delete_account' => 'boolean',
+            'create_task_on_reminder' => 'boolean',
         ];
     }
 
