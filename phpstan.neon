@@ -26,6 +26,7 @@ parameters:
         - app/Models/User.php
         - app/Http/Resources/*.php
         - app/Livewire/*
+        - app/Services/DestroyAccountBecauseInactivity.php
 
 #    checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false

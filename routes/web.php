@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Administration\AdministrationAccountController;
+use App\Http\Controllers\Administration\AdministrationAutoDeleteAccountController;
 use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
@@ -205,6 +206,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::get('administration/security/new', [AdministrationSecurityController::class, 'new'])->name('administration.security.new');
     Route::post('administration/security', [AdministrationSecurityController::class, 'create'])->name('administration.security.create');
     Route::delete('administration/security/{apiKeyId}', [AdministrationSecurityController::class, 'destroy'])->name('administration.security.destroy');
+
+    // auto delete account
+    Route::put('administration/security/auto-delete-account', [AdministrationAutoDeleteAccountController::class, 'update'])->name('administration.security.auto-delete.update');
 
     // personalization
     Route::get('administration/personalization', [AdministrationPersonalizationController::class, 'index'])->name('administration.personalization.index');

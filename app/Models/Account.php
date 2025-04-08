@@ -23,6 +23,7 @@ class Account extends Model
         'has_lifetime_access',
         'emails_sent',
         'trial_ends_at',
+        'auto_delete_account',
     ];
 
     /**
@@ -35,6 +36,7 @@ class Account extends Model
         return [
             'has_lifetime_access' => 'boolean',
             'trial_ends_at' => 'datetime',
+            'auto_delete_account' => 'boolean',
         ];
     }
 
