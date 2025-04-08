@@ -49,6 +49,12 @@ use App\Http\Controllers\Persons\PersonWorkController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
+
+Route::get('/refresh-csrf', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
+
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
     Route::get('/about', [MarketingController::class, 'index'])->name('marketing.about.index');
@@ -86,13 +92,7 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/docs/api/notes', [MarketingDocsController::class, 'notes'])->name('marketing.docs.api.notes');
 });
 
-Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
-
-Route::get('/refresh-csrf', function () {
-    return response()->json(['csrfToken' => csrf_token()]);
-});
-
-Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1'])->group(function (): void {
+Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->group(function (): void {
     // marketing
     Route::post('/vote/{page}/helpful', [MarketingVoteHelpfulController::class, 'update'])->name('marketing.vote-helpful');
     Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');
