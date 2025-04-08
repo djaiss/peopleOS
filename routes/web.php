@@ -19,6 +19,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Journal\JournalController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
@@ -54,6 +55,8 @@ Route::get('/invitations/{user}/accept', [AdministrationController::class, 'acce
 Route::get('/refresh-csrf', function () {
     return response()->json(['csrfToken' => csrf_token()]);
 });
+
+Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update');
 
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');

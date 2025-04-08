@@ -15,7 +15,7 @@
         <x-lucide-chevron-right class="h-4 w-4" />
         <a href="{{ route('instance.index') }}" class="hover:text-gray-700">{{ __('Instance Administration') }}</a>
         <x-lucide-chevron-right class="h-4 w-4" />
-        <span class="text-gray-700">{{ __('Account Details') }}</span>
+        <span class="text-gray-700">{{ __('Account details') }}</span>
       </div>
     </div>
   </nav>
@@ -24,7 +24,7 @@
     <div class="flex items-center gap-x-3">
       <x-lucide-chevron-left class="h-5 w-5 text-gray-400" />
       <h2 class="text-xl leading-tight font-semibold text-gray-800 dark:text-gray-200">
-        {{ __('Account Details') }}
+        {{ __('Account details') }}
       </h2>
     </div>
   </x-slot>
@@ -54,7 +54,7 @@
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-2 text-gray-600">
                 <x-lucide-user class="h-4 w-4" />
-                <span class="text-xs font-medium">{{ __('Account Owner') }}</span>
+                <span class="text-xs font-medium">{{ __('Account owner') }}</span>
               </div>
               <div class="flex items-center gap-3">
                 <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $firstUser->getAvatar(64) }}" alt="{{ $firstUser->name }}" />
@@ -82,7 +82,7 @@
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-2 text-gray-600">
                 <x-lucide-shield class="h-4 w-4" />
-                <span class="text-xs font-medium">{{ __('Account Status') }}</span>
+                <span class="text-xs font-medium">{{ __('Account status') }}</span>
               </div>
               @if ($account->has_lifetime_access)
                 <div>

@@ -1,18 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
-
     'accepted' => 'Le champ :attribute doit être accepté.',
     'accepted_if' => 'Le champ :attribute doit être accepté lorsque :other vaut :value.',
     'active_url' => 'Le champ :attribute n\'est pas une URL valide.',
@@ -23,6 +11,8 @@ return [
     'alpha_num' => 'Le champ :attribute doit seulement contenir des chiffres et des lettres.',
     'array' => 'Le champ :attribute doit être un tableau.',
     'ascii' => 'Le champ :attribute ne doit contenir que des caractères alphanumériques à un octet et des symboles.',
+    'attributes' => [
+    ],
     'before' => 'Le champ :attribute doit être une date antérieure au :date.',
     'before_or_equal' => 'Le champ :attribute: doit être une date avant ou égale à :date.',
     'between' => [
@@ -36,6 +26,11 @@ return [
     'confirmed' => 'Le champ de confirmation :attribute ne correspond pas.',
     'contains' => 'Il manque une valeur obligatoire dans le champ :attribute.',
     'current_password' => 'Le mot de passe est incorrect.',
+    'custom' => [
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
+        ],
+    ],
     'date' => 'Le champ :attribute n\'est pas une date valide.',
     'date_equals' => 'Le champ :attribute doit être une date égale à :date.',
     'date_format' => 'Le champ :attribute ne correspond pas au format :format.',
@@ -71,8 +66,8 @@ return [
     'hex_color' => 'Le champ :attribute doit être une couleur hexadécimale valide.',
     'image' => 'Le champ :attribute doit être une image.',
     'in' => 'Le champ :attribute est invalide.',
-    'in_array' => 'Le champ :attribute n\'existe pas dans :other.',
     'integer' => 'Le champ :attribute doit être un entier (un nombre sans virgule).',
+    'in_array' => 'Le champ :attribute n\'existe pas dans :other.',
     'ip' => 'Le champ :attribute doit être une adresse IP valide.',
     'ipv4' => 'Le champ :attribute doit être une adresse IPv4 valide.',
     'ipv6' => 'Le champ :attribute doit être une adresse IPv6 valide.',
@@ -143,54 +138,23 @@ return [
     'required_if_declined' => 'Le champ :attribute est obligatoire lorsque :other est refusé.',
     'required_unless' => 'Le champ :attribute est obligatoire sauf si :other est dans :values.',
     'required_with' => 'Le champ :attribute est obligatoire quand :values est présent.',
-    'required_with_all' => 'Le champ :attribute est obligatoire quand :values est présent.',
     'required_without' => 'Le champ :attribute est obligatoire quand :values n\'est pas présent.',
     'required_without_all' => 'Le champ :attribute est requis quand aucun de :values n\'est présent.',
+    'required_with_all' => 'Le champ :attribute est obligatoire quand :values est présent.',
     'same' => 'Les champs :attribute et :other doivent être identiques.',
     'size' => [
-        'numeric' => 'La valeur de :attribute doit être :size.',
-        'file' => 'La taille du fichier de :attribute doit être de :size kilo-octets.',
-        'string' => 'Le texte de :attribute doit contenir :size caractères.',
         'array' => 'Le tableau :attribute doit contenir :size éléments.',
+        'file' => 'La taille du fichier de :attribute doit être de :size kilo-octets.',
+        'numeric' => 'La valeur de :attribute doit être :size.',
+        'string' => 'Le texte de :attribute doit contenir :size caractères.',
     ],
     'starts_with' => 'Le :attribute doit commencer par l\'un des éléments suivants : :values.',
     'string' => 'Le :attribute doit être une chaîne.',
     'timezone' => 'Le :attribute doit être un fuseau horaire valide.',
+    'ulid' => 'Le :attribute doit être un ULID valide.',
     'unique' => 'Le :attribute a déjà été pris.',
     'uploaded' => 'Le :attribute n\'a pas pu être téléchargé.',
     'uppercase' => 'Le :attribute doit être en majuscule.',
     'url' => 'Le :attribute doit être une URL valide.',
-    'ulid' => 'Le :attribute doit être un ULID valide.',
     'uuid' => 'Le :attribute doit être un UUID valide.',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
-
-    'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
-    |
-    */
-
-    'attributes' => [],
-
 ];
