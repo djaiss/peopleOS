@@ -21,7 +21,7 @@
   </div>
 
   @if ($person->hasPhysicalDetails())
-    <div id="physical-appearance-details" class="rounded-lg ">
+    <div id="physical-appearance-details" class="rounded-lg">
       <div class="grid grid-cols-3 gap-0">
         <!-- this is super barbaric. i'm almost ashamed of it. -->
         @foreach ($physicalAppearance as $field => $data)
@@ -30,7 +30,7 @@
           $isFirstItem = $loop->first;
           $isLastItem = $loop->last;
           $isFirstInRow = $loop->iteration % 3 === 1;
-          $isLastInRow = $loop->iteration % 3 === 0 || $isLastItem && $loop->iteration % 3 !== 0;
+          $isLastInRow = $loop->iteration % 3 === 0 || ($isLastItem && $loop->iteration % 3 !== 0);
           $isInLastRow = $loop->remaining < 3;
           $rowPosition = $loop->iteration % 3 === 0 ? 3 : $loop->iteration % 3;
           $totalColumns = 3;
@@ -48,7 +48,7 @@
             }
 
             // First item in last row gets bottom-left rounded corner
-            if ($isInLastRow && !$isFirstItem) {
+            if ($isInLastRow && ! $isFirstItem) {
               $classes[] = 'rounded-bl-lg';
             }
           }
@@ -80,7 +80,7 @@
           $classString = implode(' ', $classes);
           ?>
 
-          <div class="flex flex-col border-t {{ $classString }} border-gray-200 bg-white px-4 py-2">
+          <div class="{{ $classString }} flex flex-col border-t border-gray-200 bg-white px-4 py-2">
             <span class="text-xs text-gray-500">{{ $data['label'] }}</span>
             <span class="font-medium">{{ $data['value'] }}</span>
           </div>

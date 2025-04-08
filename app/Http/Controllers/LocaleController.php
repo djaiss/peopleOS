@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -19,7 +18,7 @@ class LocaleController extends Controller
             'locale' => ['required', 'string', Rule::in(config('peopleos.supported_locales'))],
         ]);
 
-        App::setLocale($validated['locale'] );
+        App::setLocale($validated['locale']);
         session()->put('locale', $validated['locale']);
 
         if (Auth::check()) {

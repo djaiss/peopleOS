@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'reset' => 'Votre mot de passe a été réinitialisé !',
     'sent' => 'Nous vous avons envoyé par mail le lien de réinitialisation du mot de passe !',
