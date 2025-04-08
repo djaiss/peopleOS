@@ -6,6 +6,7 @@ use App\Http\Controllers\Administration\AdministrationAccountController;
 use App\Http\Controllers\Administration\AdministrationAutoDeleteAccountController;
 use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
+use App\Http\Controllers\Administration\AdministrationCreateTaskOnReminderController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationMarketingController;
@@ -216,6 +217,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     // marketing
     Route::get('administration/marketing', [AdministrationMarketingController::class, 'index'])->name('administration.marketing.index');
     Route::delete('administration/marketing/{page}', [AdministrationMarketingController::class, 'destroy'])->name('administration.marketing.destroy');
+
+    // create task on reminder
+    Route::put('administration/personalization/create-task-on-reminder', [AdministrationCreateTaskOnReminderController::class, 'update'])->name('administration.personalization.create-task-on-reminder.update');
 
     // genders
     Route::get('administration/personalization/genders/new', [AdministrationGenderController::class, 'new'])->name('administration.personalization.genders.new');

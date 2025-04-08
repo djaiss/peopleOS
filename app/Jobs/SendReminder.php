@@ -8,6 +8,7 @@ use App\Mail\ReminderSent;
 use App\Models\Account;
 use App\Models\SpecialDate;
 use App\Models\User;
+use App\Services\CreateTask;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Crypt;
@@ -34,21 +35,18 @@ class SendReminder implements ShouldQueue
         }
 
         $users = User::where('account_id', $this->specialDate->account_id)
-            ->select('email')
+            ->select('id', 'email', 'account_id')
             ->get();
 
         foreach ($users as $user) {
-            Mail::to($user->email)
-                ->queue(new ReminderSent(
-                    name: $this->specialDate->name,
-                    slug: route('person.show', $this->specialDate->person->slug),
-                    personName: $this->specialDate->person->name,
-                    date: $this->specialDate->date,
-                    age: $this->specialDate->age,
-                    urlStopReminder: $this->prepareURLStopReminder(),
-                ));
-
+            $this->sendReminderEmail($user);
             $account->increment('emails_sent');
+
+            // this should only be done once, since otherwise we would create
+            // multiple tasks for the same reminder
+            if ($user === $users->first()) {
+                $this->createTaskOnReminder($user);
+            }
         }
     }
 
@@ -62,5 +60,37 @@ class SendReminder implements ShouldQueue
             'hash' => Crypt::encryptString($this->specialDate->person->id),
             'id' => $this->specialDate->id,
         ]);
+    }
+
+    /**
+     * Send the reminder email to the user.
+     */
+    public function sendReminderEmail(User $user): void
+    {
+        Mail::to($user->email)
+            ->queue(new ReminderSent(
+                name: $this->specialDate->name,
+                slug: route('person.show', $this->specialDate->person->slug),
+                personName: $this->specialDate->person->name,
+                date: $this->specialDate->date,
+                age: $this->specialDate->age,
+                urlStopReminder: $this->prepareURLStopReminder(),
+            ));
+    }
+
+    /**
+     * Create a task on reminder.
+     */
+    public function createTaskOnReminder(User $user): void
+    {
+        if ($user->account->create_task_on_reminder) {
+            (new CreateTask(
+                user: $user,
+                person: $this->specialDate->person,
+                taskCategory: null,
+                name: $this->specialDate->name.' - '.$this->specialDate->date,
+                dueAt: null,
+            ))->execute();
+        }
     }
 }
