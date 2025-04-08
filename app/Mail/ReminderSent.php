@@ -20,6 +20,7 @@ class ReminderSent extends Mailable
         public string $personName,
         public string $date,
         public string $age,
+        public string $urlStopReminder,
     ) {}
 
     public function envelope(): Envelope
@@ -40,6 +41,7 @@ class ReminderSent extends Mailable
                 'personName' => $this->personName,
                 'date' => $this->date,
                 'age' => $this->age,
+                'urlStopReminder' => $this->urlStopReminder,
             ],
         );
     }

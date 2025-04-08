@@ -19,4 +19,6 @@ View {{ $personName }}'s profile
 
 Thanks,<br>
 {{ config('app.name') }}
+
+PS: do you want to stop receiving reminders about this date for this person? You can [unsubscribe here]({{ $urlStopReminder }}).
 </x-mail::message>
