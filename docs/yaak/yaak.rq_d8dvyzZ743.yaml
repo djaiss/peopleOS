@@ -12,14 +12,14 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: GET
 name: ''
 sortPriority: 0.001

@@ -12,20 +12,20 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: DELETE
 name: ''
 sortPriority: 0.004
 url: https://peopleos.test/api/administration/task-categories/13
 urlParameters:
-- enabled: true
-  name: ''
-  value: ''
-  id: k8dQFVsm2j
+  - enabled: true
+    name: ''
+    value: ''
+    id: k8dQFVsm2j

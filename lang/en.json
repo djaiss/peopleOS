@@ -111,12 +111,14 @@
     "Day": "Day",
     "days remaining": "days remaining",
     "Deactivate Account": "Deactivate Account",
+    "Decryption failed.": "Decryption failed.",
     "Delete": "Delete",
     "Delete account": "Delete account",
     "Delete all persons and related data from your account. This lets you start over with a new account.": "Delete all persons and related data from your account. This lets you start over with a new account.",
     "Delete my account": "Delete my account",
     "Delete person": "Delete person",
     "Delete your account": "Delete your account",
+    "Details of this event:": "Details of this event:",
     "Development": "Development",
     "Distinctive marks": "Distinctive marks",
     "Distinguishing features": "Distinguishing features",
@@ -328,6 +330,7 @@
     "Not set": "Not set",
     "No work history yet": "No work history yet",
     "Occasion": "Occasion",
+    "Occasion: :occasion": "Occasion: :occasion",
     "Offered": "Offered",
     "One-time payment": "One-time payment",
     "One-time payment, forever yours": "One-time payment, forever yours",
@@ -345,6 +348,7 @@
     "Pay once, use forever. No monthly fees, no annual renewals.": "Pay once, use forever. No monthly fees, no annual renewals.",
     "People": "People",
     "PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.": "PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.",
+    "Person: :name": "Person: :name",
     "Personal API keys": "Personal API keys",
     "Personalization": "Personalization",
     "Person deleted successfully": "Person deleted successfully",
@@ -532,5 +536,6 @@
     "Your feedback helps us improve our service...": "Your feedback helps us improve our service...",
     "Your personal CRM": "Your personal CRM",
     "You will be able to add notes, link with other persons, etc...": "You will be able to add notes, link with other persons, etc...",
-    "You will be the administrator of this account.": "You will be the administrator of this account."
+    "You will be the administrator of this account.": "You will be the administrator of this account.",
+    "You will not receive reminders anymore.": "You will not receive reminders anymore."
 }

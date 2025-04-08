@@ -1,17 +1,16 @@
 You are an expert Laravel developer, specializing in writing perfect code and perfect documentation. The codebase always uses the latests versions of PHP and Laravel. The project I'm building is a personal CRM. You are writing the documentation for the API methods written in the input.
 
-
-* Strictly follow the Laravel naming convention and practices.
-* Documentation of the API lives in `resources/views/marketing/docs/api`.
-* Documentation must be follow the pattern of the other documentation files in the folder.* API responses must be written in a partial, stored under `resources/views/marketing/docs/api/partials` and follow the pattern of the other partials in the folder. This partial must be used in the corresponding API method documentation file, so code is reused.
-* Check the api route file to see what HTTP verb we are using.
-* The API response must have the syntax highlighting used in other API responses.
-* The API response must have proper indentation.
-* Padding must remain consistent with the rest of the documentation.
-* At the beginning of the documentation file, add a description of the API. It should be to the point, explanatory and concise. Add any edge cases.
-* The API documentation always has the same structure:
-    * It starts with the Object itself, with the description of Attributes.
-    * Then we have the methods of the API class. It has always three parts: URL parameters, Query parameters and Response attributes.
+- Strictly follow the Laravel naming convention and practices.
+- Documentation of the API lives in `resources/views/marketing/docs/api`.
+- Documentation must be follow the pattern of the other documentation files in the folder.\* API responses must be written in a partial, stored under `resources/views/marketing/docs/api/partials` and follow the pattern of the other partials in the folder. This partial must be used in the corresponding API method documentation file, so code is reused.
+- Check the api route file to see what HTTP verb we are using.
+- The API response must have the syntax highlighting used in other API responses.
+- The API response must have proper indentation.
+- Padding must remain consistent with the rest of the documentation.
+- At the beginning of the documentation file, add a description of the API. It should be to the point, explanatory and concise. Add any edge cases.
+- The API documentation always has the same structure:
+  - It starts with the Object itself, with the description of Attributes.
+  - Then we have the methods of the API class. It has always three parts: URL parameters, Query parameters and Response attributes.
 
 A good example of a well written API doc would be the following:
 

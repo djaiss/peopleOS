@@ -10,7 +10,9 @@ use App\Models\SpecialDate;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class SendReminder implements ShouldQueue
 {
@@ -43,9 +45,22 @@ class SendReminder implements ShouldQueue
                     personName: $this->specialDate->person->name,
                     date: $this->specialDate->date,
                     age: $this->specialDate->age,
+                    urlStopReminder: $this->prepareURLStopReminder(),
                 ));
 
             $account->increment('emails_sent');
         }
+    }
+
+    /**
+     * We provide an url to let users unsubscribe from reminders for this special
+     * date.
+     */
+    public function prepareURLStopReminder(): string
+    {
+        return URL::signedRoute('reminder.stop', [
+            'hash' => Crypt::encryptString($this->specialDate->person->id),
+            'id' => $this->specialDate->id,
+        ]);
     }
 }

@@ -12,28 +12,28 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Accept
-  value: application/json
-  id: null
-- enabled: true
-  name: ''
-  value: ''
-  id: null
+  - enabled: true
+    name: Accept
+    value: application/json
+    id: null
+  - enabled: true
+    name: ''
+    value: ''
+    id: null
 method: POST
 name: ''
 sortPriority: 0.002
 url: https://peopleos.test/api/administration/task-categories
 urlParameters:
-- enabled: true
-  name: name
-  value: Work
-  id: e9qu0PzTED
-- enabled: true
-  name: color
-  value: bg-purple-100
-  id: BYXdJGrfya
-- enabled: true
-  name: ''
-  value: ''
-  id: SWwi3Nb2xA
+  - enabled: true
+    name: name
+    value: Work
+    id: e9qu0PzTED
+  - enabled: true
+    name: color
+    value: bg-purple-100
+    id: BYXdJGrfya
+  - enabled: true
+    name: ''
+    value: ''
+    id: SWwi3Nb2xA

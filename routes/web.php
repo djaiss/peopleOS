@@ -47,6 +47,7 @@ use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonTaskController;
 use App\Http\Controllers\Persons\PersonTaskToggleController;
 use App\Http\Controllers\Persons\PersonWorkController;
+use App\Http\Controllers\StopReminderController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,10 @@ Route::get('/refresh-csrf', function () {
 });
 
 Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update');
+
+Route::get('/person/{hash}/reminder/{id}/stop', [StopReminderController::class, 'show'])
+    ->name('reminder.stop')
+    ->middleware('signed');
 
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
