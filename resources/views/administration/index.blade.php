@@ -22,6 +22,9 @@
         <!-- Timezone -->
         @include('administration.partials.timezone')
 
+        <!-- Locale -->
+        @include('administration.partials.locale')
+
         <!-- Last activity -->
         @include('administration.partials.logs', ['has_more_logs' => $has_more_logs, 'logs' => $logs])
       </div>
