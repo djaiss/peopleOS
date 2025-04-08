@@ -90,7 +90,7 @@
         <div class="hidden grid-cols-12 gap-4 border-b border-gray-200 bg-gray-50 p-4 text-sm font-semibold text-gray-600 sm:grid">
           <div class="col-span-1">{{ __('ID') }}</div>
           <div class="col-span-5">{{ __('Administrator') }}</div>
-          <div class="col-span-3">{{ __('Last Activity') }}</div>
+          <div class="col-span-3">{{ __('Last activity') }}</div>
           <div class="col-span-3">{{ __('Contacts') }}</div>
         </div>
 
