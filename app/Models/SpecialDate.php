@@ -54,7 +54,7 @@ class SpecialDate extends Model
     }
 
     /**
-     * Get the person associated with the note.
+     * Get the person associated with the special date.
      */
     public function person(): BelongsTo
     {
