@@ -38,7 +38,7 @@ Todo:
     - the emails_sent column is already in the database
   - magic link: https://github.com/cesargb/laravel-magiclink?tab=readme-ov-file#login-action
   - Create a task when the remind occurs
-  - Do not run a reminder if the account is in trial.
+  - Do not run a reminder if the account is in trial: DONE
   - click on an email to stop this reminder forever
   - let users create a review to be published on the marketing site
   - export account data

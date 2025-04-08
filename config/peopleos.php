@@ -105,5 +105,6 @@ return [
         'entry_deletion' => 'Entry deletion',
         'age_update' => 'Age update',
         'person_physical_appearance_update' => 'Person physical appearance update',
+        'stop_sending_reminder' => 'Stop sending reminder',
     ],
 ];
