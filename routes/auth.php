@@ -26,7 +26,12 @@ Route::middleware('guest')->group(function (): void {
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('send-magic-link', [SendMagicLinkController::class, 'create'])
+        ->middleware(['throttle:6,1'])
         ->name('magic.link');
+
+    Route::post('send-magic-link', [SendMagicLinkController::class, 'store'])
+        ->middleware(['throttle:6,1'])
+        ->name('magic.link.store');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
