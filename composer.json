@@ -12,6 +12,7 @@
   "require": {
     "php": "^8.3",
     "bacon/bacon-qr-code": "^3.0",
+    "cesargb/laravel-magiclink": "^2.24",
     "laravel/framework": "^11.9",
     "laravel/octane": "^2.8",
     "laravel/sanctum": "^4.0",

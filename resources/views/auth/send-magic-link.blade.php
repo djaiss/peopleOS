@@ -10,22 +10,21 @@
         <!-- Title -->
         <div class="mb-8">
           <h1 class="text-2xl font-semibold text-gray-900">
-            {{ __('Forgot your password?') }}
+            {{ __('Receive a link to login') }}
           </h1>
           <p class="mt-2 text-sm text-gray-500">
-            {{ __('No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('Enter your email below and we will send you a link to magically connect to your account.') }}
           </p>
         </div>
 
-        <!-- Session Status -->
+        <!-- Session status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Password Reset Form -->
         <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-6 shadow-md dark:bg-gray-900">
           <form method="POST" action="{{ route('password.email') }}">
             @csrf
 
-            <!-- Email Address -->
+            <!-- Email address -->
             <div class="mb-4">
               <x-input-label for="email" :value="__('Email')" class="mb-2" />
               <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
@@ -34,15 +33,15 @@
 
             <div class="mt-6">
               <x-button.primary class="w-full">
-                {{ __('Email Password Reset Link') }}
+                {{ __('Email me a link to login') }}
               </x-button.primary>
             </div>
           </form>
         </div>
 
-        <!-- Login Link -->
+        <!-- Login link -->
         <div class="mb-8 rounded-md border border-gray-200 bg-white p-4 text-center text-sm text-gray-600">
-          {{ __('Remember your password?') }}
+          {{ __('Want to use your password instead?') }}
           <x-link :href="route('login')" class="ml-1">
             {{ __('Back to login') }}
           </x-link>
