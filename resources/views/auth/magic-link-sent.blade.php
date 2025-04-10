@@ -7,16 +7,6 @@
           <a href="{{ route('login') }}" class="group-hover:underline">Back to login</a>
         </p>
 
-        <!-- Title -->
-        <div class="mb-8">
-          <h1 class="text-2xl font-semibold text-gray-900">
-            {{ __('Reset password') }}
-          </h1>
-          <p class="mt-2 text-sm text-gray-500">
-            {{ __('Enter your new password below to complete the password reset process.') }}
-          </p>
-        </div>
-
         <!-- Password reset form -->
         <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-6 shadow-md dark:bg-gray-900">
           <p>We've sent you a temporary login link. This link is valid for 5 minutes. Please check your inbox.</p>

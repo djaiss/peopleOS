@@ -1,20 +1,17 @@
 <x-guest-layout>
   <div class="min-h-screen w-screen">
-    <div class="mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-5 py-10 sm:px-6">
+    <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 py-10 sm:px-6">
       <div class="w-full">
-        <p class="group mb-10 flex items-center gap-x-1 text-sm text-gray-600">
-          <x-lucide-arrow-left class="h-4 w-4 transition-transform duration-150 group-hover:-translate-x-1" />
-          <a href="{{ route('login') }}" class="group-hover:underline">Back to login</a>
-        </p>
-
         <!-- Title -->
-        <div class="mb-8">
-          <h1 class="text-2xl font-semibold text-gray-900">
-            {{ __('Receive a link to login') }}
-          </h1>
-          <p class="mt-2 text-sm text-gray-500">
-            {{ __('Enter your email below and we will send you a link to magically connect to your account.') }}
-          </p>
+        <div class="mb-8 flex items-center gap-x-2">
+          <div>
+            <h1 class="text-2xl font-semibold text-gray-900">
+              {{ __('Receive a link to login') }}
+            </h1>
+            <p class="mt-2 text-sm text-gray-500">
+              {{ __('Enter your email below and we will send you a link to magically connect to your account.') }}
+            </p>
+          </div>
         </div>
 
         <!-- Session status -->
