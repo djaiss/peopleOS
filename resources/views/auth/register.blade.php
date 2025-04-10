@@ -91,7 +91,7 @@
         </div>
 
         <ul class="text-xs text-gray-600">
-          <li>© PeopleOS 2025</li>
+          <li>© PeopleOS {{ now()->format('Y') }}</li>
         </ul>
       </div>
     </div>

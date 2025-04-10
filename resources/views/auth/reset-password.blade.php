@@ -10,22 +10,21 @@
         <!-- Title -->
         <div class="mb-8">
           <h1 class="text-2xl font-semibold text-gray-900">
-            {{ __('Reset Password') }}
+            {{ __('Reset password') }}
           </h1>
           <p class="mt-2 text-sm text-gray-500">
             {{ __('Enter your new password below to complete the password reset process.') }}
           </p>
         </div>
 
-        <!-- Password Reset Form -->
+        <!-- Password reset form -->
         <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-6 shadow-md dark:bg-gray-900">
           <form method="POST" action="{{ route('password.store') }}">
             @csrf
 
-            <!-- Password Reset Token -->
             <input type="hidden" name="token" value="{{ $request->route('token') }}" />
 
-            <!-- Email Address -->
+            <!-- Email address -->
             <div class="mb-4">
               <x-input-label for="email" :value="__('Email')" class="mb-2" />
               <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
@@ -40,7 +39,7 @@
               <x-help>{{ __('Mininum 3 characters.') }}</x-help>
             </div>
 
-            <!-- Confirm Password -->
+            <!-- Confirm password -->
             <div class="mb-4">
               <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="mb-2" />
               <x-text-input id="password_confirmation" class="block w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
@@ -55,7 +54,7 @@
           </form>
         </div>
 
-        <!-- Login Link -->
+        <!-- Login link -->
         <div class="mb-8 rounded-md border border-gray-200 bg-white p-4 text-center text-sm text-gray-600">
           {{ __('Remember your password?') }}
           <x-link :href="route('login')" class="ml-1">
@@ -64,7 +63,7 @@
         </div>
 
         <ul class="text-xs text-gray-600">
-          <li>© PeopleOS 2025</li>
+          <li>© PeopleOS {{ now()->format('Y') }}</li>
         </ul>
       </div>
     </div>

@@ -29,12 +29,12 @@
           </h1>
         </div>
 
-        <!-- Login Form -->
+        <!-- Login form -->
         <div class="mt-6 mb-12 w-full overflow-hidden rounded-lg bg-white p-4 shadow-md sm:max-w-md dark:bg-gray-900">
           <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email Address -->
+            <!-- Email address -->
             <div>
               <x-input-label for="email" :value="__('Email')" class="mb-2" />
               <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
@@ -48,7 +48,7 @@
               <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <!-- Remember Me -->
+            <!-- Remember me -->
             <div class="mt-4 block">
               <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded-sm border-gray-300 text-indigo-600 shadow-xs focus:ring-indigo-500" name="remember" />
@@ -72,7 +72,16 @@
           </form>
         </div>
 
-        <!-- Register Link -->
+        <!-- send me a link -->
+        <!-- Register link -->
+        <div class="mb-4 rounded-md border border-gray-200 bg-white p-4 text-center text-sm text-gray-600">
+          {{ __('Wanna skip the password?') }}
+          <x-link :href="route('magic.link')" class="ml-1">
+            {{ __('Send me a link instead') }}
+          </x-link>
+        </div>
+
+        <!-- Register link -->
         <div class="mb-8 rounded-md border border-gray-200 bg-white p-4 text-center text-sm text-gray-600">
           {{ __('New to PeopleOS?') }}
           <x-link :href="route('register')" class="ml-1">
@@ -81,7 +90,7 @@
         </div>
 
         <ul class="text-xs text-gray-600">
-          <li>© PeopleOS 2025</li>
+          <li>© PeopleOS {{ now()->format('Y') }}</li>
         </ul>
       </div>
     </div>
