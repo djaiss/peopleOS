@@ -6,6 +6,11 @@
          stopOnFailure="true"
          stopOnError="true"
 >
+    <extensions>
+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
+            <parameter name="maximum-duration" value="250"/>
+        </bootstrap>
+    </extensions>
     <testsuites>
         <testsuite name="Unit">
             <directory>tests/Unit</directory>

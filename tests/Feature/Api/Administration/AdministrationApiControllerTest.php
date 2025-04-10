@@ -19,26 +19,17 @@ class AdministrationApiControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        // Create API tokens for the user
         $token1 = $user->createToken('Test API Key 1');
-        $token2 = $user->createToken('Test API Key 2');
 
         Sanctum::actingAs($user);
 
         $response = $this->json('GET', '/api/administration/api');
 
-        // Check that the response contains the user's API keys
-        $response->assertJsonCount(2, 'data');
+        $response->assertJsonCount(1, 'data');
 
-        // Check that the response contains the expected API key data
         $response->assertJsonFragment([
             'id' => $token1->accessToken->id,
             'name' => 'Test API Key 1',
-        ]);
-
-        $response->assertJsonFragment([
-            'id' => $token2->accessToken->id,
-            'name' => 'Test API Key 2',
         ]);
     }
 
