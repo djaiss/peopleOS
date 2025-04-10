@@ -107,6 +107,14 @@ class Account extends Model
     }
 
     /**
+     * Get the lifeEvents associated with the account.
+     */
+    public function lifeEvents(): HasMany
+    {
+        return $this->hasMany(LifeEvent::class);
+    }
+
+    /**
      * Check if the account is in trial.
      */
     public function isInTrial(): bool

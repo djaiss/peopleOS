@@ -222,6 +222,14 @@ class Person extends Model
     }
 
     /**
+     * Get the lifeEvents associated with the person.
+     */
+    public function lifeEvents(): HasMany
+    {
+        return $this->hasMany(LifeEvent::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute

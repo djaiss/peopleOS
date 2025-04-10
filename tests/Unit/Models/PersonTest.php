@@ -9,6 +9,7 @@ use App\Models\Account;
 use App\Models\Encounter;
 use App\Models\Gender;
 use App\Models\Gift;
+use App\Models\LifeEvent;
 use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
@@ -151,6 +152,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->encounters()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_life_events(): void
+    {
+        $person = Person::factory()->create();
+        LifeEvent::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->lifeEvents()->exists());
     }
 
     #[Test]
