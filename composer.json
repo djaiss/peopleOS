@@ -24,6 +24,7 @@
     "amirami/localizator": "^0.14.0@alpha",
     "barryvdh/laravel-debugbar": "^3.13",
     "brianium/paratest": "^7.7",
+    "ergebnis/phpunit-slow-test-detector": "^2.19",
     "fakerphp/faker": "^1.23",
     "larastan/larastan": "^2.9",
     "laravel/breeze": "^2.1",

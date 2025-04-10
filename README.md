@@ -141,6 +141,7 @@ We believe this project is a nice project to learn how to code and to contribute
 - Avoid writing custom CSS as much as possible. Tailwind provides everything we need in 99.9999% of the case.
 - Do not add dependencies. Dependencies are the devil. It puts the project at risk in many ways.
 - We have two queues: `high` and `low`. High are strictly time-sensitive, like sending emails. Low are for any other tasks.
+- We have setup PHPUnit so it identifies slow tests. This only works when you run phpunit directly. It does not work when you use Paratest.
 
 ## Changelog
 
