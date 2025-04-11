@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Middleware\CheckGift;
 use App\Http\Middleware\CheckInstanceAdministrator;
 use App\Http\Middleware\CheckJournal;
+use App\Http\Middleware\CheckLifeEvent;
 use App\Http\Middleware\CheckMarketingPage;
 use App\Http\Middleware\CheckMarketingSiteEnabled;
 use App\Http\Middleware\CheckNote;
@@ -39,6 +40,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'journal' => CheckJournal::class,
             'marketing.page' => CheckMarketingPage::class,
             'set.locale' => SetLocale::class,
+            'life_event' => CheckLifeEvent::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

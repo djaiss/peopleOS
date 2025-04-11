@@ -100,6 +100,7 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/docs/api/update-age', [MarketingDocsController::class, 'updateAge'])->name('marketing.docs.api.update-age');
     Route::get('/docs/api/update-physical-appearance', [MarketingDocsController::class, 'updatePhysicalAppearance'])->name('marketing.docs.api.update-physical-appearance');
     Route::get('/docs/api/notes', [MarketingDocsController::class, 'notes'])->name('marketing.docs.api.notes');
+    Route::get('/docs/api/life-events', [MarketingDocsController::class, 'lifeEvents'])->name('marketing.docs.api.life-events');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->group(function (): void {

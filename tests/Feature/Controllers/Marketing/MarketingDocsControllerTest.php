@@ -203,4 +203,16 @@ class MarketingDocsControllerTest extends TestCase
             'viewName',
         ]);
     }
+
+    #[Test]
+    public function it_returns_ok_response_for_api_life_events(): void
+    {
+        $response = $this->get('/docs/api/life-events')
+            ->assertOk();
+
+        $response->assertViewHasAll([
+            'marketingPage',
+            'viewName',
+        ]);
+    }
 }

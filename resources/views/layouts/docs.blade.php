@@ -93,6 +93,9 @@
               <div>
                 <a href="{{ route('marketing.docs.api.update-physical-appearance') }}" class="{{ request()->routeIs('marketing.docs.api.update-physical-appearance') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Update physical appearance') }}</a>
               </div>
+              <div>
+                <a href="{{ route('marketing.docs.api.life-events') }}" class="{{ request()->routeIs('marketing.docs.api.life-events') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('Life events') }}</a>
+              </div>
             </div>
 
             <!-- journal -->
