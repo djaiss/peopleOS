@@ -104,9 +104,7 @@ class CreateLifeEventTest extends TestCase
             shouldBeReminded: false,
         ))->execute();
 
-        $this->assertDatabaseMissing('special_dates', [
-            'life_event_id' => $lifeEvent->id,
-        ]);
+        $this->assertNull($lifeEvent->specialDate);
     }
 
     #[Test]
