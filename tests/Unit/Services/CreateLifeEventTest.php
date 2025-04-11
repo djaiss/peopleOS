@@ -41,7 +41,7 @@ class CreateLifeEventTest extends TestCase
             icon: 'heart',
             bgColor: '#ff0000',
             textColor: '#ffffff',
-            happensAt: '2025-03-17',
+            happenedAt: '2025-03-17',
             shouldBeReminded: true,
         ))->execute();
 
@@ -49,6 +49,7 @@ class CreateLifeEventTest extends TestCase
             'id' => $lifeEvent->id,
             'account_id' => $user->account_id,
             'person_id' => $person->id,
+            'happened_at' => '2025-03-17 00:00:00',
         ]);
 
         $this->assertEquals('Mar 17, 2025', $lifeEvent->specialDate->date);
@@ -79,6 +80,36 @@ class CreateLifeEventTest extends TestCase
     }
 
     #[Test]
+    public function it_does_not_create_a_special_date_if_should_be_reminded_is_false(): void
+    {
+        Queue::fake();
+        Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
+
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Phoebe',
+            'last_name' => 'Buffay',
+        ]);
+
+        $lifeEvent = (new CreateLifeEvent(
+            user: $user,
+            person: $person,
+            description: 'Got married to Mike',
+            comment: null,
+            icon: null,
+            bgColor: null,
+            textColor: null,
+            happenedAt: '2025-03-17',
+            shouldBeReminded: false,
+        ))->execute();
+
+        $this->assertDatabaseMissing('special_dates', [
+            'life_event_id' => $lifeEvent->id,
+        ]);
+    }
+
+    #[Test]
     public function it_fails_if_person_doesnt_belong_to_user_account(): void
     {
         $user = User::factory()->create();
@@ -94,7 +125,7 @@ class CreateLifeEventTest extends TestCase
             icon: null,
             bgColor: null,
             textColor: null,
-            happensAt: '2025-03-17',
+            happenedAt: '2025-03-17',
             shouldBeReminded: false,
         ))->execute();
     }

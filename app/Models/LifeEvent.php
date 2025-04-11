@@ -24,6 +24,7 @@ class LifeEvent extends Model
         'icon',
         'bg_color',
         'text_color',
+        'happened_at',
     ];
 
     /**
@@ -32,6 +33,7 @@ class LifeEvent extends Model
     protected $casts = [
         'description' => 'encrypted',
         'comment' => 'encrypted',
+        'happened_at' => 'datetime',
     ];
 
     /**

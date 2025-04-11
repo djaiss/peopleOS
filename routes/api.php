@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\Journal\JournalController;
 use App\Http\Controllers\Api\Persons\PersonAgeController;
 use App\Http\Controllers\Api\Persons\PersonController;
 use App\Http\Controllers\Api\Persons\PersonGiftController;
+use App\Http\Controllers\Api\Persons\PersonLifeEventController;
 use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Api\Persons\PersonTaskController;
@@ -80,6 +81,15 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
             Route::get('persons/{person}/tasks/{task}', [PersonTaskController::class, 'show']);
             Route::put('persons/{person}/tasks/{task}', [PersonTaskController::class, 'update']);
             Route::delete('persons/{person}/tasks/{task}', [PersonTaskController::class, 'destroy']);
+        });
+
+        // life events
+        Route::get('persons/{person}/life-events', [PersonLifeEventController::class, 'index']);
+        Route::post('persons/{person}/life-events', [PersonLifeEventController::class, 'create']);
+        Route::middleware(['life_event'])->group(function (): void {
+            Route::get('persons/{person}/life-events/{lifeEvent}', [PersonLifeEventController::class, 'show']);
+            Route::put('persons/{person}/life-events/{lifeEvent}', [PersonLifeEventController::class, 'update']);
+            Route::delete('persons/{person}/life-events/{lifeEvent}', [PersonLifeEventController::class, 'destroy']);
         });
     });
 

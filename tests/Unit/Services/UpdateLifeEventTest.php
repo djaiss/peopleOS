@@ -51,7 +51,7 @@ class UpdateLifeEventTest extends TestCase
             icon: 'broken-heart',
             bgColor: '#000000',
             textColor: '#ffffff',
-            happensAt: '2025-03-18',
+            happenedAt: '2025-03-18',
             shouldBeReminded: true,
         ))->execute();
 
@@ -105,7 +105,7 @@ class UpdateLifeEventTest extends TestCase
             icon: null,
             bgColor: null,
             textColor: null,
-            happensAt: '2025-03-18',
+            happenedAt: '2025-03-18',
             shouldBeReminded: true,
         ))->execute();
     }

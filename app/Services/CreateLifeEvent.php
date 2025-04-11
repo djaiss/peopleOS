@@ -20,7 +20,7 @@ class CreateLifeEvent
         public User $user,
         public Person $person,
         public string $description,
-        public string $happensAt,
+        public string $happenedAt,
         public ?string $comment = null,
         public ?string $icon = null,
         public ?string $bgColor = null,
@@ -32,6 +32,11 @@ class CreateLifeEvent
     {
         $this->validate();
         $this->create();
+
+        if ($this->shouldBeReminded) {
+            $this->createSpecialDate();
+        }
+
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -55,24 +60,26 @@ class CreateLifeEvent
             'icon' => $this->icon ?? null,
             'bg_color' => $this->bgColor ?? null,
             'text_color' => $this->textColor ?? null,
+            'happened_at' => $this->happenedAt,
         ]);
+    }
 
-        if ($this->happensAt !== '' && $this->happensAt !== '0') {
-            $happensAt = Carbon::parse($this->happensAt);
+    private function createSpecialDate(): void
+    {
+        $happenedAt = Carbon::parse($this->happenedAt);
 
-            $specialDate = (new CreateSpecialDate(
-                user: $this->user,
-                person: $this->person,
-                name: $this->description,
-                year: $happensAt->year ?? null,
-                month: $happensAt->month ?? null,
-                day: $happensAt->day ?? null,
-                shouldBeReminded: $this->shouldBeReminded,
-            ))->execute();
+        $specialDate = (new CreateSpecialDate(
+            user: $this->user,
+            person: $this->person,
+            name: $this->description,
+            year: $happenedAt->year ?? null,
+            month: $happenedAt->month ?? null,
+            day: $happenedAt->day ?? null,
+            shouldBeReminded: $this->shouldBeReminded,
+        ))->execute();
 
-            $this->lifeEvent->special_date_id = $specialDate->id;
-            $this->lifeEvent->save();
-        }
+        $this->lifeEvent->special_date_id = $specialDate->id;
+        $this->lifeEvent->save();
     }
 
     private function updateUserLastActivityDate(): void
