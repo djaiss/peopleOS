@@ -174,4 +174,14 @@ class MarketingDocsController extends Controller
             'viewName' => 'marketing.docs.api.notes',
         ]);
     }
+
+    public function lifeEvents(Request $request): View
+    {
+        $marketingPage = $request->attributes->get('marketingPage');
+
+        return view('marketing.docs.api.life-events', [
+            'marketingPage' => $marketingPage,
+            'viewName' => 'marketing.docs.api.life-events',
+        ]);
+    }
 }
