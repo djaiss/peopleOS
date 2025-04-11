@@ -39,6 +39,7 @@ use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
 use App\Http\Controllers\Persons\PersonInformationController;
+use App\Http\Controllers\Persons\PersonLifeEventController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonReminderController;
@@ -177,6 +178,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::get('persons/{slug}/work/{entry}/edit', [PersonWorkController::class, 'edit'])->name('person.work.edit');
             Route::put('persons/{slug}/work/{entry}', [PersonWorkController::class, 'update'])->name('person.work.update');
             Route::delete('persons/{slug}/work/{entry}', [PersonWorkController::class, 'destroy'])->name('person.work.destroy');
+
+            // life events
+            Route::get('persons/{slug}/life-events', [PersonLifeEventController::class, 'index'])->name('person.life-event.index');
 
             // family
             Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('person.family.index');
