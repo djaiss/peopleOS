@@ -79,31 +79,6 @@ class CreateLifeEventTest extends TestCase
     }
 
     #[Test]
-    public function it_creates_a_life_event_without_date(): void
-    {
-        Queue::fake();
-
-        $user = User::factory()->create();
-        $person = Person::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        $lifeEvent = (new CreateLifeEvent(
-            user: $user,
-            person: $person,
-            description: 'Got married to Mike',
-        ))->execute();
-
-        $this->assertDatabaseHas('life_events', [
-            'id' => $lifeEvent->id,
-            'account_id' => $user->account_id,
-            'person_id' => $person->id,
-        ]);
-
-        $this->assertFalse($lifeEvent->specialDate()->exists());
-    }
-
-    #[Test]
     public function it_fails_if_person_doesnt_belong_to_user_account(): void
     {
         $user = User::factory()->create();
@@ -115,6 +90,12 @@ class CreateLifeEventTest extends TestCase
             user: $user,
             person: $person,
             description: 'Got married to Mike',
+            comment: null,
+            icon: null,
+            bgColor: null,
+            textColor: null,
+            happensAt: '2025-03-17',
+            shouldBeReminded: false,
         ))->execute();
     }
 }

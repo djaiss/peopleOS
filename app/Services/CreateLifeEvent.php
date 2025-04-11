@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\Gift;
 use App\Models\LifeEvent;
 use App\Models\Person;
 use App\Models\User;
@@ -21,11 +20,11 @@ class CreateLifeEvent
         public User $user,
         public Person $person,
         public string $description,
+        public string $happensAt,
         public ?string $comment = null,
         public ?string $icon = null,
         public ?string $bgColor = null,
         public ?string $textColor = null,
-        public ?string $happensAt = null,
         public bool $shouldBeReminded = false,
     ) {}
 
@@ -58,7 +57,7 @@ class CreateLifeEvent
             'text_color' => $this->textColor ?? null,
         ]);
 
-        if ($this->happensAt) {
+        if ($this->happensAt !== '' && $this->happensAt !== '0') {
             $happensAt = Carbon::parse($this->happensAt);
 
             $specialDate = (new CreateSpecialDate(

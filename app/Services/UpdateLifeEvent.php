@@ -17,11 +17,11 @@ class UpdateLifeEvent
         public User $user,
         public LifeEvent $lifeEvent,
         public string $description,
+        public string $happensAt,
         public ?string $comment = null,
         public ?string $icon = null,
         public ?string $bgColor = null,
         public ?string $textColor = null,
-        public ?string $happensAt = null,
         public bool $shouldBeReminded = false,
     ) {}
 
@@ -56,7 +56,7 @@ class UpdateLifeEvent
             $this->lifeEvent->specialDate->delete();
         }
 
-        if ($this->happensAt) {
+        if ($this->happensAt !== '' && $this->happensAt !== '0') {
             $happensAt = Carbon::parse($this->happensAt);
 
             $specialDate = (new CreateSpecialDate(

@@ -90,36 +90,6 @@ class UpdateLifeEventTest extends TestCase
     }
 
     #[Test]
-    public function it_updates_a_life_event_without_date(): void
-    {
-        Queue::fake();
-
-        $user = User::factory()->create();
-        $person = Person::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-        $lifeEvent = LifeEvent::factory()->create([
-            'account_id' => $user->account_id,
-            'person_id' => $person->id,
-            'description' => 'Got married',
-        ]);
-
-        $updatedLifeEvent = (new UpdateLifeEvent(
-            user: $user,
-            lifeEvent: $lifeEvent,
-            description: 'Got divorced',
-        ))->execute();
-
-        $this->assertDatabaseHas('life_events', [
-            'id' => $lifeEvent->id,
-            'account_id' => $user->account_id,
-            'person_id' => $person->id,
-        ]);
-
-        $this->assertFalse($updatedLifeEvent->specialDate()->exists());
-    }
-
-    #[Test]
     public function it_fails_if_life_event_doesnt_belong_to_user_account(): void
     {
         $user = User::factory()->create();
@@ -131,6 +101,12 @@ class UpdateLifeEventTest extends TestCase
             user: $user,
             lifeEvent: $lifeEvent,
             description: 'Got divorced',
+            comment: null,
+            icon: null,
+            bgColor: null,
+            textColor: null,
+            happensAt: '2025-03-18',
+            shouldBeReminded: true,
         ))->execute();
     }
 }
