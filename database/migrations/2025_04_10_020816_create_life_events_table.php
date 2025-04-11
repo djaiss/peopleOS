@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->string('bg_color')->nullable();
             $table->string('text_color')->nullable();
-            $table->datetime('happened_at')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('persons')->onDelete('set null');

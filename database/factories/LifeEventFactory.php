@@ -37,7 +37,6 @@ class LifeEventFactory extends Factory
             'icon' => $this->faker->optional()->word(),
             'bg_color' => $this->faker->optional()->hexColor(),
             'text_color' => $this->faker->optional()->hexColor(),
-            'happened_at' => $this->faker->optional()->dateTime(),
         ];
     }
 }
