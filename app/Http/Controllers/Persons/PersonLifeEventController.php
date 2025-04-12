@@ -49,6 +49,8 @@ class PersonLifeEventController extends Controller
             'text_color' => 'nullable|string|min:3|max:255',
         ]);
 
+        $reminderSet = $request->input('should_be_reminded') === 'reminded';
+
         (new CreateLifeEvent(
             user: Auth::user(),
             person: $person,
@@ -58,7 +60,7 @@ class PersonLifeEventController extends Controller
             icon: $validated['icon'] ?? null,
             bgColor: $validated['bg_color'] ?? null,
             textColor: $validated['text_color'] ?? null,
-            shouldBeReminded: false,
+            shouldBeReminded: $reminderSet,
         ))->execute();
 
         return redirect()->route('person.life-event.index', $person->slug)
@@ -90,6 +92,8 @@ class PersonLifeEventController extends Controller
             'text_color' => 'nullable|string|min:3|max:255',
         ]);
 
+        $reminderSet = $request->input('should_be_reminded') === 'reminded';
+
         (new UpdateLifeEvent(
             user: Auth::user(),
             lifeEvent: $lifeEvent,
@@ -99,7 +103,7 @@ class PersonLifeEventController extends Controller
             icon: $validated['icon'] ?? null,
             bgColor: $validated['bg_color'] ?? null,
             textColor: $validated['text_color'] ?? null,
-            shouldBeReminded: false,
+            shouldBeReminded: $reminderSet,
         ))->execute();
 
         return redirect()->route('person.life-event.index', $person->slug)
