@@ -1,7 +1,7 @@
 <?php
 /*
- * @var Person $person
- * @var LifeEvent $lifeEvent
+ * @var \App\Models\Person $person
+ * @var \App\Models\LifeEvent $lifeEvent
  */
 ?>
 
