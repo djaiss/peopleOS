@@ -17,6 +17,7 @@ Todo:
   - remove cursor files: DONE
   - replace png images with webp: DONE
   - check notes api call which seems super messy: DONE
+  - send an email when the user logs in
   - add AGE to the person
   - add the ability to add a comment to a marketing page
   - add life events

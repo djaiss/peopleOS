@@ -1,0 +1,25 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+    }
+    tab name="Code" focus=true {
+        pane command="nvim"
+    }
+    tab name="Tests queues etc..." {
+        pane size="60%"
+        pane size="20%" {
+            pane command="mailhog"
+        }
+        pane size="20%" split_direction="vertical" {
+            pane command="php" {
+                args "artisan" "queue:listen"
+            }
+            pane command="yarn" {
+                args "dev"
+            }
+        }
+    }
+}

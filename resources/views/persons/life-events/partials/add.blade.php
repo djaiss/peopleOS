@@ -49,17 +49,17 @@
     </div>
 
     <!-- reminder -->
-  <div class="flex gap-2">
-    <div class="flex h-6 shrink-0 items-center">
-      <div class="group grid size-4 grid-cols-1">
-        <input @checked(old('should_be_reminded')) value="reminded" id="should_be_reminded" name="should_be_reminded" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+    <div class="flex gap-2">
+      <div class="flex h-6 shrink-0 items-center">
+        <div class="group grid size-4 grid-cols-1">
+          <input @checked(old('should_be_reminded')) value="reminded" id="should_be_reminded" name="should_be_reminded" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+        </div>
+      </div>
+      <div class="text-sm/6">
+        <label for="should_be_reminded" class="font-medium text-gray-900">{{ __('Add a yearly reminder') }}</label>
+        <x-input-error :messages="$errors->get('should_be_reminded')" class="mt-2" />
       </div>
     </div>
-    <div class="text-sm/6">
-      <label for="should_be_reminded" class="font-medium text-gray-900">{{ __('Add a yearly reminder') }}</label>
-      <x-input-error :messages="$errors->get('should_be_reminded')" class="mt-2" />
-    </div>
-  </div>
   </div>
 
   <div class="flex items-center justify-between border-t border-gray-200 px-4 py-4">
