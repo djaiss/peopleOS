@@ -21,7 +21,7 @@
         <div class="mb-8 flex items-center gap-x-2">
           <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
             <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-              <img src="{{ asset('marketing/logo.png') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.png') }} 1x, {{ asset('marketing/logo@2x.png') }} 2x" />
+              <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" />
             </div>
           </a>
           <h1 class="text-2xl font-semibold text-gray-900">
@@ -37,14 +37,14 @@
             <!-- Email address -->
             <div>
               <x-input-label for="email" :value="__('Email')" class="mb-2" />
-              <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+              <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autofocus :avoidAutofill="false" autocomplete="username" />
               <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
               <x-input-label for="password" :value="__('Password')" class="mb-2" />
-              <x-text-input id="password" class="block w-full" type="password" name="password" required autocomplete="current-password" />
+              <x-text-input id="password" class="block w-full" type="password" name="password" required :avoidAutofill="false" autocomplete="current-password" />
               <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
@@ -73,7 +73,6 @@
         </div>
 
         <!-- send me a link -->
-        <!-- Register link -->
         <div class="mb-4 rounded-md border border-gray-200 bg-white p-4 text-center text-sm text-gray-600">
           {{ __('Wanna skip the password?') }}
           <x-link :href="route('magic.link')" class="ml-1">

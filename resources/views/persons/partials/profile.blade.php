@@ -52,40 +52,40 @@
   <!-- Navigation Menu -->
   <nav class="border-b border-gray-200">
     <div class="flex flex-col">
-      <a href="{{ route('person.show', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.show') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-scan-face class="{{ request()->routeIs('person.show') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.show', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.show') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-scan-face class="{{ request()->routeIs('person.show') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.show') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Overview') }}</span>
       </a>
-      <a href="#" class="flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-history class="h-4 w-4 text-gray-500" />
-        <span class="text-sm font-medium text-gray-600">History</span>
+      <a href="{{ route('person.life-event.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.life-event.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-radical class="h-4 w-4 text-gray-500" />
+        <span class="text-sm font-medium text-gray-600">{{ __('Life events') }}</span>
       </a>
-      <a href="{{ route('person.note.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.note.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-book-open class="{{ request()->routeIs('person.note.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.note.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.note.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-book-open class="{{ request()->routeIs('person.note.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.note.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Notes</span>
       </a>
-      <a href="{{ route('person.family.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.family.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-person-standing class="{{ request()->routeIs('person.family.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.family.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.family.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-person-standing class="{{ request()->routeIs('person.family.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('persons.family.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Family</span>
       </a>
-      <a href="{{ route('person.reminder.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.reminder.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-bell class="{{ request()->routeIs('person.reminder.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.reminder.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.reminder.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-bell class="{{ request()->routeIs('person.reminder.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.reminder.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Tasks and reminders') }}</span>
       </a>
-      <a href="{{ route('person.gift.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.gift.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-gift class="{{ request()->routeIs('person.gift.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.gift.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.gift.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-gift class="{{ request()->routeIs('person.gift.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.gift.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Gifts</span>
       </a>
-      <a href="#" class="flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+      <a href="#" class="group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-folder class="h-4 w-4 text-gray-500" />
         <span class="text-sm font-medium text-gray-600">Files</span>
       </a>
-      <a href="{{ route('person.work.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.work.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-briefcase class="{{ request()->routeIs('person.work.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.work.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.work.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-briefcase class="{{ request()->routeIs('person.work.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.work.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Work & Passions') }}</span>
       </a>
-      <a href="{{ route('person.settings.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.settings.index') ? 'border-blue-500 bg-blue-50' : '' }} flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
-        <x-lucide-settings class="{{ request()->routeIs('person.settings.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4" />
+      <a href="{{ route('person.settings.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.settings.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-settings class="{{ request()->routeIs('person.settings.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.settings.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Edit information') }}</span>
       </a>
     </div>
