@@ -55,6 +55,7 @@ class UpdateLifeEvent
             'icon' => $this->icon ?? null,
             'bg_color' => $this->bgColor ?? null,
             'text_color' => $this->textColor ?? null,
+            'happened_at' => $this->happenedAt,
         ]);
     }
 

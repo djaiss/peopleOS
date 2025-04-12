@@ -18,7 +18,7 @@
         <div class="mb-10 flex justify-center">
           <a href="{{ route('dashboard.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
             <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-              <img src="{{ asset('marketing/logo.png') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.png') }} 1x, {{ asset('marketing/logo@2x.png') }} 2x" />
+              <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" />
             </div>
             <span class="text-lg font-semibold text-gray-900 dark:text-white">{{ config('app.name') }}</span>
           </a>

@@ -1,3 +1,11 @@
+<?php
+/*
+ * @var \App\Models\Person $person
+ * @var array $persons
+ * @var array $life_events
+ */
+?>
+
 <x-app-layout>
   <div class="grid h-[calc(100vh-48px)] grid-cols-[280px_320px_1fr] divide-x divide-gray-200">
     <!-- Section A: Contact List -->
@@ -9,62 +17,64 @@
     <!-- Section C: Detail View -->
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-2xl p-6">
-        <h1 class="font-semi-bold mb-4 text-2xl">
-          {{ __('Life events') }}
-        </h1>
+        <!-- title -->
+        <div class="mb-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <x-lucide-leaf class="h-5 w-5 text-amber-500" />
+            <h2 class="text-lg font-semibold text-gray-900">
+              {{ __('Life events') }}
+            </h2>
+          </div>
 
-        <div class="flex flex-col gap-y-7 border-l border-gray-300 ml-3">
-          <div class="flex gap-x-3 relative">
-            <div class="bg-amber-300 p-1 rounded-full absolute -left-3">
-              <x-lucide-check class="h-4 w-4 text-gray-500" />
-            </div>
-            <div class="relative group pl-6">
-
-                <span class="group-hover:bg-amber-100 px-1 rounded">ceci est une phrase de test pour voir jusqua ou ca va et comment on va faire pour etre le plus beua mec du monde</span>
-                <span class="inline-block text-gray-500 ml-3">Jan 5, 2022</span>
-                <div class="absolute top-0 -right-8 rounded-full border border-gray-200 bg-white p-1">
-                  <x-lucide-bell-ring class="h-4 w-4 text-gray-400" />
-                </div>
-            </div>
-          </div>
-          <div class="flex gap-x-3 relative">
-            <div class="bg-amber-300 p-1 rounded-full absolute -left-3">
-              <x-lucide-check class="h-4 w-4 text-gray-500" />
-            </div>
-            <div class="relative pl-6 flex flex-col gap-y-3">
-              <div class="">
-                <p>ceci est une phrase de test pour voir jusqua ou ca va et comment on va faire pour etre le plus beua mec du monde
-                <span class="ml-3 text-gray-500">Jan 5, 2022</span>
-                </p>
-              </div>
-              <div class="rounded-lg p-3 bg-white border border-gray-300">Since all mailable classes generated using the make:mail command make use of the Illuminate\Bus\Queueable trait, you may call the onQueue and onConnection methods on any mailable class instance, allowing you to specify the connection and queue name for the message:</div>
-            </div>
-          </div>
-          <div class="flex gap-x-3 relative">
-            <div class="bg-amber-300 p-1 rounded-full absolute -left-3">
-              <x-lucide-check class="h-4 w-4 text-gray-500" />
-            </div>
-            <div class="relative pl-6 flex gap-x-3">
-              <div class="">
-                <p>ceci est une phrase de test pour voir jusqua ou ca va et comment on va faire pour etre le plus beua mec du monde
-                <span class="ml-3 text-gray-500">Jan 5, 2022</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="flex gap-x-3 relative">
-            <div class="bg-amber-300 p-1 rounded-full absolute -left-3">
-              <x-lucide-check class="h-4 w-4 text-gray-500" />
-            </div>
-            <div class="relative pl-6 flex gap-x-3">
-              <div class="">
-                <p>ceci est une phrase de test pour voir jusqua ou ca va et comment on va faire pour etre le plus beua mec du monde
-                <span class="ml-3 text-gray-500">Jan 5, 2022</span>
-                </p>
-              </div>
-            </div>
+          <div class="flex items-center gap-2">
+            <a x-target="add-life-event-form" href="{{ route('person.life-event.new', $person->slug) }}" class="inline-flex items-center gap-1 rounded-md bg-amber-200 px-2 py-1 text-sm font-medium text-amber-600 hover:bg-amber-300">
+              <x-lucide-plus class="mr-1 h-3 w-3" />
+              {{ __('Add') }}
+            </a>
           </div>
         </div>
+
+        <!-- description -->
+        <p class="mb-8 text-sm text-zinc-500">{{ __('Life events are important moments in a person\'s life that you want to remember.') }}</p>
+
+        <!-- add life event form -->
+        <div id="add-life-event-form"></div>
+
+        <!-- life events list -->
+        @if ($life_events->count() > 0)
+          <div id="life-events-list" class="ml-3 flex flex-col gap-y-7 border-l border-gray-300">
+            @foreach ($life_events as $lifeEvent)
+              <div id="life-event-{{ $lifeEvent['id'] }}" class="relative flex gap-x-3">
+                <div class="absolute -left-3 rounded-full bg-amber-300 p-1">
+                  <x-lucide-check class="h-4 w-4 text-gray-500" />
+                </div>
+                <div class="relative flex flex-col gap-y-3 pl-6">
+                  <div class="group relative">
+                    <a x-target="life-event-{{ $lifeEvent['id'] }}" href="{{ route('person.life-event.edit', [$person->slug, $lifeEvent['id']]) }}" class="rounded px-1 group-hover:bg-amber-100">{{ $lifeEvent['description'] }}</a>
+                    <span class="ml-1 inline-block text-xs text-gray-500">{{ $lifeEvent['happened_at'] }}</span>
+                    <div class="absolute top-0 -right-8 rounded-full border border-gray-200 bg-white p-1">
+                      <x-lucide-bell-ring class="h-4 w-4 text-gray-400" />
+                    </div>
+                  </div>
+                  @if ($lifeEvent['comment'])
+                    <div class="rounded-lg border border-gray-300 bg-white p-3">{{ $lifeEvent['comment'] }}</div>
+                  @endif
+                </div>
+              </div>
+            @endforeach
+          </div>
+        @else
+          <div id="tasks-list" class="mb-10 flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
+              <x-lucide-leaf class="h-6 w-6 text-amber-500" />
+            </div>
+
+            <h3 class="mt-2 text-sm font-semibold text-gray-900">{{ __('No life events yet') }}</h3>
+            <p class="mt-1 text-sm text-gray-500">
+              {{ __('Remember important moments in a person\'s life.') }}
+            </p>
+          </div>
+        @endif
       </div>
     </div>
   </div>

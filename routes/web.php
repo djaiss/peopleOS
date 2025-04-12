@@ -181,6 +181,13 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
             // life events
             Route::get('persons/{slug}/life-events', [PersonLifeEventController::class, 'index'])->name('person.life-event.index');
+            Route::get('persons/{slug}/life-events/new', [PersonLifeEventController::class, 'new'])->name('person.life-event.new');
+            Route::post('persons/{slug}/life-events', [PersonLifeEventController::class, 'create'])->name('person.life-event.create');
+            Route::middleware(['life_event'])->group(function (): void {
+                Route::get('persons/{slug}/life-events/{lifeEvent}/edit', [PersonLifeEventController::class, 'edit'])->name('person.life-event.edit');
+                Route::put('persons/{slug}/life-events/{lifeEvent}', [PersonLifeEventController::class, 'update'])->name('person.life-event.update');
+                Route::delete('persons/{slug}/life-events/{lifeEvent}', [PersonLifeEventController::class, 'destroy'])->name('person.life-event.destroy');
+            });
 
             // family
             Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('person.family.index');
