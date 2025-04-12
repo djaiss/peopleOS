@@ -11,9 +11,6 @@
     @csrf
     @method('PUT')
 
-    <!-- Hidden fields to track shown sections -->
-    <input type="checkbox" name="has_happened_at_date" x-bind:checked="showHappenedAtDate" class="hidden" />
-
     <div class="flex flex-col gap-y-4 p-4">
       <!-- description -->
       <div>
