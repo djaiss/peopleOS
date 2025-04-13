@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Account;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Delete an account if there is no activity for all users after a period of
@@ -31,7 +32,11 @@ class DestroyAccountBecauseInactivity
         });
 
         if ($inactiveUsers->count() === $users->count()) {
+            Log::info('Deleting account because all users are inactive: ' . $this->account->id);
             $this->account->delete();
+            Log::info('Account deleted: ' . $this->account->id);
+        } else {
+            Log::info('Not deleting account because not all users are inactive: ' . $this->account->id);
         }
     }
 }

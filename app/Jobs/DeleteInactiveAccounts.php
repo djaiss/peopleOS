@@ -8,6 +8,7 @@ use App\Models\Account;
 use App\Services\DestroyAccountBecauseInactivity;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Log;
 
 class DeleteInactiveAccounts implements ShouldQueue
 {
@@ -21,6 +22,7 @@ class DeleteInactiveAccounts implements ShouldQueue
         $accounts = Account::where('auto_delete_account', true)->get();
 
         foreach ($accounts as $account) {
+            Log::info('Deleting account due to inactivity: ' . $account->id);
             (new DestroyAccountBecauseInactivity($account))->execute();
         }
     }
