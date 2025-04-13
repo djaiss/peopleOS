@@ -1,7 +1,8 @@
 <?php
 /*
  * @var \App\Models\Person $person
- * @var array $tasks
+ * @var array $activeTasks
+ * @var array $completedTasks
  */
 ?>
 
@@ -23,32 +24,28 @@
 <div id="add-task-form"></div>
 
 <!-- tasks list -->
-@if ($tasks->count() > 0)
+@if ($activeTasks->count() > 0 || $completedTasks->count() > 0)
   <div id="tasks-list" class="mb-10 space-y-0">
-    @foreach ($tasks as $task)
-      <div id="task-{{ $task['id'] }}" class="flex justify-between rounded-lg border border-transparent px-4 py-2 hover:border-gray-200 hover:bg-white">
-        <div class="flex gap-2">
-          <!-- checkbox -->
-          <div class="flex h-6 shrink-0 items-center">
-            <form x-target="task-{{ $task['id'] }}" action="{{ route('person.task.toggle', [$person->slug, $task['id']]) }}" method="POST" class="group grid size-4 grid-cols-1">
-              @csrf
-              @method('PUT')
-              <input @checked($task['is_completed']) type="checkbox" x-on:change="$el.form.requestSubmit()" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
-            </form>
-          </div>
+    @foreach ($activeTasks as $task)
+      @include('persons.reminders.partials.task-detail', ['task' => $task])
+    @endforeach
 
-          <!-- task details -->
-          <a x-target="task-{{ $task['id'] }}" href="{{ route('person.task.edit', [$person->slug, $task['id']]) }}" class="flex items-center gap-2 text-sm/6">
-            @if ($task['task_category'])
-              <span class="{{ $task['task_category']['color'] }} rounded-md px-2 text-gray-500">{{ $task['task_category']['name'] }}</span>
-            @endif
+    @if ($completedTasks->count() > 0)
+      <!-- completed tasks -->
+      <div id="completed-tasks-list" class="mt-4 ml-4" x-data="{ completedTasksExpanded: false }">
+        <div @click="completedTasksExpanded = !completedTasksExpanded" class="mb-4 flex cursor-pointer items-center justify-between gap-x-1 rounded-lg border p-2 hover:bg-white">
+          <h3 class="text-sm font-semibold text-gray-900">{{ __('Completed tasks') }}</h3>
+          <x-lucide-chevron-down x-show="! completedTasksExpanded" class="h-4 w-4" />
+          <x-lucide-chevron-up x-show="completedTasksExpanded" class="h-4 w-4" />
+        </div>
 
-            <span class="font-medium text-gray-900">{{ $task['name'] }}</span>
-            <p class="text-gray-500">{{ $task['due_at'] }}</p>
-          </a>
+        <div x-cloak x-show="completedTasksExpanded">
+          @foreach ($completedTasks as $task)
+            @include('persons.reminders.partials.task-detail', ['task' => $task])
+          @endforeach
         </div>
       </div>
-    @endforeach
+    @endif
   </div>
 @else
   <div id="tasks-list" class="mb-10 flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">

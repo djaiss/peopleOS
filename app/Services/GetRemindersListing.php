@@ -10,6 +10,8 @@ use App\Models\SpecialDate;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class GetRemindersListing
 {
@@ -50,17 +52,8 @@ class GetRemindersListing
             },
         ]);
 
-        $tasksData = $this->person->tasks->map(fn (Task $task): array => [
-            'id' => $task->id,
-            'name' => $task->name,
-            'due_at' => $task->due_at?->format('Y-m-d'),
-            'is_completed' => $task->is_completed,
-            'task_category' => $task->taskCategory ? [
-                'id' => $task->taskCategory->id,
-                'name' => $task->taskCategory->name,
-                'color' => $task->taskCategory->color,
-            ] : null,
-        ]);
+        $activeTasks = $this->getTasks($this->person, true);
+        $completedTasks = $this->getTasks($this->person, false);
 
         $specialDatesCollection = $this->person->specialDates;
 
@@ -90,9 +83,27 @@ class GetRemindersListing
         return [
             'person' => $this->person,
             'persons' => $persons,
-            'tasks' => $tasksData,
+            'active_tasks' => $activeTasks,
+            'completed_tasks' => $completedTasks,
             'months' => $monthsData,
             'total_reminders' => $specialDatesCollection->count(),
         ];
+    }
+
+    private function getTasks(Model $person, bool $completedStatus = false): Collection
+    {
+        return $person->tasks
+            ->filter(fn (Task $task): bool => $task->is_completed === ! $completedStatus)
+            ->map(fn (Task $task): array => [
+                'id' => $task->id,
+                'name' => $task->name,
+                'due_at' => $task->due_at?->format('Y-m-d'),
+                'is_completed' => $task->is_completed,
+                'task_category' => $task->taskCategory ? [
+                    'id' => $task->taskCategory->id,
+                    'name' => $task->taskCategory->name,
+                    'color' => $task->taskCategory->color,
+                ] : null,
+            ]);
     }
 }

@@ -28,7 +28,8 @@
           'persons.reminders.partials.tasks',
           [
             'person' => $person,
-            'tasks' => $tasks,
+            'activeTasks' => $active_tasks,
+            'completedTasks' => $completed_tasks,
           ]
         )
 

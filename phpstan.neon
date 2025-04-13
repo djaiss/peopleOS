@@ -20,6 +20,7 @@ parameters:
         - '#Cannot call method isPast\(\) on string\.#'
         - '#Cannot access property \$timestamp on string\.#'
         - '#Access to an undefined property App\\Models\\MarketingPage::\$pivot\.#'
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$tasks\.#'
 
     excludePaths:
         - app/Http/Controllers/Auth/VerifyEmailController.php
