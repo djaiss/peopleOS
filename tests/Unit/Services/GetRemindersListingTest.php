@@ -56,7 +56,8 @@ class GetRemindersListingTest extends TestCase
         $this->assertArrayHasKeys($array, [
             'person',
             'persons',
-            'tasks',
+            'active_tasks',
+            'completed_tasks',
             'months',
             'total_reminders',
         ]);
@@ -78,7 +79,8 @@ class GetRemindersListingTest extends TestCase
             ],
         ], $months[0]);
 
-        $this->assertCount(1, $array['tasks']);
+        $this->assertCount(0, $array['completed_tasks']);
+        $this->assertCount(1, $array['active_tasks']);
         $this->assertEquals([
             'id' => $task->id,
             'name' => 'Call mom',
@@ -89,7 +91,7 @@ class GetRemindersListingTest extends TestCase
                 'name' => 'Work',
                 'color' => 'blue',
             ],
-        ], $array['tasks'][0]);
+        ], $array['active_tasks'][0]);
 
         $this->assertEquals(1, $array['total_reminders']);
     }
