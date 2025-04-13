@@ -1,5 +1,5 @@
 <x-mail::message>
-# Your login code for PeopleOS
+# Your login link for PeopleOS
 
 <x-mail::button :url="$link">
 Login to PeopleOS
