@@ -30,6 +30,10 @@ class UpdateLifeEvent
         $this->validate();
         $this->update();
 
+        if ($this->lifeEvent->specialDate()->exists()) {
+            $this->lifeEvent->specialDate->delete();
+        }
+
         if ($this->shouldBeReminded) {
             $this->updateSpecialDate();
         }
@@ -61,10 +65,6 @@ class UpdateLifeEvent
 
     private function updateSpecialDate(): void
     {
-        if ($this->lifeEvent->specialDate()->exists()) {
-            $this->lifeEvent->specialDate->delete();
-        }
-
         $happenedAt = Carbon::parse($this->happenedAt);
 
         $specialDate = (new CreateSpecialDate(

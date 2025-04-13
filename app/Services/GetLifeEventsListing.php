@@ -23,6 +23,7 @@ class GetLifeEventsListing
         )->value();
 
         $lifeEvents = LifeEvent::where('person_id', $this->person->id)
+            ->with('specialDate')
             ->orderBy('happened_at', 'desc')
             ->orderBy('id', 'desc')
             ->get()
@@ -35,6 +36,7 @@ class GetLifeEventsListing
                 'icon' => $lifeEvent->icon,
                 'bg_color' => $lifeEvent->bg_color,
                 'text_color' => $lifeEvent->text_color,
+                'has_reminder' => $lifeEvent->specialDate?->should_be_reminded,
             ]);
 
         return [
