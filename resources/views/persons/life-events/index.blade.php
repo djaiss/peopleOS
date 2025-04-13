@@ -64,7 +64,7 @@
             @endforeach
           </div>
         @else
-          <div id="tasks-list" class="mb-10 flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
+          <div id="life-events-list" class="mb-10 flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
             <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
               <x-lucide-leaf class="h-6 w-6 text-amber-500" />
             </div>
