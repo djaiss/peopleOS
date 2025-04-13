@@ -46,15 +46,23 @@
             @foreach ($life_events as $lifeEvent)
               <div id="life-event-{{ $lifeEvent['id'] }}" class="relative flex gap-x-3">
                 <div class="absolute -left-3 rounded-full bg-amber-300 p-1">
-                  <x-lucide-check class="h-4 w-4 text-gray-500" />
+                  <x-lucide-check class="h-4 w-4 text-white" />
                 </div>
                 <div class="relative flex flex-col gap-y-3 pl-6">
                   <div class="group relative">
                     <a x-target="life-event-{{ $lifeEvent['id'] }}" href="{{ route('person.life-event.edit', [$person->slug, $lifeEvent['id']]) }}" class="rounded px-1 group-hover:bg-amber-100">{{ $lifeEvent['description'] }}</a>
                     <span class="ml-1 inline-block text-xs text-gray-500">{{ $lifeEvent['happened_at'] }}</span>
-                    <div class="absolute top-0 -right-8 rounded-full border border-gray-200 bg-white p-1">
-                      <x-lucide-bell-ring class="h-4 w-4 text-gray-400" />
-                    </div>
+
+                    <!-- reminder icon, if applicable -->
+                    @if ($lifeEvent['has_reminder'])
+                      <div class="absolute top-0 -right-8">
+                        <x-tooltip text="{{ __('Reminder set') }}">
+                          <div class="rounded-full border border-gray-200 bg-white p-1">
+                            <x-lucide-bell-ring class="h-3 w-3 text-gray-400" />
+                          </div>
+                        </x-tooltip>
+                      </div>
+                    @endif
                   </div>
                   @if ($lifeEvent['comment'])
                     <div class="rounded-lg border border-gray-300 bg-white p-3">{{ $lifeEvent['comment'] }}</div>

@@ -54,6 +54,8 @@ class LifeEvent extends Model
 
     /**
      * Get the special date associated with the life event.
+     * Through this field we know if it's a reminder or not, since reminders
+     * are managed through special dates.
      */
     public function specialDate(): BelongsTo
     {
