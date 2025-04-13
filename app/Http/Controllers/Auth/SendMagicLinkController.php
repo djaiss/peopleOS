@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMagicLinkToLogin;
 use App\Services\CreateMagicLink;
-use App\Services\SendMagicLink;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -29,10 +29,10 @@ class SendMagicLinkController extends Controller
                 email: $request->input('email'),
             ))->execute();
 
-            (new SendMagicLink(
+            SendMagicLinkToLogin::dispatch(
                 email: $request->input('email'),
                 url: $link,
-            ))->execute();
+            )->onQueue('high');
         } catch (ModelNotFoundException) {
         }
 

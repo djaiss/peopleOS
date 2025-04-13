@@ -1,4 +1,4 @@
-Your login code for PeopleOS
+Your login link for PeopleOS
 
 {{ $link }}
 
