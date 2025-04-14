@@ -43,7 +43,6 @@ class SendReminder implements ShouldQueue
         foreach ($users as $user) {
             $this->sendReminderEmail($user);
             $this->recordEmailSent($user);
-            $account->increment('emails_sent');
 
             // this should only be done once, since otherwise we would create
             // multiple tasks for the same reminder
