@@ -21,7 +21,7 @@ class ApiKeyCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Api key added',
+            subject: 'New API key added',
         );
     }
 

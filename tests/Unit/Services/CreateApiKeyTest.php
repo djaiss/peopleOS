@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\SendAPICreatedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Mail\ApiKeyCreated;
 use App\Models\User;
 use App\Services\CreateApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -23,7 +22,6 @@ class CreateApiKeyTest extends TestCase
     public function it_creates_an_api_key(): void
     {
         Queue::fake();
-        Mail::fake();
 
         $user = User::factory()->create();
 
@@ -54,13 +52,12 @@ class CreateApiKeyTest extends TestCase
             }
         );
 
-        Mail::assertQueued(ApiKeyCreated::class, function (ApiKeyCreated $job): bool {
-            return $job->label === 'Test API Key';
-        });
-
-        $this->assertDatabaseHas('accounts', [
-            'id' => $user->account_id,
-            'emails_sent' => 1,
-        ]);
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendAPICreatedEmail::class,
+            callback: function (SendAPICreatedEmail $job) use ($user): bool {
+                return $job->email === $user->email && $job->label === 'Test API Key';
+            }
+        );
     }
 }
