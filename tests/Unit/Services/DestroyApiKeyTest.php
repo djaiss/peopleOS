@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\SendAPIDesrtroyedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Mail\ApiKeyDestroyed;
 use App\Models\User;
 use App\Services\DestroyApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -23,7 +22,6 @@ class DestroyApiKeyTest extends TestCase
     public function it_deletes_an_api_key(): void
     {
         Queue::fake();
-        Mail::fake();
 
         $user = User::factory()->create();
         $user->createToken('Test API Key');
@@ -55,13 +53,12 @@ class DestroyApiKeyTest extends TestCase
             }
         );
 
-        Mail::assertQueued(ApiKeyDestroyed::class, function (ApiKeyDestroyed $job): bool {
-            return $job->label === 'Test API Key';
-        });
-
-        $this->assertDatabaseHas('accounts', [
-            'id' => $user->account_id,
-            'emails_sent' => 1,
-        ]);
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendAPIDesrtroyedEmail::class,
+            callback: function (SendAPIDesrtroyedEmail $job) use ($user): bool {
+                return $job->email === $user->email && $job->label === 'Test API Key';
+            }
+        );
     }
 }

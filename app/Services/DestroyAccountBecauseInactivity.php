@@ -32,11 +32,11 @@ class DestroyAccountBecauseInactivity
         });
 
         if ($inactiveUsers->count() === $users->count()) {
-            Log::info('Deleting account because all users are inactive: ' . $this->account->id);
+            Log::info('Deleting account because all users are inactive: '.$this->account->id);
             $this->account->delete();
-            Log::info('Account deleted: ' . $this->account->id);
+            Log::info('Account deleted: '.$this->account->id);
         } else {
-            Log::info('Not deleting account because not all users are inactive: ' . $this->account->id);
+            Log::info('Not deleting account because not all users are inactive: '.$this->account->id);
         }
     }
 }
