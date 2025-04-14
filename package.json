@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@alpinejs/mask": "^3.14.8",
-    "@imacrayon/alpine-ajax": "^0.12.0",
+    "@imacrayon/alpine-ajax": "^0.12.1",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.0.8",
     "@tailwindcss/typography": "^0.5.16",
