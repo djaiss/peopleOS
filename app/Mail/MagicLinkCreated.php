@@ -21,7 +21,7 @@ class MagicLinkCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Login for PeopleOS',
+            subject: 'Login to PeopleOS',
         );
     }
 

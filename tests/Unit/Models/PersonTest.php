@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Enums\AgeType;
 use App\Models\Account;
+use App\Models\EmailSent;
 use App\Models\Encounter;
 use App\Models\Gender;
 use App\Models\Gift;
@@ -163,6 +164,17 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->lifeEvents()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_emails_sent(): void
+    {
+        $person = Person::factory()->create();
+        EmailSent::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->emailsSent()->exists());
     }
 
     #[Test]

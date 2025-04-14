@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
-use App\Jobs\SendAPIDesrtroyedEmail;
+use App\Jobs\SendAPIDestroyedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 
@@ -48,7 +48,7 @@ class DestroyApiKey
 
     private function sendEmail(): void
     {
-        SendAPIDesrtroyedEmail::dispatch(
+        SendAPIDestroyedEmail::dispatch(
             email: $this->user->email,
             label: $this->label,
         )->onQueue('high');

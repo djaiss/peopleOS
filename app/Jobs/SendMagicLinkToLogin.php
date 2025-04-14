@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
+use App\Enums\EmailType;
 use App\Mail\MagicLinkCreated;
 use App\Models\User;
+use App\Services\CreateEmailSent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Queue\Queueable;
@@ -16,6 +18,8 @@ class SendMagicLinkToLogin implements ShouldQueue
     use Queueable;
 
     private bool $valid = true;
+
+    private User $user;
 
     public function __construct(
         public string $email,
@@ -31,13 +35,14 @@ class SendMagicLinkToLogin implements ShouldQueue
 
         if ($this->valid) {
             $this->send();
+            $this->recordEmailSent();
         }
     }
 
     private function validate(): void
     {
         try {
-            User::where('email', $this->email)->firstOrFail();
+            $this->user = User::where('email', $this->email)->firstOrFail();
         } catch (ModelNotFoundException) {
             $this->valid = false;
         }
@@ -51,5 +56,17 @@ class SendMagicLinkToLogin implements ShouldQueue
 
         Mail::to($this->email)
             ->queue($message);
+    }
+
+    private function recordEmailSent(): void
+    {
+        (new CreateEmailSent(
+            user: $this->user,
+            emailType: EmailType::MAGIC_LINK_CREATED->value,
+            emailAddress: $this->user->email,
+            subject: 'Login to PeopleOS',
+            body: (new MagicLinkCreated($this->url))->render(),
+            person: null,
+        ))->execute();
     }
 }

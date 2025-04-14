@@ -115,6 +115,14 @@ class Account extends Model
     }
 
     /**
+     * Get the emailsSent associated with the account.
+     */
+    public function emailsSent(): HasMany
+    {
+        return $this->hasMany(EmailSent::class);
+    }
+
+    /**
      * Check if the account is in trial.
      */
     public function isInTrial(): bool

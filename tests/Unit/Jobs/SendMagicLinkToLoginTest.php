@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jobs;
 
+use App\Enums\EmailType;
 use App\Jobs\SendMagicLinkToLogin;
 use App\Mail\MagicLinkCreated;
+use App\Models\EmailSent;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;
@@ -35,6 +37,12 @@ class SendMagicLinkToLoginTest extends TestCase
                 $mail->link === 'https://example.com/magiclink/abc123' &&
                 $mail->queue === 'high';
         });
+
+        $emailSent = EmailSent::latest()->first();
+
+        $this->assertEquals(EmailType::MAGIC_LINK_CREATED->value, $emailSent->email_type);
+        $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
+        $this->assertEquals('Login to PeopleOS', $emailSent->subject);
     }
 
     #[Test]

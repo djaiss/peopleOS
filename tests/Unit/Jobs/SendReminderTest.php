@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jobs;
 
+use App\Enums\EmailType;
 use App\Jobs\SendReminder;
 use App\Mail\ReminderSent;
 use App\Models\Account;
+use App\Models\EmailSent;
 use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\User;
@@ -57,6 +59,12 @@ class SendReminderTest extends TestCase
             'id' => $account->id,
             'emails_sent' => 1,
         ]);
+
+        $emailSent = EmailSent::latest()->first();
+
+        $this->assertEquals(EmailType::REMINDER_SENT->value, $emailSent->email_type);
+        $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
+        $this->assertEquals('Reminder for '.$person->name, $emailSent->subject);
     }
 
     #[Test]
