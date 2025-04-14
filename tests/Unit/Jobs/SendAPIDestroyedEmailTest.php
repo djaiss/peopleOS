@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jobs;
 
-use App\Jobs\SendAPICreatedEmail;
 use App\Jobs\SendAPIDesrtroyedEmail;
-use App\Mail\ApiKeyCreated;
 use App\Mail\ApiKeyDestroyed;
-use App\Mail\LoginFailed;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;

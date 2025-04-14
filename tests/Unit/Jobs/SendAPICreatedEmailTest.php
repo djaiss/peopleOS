@@ -6,7 +6,6 @@ namespace Tests\Unit\Jobs;
 
 use App\Jobs\SendAPICreatedEmail;
 use App\Mail\ApiKeyCreated;
-use App\Mail\LoginFailed;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;

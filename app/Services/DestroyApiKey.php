@@ -7,9 +7,7 @@ namespace App\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\SendAPIDesrtroyedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Mail\ApiKeyDestroyed;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
 
 class DestroyApiKey
 {
