@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\SendAPICreatedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Mail\ApiKeyCreated;
 use App\Models\User;
@@ -25,8 +26,7 @@ class CreateApiKey
         $token = $this->user->createToken($this->label)->plainTextToken;
         $this->updateUserLastActivityDate();
         $this->log();
-        $this->sendMail();
-        $this->incrementEmailsSent();
+        $this->sendEmail();
 
         return $token;
     }
@@ -45,14 +45,11 @@ class CreateApiKey
         )->onQueue('low');
     }
 
-    private function sendMail(): void
+    private function sendEmail(): void
     {
-        Mail::to($this->user->email)
-            ->queue(new ApiKeyCreated($this->label));
-    }
-
-    private function incrementEmailsSent(): void
-    {
-        $this->user->account->increment('emails_sent');
+        SendAPICreatedEmail::dispatch(
+            email: $this->user->email,
+            label: $this->label,
+        )->onQueue('high');
     }
 }
