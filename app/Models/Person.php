@@ -73,7 +73,6 @@ class Person extends Model
         'estimated_age',
         'age_bracket',
         'age_estimated_at',
-        'emails_sent',
     ];
 
     /**

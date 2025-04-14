@@ -55,11 +55,6 @@ class SendReminderTest extends TestCase
             return $mail->hasTo('ross.geller@friends.com');
         });
 
-        $this->assertDatabaseHas('accounts', [
-            'id' => $account->id,
-            'emails_sent' => 1,
-        ]);
-
         $emailSent = EmailSent::latest()->first();
 
         $this->assertEquals(EmailType::REMINDER_SENT->value, $emailSent->email_type);
@@ -99,11 +94,6 @@ class SendReminderTest extends TestCase
         SendReminder::dispatch($specialDate);
 
         Mail::assertNotQueued(ReminderSent::class);
-
-        $this->assertDatabaseHas('accounts', [
-            'id' => $account->id,
-            'emails_sent' => 0,
-        ]);
     }
 
     #[Test]
@@ -143,11 +133,6 @@ class SendReminderTest extends TestCase
         Mail::assertQueued(ReminderSent::class, function (ReminderSent $mail): bool {
             return $mail->hasTo('ross.geller@friends.com');
         });
-
-        $this->assertDatabaseHas('accounts', [
-            'id' => $account->id,
-            'emails_sent' => 1,
-        ]);
     }
 
     #[Test]
@@ -183,10 +168,5 @@ class SendReminderTest extends TestCase
         Mail::assertQueued(ReminderSent::class, function (ReminderSent $mail): bool {
             return $mail->hasTo('ross.geller@friends.com');
         });
-
-        $this->assertDatabaseHas('accounts', [
-            'id' => $account->id,
-            'emails_sent' => 1,
-        ]);
     }
 }
