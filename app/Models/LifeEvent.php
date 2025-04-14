@@ -12,6 +12,8 @@ class LifeEvent extends Model
 {
     use HasFactory;
 
+    protected $table = 'life_events';
+
     /**
      * The attributes that are mass assignable.
      */

@@ -230,6 +230,14 @@ class Person extends Model
     }
 
     /**
+     * Get the emailsSent associated with the person.
+     */
+    public function emailsSent(): HasMany
+    {
+        return $this->hasMany(EmailSent::class);
+    }
+
+    /**
      * Get the person's full name.
      */
     protected function name(): Attribute

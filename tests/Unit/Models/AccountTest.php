@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
+use App\Models\EmailSent;
 use App\Models\Encounter;
 use App\Models\Gender;
 use App\Models\JournalTemplate;
@@ -122,6 +123,16 @@ class AccountTest extends TestCase
     }
 
     #[Test]
+    public function it_has_many_emails_sent(): void
+    {
+        $account = Account::factory()->create();
+        EmailSent::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->emailsSent()->exists());
+    }
+
     public function it_checks_if_the_account_is_in_trial(): void
     {
         config(['peopleos.enable_paid_version' => true]);
