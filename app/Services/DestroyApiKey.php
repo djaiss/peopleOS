@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\SendAPIDesrtroyedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Mail\ApiKeyDestroyed;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
 
 class DestroyApiKey
 {
+    private string $label;
+
     public function __construct(
         public User $user,
         public int $tokenId,
@@ -23,13 +24,12 @@ class DestroyApiKey
     public function execute(): void
     {
         $token = $this->user->tokens()->where('id', $this->tokenId)->first();
-        $label = $token->name;
+        $this->label = $token->name;
         $token->delete();
 
         $this->updateUserLastActivityDate();
         $this->log();
-        $this->sendMail($label);
-        $this->incrementEmailSent();
+        $this->sendEmail();
     }
 
     private function updateUserLastActivityDate(): void
@@ -46,14 +46,11 @@ class DestroyApiKey
         )->onQueue('low');
     }
 
-    private function sendMail(string $label): void
+    private function sendEmail(): void
     {
-        Mail::to($this->user->email)
-            ->queue(new ApiKeyDestroyed($label));
-    }
-
-    private function incrementEmailSent(): void
-    {
-        $this->user->account->increment('emails_sent');
+        SendAPIDesrtroyedEmail::dispatch(
+            email: $this->user->email,
+            label: $this->label,
+        )->onQueue('high');
     }
 }

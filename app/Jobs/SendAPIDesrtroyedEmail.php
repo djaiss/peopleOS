@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
-use App\Mail\ApiKeyCreated;
+use App\Mail\ApiKeyDestroyed;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Mail;
 
-class SendAPICreatedEmail implements ShouldQueue
+class SendAPIDesrtroyedEmail implements ShouldQueue
 {
     use Queueable;
 
@@ -45,7 +45,7 @@ class SendAPICreatedEmail implements ShouldQueue
 
     private function send(): void
     {
-        $message = (new ApiKeyCreated($this->label))->onQueue('high');
+        $message = (new ApiKeyDestroyed($this->label))->onQueue('high');
 
         Mail::to($this->email)
             ->queue($message);

@@ -22,7 +22,7 @@ class DeleteInactiveAccounts implements ShouldQueue
         $accounts = Account::where('auto_delete_account', true)->get();
 
         foreach ($accounts as $account) {
-            Log::info('Deleting account due to inactivity: ' . $account->id);
+            Log::info('Deleting account due to inactivity: '.$account->id);
             (new DestroyAccountBecauseInactivity($account))->execute();
         }
     }
