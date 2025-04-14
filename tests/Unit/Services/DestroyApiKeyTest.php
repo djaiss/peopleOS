@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
-use App\Jobs\SendAPIDesrtroyedEmail;
+use App\Jobs\SendAPIDestroyedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use App\Services\DestroyApiKey;
@@ -55,8 +55,8 @@ class DestroyApiKeyTest extends TestCase
 
         Queue::assertPushedOn(
             queue: 'high',
-            job: SendAPIDesrtroyedEmail::class,
-            callback: function (SendAPIDesrtroyedEmail $job) use ($user): bool {
+            job: SendAPIDestroyedEmail::class,
+            callback: function (SendAPIDestroyedEmail $job) use ($user): bool {
                 return $job->email === $user->email && $job->label === 'Test API Key';
             }
         );

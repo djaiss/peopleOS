@@ -20,6 +20,7 @@ class EmailSent extends Model
     protected $fillable = [
         'account_id',
         'person_id',
+        'uuid',
         'email_type',
         'email_address',
         'subject',

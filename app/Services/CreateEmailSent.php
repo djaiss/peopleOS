@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Jobs\LogUserAction;
-use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\EmailSent;
-use App\Models\LifeEvent;
 use App\Models\Person;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Str;
 
 class CreateEmailSent
 {
@@ -19,11 +16,11 @@ class CreateEmailSent
 
     public function __construct(
         public User $user,
-        public ?Person $person = null,
         public string $emailType,
         public string $emailAddress,
         public string $subject,
         public string $body,
+        public ?Person $person = null,
     ) {}
 
     public function execute(): EmailSent
@@ -46,6 +43,7 @@ class CreateEmailSent
         $this->emailSent = EmailSent::create([
             'account_id' => $this->user->account_id,
             'person_id' => $this->person?->id,
+            'uuid' => (string) Str::uuid(),
             'email_type' => $this->emailType,
             'email_address' => $this->emailAddress,
             'subject' => $this->subject,

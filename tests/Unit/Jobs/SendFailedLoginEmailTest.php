@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jobs;
 
+use App\Enums\EmailType;
 use App\Jobs\SendFailedLoginEmail;
 use App\Mail\LoginFailed;
+use App\Models\EmailSent;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;
@@ -31,6 +33,12 @@ class SendFailedLoginEmailTest extends TestCase
             return $mail->hasTo('ross.geller@friends.com') &&
                 $mail->queue === 'high';
         });
+
+        $emailSent = EmailSent::latest()->first();
+
+        $this->assertEquals(EmailType::LOGIN_FAILED->value, $emailSent->email_type);
+        $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
+        $this->assertEquals('Login attempt on PeopleOS', $emailSent->subject);
     }
 
     #[Test]

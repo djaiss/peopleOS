@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
+use App\Enums\EmailType;
 use App\Mail\ReminderSent;
 use App\Models\Account;
 use App\Models\SpecialDate;
 use App\Models\User;
+use App\Services\CreateEmailSent;
 use App\Services\CreateTask;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -40,6 +42,7 @@ class SendReminder implements ShouldQueue
 
         foreach ($users as $user) {
             $this->sendReminderEmail($user);
+            $this->recordEmailSent($user);
             $account->increment('emails_sent');
 
             // this should only be done once, since otherwise we would create
@@ -92,5 +95,24 @@ class SendReminder implements ShouldQueue
                 dueAt: null,
             ))->execute();
         }
+    }
+
+    private function recordEmailSent(User $user): void
+    {
+        (new CreateEmailSent(
+            user: $user,
+            emailType: EmailType::REMINDER_SENT->value,
+            emailAddress: $user->email,
+            subject: 'Reminder for '.$this->specialDate->person->name,
+            body: (new ReminderSent(
+                name: $this->specialDate->name,
+                slug: route('person.show', $this->specialDate->person->slug),
+                personName: $this->specialDate->person->name,
+                date: $this->specialDate->date,
+                age: $this->specialDate->age,
+                urlStopReminder: $this->prepareURLStopReminder(),
+            ))->render(),
+            person: null,
+        ))->execute();
     }
 }

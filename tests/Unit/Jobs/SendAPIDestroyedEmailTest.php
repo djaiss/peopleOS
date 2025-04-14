@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jobs;
 
-use App\Jobs\SendAPIDesrtroyedEmail;
+use App\Enums\EmailType;
+use App\Jobs\SendAPIDestroyedEmail;
 use App\Mail\ApiKeyDestroyed;
+use App\Models\EmailSent;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;
@@ -25,7 +27,7 @@ class SendAPIDestroyedEmailTest extends TestCase
             'email' => 'ross.geller@friends.com',
         ]);
 
-        SendAPIDesrtroyedEmail::dispatch(
+        SendAPIDestroyedEmail::dispatch(
             email: 'ross.geller@friends.com',
             label: 'API Key',
         );
@@ -34,6 +36,12 @@ class SendAPIDestroyedEmailTest extends TestCase
             return $mail->hasTo('ross.geller@friends.com') &&
                 $mail->queue === 'high';
         });
+
+        $emailSent = EmailSent::latest()->first();
+
+        $this->assertEquals(EmailType::API_DESTROYED->value, $emailSent->email_type);
+        $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
+        $this->assertEquals('API key destroyed', $emailSent->subject);
     }
 
     #[Test]
@@ -41,7 +49,7 @@ class SendAPIDestroyedEmailTest extends TestCase
     {
         Mail::fake();
 
-        SendAPIDesrtroyedEmail::dispatch(
+        SendAPIDestroyedEmail::dispatch(
             email: 'ross.geller@friends.com',
             label: 'API Key',
         );

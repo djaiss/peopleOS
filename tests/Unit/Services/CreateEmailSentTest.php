@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\LogUserAction;
-use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\EmailSent;
 use App\Models\Person;
 use App\Models\User;
@@ -47,6 +45,7 @@ class CreateEmailSentTest extends TestCase
             'person_id' => $person->id,
         ]);
 
+        $this->assertEquals(36, mb_strlen($emailSent->uuid));
         $this->assertEquals('birthday_wishes', $emailSent->email_type);
         $this->assertEquals('Happy Birthday!', $emailSent->subject);
         $this->assertEquals('monica.geller@friends.com', $emailSent->email_address);

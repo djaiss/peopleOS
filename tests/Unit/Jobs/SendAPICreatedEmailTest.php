@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jobs;
 
+use App\Enums\EmailType;
 use App\Jobs\SendAPICreatedEmail;
 use App\Mail\ApiKeyCreated;
+use App\Models\EmailSent;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;
@@ -34,6 +36,12 @@ class SendAPICreatedEmailTest extends TestCase
             return $mail->hasTo('ross.geller@friends.com') &&
                 $mail->queue === 'high';
         });
+
+        $emailSent = EmailSent::latest()->first();
+
+        $this->assertEquals(EmailType::API_CREATED->value, $emailSent->email_type);
+        $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
+        $this->assertEquals('New API key added', $emailSent->subject);
     }
 
     #[Test]

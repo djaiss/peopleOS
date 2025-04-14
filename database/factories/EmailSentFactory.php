@@ -31,6 +31,7 @@ class EmailSentFactory extends Factory
         return [
             'account_id' => Account::factory(),
             'person_id' => Person::factory(),
+            'uuid' => $this->faker->uuid(),
             'email_type' => $this->faker->word(),
             'email_address' => $this->faker->email(),
             'subject' => $this->faker->sentence(),
