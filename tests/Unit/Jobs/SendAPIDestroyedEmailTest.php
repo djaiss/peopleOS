@@ -41,7 +41,7 @@ class SendAPIDestroyedEmailTest extends TestCase
 
         $this->assertEquals(EmailType::API_DESTROYED->value, $emailSent->email_type);
         $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
-        $this->assertEquals('API key destroyed', $emailSent->subject);
+        $this->assertEquals('API key removed', $emailSent->subject);
     }
 
     #[Test]

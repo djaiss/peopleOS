@@ -8,6 +8,7 @@ use App\Models\EmailSent;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\CreateEmailSent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
@@ -21,6 +22,7 @@ class CreateEmailSentTest extends TestCase
     #[Test]
     public function it_creates_an_email_sent(): void
     {
+        Carbon::setTestNow(Carbon::create(2018, 1, 1));
         Queue::fake();
 
         $user = User::factory()->create();
@@ -43,6 +45,7 @@ class CreateEmailSentTest extends TestCase
             'id' => $emailSent->id,
             'account_id' => $user->account_id,
             'person_id' => $person->id,
+            'sent_at' => '2018-01-01 00:00:00',
         ]);
 
         $this->assertEquals(36, mb_strlen($emailSent->uuid));

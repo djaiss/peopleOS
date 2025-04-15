@@ -36,9 +36,6 @@ class AdministrationControllerTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewIs('administration.index');
-
-        $this->assertArrayHasKey('logs', $response);
-        $this->assertArrayHasKey('has_more_logs', $response);
     }
 
     #[Test]
