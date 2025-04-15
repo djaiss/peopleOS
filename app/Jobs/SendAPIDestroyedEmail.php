@@ -62,7 +62,7 @@ class SendAPIDestroyedEmail implements ShouldQueue
             user: $this->user,
             emailType: EmailType::API_DESTROYED->value,
             emailAddress: $this->user->email,
-            subject: 'API key destroyed',
+            subject: 'API key removed',
             body: (new ApiKeyDestroyed($this->label))->render(),
             person: null,
         ))->execute();

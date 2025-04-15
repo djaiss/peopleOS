@@ -35,7 +35,7 @@
               <div class="flex items-center gap-2">
                 <x-lucide-activity class="size-4 min-w-3" />
                 <span>
-                  {{ __('Activity') }}
+                  {{ __('Marketing activity') }}
                 </span>
               </div>
             </div>

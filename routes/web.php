@@ -7,6 +7,7 @@ use App\Http\Controllers\Administration\AdministrationAutoDeleteAccountControlle
 use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
 use App\Http\Controllers\Administration\AdministrationCreateTaskOnReminderController;
+use App\Http\Controllers\Administration\AdministrationEmailsSentController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationMarketingController;
@@ -213,6 +214,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::put('administration/timezone', [AdministrationTimezoneController::class, 'update'])->name('administration.timezone.update');
     Route::put('administration/avatar', [AdministrationAvatarController::class, 'update'])->name('administration.avatar.update');
     Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs.index');
+    Route::get('administration/emails-sent', [AdministrationEmailsSentController::class, 'index'])->name('administration.emails-sent.index');
 
     // security
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');

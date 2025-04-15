@@ -48,6 +48,7 @@ class CreateEmailSent
             'email_address' => $this->emailAddress,
             'subject' => $this->subject,
             'body' => $this->body,
+            'sent_at' => now(),
         ]);
     }
 }
