@@ -28,16 +28,22 @@
         @include('administration.partials.locale')
 
         <!-- Last activity -->
-        @include('administration.partials.logs', [
-          'has_more_logs' => $has_more_logs,
-          'logs' => $logs,
-        ])
+        @include(
+          'administration.partials.logs',
+          [
+            'has_more_logs' => $has_more_logs,
+            'logs' => $logs,
+          ]
+        )
 
         <!-- Emails sent -->
-        @include('administration.partials.emails-sent', [
-          'has_more_emails_sent' => $has_more_emails_sent,
-          'emails_sent' => $emails_sent,
-        ])
+        @include(
+          'administration.partials.emails-sent',
+          [
+            'has_more_emails_sent' => $has_more_emails_sent,
+            'emails_sent' => $emails_sent,
+          ]
+        )
       </div>
     </div>
   </div>

@@ -41,7 +41,7 @@ class GetAdministrationData
             ->take(5)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(Log $log): array => [
+            ->map(fn (Log $log): array => [
                 'user' => [
                     'name' => $log->name,
                 ],
@@ -58,7 +58,7 @@ class GetAdministrationData
             ->take(5)
             ->orderBy('sent_at', 'desc')
             ->get()
-            ->map(fn(EmailSent $emailSent): array => [
+            ->map(fn (EmailSent $emailSent): array => [
                 'email_type' => $emailSent->email_type,
                 'email_address' => $emailSent->email_address,
                 'subject' => $emailSent->subject,

@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Administration;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\GetAdministrationData;
-use App\Services\GetSubsetOfLogs;
 use App\Services\UpdateUserInformation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
