@@ -63,6 +63,7 @@ Route::get('/refresh-csrf', function () {
 
 Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update');
 
+// stop a reminder from happening again
 Route::get('/person/{hash}/reminder/{id}/stop', [StopReminderController::class, 'show'])
     ->name('reminder.stop')
     ->middleware('signed');

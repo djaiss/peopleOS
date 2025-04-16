@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\AgeType;
+use App\Helpers\ImageHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -305,11 +306,21 @@ class Person extends Model
             ->first()?->job_title;
     }
 
+    /**
+     * Get the person's avatar URL.
+     */
     public function getAvatar(int $size = 64): string
     {
         return $this->profile_photo_path
-            ? Storage::disk(config('filesystems.default'))->url($this->profile_photo_path)
+            ? $this->resizedAvatar($size)
             : $this->defaultAvatar($size);
+    }
+
+    protected function resizedAvatar(int $size = 64): string
+    {
+        $path = Storage::disk(config('filesystems.default'))->url($this->profile_photo_path);
+
+        return ImageHelper::getImageVariantPath($path, $size);
     }
 
     /**

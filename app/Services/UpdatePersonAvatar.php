@@ -6,10 +6,10 @@ namespace App\Services;
 
 use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
+use App\Jobs\ResizePersonAvatar;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 
 class UpdatePersonAvatar
 {
@@ -28,6 +28,7 @@ class UpdatePersonAvatar
     {
         $this->deleteOldProfilePicture();
         $this->update();
+        $this->resizeAvatar();
         $this->updateUserLastActivityDate();
         $this->log();
         $this->refreshCache();
@@ -38,7 +39,9 @@ class UpdatePersonAvatar
     private function deleteOldProfilePicture(): void
     {
         if ($this->person->profile_photo_path) {
-            Storage::delete($this->person->profile_photo_path);
+            (new DestroyImageAndVariants(
+                path: $this->person->profile_photo_path,
+            ))->execute();
         }
     }
 
@@ -48,6 +51,11 @@ class UpdatePersonAvatar
         $this->person->update([
             'profile_photo_path' => $this->path,
         ]);
+    }
+
+    private function resizeAvatar(): void
+    {
+        ResizePersonAvatar::dispatch($this->person)->onQueue('high');
     }
 
     private function updateUserLastActivityDate(): void

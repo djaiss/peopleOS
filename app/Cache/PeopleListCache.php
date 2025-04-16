@@ -53,7 +53,10 @@ final class PeopleListCache extends CacheHelper
                 'maiden_name' => $person->maiden_name,
                 'nickname' => $person->nickname,
                 'slug' => $person->slug,
-                'avatar' => $person->getAvatar(64),
+                'avatar' => [
+                    '40' => $person->getAvatar(40),
+                    '80' => $person->getAvatar(80),
+                ],
             ])
             ->sortBy('name');
     }
