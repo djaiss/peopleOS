@@ -99,7 +99,7 @@ class UserTest extends TestCase
         $user->profile_photo_path = 'path/to/photo.jpg';
 
         $this->assertEquals(
-            '/storage/path/to/photo.jpg',
+            '/storage/path/to/photo_64x64.webp',
             $user->getAvatar(64)
         );
     }
