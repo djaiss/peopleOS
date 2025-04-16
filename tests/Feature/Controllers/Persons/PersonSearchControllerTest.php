@@ -45,7 +45,10 @@ class PersonSearchControllerTest extends TestCase
             'maiden_name' => '',
             'nickname' => '',
             'slug' => $person->slug,
-            'avatar' => $person->getAvatar(64),
+            'avatar' => [
+                '40' => $person->getAvatar(40),
+                '80' => $person->getAvatar(80),
+            ],
         ], $response['persons']->first());
     }
 
@@ -75,7 +78,10 @@ class PersonSearchControllerTest extends TestCase
             'maiden_name' => '',
             'nickname' => 'Pheebs',
             'slug' => $person->slug,
-            'avatar' => $person->getAvatar(64),
+            'avatar' => [
+                '40' => $person->getAvatar(40),
+                '80' => $person->getAvatar(80),
+            ],
         ], $response['persons']->first());
     }
 
@@ -105,7 +111,10 @@ class PersonSearchControllerTest extends TestCase
             'maiden_name' => 'Greene',
             'nickname' => '',
             'slug' => $person->slug,
-            'avatar' => $person->getAvatar(64),
+            'avatar' => [
+                '40' => $person->getAvatar(40),
+                '80' => $person->getAvatar(80),
+            ],
         ], $response['persons']->first());
     }
 
