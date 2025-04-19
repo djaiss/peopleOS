@@ -13,6 +13,7 @@ Your goal is to write a unit test.
 - Functions should not use a setUp() method.
 - You should use $this->json('POST') and not $this->patchJson(). Same for the other HTTP verbs.
 - Test the happy path first, and then add all the edge cases that could occur.
+- When calling a service, ALWAYS use named arguments.
 - Code should use spaces accordingly, like so:
 
 ```php
