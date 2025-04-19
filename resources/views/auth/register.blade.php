@@ -52,7 +52,7 @@
             <!-- Email Address -->
             <div class="mb-4">
               <x-input-label for="email" :value="__('Email')" class="mb-2" />
-              <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+              <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required :avoidAutofill="false" autocomplete="username" />
               <x-input-error :messages="$errors->get('email')" class="mt-2" />
               <x-help>{{ __('We will never, ever send you marketing emails.') }}</x-help>
             </div>
