@@ -20,6 +20,7 @@ class RegistrationControllerTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
+        config(['peopleos.show_marketing_site' => false]);
         $response = $this->post('/register', [
             'first_name' => 'Test User',
             'last_name' => 'Test User',
