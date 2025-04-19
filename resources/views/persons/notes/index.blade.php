@@ -28,22 +28,6 @@
             </div>
 
             <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <!-- Emotion Selector -->
-                <div class="relative" x-data="{ open: false }">
-                  <button @click="open = !open" type="button" class="flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50">
-                    <x-lucide-smile class="h-4 w-4 text-gray-500" />
-                    <span>{{ __('Emotion') }}</span>
-                  </button>
-                </div>
-
-                <!-- Reminder -->
-                <button type="button" class="flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50">
-                  <x-lucide-bell class="h-4 w-4 text-gray-500" />
-                  <span>{{ __('Set reminder') }}</span>
-                </button>
-              </div>
-
               <x-button.primary>
                 {{ __('Save') }}
               </x-button.primary>
