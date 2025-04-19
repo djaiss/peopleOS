@@ -27,6 +27,7 @@ class CheckPerson
 
         try {
             $person = Person::where('account_id', Auth::user()->account_id)
+                ->with('ageSpecialDate')
                 ->findOrFail($id);
 
             $request->attributes->add(['person' => $person]);

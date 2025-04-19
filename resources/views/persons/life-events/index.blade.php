@@ -46,7 +46,7 @@
             @foreach ($life_events as $lifeEvent)
               <div id="life-event-{{ $lifeEvent['id'] }}" class="relative flex gap-x-3">
                 <div class="absolute -left-3 rounded-full bg-amber-300 p-1">
-                  <x-lucide-check class="h-4 w-4 text-white" />
+                  <x-lucide-activity class="h-4 w-4 text-white" />
                 </div>
                 <div class="relative flex flex-col gap-y-3 pl-6">
                   <div class="group relative">
