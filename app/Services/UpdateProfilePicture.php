@@ -41,7 +41,11 @@ class UpdateProfilePicture
 
     private function update(): void
     {
-        $this->path = $this->photo->storePublicly(path: 'avatars');
+        $this->path = (new UploadFile(
+            file: $this->photo,
+            folderName: 'avatars',
+        ))->execute();
+
         $this->user->update([
             'profile_photo_path' => $this->path,
         ]);
