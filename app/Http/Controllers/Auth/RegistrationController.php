@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -23,12 +24,22 @@ class RegistrationController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        if (config('peopleos.show_marketing_site')) {
+            $validated = $request->validate([
+                'cf-turnstile-response' => ['required', Rule::turnstile()],
+            ]);
+
+            if ($validated['cf-turnstile-response'] !== 'success') {
+                return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+            }
+        }
 
         $user = (new CreateAccount(
             email: $request->input('email'),

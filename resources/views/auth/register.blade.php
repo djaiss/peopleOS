@@ -74,6 +74,12 @@
               </div>
             </div>
 
+            @if (config('peopleos.show_marketing_site'))
+              <x-turnstile data-size="flexible" />
+
+              <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />
+            @endif
+
             <div class="mt-6">
               <x-button.primary class="w-full">
                 {{ __('Register') }}

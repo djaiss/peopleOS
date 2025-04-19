@@ -10,6 +10,7 @@ use App\Jobs\SendFailedLoginEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -33,6 +34,16 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        if (config('peopleos.show_marketing_site')) {
+            $validated = $request->validate([
+                'cf-turnstile-response' => ['required', Rule::turnstile()],
+            ]);
+
+            if ($validated['cf-turnstile-response'] !== 'success') {
+                return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+            }
+        }
+
         try {
             $request->authenticate();
         } catch (ValidationException $e) {

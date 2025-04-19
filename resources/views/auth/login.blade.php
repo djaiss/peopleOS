@@ -58,6 +58,14 @@
               </label>
             </div>
 
+            @if (config('peopleos.show_marketing_site'))
+              <div class="mt-4 mb-0">
+                <x-turnstile data-size="flexible" />
+
+                <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />
+              </div>
+            @endif
+
             <div class="mt-6 flex items-center justify-between">
               @if (Route::has('password.request'))
                 <x-link href="{{ route('password.request') }}" class="text-sm text-gray-600">
