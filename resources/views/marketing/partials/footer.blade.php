@@ -99,9 +99,9 @@
   <!-- Bottom section -->
   <div class="mt-12 border-t border-gray-900/10 pt-8">
     <div class="mx-auto max-w-7xl px-6 lg:px-0">
-      <div class="flex items-center justify-between">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div class="flex flex-col gap-y-2">
-          <div class="flex items-center gap-x-2">
+          <div class="flex items-center gap-x-4 sm:gap-x-2">
             <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
               <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
                 <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" />
@@ -112,7 +112,8 @@
 
           <x-marketing.marketing-footer-data :marketing-page="$marketingPage" :view-name="$viewName" />
         </div>
-        <div class="">
+
+        <div class="sm:mt-0 mt-6">
           <div class="mb-2 flex gap-x-4">
             <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Privacy') }}</a>
             <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Terms') }}</a>
