@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Journal;
 
 use App\Http\Controllers\Controller;
-use App\Models\Journal;
-use App\Services\CreateOrRetrieveEntry;
 use App\Services\GetEntryData;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
-class EntryController extends Controller
+class MonthController extends Controller
 {
-    public function show(Request $request): View
+    public function show(Request $request): RedirectResponse
     {
-        $day = (int) $request->route()->parameter('day');
-        $month = (int) $request->route()->parameter('month');
         $year = (int) $request->route()->parameter('year');
+        $month = (int) $request->route()->parameter('month');
+        $day = 1;
 
         $viewData = (new GetEntryData(
             user: Auth::user(),
@@ -27,6 +26,6 @@ class EntryController extends Controller
             year: $year,
         ))->execute();
 
-        return view('journal.entry.show', $viewData);
+        return redirect()->route('journal.entry.show', $viewData);
     }
 }
