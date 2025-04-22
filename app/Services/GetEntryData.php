@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Helpers\JournalHelper;
 use App\Models\Entry;
 use App\Models\Gender;
 use App\Models\Journal;
@@ -14,8 +15,6 @@ class GetEntryData
 {
     private Journal $journal;
     private Entry $entry;
-    private Collection $months;
-    private Collection $days;
 
     public function __construct(
         private readonly User $user,
@@ -28,13 +27,20 @@ class GetEntryData
     {
         $this->getJournal();
         $this->getEntry();
-        $this->getMonths();
-        $this->getDaysInMonth();
+        $days = JournalHelper::getDaysInMonth(
+            givenYear: $this->year,
+            givenMonth: $this->month,
+            givenDay: $this->day,
+        );
+        $months = JournalHelper::getMonths(
+            year: $this->year,
+            selectedMonth: $this->month,
+        );
 
         return [
             'entry' => $this->entry,
-            'days' => $this->days,
-            'months' => $this->months,
+            'days' => $days,
+            'months' => $months,
         ];
     }
 
@@ -55,58 +61,5 @@ class GetEntryData
             month: $this->month,
             year: $this->year,
         ))->execute();
-    }
-
-    /**
-     * Get the months of the year in the following format:
-     * [
-     *    1 => [
-     *      'month' => 1,
-     *      'month_name' => 'January',
-     *      'is_selected' => false,
-     *      'url' => '/journal/2023/01',
-     *   ]
-     */
-    public function getMonths(): void
-    {
-        $this->months = collect(range(1, 12))->mapWithKeys(fn (int $month) => [
-            $month => [
-                'month' => $month,
-                'month_name' => date('F', mktime(0, 0, 0, $month, 1, $this->year)),
-                'is_selected' => $month === $this->month,
-                'url' => route('journal.entry.show', [
-                    'day' => 1,
-                    'year' => $this->year,
-                    'month' => $month,
-                ]),
-            ],
-        ]);
-    }
-
-    /**
-     * Get the days of the month in the following format:
-     * [
-     *    1 => [
-     *      'day' => 1,
-     *      'is_today' => false,
-     *      'is_selected' => false,
-     *      'url' => '/journal/2023/01/01',
-     *   ]
-     */
-    public function getDaysInMonth(): void
-    {
-        $this->days = collect(range(1, cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year)))
-            ->mapWithKeys(fn (int $day) => [
-                $day => [
-                    'day' => $day,
-                    'is_today' => $day === (int) now()->format('d') && $this->month === (int) now()->format('m') && $this->year === (int) now()->format('Y'),
-                    'is_selected' => $day === $this->day,
-                    'url' => route('journal.entry.show', [
-                        'year' => $this->year,
-                        'month' => $this->month,
-                        'day' => $day,
-                    ]),
-                ],
-            ]);
     }
 }
