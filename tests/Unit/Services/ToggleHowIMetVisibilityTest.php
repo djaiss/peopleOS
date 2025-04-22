@@ -12,8 +12,8 @@ use App\Services\ToggleHowIMetVisibility;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class ToggleHowIMetVisibilityTest extends TestCase
 {

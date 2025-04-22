@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Journal;
 
 use App\Http\Controllers\Controller;
-use App\Services\GetEntryData;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class MonthController extends Controller
 {

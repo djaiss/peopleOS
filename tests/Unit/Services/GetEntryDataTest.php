@@ -4,17 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Jobs\LogUserAction;
-use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Entry;
 use App\Models\Journal;
 use App\Models\User;
-use App\Services\CreateOrRetrieveEntry;
 use App\Services\GetEntryData;
-use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -46,7 +40,7 @@ class GetEntryDataTest extends TestCase
         $this->assertArrayHasKeys(
             $array,
             [
-                'entry', 'days', 'months'
+                'entry', 'days', 'months',
             ]
         );
 

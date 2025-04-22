@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Helpers;
 
 use App\Helpers\JournalHelper;
-use App\Helpers\MarketingHelper;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -26,13 +24,13 @@ class JournalHelperTest extends TestCase
             'month' => 1,
             'month_name' => 'January',
             'is_selected' => false,
-            'url' => env('APP_URL') . '/journal/2023/1/1',
+            'url' => env('APP_URL').'/journal/2023/1/1',
         ], $collection[1]);
         $this->assertEquals([
             'month' => 3,
             'month_name' => 'March',
             'is_selected' => true,
-            'url' => env('APP_URL') . '/journal/2023/3/1',
+            'url' => env('APP_URL').'/journal/2023/3/1',
         ], $collection[3]);
     }
 
@@ -52,13 +50,13 @@ class JournalHelperTest extends TestCase
             'day' => 3,
             'is_today' => true,
             'is_selected' => true,
-            'url' => env('APP_URL') . '/journal/2023/2/3',
+            'url' => env('APP_URL').'/journal/2023/2/3',
         ], $collection[3]);
         $this->assertEquals([
             'day' => 28,
             'is_today' => false,
             'is_selected' => false,
-            'url' => env('APP_URL') . '/journal/2023/2/28',
+            'url' => env('APP_URL').'/journal/2023/2/28',
         ], $collection[28]);
     }
 }

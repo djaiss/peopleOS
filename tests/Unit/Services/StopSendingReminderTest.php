@@ -7,8 +7,8 @@ namespace Tests\Unit\Services;
 use App\Models\SpecialDate;
 use App\Services\StopSendingReminder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class StopSendingReminderTest extends TestCase
 {

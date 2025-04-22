@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Helpers;
 
 use Carbon\Carbon;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 /**
@@ -26,7 +25,7 @@ class JournalHelper
      */
     public static function getMonths(int $year, int $selectedMonth): Collection
     {
-        return collect(range(1, 12))->mapWithKeys(fn(int $month) => [
+        return collect(range(1, 12))->mapWithKeys(fn (int $month) => [
             $month => [
                 'month' => $month,
                 'month_name' => date('F', mktime(0, 0, 0, $month, 1, $year)),
@@ -54,7 +53,7 @@ class JournalHelper
     public static function getDaysInMonth(int $givenYear, int $givenMonth, int $givenDay): Collection
     {
         return collect(range(1, cal_days_in_month(CAL_GREGORIAN, $givenMonth, $givenYear)))
-            ->mapWithKeys(fn(int $day) => [
+            ->mapWithKeys(fn (int $day) => [
                 $day => [
                     'day' => $day,
                     'is_today' => Carbon::createFromDate($givenYear, $givenMonth, $day)->isToday(),

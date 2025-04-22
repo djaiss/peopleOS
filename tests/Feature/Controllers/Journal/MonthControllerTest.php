@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Persons;
 
-use App\Enums\KidsStatusType;
-use App\Enums\MaritalStatusType;
-use App\Models\Gender;
 use App\Models\Journal;
-use App\Models\Person;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;

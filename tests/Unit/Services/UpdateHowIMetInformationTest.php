@@ -13,8 +13,8 @@ use App\Services\UpdateHowIMetInformation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class UpdateHowIMetInformationTest extends TestCase
 {

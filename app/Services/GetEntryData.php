@@ -6,14 +6,13 @@ namespace App\Services;
 
 use App\Helpers\JournalHelper;
 use App\Models\Entry;
-use App\Models\Gender;
 use App\Models\Journal;
 use App\Models\User;
-use Illuminate\Support\Collection;
 
 class GetEntryData
 {
     private Journal $journal;
+
     private Entry $entry;
 
     public function __construct(
