@@ -9,6 +9,7 @@ use App\Models\JournalTemplate;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class AdministrationPersonalizationJournalTemplateControllerTest extends TestCase
 {
@@ -41,7 +42,7 @@ YAML;
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_displays_the_new_template_page(): void
     {
         $response = $this->actingAs($this->user)
@@ -51,7 +52,7 @@ YAML;
         $response->assertViewIs('administration.personalization.journal-template-add');
     }
 
-    /** @test */
+    #[Test]
     public function it_creates_a_journal_template(): void
     {
         $response = $this->actingAs($this->user)
@@ -64,7 +65,7 @@ YAML;
         $response->assertSessionHas('success');
     }
 
-    /** @test */
+    #[Test]
     public function it_displays_the_edit_template_page(): void
     {
         $template = JournalTemplate::factory()->create([
@@ -79,7 +80,7 @@ YAML;
         $response->assertViewHas('journalTemplate');
     }
 
-    /** @test */
+    #[Test]
     public function it_cant_edit_template_from_another_account(): void
     {
         $anotherAccount = Account::factory()->create();
@@ -93,7 +94,7 @@ YAML;
         $response->assertStatus(404);
     }
 
-    /** @test */
+    #[Test]
     public function it_updates_a_journal_template(): void
     {
         $template = JournalTemplate::factory()->create([
@@ -114,7 +115,7 @@ YAML;
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_deletes_a_journal_template(): void
     {
         $template = JournalTemplate::factory()->create([
@@ -132,7 +133,7 @@ YAML;
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_required_fields_when_creating(): void
     {
         $response = $this->actingAs($this->user)
@@ -144,7 +145,7 @@ YAML;
         $response->assertSessionHasErrors(['name', 'content']);
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_required_fields_when_updating(): void
     {
         $template = JournalTemplate::factory()->create([

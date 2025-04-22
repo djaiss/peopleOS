@@ -19,13 +19,10 @@ class MonthController extends Controller
         $month = (int) $request->route()->parameter('month');
         $day = 1;
 
-        $viewData = (new GetEntryData(
-            user: Auth::user(),
-            day: $day,
-            month: $month,
-            year: $year,
-        ))->execute();
-
-        return redirect()->route('journal.entry.show', $viewData);
+        return redirect()->route('journal.entry.show', [
+            'day' => $day,
+            'month' => $month,
+            'year' => $year,
+        ]);
     }
 }

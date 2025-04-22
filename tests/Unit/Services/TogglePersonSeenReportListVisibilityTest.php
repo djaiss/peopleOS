@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TogglePersonSeenReportListVisibilityTest extends TestCase
 {
@@ -24,7 +25,7 @@ class TogglePersonSeenReportListVisibilityTest extends TestCase
 
     private Person $person;
 
-    /** @test */
+    #[Test]
     public function it_toggles_the_person_seen_report_list_visibility(): void
     {
         Queue::fake();
@@ -54,7 +55,7 @@ class TogglePersonSeenReportListVisibilityTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function it_fails_if_user_doesnt_belong_to_the_same_account(): void
     {
         $this->expectException(ModelNotFoundException::class);

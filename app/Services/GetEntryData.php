@@ -14,6 +14,8 @@ class GetEntryData
 {
     private Journal $journal;
     private Entry $entry;
+    private Collection $months;
+    private Collection $days;
 
     public function __construct(
         private readonly User $user,
@@ -26,13 +28,13 @@ class GetEntryData
     {
         $this->getJournal();
         $this->getEntry();
-        $months = $this->getMonths();
-        $days = $this->getDaysInMonth();
+        $this->getMonths();
+        $this->getDaysInMonth();
 
         return [
             'entry' => $this->entry,
-            'days' => $days,
-            'months' => $months,
+            'days' => $this->days,
+            'months' => $this->months,
         ];
     }
 
@@ -55,9 +57,19 @@ class GetEntryData
         ))->execute();
     }
 
-    public function getMonths(): Collection
+    /**
+     * Get the months of the year in the following format:
+     * [
+     *    1 => [
+     *      'month' => 1,
+     *      'month_name' => 'January',
+     *      'is_selected' => false,
+     *      'url' => '/journal/2023/01',
+     *   ]
+     */
+    public function getMonths(): void
     {
-        return collect(range(1, 12))->mapWithKeys(fn (int $month) => [
+        $this->months = collect(range(1, 12))->mapWithKeys(fn (int $month) => [
             $month => [
                 'month' => $month,
                 'month_name' => date('F', mktime(0, 0, 0, $month, 1, $this->year)),
@@ -72,13 +84,18 @@ class GetEntryData
     }
 
     /**
-     * Get all the
-     *
-     * @return integer
+     * Get the days of the month in the following format:
+     * [
+     *    1 => [
+     *      'day' => 1,
+     *      'is_today' => false,
+     *      'is_selected' => false,
+     *      'url' => '/journal/2023/01/01',
+     *   ]
      */
-    public function getDaysInMonth(): Collection
+    public function getDaysInMonth(): void
     {
-        return collect(range(1, cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year)))
+        $this->days = collect(range(1, cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year)))
             ->mapWithKeys(fn (int $day) => [
                 $day => [
                     'day' => $day,

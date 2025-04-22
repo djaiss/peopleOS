@@ -8,12 +8,13 @@ use App\Models\SpecialDate;
 use App\Services\StopSendingReminder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class StopSendingReminderTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    #[Test]
     public function it_stops_sending_reminders()
     {
         $specialDate = SpecialDate::factory()->create([
