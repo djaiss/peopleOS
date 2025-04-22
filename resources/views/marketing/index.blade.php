@@ -12,7 +12,6 @@
   <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-32 lg:px-8 xl:px-0">
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
-
         <!-- Left side - Text content -->
         <div class="max-w-2xl">
           <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
@@ -256,7 +255,7 @@
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-16 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Warning: PeopleOS is probably
-          <span class="rounded-md bg-amber-500 px-1 py-0 sm:px-2 sm:py-1 text-white">not for you</span>
+          <span class="rounded-md bg-amber-500 px-1 py-0 text-white sm:px-2 sm:py-1">not for you</span>
           if...
         </h3>
 

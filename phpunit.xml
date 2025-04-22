@@ -37,5 +37,7 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="ENABLE_ANTI_SPAM" value="false"/>
+        <env name="SHOW_MARKETING_SITE" value="true"/>
     </php>
 </phpunit>

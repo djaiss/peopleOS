@@ -31,7 +31,7 @@ class RegistrationController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        if (config('peopleos.show_marketing_site')) {
+        if (config('peopleos.enable_anti_spam')) {
             $validated = $request->validate([
                 'cf-turnstile-response' => ['required', Rule::turnstile()],
             ]);
