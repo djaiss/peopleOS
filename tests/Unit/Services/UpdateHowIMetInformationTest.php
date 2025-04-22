@@ -13,6 +13,7 @@ use App\Services\UpdateHowIMetInformation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class UpdateHowIMetInformationTest extends TestCase
@@ -25,7 +26,7 @@ class UpdateHowIMetInformationTest extends TestCase
 
     private Person $person;
 
-    /** @test */
+    #[Test]
     public function it_updates_how_i_met_information(): void
     {
         Queue::fake();
@@ -82,7 +83,7 @@ class UpdateHowIMetInformationTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function it_deletes_the_special_date_if_the_date_is_unknown(): void
     {
         Queue::fake();
@@ -126,7 +127,7 @@ class UpdateHowIMetInformationTest extends TestCase
         $this->assertFalse($person->howWeMetSpecialDate()->exists());
     }
 
-    /** @test */
+    #[Test]
     public function it_updates_how_i_met_information_with_null_values(): void
     {
         Queue::fake();
@@ -160,7 +161,7 @@ class UpdateHowIMetInformationTest extends TestCase
         $this->assertFalse($person->how_we_met_shown);
     }
 
-    /** @test */
+    #[Test]
     public function it_fails_if_user_doesnt_belong_to_the_same_account(): void
     {
         $this->expectException(ModelNotFoundException::class);

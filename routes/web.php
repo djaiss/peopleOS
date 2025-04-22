@@ -21,7 +21,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
+use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\JournalController;
+use App\Http\Controllers\Journal\MonthController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
@@ -208,6 +210,8 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
         // journal
         Route::get('journal', [JournalController::class, 'index'])->name('journal.index');
+        Route::get('journal/{year}/{month}', [MonthController::class, 'show'])->name('journal.month.show');
+        Route::get('journal/{year}/{month}/{day}', [EntryController::class, 'show'])->name('journal.entry.show');
     });
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');

@@ -33,7 +33,6 @@ class CreateOrRetrieveEntry
         $this->validate();
         $this->create();
         $this->updateUserLastActivityDate();
-        $this->logUserAction();
 
         return $this->entry;
     }
@@ -67,6 +66,8 @@ class CreateOrRetrieveEntry
                 'month' => $this->month,
                 'year' => $this->year,
             ]);
+
+            $this->logUserAction();
         }
     }
 

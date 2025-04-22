@@ -8,13 +8,14 @@ use App\Jobs\SetupAccount;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class SetupAccountTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    #[Test]
     public function it_setups_an_account(): void
     {
         $user = User::factory()->create();

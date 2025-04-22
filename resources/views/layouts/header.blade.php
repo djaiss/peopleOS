@@ -26,14 +26,12 @@
           </p>
         </a>
 
-        {{--
-          <a href="{{ route('journal.index') }}" class="flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
+        <a href="{{ route('journal.index') }}" class="flex items-center gap-x-2 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
           <x-lucide-book-open-text class="h-4 w-4 text-gray-700" />
           <p class="text-sm text-gray-700">
-          {{ __('Journal') }}
+            {{ __('Journal') }}
           </p>
-          </a>
-        --}}
+        </a>
 
         <!-- upgrade -->
         @if (Auth::user()->account->isInTrial())
