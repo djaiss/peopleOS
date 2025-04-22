@@ -58,7 +58,7 @@
               </label>
             </div>
 
-            @if (config('peopleos.show_marketing_site'))
+            @if (config('peopleos.enable_anti_spam'))
               <div class="mt-4 mb-0">
                 <x-turnstile data-size="flexible" />
 

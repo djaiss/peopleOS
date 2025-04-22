@@ -113,7 +113,7 @@
           <x-marketing.marketing-footer-data :marketing-page="$marketingPage" :view-name="$viewName" />
         </div>
 
-        <div class="sm:mt-0 mt-6">
+        <div class="mt-6 sm:mt-0">
           <div class="mb-2 flex gap-x-4">
             <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Privacy') }}</a>
             <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Terms') }}</a>

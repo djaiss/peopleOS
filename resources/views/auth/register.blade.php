@@ -74,7 +74,7 @@
               </div>
             </div>
 
-            @if (config('peopleos.show_marketing_site'))
+            @if (config('peopleos.enable_anti_spam'))
               <x-turnstile data-size="flexible" />
 
               <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />

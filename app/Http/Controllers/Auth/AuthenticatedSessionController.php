@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        if (config('peopleos.show_marketing_site')) {
+        if (config('peopleos.enable_anti_spam')) {
             $request->validate([
                 'cf-turnstile-response' => ['required', Rule::turnstile()],
             ]);
