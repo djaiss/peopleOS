@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Persons;
+namespace Tests\Feature\Controllers\Journal;
 
 use App\Models\Journal;
 use App\Models\User;

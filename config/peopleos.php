@@ -120,5 +120,8 @@ return [
         'life_event_creation' => 'Life event creation',
         'life_event_update' => 'Life event update',
         'life_event_deletion' => 'Life event deletion',
+        'mood_creation' => 'Mood creation',
+        'mood_update' => 'Mood update',
+        'mood_deletion' => 'Mood deletion',
     ],
 ];
