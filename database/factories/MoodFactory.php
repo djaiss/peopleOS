@@ -30,7 +30,7 @@ class MoodFactory extends Factory
     {
         return [
             'entry_id' => Entry::factory(),
-            'mood' => fake()->randomElement(MoodType::cases()),
+            'mood' => fake()->randomElement(MoodType::cases())->getDetails(),
             'comment' => fake()->sentence(),
         ];
     }
