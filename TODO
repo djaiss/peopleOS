@@ -35,8 +35,6 @@ Todo:
   - Add ability to broadcast a message to all users
   - Add passions to person
   - Add hobbies to person
-  - log the number of emails sent, both at the account level and instance level
-    - the emails_sent column is already in the database
   - show all the emails sent in the account, and to the contact
   - hide done tasks: DONE
   - magic link: DONE
@@ -44,8 +42,10 @@ Todo:
   - Do not run a reminder if the account is in trial: DONE
   - click on an email to stop this reminder forever: DONE
   - let users create a review to be published on the marketing site
-  - export account data
+  - export account data: DONE
   - automatically delete account after 6 months of inactivity: DONE
+  - set contact limit to an account
+  - add 2FA
 
   Country born - city born
   Country/place studies
