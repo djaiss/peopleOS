@@ -74,16 +74,27 @@
 
           <div x-cloak x-show="showAge" x-transition class="mb-5 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-blue-900">
             <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
-              <input id="unknown" value="unknown" name="marital_status" type="radio" checked="checked" x-on:click="selectedRelationship = '{{ __('Unknown') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <input id="unknown" value="unknown" name="age" type="radio" checked="checked" x-on:click="selectedAge = '{{ __('Unknown') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
               <label for="unknown" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
             </div>
+            <div class="flex flex-col gap-y-2 border-b border-gray-200 p-3 dark:border-gray-700">
+              <div class="flex items-center gap-x-3">
+                <input id="single" value="single" name="age" type="radio" x-on:click="selectedAge = '{{ __('I know an approximate age') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+                <label for="single" class="block text-sm/6 font-medium text-gray-900">{{ __('I know an approximate age') }}</label>
+              </div>
+              <div x-show="selectedAge === '{{ __('I know an approximate age') }}'" class="ml-6">
+                  <x-text-input class="mt-1 block" id="first_name" name="first_name" type="number" min="1" max="100" required autofocus />
+                  <x-input-error class="mt-2" :messages="$errors->get('age')" />
+                  <x-help>{{ __('We\'ll increment the year automatically every year so you can always be sure that the age is correct.')}}</x-help>
+              </div>
+            </div>
             <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
-              <input id="single" value="single" name="marital_status" type="radio" x-on:click="selectedRelationship = '{{ __('Single') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
-              <label for="single" class="block text-sm/6 font-medium text-gray-900">{{ __('Single') }}</label>
+              <input id="month_day" value="month_day" name="age" type="radio" x-on:click="selectedAge = '{{ __('I only know the month and day of the birthdate') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="month_day" class="block text-sm/6 font-medium text-gray-900">{{ __('I only know the month and day of the birthdate') }}</label>
             </div>
             <div class="flex items-center gap-x-3 p-3">
-              <input id="in-relationship" value="in-relationship" name="marital_status" type="radio" x-on:click="selectedRelationship = '{{ __('In a relationship') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
-              <label for="in-relationship" class="block text-sm/6 font-medium text-gray-900">{{ __('In a relationship') }}</label>
+              <input id="exact" value="exact" name="age" type="radio" x-on:click="selectedAge = '{{ __('I know the exact birthdate') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="exact" class="block text-sm/6 font-medium text-gray-900">{{ __('I know the exact birthdate') }}</label>
             </div>
           </div>
 
