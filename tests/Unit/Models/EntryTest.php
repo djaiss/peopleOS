@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Entry;
 use App\Models\Journal;
+use App\Models\Mood;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -23,5 +24,28 @@ class EntryTest extends TestCase
         ]);
 
         $this->assertTrue($entry->journal()->exists());
+    }
+
+    #[Test]
+    public function it_has_a_mood(): void
+    {
+        $entry = Entry::factory()->create();
+        Mood::factory()->create([
+            'entry_id' => $entry->id,
+        ]);
+
+        $this->assertTrue($entry->mood()->exists());
+    }
+
+    #[Test]
+    public function it_gets_the_date(): void
+    {
+        $entry = Entry::factory()->create([
+            'year' => 2024,
+            'month' => 12,
+            'day' => 23,
+        ]);
+
+        $this->assertEquals('2024/12/23', $entry->getDate());
     }
 }

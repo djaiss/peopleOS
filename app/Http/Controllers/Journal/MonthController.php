@@ -6,16 +6,15 @@ namespace App\Http\Controllers\Journal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
-class JournalController extends Controller
+class MonthController extends Controller
 {
-    public function index(): RedirectResponse
+    public function show(Request $request): RedirectResponse
     {
-        // get the current day
-        now();
-        $day = (int) now()->format('d');
-        $month = (int) now()->format('m');
-        $year = (int) now()->format('Y');
+        $year = (int) $request->route()->parameter('year');
+        $month = (int) $request->route()->parameter('month');
+        $day = 1;
 
         return redirect()->route('journal.entry.show', [
             'day' => $day,

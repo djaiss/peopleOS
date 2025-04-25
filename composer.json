@@ -18,8 +18,10 @@
     "laravel/octane": "^2.8",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
+    "league/flysystem-aws-s3-v3": "^3.0",
     "mallardduck/blade-lucide-icons": "^1.23",
-    "pragmarx/google2fa": "^8.0"
+    "pragmarx/google2fa": "^8.0",
+    "ryangjchandler/laravel-cloudflare-turnstile": "^2.0"
   },
   "require-dev": {
     "amirami/localizator": "^0.14.0@alpha",

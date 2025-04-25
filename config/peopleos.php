@@ -31,6 +31,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable anti spam
+    |--------------------------------------------------------------------------
+    |
+    | This value enables the spam verification with Cloudflare turnstile.
+    |
+    */
+
+    'enable_anti_spam' => env('ENABLE_ANTI_SPAM', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Supported locales
     |--------------------------------------------------------------------------
     |
@@ -109,5 +120,8 @@ return [
         'life_event_creation' => 'Life event creation',
         'life_event_update' => 'Life event update',
         'life_event_deletion' => 'Life event deletion',
+        'mood_creation' => 'Mood creation',
+        'mood_update' => 'Mood update',
+        'mood_deletion' => 'Mood deletion',
     ],
 ];

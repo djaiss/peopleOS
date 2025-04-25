@@ -7,6 +7,10 @@
 
     @include('components.meta')
 
+    @if (config('peopleos.show_marketing_site'))
+      @turnstileScripts()
+    @endif
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>

@@ -245,3 +245,7 @@ bg-stone-900
 bg-stone-950
 bg-black
 bg-white
+grid-cols-[repeat(28,1fr)]
+grid-cols-[repeat(29,1fr)]
+grid-cols-[repeat(30,1fr)]
+grid-cols-[repeat(31,1fr)]

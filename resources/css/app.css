@@ -15,6 +15,22 @@
   background-size: cover;
 }
 
+.days-grid-28 {
+  grid-template-columns: repeat(28, 1fr);
+}
+
+.days-grid-29 {
+  grid-template-columns: repeat(29, 1fr);
+}
+
+.days-grid-30 {
+  grid-template-columns: repeat(30, 1fr);
+}
+
+.days-grid-31 {
+  grid-template-columns: repeat(31, 1fr);
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still

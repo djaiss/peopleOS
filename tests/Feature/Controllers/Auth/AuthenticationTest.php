@@ -24,6 +24,7 @@ class AuthenticationTest extends TestCase
     #[Test]
     public function users_can_authenticate_using_the_login_screen(): void
     {
+        config(['peopleos.show_marketing_site' => false]);
         $user = User::factory()->create();
 
         $response = $this->post('/login', [

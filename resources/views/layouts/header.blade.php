@@ -59,8 +59,6 @@
     </div>
 
     <div class="relative ms-3 flex items-center gap-x-3">
-      <x-lucide-bell class="h-4 w-4 text-gray-500" />
-
       <x-dropdown align="right" width="48">
         <x-slot name="trigger">
           <button class="flex cursor-pointer rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">

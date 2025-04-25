@@ -12,6 +12,7 @@ use App\Services\ToggleHowIMetVisibility;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ToggleHowIMetVisibilityTest extends TestCase
@@ -24,7 +25,7 @@ class ToggleHowIMetVisibilityTest extends TestCase
 
     private Person $person;
 
-    /** @test */
+    #[Test]
     public function it_toggles_the_how_i_met_visibility(): void
     {
         Queue::fake();
@@ -54,7 +55,7 @@ class ToggleHowIMetVisibilityTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function it_fails_if_user_doesnt_belong_to_the_same_account(): void
     {
         $this->expectException(ModelNotFoundException::class);

@@ -9,10 +9,12 @@
     <!-- Left side - Registration Form (1/3) -->
     <div class="col-span-2 mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-5 py-10 sm:px-6">
       <div class="w-full">
-        <p class="group mb-10 flex items-center gap-x-1 text-sm text-gray-600">
-          <x-lucide-arrow-left class="h-4 w-4 transition-transform duration-150 group-hover:-translate-x-1" />
-          <a href="{{ route('marketing.index') }}" class="group-hover:underline">Back to the marketing website</a>
-        </p>
+        @if (config('peopleos.show_marketing_site'))
+          <p class="group mb-10 flex items-center gap-x-1 text-sm text-gray-600">
+            <x-lucide-arrow-left class="h-4 w-4 transition-transform duration-150 group-hover:-translate-x-1" />
+            <a href="{{ route('marketing.index') }}" class="group-hover:underline">Back to the marketing website</a>
+          </p>
+        @endif
 
         <!-- Title -->
         <div class="mb-8">
@@ -73,6 +75,12 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
               </div>
             </div>
+
+            @if (config('peopleos.enable_anti_spam'))
+              <x-turnstile data-size="flexible" />
+
+              <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />
+            @endif
 
             <div class="mt-6">
               <x-button.primary class="w-full">
