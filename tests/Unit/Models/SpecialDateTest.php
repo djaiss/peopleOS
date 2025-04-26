@@ -137,4 +137,16 @@ class SpecialDateTest extends TestCase
 
         $this->assertEquals('15', $specialDate->date);
     }
+
+    #[Test]
+    public function it_gets_the_date_as_a_string(): void
+    {
+        $specialDate = SpecialDate::factory()->create([
+            'year' => 1981,
+            'month' => 10,
+            'day' => 29,
+        ]);
+
+        $this->assertEquals('1981-10-29', $specialDate->dateAsString());
+    }
 }

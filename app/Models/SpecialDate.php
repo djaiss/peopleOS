@@ -158,4 +158,12 @@ class SpecialDate extends Model
             }
         );
     }
+
+    /**
+     * Get the date as a string, like "2023-10-01".
+     */
+    public function dateAsString(): string
+    {
+        return Carbon::parse($this->year.'-'.$this->month.'-'.$this->day)->format('Y-m-d');
+    }
 }
