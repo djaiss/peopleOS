@@ -18,7 +18,7 @@ Todo:
   - replace png images with webp: DONE
   - check notes api call which seems super messy: DONE
   - send an email when the user logs in: DONE
-  - add AGE to the person
+  - add AGE to the person: DONE
   - add the ability to add a comment to a marketing page
   - add life events: DONE
   - add a block
@@ -47,7 +47,7 @@ Todo:
   - export account data
   - automatically delete account after 6 months of inactivity: DONE
   - add the ability to modify the icon / color of a life event
-  - add Cloudflare user protection on registration
+  - add Cloudflare user protection on registration: DONE
 
   Country born - city born
   Country/place studies

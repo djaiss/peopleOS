@@ -88,7 +88,6 @@ class PersonController extends Controller
             isListed: true,
         ))->execute();
 
-        // if $validated['age'] is 'exact', we need to create the date
         if ($validated['age'] !== AgeType::UNKNOWN) {
             $year = array_key_exists('birthdate', $validated) ? Carbon::parse($validated['birthdate'])->year : null;
             $month = array_key_exists('birthdate', $validated) ? Carbon::parse($validated['birthdate'])->month : null;

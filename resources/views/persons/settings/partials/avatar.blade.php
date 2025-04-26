@@ -8,6 +8,10 @@
   {{ __('Edit avatar') }}
 </h2>
 
+<p class="mb-4 text-sm text-zinc-500">
+  {{ __('We\'ll resize the images if they are too big.') }}
+</p>
+
 <div class="mb-8">
   <div x-data="{
     isFlipped: false,
