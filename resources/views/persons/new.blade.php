@@ -5,9 +5,9 @@
 ?>
 
 <x-app-layout>
-  <main class="grid min-h-[calc(100vh-48px)] place-items-center bg-gray-50">
+  <main class="grid min-h-[calc(100vh-48px)] bg-gray-50">
     <div class="mx-auto w-full max-w-lg px-2 py-2 sm:py-6">
-      <form method="post" action="{{ route('person.create') }}" class="mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
+      <form method="post" action="{{ route('person.create') }}" class="mt-8 mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900">
         @csrf
         @method('post')
 
@@ -27,8 +27,10 @@
           showGender: false,
           showRelationshipStatus: false,
           showKids: false,
+          showAge: false,
           selectedRelationship: 'Unknown',
           selectedKidsStatus: 'Unknown',
+          selectedAge: 'unknown',
         }">
           <!-- prefix -->
           <div x-cloak x-show="showPrefix" x-transition class="relative mb-5">
@@ -54,14 +56,62 @@
             <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
           </div>
 
+          <!-- age -->
+          <div x-on:click="showAge = !showAge" class="mb-2 flex cursor-pointer items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showAge }">
+            <div class="flex items-center gap-x-2">
+              <x-lucide-calendar class="h-4 w-4 text-green-500" />
+              <span>{{ __('Age') }}</span>
+            </div>
+
+            <div class="flex items-center gap-x-1">
+              <p class="text-xs text-gray-500" x-text="selectedAge"></p>
+              <x-lucide-chevron-down x-show="!showAge" class="size-4 transition" />
+              <x-lucide-chevron-up x-show="showAge" class="size-4 transition" />
+            </div>
+          </div>
+
+          <x-input-error class="mt-2" :messages="$errors->get('age')" />
+
+          <div x-cloak x-show="showAge" x-transition class="mb-5 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-blue-900">
+            <!-- unknown -->
+            <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
+              <input id="unknown" value="unknown" name="age" type="radio" checked="checked" x-on:click="selectedAge = 'unknown'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="unknown" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
+            </div>
+
+            <!-- approximate age -->
+            <div class="flex flex-col gap-y-2 border-b border-gray-200 p-3 dark:border-gray-700">
+              <div class="flex items-center gap-x-3">
+                <input id="estimated" value="estimated" name="age" type="radio" x-on:click="selectedAge = 'estimated'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+                <label for="estimated" class="block text-sm/6 font-medium text-gray-900">{{ __('I know an approximate age') }}</label>
+              </div>
+              <div x-show="selectedAge === 'estimated'" class="ml-6">
+                <x-text-input class="mt-1 block" id="estimated_age" name="estimated_age" type="number" min="1" max="100" autofocus />
+                <x-input-error class="mt-2" :messages="$errors->get('estimated_age')" />
+                <x-help>{{ __('We\'ll increment the year automatically every year so you can always be sure that the age is correct.') }}</x-help>
+              </div>
+            </div>
+
+            <!-- exact birthdate -->
+            <div class="flex items-center gap-x-3 p-3">
+              <input id="exact" value="exact" name="age" type="radio" x-on:click="selectedAge = 'exact'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="exact" class="block text-sm/6 font-medium text-gray-900">{{ __('I know the exact birthdate') }}</label>
+
+              <div x-show="selectedAge === 'exact'" class="ml-6">
+                <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" value="{{ now()->format('Y-m-d') }}" />
+                <x-input-error class="mt-2" :messages="$errors->get('birthdate')" />
+              </div>
+            </div>
+          </div>
+
           <!-- couple -->
-          <div class="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showRelationshipStatus }">
+          <div x-on:click="showRelationshipStatus = !showRelationshipStatus" class="mb-2 flex cursor-pointer items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showRelationshipStatus }">
             <div class="flex items-center gap-x-2">
               <x-lucide-heart class="h-4 w-4 text-rose-500" />
               <span>{{ __('Relationship status') }}</span>
             </div>
 
-            <div class="flex cursor-pointer items-center gap-x-1" x-on:click="showRelationshipStatus = !showRelationshipStatus">
+            <div class="flex items-center gap-x-1">
               <p class="text-xs text-gray-500" x-text="selectedRelationship"></p>
               <x-lucide-chevron-down x-show="!showRelationshipStatus" class="size-4 transition" />
               <x-lucide-chevron-up x-show="showRelationshipStatus" class="size-4 transition" />
@@ -86,13 +136,13 @@
           </div>
 
           <!-- kids -->
-          <div class="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showRelationshipStatus }">
+          <div x-on:click="showKids = !showKids" class="mb-2 flex cursor-pointer items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300" :class="{ 'mb-5': !showRelationshipStatus }">
             <div class="flex items-center gap-x-2">
               <x-lucide-baby class="h-4 w-4 text-blue-500" />
               <span>{{ __('Kids status') }}</span>
             </div>
 
-            <div class="flex cursor-pointer items-center gap-x-1" x-on:click="showKids = !showKids">
+            <div class="flex items-center gap-x-1">
               <p class="text-xs text-gray-500" x-text="selectedKidsStatus"></p>
               <x-lucide-chevron-down x-show="!showKids" class="size-4 transition" />
               <x-lucide-chevron-up x-show="showKids" class="size-4 transition" />

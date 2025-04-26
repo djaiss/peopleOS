@@ -95,6 +95,9 @@ class PersonControllerTest extends TestCase
                 'prefix' => '',
                 'suffix' => '',
                 'is_listed' => true,
+                'age' => 'exact',
+                'estimated_age' => null,
+                'birthdate' => '1990-01-01',
             ])
             ->assertRedirectToRoute('person.show', [
                 'slug' => Person::orderBy('id', 'desc')->first()->slug,

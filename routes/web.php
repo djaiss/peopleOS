@@ -48,6 +48,7 @@ use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
+use App\Http\Controllers\Persons\PersonSettingsAgeController;
 use App\Http\Controllers\Persons\PersonSettingsAvatarController;
 use App\Http\Controllers\Persons\PersonSettingsController;
 use App\Http\Controllers\Persons\PersonTaskController;
@@ -150,6 +151,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::get('persons/{slug}/settings', [PersonSettingsController::class, 'index'])->name('person.settings.index');
             Route::put('persons/{slug}/settings', [PersonSettingsController::class, 'update'])->name('person.settings.update');
             Route::put('persons/{slug}/settings/avatar', [PersonSettingsAvatarController::class, 'update'])->name('person.settings.avatar.update');
+            Route::put('persons/{slug}/settings/age', [PersonSettingsAgeController::class, 'update'])->name('person.settings.avatar.age');
             Route::delete('persons/{slug}', [PersonSettingsController::class, 'destroy'])->name('person.settings.destroy');
 
             // reminders

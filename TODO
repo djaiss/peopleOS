@@ -18,7 +18,7 @@ Todo:
   - replace png images with webp: DONE
   - check notes api call which seems super messy: DONE
   - send an email when the user logs in: DONE
-  - add AGE to the person
+  - add AGE to the person: DONE
   - add the ability to add a comment to a marketing page
   - add life events: DONE
   - add a block
@@ -35,8 +35,8 @@ Todo:
   - Add ability to broadcast a message to all users
   - Add passions to person
   - Add hobbies to person
-  - log the number of emails sent, both at the account level and instance level
-    - the emails_sent column is already in the database
+  - log the number of emails sent, both at the account level and instance level: DONE
+    - the emails_sent column is already in the database: DONE
   - show all the emails sent in the account, and to the contact
   - hide done tasks: DONE
   - magic link: DONE
@@ -46,6 +46,8 @@ Todo:
   - let users create a review to be published on the marketing site
   - export account data
   - automatically delete account after 6 months of inactivity: DONE
+  - add the ability to modify the icon / color of a life event
+  - add Cloudflare user protection on registration: DONE
 
   Country born - city born
   Country/place studies

@@ -48,7 +48,7 @@
 
                 <!-- icon -->
                 <div class="absolute -left-3 rounded-full bg-amber-300 p-1">
-                  <x-lucide-check class="h-4 w-4 text-white" />
+                  <x-lucide-activity class="h-4 w-4 text-white" />
                 </div>
 
                 <!-- description -->
