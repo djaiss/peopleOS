@@ -52,6 +52,7 @@ class UpdateAgeOfAPerson
             AgeType::EXACT->value => $this->updateExactAge(),
             AgeType::ESTIMATED->value => $this->updateEstimatedAge(),
             AgeType::BRACKET->value => $this->updateAgeBracket(),
+            AgeType::UNKNOWN->value => '',
             default => throw new Exception('Invalid age type'),
         };
     }

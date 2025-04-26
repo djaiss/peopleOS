@@ -263,6 +263,12 @@ class Person extends Model
         );
     }
 
+    /**
+     * Get the person's age.
+     * If the age type is exact, it will return the age from the special date.
+     * If the age type is estimated, it will return the estimated age.
+     * If the age type is unknown, it will return nothing.
+     */
     protected function age(): Attribute
     {
         return Attribute::make(
