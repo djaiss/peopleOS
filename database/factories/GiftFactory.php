@@ -6,13 +6,12 @@ namespace Database\Factories;
 
 use App\Enums\GiftStatus;
 use App\Models\Account;
-use App\Models\Encounter;
 use App\Models\Gift;
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Encounter>
+ * @extends Factory<Gift>
  */
 class GiftFactory extends Factory
 {
