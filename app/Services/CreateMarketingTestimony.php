@@ -9,7 +9,6 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MarketingTestimony;
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CreateMarketingTestimony
 {

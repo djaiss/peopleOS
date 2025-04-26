@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Enums\GiftStatus;
 use App\Enums\MarketingTestimonyStatus;
 use App\Models\Account;
 use App\Models\MarketingTestimony;
-use App\Models\Gift;
-use App\Models\Person;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
