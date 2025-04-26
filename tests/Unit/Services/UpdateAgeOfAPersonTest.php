@@ -119,7 +119,7 @@ class UpdateAgeOfAPersonTest extends TestCase
 
         Carbon::setTestNow(Carbon::parse('2045-03-17 10:00:00'));
 
-        $this->assertEquals(50, $person->age);
+        $this->assertEquals('Probably 50 years old', $person->age);
         $this->assertNotNull($person->age_estimated_at);
 
         Queue::assertPushed(UpdateUserLastActivityDate::class);

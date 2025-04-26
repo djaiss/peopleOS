@@ -266,7 +266,7 @@ class PersonTest extends TestCase
             'age_estimated_at' => Carbon::parse('2020-01-01'),
         ]);
 
-        $this->assertEquals(35, $ross->getEstimatedAge());
+        $this->assertEquals('Probably 35 years old', $ross->getEstimatedAge());
     }
 
     #[Test]
