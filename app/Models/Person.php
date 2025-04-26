@@ -283,13 +283,15 @@ class Person extends Model
     /**
      * The estimated age of the person needs to be calculated
      * based on the estimated age and the date it was estimated.
+     * Return "Probably 34".
      */
-    public function getEstimatedAge(): int
+    public function getEstimatedAge(): string
     {
         // get the number of years between the age_estimated_at and now
         $years = (int) now()->diffInYears($this->age_estimated_at, true);
+        $estimatedAge = (int) $this->estimated_age;
 
-        return (int) $this->estimated_age + $years;
+        return __('Probably :age years old', ['age' => $estimatedAge + $years]);
     }
 
     /**
