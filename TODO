@@ -27,17 +27,16 @@ Todo:
     - add social networks
     - add phone numbers
     - add nationalities: DONE
-  - add support zone
+  - add zone to let users submit support tickets/requests
   - add task categories: DONE
   - manage tasks: DONE
-  - remove all stuff from controllers
   - Add services to manage instance
   - Add ability to broadcast a message to all users
   - Add passions to person
   - Add hobbies to person
   - log the number of emails sent, both at the account level and instance level: DONE
-    - the emails_sent column is already in the database: DONE
-  - show all the emails sent in the account, and to the contact
+  - show all the emails sent in the account: DONE
+  - show all the emails sent about this contact
   - hide done tasks: DONE
   - magic link: DONE
   - Create a task when the remind occurs: DONE
