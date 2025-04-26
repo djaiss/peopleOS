@@ -12,7 +12,7 @@ use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Encounter>
+ * @extends Factory<Gift>
  */
 class GiftFactory extends Factory
 {

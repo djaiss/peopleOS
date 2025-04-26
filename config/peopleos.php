@@ -123,5 +123,8 @@ return [
         'mood_creation' => 'Mood creation',
         'mood_update' => 'Mood update',
         'mood_deletion' => 'Mood deletion',
+        'marketing_testimony_creation' => 'Marketing testimony creation',
+        'marketing_testimony_update' => 'Marketing testimony update',
+        'marketing_testimony_deletion' => 'Marketing testimony deletion',
     ],
 ];

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Gift extends Model
+class MarketingTestimony extends Model
 {
     use HasFactory;
 
-    protected $table = 'gifts';
+    protected $table = 'marketing_testimonies';
 
     /**
      * The attributes that are mass assignable.
@@ -21,13 +21,12 @@ class Gift extends Model
      */
     protected $fillable = [
         'account_id',
-        'person_id',
+        'user_id',
         'status',
-        'name',
-        'occasion',
-        'url',
-        'image_path',
-        'gifted_at',
+        'name_to_display',
+        'url_to_point_to',
+        'display_avatar',
+        'testimony',
     ];
 
     /**
@@ -38,15 +37,15 @@ class Gift extends Model
     protected function casts(): array
     {
         return [
-            'name' => 'encrypted',
-            'occasion' => 'encrypted',
-            'url' => 'encrypted',
-            'gifted_at' => 'datetime',
+            'name_to_display' => 'encrypted',
+            'url_to_point_to' => 'encrypted',
+            'testimony' => 'encrypted',
+            'display_avatar' => 'boolean',
         ];
     }
 
     /**
-     * Get the account associated with the gift.
+     * Get the account associated with the testimony.
      */
     public function account(): BelongsTo
     {
@@ -54,10 +53,10 @@ class Gift extends Model
     }
 
     /**
-     * Get the person associated with the gift.
+     * Get the user associated with the testimony.
      */
-    public function person(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(User::class);
     }
 }
