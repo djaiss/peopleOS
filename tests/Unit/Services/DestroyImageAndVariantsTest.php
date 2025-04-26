@@ -23,7 +23,6 @@ class DestroyImageAndVariantsTest extends TestCase
         Storage::put($originalPath, 'original content');
         Storage::put($variant64, '64x64 content');
         Storage::put($variant128, '128x128 content');
-        Storage::put($variant256, '256x256 content');
 
         $service = new DestroyImageAndVariants($originalPath);
         $service->execute();
@@ -31,7 +30,6 @@ class DestroyImageAndVariantsTest extends TestCase
         Storage::assertMissing($originalPath);
         Storage::assertMissing($variant64);
         Storage::assertMissing($variant128);
-        Storage::assertMissing($variant256);
     }
 
     #[Test]

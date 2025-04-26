@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class UpdateProfilePicture
 {
@@ -32,6 +33,8 @@ class UpdateProfilePicture
 
     private function deleteOldProfilePicture(): void
     {
+        Log::info('Deleting old profile picture and variants');
+
         if ($this->user->profile_photo_path) {
             (new DestroyImageAndVariants(
                 path: $this->user->profile_photo_path,
