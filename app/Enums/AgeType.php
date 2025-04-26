@@ -9,4 +9,5 @@ enum AgeType: string
     case EXACT = 'exact';
     case ESTIMATED = 'estimated';
     case BRACKET = 'bracket';
+    case UNKNOWN = 'unknown';
 }

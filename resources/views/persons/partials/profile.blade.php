@@ -23,8 +23,8 @@
           <span class="text-sm text-gray-600">{{ $job }}</span>
         @endif
 
-        @if ($person->ageSpecialDate)
-          <span class="text-sm text-gray-600">{{ $person->ageSpecialDate->age }}</span>
+        @if ($person->age)
+          <span class="text-sm text-gray-600">{{ $person->age }}</span>
         @endif
       </div>
     </div>
