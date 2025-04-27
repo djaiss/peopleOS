@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/djaiss/peopleos">
-   <img src="docs/github/background-github.png" alt="Logo">
+   <img src="docs/github/background-github.png" alt="Logo" loading="lazy">
   </a>
 
   <p align="center">
