@@ -104,7 +104,7 @@
           <div class="flex items-center gap-x-4 sm:gap-x-2">
             <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
               <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-                <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" />
+                <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" loading="lazy" />
               </div>
             </a>
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually, our trademark is not registered, but we probably should write that to do like the big boys.') }}</p>
