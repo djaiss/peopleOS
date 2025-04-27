@@ -17,6 +17,8 @@
         </h1>
 
         @include('administration.marketing.partials.ratings')
+
+        @include('administration.marketing.partials.testimony')
       </div>
     </div>
   </div>
