@@ -31,7 +31,7 @@
 
       @if (! Auth::check())
         <div x-cloak x-show="showTooltip" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="translate-y-1 opacity-0" x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-1 opacity-0" class="absolute top-full left-1/2 z-50 mt-0 flex w-96 -translate-x-1/2 items-center gap-x-3 rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
-          <img src="{{ asset('marketing/taylor.webp') }}" srcset="{{ asset('marketing/taylor@2x.webp') }} 2x" alt="Taylor Swift being happy" height="80" width="80" />
+          <img src="{{ asset('marketing/taylor.webp') }}" srcset="{{ asset('marketing/taylor@2x.webp') }} 2x" alt="Taylor Swift being happy" height="80" width="80" loading="lazy" />
           <div class="flex flex-col">
             <p class="text-sm text-gray-600">Please login to vote.</p>
             <p class="text-sm text-gray-600">It's free and will help us improve the page.</p>
@@ -45,7 +45,7 @@
   <!-- thanks message -->
   @if (session('hasVoted'))
     <div id="thanks" class="flex items-center justify-center gap-x-8 border-b border-gray-200 p-4 pb-4">
-      <img src="{{ asset('marketing/obama.webp') }}" srcset="{{ asset('marketing/obama@2x.webp') }} 2x" alt="Obama agreeing with you" height="100" width="100" />
+      <img src="{{ asset('marketing/obama.webp') }}" srcset="{{ asset('marketing/obama@2x.webp') }} 2x" alt="Obama agreeing with you" height="100" width="100" loading="lazy" />
 
       <div class="flex flex-col gap-y-2">
         <p class="font-semibold">{{ __('Thanks for your feedback!') }}</p>
