@@ -22,6 +22,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
+use App\Http\Controllers\Instance\InstanceTestimonialsController;
 use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Journal\MonthController;
@@ -263,7 +264,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::delete('administration/personalization/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'destroy'])->name('administration.personalization.task-categories.destroy');
 
     // journal templates
-    Route::get('administration/personalization/journal-templates/new', [AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
+    Route::get('administratibon/personalization/journal-templates/new', [AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
     Route::post('administration/personalization/journal-templates', [AdministrationPersonalizationJournalTemplateController::class, 'create'])->name('administration.personalization.journal-templates.create');
     Route::get('administration/personalization/journal-templates/{journalTemplate}/edit', [AdministrationPersonalizationJournalTemplateController::class, 'edit'])->name('administration.personalization.journal-templates.edit');
     Route::put('administration/personalization/journal-templates/{journalTemplate}', [AdministrationPersonalizationJournalTemplateController::class, 'update'])->name('administration.personalization.journal-templates.update');
@@ -276,10 +277,14 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
     Route::middleware(['instance.admin'])->group(function (): void {
         Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
+
+        // accounts
         Route::get('instance/accounts/{account}', [InstanceController::class, 'show'])->name('instance.show');
         Route::delete('instance/accounts/{account}', [InstanceDestroyAccountController::class, 'destroy'])->name('instance.destroy');
-
         Route::put('instance/accounts/{account}/free', [InstanceFreeAccountController::class, 'update'])->name('instance.accounts.free');
+
+        // testimonials
+        Route::get('instance/testimonials', [InstanceTestimonialsController::class, 'index'])->name('instance.testimonial.index');
     });
 });
 

@@ -29,6 +29,13 @@
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+
+      <!-- menu -->
+      <ul class="flex gap-x-10 mb-10">
+        <li><a href="{{ route('instance.index') }}" class="text-blue-500 hover:underline">{{ __('User management') }}</a></li>
+        <li><a href="{{ route('instance.testimonial.index') }}" class="text-blue-500 hover:underline">{{ __('Testimonials management') }}</a></li>
+      </ul>
+
       <!-- Stats -->
       <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <!-- Total Accounts -->

@@ -25,7 +25,7 @@ class AdministrationMarketingTestimonialController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',
-            'testimony' => 'required|string|min:3|max:255',
+            'testimony' => 'required|string|min:3|max:1000',
             'url_to_point_to' => 'nullable|url|max:255',
         ]);
 
