@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\MarketingTestimonyStatus;
+use App\Jobs\SendMarketingTestimonialRejectedEmail;
 use App\Models\MarketingTestimony;
 use App\Models\User;
 use Exception;
@@ -14,12 +15,14 @@ class RejectMarketingTestimony
     public function __construct(
         private readonly User $user,
         private readonly MarketingTestimony $testimony,
+        private readonly string $reason,
     ) {}
 
     public function execute(): MarketingTestimony
     {
         $this->validate();
         $this->updateStatus();
+        $this->sendEmail();
 
         return $this->testimony;
     }
@@ -36,5 +39,13 @@ class RejectMarketingTestimony
         $this->testimony->update([
             'status' => MarketingTestimonyStatus::REJECTED->value,
         ]);
+    }
+
+    private function sendEmail(): void
+    {
+        SendMarketingTestimonialRejectedEmail::dispatch(
+            email: $this->user->email,
+            reason: $this->reason,
+        )->onQueue('high');
     }
 }
