@@ -11,6 +11,7 @@ use App\Http\Controllers\Administration\AdministrationEmailsSentController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationMarketingController;
+use App\Http\Controllers\Administration\AdministrationMarketingTestimonialController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
@@ -238,6 +239,11 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     // marketing
     Route::get('administration/marketing', [AdministrationMarketingController::class, 'index'])->name('administration.marketing.index');
     Route::delete('administration/marketing/{page}', [AdministrationMarketingController::class, 'destroy'])->name('administration.marketing.destroy');
+    Route::get('administration/marketing/testimonials/new', [AdministrationMarketingTestimonialController::class, 'new'])->name('administration.marketing.testimonial.new');
+    Route::post('administration/marketing/testimonials', [AdministrationMarketingTestimonialController::class, 'create'])->name('administration.marketing.testimonial.create');
+    Route::get('administration/marketing/testimonials/{testimonial}/edit', [AdministrationMarketingTestimonialController::class, 'edit'])->name('administration.marketing.testimonial.edit');
+    Route::put('administration/marketing/testimonials/{testimonial}', [AdministrationMarketingTestimonialController::class, 'update'])->name('administration.marketing.testimonial.update');
+    Route::delete('administration/marketing/testimonials/{testimonial}', [AdministrationMarketingTestimonialController::class, 'destroy'])->name('administration.marketing.testimonial.destroy');
 
     // create task on reminder
     Route::put('administration/personalization/create-task-on-reminder', [AdministrationCreateTaskOnReminderController::class, 'update'])->name('administration.personalization.create-task-on-reminder.update');
