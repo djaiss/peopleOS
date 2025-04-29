@@ -6,6 +6,7 @@ namespace Tests\Unit\Services;
 
 use App\Enums\MarketingTestimonyStatus;
 use App\Jobs\LogUserAction;
+use App\Jobs\SendMarketingTestimonialSubmittedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MarketingTestimony;
 use App\Models\User;
@@ -69,6 +70,14 @@ class CreateMarketingTestimonyTest extends TestCase
                 return $job->action === 'marketing_testimony_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created a marketing testimony';
+            }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendMarketingTestimonialSubmittedEmail::class,
+            callback: function (SendMarketingTestimonialSubmittedEmail $job) use ($user): bool {
+                return $job->email === $user->email;
             }
         );
     }

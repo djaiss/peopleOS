@@ -41,7 +41,6 @@ class UpdateMarketingTestimonyTest extends TestCase
             testimonyObject: $testimony,
             nameToDisplay: 'Monica Geller-Bing',
             testimony: 'I am so freakishly organized, and this product helps me stay that way!',
-            status: MarketingTestimonyStatus::APPROVED->value,
             urlToPointTo: 'https://monica-cleaning-tips.com',
             displayAvatar: false,
         ))->execute();
@@ -50,7 +49,7 @@ class UpdateMarketingTestimonyTest extends TestCase
             'id' => $testimony->id,
             'account_id' => $user->account_id,
             'user_id' => $user->id,
-            'status' => MarketingTestimonyStatus::APPROVED->value,
+            'status' => MarketingTestimonyStatus::PENDING->value,
             'display_avatar' => false,
         ]);
 
