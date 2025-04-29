@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Enums\MarketingTestimonyStatus;
+use App\Jobs\SendMarketingTestimonialRejectedEmail;
 use App\Models\MarketingTestimony;
 use App\Models\User;
 use App\Services\RejectMarketingTestimony;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -20,6 +22,8 @@ class RejectMarketingTestimonyTest extends TestCase
     #[Test]
     public function it_rejects_a_marketing_testimony_as_instance_administrator(): void
     {
+        Queue::fake();
+
         $user = User::factory()->create([
             'is_instance_admin' => true,
         ]);
@@ -30,6 +34,7 @@ class RejectMarketingTestimonyTest extends TestCase
         $updatedTestimony = (new RejectMarketingTestimony(
             user: $user,
             testimony: $testimony,
+            reason: 'violent content',
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
@@ -40,6 +45,14 @@ class RejectMarketingTestimonyTest extends TestCase
         $this->assertEquals(
             MarketingTestimonyStatus::REJECTED->value,
             $updatedTestimony->status
+        );
+
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendMarketingTestimonialRejectedEmail::class,
+            callback: function (SendMarketingTestimonialRejectedEmail $job) use ($user): bool {
+                return $job->email === $user->email;
+            }
         );
     }
 
@@ -60,6 +73,7 @@ class RejectMarketingTestimonyTest extends TestCase
         (new RejectMarketingTestimony(
             user: $user,
             testimony: $testimony,
+            reason: 'violent content',
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
