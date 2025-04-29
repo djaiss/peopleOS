@@ -285,6 +285,12 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
         // testimonials
         Route::get('instance/testimonials', [InstanceTestimonialsController::class, 'index'])->name('instance.testimonial.index');
+        Route::get('instance/testimonials/approved', [InstanceTestimonialsController::class, 'approved'])->name('instance.testimonial.approved');
+        Route::get('instance/testimonials/rejected', [InstanceTestimonialsController::class, 'rejected'])->name('instance.testimonial.rejected');
+        Route::get('instance/testimonials/all', [InstanceTestimonialsController::class, 'all'])->name('instance.testimonial.all');
+        Route::put('instance/testimonials/{testimonial}/accept', [InstanceTestimonialsController::class, 'accept'])->name('instance.testimonial.accept');
+        Route::get('instance/testimonials/{testimonial}/edit', [InstanceTestimonialsController::class, 'edit'])->name('instance.testimonial.edit');
+        Route::put('instance/testimonials/{testimonial}/reject', [InstanceTestimonialsController::class, 'reject'])->name('instance.testimonial.reject');
     });
 });
 

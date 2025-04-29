@@ -27,24 +27,24 @@ class RejectMarketingTestimonyTest extends TestCase
         $user = User::factory()->create([
             'is_instance_admin' => true,
         ]);
-        $testimony = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimony::factory()->create([
             'status' => MarketingTestimonyStatus::PENDING->value,
         ]);
 
-        $updatedTestimony = (new RejectMarketingTestimony(
+        $updatedTestimonial = (new RejectMarketingTestimony(
             user: $user,
-            testimony: $testimony,
+            testimonial: $testimonial,
             reason: 'violent content',
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
-            'id' => $testimony->id,
+            'id' => $testimonial->id,
             'status' => MarketingTestimonyStatus::REJECTED->value,
         ]);
 
         $this->assertEquals(
             MarketingTestimonyStatus::REJECTED->value,
-            $updatedTestimony->status
+            $updatedTestimonial->status
         );
 
         Queue::assertPushedOn(
@@ -63,7 +63,7 @@ class RejectMarketingTestimonyTest extends TestCase
             'is_instance_admin' => false,
             'first_name' => 'Gunther',
         ]);
-        $testimony = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimony::factory()->create([
             'status' => MarketingTestimonyStatus::PENDING->value,
         ]);
 
@@ -72,12 +72,12 @@ class RejectMarketingTestimonyTest extends TestCase
 
         (new RejectMarketingTestimony(
             user: $user,
-            testimony: $testimony,
+            testimonial: $testimonial,
             reason: 'violent content',
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
-            'id' => $testimony->id,
+            'id' => $testimonial->id,
             'status' => MarketingTestimonyStatus::PENDING->value,
         ]);
     }

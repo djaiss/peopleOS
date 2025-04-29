@@ -14,7 +14,7 @@ class RejectMarketingTestimony
 {
     public function __construct(
         private readonly User $user,
-        private readonly MarketingTestimony $testimony,
+        private readonly MarketingTestimony $testimonial,
         private readonly string $reason,
     ) {}
 
@@ -24,7 +24,7 @@ class RejectMarketingTestimony
         $this->updateStatus();
         $this->sendEmail();
 
-        return $this->testimony;
+        return $this->testimonial;
     }
 
     private function validate(): void
@@ -36,7 +36,7 @@ class RejectMarketingTestimony
 
     private function updateStatus(): void
     {
-        $this->testimony->update([
+        $this->testimonial->update([
             'status' => MarketingTestimonyStatus::REJECTED->value,
         ]);
     }
