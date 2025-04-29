@@ -48,8 +48,7 @@
         <div class="text-sm text-gray-500">
           {{ __('By :name', ['name' => $testimonial['name_to_display']]) }}
           @if ($testimonial['url_to_point_to'])
-            -
-            <a href="{{ $testimonial['url_to_point_to'] }}" target="_blank">)- {{ $testimonial['url_to_point_to'] }}</a>
+            <a href="{{ $testimonial['url_to_point_to'] }}" target="_blank" class="hover:text-blue-500 hover:underline">{{ $testimonial['url_to_point_to'] }}</a>
           @endif
         </div>
 

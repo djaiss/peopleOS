@@ -11,4 +11,6 @@ enum EmailType: string
     case LOGIN_FAILED = 'login_failed';
     case MAGIC_LINK_CREATED = 'magic_link_created';
     case REMINDER_SENT = 'reminder_sent';
+    case MARKETING_TESTIMONIAL_SUBMITTED_EMAIL = 'marketing_testimonial_submitted_email';
+    case MARKETING_TESTIMONIAL_REVIEWED_EMAIL = 'marketing_testimonial_reviewed_email';
 }

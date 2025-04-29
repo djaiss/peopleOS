@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Enums\MarketingTestimonyStatus;
 use App\Jobs\LogUserAction;
+use App\Jobs\SendMarketingTestimonialSubmittedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MarketingTestimony;
 use App\Models\User;
@@ -27,6 +28,7 @@ class CreateMarketingTestimony
         $this->create();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
+        $this->sendEmail();
 
         return $this->testimonyObject;
     }
@@ -56,5 +58,12 @@ class CreateMarketingTestimony
             action: 'marketing_testimony_creation',
             description: 'Created a marketing testimony',
         )->onQueue('low');
+    }
+
+    private function sendEmail(): void
+    {
+        SendMarketingTestimonialSubmittedEmail::dispatch(
+            email: $this->user->email,
+        )->onQueue('high');
     }
 }
