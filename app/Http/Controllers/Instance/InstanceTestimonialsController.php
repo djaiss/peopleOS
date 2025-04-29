@@ -50,6 +50,7 @@ class InstanceTestimonialsController extends Controller
             'name_to_display' => $testimonial->name_to_display,
             'url_to_point_to' => $testimonial->url_to_point_to,
             'testimony' => $testimonial->testimony,
+            'created_at' => $testimonial->created_at->format('Y-m-d H:i:s'),
         ];
     }
 }
