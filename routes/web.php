@@ -19,6 +19,7 @@ use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Administration\AdministrationTimezoneController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Instance\InstanceCancellationReasonsController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
@@ -291,6 +292,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
         Route::put('instance/testimonials/{testimonial}/accept', [InstanceTestimonialsController::class, 'accept'])->name('instance.testimonial.accept');
         Route::get('instance/testimonials/{testimonial}/edit', [InstanceTestimonialsController::class, 'edit'])->name('instance.testimonial.edit');
         Route::put('instance/testimonials/{testimonial}/reject', [InstanceTestimonialsController::class, 'reject'])->name('instance.testimonial.reject');
+
+        // account deletion reasons
+        Route::get('instance/cancellation-reasons', [InstanceCancellationReasonsController::class, 'index'])->name('instance.cancellation-reasons.index');
     });
 });
 

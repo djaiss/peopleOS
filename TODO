@@ -45,7 +45,7 @@ Todo:
   - let users create a review to be published on the marketing site: DONE
   - add no-referer to the marketing review link
   - send email to instance admin when a testimonial is submitted: DONE
-  - list all the account deletion reasons in the admin panel
+  - list all the account deletion reasons in the admin panel: DONE
   - change Testimony by Testimonial: done
   - export account data
   - automatically delete account after 6 months of inactivity: DONE
