@@ -8,7 +8,7 @@
 ?>
 
 <x-app-layout>
-  <!-- Admin Panel Indicator -->
+  <!-- Admin panel indicator -->
   <div class="border-b border-yellow-200 bg-yellow-50">
     <div class="mx-auto flex max-w-7xl items-center justify-center gap-x-3 px-4 py-2 sm:px-6 lg:px-8">
       <x-lucide-shield class="h-4 w-4 text-yellow-600" />
@@ -29,19 +29,15 @@
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <!-- menu -->
-      <ul class="mb-10 flex gap-x-10">
-        <li><a href="{{ route('instance.index') }}" class="text-blue-500 hover:underline">{{ __('User management') }}</a></li>
-        <li><a href="{{ route('instance.testimonial.index') }}" class="text-blue-500 hover:underline">{{ __('Testimonials management') }}</a></li>
-      </ul>
+      @include('instance.partials.menu')
 
       <!-- Stats -->
       <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <!-- Total Accounts -->
+        <!-- Total accounts -->
         <div class="rounded-lg border border-gray-200 bg-white p-4">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600">{{ __('Total Accounts') }}</p>
+              <p class="text-sm text-gray-600">{{ __('Total accounts') }}</p>
               <p class="text-2xl font-semibold">{{ $totalAccounts }}</p>
             </div>
             <div class="rounded-sm bg-green-100 p-2">
@@ -50,7 +46,7 @@
           </div>
         </div>
 
-        <!-- New Accounts This Month -->
+        <!-- New accounts last 30 days -->
         <div class="rounded-lg border border-gray-200 bg-white p-4">
           <div class="flex items-center justify-between">
             <div>
@@ -63,7 +59,7 @@
           </div>
         </div>
 
-        <!-- New Accounts This Week -->
+        <!-- New accounts last 7 days -->
         <div class="rounded-lg border border-gray-200 bg-white p-4">
           <div class="flex items-center justify-between">
             <div>
@@ -77,7 +73,7 @@
         </div>
       </div>
 
-      <!-- Accounts List -->
+      <!-- Accounts list -->
       <div class="mb-8 overflow-hidden rounded-lg border border-gray-200 bg-white" x-data="{
         search: '',
         accounts: {{ \Illuminate\Support\Js::from($accounts) }},
@@ -92,7 +88,7 @@
           </div>
         </div>
 
-        <!-- Table Header -->
+        <!-- Table header -->
         <div class="hidden grid-cols-12 gap-4 border-b border-gray-200 bg-gray-50 p-4 text-sm font-semibold text-gray-600 sm:grid">
           <div class="col-span-1">{{ __('ID') }}</div>
           <div class="col-span-5">{{ __('Administrator') }}</div>
@@ -100,7 +96,7 @@
           <div class="col-span-3">{{ __('Contacts') }}</div>
         </div>
 
-        <!-- Table Body -->
+        <!-- Table body -->
         <div class="divide-y divide-gray-200">
           <template x-for="account in accounts" :key="account.id">
             <a :href="account.url" class="grid cursor-pointer grid-cols-1 gap-2 p-4 text-sm hover:bg-blue-50 sm:grid-cols-12 sm:gap-4 sm:p-3" x-show="
@@ -109,7 +105,7 @@
                 account.email.toLowerCase().includes(search.toLowerCase()) ||
                 account.id.toString().includes(search)
             ">
-              <!-- Mobile Labels + Content -->
+              <!-- Mobile labels + content -->
               <div class="col-span-1 flex items-center justify-between sm:block">
                 <span class="font-semibold sm:hidden">ID:</span>
                 <span class="font-mono" x-text="account.id"></span>
@@ -148,7 +144,7 @@
             </a>
           </template>
 
-          <!-- Empty State -->
+          <!-- Empty state -->
           <div class="p-8 text-center" x-show="
             ! accounts.some(
               (account) =>
