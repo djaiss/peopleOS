@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Instance;
 
-use App\Enums\MarketingTestimonyStatus;
-use App\Models\MarketingTestimony;
+use App\Enums\MarketingTestimonialStatus;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -27,8 +27,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'last_name' => 'Geller',
         ]);
 
-        MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
             'name_to_display' => 'Chandler Bing',
             'testimony' => 'Could this product BE any better?',
         ]);
@@ -53,8 +53,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'is_instance_admin' => true,
         ]);
 
-        MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::APPROVED->value,
+        MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::APPROVED->value,
             'name_to_display' => 'Joey Tribbiani',
             'testimony' => 'How you doin\'? This product is amazing!',
         ]);
@@ -75,8 +75,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'is_instance_admin' => true,
         ]);
 
-        MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::REJECTED->value,
+        MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::REJECTED->value,
             'name_to_display' => 'Monica Geller',
             'testimony' => 'This product is not clean enough!',
         ]);
@@ -97,14 +97,14 @@ class InstanceTestimonialsControllerTest extends TestCase
             'is_instance_admin' => true,
         ]);
 
-        MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
-        MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::APPROVED->value,
+        MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::APPROVED->value,
         ]);
-        MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::REJECTED->value,
+        MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::REJECTED->value,
         ]);
 
         $response = $this->actingAs($user)
@@ -124,8 +124,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'is_instance_admin' => true,
         ]);
 
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
         $response = $this->actingAs($user)
@@ -142,8 +142,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'is_instance_admin' => true,
         ]);
 
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
         $response = $this->actingAs($user)
@@ -161,8 +161,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'is_instance_admin' => true,
         ]);
 
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
         $response = $this->actingAs($user)
@@ -198,8 +198,8 @@ class InstanceTestimonialsControllerTest extends TestCase
             'last_name' => 'Geller',
         ]);
 
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
             'name_to_display' => 'Phoebe Buffay',
             'testimony' => 'This product is so good, it\'s like a cat!',
             'url_to_point_to' => 'https://example.com',

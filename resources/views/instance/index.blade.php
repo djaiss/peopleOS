@@ -29,9 +29,8 @@
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-
       <!-- menu -->
-      <ul class="flex gap-x-10 mb-10">
+      <ul class="mb-10 flex gap-x-10">
         <li><a href="{{ route('instance.index') }}" class="text-blue-500 hover:underline">{{ __('User management') }}</a></li>
         <li><a href="{{ route('instance.testimonial.index') }}" class="text-blue-500 hover:underline">{{ __('Testimonials management') }}</a></li>
       </ul>

@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Models\Account;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<MarketingTestimony>
+ * @extends Factory<MarketingTestimonial>
  */
-class MarketingTestimonyFactory extends Factory
+class MarketingTestimonialFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = MarketingTestimony::class;
+    protected $model = MarketingTestimonial::class;
 
     /**
      * Define the model's default state.
@@ -32,7 +32,7 @@ class MarketingTestimonyFactory extends Factory
         return [
             'account_id' => Account::factory(),
             'user_id' => User::factory(),
-            'status' => fake()->randomElement(MarketingTestimonyStatus::cases())->value,
+            'status' => fake()->randomElement(MarketingTestimonialStatus::cases())->value,
             'name_to_display' => fake()->name(),
             'url_to_point_to' => fake()->url(),
             'display_avatar' => fake()->boolean(),

@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Instance;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Http\Controllers\Controller;
-use App\Models\MarketingTestimony;
-use App\Services\RejectMarketingTestimony;
-use App\Services\ValidateMarketingTestimony;
+use App\Models\MarketingTestimonial;
+use App\Services\RejectMarketingTestimonial;
+use App\Services\ValidateMarketingTestimonial;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class InstanceTestimonialsController extends Controller
 {
     public function index(): View
     {
-        $pendingTestimonials = MarketingTestimony::where('status', MarketingTestimonyStatus::PENDING->value)
+        $pendingTestimonials = MarketingTestimonial::where('status', MarketingTestimonialStatus::PENDING->value)
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (MarketingTestimony $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -35,11 +35,11 @@ class InstanceTestimonialsController extends Controller
 
     public function approved(): View
     {
-        $testimonials = MarketingTestimony::where('status', MarketingTestimonyStatus::APPROVED->value)
+        $testimonials = MarketingTestimonial::where('status', MarketingTestimonialStatus::APPROVED->value)
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(MarketingTestimony $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -52,11 +52,11 @@ class InstanceTestimonialsController extends Controller
 
     public function rejected(): View
     {
-        $testimonials = MarketingTestimony::where('status', MarketingTestimonyStatus::REJECTED->value)
+        $testimonials = MarketingTestimonial::where('status', MarketingTestimonialStatus::REJECTED->value)
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(MarketingTestimony $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -69,10 +69,10 @@ class InstanceTestimonialsController extends Controller
 
     public function all(): View
     {
-        $testimonials = MarketingTestimony::with('user')
+        $testimonials = MarketingTestimonial::with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(MarketingTestimony $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -87,10 +87,10 @@ class InstanceTestimonialsController extends Controller
     {
         $id = (int) $request->route()->parameter('testimonial');
 
-        $testimonial = MarketingTestimony::where('id', $id)
+        $testimonial = MarketingTestimonial::where('id', $id)
             ->firstOrFail();
 
-        (new ValidateMarketingTestimony(
+        (new ValidateMarketingTestimonial(
             user: Auth::user(),
             testimonial: $testimonial,
         ))->execute();
@@ -103,7 +103,7 @@ class InstanceTestimonialsController extends Controller
     {
         $id = (int) $request->route()->parameter('testimonial');
 
-        $testimonial = MarketingTestimony::where('id', $id)
+        $testimonial = MarketingTestimonial::where('id', $id)
             ->firstOrFail();
 
         return view('instance.testimonials.partials.reject', [
@@ -115,10 +115,10 @@ class InstanceTestimonialsController extends Controller
     {
         $id = (int) $request->route()->parameter('testimonial');
 
-        $testimonial = MarketingTestimony::where('id', $id)
+        $testimonial = MarketingTestimonial::where('id', $id)
             ->firstOrFail();
 
-        (new RejectMarketingTestimony(
+        (new RejectMarketingTestimonial(
             user: Auth::user(),
             testimonial: $testimonial,
             reason: $request->input('reason'),
@@ -130,16 +130,16 @@ class InstanceTestimonialsController extends Controller
 
     public function getCount(): array
     {
-        $pendingTestimonialsCount = MarketingTestimony::where('status', MarketingTestimonyStatus::PENDING)
+        $pendingTestimonialsCount = MarketingTestimonial::where('status', MarketingTestimonialStatus::PENDING)
             ->count();
 
-        $approvedTestimonialsCount = MarketingTestimony::where('status', MarketingTestimonyStatus::APPROVED)
+        $approvedTestimonialsCount = MarketingTestimonial::where('status', MarketingTestimonialStatus::APPROVED)
             ->count();
 
-        $rejectedTestimonialsCount = MarketingTestimony::where('status', MarketingTestimonyStatus::REJECTED)
+        $rejectedTestimonialsCount = MarketingTestimonial::where('status', MarketingTestimonialStatus::REJECTED)
             ->count();
 
-        $allTestimonialsCount = MarketingTestimony::count();
+        $allTestimonialsCount = MarketingTestimonial::count();
 
         return [
             'pending_testimonials_count' => $pendingTestimonialsCount,
@@ -149,7 +149,7 @@ class InstanceTestimonialsController extends Controller
         ];
     }
 
-    public function getMarketingTestimonial(MarketingTestimony $testimonial): array
+    public function getMarketingTestimonial(MarketingTestimonial $testimonial): array
     {
         return [
             'id' => $testimonial->id,

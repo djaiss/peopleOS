@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\SendMarketingTestimonialRejectedEmail;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use Exception;
 
-class RejectMarketingTestimony
+class RejectMarketingTestimonial
 {
     public function __construct(
         private readonly User $user,
-        private readonly MarketingTestimony $testimonial,
+        private readonly MarketingTestimonial $testimonial,
         private readonly string $reason,
     ) {}
 
-    public function execute(): MarketingTestimony
+    public function execute(): MarketingTestimonial
     {
         $this->validate();
         $this->updateStatus();
@@ -30,14 +30,14 @@ class RejectMarketingTestimony
     private function validate(): void
     {
         if (! $this->user->is_instance_admin) {
-            throw new Exception('User must be an instance administrator to reject a testimony.');
+            throw new Exception('User must be an instance administrator to reject a testimonial.');
         }
     }
 
     private function updateStatus(): void
     {
         $this->testimonial->update([
-            'status' => MarketingTestimonyStatus::REJECTED->value,
+            'status' => MarketingTestimonialStatus::REJECTED->value,
         ]);
     }
 

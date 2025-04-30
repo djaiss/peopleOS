@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\SendMarketingTestimonialReviewedEmail;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
-use App\Services\ValidateMarketingTestimony;
+use App\Services\ValidateMarketingTestimonial;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class ValidateMarketingTestimonyTest extends TestCase
+class ValidateMarketingTestimonialTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_validates_a_marketing_testimony_as_instance_administrator(): void
+    public function it_validates_a_marketing_testimonial_as_instance_administrator(): void
     {
         Queue::fake();
 
@@ -30,23 +30,23 @@ class ValidateMarketingTestimonyTest extends TestCase
         $ross = User::factory()->create([
             'email' => 'ross@geller.com',
         ]);
-        $testimonial = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimonial::factory()->create([
             'user_id' => $ross->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
-        $updatedTestimonial = (new ValidateMarketingTestimony(
+        $updatedTestimonial = (new ValidateMarketingTestimonial(
             user: $user,
             testimonial: $testimonial,
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
             'id' => $testimonial->id,
-            'status' => MarketingTestimonyStatus::APPROVED->value,
+            'status' => MarketingTestimonialStatus::APPROVED->value,
         ]);
 
         $this->assertEquals(
-            MarketingTestimonyStatus::APPROVED->value,
+            MarketingTestimonialStatus::APPROVED->value,
             $updatedTestimonial->status
         );
 
@@ -66,21 +66,21 @@ class ValidateMarketingTestimonyTest extends TestCase
             'is_instance_admin' => false,
             'first_name' => 'Gunther',
         ]);
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('User must be an instance administrator to validate a testimonial.');
 
-        (new ValidateMarketingTestimony(
+        (new ValidateMarketingTestimonial(
             user: $user,
             testimonial: $testimonial,
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
             'id' => $testimonial->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
     }
 }

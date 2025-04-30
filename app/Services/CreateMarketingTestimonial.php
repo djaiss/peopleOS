@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\LogUserAction;
 use App\Jobs\SendMarketingTestimonialSubmittedEmail;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 
-class CreateMarketingTestimony
+class CreateMarketingTestimonial
 {
-    private MarketingTestimony $testimonyObject;
+    private MarketingTestimonial $testimonialObject;
 
     public function __construct(
         private readonly User $user,
@@ -23,22 +23,22 @@ class CreateMarketingTestimony
         private readonly bool $displayAvatar = false,
     ) {}
 
-    public function execute(): MarketingTestimony
+    public function execute(): MarketingTestimonial
     {
         $this->create();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
         $this->sendEmail();
 
-        return $this->testimonyObject;
+        return $this->testimonialObject;
     }
 
     private function create(): void
     {
-        $this->testimonyObject = MarketingTestimony::create([
+        $this->testimonialObject = MarketingTestimonial::create([
             'account_id' => $this->user->account_id,
             'user_id' => $this->user->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
             'name_to_display' => $this->nameToDisplay,
             'url_to_point_to' => $this->urlToPointTo,
             'display_avatar' => $this->displayAvatar,

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Models\MarketingPage;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use App\Services\GetMarketingActivities;
 use Carbon\Carbon;
@@ -32,12 +32,12 @@ class GetMarketingActivitiesTest extends TestCase
             'updated_at' => '2024-01-01 12:00:00',
         ]);
 
-        $marketingTestimony = MarketingTestimony::factory()->create([
+        $marketingTestimonial = MarketingTestimonial::factory()->create([
             'account_id' => $user->account_id,
             'name_to_display' => 'Monica Geller',
             'testimony' => 'This is a great product!',
             'url_to_point_to' => 'https://example.com/testimonial',
-            'status' => MarketingTestimonyStatus::APPROVED,
+            'status' => MarketingTestimonialStatus::APPROVED,
         ]);
 
         $array = (new GetMarketingActivities($user))->execute();
@@ -56,11 +56,11 @@ class GetMarketingActivitiesTest extends TestCase
         ], $array['marketingPages'][0]);
 
         $this->assertEquals([
-            'id' => $marketingTestimony->id,
-            'name_to_display' => $marketingTestimony->name_to_display,
+            'id' => $marketingTestimonial->id,
+            'name_to_display' => $marketingTestimonial->name_to_display,
             'status' => 'approved',
-            'testimony' => $marketingTestimony->testimony,
-            'url_to_point_to' => $marketingTestimony->url_to_point_to,
+            'testimony' => $marketingTestimonial->testimony,
+            'url_to_point_to' => $marketingTestimonial->url_to_point_to,
             'created_at' => '2024-01-01 12:00',
         ], $array['testimonials'][0]);
     }

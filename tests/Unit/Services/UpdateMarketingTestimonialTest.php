@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
-use App\Services\UpdateMarketingTestimony;
+use App\Services\UpdateMarketingTestimonial;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class UpdateMarketingTestimonyTest extends TestCase
+class UpdateMarketingTestimonialTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -26,19 +26,19 @@ class UpdateMarketingTestimonyTest extends TestCase
         Queue::fake();
 
         $user = User::factory()->create();
-        $testimony = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimonial::factory()->create([
             'account_id' => $user->account_id,
             'user_id' => $user->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
             'name_to_display' => 'Monica Geller',
             'testimony' => 'I love how clean and organized this product is!',
             'url_to_point_to' => 'https://cleanliness-is-next-to-godliness.com',
             'display_avatar' => true,
         ]);
 
-        $updatedTestimony = (new UpdateMarketingTestimony(
+        $updatedTestimonial = (new UpdateMarketingTestimonial(
             user: $user,
-            testimonyObject: $testimony,
+            testimonialObject: $testimonial,
             nameToDisplay: 'Monica Geller-Bing',
             testimony: 'I am so freakishly organized, and this product helps me stay that way!',
             urlToPointTo: 'https://monica-cleaning-tips.com',
@@ -46,23 +46,23 @@ class UpdateMarketingTestimonyTest extends TestCase
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
-            'id' => $testimony->id,
+            'id' => $testimonial->id,
             'account_id' => $user->account_id,
             'user_id' => $user->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
             'display_avatar' => false,
         ]);
 
-        $this->assertEquals('Monica Geller-Bing', $updatedTestimony->name_to_display);
-        $this->assertEquals('https://monica-cleaning-tips.com', $updatedTestimony->url_to_point_to);
+        $this->assertEquals('Monica Geller-Bing', $updatedTestimonial->name_to_display);
+        $this->assertEquals('https://monica-cleaning-tips.com', $updatedTestimonial->url_to_point_to);
         $this->assertEquals(
             'I am so freakishly organized, and this product helps me stay that way!',
-            $updatedTestimony->testimony
+            $updatedTestimonial->testimony
         );
 
         $this->assertInstanceOf(
-            MarketingTestimony::class,
-            $updatedTestimony
+            MarketingTestimonial::class,
+            $updatedTestimonial
         );
 
         Queue::assertPushedOn(
@@ -77,9 +77,9 @@ class UpdateMarketingTestimonyTest extends TestCase
             queue: 'low',
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
-                return $job->action === 'marketing_testimony_update'
+                return $job->action === 'marketing_testimonial_update'
                     && $job->user->id === $user->id
-                    && $job->description === 'Updated a marketing testimony';
+                    && $job->description === 'Updated a marketing testimonial';
             }
         );
     }
@@ -88,13 +88,13 @@ class UpdateMarketingTestimonyTest extends TestCase
     public function it_fails_if_user_and_testimony_are_not_in_the_same_account(): void
     {
         $user = User::factory()->create();
-        $testimony = MarketingTestimony::factory()->create();
+        $testimonial = MarketingTestimonial::factory()->create();
 
         $this->expectException(ModelNotFoundException::class);
 
-        (new UpdateMarketingTestimony(
+        (new UpdateMarketingTestimonial(
             user: $user,
-            testimonyObject: $testimony,
+            testimonialObject: $testimonial,
             nameToDisplay: 'Chandler Bing',
             testimony: 'Could this product BE any better?',
         ))->execute();
