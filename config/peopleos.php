@@ -53,6 +53,28 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Email that receives marketing testimonial notifications
+    |--------------------------------------------------------------------------
+    |
+    | This email is used to receive notifications when a marketing testimonial is submitted.
+    |
+    */
+
+    'marketing_testimonial_notification_email' => env('MARKETING_TESTIMONIAL_NOTIFICATION_EMAIL', 'hello@example.com'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email that receives account deletion notifications
+    |--------------------------------------------------------------------------
+    |
+    | This email is used to receive notifications when an account is deleted.
+    |
+    */
+
+    'account_deletion_notification_email' => env('ACCOUNT_DELETION_NOTIFICATION_EMAIL', 'hello@example.com'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Possible actions
     |--------------------------------------------------------------------------
     |

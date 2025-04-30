@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\LogUserAction;
 use App\Jobs\SendMarketingTestimonialSubmittedEmail;
+use App\Jobs\SendMarketingTestimonialSubmittedEmailToInstanceAdministrator;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MarketingTestimonial;
 use App\Models\User;
@@ -29,6 +30,7 @@ class CreateMarketingTestimonial
         $this->updateUserLastActivityDate();
         $this->logUserAction();
         $this->sendEmail();
+        $this->warnInstanceAdministrator();
 
         return $this->testimonialObject;
     }
@@ -65,5 +67,11 @@ class CreateMarketingTestimonial
         SendMarketingTestimonialSubmittedEmail::dispatch(
             email: $this->user->email,
         )->onQueue('high');
+    }
+
+    private function warnInstanceAdministrator(): void
+    {
+        SendMarketingTestimonialSubmittedEmailToInstanceAdministrator::dispatch()
+            ->onQueue('high');
     }
 }

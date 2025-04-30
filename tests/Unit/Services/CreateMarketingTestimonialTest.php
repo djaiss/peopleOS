@@ -7,6 +7,7 @@ namespace Tests\Unit\Services;
 use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\LogUserAction;
 use App\Jobs\SendMarketingTestimonialSubmittedEmail;
+use App\Jobs\SendMarketingTestimonialSubmittedEmailToInstanceAdministrator;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\MarketingTestimonial;
 use App\Models\User;
@@ -79,6 +80,11 @@ class CreateMarketingTestimonialTest extends TestCase
             callback: function (SendMarketingTestimonialSubmittedEmail $job) use ($user): bool {
                 return $job->email === $user->email;
             }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendMarketingTestimonialSubmittedEmailToInstanceAdministrator::class,
         );
     }
 }

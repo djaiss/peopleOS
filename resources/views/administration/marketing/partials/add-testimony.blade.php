@@ -1,4 +1,4 @@
-<form id="new-testimonial" x-target="new-testimonial" action="{{ route('administration.marketing.testimonial.create') }}" method="POST" class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
+<form id="new-testimonial" x-target="new-testimonial testimonial-list" action="{{ route('administration.marketing.testimonial.create') }}" method="POST" class="mb-8 border border-gray-200 bg-white sm:rounded-lg">
   @csrf
 
   <div class="flex gap-2 px-4 pt-4">
