@@ -4,34 +4,34 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\SendMarketingTestimonialRejectedEmail;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
-use App\Services\RejectMarketingTestimony;
+use App\Services\RejectMarketingTestimonial;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class RejectMarketingTestimonyTest extends TestCase
+class RejectMarketingTestimonialTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_rejects_a_marketing_testimony_as_instance_administrator(): void
+    public function it_rejects_a_marketing_testimonial_as_instance_administrator(): void
     {
         Queue::fake();
 
         $user = User::factory()->create([
             'is_instance_admin' => true,
         ]);
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
-        $updatedTestimonial = (new RejectMarketingTestimony(
+        $updatedTestimonial = (new RejectMarketingTestimonial(
             user: $user,
             testimonial: $testimonial,
             reason: 'violent content',
@@ -39,11 +39,11 @@ class RejectMarketingTestimonyTest extends TestCase
 
         $this->assertDatabaseHas('marketing_testimonies', [
             'id' => $testimonial->id,
-            'status' => MarketingTestimonyStatus::REJECTED->value,
+            'status' => MarketingTestimonialStatus::REJECTED->value,
         ]);
 
         $this->assertEquals(
-            MarketingTestimonyStatus::REJECTED->value,
+            MarketingTestimonialStatus::REJECTED->value,
             $updatedTestimonial->status
         );
 
@@ -63,14 +63,14 @@ class RejectMarketingTestimonyTest extends TestCase
             'is_instance_admin' => false,
             'first_name' => 'Gunther',
         ]);
-        $testimonial = MarketingTestimony::factory()->create([
-            'status' => MarketingTestimonyStatus::PENDING->value,
+        $testimonial = MarketingTestimonial::factory()->create([
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
 
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('User must be an instance administrator to reject a testimony.');
+        $this->expectExceptionMessage('User must be an instance administrator to reject a testimonial.');
 
-        (new RejectMarketingTestimony(
+        (new RejectMarketingTestimonial(
             user: $user,
             testimonial: $testimonial,
             reason: 'violent content',
@@ -78,7 +78,7 @@ class RejectMarketingTestimonyTest extends TestCase
 
         $this->assertDatabaseHas('marketing_testimonies', [
             'id' => $testimonial->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
         ]);
     }
 }

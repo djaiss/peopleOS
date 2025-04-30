@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
-use App\Models\MarketingTestimony;
-use App\Services\CreateMarketingTestimony;
-use App\Services\DestroyMarketingTestimony;
-use App\Services\UpdateMarketingTestimony;
+use App\Models\MarketingTestimonial;
+use App\Services\CreateMarketingTestimonial;
+use App\Services\DestroyMarketingTestimonial;
+use App\Services\UpdateMarketingTestimonial;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +29,7 @@ class AdministrationMarketingTestimonialController extends Controller
             'url_to_point_to' => 'nullable|url|max:255',
         ]);
 
-        (new CreateMarketingTestimony(
+        (new CreateMarketingTestimonial(
             user: Auth::user(),
             nameToDisplay: $validated['name'],
             testimony: $validated['testimony'],
@@ -44,7 +44,7 @@ class AdministrationMarketingTestimonialController extends Controller
     {
         $id = (int) $request->route()->parameter('testimonial');
 
-        $testimonial = MarketingTestimony::where('account_id', Auth::user()->account_id)
+        $testimonial = MarketingTestimonial::where('account_id', Auth::user()->account_id)
             ->where('id', $id)
             ->firstOrFail();
 
@@ -57,7 +57,7 @@ class AdministrationMarketingTestimonialController extends Controller
     {
         $id = (int) $request->route()->parameter('testimonial');
 
-        $testimonial = MarketingTestimony::where('account_id', Auth::user()->account_id)
+        $testimonial = MarketingTestimonial::where('account_id', Auth::user()->account_id)
             ->where('id', $id)
             ->firstOrFail();
 
@@ -67,9 +67,9 @@ class AdministrationMarketingTestimonialController extends Controller
             'url_to_point_to' => 'nullable|url|max:255',
         ]);
 
-        (new UpdateMarketingTestimony(
+        (new UpdateMarketingTestimonial(
             user: Auth::user(),
-            testimonyObject: $testimonial,
+            testimonialObject: $testimonial,
             nameToDisplay: $validated['name'],
             testimony: $validated['testimony'],
             urlToPointTo: $validated['url_to_point_to'] ?? null,
@@ -83,13 +83,13 @@ class AdministrationMarketingTestimonialController extends Controller
     {
         $id = (int) $request->route()->parameter('testimonial');
 
-        $testimonial = MarketingTestimony::where('account_id', Auth::user()->account_id)
+        $testimonial = MarketingTestimonial::where('account_id', Auth::user()->account_id)
             ->where('id', $id)
             ->firstOrFail();
 
-        (new DestroyMarketingTestimony(
+        (new DestroyMarketingTestimonial(
             user: Auth::user(),
-            testimony: $testimonial,
+            testimonial: $testimonial,
         ))->execute();
 
         return redirect()->route('administration.marketing.index')

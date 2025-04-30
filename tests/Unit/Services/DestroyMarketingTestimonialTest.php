@@ -6,16 +6,16 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
-use App\Services\DestroyMarketingTestimony;
+use App\Services\DestroyMarketingTestimonial;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class DestroyMarketingTestimonyTest extends TestCase
+class DestroyMarketingTestimonialTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -28,19 +28,19 @@ class DestroyMarketingTestimonyTest extends TestCase
             'first_name' => 'Phoebe',
             'last_name' => 'Buffay',
         ]);
-        $testimony = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimonial::factory()->create([
             'account_id' => $user->account_id,
             'name_to_display' => 'Phoebe Buffay',
             'testimony' => 'Smelly Cat, what are they feeding you?',
         ]);
 
-        (new DestroyMarketingTestimony(
+        (new DestroyMarketingTestimonial(
             user: $user,
-            testimony: $testimony,
+            testimonial: $testimonial,
         ))->execute();
 
         $this->assertDatabaseMissing('marketing_testimonies', [
-            'id' => $testimony->id,
+            'id' => $testimonial->id,
         ]);
 
         Queue::assertPushedOn(
@@ -55,9 +55,9 @@ class DestroyMarketingTestimonyTest extends TestCase
             queue: 'low',
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
-                return $job->action === 'marketing_testimony_deletion'
+                return $job->action === 'marketing_testimonial_deletion'
                     && $job->user->id === $user->id
-                    && $job->description === 'Deleted a marketing testimony';
+                    && $job->description === 'Deleted a marketing testimonial';
             }
         );
     }
@@ -69,13 +69,13 @@ class DestroyMarketingTestimonyTest extends TestCase
             'first_name' => 'Joey',
             'last_name' => 'Tribbiani',
         ]);
-        $testimony = MarketingTestimony::factory()->create();
+        $testimonial = MarketingTestimonial::factory()->create();
 
         $this->expectException(ModelNotFoundException::class);
 
-        (new DestroyMarketingTestimony(
+        (new DestroyMarketingTestimonial(
             user: $user,
-            testimony: $testimony,
+            testimonial: $testimonial,
         ))->execute();
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Administration;
 
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -46,7 +46,7 @@ class AdministrationMarketingTestimonialControllerTest extends TestCase
     public function it_loads_the_edit_testimonial_view(): void
     {
         $user = User::factory()->create();
-        $testimonial = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimonial::factory()->create([
             'account_id' => $user->account_id,
             'name_to_display' => 'Chandler Bing',
             'testimony' => 'Could this product BE any better?',
@@ -64,7 +64,7 @@ class AdministrationMarketingTestimonialControllerTest extends TestCase
     public function it_can_edit_a_testimonial(): void
     {
         $user = User::factory()->create();
-        $testimonial = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimonial::factory()->create([
             'account_id' => $user->account_id,
             'name_to_display' => 'Chandler Bing',
             'testimony' => 'Could this product BE any better?',
@@ -86,7 +86,7 @@ class AdministrationMarketingTestimonialControllerTest extends TestCase
     public function it_can_delete_a_testimonial(): void
     {
         $user = User::factory()->create();
-        $testimonial = MarketingTestimony::factory()->create([
+        $testimonial = MarketingTestimonial::factory()->create([
             'account_id' => $user->account_id,
         ]);
 
