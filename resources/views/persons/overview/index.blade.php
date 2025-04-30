@@ -17,6 +17,14 @@
 )
 
 @include(
+  'persons.overview.partials.encounters',
+  [
+    'person' => $person,
+    'encounters' => $encounters,
+  ]
+)
+
+@include(
   'persons.overview.partials.physical-apperance',
   [
     'person' => $person,
@@ -28,13 +36,5 @@
   'persons.overview.partials.how-we-met',
   [
     'person' => $person,
-  ]
-)
-
-@include(
-  'persons.overview.partials.encounters',
-  [
-    'person' => $person,
-    'encounters' => $encounters,
   ]
 )
