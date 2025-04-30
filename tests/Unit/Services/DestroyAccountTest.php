@@ -23,7 +23,7 @@ class DestroyAccountTest extends TestCase
     {
         Queue::fake();
         Mail::fake();
-        config(['mail.account_deletion_notification_email' => 'regis@peopleos.com']);
+        config(['peopleos.account_deletion_notification_email' => 'regis@peopleos.com']);
 
         $user = User::factory()->create();
 
