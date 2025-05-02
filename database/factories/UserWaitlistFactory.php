@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\UserWaitlist;
@@ -27,6 +29,7 @@ class UserWaitlistFactory extends Factory
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'confirmed_at' => $this->faker->boolean(),
+            'confirmation_code' => $this->faker->url(),
         ];
     }
 }

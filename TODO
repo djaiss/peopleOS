@@ -52,6 +52,7 @@ Todo:
   - automatically delete account after 6 months of inactivity: DONE
   - add the ability to modify the icon / color of a life event
   - add Cloudflare user protection on registration: DONE
+  - test all mailables
 
   Country born - city born
   Country/place studies

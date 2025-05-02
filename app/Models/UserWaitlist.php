@@ -20,6 +20,7 @@ class UserWaitlist extends Model
      */
     protected $fillable = [
         'email',
+        'confirmation_code',
         'confirmed_at',
     ];
 
@@ -30,5 +31,7 @@ class UserWaitlist extends Model
      */
     protected $casts = [
         'confirmed_at' => 'boolean',
+        'email' => 'encrypted',
+        'confirmation_code' => 'encrypted',
     ];
 }

@@ -18,6 +18,7 @@ use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Administration\AdministrationTimezoneController;
+use App\Http\Controllers\ConfirmInscriptionToWaitlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Instance\InstanceCancellationReasonsController;
 use App\Http\Controllers\Instance\InstanceController;
@@ -73,6 +74,9 @@ Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update'
 Route::get('/person/{hash}/reminder/{id}/stop', [StopReminderController::class, 'show'])
     ->name('reminder.stop')
     ->middleware('signed');
+
+// confirm inscription to waitlist
+Route::get('/waitlist/confirm/{code}', [ConfirmInscriptionToWaitlistController::class, 'show'])->name('waitlist.confirm');
 
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
