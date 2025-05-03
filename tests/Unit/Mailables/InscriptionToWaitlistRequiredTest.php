@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Mail;
 
 use App\Mail\InscriptionToWaitlistRequired;
-use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class InscriptionToWaitlistRequiredTest extends TestCase

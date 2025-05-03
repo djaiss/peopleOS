@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Marketing;
 
+use App\Http\Controllers\Controller;
 use App\Services\ValidateConfirmationCodeToWaitlist;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -28,6 +29,6 @@ class ConfirmInscriptionToWaitlistController extends Controller
             return redirect()->back()->withErrors(['content' => $e->getMessage()]);
         }
 
-        return view('auth.register');
+        return view('marketing.waitlist.confirmation');
     }
 }

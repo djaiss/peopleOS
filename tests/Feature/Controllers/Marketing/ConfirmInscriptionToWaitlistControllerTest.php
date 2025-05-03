@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers;
+namespace Tests\Feature\Controllers\Marketing;
 
 use App\Models\UserWaitlist;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -29,6 +29,7 @@ class ConfirmInscriptionToWaitlistControllerTest extends TestCase
         $response = $this->get($url);
 
         $response->assertStatus(200);
+        $response->assertViewIs('marketing.waitlist.confirmation');
 
         $this->assertTrue($userWaitlist->fresh()->confirmed_at);
     }

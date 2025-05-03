@@ -47,6 +47,9 @@ return [
         'marketing/partials/footer' => '2025-04-27 13:27:54',
         'marketing/partials/header' => '2025-04-12 19:23:37',
         'marketing/pricing/index' => '2025-04-27 13:27:54',
+        'marketing/waitlist/confirmation' => '2025-05-02 14:33:03',
+        'marketing/waitlist/subscribe' => '2025-05-02 14:34:00',
+        'marketing/waitlist/waiting' => '2025-05-02 18:01:10',
         'marketing/why/index' => '2025-04-27 13:27:54',
     ],
 ];
