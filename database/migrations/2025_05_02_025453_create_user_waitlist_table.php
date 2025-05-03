@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('email');
             $table->text('confirmation_code')->nullable();
-            $table->boolean('confirmed_at')->nullable();
+            $table->datetime('confirmed_at')->nullable();
             $table->timestamps();
         });
     }
