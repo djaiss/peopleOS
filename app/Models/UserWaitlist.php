@@ -30,7 +30,7 @@ class UserWaitlist extends Model
      * @var array<string,string>
      */
     protected $casts = [
-        'confirmed_at' => 'boolean',
+        'confirmed_at' => 'datetime',
         'email' => 'encrypted',
         'confirmation_code' => 'encrypted',
     ];
