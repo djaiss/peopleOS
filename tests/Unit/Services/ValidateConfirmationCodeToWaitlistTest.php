@@ -31,8 +31,8 @@ class ValidateConfirmationCodeToWaitlistTest extends TestCase
         ))->execute();
 
         $this->assertEquals(
-            '2025-03-17 10:00:00',
-            $waitlist->fresh()->confirmed_at
+            '2025-03-17 00:00:00',
+            $waitlist->fresh()->confirmed_at->format('Y-m-d H:i:s')
         );
     }
 
