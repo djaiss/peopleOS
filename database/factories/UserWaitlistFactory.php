@@ -28,7 +28,7 @@ class UserWaitlistFactory extends Factory
     {
         return [
             'email' => $this->faker->unique()->safeEmail(),
-            'confirmed_at' => $this->faker->boolean(),
+            'confirmed_at' => $this->faker->dateTimeThisCentury(),
             'confirmation_code' => $this->faker->url(),
         ];
     }
