@@ -31,7 +31,7 @@ class ConfirmInscriptionToWaitlistControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('marketing.waitlist.confirmation');
 
-        $this->assertTrue($userWaitlist->fresh()->confirmed_at);
+        $this->assertNotNull($userWaitlist->fresh()->confirmed_at);
     }
 
     #[Test]
