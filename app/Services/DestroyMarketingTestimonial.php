@@ -6,15 +6,15 @@ namespace App\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class DestroyMarketingTestimony
+class DestroyMarketingTestimonial
 {
     public function __construct(
         private readonly User $user,
-        private readonly MarketingTestimony $testimony,
+        private readonly MarketingTestimonial $testimonial,
     ) {}
 
     public function execute(): void
@@ -27,14 +27,14 @@ class DestroyMarketingTestimony
 
     private function validate(): void
     {
-        if ($this->user->account_id !== $this->testimony->account_id) {
+        if ($this->user->account_id !== $this->testimonial->account_id) {
             throw new ModelNotFoundException();
         }
     }
 
     private function destroy(): void
     {
-        $this->testimony->delete();
+        $this->testimonial->delete();
     }
 
     private function updateUserLastActivityDate(): void
@@ -46,8 +46,8 @@ class DestroyMarketingTestimony
     {
         LogUserAction::dispatch(
             user: $this->user,
-            action: 'marketing_testimony_deletion',
-            description: 'Deleted a marketing testimony',
+            action: 'marketing_testimonial_deletion',
+            description: 'Deleted a marketing testimonial',
         )->onQueue('low');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 /*
  * @var Collection $marketingPages
+ * @var Collection $testimonials
  */
 ?>
 
@@ -16,7 +17,19 @@
           {{ __('Activity on marketing pages') }}
         </h1>
 
-        @include('administration.marketing.partials.ratings')
+        @include(
+          'administration.marketing.partials.ratings',
+          [
+            'marketingPages' => $marketingPages,
+          ]
+        )
+
+        @include(
+          'administration.marketing.partials.testimony',
+          [
+            'testimonials' => $testimonials,
+          ]
+        )
       </div>
     </div>
   </div>

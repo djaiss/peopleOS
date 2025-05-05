@@ -4,23 +4,25 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Enums\MarketingTestimonyStatus;
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\LogUserAction;
+use App\Jobs\SendMarketingTestimonialSubmittedEmail;
+use App\Jobs\SendMarketingTestimonialSubmittedEmailToInstanceAdministrator;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
-use App\Services\CreateMarketingTestimony;
+use App\Services\CreateMarketingTestimonial;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class CreateMarketingTestimonyTest extends TestCase
+class CreateMarketingTestimonialTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_a_marketing_testimony(): void
+    public function it_creates_a_marketing_testimonial(): void
     {
         Queue::fake();
 
@@ -29,7 +31,7 @@ class CreateMarketingTestimonyTest extends TestCase
             'last_name' => 'Tribbiani',
         ]);
 
-        $testimony = (new CreateMarketingTestimony(
+        $testimony = (new CreateMarketingTestimonial(
             user: $user,
             nameToDisplay: 'Joey Tribbiani',
             testimony: 'How you doin\'? This product is amazing!',
@@ -41,7 +43,7 @@ class CreateMarketingTestimonyTest extends TestCase
             'id' => $testimony->id,
             'account_id' => $user->account_id,
             'user_id' => $user->id,
-            'status' => MarketingTestimonyStatus::PENDING->value,
+            'status' => MarketingTestimonialStatus::PENDING->value,
             'display_avatar' => true,
         ]);
 
@@ -50,7 +52,7 @@ class CreateMarketingTestimonyTest extends TestCase
         $this->assertEquals('How you doin\'? This product is amazing!', $testimony->testimony);
 
         $this->assertInstanceOf(
-            MarketingTestimony::class,
+            MarketingTestimonial::class,
             $testimony
         );
 
@@ -70,6 +72,19 @@ class CreateMarketingTestimonyTest extends TestCase
                     && $job->user->id === $user->id
                     && $job->description === 'Created a marketing testimony';
             }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendMarketingTestimonialSubmittedEmail::class,
+            callback: function (SendMarketingTestimonialSubmittedEmail $job) use ($user): bool {
+                return $job->email === $user->email;
+            }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'high',
+            job: SendMarketingTestimonialSubmittedEmailToInstanceAdministrator::class,
         );
     }
 }

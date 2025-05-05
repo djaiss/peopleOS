@@ -14,7 +14,7 @@
   $refs.content.addEventListener('mouseleave', () => {
     tooltipVisible = false
   })
-" class="" {!! $attributes->merge(['class' => 'relative']) !!}>
+" class="relative">
   <div x-ref="tooltip" x-show="tooltipVisible" :class="{ 'top-0 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full' : tooltipPosition == 'top', 'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full' : tooltipPosition == 'left', 'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full' : tooltipPosition == 'bottom', 'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full' : tooltipPosition == 'right' }" class="absolute w-auto text-sm" x-cloak>
     <div x-show="tooltipVisible" x-transition class="bg-opacity-90 relative rounded-sm bg-black px-2 py-1 text-white">
       <p x-text="tooltipText" class="block shrink-0 text-xs whitespace-nowrap"></p>

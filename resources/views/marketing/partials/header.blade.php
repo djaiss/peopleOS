@@ -114,14 +114,22 @@
         </x-dropdown>
       </div>
     @else
-      <div class="flex items-center gap-x-5">
-        <a href="{{ route('login') }}" class="text-sm text-gray-700">
-          {{ __('Sign in') }}
-        </a>
-        <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-          {{ __('Get started') }}
-        </a>
-      </div>
+      @if (config('peopleos.enable_waitlist'))
+        <div class="flex items-center gap-x-5">
+          <a href="{{ route('waitlist.index') }}" class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            {{ __('Join waitlist') }}
+          </a>
+        </div>
+      @else
+        <div class="flex items-center gap-x-5">
+          <a href="{{ route('login') }}" class="text-sm text-gray-700">
+            {{ __('Sign in') }}
+          </a>
+          <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            {{ __('Get started') }}
+          </a>
+        </div>
+      @endif
     @endif
   </nav>
 

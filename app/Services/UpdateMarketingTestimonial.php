@@ -4,49 +4,49 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\MarketingTestimonialStatus;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\MarketingTestimony;
+use App\Models\MarketingTestimonial;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class UpdateMarketingTestimony
+class UpdateMarketingTestimonial
 {
     public function __construct(
         private readonly User $user,
-        private readonly MarketingTestimony $testimonyObject,
+        private readonly MarketingTestimonial $testimonialObject,
         private readonly ?string $nameToDisplay = null,
         private readonly ?string $testimony = null,
-        private readonly ?string $status = null,
         private readonly ?string $urlToPointTo = null,
         private readonly ?bool $displayAvatar = null,
     ) {}
 
-    public function execute(): MarketingTestimony
+    public function execute(): MarketingTestimonial
     {
         $this->validate();
         $this->update();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
-        return $this->testimonyObject;
+        return $this->testimonialObject;
     }
 
     private function validate(): void
     {
-        if ($this->user->account_id !== $this->testimonyObject->account_id) {
+        if ($this->user->account_id !== $this->testimonialObject->account_id) {
             throw new ModelNotFoundException();
         }
     }
 
     private function update(): void
     {
-        $this->testimonyObject->update([
-            'status' => $this->status ?? $this->testimonyObject->status,
-            'name_to_display' => $this->nameToDisplay ?? $this->testimonyObject->name_to_display,
-            'testimony' => $this->testimony ?? $this->testimonyObject->testimony,
-            'url_to_point_to' => $this->urlToPointTo ?? $this->testimonyObject->url_to_point_to,
-            'display_avatar' => $this->displayAvatar ?? $this->testimonyObject->display_avatar,
+        $this->testimonialObject->update([
+            'status' => MarketingTestimonialStatus::PENDING->value,
+            'name_to_display' => $this->nameToDisplay ?? $this->testimonialObject->name_to_display,
+            'testimony' => $this->testimony ?? $this->testimonialObject->testimony,
+            'url_to_point_to' => $this->urlToPointTo ?? $this->testimonialObject->url_to_point_to,
+            'display_avatar' => $this->displayAvatar ?? $this->testimonialObject->display_avatar,
         ]);
     }
 
@@ -59,8 +59,8 @@ class UpdateMarketingTestimony
     {
         LogUserAction::dispatch(
             user: $this->user,
-            action: 'marketing_testimony_update',
-            description: 'Updated a marketing testimony',
+            action: 'marketing_testimonial_update',
+            description: 'Updated a marketing testimonial',
         )->onQueue('low');
     }
 }

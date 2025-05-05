@@ -42,6 +42,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable waitlist
+    |--------------------------------------------------------------------------
+    |
+    | This value enables the waitlist for the public launch.
+    |
+    */
+
+    'enable_waitlist' => env('ENABLE_WAITLIST', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Supported locales
     |--------------------------------------------------------------------------
     |
@@ -50,6 +61,28 @@ return [
     */
 
     'supported_locales' => ['en', 'fr'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email that receives marketing testimonial notifications
+    |--------------------------------------------------------------------------
+    |
+    | This email is used to receive notifications when a marketing testimonial is submitted.
+    |
+    */
+
+    'marketing_testimonial_notification_email' => env('MARKETING_TESTIMONIAL_NOTIFICATION_EMAIL', 'hello@example.com'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email that receives account deletion notifications
+    |--------------------------------------------------------------------------
+    |
+    | This email is used to receive notifications when an account is deleted.
+    |
+    */
+
+    'account_deletion_notification_email' => env('ACCOUNT_DELETION_NOTIFICATION_EMAIL', 'hello@example.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,8 +156,8 @@ return [
         'mood_creation' => 'Mood creation',
         'mood_update' => 'Mood update',
         'mood_deletion' => 'Mood deletion',
-        'marketing_testimony_creation' => 'Marketing testimony creation',
-        'marketing_testimony_update' => 'Marketing testimony update',
-        'marketing_testimony_deletion' => 'Marketing testimony deletion',
+        'marketing_testimonial_creation' => 'Marketing testimonial creation',
+        'marketing_testimonial_update' => 'Marketing testimonial update',
+        'marketing_testimonial_deletion' => 'Marketing testimonial deletion',
     ],
 ];

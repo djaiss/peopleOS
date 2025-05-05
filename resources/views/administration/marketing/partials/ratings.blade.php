@@ -1,3 +1,9 @@
+<?php
+/*
+ * @var Collection $marketingPages
+ */
+?>
+
 <h2 class="font-semi-bold mb-1 text-lg">{{ __('Pages you\'ve rated') }}</h2>
 <p class="mb-4 text-sm text-zinc-500">{{ __('On the markting website, you can rate pages as helpful or not helpful. This is the complete list of pages you\'ve rated. You can delete them if you want and the rating will be immediately deleted, forever. Your vote on the marketing site is also completely anonymous.') }}</p>
 

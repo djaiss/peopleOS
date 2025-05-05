@@ -11,6 +11,7 @@ use App\Http\Controllers\Administration\AdministrationEmailsSentController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationMarketingController;
+use App\Http\Controllers\Administration\AdministrationMarketingTestimonialController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
@@ -18,13 +19,16 @@ use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Administration\AdministrationTimezoneController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Instance\InstanceCancellationReasonsController;
 use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
+use App\Http\Controllers\Instance\InstanceTestimonialsController;
 use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Journal\MonthController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Marketing\ConfirmInscriptionToWaitlistController;
 use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
@@ -34,6 +38,7 @@ use App\Http\Controllers\Marketing\MarketingVoteController;
 use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
 use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
+use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
@@ -70,6 +75,11 @@ Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update'
 Route::get('/person/{hash}/reminder/{id}/stop', [StopReminderController::class, 'show'])
     ->name('reminder.stop')
     ->middleware('signed');
+
+// waitlist
+Route::get('/waitlist', [WaitlistController::class, 'index'])->name('waitlist.index');
+Route::post('/waitlist', [WaitlistController::class, 'store'])->name('waitlist.store');
+Route::get('/waitlist/confirm/{code}', [ConfirmInscriptionToWaitlistController::class, 'show'])->name('waitlist.confirm');
 
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
@@ -238,6 +248,11 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     // marketing
     Route::get('administration/marketing', [AdministrationMarketingController::class, 'index'])->name('administration.marketing.index');
     Route::delete('administration/marketing/{page}', [AdministrationMarketingController::class, 'destroy'])->name('administration.marketing.destroy');
+    Route::get('administration/marketing/testimonials/new', [AdministrationMarketingTestimonialController::class, 'new'])->name('administration.marketing.testimonial.new');
+    Route::post('administration/marketing/testimonials', [AdministrationMarketingTestimonialController::class, 'create'])->name('administration.marketing.testimonial.create');
+    Route::get('administration/marketing/testimonials/{testimonial}/edit', [AdministrationMarketingTestimonialController::class, 'edit'])->name('administration.marketing.testimonial.edit');
+    Route::put('administration/marketing/testimonials/{testimonial}', [AdministrationMarketingTestimonialController::class, 'update'])->name('administration.marketing.testimonial.update');
+    Route::delete('administration/marketing/testimonials/{testimonial}', [AdministrationMarketingTestimonialController::class, 'destroy'])->name('administration.marketing.testimonial.destroy');
 
     // create task on reminder
     Route::put('administration/personalization/create-task-on-reminder', [AdministrationCreateTaskOnReminderController::class, 'update'])->name('administration.personalization.create-task-on-reminder.update');
@@ -257,7 +272,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::delete('administration/personalization/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'destroy'])->name('administration.personalization.task-categories.destroy');
 
     // journal templates
-    Route::get('administration/personalization/journal-templates/new', [AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
+    Route::get('administratibon/personalization/journal-templates/new', [AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
     Route::post('administration/personalization/journal-templates', [AdministrationPersonalizationJournalTemplateController::class, 'create'])->name('administration.personalization.journal-templates.create');
     Route::get('administration/personalization/journal-templates/{journalTemplate}/edit', [AdministrationPersonalizationJournalTemplateController::class, 'edit'])->name('administration.personalization.journal-templates.edit');
     Route::put('administration/personalization/journal-templates/{journalTemplate}', [AdministrationPersonalizationJournalTemplateController::class, 'update'])->name('administration.personalization.journal-templates.update');
@@ -270,10 +285,23 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
     Route::middleware(['instance.admin'])->group(function (): void {
         Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
+
+        // accounts
         Route::get('instance/accounts/{account}', [InstanceController::class, 'show'])->name('instance.show');
         Route::delete('instance/accounts/{account}', [InstanceDestroyAccountController::class, 'destroy'])->name('instance.destroy');
-
         Route::put('instance/accounts/{account}/free', [InstanceFreeAccountController::class, 'update'])->name('instance.accounts.free');
+
+        // testimonials
+        Route::get('instance/testimonials', [InstanceTestimonialsController::class, 'index'])->name('instance.testimonial.index');
+        Route::get('instance/testimonials/approved', [InstanceTestimonialsController::class, 'approved'])->name('instance.testimonial.approved');
+        Route::get('instance/testimonials/rejected', [InstanceTestimonialsController::class, 'rejected'])->name('instance.testimonial.rejected');
+        Route::get('instance/testimonials/all', [InstanceTestimonialsController::class, 'all'])->name('instance.testimonial.all');
+        Route::put('instance/testimonials/{testimonial}/accept', [InstanceTestimonialsController::class, 'accept'])->name('instance.testimonial.accept');
+        Route::get('instance/testimonials/{testimonial}/edit', [InstanceTestimonialsController::class, 'edit'])->name('instance.testimonial.edit');
+        Route::put('instance/testimonials/{testimonial}/reject', [InstanceTestimonialsController::class, 'reject'])->name('instance.testimonial.reject');
+
+        // account deletion reasons
+        Route::get('instance/cancellation-reasons', [InstanceCancellationReasonsController::class, 'index'])->name('instance.cancellation-reasons.index');
     });
 });
 

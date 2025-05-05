@@ -25,7 +25,7 @@ class DestroyAccount
 
     private function sendMail(): void
     {
-        Mail::to(config('mail.account_deletion_notification_email'))
+        Mail::to(config('peopleos.account_deletion_notification_email'))
             ->queue(new AccountDestroyed(
                 reason: $this->reason,
                 activeSince: $this->user->account->created_at->format('Y-m-d'),

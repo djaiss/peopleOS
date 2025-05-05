@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-enum MarketingTestimonyStatus: string
+enum MarketingTestimonialStatus: string
 {
     case PENDING = 'pending';
     case APPROVED = 'approved';

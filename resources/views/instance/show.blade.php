@@ -1,5 +1,5 @@
 <x-app-layout>
-  <!-- Admin Panel Indicator -->
+  <!-- Admin panel indicator -->
   <div class="border-b border-yellow-200 bg-yellow-50">
     <div class="mx-auto flex max-w-7xl items-center justify-center gap-x-3 px-4 py-2 sm:px-6 lg:px-8">
       <x-lucide-shield class="h-4 w-4 text-yellow-600" />
