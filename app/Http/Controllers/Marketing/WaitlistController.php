@@ -10,13 +10,13 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Validation\Rule;
 
 class WaitlistController extends Controller
 {
     public function index(): View
     {
         return view('marketing.waitlist.subscribe');
-
     }
 
     public function store(Request $request): View|RedirectResponse
@@ -24,6 +24,16 @@ class WaitlistController extends Controller
         $request->validate([
             'email' => ['required', 'email', 'unique:user_waitlist,email'],
         ]);
+
+        if (config('peopleos.enable_anti_spam')) {
+            $validated = $request->validate([
+                'cf-turnstile-response' => ['required', Rule::turnstile()],
+            ]);
+
+            if ($validated['cf-turnstile-response'] !== 'success') {
+                return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+            }
+        }
 
         try {
             (new AddEmailToWaitlist(
