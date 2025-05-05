@@ -32,6 +32,7 @@ Todo:
   - manage tasks: DONE
   - Add services to manage instance
   - Add ability to broadcast a message to all users
+  - Add waitlist for public launch
   - Add passions to person
   - Add hobbies to person
   - log the number of emails sent, both at the account level and instance level: DONE
@@ -51,6 +52,7 @@ Todo:
   - automatically delete account after 6 months of inactivity: DONE
   - add the ability to modify the icon / color of a life event
   - add Cloudflare user protection on registration: DONE
+  - test all mailables
 
   Country born - city born
   Country/place studies

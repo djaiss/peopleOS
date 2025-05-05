@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('persons', function (Blueprint $table): void {
-            $table->boolean('how_we_met_shown')->default(false)->change();
+        Schema::create('user_waitlist', function (Blueprint $table): void {
+            $table->id();
+            $table->text('email');
+            $table->text('confirmation_code')->nullable();
+            $table->datetime('confirmed_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -23,8 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('persons', function (Blueprint $table): void {
-            $table->boolean('how_we_met_shown')->default(true)->change();
-        });
+        Schema::dropIfExists('user_waitlist');
     }
 };

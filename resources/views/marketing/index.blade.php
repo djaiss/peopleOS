@@ -19,9 +19,15 @@
             {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
           </p>
           <div class="mt-10 mb-5 flex items-center gap-x-6">
-            <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-              {{ __('Get started for free') }}
-            </a>
+            @if (config('peopleos.enable_waitlist'))
+              <a href="{{ route('waitlist.index') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                {{ __('Join waitlist') }}
+              </a>
+            @else
+              <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                {{ __('Get started for free') }}
+              </a>
+            @endif
             <x-tooltip text="Just kidding. We have no sales teams.">
               <p class="cursor-pointer text-sm leading-6 font-semibold text-gray-900">
                 {{ __('Talk to sales') }}
@@ -307,9 +313,15 @@
           {{ __('But if you can\'t or are too shy about it, we can help you by providing a simple tool to do so.') }}
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
-          <a href="{{ route('register') }}" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-            {{ __('Get started for free') }}
-          </a>
+          @if (config('peopleos.enable_waitlist'))
+            <a href="{{ route('waitlist.index') }}" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              {{ __('Join waitlist') }}
+            </a>
+          @else
+            <a href="{{ route('register') }}" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              {{ __('Get started for free') }}
+            </a>
+          @endif
           <a href="{{ route('login') }}" class="text-sm leading-6 font-semibold text-white">
             {{ __('Sign in') }}
             <span aria-hidden="true">→</span>

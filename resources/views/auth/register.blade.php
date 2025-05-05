@@ -1,9 +1,3 @@
-<?php
-/*
- * @var array $quote
- */
-?>
-
 <x-guest-layout>
   <div class="grid min-h-screen w-screen grid-cols-1 lg:grid-cols-3">
     <!-- Left side - Registration Form (1/3) -->

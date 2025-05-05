@@ -28,6 +28,7 @@ use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Journal\MonthController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Marketing\ConfirmInscriptionToWaitlistController;
 use App\Http\Controllers\Marketing\MarketingCompanyController;
 use App\Http\Controllers\Marketing\MarketingController;
 use App\Http\Controllers\Marketing\MarketingDocsController;
@@ -37,6 +38,7 @@ use App\Http\Controllers\Marketing\MarketingVoteController;
 use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
 use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
+use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
@@ -73,6 +75,11 @@ Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update'
 Route::get('/person/{hash}/reminder/{id}/stop', [StopReminderController::class, 'show'])
     ->name('reminder.stop')
     ->middleware('signed');
+
+// waitlist
+Route::get('/waitlist', [WaitlistController::class, 'index'])->name('waitlist.index');
+Route::post('/waitlist', [WaitlistController::class, 'store'])->name('waitlist.store');
+Route::get('/waitlist/confirm/{code}', [ConfirmInscriptionToWaitlistController::class, 'show'])->name('waitlist.confirm');
 
 Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/', [MarketingController::class, 'index'])->name('marketing.index');
