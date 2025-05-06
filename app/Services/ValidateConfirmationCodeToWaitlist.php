@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\UserWaitlistStatus;
 use App\Models\UserWaitlist;
 use Exception;
 
@@ -49,6 +50,7 @@ class ValidateConfirmationCodeToWaitlist
     {
         $this->waitlistEntry->update([
             'confirmed_at' => now(),
+            'status' => UserWaitlistStatus::SUBSCRIBED_AND_CONFIRMED->value,
         ]);
     }
 }

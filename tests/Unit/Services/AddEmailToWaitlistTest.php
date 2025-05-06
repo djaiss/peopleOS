@@ -36,6 +36,7 @@ class AddEmailToWaitlistTest extends TestCase
 
         $this->assertEquals('chandler.bing@friends.com', $waitlistEntry->email);
         $this->assertTrue(str()->isUuid($waitlistEntry->confirmation_code));
+        $this->assertEquals('subscribed_not_confirmed', $waitlistEntry->status);
 
         $this->assertInstanceOf(
             UserWaitlist::class,
