@@ -35,6 +35,7 @@ class CreatePerson
     public function execute(): Person
     {
         $this->validate();
+        $this->validateAccountLimit();
         $this->createPerson();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
@@ -50,6 +51,13 @@ class CreatePerson
         if ($this->gender instanceof Gender) {
             Gender::where('account_id', $this->user->account_id)
                 ->findOrFail($this->gender->id);
+        }
+    }
+
+    private function validateAccountLimit(): void
+    {
+        if ($this->user->account->isOverAccountLimit()) {
+            throw new \Exception('Account limit reached');
         }
     }
 
