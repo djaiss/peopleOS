@@ -12,6 +12,7 @@ use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\CreatePerson;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
@@ -100,5 +101,33 @@ class CreatePersonTest extends TestCase
                     && $job->description === 'Created the person called Ross Geller';
             }
         );
+    }
+
+    #[Test]
+    public function it_fails_if_account_limit_is_reached(): void
+    {
+        config(['peopleos.account_limit' => 1]);
+
+        $user = User::factory()->create();
+        Person::factory()->count(2)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $this->expectException(Exception::class);
+        (new CreatePerson(
+            user: $user,
+            gender: null,
+            maritalStatus: MaritalStatusType::UNKNOWN->value,
+            kidsStatus: KidsStatusType::UNKNOWN->value,
+            firstName: 'Ross',
+            lastName: 'Geller',
+            middleName: '',
+            nickname: '',
+            maidenName: '',
+            prefix: '',
+            suffix: '',
+            canBeDeleted: true,
+            isListed: true,
+        ))->execute();
     }
 }
