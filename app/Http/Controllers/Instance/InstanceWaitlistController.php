@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Instance;
 
 use App\Enums\UserWaitlistStatus;
 use App\Http\Controllers\Controller;
-use App\Models\AccountDeletionReason;
 use App\Models\UserWaitlist;
 use Illuminate\View\View;
 
@@ -17,7 +16,7 @@ class InstanceWaitlistController extends Controller
         $subscribedAndConfirmed = UserWaitlist::where('status', UserWaitlistStatus::SUBSCRIBED_AND_CONFIRMED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -33,7 +32,7 @@ class InstanceWaitlistController extends Controller
         $subscribedNotConfirmed = UserWaitlist::where('status', UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -49,7 +48,7 @@ class InstanceWaitlistController extends Controller
         $approved = UserWaitlist::where('status', UserWaitlistStatus::APPROVED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -65,11 +64,11 @@ class InstanceWaitlistController extends Controller
         $rejected = UserWaitlist::where('status', UserWaitlistStatus::REJECTED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
-        return view('instance.testimonials.index', [
+        return view('instance.waitlist.index', [
             'waitlist_entries' => $rejected,
             'title' => __('Rejected waitlist entries'),
             ...$counts,
@@ -80,11 +79,11 @@ class InstanceWaitlistController extends Controller
     {
         $waitlistEntries = UserWaitlist::orderBy('created_at', 'desc')
             ->get()
-            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
-        return view('instance.testimonials.index', [
+        return view('instance.waitlist.index', [
             'waitlist_entries' => $waitlistEntries,
             'title' => __('All waitlist entries'),
             ...$counts,

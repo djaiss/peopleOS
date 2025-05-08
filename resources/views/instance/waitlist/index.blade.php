@@ -38,13 +38,16 @@
 
       <div class="grid grid-cols-12 gap-6">
         <!-- Sidebar menu -->
-        @include('instance.waitlist.partials.sidebar', [
-          'all_count' => $all_count,
-          'subscribed_not_confirmed_count' => $subscribed_not_confirmed_count,
-          'subscribed_and_confirmed_count' => $subscribed_and_confirmed_count,
-          'approved_count' => $approved_count,
-          'rejected_count' => $rejected_count,
-        ])
+        @include(
+          'instance.waitlist.partials.sidebar',
+          [
+            'all_count' => $all_count,
+            'subscribed_not_confirmed_count' => $subscribed_not_confirmed_count,
+            'subscribed_and_confirmed_count' => $subscribed_and_confirmed_count,
+            'approved_count' => $approved_count,
+            'rejected_count' => $rejected_count,
+          ]
+        )
 
         <!-- Content -->
         <div class="col-span-9">
@@ -61,22 +64,22 @@
                   <div class="flex flex-col gap-1">
                     <div class="font-medium text-gray-900">{{ $waitlist_entry['email'] }}</div>
                     <div class="flex gap-x-3">
-                      <div class="text-sm text-gray-500">Added on {{ $waitlist_entry['created_at']->format('M d, Y') }}</div>
+                      <div class="text-sm text-gray-500">Added on {{ $waitlist_entry['created_at'] }}</div>
 
                       @if ($waitlist_entry['status'] === 'subscribed_and_confirmed')
-                        <div class="text-sm text-gray-500">Confirmed on {{ $waitlist_entry['confirmed_at']->format('M d, Y') }}</div>
+                        <div class="text-sm text-gray-500">Confirmed on {{ $waitlist_entry['confirmed_at'] }}</div>
                       @endif
                     </div>
                   </div>
-                <div class="flex items-center gap-x-3">
-                  <span class="rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">Waiting</span>
-                  <div class="flex gap-x-2">
-                    <button class="rounded-lg cursor-pointer border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
-                      {{ __('Reject') }}
-                    </button>
-                    <button class="rounded-lg cursor-pointer border border-green-200 px-3 py-1.5 text-sm font-medium text-green-600 hover:bg-green-50">
-                      {{ __('Invite') }}
-                    </button>
+                  <div class="flex items-center gap-x-3">
+                    <span class="rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">Waiting</span>
+                    <div class="flex gap-x-2">
+                      <button class="cursor-pointer rounded-lg border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
+                        {{ __('Reject') }}
+                      </button>
+                      <button class="cursor-pointer rounded-lg border border-green-200 px-3 py-1.5 text-sm font-medium text-green-600 hover:bg-green-50">
+                        {{ __('Invite') }}
+                      </button>
                     </div>
                   </div>
                 </div>

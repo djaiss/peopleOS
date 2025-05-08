@@ -34,6 +34,5 @@ class UserWaitlist extends Model
         'confirmed_at' => 'datetime',
         'email' => 'encrypted',
         'confirmation_code' => 'encrypted',
-        'status' => 'encrypted',
     ];
 }
