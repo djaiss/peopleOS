@@ -10,6 +10,7 @@ use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Str;
 
 class CreatePerson
@@ -57,7 +58,7 @@ class CreatePerson
     private function validateAccountLimit(): void
     {
         if ($this->user->account->isOverAccountLimit()) {
-            throw new \Exception('Account limit reached');
+            throw new Exception('Account limit reached');
         }
     }
 
