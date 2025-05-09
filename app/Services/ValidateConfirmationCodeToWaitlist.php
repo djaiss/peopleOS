@@ -9,7 +9,7 @@ use App\Models\UserWaitlist;
 use Exception;
 
 /**
- * Validate the given confirmation code to suscribe the user to the waitlist.
+ * Validate the given confirmation code to let the user suscribe to the waitlist.
  */
 class ValidateConfirmationCodeToWaitlist
 {
