@@ -36,7 +36,7 @@
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       @include('instance.partials.menu')
 
-      <div class="grid grid-cols-12 gap-6">
+      <div id="waitlist-table" class="grid grid-cols-12 gap-6">
         <!-- Sidebar menu -->
         @include(
           'instance.waitlist.partials.sidebar',
@@ -71,12 +71,12 @@
                       @endif
                     </div>
                   </div>
+
+                  @if (request()->routeIs('instance.waitlist.index'))
                   <div class="flex items-center gap-x-3">
                     <div class="flex gap-x-2">
-                      <button class="cursor-pointer rounded-lg border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
-                        {{ __('Reject') }}
-                      </button>
-                      <form x-target="waitlist-{{ $entry['id'] }}" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.approve', $entry['id']) }}" method="post" class="w-full">
+                      <!-- approve button -->
+                      <form x-target="waitlist-{{ $entry['id'] }} waitlist-table" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.approve', $entry['id']) }}" method="post" class="w-full">
                         @csrf
                         @method('put')
 
@@ -84,8 +84,19 @@
                           {{ __('Invite') }}
                         </button>
                       </form>
+
+                      <!-- reject button -->
+                      <form x-target="waitlist-{{ $entry['id'] }} waitlist-table" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.reject', $entry['id']) }}" method="post" class="w-full">
+                        @csrf
+                        @method('put')
+
+                        <button type="submit" class="cursor-pointer rounded-lg border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
+                          {{ __('Reject') }}
+                        </button>
+                      </form>
                     </div>
                   </div>
+                  @endif
                 </div>
               @empty
                 <div class="p-4 text-gray-500">

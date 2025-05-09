@@ -311,6 +311,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
         Route::get('instance/waitlist/rejected', [InstanceWaitlistController::class, 'rejected'])->name('instance.waitlist.rejected');
         Route::get('instance/waitlist/all', [InstanceWaitlistController::class, 'all'])->name('instance.waitlist.all');
         Route::put('instance/waitlist/{waitlist}/approve', [InstanceWaitlistController::class, 'approve'])->name('instance.waitlist.approve');
+        Route::put('instance/waitlist/{waitlist}/reject', [InstanceWaitlistController::class, 'reject'])->name('instance.waitlist.reject');
     });
 });
 

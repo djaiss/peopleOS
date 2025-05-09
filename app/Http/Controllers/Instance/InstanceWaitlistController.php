@@ -8,6 +8,7 @@ use App\Enums\UserWaitlistStatus;
 use App\Http\Controllers\Controller;
 use App\Models\UserWaitlist;
 use App\Services\ApproveUserWaitlist;
+use App\Services\RejectUserFromWaitlist;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -138,6 +139,22 @@ class InstanceWaitlistController extends Controller
             ->firstOrFail();
 
         (new ApproveUserWaitlist(
+            user: Auth::user(),
+            waitlist: $waitlist,
+        ))->execute();
+
+        return redirect()->back()
+            ->with('status', __('Changes saved'));
+    }
+
+    public function reject(Request $request): RedirectResponse
+    {
+        $id = (int) $request->route()->parameter('waitlist');
+
+        $waitlist = UserWaitlist::where('id', $id)
+            ->firstOrFail();
+
+        (new RejectUserFromWaitlist(
             user: Auth::user(),
             waitlist: $waitlist,
         ))->execute();

@@ -206,4 +206,24 @@ class InstanceWaitlistControllerTest extends TestCase
         $response->assertRedirect();
         $response->assertSessionHas('status', __('Changes saved'));
     }
+
+    #[Test]
+    public function it_rejects_a_user_in_the_waitlist(): void
+    {
+        $user = User::factory()->create([
+            'is_instance_admin' => true,
+        ]);
+
+        $waitlist = UserWaitlist::factory()->create([
+            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
+            'email' => 'rachel@friends.com',
+            'created_at' => now(),
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put('/instance/waitlist/'.$waitlist->id.'/reject');
+
+        $response->assertRedirect();
+        $response->assertSessionHas('status', __('Changes saved'));
+    }
 }
