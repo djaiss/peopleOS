@@ -11,9 +11,9 @@ use App\Models\UserWaitlist;
 use App\Services\ApproveUserWaitlist;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Queue;
 
 class ApproveUserWaitlistTest extends TestCase
 {

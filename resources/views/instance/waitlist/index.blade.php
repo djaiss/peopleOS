@@ -59,27 +59,31 @@
             </div>
 
             <div class="divide-y divide-gray-200">
-              @forelse ($waitlist_entries as $waitlist_entry)
-                <div class="flex items-center justify-between p-4">
+              @forelse ($waitlist_entries as $entry)
+                <div id="waitlist-{{ $entry['id'] }}" class="flex items-center justify-between p-4">
                   <div class="flex flex-col gap-1">
-                    <div class="font-medium text-gray-900">{{ $waitlist_entry['email'] }}</div>
+                    <div class="font-medium text-gray-900">{{ $entry['email'] }}</div>
                     <div class="flex gap-x-3">
-                      <div class="text-sm text-gray-500">Added on {{ $waitlist_entry['created_at'] }}</div>
+                      <div class="text-sm text-gray-500">Added on {{ $entry['created_at'] }}</div>
 
-                      @if ($waitlist_entry['status'] === 'subscribed_and_confirmed')
-                        <div class="text-sm text-gray-500">Confirmed on {{ $waitlist_entry['confirmed_at'] }}</div>
+                      @if ($entry['status'] === 'subscribed_and_confirmed')
+                        <div class="text-sm text-gray-500">Confirmed on {{ $entry['confirmed_at'] }}</div>
                       @endif
                     </div>
                   </div>
                   <div class="flex items-center gap-x-3">
-                    <span class="rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">Waiting</span>
                     <div class="flex gap-x-2">
                       <button class="cursor-pointer rounded-lg border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
                         {{ __('Reject') }}
                       </button>
-                      <button class="cursor-pointer rounded-lg border border-green-200 px-3 py-1.5 text-sm font-medium text-green-600 hover:bg-green-50">
-                        {{ __('Invite') }}
-                      </button>
+                      <form x-target="waitlist-{{ $entry['id'] }}" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.approve', $entry['id']) }}" method="post" class="w-full">
+                        @csrf
+                        @method('put')
+
+                        <button type="submit" class="cursor-pointer rounded-lg border border-green-200 px-3 py-1.5 text-sm font-medium text-green-600 hover:bg-green-50">
+                          {{ __('Invite') }}
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>

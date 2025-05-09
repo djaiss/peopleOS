@@ -7,6 +7,10 @@ namespace App\Http\Controllers\Instance;
 use App\Enums\UserWaitlistStatus;
 use App\Http\Controllers\Controller;
 use App\Models\UserWaitlist;
+use App\Services\ApproveUserWaitlist;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class InstanceWaitlistController extends Controller
@@ -124,5 +128,21 @@ class InstanceWaitlistController extends Controller
             'created_at' => $userWaitlist->created_at->format('Y-m-d H:i:s'),
             'confirmed_at' => $userWaitlist->confirmed_at?->format('Y-m-d H:i:s'),
         ];
+    }
+
+    public function approve(Request $request): RedirectResponse
+    {
+        $id = (int) $request->route()->parameter('waitlist');
+
+        $waitlist = UserWaitlist::where('id', $id)
+            ->firstOrFail();
+
+        (new ApproveUserWaitlist(
+            user: Auth::user(),
+            waitlist: $waitlist,
+        ))->execute();
+
+        return redirect()->back()
+            ->with('status', __('Changes saved'));
     }
 }

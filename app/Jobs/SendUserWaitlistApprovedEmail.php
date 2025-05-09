@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
-use App\Enums\EmailType;
-use App\Mail\MarketingTestimonialSubmitted;
 use App\Mail\UserWaitlistApproved;
 use App\Models\User;
 use App\Models\UserWaitlist;
-use App\Services\CreateEmailSent;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Mail;
 
@@ -41,11 +37,9 @@ class SendUserWaitlistApprovedEmail implements ShouldQueue
     {
 
         // Since email is encrypted, we need to iterate over all records
-        $found = UserWaitlist::all()->contains(function ($waitlist) {
-            return $waitlist->email === $this->email;
-        });
+        $found = UserWaitlist::all()->contains(fn ($waitlist): bool => $waitlist->email === $this->email);
 
-        if (!$found) {
+        if (! $found) {
             $this->valid = false;
         }
     }

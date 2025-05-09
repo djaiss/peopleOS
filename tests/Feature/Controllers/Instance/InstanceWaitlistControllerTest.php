@@ -186,4 +186,24 @@ class InstanceWaitlistControllerTest extends TestCase
             $waitlistEntries[0]
         );
     }
+
+    #[Test]
+    public function it_accepts_a_user_in_the_waitlist(): void
+    {
+        $user = User::factory()->create([
+            'is_instance_admin' => true,
+        ]);
+
+        $waitlist = UserWaitlist::factory()->create([
+            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
+            'email' => 'rachel@friends.com',
+            'created_at' => now(),
+        ]);
+
+        $response = $this->actingAs($user)
+            ->put('/instance/waitlist/'.$waitlist->id.'/approve');
+
+        $response->assertRedirect();
+        $response->assertSessionHas('status', __('Changes saved'));
+    }
 }
