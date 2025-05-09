@@ -73,29 +73,29 @@
                   </div>
 
                   @if (request()->routeIs('instance.waitlist.index'))
-                  <div class="flex items-center gap-x-3">
-                    <div class="flex gap-x-2">
-                      <!-- approve button -->
-                      <form x-target="waitlist-{{ $entry['id'] }} waitlist-table" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.approve', $entry['id']) }}" method="post" class="w-full">
-                        @csrf
-                        @method('put')
+                    <div class="flex items-center gap-x-3">
+                      <div class="flex gap-x-2">
+                        <!-- approve button -->
+                        <form x-target="waitlist-{{ $entry['id'] }} waitlist-table" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.approve', $entry['id']) }}" method="post" class="w-full">
+                          @csrf
+                          @method('put')
 
-                        <button type="submit" class="cursor-pointer rounded-lg border border-green-200 px-3 py-1.5 text-sm font-medium text-green-600 hover:bg-green-50">
-                          {{ __('Invite') }}
-                        </button>
-                      </form>
+                          <button type="submit" class="cursor-pointer rounded-lg border border-green-200 px-3 py-1.5 text-sm font-medium text-green-600 hover:bg-green-50">
+                            {{ __('Invite') }}
+                          </button>
+                        </form>
 
-                      <!-- reject button -->
-                      <form x-target="waitlist-{{ $entry['id'] }} waitlist-table" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.reject', $entry['id']) }}" method="post" class="w-full">
-                        @csrf
-                        @method('put')
+                        <!-- reject button -->
+                        <form x-target="waitlist-{{ $entry['id'] }} waitlist-table" onsubmit="return confirm('Are you absolutely sure? This action cannot be undone.')" action="{{ route('instance.waitlist.reject', $entry['id']) }}" method="post" class="w-full">
+                          @csrf
+                          @method('put')
 
-                        <button type="submit" class="cursor-pointer rounded-lg border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
-                          {{ __('Reject') }}
-                        </button>
-                      </form>
+                          <button type="submit" class="cursor-pointer rounded-lg border border-red-200 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
+                            {{ __('Reject') }}
+                          </button>
+                        </form>
+                      </div>
                     </div>
-                  </div>
                   @endif
                 </div>
               @empty

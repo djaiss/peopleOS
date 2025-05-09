@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Models\Person;
-use App\Models\User;
-use Illuminate\Support\Collection;
 use App\Models\LoveRelationship;
+use App\Models\Person;
+use Illuminate\Support\Collection;
 
 class GetRelationshipsListing
 {
     public function __construct(
-        private readonly User $user,
         private readonly Person $person,
     ) {}
 
@@ -31,7 +29,7 @@ class GetRelationshipsListing
             ->with('relatedPerson')
             ->where('is_current', true)
             ->get()
-            ->map(fn(LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
+            ->map(fn (LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
     }
 
     public function getPastRelationships(): Collection
@@ -41,7 +39,7 @@ class GetRelationshipsListing
             ->with('relatedPerson')
             ->where('is_current', false)
             ->get()
-            ->map(fn(LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
+            ->map(fn (LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
     }
 
     public function getRelationshipDetails(LoveRelationship $relationship, bool $isNew): array
@@ -51,6 +49,8 @@ class GetRelationshipsListing
             'person' => [
                 'id' => $relationship->relatedPerson->id,
                 'name' => $relationship->relatedPerson->name,
+                'is_listed' => $relationship->relatedPerson->is_listed,
+                'slug' => $relationship->relatedPerson->slug,
             ],
             'type' => $relationship->type,
             'is_new' => $isNew,

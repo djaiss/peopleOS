@@ -43,7 +43,6 @@ use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
-use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
@@ -52,6 +51,7 @@ use App\Http\Controllers\Persons\PersonLifeEventController;
 use App\Http\Controllers\Persons\PersonLoveController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
+use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
@@ -210,6 +210,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             // family
             Route::get('persons/{slug}/family', [PersonRelationshipController::class, 'index'])->name('person.family.index');
             Route::get('persons/{slug}/love/new', [PersonLoveController::class, 'new'])->name('person.love.new');
+            Route::post('persons/{slug}/love', [PersonLoveController::class, 'store'])->name('person.love.store');
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserWaitlist;
 use App\Services\CreateAccount;
+use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class RegistrationController extends Controller
                 UserWaitlist::where('email', $validated['email'])
                     ->where('status', UserWaitlistStatus::SUBSCRIBED_AND_CONFIRMED->value)
                     ->firstOrFail();
-            } catch (\Exception $e) {
+            } catch (Exception) {
                 return redirect()->back()->withErrors(['email' => 'You are not part of the beta yet.']);
             }
         }

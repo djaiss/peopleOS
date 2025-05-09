@@ -19,11 +19,14 @@
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-3xl p-6">
         <!-- Love relationships -->
-        @include('persons.family.partials.love-relationships', [
+        @include(
+          'persons.family.partials.love.index',
+          [
             'person' => $person,
             'currentRelationships' => $currentRelationships,
             'pastRelationships' => $pastRelationships,
-        ])
+          ]
+        )
 
         <!-- Children -->
         <section class="mb-8">

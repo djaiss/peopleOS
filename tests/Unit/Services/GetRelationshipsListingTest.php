@@ -53,7 +53,6 @@ class GetRelationshipsListingTest extends TestCase
         ]);
 
         $array = (new GetRelationshipsListing(
-            user: $user,
             person: $person,
         ))->execute();
 
@@ -69,6 +68,8 @@ class GetRelationshipsListingTest extends TestCase
             'person' => [
                 'id' => $currentPerson->id,
                 'name' => 'Rachel Green',
+                'slug' => $currentPerson->slug,
+                'is_listed' => $currentPerson->is_listed,
             ],
             'type' => 'Married',
             'is_new' => false,
@@ -80,6 +81,8 @@ class GetRelationshipsListingTest extends TestCase
             'person' => [
                 'id' => $pastPerson->id,
                 'name' => 'Monica Geller',
+                'slug' => $pastPerson->slug,
+                'is_listed' => $pastPerson->is_listed,
             ],
             'type' => 'Dating',
             'is_new' => false,

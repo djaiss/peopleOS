@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
+use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
 use App\Services\GetRelationshipsListing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Cache\PeopleListCache;
 
 class PersonRelationshipController extends Controller
 {
@@ -22,7 +22,6 @@ class PersonRelationshipController extends Controller
         )->value();
 
         $viewData = (new GetRelationshipsListing(
-            user: Auth::user(),
             person: $person,
         ))->execute();
 

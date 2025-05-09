@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Auth;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class RegistrationControllerTest extends TestCase
 {
