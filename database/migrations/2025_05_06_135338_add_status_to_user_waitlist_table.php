@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('user_waitlist', function (Blueprint $table): void {
-            $table->text('status')->nullable()->after('confirmation_at');
+            $table->text('status')->nullable()->after('confirmed_at');
         });
     }
 
