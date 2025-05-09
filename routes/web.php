@@ -43,12 +43,13 @@ use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
-use App\Http\Controllers\Persons\PersonFamilyController;
+use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
 use App\Http\Controllers\Persons\PersonInformationController;
 use App\Http\Controllers\Persons\PersonLifeEventController;
+use App\Http\Controllers\Persons\PersonLoveController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonReminderController;
@@ -207,7 +208,8 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             });
 
             // family
-            Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('person.family.index');
+            Route::get('persons/{slug}/family', [PersonRelationshipController::class, 'index'])->name('person.family.index');
+            Route::get('persons/{slug}/love/new', [PersonLoveController::class, 'new'])->name('person.love.new');
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');

@@ -1,15 +1,21 @@
+<?php
+/*
+ * @var Person $person
+ * @var Collection $currentRelationships
+ * @var Collection $pastRelationships
+ */
+?>
+
 <section class="mb-8">
   <div class="mb-4 flex items-center justify-between">
     <div class="flex items-center gap-2">
       <x-lucide-heart class="h-5 w-5 text-rose-500" />
       <h2 class="text-lg font-semibold text-gray-900">{{ __('Love & romance') }}</h2>
     </div>
-    @if (! $addMode)
-      <button wire:click="toggleAddMode" type="button" class="inline-flex cursor-pointer items-center gap-1 rounded-md border border-transparent bg-rose-50 px-2 py-1 text-sm font-medium text-rose-600 hover:border hover:border-rose-300 hover:bg-rose-100 hover:text-rose-600">
+      <a href="{{ route('person.love.new', $person) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md border border-transparent bg-rose-50 px-2 py-1 text-sm font-medium text-rose-600 hover:border hover:border-rose-300 hover:bg-rose-100 hover:text-rose-600">
         <x-lucide-plus class="h-4 w-4" />
         {{ __('Add relationship') }}
-      </button>
-    @endif
+      </a>
   </div>
 
   @if ($currentRelationships->isEmpty() && $pastRelationships->isEmpty())
