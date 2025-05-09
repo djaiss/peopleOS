@@ -24,6 +24,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Instance\InstanceTestimonialsController;
+use App\Http\Controllers\Instance\InstanceWaitlistController;
 use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Journal\MonthController;
@@ -302,6 +303,15 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
         // account deletion reasons
         Route::get('instance/cancellation-reasons', [InstanceCancellationReasonsController::class, 'index'])->name('instance.cancellation-reasons.index');
+
+        // waitlist
+        Route::get('instance/waitlist', [InstanceWaitlistController::class, 'index'])->name('instance.waitlist.index');
+        Route::get('instance/waitlist/not-confirmed', [InstanceWaitlistController::class, 'notConfirmed'])->name('instance.waitlist.not-confirmed');
+        Route::get('instance/waitlist/approved', [InstanceWaitlistController::class, 'approved'])->name('instance.waitlist.approved');
+        Route::get('instance/waitlist/rejected', [InstanceWaitlistController::class, 'rejected'])->name('instance.waitlist.rejected');
+        Route::get('instance/waitlist/all', [InstanceWaitlistController::class, 'all'])->name('instance.waitlist.all');
+        Route::put('instance/waitlist/{waitlist}/approve', [InstanceWaitlistController::class, 'approve'])->name('instance.waitlist.approve');
+        Route::put('instance/waitlist/{waitlist}/reject', [InstanceWaitlistController::class, 'reject'])->name('instance.waitlist.reject');
     });
 });
 

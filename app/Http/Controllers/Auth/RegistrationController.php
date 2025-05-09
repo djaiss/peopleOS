@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserWaitlistStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserWaitlist;
 use App\Services\CreateAccount;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -38,6 +40,16 @@ class RegistrationController extends Controller
 
             if ($validated['cf-turnstile-response'] !== 'success') {
                 return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+            }
+        }
+
+        if (config('peopleos.enable_waitlist')) {
+            try {
+                UserWaitlist::where('email', $validated['email'])
+                    ->where('status', UserWaitlistStatus::SUBSCRIBED_AND_CONFIRMED->value)
+                    ->firstOrFail();
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['email' => 'You are not part of the beta yet.']);
             }
         }
 
