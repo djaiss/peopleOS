@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class UserWaitlistAccepted extends Mailable
+class UserWaitlistApproved extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,8 +26,8 @@ class UserWaitlistAccepted extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.account.user-waitlist-accepted',
-            text: 'mail.account.user-waitlist-accepted-text',
+            markdown: 'mail.account.user-waitlist-approved',
+            text: 'mail.account.user-waitlist-approved-text',
         );
     }
 }
