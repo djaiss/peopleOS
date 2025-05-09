@@ -140,4 +140,13 @@ class Account extends Model
             && ! $this->has_lifetime_access
             && $this->trial_ends_at->isPast();
     }
+
+    /**
+     * Check if the account is over the account limit.
+     * By default, the account limit is 1000 persons.
+     */
+    public function isOverAccountLimit(): bool
+    {
+        return $this->persons()->count() > config('peopleos.account_limit');
+    }
 }

@@ -177,4 +177,21 @@ class AccountTest extends TestCase
         ]);
         $this->assertFalse($account->needsToPay());
     }
+
+    #[Test]
+    public function it_checks_if_the_account_is_over_the_account_limit(): void
+    {
+        config(['peopleos.account_limit' => 2]);
+
+        $account = Account::factory()->create();
+        Person::factory()->count(config('peopleos.account_limit'))->create([
+            'account_id' => $account->id,
+        ]);
+        $this->assertFalse($account->isOverAccountLimit());
+
+        Person::factory()->create([
+            'account_id' => $account->id,
+        ]);
+        $this->assertTrue($account->isOverAccountLimit());
+    }
 }
