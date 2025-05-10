@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Persons;
 
-use App\Models\LifeEvent;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,7 +23,7 @@ class PersonRelationshipControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/' . $person->slug . '/family')
+            ->get('/persons/'.$person->slug.'/family')
             ->assertOk();
 
         $this->assertArrayHasKey('persons', $response);

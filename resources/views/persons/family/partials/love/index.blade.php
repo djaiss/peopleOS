@@ -59,7 +59,9 @@
                   {{ isset($relationship['is_new']) && $relationship['is_new'] ? 'true' : 'false' }},
               }" x-init="isNew && setTimeout(() => (isNew = false), 3000)" :class="{ 'bg-yellow-50 transition-colors duration-1000': isNew }">
                 <div class="flex items-center gap-3">
-                  <img class="h-10 w-10 rounded-full object-cover ring-1 ring-gray-200" src="https://i.pravatar.cc/40?u={{ $relationship['person']['id'] }}" alt="" />
+                  <div class="shrink-0">
+                    <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $relationship['person']['avatar']['40'] }}" srcset="{{ $relationship['person']['avatar']['40'] }}, {{ $relationship['person']['avatar']['80'] }} 2x" alt="{{ $relationship['person']['name'] }}" loading="lazy" />
+                  </div>
                   <div class="min-w-0 flex-1">
                     @if ($relationship['person']['is_listed'])
                       <a href="{{ route('person.show', $relationship['person']['slug']) }}" class="truncate font-medium text-gray-900 underline">{{ $relationship['person']['name'] }}</a>
@@ -91,7 +93,9 @@
                   {{ isset($relationship['is_new']) && $relationship['is_new'] ? 'true' : 'false' }},
               }" x-init="isNew && setTimeout(() => (isNew = false), 3000)" :class="{ 'bg-yellow-50 transition-colors duration-1000': isNew }">
                 <div class="flex items-center gap-3">
-                  <img class="h-10 w-10 rounded-full object-cover ring-1 ring-gray-200" src="https://i.pravatar.cc/40?u={{ $relationship['person']['id'] }}" alt="" />
+                  <div class="shrink-0">
+                    <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $relationship['person']['avatar']['40'] }}" srcset="{{ $relationship['person']['avatar']['40'] }}, {{ $relationship['person']['avatar']['80'] }} 2x" alt="{{ $relationship['person']['name'] }}" loading="lazy" />
+                  </div>
                   <div class="min-w-0 flex-1">
                     @if ($relationship['person']['is_listed'])
                       <a href="{{ route('person.show', $relationship['person']['slug']) }}" class="truncate font-medium text-gray-900 underline">{{ $relationship['person']['name'] }}</a>

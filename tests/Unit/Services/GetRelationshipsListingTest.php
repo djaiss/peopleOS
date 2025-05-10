@@ -70,6 +70,10 @@ class GetRelationshipsListingTest extends TestCase
                 'name' => 'Rachel Green',
                 'slug' => $currentPerson->slug,
                 'is_listed' => $currentPerson->is_listed,
+                'avatar' => [
+                    '40' => $currentPerson->getAvatar(40),
+                    '80' => $currentPerson->getAvatar(80),
+                ],
             ],
             'type' => 'Married',
             'is_new' => false,
@@ -83,6 +87,10 @@ class GetRelationshipsListingTest extends TestCase
                 'name' => 'Monica Geller',
                 'slug' => $pastPerson->slug,
                 'is_listed' => $pastPerson->is_listed,
+                'avatar' => [
+                    '40' => $pastPerson->getAvatar(40),
+                    '80' => $pastPerson->getAvatar(80),
+                ],
             ],
             'type' => 'Dating',
             'is_new' => false,

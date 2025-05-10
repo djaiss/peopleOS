@@ -54,6 +54,7 @@ use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
+use App\Http\Controllers\Persons\PersonSearchLoveController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
 use App\Http\Controllers\Persons\PersonSettingsAgeController;
 use App\Http\Controllers\Persons\PersonSettingsAvatarController;
@@ -210,7 +211,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             // family
             Route::get('persons/{slug}/family', [PersonRelationshipController::class, 'index'])->name('person.family.index');
             Route::get('persons/{slug}/love/new', [PersonLoveController::class, 'new'])->name('person.love.new');
+            Route::get('persons/{slug}/love/existing', [PersonSearchLoveController::class, 'new'])->name('person.love.existing.new');
             Route::post('persons/{slug}/love', [PersonLoveController::class, 'store'])->name('person.love.store');
+            Route::post('persons/{slug}/love/search', [PersonSearchLoveController::class, 'search'])->name('person.love.search');
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');

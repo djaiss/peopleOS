@@ -51,6 +51,10 @@ class GetRelationshipsListing
                 'name' => $relationship->relatedPerson->name,
                 'is_listed' => $relationship->relatedPerson->is_listed,
                 'slug' => $relationship->relatedPerson->slug,
+                'avatar' => [
+                    '40' => $relationship->relatedPerson->getAvatar(40),
+                    '80' => $relationship->relatedPerson->getAvatar(80),
+                ],
             ],
             'type' => $relationship->type,
             'is_new' => $isNew,

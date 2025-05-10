@@ -1,3 +1,9 @@
+<?php
+/*
+ * @var Person $person
+ */
+?>
+
 <div id="new-love-relationship" class="mb-8 rounded-lg border border-gray-200 bg-white">
   <!-- Tabs -->
   <div class="mb-4 border-b border-gray-200">
@@ -5,9 +11,9 @@
       <div class="cursor-pointer border-b-2 border-rose-500 px-1 py-3 text-sm font-medium whitespace-nowrap text-rose-600 hover:border-gray-300 hover:text-gray-700">
         {{ __('Add someone new') }}
       </div>
-      <button class="cursor-pointer border-b-2 border-transparent px-1 py-3 text-sm font-medium whitespace-nowrap hover:border-gray-300 hover:text-gray-700">
+      <a x-target="new-love-relationship" href="{{ route('person.love.existing.new', $person) }}" class="border-b-2 border-transparent px-1 py-3 text-sm font-medium whitespace-nowrap hover:border-gray-300 hover:text-gray-700">
         {{ __('Add existing person') }}
-      </button>
+      </a>
     </nav>
   </div>
 
@@ -18,7 +24,7 @@
     <div class="mb-4 flex gap-4 px-4">
       <div class="flex-1">
         <x-input-label for="first_name" :value="__('First name')" class="mb-1" />
-        <x-text-input class="block w-full" id="first_name" name="first_name" type="text" required />
+        <x-text-input class="block w-full" id="first_name" name="first_name" type="text" required autofocus />
         <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
       </div>
       <div class="flex-1">
@@ -57,8 +63,8 @@
         </div>
       </div>
       <div class="text-sm/6">
-        <label for="active" class="font-medium text-gray-900">{{ __('This relationship') }}</label>
-        <p id="active-description" class="text-gray-500">{{ __('If you mark this relationship as active, it will be displayed in the current relationships section.') }}</p>
+        <label for="active" class="font-medium text-gray-900">{{ __('This love relationship is ongoing') }}</label>
+        <p id="active-description" class="text-gray-500">{{ __('Select this if the relationship is current. Past relationships will be shown separately.') }}</p>
       </div>
     </div>
 
