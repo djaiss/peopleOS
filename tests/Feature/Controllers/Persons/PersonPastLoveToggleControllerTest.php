@@ -7,7 +7,6 @@ namespace Tests\Feature\Controllers\Persons;
 use App\Models\Account;
 use App\Models\Person;
 use App\Models\User;
-use App\Services\TogglePastLoveRelationshipsVisibility;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -17,7 +16,9 @@ class PersonPastLoveToggleControllerTest extends TestCase
     use DatabaseTransactions;
 
     private Account $account;
+
     private User $user;
+
     private Person $person;
 
     #[Test]

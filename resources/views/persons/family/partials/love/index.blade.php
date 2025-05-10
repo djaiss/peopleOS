@@ -77,10 +77,10 @@
       <!-- Past Relationships -->
       @if ($pastRelationships->isNotEmpty())
         <div id="past-love-relationships" class="rounded-lg border border-gray-200" x-data="{
-          pastRelationshipsExpanded: {{ $person->show_past_love_relationships ? 'true' : 'false' }},
+          pastRelationshipsExpanded:
+            {{ $person->show_past_love_relationships ? 'true' : 'false' }},
         }">
-          <div class="flex justify-between items-center rounded-t-lg bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-
+          <div class="flex items-center justify-between rounded-t-lg bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
             <!-- title -->
             <div class="flex items-center gap-2">
               <x-lucide-heart-crack class="h-4 w-4 text-gray-500" />
@@ -98,7 +98,7 @@
           </div>
 
           <!-- list -->
-          <div x-cloak x-show="pastRelationshipsExpanded" class="divide-y border-t border-gray-200 divide-gray-200 rounded-b-lg bg-white">
+          <div x-cloak x-show="pastRelationshipsExpanded" class="divide-y divide-gray-200 rounded-b-lg border-t border-gray-200 bg-white">
             @foreach ($pastRelationships as $relationship)
               <div class="p-4 last:rounded-b-lg">
                 <div class="flex items-center gap-3">
