@@ -35,7 +35,7 @@ class TogglePastLoveRelationshipsVisibility
     private function update(): void
     {
         $this->person->update([
-            'show_past_relationships' => ! $this->person->show_past_relationships,
+            'show_past_love_relationships' => ! $this->person->show_past_love_relationships,
         ]);
     }
 

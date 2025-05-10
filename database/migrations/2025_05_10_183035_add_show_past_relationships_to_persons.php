@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('persons', function (Blueprint $table) {
-            $table->boolean('show_past_relationships')->default(false)->after('encounters_shown');
+            $table->boolean('show_past_love_relationships')->default(false)->after('encounters_shown');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('persons', function (Blueprint $table) {
-            $table->dropColumn('show_past_relationships');
+            $table->dropColumn('show_past_love_relationships');
         });
     }
 };

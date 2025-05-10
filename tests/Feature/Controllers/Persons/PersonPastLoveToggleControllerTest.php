@@ -2,34 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Services;
+namespace Tests\Feature\Controllers\Persons;
 
-use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Account;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\TogglePastLoveRelationshipsVisibility;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class TogglePastLoveRelationshipsVisibilityTest extends TestCase
+class PersonPastLoveToggleControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
     private Account $account;
-
     private User $user;
-
     private Person $person;
 
     #[Test]
-    public function it_toggles_the_past_relationships_visibility(): void
+    public function it_toggles_past_love_relationships_visibility(): void
     {
-        Queue::fake();
-
         $this->account = Account::factory()->create();
         $this->user = User::factory()->create([
             'account_id' => $this->account->id,
@@ -39,36 +32,25 @@ class TogglePastLoveRelationshipsVisibilityTest extends TestCase
             'show_past_love_relationships' => true,
         ]);
 
-        $person = (new TogglePastLoveRelationshipsVisibility(
-            user: $this->user,
-            person: $this->person,
-        ))->execute();
+        $response = $this->actingAs($this->user)
+            ->get(route('person.love.toggle', $this->person->slug));
 
-        $this->assertFalse($person->show_past_love_relationships);
-
-        Queue::assertPushedOn(
-            queue: 'low',
-            job: UpdateUserLastActivityDate::class,
-            callback: function (UpdateUserLastActivityDate $job) {
-                return $job->user->id === $this->user->id;
-            }
-        );
+        $response->assertRedirect(route('person.family.index', $this->person->slug));
+        $this->assertFalse($this->person->fresh()->show_past_love_relationships);
     }
 
     #[Test]
     public function it_fails_if_user_doesnt_belong_to_the_same_account(): void
     {
-        $this->expectException(ModelNotFoundException::class);
-
         $this->account = Account::factory()->create();
         $this->user = User::factory()->create();
         $this->person = Person::factory()->create([
             'account_id' => $this->account->id,
         ]);
 
-        (new TogglePastLoveRelationshipsVisibility(
-            user: $this->user,
-            person: $this->person,
-        ))->execute();
+        $response = $this->actingAs($this->user)
+            ->get(route('person.love.toggle', $this->person->slug));
+
+        $response->assertUnauthorized();
     }
 }

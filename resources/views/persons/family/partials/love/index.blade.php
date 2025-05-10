@@ -77,7 +77,7 @@
       <!-- Past Relationships -->
       @if ($pastRelationships->isNotEmpty())
         <div id="past-love-relationships" class="rounded-lg border border-gray-200" x-data="{
-          pastRelationshipsExpanded: {{ $person->show_past_relationships ? 'true' : 'false' }},
+          pastRelationshipsExpanded: {{ $person->show_past_love_relationships ? 'true' : 'false' }},
         }">
           <div class="flex justify-between items-center rounded-t-lg bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
 
