@@ -50,6 +50,7 @@ use App\Http\Controllers\Persons\PersonInformationController;
 use App\Http\Controllers\Persons\PersonLifeEventController;
 use App\Http\Controllers\Persons\PersonLoveController;
 use App\Http\Controllers\Persons\PersonNoteController;
+use App\Http\Controllers\Persons\PersonPastLoveToggleController;
 use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonReminderController;
@@ -214,6 +215,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::get('persons/{slug}/love/existing', [PersonSearchLoveController::class, 'new'])->name('person.love.existing.new');
             Route::post('persons/{slug}/love', [PersonLoveController::class, 'store'])->name('person.love.store');
             Route::post('persons/{slug}/love/search', [PersonSearchLoveController::class, 'search'])->name('person.love.search');
+            Route::get('persons/{slug}/love/toggle', [PersonPastLoveToggleController::class, 'create'])->name('person.love.toggle');
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');

@@ -76,14 +76,29 @@
 
       <!-- Past Relationships -->
       @if ($pastRelationships->isNotEmpty())
-        <div class="rounded-lg border border-gray-200">
-          <h3 class="rounded-t-lg border-b border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
+        <div id="past-love-relationships" class="rounded-lg border border-gray-200" x-data="{
+          pastRelationshipsExpanded:
+            {{ $person->show_past_love_relationships ? 'true' : 'false' }},
+        }">
+          <div class="flex items-center justify-between rounded-t-lg bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
+            <!-- title -->
             <div class="flex items-center gap-2">
               <x-lucide-heart-crack class="h-4 w-4 text-gray-500" />
               {{ __('Past relationships') }}
             </div>
-          </h3>
-          <div class="divide-y divide-gray-200 rounded-b-lg bg-white">
+
+            <!-- show/hide -->
+            <div class="flex items-center gap-2">
+              <a x-target="past-love-relationships" href="{{ route('person.love.toggle', $person->slug) }}" class="inline-flex cursor-pointer items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-200">
+                <span x-text="pastRelationshipsExpanded ? '{{ __('Show less') }}' : '{{ __('Show more') }}'"></span>
+                <x-lucide-chevron-down x-show="!pastRelationshipsExpanded" class="h-4 w-4" />
+                <x-lucide-chevron-up x-show="pastRelationshipsExpanded" class="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+
+          <!-- list -->
+          <div x-cloak x-show="pastRelationshipsExpanded" class="divide-y divide-gray-200 rounded-b-lg border-t border-gray-200 bg-white">
             @foreach ($pastRelationships as $relationship)
               <div class="p-4 last:rounded-b-lg">
                 <div class="flex items-center gap-3">
