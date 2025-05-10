@@ -251,7 +251,7 @@ class RelationshipHelperTest extends TestCase
             'name' => 'Rachel Green',
             'maiden_name' => 'Green',
             'nickname' => 'Rach',
-            'slug' => '2-rachel',
+            'slug' => $rachel->slug,
             'avatar' => [
                 '40' => $rachel->getAvatar(40),
                 '80' => $rachel->getAvatar(80),
