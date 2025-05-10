@@ -1,18 +1,34 @@
+<?php
+/*
+ * @var Person $person
+ * @var Collection $persons
+ * @var Collection $currentRelationships
+ * @var Collection $pastRelationships
+ */
+?>
+
 <x-app-layout>
   <div class="grid h-[calc(100vh-48px)] grid-cols-[280px_320px_1fr] divide-x divide-gray-200">
-    <!-- Section A: Contact List -->
+    <!-- Contact list -->
     @include('persons.partials.persons-list', ['persons' => $persons, 'person' => $person])
 
-    <!-- Section B: Contact Overview -->
+    <!-- Contact overview -->
     @include('persons.partials.profile')
 
-    <!-- Section C: Detail View -->
+    <!-- Detail view -->
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-3xl p-6">
-        <!-- Love Relationships Section -->
-        <!--  <livewire:persons.manage-love-relationship lazy :person="$person" />
+        <!-- Love relationships -->
+        @include(
+          'persons.family.partials.love.index',
+          [
+            'person' => $person,
+            'currentRelationships' => $currentRelationships,
+            'pastRelationships' => $pastRelationships,
+          ]
+        )
 
-        <!-- Children Section -->
+        <!-- Children -->
         <section class="mb-8">
           <div class="mb-4 flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -43,7 +59,7 @@
           </div>
         </section>
 
-        <!-- Extended Family Section -->
+        <!-- Extended family -->
         <section class="mb-8">
           <div class="mb-4 flex items-center justify-between">
             <div class="flex items-center gap-2">

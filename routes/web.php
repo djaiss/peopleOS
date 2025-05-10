@@ -24,6 +24,7 @@ use App\Http\Controllers\Instance\InstanceController;
 use App\Http\Controllers\Instance\InstanceDestroyAccountController;
 use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Instance\InstanceTestimonialsController;
+use App\Http\Controllers\Instance\InstanceWaitlistController;
 use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Journal\MonthController;
@@ -42,16 +43,19 @@ use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
-use App\Http\Controllers\Persons\PersonFamilyController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
 use App\Http\Controllers\Persons\PersonInformationController;
 use App\Http\Controllers\Persons\PersonLifeEventController;
+use App\Http\Controllers\Persons\PersonLoveController;
 use App\Http\Controllers\Persons\PersonNoteController;
+use App\Http\Controllers\Persons\PersonPastLoveToggleController;
 use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
+use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonReminderController;
 use App\Http\Controllers\Persons\PersonSearchController;
+use App\Http\Controllers\Persons\PersonSearchLoveController;
 use App\Http\Controllers\Persons\PersonSendTestReminderController;
 use App\Http\Controllers\Persons\PersonSettingsAgeController;
 use App\Http\Controllers\Persons\PersonSettingsAvatarController;
@@ -206,7 +210,12 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             });
 
             // family
-            Route::get('persons/{slug}/family', [PersonFamilyController::class, 'index'])->name('person.family.index');
+            Route::get('persons/{slug}/family', [PersonRelationshipController::class, 'index'])->name('person.family.index');
+            Route::get('persons/{slug}/love/new', [PersonLoveController::class, 'new'])->name('person.love.new');
+            Route::get('persons/{slug}/love/existing', [PersonSearchLoveController::class, 'new'])->name('person.love.existing.new');
+            Route::post('persons/{slug}/love', [PersonLoveController::class, 'store'])->name('person.love.store');
+            Route::post('persons/{slug}/love/search', [PersonSearchLoveController::class, 'search'])->name('person.love.search');
+            Route::get('persons/{slug}/love/toggle', [PersonPastLoveToggleController::class, 'create'])->name('person.love.toggle');
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');
@@ -302,6 +311,15 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
         // account deletion reasons
         Route::get('instance/cancellation-reasons', [InstanceCancellationReasonsController::class, 'index'])->name('instance.cancellation-reasons.index');
+
+        // waitlist
+        Route::get('instance/waitlist', [InstanceWaitlistController::class, 'index'])->name('instance.waitlist.index');
+        Route::get('instance/waitlist/not-confirmed', [InstanceWaitlistController::class, 'notConfirmed'])->name('instance.waitlist.not-confirmed');
+        Route::get('instance/waitlist/approved', [InstanceWaitlistController::class, 'approved'])->name('instance.waitlist.approved');
+        Route::get('instance/waitlist/rejected', [InstanceWaitlistController::class, 'rejected'])->name('instance.waitlist.rejected');
+        Route::get('instance/waitlist/all', [InstanceWaitlistController::class, 'all'])->name('instance.waitlist.all');
+        Route::put('instance/waitlist/{waitlist}/approve', [InstanceWaitlistController::class, 'approve'])->name('instance.waitlist.approve');
+        Route::put('instance/waitlist/{waitlist}/reject', [InstanceWaitlistController::class, 'reject'])->name('instance.waitlist.reject');
     });
 });
 

@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\UserWaitlistStatus;
 use App\Models\UserWaitlist;
 use Exception;
 
 /**
- * Validate the given confirmation code to suscribe the user to the waitlist.
+ * Validate the given confirmation code to let the user suscribe to the waitlist.
  */
 class ValidateConfirmationCodeToWaitlist
 {
@@ -49,6 +50,7 @@ class ValidateConfirmationCodeToWaitlist
     {
         $this->waitlistEntry->update([
             'confirmed_at' => now(),
+            'status' => UserWaitlistStatus::SUBSCRIBED_AND_CONFIRMED->value,
         ]);
     }
 }

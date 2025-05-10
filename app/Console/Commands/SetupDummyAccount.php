@@ -6,6 +6,7 @@ namespace App\Console\Commands;
 
 use App\Enums\KidsStatusType;
 use App\Enums\MaritalStatusType;
+use App\Enums\UserWaitlistStatus;
 use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
@@ -16,6 +17,8 @@ use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class SetupDummyAccount extends Command
 {
@@ -53,6 +56,7 @@ class SetupDummyAccount extends Command
 
         $this->start();
         $this->wipeAndMigrateDB();
+        $this->createUserWaitlistItems();
         $this->createFirstUsers();
         $this->createPersons();
         $this->createSecondBlankUser();
@@ -99,6 +103,29 @@ class SetupDummyAccount extends Command
         $this->line('-----------------------------');
 
         $this->info('Setup is done. Have fun.');
+    }
+
+    private function createUserWaitlistItems(): void
+    {
+        $this->info('☐ Create user waitlist items');
+
+        DB::table('user_waitlist')->insert([
+            'email' => Crypt::encryptString('chandler.bing@friends.com'),
+            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
+            'created_at' => Carbon::now()->subDays(2),
+        ]);
+
+        DB::table('user_waitlist')->insert([
+            'email' => Crypt::encryptString('monica.geller@friends.com'),
+            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
+            'created_at' => Carbon::now()->subDays(19),
+        ]);
+
+        DB::table('user_waitlist')->insert([
+            'email' => Crypt::encryptString('ross.geller@friends.com'),
+            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
+            'created_at' => Carbon::now()->subDays(1),
+        ]);
     }
 
     private function createFirstUsers(): void

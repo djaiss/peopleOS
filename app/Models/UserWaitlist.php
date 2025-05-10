@@ -22,6 +22,7 @@ class UserWaitlist extends Model
         'email',
         'confirmation_code',
         'confirmed_at',
+        'status',
     ];
 
     /**

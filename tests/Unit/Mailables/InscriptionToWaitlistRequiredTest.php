@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Mail;
+namespace Tests\Unit\Mailables;
 
 use App\Mail\InscriptionToWaitlistRequired;
 use Tests\TestCase;

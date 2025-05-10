@@ -6,11 +6,12 @@ namespace App\Http\Controllers\Persons;
 
 use App\Cache\PeopleListCache;
 use App\Http\Controllers\Controller;
+use App\Services\GetRelationshipsListing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class PersonFamilyController extends Controller
+class PersonRelationshipController extends Controller
 {
     public function index(Request $request): View
     {
@@ -20,9 +21,14 @@ class PersonFamilyController extends Controller
             accountId: Auth::user()->account_id,
         )->value();
 
+        $viewData = (new GetRelationshipsListing(
+            person: $person,
+        ))->execute();
+
         return view('persons.family.index', [
             'persons' => $persons,
             'person' => $person,
+            ...$viewData,
         ]);
     }
 }

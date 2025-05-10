@@ -271,7 +271,7 @@
           </x-button.secondary>
 
           <x-button.primary dusk="submit-form-button">
-            {{ __('Create') }}
+            {{ __('Add') }}
           </x-button.primary>
         </div>
       </form>

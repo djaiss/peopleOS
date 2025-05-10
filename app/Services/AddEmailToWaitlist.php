@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\UserWaitlistStatus;
 use App\Jobs\AskUserToConfirmInscriptionToWaitlist;
 use App\Models\UserWaitlist;
 use Exception;
@@ -41,6 +42,7 @@ class AddEmailToWaitlist
         $this->waitlistEntry = UserWaitlist::create([
             'email' => $this->email,
             'confirmation_code' => Str::uuid(),
+            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
         ]);
     }
 
