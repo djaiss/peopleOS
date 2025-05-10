@@ -20,17 +20,16 @@
 
   <!-- Create new contact form -->
   <div>
-
     <!-- search results -->
     <div class="mb-4 space-y-4 px-4">
       <form x-data="{
         searchQuery: '{{ $searchQuery }}',
         debounceTimer: null,
         performSearch() {
-            clearTimeout(this.debounceTimer)
-            this.debounceTimer = setTimeout(() => {
-              this.$el.form.requestSubmit()
-            }, 300)
+          clearTimeout(this.debounceTimer)
+          this.debounceTimer = setTimeout(() => {
+            this.$el.form.requestSubmit()
+          }, 300)
         },
       }" x-target="search-results" x-target.back="new-love-relationship" action="{{ route('person.love.search', $person) }}" method="POST" class="relative">
         @csrf
@@ -50,7 +49,7 @@
                 </div>
                 <div class="font-medium text-gray-900">{{ $result['name'] }}</div>
               </div>
-              <div class="cursor-pointer inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-1 font-semibold text-gray-700 hover:shadow-xs transition duration-150 ease-in-out text-center hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25">
+              <div class="inline-flex cursor-pointer items-center rounded-md border border-gray-300 bg-white px-3 py-1 text-center font-semibold text-gray-700 transition duration-150 ease-in-out hover:bg-gray-50 hover:shadow-xs focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden disabled:opacity-25">
                 {{ __('Choose') }}
               </div>
             </button>
@@ -65,9 +64,7 @@
   <form x-target="love-listing new-love-relationship persons" x-target.back="new-love-relationship" action="{{ route('person.love.store', $person) }}" method="POST">
     @csrf
 
-    <div class="mb-4 flex gap-4 px-4">
-
-    </div>
+    <div class="mb-4 flex gap-4 px-4"></div>
 
     <div class="mb-4 flex gap-4 px-4">
       <div class="flex-1">
