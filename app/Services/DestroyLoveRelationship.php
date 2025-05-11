@@ -27,13 +27,13 @@ class DestroyLoveRelationship
 
     private function validate(): void
     {
-        $count = LoveRelationship::where('id', $this->loveRelationship->id)
+        $exists = LoveRelationship::where('id', $this->loveRelationship->id)
             ->whereHas('person', function ($query): void {
                 $query->where('account_id', $this->user->account_id);
             })
-            ->count();
+            ->exists();
 
-        if ($count === 0) {
+        if (! $exists) {
             throw new ModelNotFoundException('Relationship not found in user\'s account');
         }
     }
