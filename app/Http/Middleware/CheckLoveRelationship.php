@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use App\Models\Gift;
+use App\Models\LoveRelationship;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckGift
+class CheckLoveRelationship
 {
     /**
      * Handle an incoming request.
@@ -19,16 +19,19 @@ class CheckGift
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $id = (int) $request->route()->parameter('gift');
+        $id = (int) $request->route()->parameter('loveRelationship');
         $person = $request->attributes->get('person');
 
         try {
-            $gift = Gift::where('person_id', $person->id)->findOrFail($id);
+            $loveRelationship = LoveRelationship::where(function ($query) use ($person): void {
+                $query->where('person_id', $person->id)
+                    ->orWhere('related_person_id', $person->id);
+            })->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(404);
         }
 
-        $request->attributes->add(['gift' => $gift]);
+        $request->attributes->add(['loveRelationship' => $loveRelationship]);
 
         return $next($request);
     }
