@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Persons;
 
+use App\Models\Account;
+use App\Models\LoveRelationship;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -72,5 +74,33 @@ class PersonLoveControllerTest extends TestCase
             'first_name' => 'required',
             'nature_of_relationship' => 'required',
         ]);
+    }
+
+    #[Test]
+    public function it_destroys_a_love_relationship(): void
+    {
+        $account = Account::factory()->create();
+        $user = User::factory()->create([
+            'account_id' => $account->id,
+        ]);
+        $person = Person::factory()->create([
+            'account_id' => $account->id,
+        ]);
+        $partner = Person::factory()->create([
+            'account_id' => $account->id,
+        ]);
+
+        $loveRelationship = LoveRelationship::factory()->create([
+            'person_id' => $person->id,
+            'related_person_id' => $partner->id,
+            'type' => 'romantic partner',
+            'is_current' => true,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->delete('/persons/'.$person->slug.'/love/'.$loveRelationship->id);
+
+        $response->assertRedirect(route('person.family.index', $person->slug));
+        $response->assertSessionHas('status', 'Relationship deleted');
     }
 }
