@@ -4,4 +4,4 @@
  */
 ?>
 
-<span class="text-sm"></span>
+<span id="marital-status" class="text-sm">{{ $person->marital }}</span>

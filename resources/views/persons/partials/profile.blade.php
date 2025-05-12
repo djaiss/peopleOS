@@ -36,7 +36,7 @@
     <div class="space-y-2">
       <!-- Relationship status -->
       <div class="flex items-center gap-2">
-        <x-lucide-heart class="h-4 w-4 text-rose-500" />
+        <x-lucide-heart class="h-4 w-4 flex-shrink-0 text-rose-500" />
         @include('persons.partials.marital-statuses', ['person' => $person])
       </div>
 

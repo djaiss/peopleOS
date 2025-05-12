@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 class Person extends Model
@@ -304,6 +305,51 @@ class Person extends Model
         return $this->loveRelationships()
             ->where('is_current', true)
             ->exists();
+    }
+
+    protected function marital(): Attribute
+    {
+        return Attribute::make(
+            get: fn (): mixed => $this->getMaritalStatus()
+        );
+    }
+
+    /**
+     * Get the marital status of the person, which can be complex.
+     * Re
+     */
+    public function getMaritalStatus(): string
+    {
+        if (! $this->hasActiveLoveRelationship()) {
+            return __(Crypt::decryptString($this->attributes['marital_status'] ?? ''));
+        }
+
+        $activeRelationships = LoveRelationship::where(function ($query): void {
+            $query->where('person_id', $this->id)
+                ->orWhere('related_person_id', $this->id);
+        })
+            ->where('is_current', true)
+            ->with(['person', 'relatedPerson'])
+            ->get();
+
+        // Get unique partner names to avoid duplicates
+        $partnerNames = collect();
+        foreach ($activeRelationships as $relationship) {
+            $partnerName = $relationship->person_id === $this->id
+                ? $relationship->relatedPerson->name
+                : $relationship->person->name;
+
+            $partnerNames->push($partnerName);
+        }
+        $uniquePartnerNames = $partnerNames->unique()->values();
+
+        if ($uniquePartnerNames->isEmpty()) {
+            return __('In a relationship');
+        }
+
+        return __('In a relationship with :partners', [
+            'partners' => $uniquePartnerNames->join(', ', ' and '),
+        ]);
     }
 
     /**

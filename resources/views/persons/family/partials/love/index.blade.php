@@ -76,7 +76,7 @@
                     </x-button.invisible>
                   --}}
 
-                  <form x-target="current-love-relationship-{{ $relationship['id'] }}" x-on:ajax:before="
+                  <form x-target="current-love-relationship-{{ $relationship['id'] }} marital-status" x-on:ajax:before="
                     confirm('Are you sure you want to proceed? This can not be undone.') ||
                       $event.preventDefault()
                   " action="{{ route('person.love.destroy', [$person->slug, $relationship['id']]) }}" method="POST">
@@ -141,7 +141,7 @@
                     </x-button.invisible>
                   --}}
 
-                  <form x-target="past-love-relationship-{{ $relationship['id'] }}" x-on:ajax:before="
+                  <form x-target="past-love-relationship-{{ $relationship['id'] }} marital-status" x-on:ajax:before="
                     confirm('Are you sure you want to proceed? This can not be undone.') ||
                       $event.preventDefault()
                   " action="{{ route('person.love.destroy', [$person->slug, $relationship['id']]) }}" method="POST">

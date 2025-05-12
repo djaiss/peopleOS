@@ -20,6 +20,7 @@ class DestroyLoveRelationship
     public function execute(): void
     {
         $this->validate();
+        $this->changeMaritalStatus();
         $this->deleteLoveRelationship();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
@@ -61,6 +62,20 @@ class DestroyLoveRelationship
             $query->where('person_id', $this->loveRelationship->related_person_id)
                 ->where('related_person_id', $this->loveRelationship->person_id);
         })->delete();
+    }
+
+    private function changeMaritalStatus(): void
+    {
+        $person = $this->loveRelationship->person;
+        $relatedPerson = $this->loveRelationship->relatedPerson;
+
+        (new UpdateLoveRelationshipStatus(
+            person: $person,
+        ))->execute();
+
+        (new UpdateLoveRelationshipStatus(
+            person: $relatedPerson,
+        ))->execute();
     }
 
     private function updateUserLastActivityDate(): void
