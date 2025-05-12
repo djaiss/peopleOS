@@ -28,6 +28,7 @@ class CreateLoveRelationship
     {
         $this->validate();
         $this->createLoveRelationship();
+        $this->changeMaritalStatus();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -73,6 +74,17 @@ class CreateLoveRelationship
             'is_current' => $this->isCurrent,
             'notes' => $this->notes,
         ]);
+    }
+
+    private function changeMaritalStatus(): void
+    {
+        (new UpdateLoveRelationshipStatus(
+            person: $this->person,
+        ))->execute();
+
+        (new UpdateLoveRelationshipStatus(
+            person: $this->relatedPerson,
+        ))->execute();
     }
 
     private function updateUserLastActivityDate(): void
