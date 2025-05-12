@@ -315,8 +315,20 @@ class Person extends Model
     }
 
     /**
-     * Get the marital status of the person, which can be complex.
-     * Re
+     * Get the marital status of the person.
+     *
+     * This method determines the marital status of the person based on whether they
+     * have an active love relationship. If no active relationship exists, it decrypts
+     * and returns the `marital_status` attribute. Otherwise, it queries the database
+     * for active love relationships and constructs a string describing the relationship(s).
+     *
+     * Assumptions:
+     * - The `marital_status` attribute is encrypted and may be null.
+     * - The `loveRelationships` relationship is defined and returns the person's love relationships.
+     * - The `relatedPerson` relationship on a `LoveRelationship` model provides the partner's details.
+     *
+     * @return string The marital status, e.g., "Single", "In a relationship", or
+     *                "In a relationship with [partner names]".
      */
     public function getMaritalStatus(): string
     {
