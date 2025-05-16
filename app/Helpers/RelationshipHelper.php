@@ -51,7 +51,7 @@ class RelationshipHelper
             ])
             ->sortBy('name');
 
-        $searchTerm = Str::lower(trim($name));
+        $searchTerm = Str::lower(mb_trim($name));
 
         // search for a person by name, maiden name or nickname
         return $persons->filter(function (array $person) use ($searchTerm): bool {

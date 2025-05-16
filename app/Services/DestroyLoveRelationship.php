@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LoveRelationship;
 use App\Models\User;
@@ -22,6 +23,7 @@ class DestroyLoveRelationship
         $this->validate();
         $this->changeMaritalStatus();
         $this->deleteLoveRelationship();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
     }
@@ -76,6 +78,11 @@ class DestroyLoveRelationship
         (new UpdateLoveRelationshipStatus(
             person: $relatedPerson,
         ))->execute();
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->loveRelationship->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

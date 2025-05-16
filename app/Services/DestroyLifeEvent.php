@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LifeEvent;
 use App\Models\User;
@@ -25,6 +26,7 @@ class DestroyLifeEvent
 
         $this->lifeEvent->delete();
 
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction($personName);
     }
@@ -34,6 +36,11 @@ class DestroyLifeEvent
         if ($this->user->account_id !== $this->lifeEvent->account_id) {
             throw new ModelNotFoundException();
         }
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->lifeEvent->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void
