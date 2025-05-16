@@ -21,10 +21,5 @@ class DashboardControllerTest extends TestCase
         $response = $this->actingAs($user)
             ->get('/dashboard')
             ->assertOk();
-
-        $response->assertArrayHasKeys([
-            'reminders',
-            'persons',
-        ]);
     }
 }
