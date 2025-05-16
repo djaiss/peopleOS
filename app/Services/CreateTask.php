@@ -29,7 +29,6 @@ class CreateTask
     {
         $this->validate();
         $this->create();
-        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction($this->task);
 
