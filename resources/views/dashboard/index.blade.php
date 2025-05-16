@@ -104,7 +104,7 @@
 
           <!-- Recent Contacts -->
           <div class="rounded-lg border border-gray-200 bg-white">
-            <div class="border-b border-gray-200 bg-gray-50 px-4 py-2 rounded-t-lg">
+            <div class="rounded-t-lg border-b border-gray-200 bg-gray-50 px-4 py-2">
               <div class="flex items-center gap-2">
                 <x-lucide-users class="h-5 w-5 text-indigo-500" />
                 <h3 class="text-sm font-medium text-gray-700">{{ __('Latest persons consulted') }}</h3>
@@ -112,12 +112,12 @@
             </div>
             <div class="divide-y divide-gray-200">
               @forelse ($viewData['persons'] as $person)
-              <div class="p-4 flex items-center gap-2">
-                <img class="h-7 w-7 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person['avatar']['40'] }}" srcset="{{ $person['avatar']['40'] }}, {{ $person['avatar']['80'] }} 2x" alt="{{ $person['name'] }}" loading="lazy" />
-                <div>
-                  <a href="{{ route('person.show', $person['slug']) }}" class="font-medium text-gray-900 hover:underline text-sm">{{ $person['name'] }}</a>
+                <div class="flex items-center gap-2 p-4">
+                  <img class="h-7 w-7 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person['avatar']['40'] }}" srcset="{{ $person['avatar']['40'] }}, {{ $person['avatar']['80'] }} 2x" alt="{{ $person['name'] }}" loading="lazy" />
+                  <div>
+                    <a href="{{ route('person.show', $person['slug']) }}" class="text-sm font-medium text-gray-900 hover:underline">{{ $person['name'] }}</a>
+                  </div>
                 </div>
-              </div>
               @empty
                 <div class="flex flex-col items-center justify-center rounded-lg bg-white p-6 text-center">
                   <span class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">

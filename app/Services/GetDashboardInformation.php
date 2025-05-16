@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\User;
 use Carbon\Carbon;
@@ -70,7 +71,7 @@ class GetDashboardInformation
     public function getLatestSeenPersons(): Collection
     {
         $persons = Person::where('account_id', $this->user->account_id)
-            ->orderBy('last_seen_at', 'desc')
+            ->orderBy('last_consulted_at', 'desc')
             ->limit(5)
             ->get();
 
