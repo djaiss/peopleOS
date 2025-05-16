@@ -68,14 +68,6 @@ class CreateTaskTest extends TestCase
 
         Queue::assertPushedOn(
             queue: 'low',
-            job: UpdatePersonLastConsultedDate::class,
-            callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
-                return $job->person->id === $person->id;
-            }
-        );
-
-        Queue::assertPushedOn(
-            queue: 'low',
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'task_creation'

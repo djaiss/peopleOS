@@ -59,11 +59,6 @@ class CreateTask
         ]);
     }
 
-    private function updatePersonLastConsultedDate(): void
-    {
-        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
-    }
-
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
