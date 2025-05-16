@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
@@ -53,6 +54,14 @@ class UpdatePersonInformationTest extends TestCase
                 return $job->action === 'person_information_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated general information about '.$person->name;
+            }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($person) {
+                return $job->person->id === $person->id;
             }
         );
 

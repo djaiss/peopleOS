@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LoveRelationship;
 use App\Models\Person;
@@ -65,6 +66,14 @@ class DestroyLoveRelationshipTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function ($job) use ($user): bool {
                 return $job->user->id === $user->id;
+            }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($ross, $rachel): bool {
+                return $job->person->id === $ross->id || $job->person->id === $rachel->id;
             }
         );
 

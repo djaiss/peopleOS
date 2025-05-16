@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Account;
 use App\Models\Person;
@@ -90,6 +91,14 @@ class UpdatePersonPhysicalAppearanceTest extends TestCase
             UpdateUserLastActivityDate::class,
             function ($job) use ($user) {
                 return $job->user->id === $user->id;
+            }
+        );
+
+        Queue::assertPushedOn(
+            'low',
+            UpdatePersonLastConsultedDate::class,
+            function ($job) use ($person) {
+                return $job->person->id === $person->id;
             }
         );
 

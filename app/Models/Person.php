@@ -76,6 +76,7 @@ class Person extends Model
         'age_bracket',
         'age_estimated_at',
         'show_past_love_relationships',
+        'last_consulted_at',
     ];
 
     /**
@@ -129,6 +130,7 @@ class Person extends Model
             'dress_style' => 'encrypted',
             'voice' => 'encrypted',
             'show_past_love_relationships' => 'boolean',
+            'last_consulted_at' => 'datetime',
         ];
     }
 

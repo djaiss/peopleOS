@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
 use App\Jobs\ResizePersonAvatar;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
@@ -29,6 +30,7 @@ class UpdatePersonAvatar
         $this->deleteOldProfilePicture();
         $this->update();
         $this->resizeAvatar();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->log();
         $this->refreshCache();
@@ -60,6 +62,11 @@ class UpdatePersonAvatar
     private function resizeAvatar(): void
     {
         ResizePersonAvatar::dispatch($this->person)->onQueue('high');
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

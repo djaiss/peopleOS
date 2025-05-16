@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
 use App\Models\Person;
@@ -36,6 +37,7 @@ class UpdatePerson
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
         $this->generateSlug();
@@ -82,6 +84,11 @@ class UpdatePerson
 
         $this->person->slug = $slug;
         $this->person->save();
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

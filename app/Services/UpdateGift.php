@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gift;
 use App\Models\Person;
@@ -29,6 +30,7 @@ class UpdateGift
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -59,6 +61,11 @@ class UpdateGift
             'url' => $this->url,
             'gifted_at' => $this->giftedAt !== null && $this->giftedAt !== '' && $this->giftedAt !== '0' ? Carbon::parse($this->giftedAt) : null,
         ]);
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

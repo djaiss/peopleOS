@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
@@ -24,6 +25,7 @@ class UpdatePersonInformation
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -44,6 +46,11 @@ class UpdatePersonInformation
             'nationalities' => $this->nationalities,
             'languages' => $this->languages,
         ]);
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

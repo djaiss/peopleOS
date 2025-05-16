@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
-use App\Models\LifeEvent;
-use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\User;
 use Carbon\Carbon;
@@ -46,7 +43,7 @@ class GetDashboardInformation
         $reminderCollection = collect([]);
 
         foreach ($reminders as $reminder) {
-            $carbonDate = Carbon::parse(now()->year . '-' . $reminder->month . '-' . $reminder->day);
+            $carbonDate = Carbon::parse(now()->year.'-'.$reminder->month.'-'.$reminder->day);
 
             if ($carbonDate->between(now(), now()->addDays(30))) {
                 $reminderCollection->push([
@@ -62,7 +59,7 @@ class GetDashboardInformation
                             '40' => $reminder->person->getAvatar(40),
                             '80' => $reminder->person->getAvatar(80),
                         ],
-                    ]
+                    ],
                 ]);
             }
         }
