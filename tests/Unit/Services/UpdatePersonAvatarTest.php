@@ -6,6 +6,7 @@ namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
 use App\Jobs\ResizePersonAvatar;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
@@ -60,6 +61,14 @@ class UpdatePersonAvatarTest extends TestCase
             queue: 'high',
             job: ResizePersonAvatar::class,
             callback: function (ResizePersonAvatar $job) use ($person): bool {
+                return $job->person->id === $person->id;
+            }
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
             }
         );

@@ -38,7 +38,7 @@ class ExtractMarketingTimestamps
         }
 
         foreach (File::allFiles($directoryPath) as $file) {
-            $relativePath = rtrim(str_replace(
+            $relativePath = mb_rtrim(str_replace(
                 [resource_path('views/'), '.blade.php', DIRECTORY_SEPARATOR],
                 ['', '', '/'],
                 $file->getPathname()

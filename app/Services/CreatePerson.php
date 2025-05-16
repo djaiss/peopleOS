@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Cache\PeopleListCache;
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
 use App\Models\Person;
@@ -38,6 +39,7 @@ class CreatePerson
         $this->validate();
         $this->validateAccountLimit();
         $this->createPerson();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
         $this->generateSlug();
@@ -110,6 +112,11 @@ class CreatePerson
         ];
 
         return $colorPalette[array_rand($colorPalette)];
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

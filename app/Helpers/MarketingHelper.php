@@ -53,7 +53,7 @@ class MarketingHelper
 
         // Remove extra whitespace
         $content = preg_replace('/\s+/', ' ', (string) $content);
-        $content = trim((string) $content);
+        $content = mb_trim((string) $content);
 
         // Count words
         return str_word_count($content);

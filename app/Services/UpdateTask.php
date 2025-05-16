@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\Task;
@@ -27,6 +28,7 @@ class UpdateTask
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -56,6 +58,11 @@ class UpdateTask
             'person_id' => $this->person?->id,
             'task_category_id' => $this->taskCategory?->id,
         ]);
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->task->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

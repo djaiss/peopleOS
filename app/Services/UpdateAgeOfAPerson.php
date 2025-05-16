@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Enums\AgeType;
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\User;
@@ -30,6 +31,7 @@ class UpdateAgeOfAPerson
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -103,6 +105,11 @@ class UpdateAgeOfAPerson
             $this->person->age_estimated_at = now();
             $this->person->save();
         }
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

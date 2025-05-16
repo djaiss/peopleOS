@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Encounter;
 use App\Models\User;
@@ -21,6 +22,7 @@ class DestroyEncounter
     {
         $this->validate();
         $this->delete();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
     }
@@ -35,6 +37,11 @@ class DestroyEncounter
     private function delete(): void
     {
         $this->encounter->delete();
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->encounter->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void

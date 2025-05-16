@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Task;
 use App\Models\User;
@@ -25,6 +26,7 @@ class DestroyTask
 
         $this->task->delete();
 
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction($taskName);
     }
@@ -34,6 +36,11 @@ class DestroyTask
         if ($this->user->account_id !== $this->task->account_id) {
             throw new ModelNotFoundException();
         }
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->task->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void
