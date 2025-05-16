@@ -5,10 +5,136 @@
     </h2>
   </x-slot>
 
-  <div class="py-12">
+  <div class="py-12 bg-gray-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <!-- Stats Overview -->
-      <p>Work in progress</p>
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <!-- Left column -->
+        <div>
+
+          <!-- reminders -->
+          <div class="rounded-lg border border-gray-200 bg-white">
+            <div class="border-b border-gray-200 bg-gray-50 px-4 py-2 rounded-t-lg">
+              <div class="flex items-center gap-2">
+                <x-lucide-calendar class="h-5 w-5 text-blue-500" />
+                <h3 class="text-sm font-medium text-gray-700">{{ __('Reminders in the next 30 days') }}</h3>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-200">
+              @forelse ($viewData['reminders'] as $reminder)
+                <div class="p-4">
+                  <div class="flex items-center gap-x-5">
+                    <div class="flex flex-col text-center">
+                      <p class="text-gray-500 text-xs">{{ $reminder['month'] }}</p>
+                      <p class="text-gray-500 text-2xl">{{ $reminder['day'] }}</p>
+                    </div>
+
+                    <div class="min-w-0 flex-1 gap-y-1">
+                      <p class="text-gray-500">{{ $reminder['name'] }}</p>
+                      <a href="{{ route('person.show', $reminder['person']['slug']) }}" class="font-medium text-gray-900 hover:underline text-xs">{{ $reminder['person']['name'] }}</a>
+                    </div>
+                    <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $reminder['person']['avatar']['40'] }}" srcset="{{ $reminder['person']['avatar']['40'] }}, {{ $reminder['person']['avatar']['80'] }} 2x" alt="{{ $reminder['person']['name'] }}" loading="lazy" />
+                  </div>
+                </div>
+              @empty
+                <div class="flex flex-col items-center justify-center rounded-lg bg-white p-6 text-center">
+                  <span class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+                    <x-lucide-calendar-days class="h-6 w-6 text-blue-600" />
+                  </span>
+                  <p class="text-gray-900">{{ __('No reminders in the next 30 days') }}</p>
+                </div>
+              @endforelse
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle column -->
+        <div class="rounded-lg border border-gray-200 bg-white">
+          <div class="border-b border-gray-200 bg-gray-50 px-4 py-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <x-lucide-list-todo class="h-5 w-5 text-amber-500" />
+                <h3 class="text-sm font-medium text-gray-700">{{ __('Tasks') }}</h3>
+              </div>
+              <a href="#" class="inline-flex items-center gap-1 rounded-md bg-amber-200 px-2 py-1 text-sm font-medium text-amber-600 hover:bg-amber-300">
+                <x-lucide-plus class="mr-1 h-3 w-3" />
+                {{ __('Add') }}
+              </a>
+            </div>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <!-- Sample tasks -->
+            <div class="flex justify-between rounded-lg border border-transparent px-4 py-2 hover:border-gray-200 hover:bg-white">
+              <div class="flex gap-2">
+                <div class="flex h-6 shrink-0 items-center">
+                  <input type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                </div>
+                <div class="flex items-center gap-2 text-sm/6">
+                  <span class="bg-blue-100 rounded-md px-2 text-gray-500">Work</span>
+                  <span class="font-medium text-gray-900">Schedule meeting with John</span>
+                  <p class="text-gray-500">Due May 20</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between rounded-lg border border-transparent px-4 py-2 hover:border-gray-200 hover:bg-white">
+              <div class="flex gap-2">
+                <div class="flex h-6 shrink-0 items-center">
+                  <input type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                </div>
+                <div class="flex items-center gap-2 text-sm/6">
+                  <span class="bg-green-100 rounded-md px-2 text-gray-500">Personal</span>
+                  <span class="font-medium text-gray-900">Buy gift for Jane</span>
+                  <p class="text-gray-500">Due June 1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="space-y-6">
+          <!-- Welcome box -->
+          <div class="rounded-lg border border-gray-200 bg-white p-6">
+            <div class="flex items-center gap-3">
+              <img class="h-12 w-12 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ auth()->user()->getAvatar(48) }}" alt="{{ auth()->user()->name }}" />
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900">{{ __('Welcome back,') }} {{ auth()->user()->name }}!</h3>
+                <p class="text-sm text-gray-500">{{ __('Here\'s what\'s happening with your contacts today.') }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Contacts -->
+          <div class="rounded-lg border border-gray-200 bg-white">
+            <div class="border-b border-gray-200 bg-gray-50 px-4 py-2">
+              <div class="flex items-center gap-2">
+                <x-lucide-users class="h-5 w-5 text-indigo-500" />
+                <h3 class="text-sm font-medium text-gray-700">{{ __('Recent Contacts') }}</h3>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-200">
+              <!-- Sample recent contacts -->
+              <div class="p-4">
+                <div class="flex items-center gap-3">
+                  <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="https://ui-avatars.com/api/?name=Mike+Johnson&color=333333&background=EBF4FF&size=40" alt="Mike Johnson" />
+                  <div class="min-w-0 flex-1">
+                    <a href="#" class="font-medium text-gray-900 hover:underline">Mike Johnson</a>
+                    <p class="text-sm text-gray-500">Last updated 2 hours ago</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center gap-3">
+                  <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="https://ui-avatars.com/api/?name=Sarah+Wilson&color=333333&background=EBF4FF&size=40" alt="Sarah Wilson" />
+                  <div class="min-w-0 flex-1">
+                    <a href="#" class="font-medium text-gray-900 hover:underline">Sarah Wilson</a>
+                    <p class="text-sm text-gray-500">Last updated 5 hours ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </x-app-layout>
