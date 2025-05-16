@@ -105,32 +105,28 @@
 
           <!-- Recent Contacts -->
           <div class="rounded-lg border border-gray-200 bg-white">
-            <div class="border-b border-gray-200 bg-gray-50 px-4 py-2">
+            <div class="border-b border-gray-200 bg-gray-50 px-4 py-2 rounded-t-lg">
               <div class="flex items-center gap-2">
                 <x-lucide-users class="h-5 w-5 text-indigo-500" />
-                <h3 class="text-sm font-medium text-gray-700">{{ __('Recent Contacts') }}</h3>
+                <h3 class="text-sm font-medium text-gray-700">{{ __('Latest persons consulted') }}</h3>
               </div>
             </div>
             <div class="divide-y divide-gray-200">
-              <!-- Sample recent contacts -->
-              <div class="p-4">
-                <div class="flex items-center gap-3">
-                  <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="https://ui-avatars.com/api/?name=Mike+Johnson&color=333333&background=EBF4FF&size=40" alt="Mike Johnson" />
-                  <div class="min-w-0 flex-1">
-                    <a href="#" class="font-medium text-gray-900 hover:underline">Mike Johnson</a>
-                    <p class="text-sm text-gray-500">Last updated 2 hours ago</p>
-                  </div>
+              @forelse ($viewData['persons'] as $person)
+              <div class="p-4 flex items-center gap-2">
+                <img class="h-7 w-7 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person['avatar']['40'] }}" srcset="{{ $person['avatar']['40'] }}, {{ $person['avatar']['80'] }} 2x" alt="{{ $person['name'] }}" loading="lazy" />
+                <div>
+                  <a href="{{ route('person.show', $person['slug']) }}" class="font-medium text-gray-900 hover:underline text-sm">{{ $person['name'] }}</a>
                 </div>
               </div>
-              <div class="p-4">
-                <div class="flex items-center gap-3">
-                  <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="https://ui-avatars.com/api/?name=Sarah+Wilson&color=333333&background=EBF4FF&size=40" alt="Sarah Wilson" />
-                  <div class="min-w-0 flex-1">
-                    <a href="#" class="font-medium text-gray-900 hover:underline">Sarah Wilson</a>
-                    <p class="text-sm text-gray-500">Last updated 5 hours ago</p>
-                  </div>
+              @empty
+                <div class="flex flex-col items-center justify-center rounded-lg bg-white p-6 text-center">
+                  <span class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+                    <x-lucide-users class="h-6 w-6 text-blue-600" />
+                  </span>
+                  <p class="text-gray-900">{{ __('No persons consulted yet') }}</p>
                 </div>
-              </div>
+              @endforelse
             </div>
           </div>
         </div>
