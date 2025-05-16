@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\User;
 use Carbon\Carbon;
@@ -18,9 +19,11 @@ class GetDashboardInformation
     public function execute(): array
     {
         $reminders = $this->getReminders();
+        $persons = $this->getLatestSeenPersons();
 
         return [
             'reminders' => $reminders,
+            'persons' => $persons,
         ];
     }
 
@@ -63,5 +66,25 @@ class GetDashboardInformation
         }
 
         return $reminderCollection;
+    }
+
+    public function getLatestSeenPersons(): Collection
+    {
+        $persons = Person::where('account_id', $this->user->account_id)
+            ->orderBy('last_consulted_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        return $persons->map(function (Person $person) {
+            return [
+                'id' => $person->id,
+                'name' => $person->name,
+                'slug' => $person->slug,
+                'avatar' => [
+                    '40' => $person->getAvatar(40),
+                    '80' => $person->getAvatar(80),
+                ],
+            ];
+        });
     }
 }
