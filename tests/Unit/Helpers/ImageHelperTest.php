@@ -13,6 +13,8 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_generate_variant_path_for_image_in_subdirectory(): void
     {
+        config(['app.url' => '']);
+
         $path = 'images/Ross_Geller.jpg';
         $size = 64;
 
@@ -27,6 +29,8 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_generate_variant_path_for_image_in_root_directory(): void
     {
+        config(['app.url' => '']);
+
         $path = 'Ross_Geller.jpg';
         $size = 128;
 
@@ -41,6 +45,8 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_handle_different_image_extensions(): void
     {
+        config(['app.url' => '']);
+
         $path = 'images/Ross_Geller.png';
         $size = 256;
 
@@ -55,6 +61,8 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_handle_nested_directories(): void
     {
+        config(['app.url' => '']);
+
         $path = 'images/avatars/Ross_Geller.jpg';
         $size = 64;
 
