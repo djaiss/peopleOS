@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +19,7 @@ class PersonSearchController extends Controller
             'term' => 'required|string|max:255',
         ]);
 
-        $persons = PeopleListCache::make(
+        $persons = PersonsListCache::make(
             accountId: Auth::user()->account_id,
         )->value();
 

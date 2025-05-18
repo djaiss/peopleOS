@@ -10,6 +10,14 @@ class ImageHelper
 {
     /**
      * Get the image variant URL of an image for a given size.
+     * For instance, given a filename like "Ross_Geller.jpg",
+     * the function will return the URL of the image variant
+     * like "Ross_Geller_64x64.webp".
+     *
+     * @param string $path The path to the image.
+     * @param int $size The size of the image.
+     *
+     * @return string The URL of the image variant.
      */
     public static function getImageVariantPath(string $path, int $size): string
     {

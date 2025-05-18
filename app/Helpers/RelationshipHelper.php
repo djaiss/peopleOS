@@ -22,6 +22,12 @@ class RelationshipHelper
      * should be visible to the user.
      * We also need to filter out the contacts that are already in the love
      * relationships for this persons.
+     *
+     * @param int $accountId The ID of the account to search for.
+     * @param string $name The name to search for.
+     * @param int $personId The ID of the person to exclude from the search.
+     *
+     * @return Collection The search results.
      */
     public static function searchPerson(int $accountId, string $name, int $personId): Collection
     {
