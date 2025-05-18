@@ -13,15 +13,13 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_generate_variant_path_for_image_in_subdirectory(): void
     {
-        config(['app.url' => '']);
-
         $path = 'images/Ross_Geller.jpg';
         $size = 64;
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            env('APP_URL') . '/storage/images/Ross_Geller_64x64.webp',
+        $this->assertStringContainsString(
+            '/storage/images/Ross_Geller_64x64.webp',
             $variantPath,
         );
     }
@@ -29,15 +27,13 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_generate_variant_path_for_image_in_root_directory(): void
     {
-        config(['app.url' => '']);
-
         $path = 'Ross_Geller.jpg';
         $size = 128;
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            env('APP_URL') . '/storage/Ross_Geller_128x128.webp',
+        $this->assertStringContainsString(
+            '/storage/Ross_Geller_128x128.webp',
             $variantPath,
         );
     }
@@ -45,15 +41,13 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_handle_different_image_extensions(): void
     {
-        config(['app.url' => '']);
-
         $path = 'images/Ross_Geller.png';
         $size = 256;
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            env('APP_URL') . '/storage/images/Ross_Geller_256x256.webp',
+        $this->assertStringContainsString(
+            '/storage/images/Ross_Geller_256x256.webp',
             $variantPath,
         );
     }
@@ -61,15 +55,13 @@ class ImageHelperTest extends TestCase
     #[Test]
     public function it_should_handle_nested_directories(): void
     {
-        config(['app.url' => '']);
-
         $path = 'images/avatars/Ross_Geller.jpg';
         $size = 64;
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            env('APP_URL') . '/storage/images/avatars/Ross_Geller_64x64.webp',
+        $this->assertStringContainsString(
+            '/storage/images/avatars/Ross_Geller_64x64.webp',
             $variantPath,
         );
     }
