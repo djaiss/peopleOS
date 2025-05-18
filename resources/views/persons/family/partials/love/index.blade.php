@@ -39,6 +39,8 @@
         </div>
       </div>
     </div>
+
+    <div id="love-listing"></div>
   @else
     <div id="new-love-relationship"></div>
 
