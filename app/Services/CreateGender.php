@@ -9,6 +9,9 @@ use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
 use App\Models\User;
 
+/**
+ * Create a gender.
+ */
 class CreateGender
 {
     public function __construct(

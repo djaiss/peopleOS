@@ -10,6 +10,10 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
+/**
+ * Create an email sent record.
+ * Emails sent are logged and shown to the user in his settings panel.
+ */
 class CreateEmailSent
 {
     private EmailSent $emailSent;

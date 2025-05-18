@@ -13,6 +13,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Create a gift.
+ */
 class CreateGift
 {
     private Gift $gift;
@@ -47,6 +50,8 @@ class CreateGift
 
     private function create(): void
     {
+        $giftedAt = empty($this->giftedAt) ? null : Carbon::parse($this->giftedAt);
+
         $this->gift = Gift::create([
             'account_id' => $this->user->account_id,
             'person_id' => $this->person->id,
@@ -54,7 +59,7 @@ class CreateGift
             'name' => $this->name ?? null,
             'occasion' => $this->occasion ?? null,
             'url' => $this->url ?? null,
-            'gifted_at' => $this->giftedAt !== null && $this->giftedAt !== '' && $this->giftedAt !== '0' ? Carbon::parse($this->giftedAt) : null,
+            'gifted_at' => $giftedAt,
         ]);
     }
 

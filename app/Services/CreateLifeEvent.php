@@ -13,6 +13,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Create a life event.
+ */
 class CreateLifeEvent
 {
     private LifeEvent $lifeEvent;

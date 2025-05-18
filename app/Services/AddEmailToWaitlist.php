@@ -10,6 +10,9 @@ use App\Models\UserWaitlist;
 use Exception;
 use Illuminate\Support\Str;
 
+/**
+ * Add an email to the waitlist, granting access to the app when it is released.
+ */
 class AddEmailToWaitlist
 {
     private UserWaitlist $waitlistEntry;

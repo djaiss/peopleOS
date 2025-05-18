@@ -35,7 +35,9 @@ class CreateJournal
 
     private function validate(): void
     {
-        if ($this->journalTemplate && $this->journalTemplate->account_id !== $this->user->account_id) {
+        if ($this->journalTemplate
+            && $this->journalTemplate->account_id !== $this->user->account_id) {
+            // The journal template does not belong to the user's account.
             throw new ModelNotFoundException('Journal template not found');
         }
     }

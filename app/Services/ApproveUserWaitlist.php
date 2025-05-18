@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\UserWaitlist;
 use Exception;
 
+/**
+ * Approve a user waitlist entry. The user must be an instance administrator.
+ */
 class ApproveUserWaitlist
 {
     public function __construct(
