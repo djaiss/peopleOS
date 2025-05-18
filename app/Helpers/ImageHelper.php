@@ -4,20 +4,27 @@ declare(strict_types=1);
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Storage;
+
 class ImageHelper
 {
     /**
-     * Get the image variant of an image for a given size.
+     * Get the image variant URL of an image for a given size.
      */
     public static function getImageVariantPath(string $path, int $size): string
     {
-        $baseName = pathinfo($path, PATHINFO_FILENAME);
-        $folderName = '';
-
-        if (str_contains($path, '/')) {
-            $folderName = dirname($path) . '/';
+        $directory = pathinfo($path, PATHINFO_DIRNAME);
+        if ($directory !== '.') {
+            $directory .= '/';
+        } else {
+            $directory = '';
         }
 
-        return $folderName . $baseName . '_' . $size . 'x' . $size . '.webp';
+        $baseName = pathinfo($path, PATHINFO_FILENAME);
+        $variantPath = $directory . $baseName . '_' . $size . 'x' . $size . '.webp';
+
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+        $disk = Storage::disk(config('filesystems.default'));
+        return $disk->url($variantPath);
     }
 }
