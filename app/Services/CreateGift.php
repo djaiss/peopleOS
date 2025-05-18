@@ -50,7 +50,7 @@ class CreateGift
 
     private function create(): void
     {
-        $giftedAt = empty($this->giftedAt) ? null : Carbon::parse($this->giftedAt);
+        $giftedAt = $this->giftedAt === null || $this->giftedAt === '' || $this->giftedAt === '0' ? null : Carbon::parse($this->giftedAt);
 
         $this->gift = Gift::create([
             'account_id' => $this->user->account_id,

@@ -22,6 +22,11 @@ class JournalHelper
      *      'is_selected' => false,
      *      'url' => '/journal/2023/01',
      *   ]
+     *
+     * @param int $year The year to get the months for.
+     * @param int $selectedMonth The month to mark as selected.
+     *
+     * @return \Illuminate\Support\Collection The months in the year.
      */
     public static function getMonths(int $year, int $selectedMonth): Collection
     {
@@ -49,6 +54,12 @@ class JournalHelper
      *      'is_selected' => false,
      *      'url' => '/journal/2023/01/01',
      *   ]
+     *
+     * @param int $givenYear The year to get the days for.
+     * @param int $givenMonth The month to get the days for.
+     * @param int $givenDay The day to mark as selected.
+     *
+     * @return Collection The days in the month.
      */
     public static function getDaysInMonth(int $givenYear, int $givenMonth, int $givenDay): Collection
     {

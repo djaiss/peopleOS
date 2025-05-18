@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\User;
@@ -18,7 +18,7 @@ class GetNotesListing
 
     public function execute(): array
     {
-        $persons = PeopleListCache::make(
+        $persons = PersonsListCache::make(
             accountId: $this->user->account_id,
         )->value();
 

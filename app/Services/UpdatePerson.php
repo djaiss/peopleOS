@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
@@ -107,7 +107,7 @@ class UpdatePerson
 
     private function refreshCache(): void
     {
-        PeopleListCache::make(
+        PersonsListCache::make(
             accountId: $this->user->account_id,
         )->refresh();
     }
