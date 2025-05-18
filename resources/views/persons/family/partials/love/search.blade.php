@@ -42,6 +42,7 @@
       </form>
 
       <div class="divide-y divide-gray-200 rounded-md border border-gray-200">
+        <!-- search results -->
         <template x-if="! selectedPerson && allSearchResults && allSearchResults.length > 0">
           <template x-for="result in allSearchResults" :key="result.id">
             <button type="button" @click="selectContact(result)" class="flex w-full justify-between p-3 text-left hover:bg-gray-50">
@@ -58,6 +59,14 @@
           </template>
         </template>
 
+        <!-- no search results -->
+        <template x-if="! selectedPerson && allSearchResults && allSearchResults.length === 0">
+          <div class="p-3 text-gray-500">
+            {{ __('No results found') }}
+          </div>
+        </template>
+
+        <!-- the user has selected a person -->
         <template x-if="selectedPerson">
           <div class="flex items-center justify-between p-3">
             <div class="flex items-center gap-3">
