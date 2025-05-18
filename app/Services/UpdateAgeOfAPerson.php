@@ -122,7 +122,7 @@ class UpdateAgeOfAPerson
         LogUserAction::dispatch(
             user: $this->user,
             action: 'age_update',
-            description: 'Updated the age of '.$this->person->name,
+            description: 'Updated the age of ' . $this->person->name,
         )->onQueue('low');
     }
 }

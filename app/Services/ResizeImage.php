@@ -47,10 +47,10 @@ class ResizeImage
         $baseName = pathinfo($this->path, PATHINFO_FILENAME);
 
         if ($this->folderName !== '') {
-            return $this->folderName.'/'.$baseName.'_'.$width.'x'.$height.'.webp';
+            return $this->folderName . '/' . $baseName . '_' . $width . 'x' . $height . '.webp';
         }
 
-        return $baseName.'_'.$width.'x'.$height.'.webp';
+        return $baseName . '_' . $width . 'x' . $height . '.webp';
     }
 
     private function resize(string $fileName, int $maxWidth, int $maxHeight): void

@@ -53,7 +53,7 @@ class CreateSpecialDateTest extends TestCase
 
         $this->assertInstanceOf(
             SpecialDate::class,
-            $specialDate
+            $specialDate,
         );
 
         Queue::assertPushedOn(
@@ -61,7 +61,7 @@ class CreateSpecialDateTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
     }
 

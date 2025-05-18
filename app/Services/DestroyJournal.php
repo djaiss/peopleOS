@@ -46,7 +46,7 @@ class DestroyJournal
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_deletion',
-            description: 'Deleted the journal called '.$journalName,
+            description: 'Deleted the journal called ' . $journalName,
         )->onQueue('low');
     }
 }

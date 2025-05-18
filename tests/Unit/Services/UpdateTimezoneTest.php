@@ -35,7 +35,7 @@ class UpdateTimezoneTest extends TestCase
 
         $this->assertInstanceOf(
             User::class,
-            $updatedUser
+            $updatedUser,
         );
 
         Queue::assertPushedOn(
@@ -43,7 +43,7 @@ class UpdateTimezoneTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -53,7 +53,7 @@ class UpdateTimezoneTest extends TestCase
                 return $job->action === 'timezone_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated their timezone';
-            }
+            },
         );
     }
 }

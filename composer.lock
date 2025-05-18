@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.343.12",
+            "version": "3.343.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d4b21990410d023e9c5303487d3248e8d7c8c2b6"
+                "reference": "eb50d111a09ef39675358e74801260ac129ee346"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d4b21990410d023e9c5303487d3248e8d7c8c2b6",
-                "reference": "d4b21990410d023e9c5303487d3248e8d7c8c2b6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/eb50d111a09ef39675358e74801260ac129ee346",
+                "reference": "eb50d111a09ef39675358e74801260ac129ee346",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.343.12"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.343.13"
             },
-            "time": "2025-05-15T18:14:32+00:00"
+            "time": "2025-05-16T18:24:39+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -6009,16 +6009,16 @@
         },
         {
             "name": "ryangjchandler/laravel-cloudflare-turnstile",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile.git",
-                "reference": "bdd5acaa0003bd3aef23e4968803943fc1f98f51"
+                "reference": "0c74b0174863329571e1dcef948a0e2601e5874d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryangjchandler/laravel-cloudflare-turnstile/zipball/bdd5acaa0003bd3aef23e4968803943fc1f98f51",
-                "reference": "bdd5acaa0003bd3aef23e4968803943fc1f98f51",
+                "url": "https://api.github.com/repos/ryangjchandler/laravel-cloudflare-turnstile/zipball/0c74b0174863329571e1dcef948a0e2601e5874d",
+                "reference": "0c74b0174863329571e1dcef948a0e2601e5874d",
                 "shasum": ""
             },
             "require": {
@@ -6077,9 +6077,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/issues",
-                "source": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/tree/v2.0.1"
+                "source": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/tree/v2.0.2"
             },
-            "time": "2025-03-02T22:48:12+00:00"
+            "time": "2025-05-16T13:12:49+00:00"
         },
         {
             "name": "sebastian/cli-parser",

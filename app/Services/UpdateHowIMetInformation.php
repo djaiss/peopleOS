@@ -114,7 +114,7 @@ class UpdateHowIMetInformation
         LogUserAction::dispatch(
             user: $this->user,
             action: 'how_i_met_information_update',
-            description: 'Updated the person called '.$this->person->name.' with the how I met information',
+            description: 'Updated the person called ' . $this->person->name . ' with the how I met information',
         )->onQueue('low');
     }
 }

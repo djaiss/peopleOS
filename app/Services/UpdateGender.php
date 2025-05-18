@@ -51,7 +51,7 @@ class UpdateGender
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gender_update',
-            description: 'Updated the gender called '.$this->gender->name,
+            description: 'Updated the gender called ' . $this->gender->name,
         )->onQueue('low');
     }
 }

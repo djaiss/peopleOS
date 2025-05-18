@@ -56,13 +56,13 @@ class CreateAccountTest extends TestCase
 
         $this->assertInstanceOf(
             User::class,
-            $user
+            $user,
         );
 
         Queue::assertPushedOn(
             queue: 'high',
             job: SetupAccount::class,
-            callback: fn ($job) => $job->user->id === $user->id
+            callback: fn($job) => $job->user->id === $user->id,
         );
 
         Queue::assertPushedOn(
@@ -70,7 +70,7 @@ class CreateAccountTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -78,7 +78,7 @@ class CreateAccountTest extends TestCase
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'account_creation' && $job->user->id === $user->id;
-            }
+            },
         );
     }
 }

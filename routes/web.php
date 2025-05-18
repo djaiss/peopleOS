@@ -326,4 +326,4 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

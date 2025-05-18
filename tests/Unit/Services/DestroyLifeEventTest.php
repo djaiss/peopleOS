@@ -58,7 +58,7 @@ class DestroyLifeEventTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -66,7 +66,7 @@ class DestroyLifeEventTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -76,7 +76,7 @@ class DestroyLifeEventTest extends TestCase
                 return $job->user->id === $user->id &&
                     $job->action === 'life_event_deletion' &&
                     $job->description === 'Deleted a life event for Monica Geller';
-            }
+            },
         );
     }
 

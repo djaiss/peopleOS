@@ -15,9 +15,9 @@ class ImageHelper
         $folderName = '';
 
         if (str_contains($path, '/')) {
-            $folderName = dirname($path).'/';
+            $folderName = dirname($path) . '/';
         }
 
-        return $folderName.$baseName.'_'.$size.'x'.$size.'.webp';
+        return $folderName . $baseName . '_' . $size . 'x' . $size . '.webp';
     }
 }

@@ -43,7 +43,7 @@ class CreateGender
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gender_creation',
-            description: 'Created the gender called '.$gender->name,
+            description: 'Created the gender called ' . $gender->name,
         )->onQueue('low');
     }
 }

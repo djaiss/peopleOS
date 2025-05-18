@@ -48,7 +48,7 @@ class UpdateGenderTest extends TestCase
 
         $this->assertInstanceOf(
             Gender::class,
-            $updatedGender
+            $updatedGender,
         );
 
         Queue::assertPushedOn(
@@ -56,7 +56,7 @@ class UpdateGenderTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -66,7 +66,7 @@ class UpdateGenderTest extends TestCase
                 return $job->action === 'gender_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated the gender called Female';
-            }
+            },
         );
     }
 

@@ -23,7 +23,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug)
+            ->get('/persons/' . $person->slug)
             ->assertOk();
 
         $response->assertSee('No encounters recorded yet');
@@ -38,7 +38,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/encounters/new')
+            ->get('/persons/' . $person->slug . '/encounters/new')
             ->assertOk();
 
         $response->assertViewIs('persons.overview.partials.add-encounter');
@@ -56,7 +56,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/encounters', [
+            ->post('/persons/' . $person->slug . '/encounters', [
                 'seen_at' => '2025-01-01',
             ])
             ->assertRedirectToRoute('person.show', $person->slug);
@@ -78,7 +78,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/encounters', [
+            ->post('/persons/' . $person->slug . '/encounters', [
                 'seen_at' => '',
             ]);
 
@@ -94,7 +94,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/encounters', [
+            ->post('/persons/' . $person->slug . '/encounters', [
                 'seen_at' => 'invalid-date',
             ]);
 
@@ -117,7 +117,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/persons/'.$person->slug.'/encounters/'.$encounter->id)
+            ->delete('/persons/' . $person->slug . '/encounters/' . $encounter->id)
             ->assertRedirectToRoute('person.show', $person->slug);
 
         $response->assertSessionHas('status', 'Encounter deleted');
@@ -141,7 +141,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/encounters/'.$encounter->id.'/edit')
+            ->get('/persons/' . $person->slug . '/encounters/' . $encounter->id . '/edit')
             ->assertOk();
 
         $response->assertViewIs('persons.overview.partials.edit-encounter');
@@ -166,7 +166,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/encounters/'.$encounter->id, [
+            ->put('/persons/' . $person->slug . '/encounters/' . $encounter->id, [
                 'seen_at' => '2025-02-01',
                 'context' => 'At Joey\'s apartment',
             ])
@@ -194,7 +194,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/encounters/'.$encounter->id, [
+            ->put('/persons/' . $person->slug . '/encounters/' . $encounter->id, [
                 'seen_at' => '',
             ]);
 
@@ -215,7 +215,7 @@ class PersonEncounterControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/encounters/'.$encounter->id, [
+            ->put('/persons/' . $person->slug . '/encounters/' . $encounter->id, [
                 'seen_at' => 'invalid-date',
             ]);
 

@@ -60,7 +60,7 @@ class UpdateEncounterTest extends TestCase
 
         $this->assertInstanceOf(
             Encounter::class,
-            $updatedReport
+            $updatedReport,
         );
 
         Queue::assertPushedOn(
@@ -68,7 +68,7 @@ class UpdateEncounterTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -76,7 +76,7 @@ class UpdateEncounterTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -86,7 +86,7 @@ class UpdateEncounterTest extends TestCase
                 return $job->action === 'encounter_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated having seen Ross Geller';
-            }
+            },
         );
     }
 

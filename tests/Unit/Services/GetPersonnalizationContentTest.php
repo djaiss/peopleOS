@@ -65,7 +65,7 @@ YAML',
                 'id' => $gender->id,
                 'name' => 'Male',
             ],
-            $array['genders'][0]
+            $array['genders'][0],
         );
 
         $this->assertCount(1, $array['taskCategories']);
@@ -75,7 +75,7 @@ YAML',
                 'name' => 'Work',
                 'color' => '#000000',
             ],
-            $array['taskCategories'][0]
+            $array['taskCategories'][0],
         );
 
         $this->assertCount(1, $array['journalTemplates']);
@@ -86,7 +86,7 @@ YAML',
                 'columns' => 0,
                 'questions' => 0,
             ],
-            $array['journalTemplates'][0]
+            $array['journalTemplates'][0],
         );
     }
 }

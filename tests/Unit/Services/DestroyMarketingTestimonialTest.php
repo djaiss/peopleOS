@@ -48,7 +48,7 @@ class DestroyMarketingTestimonialTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -58,7 +58,7 @@ class DestroyMarketingTestimonialTest extends TestCase
                 return $job->action === 'marketing_testimonial_deletion'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted a marketing testimonial';
-            }
+            },
         );
     }
 

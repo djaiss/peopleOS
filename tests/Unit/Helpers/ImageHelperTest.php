@@ -20,7 +20,7 @@ class ImageHelperTest extends TestCase
 
         $this->assertEquals(
             'images/Ross_Geller_64x64.webp',
-            $variantPath
+            $variantPath,
         );
     }
 
@@ -34,7 +34,7 @@ class ImageHelperTest extends TestCase
 
         $this->assertEquals(
             'Ross_Geller_128x128.webp',
-            $variantPath
+            $variantPath,
         );
     }
 
@@ -48,7 +48,7 @@ class ImageHelperTest extends TestCase
 
         $this->assertEquals(
             'images/Ross_Geller_256x256.webp',
-            $variantPath
+            $variantPath,
         );
     }
 
@@ -62,7 +62,7 @@ class ImageHelperTest extends TestCase
 
         $this->assertEquals(
             'images/avatars/Ross_Geller_64x64.webp',
-            $variantPath
+            $variantPath,
         );
     }
 }

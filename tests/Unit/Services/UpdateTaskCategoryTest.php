@@ -48,7 +48,7 @@ class UpdateTaskCategoryTest extends TestCase
 
         $this->assertInstanceOf(
             TaskCategory::class,
-            $updatedTaskCategory
+            $updatedTaskCategory,
         );
 
         Queue::assertPushedOn(
@@ -56,7 +56,7 @@ class UpdateTaskCategoryTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -66,7 +66,7 @@ class UpdateTaskCategoryTest extends TestCase
                 return $job->action === 'task_category_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated the task category called Birthday';
-            }
+            },
         );
     }
 

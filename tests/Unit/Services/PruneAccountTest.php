@@ -43,7 +43,7 @@ class PruneAccountTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -53,7 +53,7 @@ class PruneAccountTest extends TestCase
                 return $job->action === 'account_pruning'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted all persons and related data from your account';
-            }
+            },
         );
     }
 

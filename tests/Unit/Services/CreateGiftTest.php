@@ -54,7 +54,7 @@ class CreateGiftTest extends TestCase
 
         $this->assertInstanceOf(
             Gift::class,
-            $gift
+            $gift,
         );
 
         Queue::assertPushedOn(
@@ -62,7 +62,7 @@ class CreateGiftTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -70,7 +70,7 @@ class CreateGiftTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -80,7 +80,7 @@ class CreateGiftTest extends TestCase
                 return $job->action === 'gift_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Logged a gift for Ross Geller';
-            }
+            },
         );
     }
 

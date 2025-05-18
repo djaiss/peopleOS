@@ -50,15 +50,15 @@ class AdministrationGenderControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/administration/personalization/genders/'.$gender->id.'/edit');
+            ->get('/administration/personalization/genders/' . $gender->id . '/edit');
 
         $response->assertStatus(200);
         $response->assertViewIs('administration.personalization.partials.gender-edit');
         $response->assertViewHas('gender', $gender);
 
         $response = $this->actingAs($user)
-            ->from('/administration/personalization/genders/'.$gender->id.'/edit')
-            ->put('/administration/personalization/genders/'.$gender->id, [
+            ->from('/administration/personalization/genders/' . $gender->id . '/edit')
+            ->put('/administration/personalization/genders/' . $gender->id, [
                 'name' => 'Male',
             ]);
 
@@ -87,7 +87,7 @@ class AdministrationGenderControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/administration/personalization')
-            ->delete('/administration/personalization/genders/'.$gender->id);
+            ->delete('/administration/personalization/genders/' . $gender->id);
 
         $response->assertRedirect('/administration/personalization');
         $response->assertSessionHas('status', __('Gender deleted'));

@@ -48,7 +48,7 @@ class PersonReminderControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/reminders')
+            ->get('/persons/' . $person->slug . '/reminders')
             ->assertOk();
     }
 
@@ -66,7 +66,7 @@ class PersonReminderControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/reminders')
+            ->get('/persons/' . $person->slug . '/reminders')
             ->assertOk();
     }
 
@@ -91,7 +91,7 @@ class PersonReminderControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/reminders')
+            ->get('/persons/' . $person->slug . '/reminders')
             ->assertOk();
 
         $months = $response['months'];

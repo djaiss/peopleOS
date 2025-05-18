@@ -64,7 +64,7 @@ class InstanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/instance/accounts/'.$account->id);
+            ->get('/instance/accounts/' . $account->id);
 
         $response->assertOk()
             ->assertSee('Ross Geller')
@@ -82,7 +82,7 @@ class InstanceControllerTest extends TestCase
         $account = Account::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get('/instance/accounts/'.$account->id);
+            ->get('/instance/accounts/' . $account->id);
 
         $response->assertStatus(403);
     }
@@ -106,7 +106,7 @@ class InstanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/instance/accounts/'.$account->id);
+            ->get('/instance/accounts/' . $account->id);
 
         $response->assertOk()
             ->assertSee('Trial account');

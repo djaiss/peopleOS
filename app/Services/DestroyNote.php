@@ -51,7 +51,7 @@ class DestroyNote
         LogUserAction::dispatch(
             user: $this->user,
             action: 'note_deletion',
-            description: 'Deleted a note for '.$this->note->person->name,
+            description: 'Deleted a note for ' . $this->note->person->name,
         )->onQueue('low');
     }
 }

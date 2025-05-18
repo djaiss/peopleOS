@@ -36,7 +36,7 @@ class CreateMarketingTestimonialTest extends TestCase
             nameToDisplay: 'Joey Tribbiani',
             testimony: 'How you doin\'? This product is amazing!',
             urlToPointTo: 'https://joeydoesntsharefood.com',
-            displayAvatar: true
+            displayAvatar: true,
         ))->execute();
 
         $this->assertDatabaseHas('marketing_testimonies', [
@@ -53,7 +53,7 @@ class CreateMarketingTestimonialTest extends TestCase
 
         $this->assertInstanceOf(
             MarketingTestimonial::class,
-            $testimony
+            $testimony,
         );
 
         Queue::assertPushedOn(
@@ -61,7 +61,7 @@ class CreateMarketingTestimonialTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -71,7 +71,7 @@ class CreateMarketingTestimonialTest extends TestCase
                 return $job->action === 'marketing_testimony_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created a marketing testimony';
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -79,7 +79,7 @@ class CreateMarketingTestimonialTest extends TestCase
             job: SendMarketingTestimonialSubmittedEmail::class,
             callback: function (SendMarketingTestimonialSubmittedEmail $job) use ($user): bool {
                 return $job->email === $user->email;
-            }
+            },
         );
 
         Queue::assertPushedOn(

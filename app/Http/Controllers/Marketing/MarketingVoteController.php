@@ -17,7 +17,7 @@ class MarketingVoteController extends Controller
     {
         (new DestroyMarketingVote(
             user: Auth::user(),
-            marketingPage: $page
+            marketingPage: $page,
         ))->execute();
 
         return redirect()->back();

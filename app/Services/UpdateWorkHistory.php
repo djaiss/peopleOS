@@ -74,7 +74,7 @@ class UpdateWorkHistory
         LogUserAction::dispatch(
             user: $this->user,
             action: 'work_history_update',
-            description: 'Updated the work history entry for '.$this->workHistory->person->name,
+            description: 'Updated the work history entry for ' . $this->workHistory->person->name,
         )->onQueue('low');
     }
 }

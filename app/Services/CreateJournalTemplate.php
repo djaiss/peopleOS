@@ -58,7 +58,7 @@ class CreateJournalTemplate
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_template_creation',
-            description: 'Created the journal template called '.$this->name,
+            description: 'Created the journal template called ' . $this->name,
         )->onQueue('low');
     }
 }

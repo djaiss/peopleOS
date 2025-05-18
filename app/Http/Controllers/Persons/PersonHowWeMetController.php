@@ -46,7 +46,7 @@ class PersonHowWeMetController extends Controller
             'how_we_met' => 'nullable|string',
             'how_we_met_location' => 'nullable|string',
             'how_we_met_first_impressions' => 'nullable|string',
-            'how_we_met_year' => 'nullable|integer|min:0|max:'.date('Y'),
+            'how_we_met_year' => 'nullable|integer|min:0|max:' . date('Y'),
             'how_we_met_month' => 'nullable|integer|min:0|max:12',
             'how_we_met_day' => 'nullable|integer|min:0|max:31',
         ]);

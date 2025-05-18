@@ -53,7 +53,7 @@ class DestroyGift
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gift_deletion',
-            description: 'Deleted a gift for '.$personName,
+            description: 'Deleted a gift for ' . $personName,
         )->onQueue('low');
     }
 }

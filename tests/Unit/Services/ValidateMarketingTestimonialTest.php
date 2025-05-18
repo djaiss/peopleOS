@@ -47,7 +47,7 @@ class ValidateMarketingTestimonialTest extends TestCase
 
         $this->assertEquals(
             MarketingTestimonialStatus::APPROVED->value,
-            $updatedTestimonial->status
+            $updatedTestimonial->status,
         );
 
         Queue::assertPushedOn(
@@ -55,7 +55,7 @@ class ValidateMarketingTestimonialTest extends TestCase
             job: SendMarketingTestimonialReviewedEmail::class,
             callback: function (SendMarketingTestimonialReviewedEmail $job): bool {
                 return $job->email === 'ross@geller.com';
-            }
+            },
         );
     }
 

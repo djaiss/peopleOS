@@ -78,7 +78,7 @@ class SpecialDate extends Model
                 $month = $attributes['month'] ?? 1;
 
                 return Carbon::createFromDate($this->year, $month, $day)->diffForHumans();
-            }
+            },
         );
     }
 
@@ -101,7 +101,7 @@ class SpecialDate extends Model
                 $age = Carbon::createFromDate($this->year, $month, $day)->age;
 
                 return trans_choice(':count year old|:count years old', $age, ['count' => $age]);
-            }
+            },
         );
     }
 
@@ -155,7 +155,7 @@ class SpecialDate extends Model
                 }
 
                 return '';
-            }
+            },
         );
     }
 
@@ -164,6 +164,6 @@ class SpecialDate extends Model
      */
     public function dateAsString(): string
     {
-        return Carbon::parse($this->year.'-'.$this->month.'-'.$this->day)->format('Y-m-d');
+        return Carbon::parse($this->year . '-' . $this->month . '-' . $this->day)->format('Y-m-d');
     }
 }

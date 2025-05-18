@@ -51,7 +51,7 @@ class CreateJournal
 
     private function generateSlug(): void
     {
-        $slug = $this->journal->id.'-'.Str::of($this->name)->slug('-');
+        $slug = $this->journal->id . '-' . Str::of($this->name)->slug('-');
 
         $this->journal->slug = $slug;
         $this->journal->save();
@@ -67,7 +67,7 @@ class CreateJournal
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_creation',
-            description: 'Created the journal called '.$this->journal->name,
+            description: 'Created the journal called ' . $this->journal->name,
         )->onQueue('low');
     }
 }

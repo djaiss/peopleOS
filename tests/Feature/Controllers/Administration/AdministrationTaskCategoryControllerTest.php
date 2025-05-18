@@ -59,15 +59,15 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/administration/personalization/task-categories/'.$taskCategory->id.'/edit');
+            ->get('/administration/personalization/task-categories/' . $taskCategory->id . '/edit');
 
         $response->assertStatus(200);
         $response->assertViewIs('administration.personalization.partials.task-category-edit');
         $response->assertViewHas('taskCategory', $taskCategory);
 
         $response = $this->actingAs($user)
-            ->from('/administration/personalization/task-categories/'.$taskCategory->id.'/edit')
-            ->put('/administration/personalization/task-categories/'.$taskCategory->id, [
+            ->from('/administration/personalization/task-categories/' . $taskCategory->id . '/edit')
+            ->put('/administration/personalization/task-categories/' . $taskCategory->id, [
                 'name' => 'Updated Email',
                 'color' => 'bg-green-500',
             ]);
@@ -98,7 +98,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         $taskCategory = TaskCategory::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get('/administration/personalization/task-categories/'.$taskCategory->id.'/edit');
+            ->get('/administration/personalization/task-categories/' . $taskCategory->id . '/edit');
 
         $response->assertStatus(404);
     }
@@ -113,7 +113,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/administration/personalization')
-            ->delete('/administration/personalization/task-categories/'.$taskCategory->id);
+            ->delete('/administration/personalization/task-categories/' . $taskCategory->id);
 
         $response->assertRedirect('/administration/personalization');
         $response->assertSessionHas('status', __('Task category deleted'));
@@ -136,7 +136,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/administration/personalization')
-            ->delete('/administration/personalization/task-categories/'.$taskCategory->id);
+            ->delete('/administration/personalization/task-categories/' . $taskCategory->id);
 
         $response->assertStatus(404);
     }

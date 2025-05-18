@@ -78,7 +78,7 @@ class UpdateGift
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gift_update',
-            description: 'Updated a gift for '.$this->person->name,
+            description: 'Updated a gift for ' . $this->person->name,
         )->onQueue('low');
     }
 }

@@ -41,7 +41,7 @@ class ExtractMarketingTimestamps
             $relativePath = mb_rtrim(str_replace(
                 [resource_path('views/'), '.blade.php', DIRECTORY_SEPARATOR],
                 ['', '', '/'],
-                $file->getPathname()
+                $file->getPathname(),
             ), '.');
 
             $filesInfo[$relativePath] = date('Y-m-d H:i:s', $this->getFileModifiedTime($file->getRealPath()));
@@ -63,6 +63,6 @@ class ExtractMarketingTimestamps
             $output .= "        '{$path}' => '{$timestamp}',\n";
         }
 
-        return $output."    ],\n];";
+        return $output . "    ],\n];";
     }
 }

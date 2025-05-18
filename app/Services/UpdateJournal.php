@@ -59,7 +59,7 @@ class UpdateJournal
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_update',
-            description: 'Updated the journal called '.$this->journal->name,
+            description: 'Updated the journal called ' . $this->journal->name,
         )->onQueue('low');
     }
 }

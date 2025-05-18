@@ -73,7 +73,7 @@ class CreateGift
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gift_creation',
-            description: 'Logged a gift for '.$this->person->name,
+            description: 'Logged a gift for ' . $this->person->name,
         )->onQueue('low');
     }
 }

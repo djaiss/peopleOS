@@ -10,7 +10,7 @@ use Tests\TestCase;
 class InscriptionToWaitlistRequiredTest extends TestCase
 {
     /** @test */
-    public function it_builds_the_mailable_with_correct_data()
+    public function it_builds_the_mailable_with_correct_data(): void
     {
         $link = 'https://example.com/confirm';
         $mailable = new InscriptionToWaitlistRequired($link);
@@ -18,25 +18,25 @@ class InscriptionToWaitlistRequiredTest extends TestCase
         $envelope = $mailable->envelope();
         $this->assertEquals(
             'Confirm your inscription to the PeopleOS waitlist',
-            $envelope->subject
+            $envelope->subject,
         );
 
         $content = $mailable->content();
         $this->assertEquals(
             'mail.account.inscription-to-waitlist-required',
-            $content->markdown
+            $content->markdown,
         );
         $this->assertEquals(
             'mail.account.inscription-to-waitlist-required-text',
-            $content->text
+            $content->text,
         );
         $this->assertArrayHasKey(
             'link',
-            $content->with
+            $content->with,
         );
         $this->assertEquals(
             $link,
-            $content->with['link']
+            $content->with['link'],
         );
     }
 }

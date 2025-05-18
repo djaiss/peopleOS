@@ -99,7 +99,7 @@ class SetupDummyAccount extends Command
         $this->line('| username: blank@blank.com');
         $this->line('| password: blank123');
         $this->line('|----------------------------');
-        $this->line('| URL:      '.config('app.url'));
+        $this->line('| URL:      ' . config('app.url'));
         $this->line('-----------------------------');
 
         $this->info('Setup is done. Have fun.');
@@ -824,7 +824,7 @@ class SetupDummyAccount extends Command
             (new CreateNote(
                 user: $this->firstUser,
                 person: $person,
-                content: $this->faker->paragraphs(random_int(1, 3), true)
+                content: $this->faker->paragraphs(random_int(1, 3), true),
             ))->execute();
         }
     }

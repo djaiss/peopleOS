@@ -41,16 +41,16 @@ class UpdateMoodTest extends \Tests\TestCase
             user: $user,
             mood: $mood,
             moodType: MoodType::VERY_PLEASANT,
-            comment: 'Could I BE any happier?'
+            comment: 'Could I BE any happier?',
         ))->execute();
 
         $this->assertEquals(
             MoodType::VERY_PLEASANT->getDetails(),
-            $mood->fresh()->mood
+            $mood->fresh()->mood,
         );
         $this->assertEquals(
             'Could I BE any happier?',
-            $mood->fresh()->comment
+            $mood->fresh()->comment,
         );
     }
 

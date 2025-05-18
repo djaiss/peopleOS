@@ -7,9 +7,7 @@ parameters:
     # Level 9 is the highest level
     level: 3
     ignoreErrors:
-        - '#Access to an undefined property App\\Models\\User::\$name\.#'
         - '#Access to an undefined property App\\Models\\Person::\$name\.#'
-        - '#Access to an undefined property App\\Models\\Log::\$name\.#'
         - '#Access to an undefined property App\\Models\\SpecialDate::\$date\.#'
         - '#Access to an undefined property App\\Models\\SpecialDate::\$age\.#'
         - '#Access to an undefined property App\\Models\\SpecialDate::\$ageOld\.#'

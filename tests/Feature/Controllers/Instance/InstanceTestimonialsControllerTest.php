@@ -129,7 +129,7 @@ class InstanceTestimonialsControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/instance/testimonials/'.$testimonial->id.'/accept');
+            ->put('/instance/testimonials/' . $testimonial->id . '/accept');
 
         $response->assertRedirect();
         $response->assertSessionHas('status', __('Changes saved'));
@@ -147,7 +147,7 @@ class InstanceTestimonialsControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/instance/testimonials/'.$testimonial->id.'/edit');
+            ->get('/instance/testimonials/' . $testimonial->id . '/edit');
 
         $response->assertStatus(200);
         $response->assertViewIs('instance.testimonials.partials.reject');
@@ -166,7 +166,7 @@ class InstanceTestimonialsControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/instance/testimonials/'.$testimonial->id.'/reject', [
+            ->put('/instance/testimonials/' . $testimonial->id . '/reject', [
                 'reason' => 'Not appropriate content',
             ]);
 

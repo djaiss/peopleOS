@@ -44,7 +44,7 @@ class ApproveUserWaitlistTest extends TestCase
 
         $this->assertEquals(
             UserWaitlistStatus::APPROVED->value,
-            $updatedWaitlist->status
+            $updatedWaitlist->status,
         );
 
         Queue::assertPushedOn(
@@ -52,7 +52,7 @@ class ApproveUserWaitlistTest extends TestCase
             job: SendUserWaitlistApprovedEmail::class,
             callback: function (SendUserWaitlistApprovedEmail $job): bool {
                 return $job->email === 'chandler.bing@friends.com';
-            }
+            },
         );
     }
 
@@ -69,7 +69,7 @@ class ApproveUserWaitlistTest extends TestCase
 
         $this->expectException(Exception::class);
         $this->expectExceptionMessage(
-            'User must be an instance administrator to approve a waitlist entry.'
+            'User must be an instance administrator to approve a waitlist entry.',
         );
 
         (new ApproveUserWaitlist(

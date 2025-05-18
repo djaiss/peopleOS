@@ -54,7 +54,7 @@ class DestroyEncounter
         LogUserAction::dispatch(
             user: $this->user,
             action: 'encounter_deletion',
-            description: 'Deleted having seen '.$this->encounter->person->name,
+            description: 'Deleted having seen ' . $this->encounter->person->name,
         )->onQueue('low');
     }
 }

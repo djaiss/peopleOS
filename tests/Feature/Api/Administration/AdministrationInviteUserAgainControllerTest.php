@@ -26,7 +26,7 @@ class AdministrationInviteUserAgainControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/administration/users/'.$invitedUser->id.'/invite');
+        $response = $this->json('PUT', '/api/administration/users/' . $invitedUser->id . '/invite');
 
         $response->assertStatus(200);
 
@@ -36,7 +36,7 @@ class AdministrationInviteUserAgainControllerTest extends TestCase
                 'object' => 'user',
                 'email' => $invitedUser->email,
             ],
-            $response->json()
+            $response->json(),
         );
     }
 }

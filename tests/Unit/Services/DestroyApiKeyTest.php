@@ -42,7 +42,7 @@ class DestroyApiKeyTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -50,7 +50,7 @@ class DestroyApiKeyTest extends TestCase
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'api_key_deletion' && $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -58,7 +58,7 @@ class DestroyApiKeyTest extends TestCase
             job: SendAPIDestroyedEmail::class,
             callback: function (SendAPIDestroyedEmail $job) use ($user): bool {
                 return $job->email === $user->email && $job->label === 'Test API Key';
-            }
+            },
         );
     }
 }

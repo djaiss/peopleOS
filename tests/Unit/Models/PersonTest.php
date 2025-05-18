@@ -102,7 +102,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             'Ross Geller',
-            $person->name
+            $person->name,
         );
     }
 
@@ -117,7 +117,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             '6:00 am',
-            $person->currentTime
+            $person->currentTime,
         );
     }
 
@@ -320,7 +320,7 @@ class PersonTest extends TestCase
         // Test with no active relationships
         $this->assertEquals(
             'Single',
-            $ross->getMaritalStatus()
+            $ross->getMaritalStatus(),
         );
 
         // Test with one active relationship
@@ -338,7 +338,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             'In a relationship with Rachel Green',
-            $ross->getMaritalStatus()
+            $ross->getMaritalStatus(),
         );
 
         // Test with multiple active relationships
@@ -356,7 +356,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             'In a relationship with Rachel Green and Emily Waltham',
-            $ross->getMaritalStatus()
+            $ross->getMaritalStatus(),
         );
 
         // Test when person is the related person in a relationship
@@ -374,7 +374,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             'In a relationship with Rachel Green, Emily Waltham and Monica Geller',
-            $ross->getMaritalStatus()
+            $ross->getMaritalStatus(),
         );
     }
 }

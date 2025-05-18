@@ -23,8 +23,8 @@ class InstanceDestroyAccountControllerTest extends TestCase
         $account = Account::factory()->create();
 
         $response = $this->actingAs($user)
-            ->from('/instance/accounts/'.$account->id)
-            ->delete('/instance/accounts/'.$account->id);
+            ->from('/instance/accounts/' . $account->id)
+            ->delete('/instance/accounts/' . $account->id);
 
         $response->assertRedirect('/instance');
 
@@ -42,7 +42,7 @@ class InstanceDestroyAccountControllerTest extends TestCase
         $account = Account::factory()->create();
 
         $response = $this->actingAs($user)
-            ->delete('/instance/accounts/'.$account->id);
+            ->delete('/instance/accounts/' . $account->id);
 
         $response->assertStatus(403);
 
@@ -56,7 +56,7 @@ class InstanceDestroyAccountControllerTest extends TestCase
     {
         $account = Account::factory()->create();
 
-        $response = $this->delete('/instance/accounts/'.$account->id);
+        $response = $this->delete('/instance/accounts/' . $account->id);
 
         $response->assertRedirect('/login');
 

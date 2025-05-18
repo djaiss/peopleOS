@@ -51,7 +51,7 @@ class ToggleTask
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_toggle',
-            description: 'Toggled a task called '.$taskName,
+            description: 'Toggled a task called ' . $taskName,
         )->onQueue('low');
     }
 }

@@ -27,7 +27,7 @@ class GetLifeEventsListing
             ->orderBy('happened_at', 'desc')
             ->orderBy('id', 'desc')
             ->get()
-            ->map(fn (LifeEvent $lifeEvent): array => [
+            ->map(fn(LifeEvent $lifeEvent): array => [
                 'id' => $lifeEvent->id,
                 'description' => $lifeEvent->description,
                 'happened_at' => $lifeEvent->happened_at->format('M d, Y'),

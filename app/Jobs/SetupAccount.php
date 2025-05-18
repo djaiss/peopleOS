@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\DB;
 
 class SetupAccount implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     private JournalTemplate $journalTemplate;
 

@@ -76,7 +76,7 @@ class UpdateLoveRelationship
         LogUserAction::dispatch(
             user: $this->user,
             action: 'love_relationship_update',
-            description: "Updated the {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}"
+            description: "Updated the {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}",
         )->onQueue('low');
     }
 }

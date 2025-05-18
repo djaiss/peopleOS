@@ -66,7 +66,7 @@ class DestroyLoveRelationshipTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function ($job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -74,7 +74,7 @@ class DestroyLoveRelationshipTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($ross, $rachel): bool {
                 return $job->person->id === $ross->id || $job->person->id === $rachel->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -84,7 +84,7 @@ class DestroyLoveRelationshipTest extends TestCase
                 return $job->action === 'love_relationship_deletion'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted a Married relationship between Ross Geller and Rachel Green';
-            }
+            },
         );
     }
 

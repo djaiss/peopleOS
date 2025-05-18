@@ -20,7 +20,7 @@ class CreateWaitlistConfirmationLinkTest extends TestCase
         Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
 
         $link = (new CreateWaitlistConfirmationLink(
-            code: 'UNAGI123'
+            code: 'UNAGI123',
         ))->execute();
 
         $this->assertIsString($link);
@@ -33,7 +33,7 @@ class CreateWaitlistConfirmationLinkTest extends TestCase
         Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
 
         $link = (new CreateWaitlistConfirmationLink(
-            code: 'CLEAN456'
+            code: 'CLEAN456',
         ))->execute();
 
         $this->assertStringContainsString('signature=', $link);

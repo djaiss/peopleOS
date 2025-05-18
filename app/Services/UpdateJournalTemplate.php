@@ -56,7 +56,7 @@ class UpdateJournalTemplate
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_template_update',
-            description: 'Updated the journal template called '.$this->name,
+            description: 'Updated the journal template called ' . $this->name,
         )->onQueue('low');
     }
 }

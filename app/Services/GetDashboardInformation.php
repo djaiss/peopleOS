@@ -44,7 +44,7 @@ class GetDashboardInformation
         $reminderCollection = collect([]);
 
         foreach ($reminders as $reminder) {
-            $carbonDate = Carbon::parse(now()->year.'-'.$reminder->month.'-'.$reminder->day);
+            $carbonDate = Carbon::parse(now()->year . '-' . $reminder->month . '-' . $reminder->day);
 
             if ($carbonDate->between(now(), now()->addDays(30))) {
                 $reminderCollection->push([
@@ -75,16 +75,14 @@ class GetDashboardInformation
             ->limit(5)
             ->get();
 
-        return $persons->map(function (Person $person) {
-            return [
-                'id' => $person->id,
-                'name' => $person->name,
-                'slug' => $person->slug,
-                'avatar' => [
-                    '40' => $person->getAvatar(40),
-                    '80' => $person->getAvatar(80),
-                ],
-            ];
-        });
+        return $persons->map(fn(Person $person): array => [
+            'id' => $person->id,
+            'name' => $person->name,
+            'slug' => $person->slug,
+            'avatar' => [
+                '40' => $person->getAvatar(40),
+                '80' => $person->getAvatar(80),
+            ],
+        ]);
     }
 }

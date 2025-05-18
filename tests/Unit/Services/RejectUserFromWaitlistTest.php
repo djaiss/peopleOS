@@ -39,7 +39,7 @@ class RejectUserFromWaitlistTest extends TestCase
 
         $this->assertEquals(
             UserWaitlistStatus::REJECTED->value,
-            $updatedWaitlist->status
+            $updatedWaitlist->status,
         );
     }
 

@@ -45,7 +45,7 @@ class InviteUserTest extends TestCase
 
         $this->assertInstanceOf(
             User::class,
-            $invitedUser
+            $invitedUser,
         );
 
         Queue::assertPushedOn(
@@ -53,7 +53,7 @@ class InviteUserTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -63,7 +63,7 @@ class InviteUserTest extends TestCase
                 return $job->action === 'user_invitation'
                     && $job->user->id === $user->id
                     && $job->description === 'Invited ross.geller@friends.com to the account';
-            }
+            },
         );
 
         Mail::assertQueued(UserInvited::class);

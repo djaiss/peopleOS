@@ -12,7 +12,8 @@ use Illuminate\Queue\SerializesModels;
 
 class ReminderSent extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public function __construct(
         public string $name,
@@ -26,7 +27,7 @@ class ReminderSent extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reminder for '.$this->personName,
+            subject: 'Reminder for ' . $this->personName,
         );
     }
 

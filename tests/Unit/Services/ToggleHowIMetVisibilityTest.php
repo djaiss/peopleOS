@@ -51,7 +51,7 @@ class ToggleHowIMetVisibilityTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) {
                 return $job->user->id === $this->user->id;
-            }
+            },
         );
     }
 

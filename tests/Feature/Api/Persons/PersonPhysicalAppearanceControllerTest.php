@@ -53,7 +53,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         $response = $this->json(
             'PATCH',
             "/api/persons/{$person->id}/physical-appearance",
-            $payload
+            $payload,
         );
 
         $response->assertOk();
@@ -101,32 +101,32 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
 
         $this->assertEquals(
             "6'0\"",
-            $person->fresh()->height
+            $person->fresh()->height,
         );
 
         $this->assertEquals(
             '180 lbs',
-            $person->fresh()->weight
+            $person->fresh()->weight,
         );
 
         $this->assertEquals(
             'Athletic',
-            $person->fresh()->build
+            $person->fresh()->build,
         );
 
         $this->assertEquals(
             'Olive',
-            $person->fresh()->skin_tone
+            $person->fresh()->skin_tone,
         );
 
         $this->assertEquals(
             'Square',
-            $person->fresh()->face_shape
+            $person->fresh()->face_shape,
         );
 
         $this->assertEquals(
             'Brown',
-            $person->fresh()->eye_color
+            $person->fresh()->eye_color,
         );
     }
 
@@ -155,7 +155,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         $response = $this->json(
             'PATCH',
             "/api/persons/{$person->id}/physical-appearance",
-            $payload
+            $payload,
         );
 
         $response->assertOk();
@@ -164,29 +164,29 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
 
         $this->assertEquals(
             'Medium with layers',
-            $updatedPerson->hair_length
+            $updatedPerson->hair_length,
         );
 
         $this->assertEquals(
             'Fashion-forward',
-            $updatedPerson->dress_style
+            $updatedPerson->dress_style,
         );
 
         // Original values should be set to null
         $this->assertNull(
-            $updatedPerson->height
+            $updatedPerson->height,
         );
 
         $this->assertNull(
-            $updatedPerson->height
+            $updatedPerson->height,
         );
 
         $this->assertNull(
-            $updatedPerson->weight
+            $updatedPerson->weight,
         );
 
         $this->assertNull(
-            $updatedPerson->hair_color
+            $updatedPerson->hair_color,
         );
     }
 
@@ -202,7 +202,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         $response = $this->json(
             'PATCH',
             '/api/persons/999999/physical-appearance',
-            ['height' => "6'2\""]
+            ['height' => "6'2\""],
         );
 
         $response->assertNotFound();

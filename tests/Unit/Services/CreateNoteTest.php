@@ -48,7 +48,7 @@ class CreateNoteTest extends TestCase
 
         $this->assertInstanceOf(
             Note::class,
-            $note
+            $note,
         );
 
         Queue::assertPushedOn(
@@ -56,7 +56,7 @@ class CreateNoteTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -64,7 +64,7 @@ class CreateNoteTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -74,7 +74,7 @@ class CreateNoteTest extends TestCase
                 return $job->action === 'note_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created a note for Chandler Bing';
-            }
+            },
         );
     }
 

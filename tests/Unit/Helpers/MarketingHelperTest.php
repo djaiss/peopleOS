@@ -13,7 +13,7 @@ use Tests\TestCase;
 class MarketingHelperTest extends TestCase
 {
     #[Test]
-    public function it_returns_carbon_instance_when_timestamp_exists()
+    public function it_returns_carbon_instance_when_timestamp_exists(): void
     {
         // Arrange
         $view = 'marketing/landing';
@@ -29,7 +29,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_null_when_timestamp_does_not_exist()
+    public function it_returns_null_when_timestamp_does_not_exist(): void
     {
         // Arrange
         $view = 'marketing/nonexistent';
@@ -43,7 +43,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_word_count_when_file_exists()
+    public function it_returns_word_count_when_file_exists(): void
     {
         // Arrange
         $view = 'test.word-count';
@@ -72,7 +72,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_handles_blade_syntax_when_counting_words()
+    public function it_handles_blade_syntax_when_counting_words(): void
     {
         // Arrange
         $view = 'test.blade-syntax';
@@ -101,7 +101,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_zero_when_file_does_not_exist()
+    public function it_returns_zero_when_file_does_not_exist(): void
     {
         // Arrange
         $view = 'nonexistent.view';
@@ -114,7 +114,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_estimates_reading_time_correctly()
+    public function it_estimates_reading_time_correctly(): void
     {
         // Test cases with wordsPerMinute = 225 (default)
         $this->assertEquals(1, MarketingHelper::estimateReadingTime(200));
@@ -126,7 +126,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_compares_book_length_correctly()
+    public function it_compares_book_length_correctly(): void
     {
         // Act
         $result = MarketingHelper::compareBookLength(50000);
@@ -139,7 +139,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_random_fact()
+    public function it_returns_random_fact(): void
     {
         // Act
         $fact = MarketingHelper::getRandomFact();
@@ -150,7 +150,7 @@ class MarketingHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_complete_stats()
+    public function it_returns_complete_stats(): void
     {
         // Arrange
         $view = 'test.stats';

@@ -17,7 +17,7 @@ class MarketingVoteUnhelpfulController extends Controller
     {
         (new MarkMarketingPageAsUnhelpful(
             user: Auth::user(),
-            marketingPage: $page
+            marketingPage: $page,
         ))->execute();
 
         return redirect()->back()->with('hasVoted', true);

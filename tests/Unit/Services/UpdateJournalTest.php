@@ -51,7 +51,7 @@ class UpdateJournalTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -61,7 +61,7 @@ class UpdateJournalTest extends TestCase
                 return $job->action === 'journal_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated the journal called New Travel Journal';
-            }
+            },
         );
     }
 

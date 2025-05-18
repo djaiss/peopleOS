@@ -23,7 +23,7 @@ class SendMagicLinkToLogin implements ShouldQueue
 
     public function __construct(
         public string $email,
-        public string $url
+        public string $url,
     ) {}
 
     /**

@@ -34,11 +34,11 @@ class RelationshipHelper
                 'nickname',
                 'slug',
                 'profile_photo_path',
-                'color'
+                'color',
             )
             ->where('id', '!=', $personId)
             ->get()
-            ->map(fn (Person $person): array => [
+            ->map(fn(Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'maiden_name' => $person->maiden_name,
@@ -57,15 +57,15 @@ class RelationshipHelper
         return $persons->filter(function (array $person) use ($searchTerm): bool {
             $nameMatch = $searchTerm && Str::contains(
                 Str::lower($person['name']),
-                $searchTerm
+                $searchTerm,
             );
             $maidenNameMatch = $person['maiden_name'] && Str::contains(
                 Str::lower($person['maiden_name']),
-                $searchTerm
+                $searchTerm,
             );
             $nicknameMatch = $person['nickname'] && Str::contains(
                 Str::lower($person['nickname']),
-                $searchTerm
+                $searchTerm,
             );
 
             return $nameMatch || $maidenNameMatch || $nicknameMatch;

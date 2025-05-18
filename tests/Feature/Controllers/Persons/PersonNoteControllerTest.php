@@ -28,7 +28,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/notes')
+            ->get('/persons/' . $person->slug . '/notes')
             ->assertOk()
             ->assertSee('Joey does not share food!');
     }
@@ -44,7 +44,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/notes', [
+            ->post('/persons/' . $person->slug . '/notes', [
                 'content' => 'Monica is a clean freak',
             ])
             ->assertRedirectToroute('person.note.index', $person->slug);
@@ -70,7 +70,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/notes/'.$note->id.'/edit')
+            ->get('/persons/' . $person->slug . '/notes/' . $note->id . '/edit')
             ->assertOk()
             ->assertSee('Original content');
 
@@ -93,7 +93,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/notes/'.$note->id, [
+            ->put('/persons/' . $person->slug . '/notes/' . $note->id, [
                 'content' => 'Smelly Cat, Smelly Cat',
             ])
             ->assertRedirectToroute('person.note.index', $person->slug);
@@ -102,7 +102,7 @@ class PersonNoteControllerTest extends TestCase
 
         $this->assertEquals(
             'Smelly Cat, Smelly Cat',
-            $note->refresh()->content
+            $note->refresh()->content,
         );
     }
 
@@ -121,7 +121,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/persons/'.$person->slug.'/notes/'.$note->id)
+            ->delete('/persons/' . $person->slug . '/notes/' . $note->id)
             ->assertRedirectToroute('person.note.index', $person->slug);
 
         $response->assertSessionHas('status', __('Note deleted'));
@@ -139,7 +139,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/notes', [
+            ->post('/persons/' . $person->slug . '/notes', [
                 'content' => '',
             ]);
 
@@ -158,7 +158,7 @@ class PersonNoteControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/notes/'.$note->id, [
+            ->put('/persons/' . $person->slug . '/notes/' . $note->id, [
                 'content' => '',
             ]);
 

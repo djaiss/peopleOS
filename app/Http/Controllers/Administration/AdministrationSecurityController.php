@@ -18,7 +18,7 @@ class AdministrationSecurityController extends Controller
     public function index(): View
     {
         $apiKeys = Auth::user()->tokens
-            ->map(fn (PersonalAccessToken $token): array => [
+            ->map(fn(PersonalAccessToken $token): array => [
                 'id' => $token->id,
                 'name' => $token->name,
                 'last_used' => $token->last_used_at ? $token?->last_used_at->diffForHumans() : trans('Never'),

@@ -253,8 +253,8 @@ class Person extends Model
                 $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName.$separator.$lastName;
-            }
+                return $firstName . $separator . $lastName;
+            },
         );
     }
 
@@ -264,7 +264,7 @@ class Person extends Model
     protected function currentTime(): Attribute
     {
         return Attribute::make(
-            get: fn (): string => now($this->timezone)->format('g:i a')
+            get: fn(): string => now($this->timezone)->format('g:i a'),
         );
     }
 
@@ -277,11 +277,11 @@ class Person extends Model
     protected function age(): Attribute
     {
         return Attribute::make(
-            get: fn (): mixed => match ($this->age_type) {
+            get: fn(): mixed => match ($this->age_type) {
                 AgeType::EXACT->value => $this->ageSpecialDate ? $this->ageSpecialDate->ageOld : 'Unknown',
                 AgeType::ESTIMATED->value => $this->getEstimatedAge(),
                 default => $this->age_bracket,
-            }
+            },
         );
     }
 
@@ -312,7 +312,7 @@ class Person extends Model
     protected function marital(): Attribute
     {
         return Attribute::make(
-            get: fn (): mixed => $this->getMaritalStatus()
+            get: fn(): mixed => $this->getMaritalStatus(),
         );
     }
 
@@ -406,7 +406,7 @@ class Person extends Model
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=333333&background='.$this->color.'&size='.$size;
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=333333&background=' . $this->color . '&size=' . $size;
     }
 
     /**

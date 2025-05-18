@@ -18,7 +18,7 @@ class AdministrationApiController extends Controller
     public function index(): ApiCollection
     {
         $apiKeys = Auth::user()->tokens
-            ->map(fn (PersonalAccessToken $token): array => [
+            ->map(fn(PersonalAccessToken $token): array => [
                 'id' => $token->id,
                 'name' => $token->name,
                 'last_used_at' => $token->last_used_at ? $token?->last_used_at->diffForHumans() : trans('Never'),

@@ -56,7 +56,7 @@ class UpdateNote
         LogUserAction::dispatch(
             user: $this->user,
             action: 'note_update',
-            description: 'Updated the note for '.$this->note->person->name,
+            description: 'Updated the note for ' . $this->note->person->name,
         )->onQueue('low');
     }
 }

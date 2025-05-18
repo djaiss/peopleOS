@@ -16,10 +16,22 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Class User
+ *
+ * Represents a user of the system with authentication capabilities.
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'users';
 
     /**
@@ -90,6 +102,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the account record associated with the user.
+     *
+     * @return BelongsTo
      */
     public function account(): BelongsTo
     {
@@ -98,6 +112,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the last person seen by the user.
+     *
+     * @return BelongsTo
      */
     public function lastPersonSeen(): BelongsTo
     {
@@ -106,6 +122,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the logs associated with the user.
+     *
+     * @return HasMany
      */
     public function logs(): HasMany
     {
@@ -114,15 +132,27 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the marketing pages associated with the user.
+     *
+     * @return BelongsToMany
      */
     public function marketingPages(): BelongsToMany
     {
-        return $this->belongsToMany(MarketingPage::class, 'marketing_page_user', 'user_id', 'marketing_page_id')
+        return $this->belongsToMany(
+            related: MarketingPage::class,
+            table: 'marketing_page_user',
+            foreignPivotKey: 'user_id',
+            relatedPivotKey: 'marketing_page_id',
+        )
             ->using(MarketingPageUser::class)
             ->withPivot('helpful', 'comment')
             ->withTimestamps();
     }
 
+    /**
+     * Get the user's full name by combining first and last name.
+     *
+     * @return Attribute<string, never>
+     */
     protected function name(): Attribute
     {
         return Attribute::make(
@@ -131,11 +161,18 @@ class User extends Authenticatable implements MustVerifyEmail
                 $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName.$separator.$lastName;
-            }
+                return $firstName . $separator . $lastName;
+            },
         );
     }
 
+    /**
+     * Get the user's avatar image URL with the specified size.
+     *
+     * @param int $size The size of the avatar image in pixels
+     *
+     * @return string The URL of the avatar image
+     */
     public function getAvatar(int $size = 64): string
     {
         return $this->profile_photo_path
@@ -143,15 +180,27 @@ class User extends Authenticatable implements MustVerifyEmail
             : $this->defaultAvatar($size);
     }
 
+    /**
+     * Get the URL for the user's uploaded avatar with the specified size.
+     *
+     * @param int $size The size of the avatar image in pixels
+     *
+     * @return string The URL of the resized avatar image
+     */
     protected function resizedAvatar(int $size = 64): string
     {
-        $path = Storage::disk(config('filesystems.default'))->url($this->profile_photo_path);
+        $path = Storage::disk(config('filesystems.default'))
+            ->url($this->profile_photo_path);
 
         return ImageHelper::getImageVariantPath($path, $size);
     }
 
     /**
      * Get the default profile photo URL if no profile photo has been uploaded.
+     *
+     * @param int $size The size of the avatar image in pixels
+     *
+     * @return string The URL of the default avatar image
      */
     protected function defaultAvatar(int $size = 64): string
     {
@@ -163,6 +212,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) .
+            '&color=7F9CF5&background=EBF4FF&size=' . $size;
     }
 }

@@ -23,19 +23,19 @@ class SetupAccountTest extends TestCase
 
         $this->assertEquals(
             3,
-            DB::table('genders')->count()
+            DB::table('genders')->count(),
         );
         $this->assertEquals(
             6,
-            DB::table('task_categories')->count()
+            DB::table('task_categories')->count(),
         );
         $this->assertEquals(
             1,
-            DB::table('journal_templates')->count()
+            DB::table('journal_templates')->count(),
         );
         $this->assertEquals(
             1,
-            DB::table('journals')->count()
+            DB::table('journals')->count(),
         );
     }
 }

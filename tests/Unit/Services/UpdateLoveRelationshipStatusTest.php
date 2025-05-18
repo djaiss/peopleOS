@@ -17,24 +17,24 @@ class UpdateLoveRelationshipStatusTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_updates_status_to_single_when_no_current_relationship_exists()
+    public function it_updates_status_to_single_when_no_current_relationship_exists(): void
     {
         $person = Person::factory()->create([
             'marital_status' => null,
         ]);
 
         (new UpdateLoveRelationshipStatus(
-            person: $person
+            person: $person,
         ))->execute();
 
         $this->assertEquals(
             MaritalStatusType::SINGLE->value,
-            $person->fresh()->marital_status
+            $person->fresh()->marital_status,
         );
     }
 
     #[Test]
-    public function it_updates_status_to_couple_when_current_relationship_exists()
+    public function it_updates_status_to_couple_when_current_relationship_exists(): void
     {
         $person = Person::factory()->create([
             'marital_status' => null,
@@ -51,17 +51,17 @@ class UpdateLoveRelationshipStatusTest extends TestCase
         ]);
 
         (new UpdateLoveRelationshipStatus(
-            person: $person
+            person: $person,
         ))->execute();
 
         $this->assertEquals(
             MaritalStatusType::COUPLE->value,
-            $person->fresh()->marital_status
+            $person->fresh()->marital_status,
         );
     }
 
     #[Test]
-    public function it_updates_status_for_person_listed_as_related_person()
+    public function it_updates_status_for_person_listed_as_related_person(): void
     {
         $person = Person::factory()->create([
             'marital_status' => null,
@@ -78,12 +78,12 @@ class UpdateLoveRelationshipStatusTest extends TestCase
         ]);
 
         (new UpdateLoveRelationshipStatus(
-            person: $person
+            person: $person,
         ))->execute();
 
         $this->assertEquals(
             MaritalStatusType::COUPLE->value,
-            $person->fresh()->marital_status
+            $person->fresh()->marital_status,
         );
     }
 }

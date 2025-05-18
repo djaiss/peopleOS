@@ -69,7 +69,8 @@ YAML;
             callback: function (LogUserAction $job) {
                 return $job->action === 'journal_template_update' &&
                     $job->description === 'Updated the journal template called New name';
-            });
+            },
+        );
     }
 
     #[Test]

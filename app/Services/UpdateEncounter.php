@@ -68,7 +68,7 @@ class UpdateEncounter
         LogUserAction::dispatch(
             user: $this->user,
             action: 'encounter_update',
-            description: 'Updated having seen '.$this->encounter->person->name,
+            description: 'Updated having seen ' . $this->encounter->person->name,
         )->onQueue('low');
     }
 }

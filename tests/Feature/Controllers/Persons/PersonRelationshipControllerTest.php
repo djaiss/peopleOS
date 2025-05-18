@@ -23,7 +23,7 @@ class PersonRelationshipControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/family')
+            ->get('/persons/' . $person->slug . '/family')
             ->assertOk();
 
         $this->assertArrayHasKey('persons', $response);

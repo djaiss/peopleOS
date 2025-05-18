@@ -34,7 +34,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/work')
+            ->get('/persons/' . $person->slug . '/work')
             ->assertOk();
     }
 
@@ -47,7 +47,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/work')
+            ->get('/persons/' . $person->slug . '/work')
             ->assertOk();
 
         $response->assertSee('No work history yet');
@@ -62,7 +62,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/work/new')
+            ->get('/persons/' . $person->slug . '/work/new')
             ->assertOk();
 
         $this->assertArrayHasKey('person', $response);
@@ -79,7 +79,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/work', [
+            ->post('/persons/' . $person->slug . '/work', [
                 'title' => 'Fashion Buyer',
                 'company' => 'Ralph Lauren',
                 'duration' => '3 years',
@@ -111,7 +111,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/work', [
+            ->post('/persons/' . $person->slug . '/work', [
                 'title' => '',
                 'company' => '',
                 'duration' => '',
@@ -130,7 +130,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/work', [
+            ->post('/persons/' . $person->slug . '/work', [
                 'title' => 'a',
                 'company' => 'a',
             ]);
@@ -141,7 +141,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/work', [
+            ->post('/persons/' . $person->slug . '/work', [
                 'title' => str_repeat('a', 256),
                 'company' => str_repeat('a', 256),
             ]);
@@ -171,7 +171,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/work/'.$workHistory->id.'/edit')
+            ->get('/persons/' . $person->slug . '/work/' . $workHistory->id . '/edit')
             ->assertOk();
 
         $this->assertArrayHasKey('person', $response);
@@ -187,7 +187,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/work/999/edit')
+            ->get('/persons/' . $person->slug . '/work/999/edit')
             ->assertNotFound();
     }
 
@@ -210,7 +210,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+            ->put('/persons/' . $person->slug . '/work/' . $workHistory->id, [
                 'title' => 'Lead Actor',
                 'company' => 'Days of Our Lives',
                 'duration' => '2 years',
@@ -245,7 +245,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+            ->put('/persons/' . $person->slug . '/work/' . $workHistory->id, [
                 'title' => '',
                 'company' => '',
                 'duration' => '',
@@ -267,7 +267,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+            ->put('/persons/' . $person->slug . '/work/' . $workHistory->id, [
                 'title' => 'a',
                 'company' => 'a',
             ]);
@@ -278,7 +278,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/work/'.$workHistory->id, [
+            ->put('/persons/' . $person->slug . '/work/' . $workHistory->id, [
                 'title' => str_repeat('a', 256),
                 'company' => str_repeat('a', 256),
             ]);
@@ -308,7 +308,7 @@ class PersonWorkControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/persons/'.$person->slug.'/work/'.$workHistory->id)
+            ->delete('/persons/' . $person->slug . '/work/' . $workHistory->id)
             ->assertRedirectToroute('person.work.index', $person->slug);
 
         $response->assertSessionHas('status', 'The work history has been deleted');

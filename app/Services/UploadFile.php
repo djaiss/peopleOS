@@ -21,11 +21,11 @@ class UploadFile
      */
     public function execute(): string
     {
-        Log::info('Uploading file '.$this->file->getClientOriginalName());
+        Log::info('Uploading file ' . $this->file->getClientOriginalName());
         $this->path = Storage::disk(config('filesystems.default'))
             ->putFile($this->folderName, $this->file);
 
-        Log::info('File uploaded '.$this->path);
+        Log::info('File uploaded ' . $this->path);
 
         return $this->path;
     }

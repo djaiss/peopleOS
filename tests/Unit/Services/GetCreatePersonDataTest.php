@@ -40,7 +40,7 @@ class GetCreatePersonDataTest extends TestCase
                 'id' => $gender->id,
                 'name' => 'Male',
             ],
-            $array['genders'][0]
+            $array['genders'][0],
         );
     }
 }

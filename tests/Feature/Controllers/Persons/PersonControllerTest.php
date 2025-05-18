@@ -117,7 +117,7 @@ class PersonControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug)
+            ->get('/persons/' . $person->slug)
             ->assertOk();
     }
 }

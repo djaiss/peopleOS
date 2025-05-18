@@ -44,7 +44,7 @@ class DestroyJournalTemplateTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -54,7 +54,7 @@ class DestroyJournalTemplateTest extends TestCase
                 return $job->action === 'journal_template_deletion'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted the journal template called Test template';
-            }
+            },
         );
     }
 

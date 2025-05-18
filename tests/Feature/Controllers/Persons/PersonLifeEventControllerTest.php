@@ -29,7 +29,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/life-events')
+            ->get('/persons/' . $person->slug . '/life-events')
             ->assertOk()
             ->assertSee('Joey does not share food!');
     }
@@ -45,7 +45,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/life-events', [
+            ->post('/persons/' . $person->slug . '/life-events', [
                 'description' => 'Monica is a clean freak',
                 'happened_at' => '2021-01-01',
             ])
@@ -73,7 +73,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/life-events/'.$lifeEvent->id.'/edit')
+            ->get('/persons/' . $person->slug . '/life-events/' . $lifeEvent->id . '/edit')
             ->assertOk()
             ->assertSee('Original description');
 
@@ -98,7 +98,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/life-events/'.$lifeEvent->id, [
+            ->put('/persons/' . $person->slug . '/life-events/' . $lifeEvent->id, [
                 'description' => 'Smelly Cat, Smelly Cat',
                 'happened_at' => '2021-01-01',
             ])
@@ -108,7 +108,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         $this->assertEquals(
             'Smelly Cat, Smelly Cat',
-            $lifeEvent->refresh()->description
+            $lifeEvent->refresh()->description,
         );
     }
 
@@ -128,7 +128,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/persons/'.$person->slug.'/life-events/'.$lifeEvent->id)
+            ->delete('/persons/' . $person->slug . '/life-events/' . $lifeEvent->id)
             ->assertRedirectToroute('person.life-event.index', $person->slug);
 
         $response->assertSessionHas('status', __('The life event has been deleted'));
@@ -146,7 +146,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/life-events', [
+            ->post('/persons/' . $person->slug . '/life-events', [
                 'description' => '',
             ]);
 
@@ -165,7 +165,7 @@ class PersonLifeEventControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/life-events/'.$lifeEvent->id, [
+            ->put('/persons/' . $person->slug . '/life-events/' . $lifeEvent->id, [
                 'description' => '',
             ]);
 

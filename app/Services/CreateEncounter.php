@@ -67,7 +67,7 @@ class CreateEncounter
         LogUserAction::dispatch(
             user: $this->user,
             action: 'encounter_creation',
-            description: 'Logged having seen '.$this->person->name,
+            description: 'Logged having seen ' . $this->person->name,
         )->onQueue('low');
     }
 }

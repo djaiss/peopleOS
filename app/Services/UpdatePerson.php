@@ -79,8 +79,8 @@ class UpdatePerson
 
     private function generateSlug(): void
     {
-        $name = $this->person->first_name.' '.$this->person->last_name;
-        $slug = $this->person->id.'-'.Str::of($name)->slug('-');
+        $name = $this->person->first_name . ' ' . $this->person->last_name;
+        $slug = $this->person->id . '-' . Str::of($name)->slug('-');
 
         $this->person->slug = $slug;
         $this->person->save();
@@ -101,7 +101,7 @@ class UpdatePerson
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_update',
-            description: 'Updated the person called '.$this->person->name,
+            description: 'Updated the person called ' . $this->person->name,
         )->onQueue('low');
     }
 

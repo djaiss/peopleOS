@@ -63,7 +63,7 @@ class UpdatePersonInformation
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_information_update',
-            description: 'Updated general information about '.$this->person->name,
+            description: 'Updated general information about ' . $this->person->name,
         )->onQueue('low');
     }
 }

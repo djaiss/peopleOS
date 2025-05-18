@@ -61,7 +61,7 @@ class CreateMoodTest extends TestCase
 
         $this->assertInstanceOf(
             Mood::class,
-            $mood
+            $mood,
         );
 
         Queue::assertPushedOn(
@@ -69,7 +69,7 @@ class CreateMoodTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -79,7 +79,7 @@ class CreateMoodTest extends TestCase
                 return $job->action === 'mood_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created a mood entry for 2024/03/17';
-            }
+            },
         );
     }
 
