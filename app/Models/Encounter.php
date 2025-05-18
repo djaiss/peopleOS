@@ -7,20 +7,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 
 /**
- * This model tracks when the user has seen a specific person.
+ * Class Encounter
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property int $person_id
+ * @property Carbon $seen_at
+ * @property string|null $context
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
  */
 class Encounter extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'encounters';
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int,string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'account_id',
@@ -44,6 +58,8 @@ class Encounter extends Model
 
     /**
      * Get the account associated with the encounter.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -52,6 +68,8 @@ class Encounter extends Model
 
     /**
      * Get the person associated with the encounter.
+     *
+     * @return BelongsTo<Person, $this>
      */
     public function person(): BelongsTo
     {

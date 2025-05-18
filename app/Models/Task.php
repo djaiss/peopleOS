@@ -7,14 +7,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 
 /**
- * This model represents a task within an account.
+ * Class Task
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property int|null $person_id
+ * @property int|null $task_category_id
+ * @property string $name
+ * @property bool $is_completed
+ * @property Carbon|null $due_at
+ * @property Carbon|null $completed_at
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
  */
 class Task extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'tasks';
 
     /**
@@ -49,6 +66,8 @@ class Task extends Model
 
     /**
      * Get the account that owns this task.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -57,6 +76,8 @@ class Task extends Model
 
     /**
      * Get the person that owns this task.
+     *
+     * @return BelongsTo<Person, $this>
      */
     public function person(): BelongsTo
     {
@@ -65,6 +86,8 @@ class Task extends Model
 
     /**
      * Get the task category that owns this task.
+     *
+     * @return BelongsTo<TaskCategory, $this>
      */
     public function taskCategory(): BelongsTo
     {

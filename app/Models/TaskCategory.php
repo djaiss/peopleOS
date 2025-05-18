@@ -8,14 +8,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
- * This model represents a task category within an account.
+ * Class TaskCategory
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property string $name
+ * @property string $color
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
  */
 class TaskCategory extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'task_categories';
 
     /**
@@ -43,6 +56,8 @@ class TaskCategory extends Model
 
     /**
      * Get the account that owns this task category.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -51,6 +66,8 @@ class TaskCategory extends Model
 
     /**
      * Get the tasks associated with the task category.
+     *
+     * @return HasMany<Task, $this>
      */
     public function tasks(): HasMany
     {

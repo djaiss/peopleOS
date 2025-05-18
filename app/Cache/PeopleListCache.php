@@ -22,7 +22,7 @@ final class PeopleListCache extends CacheHelper
     protected int $ttl = 604800; // 1 week
 
     public function __construct(
-        private int $accountId,
+        int $accountId,
     ) {
         $this->identifier = $accountId;
     }

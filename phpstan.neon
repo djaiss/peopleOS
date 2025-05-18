@@ -5,26 +5,15 @@ parameters:
     paths:
         - app/
     # Level 9 is the highest level
-    level: 3
+    level: 5
     ignoreErrors:
-        - '#Access to an undefined property App\\Models\\Person::\$name\.#'
-        - '#Access to an undefined property App\\Models\\SpecialDate::\$date\.#'
-        - '#Access to an undefined property App\\Models\\SpecialDate::\$age\.#'
-        - '#Access to an undefined property App\\Models\\SpecialDate::\$ageOld\.#'
         - '#Property App\\Models\\[a-zA-Z]+::\$[a-zA-Z_]+_at \(string\|null\) does not accept Illuminate\\Support\\Carbon\.#'
-        - '#Property App\\Models\\[a-zA-Z]+::\$[a-zA-Z_]+_at \(string\|null\) does not accept Carbon\\Carbon\.#'
-        - '#Cannot call method format\(\) on string\.#'
-        - '#Cannot call method isFuture\(\) on string\.#'
-        - '#Cannot call method isPast\(\) on string\.#'
-        - '#Cannot access property \$timestamp on string\.#'
         - '#Access to an undefined property App\\Models\\MarketingPage::\$pivot\.#'
         - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$tasks\.#'
 
     excludePaths:
         - app/Http/Controllers/Auth/VerifyEmailController.php
-        - app/Models/User.php
         - app/Http/Resources/*.php
-        - app/Livewire/*
         - app/Services/DestroyAccountBecauseInactivity.php
 
 #    checkMissingIterableValueType: false

@@ -8,11 +8,21 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 
 /**
  * Class Log
  *
  * Represents a log entry in the system for tracking user actions and events.
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property int|null $user_id
+ * @property string $user_name
+ * @property string $action
+ * @property string $description
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
  */
 class Log extends Model
 {
@@ -54,6 +64,8 @@ class Log extends Model
 
     /**
      * Get the account associated with the log.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -62,6 +74,8 @@ class Log extends Model
 
     /**
      * Get the user associated with the log.
+     *
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {

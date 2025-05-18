@@ -6,7 +6,7 @@ namespace Tests\Unit\Services;
 
 use App\Services\CreateWaitlistConfirmationLink;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 

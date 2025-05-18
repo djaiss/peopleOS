@@ -7,11 +7,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 
+/**
+ * Class MarketingTestimonial
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property int $user_id
+ * @property string $status
+ * @property string $name_to_display
+ * @property string|null $url_to_point_to
+ * @property bool $display_avatar
+ * @property string $testimony
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
+ */
 class MarketingTestimonial extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'marketing_testimonies';
 
     /**
@@ -46,6 +66,8 @@ class MarketingTestimonial extends Model
 
     /**
      * Get the account associated with the testimony.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -54,6 +76,8 @@ class MarketingTestimonial extends Model
 
     /**
      * Get the user associated with the testimony.
+     *
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {
