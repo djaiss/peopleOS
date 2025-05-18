@@ -61,9 +61,9 @@ class PersonHowWeMetController extends Controller
             howIMetLocation: $validated['how_we_met_location'],
             howIMetFirstImpressions: $validated['how_we_met_first_impressions'],
             howIMetShown: $person->how_we_met_shown,
-            howIMetYear: $dateSet ? (int) $validated['how_we_met_year'] ?? null : null,
-            howIMetMonth: $dateSet ? (int) $validated['how_we_met_month'] ?? null : null,
-            howIMetDay: $dateSet ? (int) $validated['how_we_met_day'] ?? null : null,
+            howIMetYear: $dateSet ? (int) ($validated['how_we_met_year'] ?? null) : null,
+            howIMetMonth: $dateSet ? (int) ($validated['how_we_met_month'] ?? null) : null,
+            howIMetDay: $dateSet ? (int) ($validated['how_we_met_day'] ?? null) : null,
             addYearlyReminder: $reminderSet,
         ))->execute();
 

@@ -29,4 +29,5 @@ return RectorConfig::configure()
     ->withSkip(
         [
             RemoveUselessReturnTagRector::class,
-        ]);
+        ],
+    );

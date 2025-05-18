@@ -59,7 +59,7 @@ class SendReminder implements ShouldQueue
     public function prepareURLStopReminder(): string
     {
         return URL::signedRoute('reminder.stop', [
-            'hash' => Crypt::encryptString($this->specialDate->person->id),
+            'hash' => Crypt::encryptString((string) $this->specialDate->person->id),
             'id' => $this->specialDate->id,
         ]);
     }

@@ -67,7 +67,7 @@ class ResizeImage
         $encodedImage = $image->toWebp(90);
 
         Log::info('Saving image');
-        Storage::disk('public')->put($fileName, $encodedImage);
+        Storage::disk('public')->put($fileName, $encodedImage->toString());
 
         Log::info('Image saved', ['path' => $fileName]);
     }

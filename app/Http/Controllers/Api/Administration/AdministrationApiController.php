@@ -21,7 +21,7 @@ class AdministrationApiController extends Controller
             ->map(fn(PersonalAccessToken $token): array => [
                 'id' => $token->id,
                 'name' => $token->name,
-                'last_used_at' => $token->last_used_at ? $token?->last_used_at->diffForHumans() : trans('Never'),
+                'last_used_at' => $token->last_used_at ? $token->last_used_at->diffForHumans() : trans('Never'),
                 'created_at' => $token->created_at->timestamp,
                 'updated_at' => $token->updated_at?->timestamp,
             ]);
