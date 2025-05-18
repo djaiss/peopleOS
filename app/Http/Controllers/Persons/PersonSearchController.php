@@ -13,6 +13,13 @@ use Illuminate\View\View;
 
 class PersonSearchController extends Controller
 {
+    /**
+     * Search for a person based on a given term.
+     *
+     * @param Request $request The request object.
+     *
+     * @return View The view to render.
+     */
     public function create(Request $request): View
     {
         $validated = $request->validate([

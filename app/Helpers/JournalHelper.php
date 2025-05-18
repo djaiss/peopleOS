@@ -26,7 +26,7 @@ class JournalHelper
      * @param int $year The year to get the months for.
      * @param int $selectedMonth The month to mark as selected.
      *
-     * @return \Illuminate\Support\Collection The months in the year.
+     * @return Collection The months in the year.
      */
     public static function getMonths(int $year, int $selectedMonth): Collection
     {
