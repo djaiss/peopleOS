@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gift;
 use App\Models\Person;
@@ -12,6 +13,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Create a gift.
+ */
 class CreateGift
 {
     private Gift $gift;
@@ -30,6 +34,7 @@ class CreateGift
     {
         $this->validate();
         $this->create();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -45,6 +50,8 @@ class CreateGift
 
     private function create(): void
     {
+        $giftedAt = $this->giftedAt === null || $this->giftedAt === '' || $this->giftedAt === '0' ? null : Carbon::parse($this->giftedAt);
+
         $this->gift = Gift::create([
             'account_id' => $this->user->account_id,
             'person_id' => $this->person->id,
@@ -52,8 +59,13 @@ class CreateGift
             'name' => $this->name ?? null,
             'occasion' => $this->occasion ?? null,
             'url' => $this->url ?? null,
-            'gifted_at' => $this->giftedAt !== null && $this->giftedAt !== '' && $this->giftedAt !== '0' ? Carbon::parse($this->giftedAt) : null,
+            'gifted_at' => $giftedAt,
         ]);
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void
@@ -66,7 +78,7 @@ class CreateGift
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gift_creation',
-            description: 'Logged a gift for '.$this->person->name,
+            description: 'Logged a gift for ' . $this->person->name,
         )->onQueue('low');
     }
 }

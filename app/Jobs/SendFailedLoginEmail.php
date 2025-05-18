@@ -22,7 +22,7 @@ class SendFailedLoginEmail implements ShouldQueue
     private User $user;
 
     public function __construct(
-        public string $email
+        public string $email,
     ) {}
 
     /**

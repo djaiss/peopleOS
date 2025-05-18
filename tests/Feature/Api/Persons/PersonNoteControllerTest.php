@@ -28,7 +28,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/persons/'.$person->id.'/notes', [
+        $response = $this->json('POST', '/api/persons/' . $person->id . '/notes', [
             'content' => 'Ross is a good friend of mine.',
         ]);
 
@@ -56,7 +56,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/notes/'.$note->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/notes/' . $note->id, [
             'content' => 'Monica makes the best lasagna.',
         ]);
 
@@ -84,7 +84,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/notes/'.$note->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/notes/' . $note->id, [
             'content' => 'Updated content',
         ]);
 
@@ -104,7 +104,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/notes/'.$note->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/notes/' . $note->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('notes', [
@@ -123,7 +123,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/notes/'.$note->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/notes/' . $note->id);
 
         $response->assertStatus(404);
     }
@@ -142,7 +142,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/notes/'.$note->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/notes/' . $note->id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -162,7 +162,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/notes/'.$note->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/notes/' . $note->id);
 
         $response->assertStatus(404);
     }
@@ -176,7 +176,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/notes/'.$note->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/notes/' . $note->id);
 
         $response->assertStatus(404);
     }
@@ -195,7 +195,7 @@ class PersonNoteControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/notes');
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/notes');
 
         $response->assertStatus(200);
         $response->assertJsonFragment([

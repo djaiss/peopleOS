@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Person;
 use App\Models\SpecialDate;
@@ -33,6 +34,7 @@ class UpdateHowIMetInformation
         $this->validate();
         $this->checkSpecialDate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -97,6 +99,11 @@ class UpdateHowIMetInformation
         ]);
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -107,7 +114,7 @@ class UpdateHowIMetInformation
         LogUserAction::dispatch(
             user: $this->user,
             action: 'how_i_met_information_update',
-            description: 'Updated the person called '.$this->person->name.' with the how I met information',
+            description: 'Updated the person called ' . $this->person->name . ' with the how I met information',
         )->onQueue('low');
     }
 }

@@ -23,7 +23,7 @@ class MarkMarketingPageAsHelpfulTest extends TestCase
 
         $service = new MarkMarketingPageAsHelpful(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         );
 
         $service->execute();
@@ -48,7 +48,7 @@ class MarkMarketingPageAsHelpfulTest extends TestCase
 
         $service = new MarkMarketingPageAsHelpful(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         );
 
         $service->execute();

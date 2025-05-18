@@ -37,7 +37,7 @@ class SendUserWaitlistApprovedEmail implements ShouldQueue
     {
 
         // Since email is encrypted, we need to iterate over all records
-        $found = UserWaitlist::all()->contains(fn ($waitlist): bool => $waitlist->email === $this->email);
+        $found = UserWaitlist::all()->contains(fn($waitlist): bool => $waitlist->email === $this->email);
 
         if (! $found) {
             $this->valid = false;

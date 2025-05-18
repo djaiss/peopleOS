@@ -19,11 +19,11 @@ class CheckGift
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $gift = (int) $request->route()->parameter('gift');
+        $id = (int) $request->route()->parameter('gift');
         $person = $request->attributes->get('person');
 
         try {
-            $gift = Gift::where('person_id', $person->id)->findOrFail($gift);
+            $gift = Gift::where('person_id', $person->id)->findOrFail($id);
         } catch (ModelNotFoundException) {
             abort(404);
         }

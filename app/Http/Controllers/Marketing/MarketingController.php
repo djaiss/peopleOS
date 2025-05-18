@@ -22,7 +22,7 @@ class MarketingController extends Controller
         $pullRequests = Cache::remember(
             key: 'github_pull_requests',
             ttl: now()->addHours(24),
-            callback: fn (): mixed => (new FetchMergedPRs())->execute()
+            callback: fn(): mixed => (new FetchMergedPRs())->execute(),
         );
 
         return view('marketing.index', [

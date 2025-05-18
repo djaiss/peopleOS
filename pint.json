@@ -1,10 +1,11 @@
 {
-  "preset": "laravel",
+  "preset": "per",
   "rules": {
     "array_push": true,
     "backtick_to_shell_exec": true,
     "date_time_immutable": true,
     "declare_strict_types": true,
+    "explicit_string_variable": true,
     "lowercase_keywords": true,
     "lowercase_static_reference": true,
     "final_internal_class": true,
@@ -16,9 +17,12 @@
       "import_functions": true
     },
     "mb_str_functions": true,
+    "method_chaining_indentation": true,
     "modernize_types_casting": true,
     "new_with_parentheses": false,
+    "no_spaces_after_function_name": false,
     "no_superfluous_elseif": true,
+    "no_superfluous_phpdoc_tags": false,
     "no_useless_else": true,
     "no_multiple_statements_per_line": true,
     "ordered_class_elements": {
@@ -31,6 +35,10 @@
     "self_accessor": true,
     "self_static_accessor": true,
     "strict_comparison": true,
-    "visibility_required": true
+    "trailing_comma_in_multiline": {
+      "elements": ["arrays", "match", "arguments"]
+    },
+    "visibility_required": true,
+    "void_return": true
   }
 }

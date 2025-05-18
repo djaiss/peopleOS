@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Models\LifeEvent;
 use App\Models\Person;
 use App\Models\User;
@@ -18,7 +18,7 @@ class GetLifeEventsListing
 
     public function execute(): array
     {
-        $persons = PeopleListCache::make(
+        $persons = PersonsListCache::make(
             accountId: $this->user->account_id,
         )->value();
 
@@ -27,7 +27,7 @@ class GetLifeEventsListing
             ->orderBy('happened_at', 'desc')
             ->orderBy('id', 'desc')
             ->get()
-            ->map(fn (LifeEvent $lifeEvent): array => [
+            ->map(fn(LifeEvent $lifeEvent): array => [
                 'id' => $lifeEvent->id,
                 'description' => $lifeEvent->description,
                 'happened_at' => $lifeEvent->happened_at->format('M d, Y'),

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gift;
 use App\Models\Person;
@@ -29,6 +30,7 @@ class UpdateGift
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -61,6 +63,11 @@ class UpdateGift
         ]);
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -71,7 +78,7 @@ class UpdateGift
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gift_update',
-            description: 'Updated a gift for '.$this->person->name,
+            description: 'Updated a gift for ' . $this->person->name,
         )->onQueue('low');
     }
 }

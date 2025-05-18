@@ -46,7 +46,7 @@ class DestroyGender
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gender_deletion',
-            description: 'Deleted the gender called '.$genderName,
+            description: 'Deleted the gender called ' . $genderName,
         )->onQueue('low');
     }
 }

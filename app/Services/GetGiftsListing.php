@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Enums\GiftStatus;
 use App\Models\Gift;
 use App\Models\Person;
@@ -19,7 +19,7 @@ class GetGiftsListing
 
     public function execute(): array
     {
-        $persons = PeopleListCache::make(
+        $persons = PersonsListCache::make(
             accountId: $this->user->account_id,
         )->value();
 

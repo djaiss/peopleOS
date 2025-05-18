@@ -47,7 +47,7 @@ class DestroyMood
         LogUserAction::dispatch(
             user: $this->user,
             action: 'mood_destroy',
-            description: 'Destroyed a mood entry for '.$this->mood->entry->getDate(),
+            description: 'Destroyed a mood entry for ' . $this->mood->entry->getDate(),
         )->onQueue('low');
     }
 }

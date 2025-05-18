@@ -16,7 +16,7 @@ class RelationshipHelperTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_searches_for_people_by_name()
+    public function it_searches_for_people_by_name(): void
     {
         $account = Account::factory()->create();
 
@@ -61,7 +61,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Ros',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(1, $result);
@@ -71,22 +71,22 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Gell',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(2, $result);
         $this->assertTrue(
-            $result->contains(fn ($person) => $person['id'] === $ross->id)
+            $result->contains(fn($person) => $person['id'] === $ross->id),
         );
         $this->assertTrue(
-            $result->contains(fn ($person) => $person['id'] === $monica->id)
+            $result->contains(fn($person) => $person['id'] === $monica->id),
         );
 
         // Test search by maiden name
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Green',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(1, $result);
@@ -96,7 +96,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Pheebs',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(1, $result);
@@ -106,7 +106,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: '',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(0, $result);
@@ -115,7 +115,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Chandler',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(0, $result);
@@ -124,7 +124,7 @@ class RelationshipHelperTest extends TestCase
         foreach (range(1, 6) as $i) {
             Person::factory()->create([
                 'account_id' => $account->id,
-                'first_name' => "Test$i",
+                'first_name' => "Test{$i}",
                 'last_name' => 'Person',
             ]);
         }
@@ -132,14 +132,14 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Test',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(5, $result);
     }
 
     #[Test]
-    public function it_cant_search_the_own_person_name()
+    public function it_cant_search_the_own_person_name(): void
     {
         $account = Account::factory()->create();
 
@@ -152,14 +152,14 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Chandler',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(0, $result);
     }
 
     #[Test]
-    public function it_is_case_insensitive_when_searching()
+    public function it_is_case_insensitive_when_searching(): void
     {
         $account = Account::factory()->create();
 
@@ -177,7 +177,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'cHaNdLeR',
-            personId: $joey->id
+            personId: $joey->id,
         );
 
         $this->assertCount(1, $result);
@@ -187,7 +187,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'BING',
-            personId: $joey->id
+            personId: $joey->id,
         );
 
         $this->assertCount(1, $result);
@@ -195,7 +195,7 @@ class RelationshipHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_trims_search_input()
+    public function it_trims_search_input(): void
     {
         $account = Account::factory()->create();
 
@@ -212,7 +212,7 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: '  Joey  ',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(1, $result);
@@ -220,7 +220,7 @@ class RelationshipHelperTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_properly_formatted_results()
+    public function it_returns_properly_formatted_results(): void
     {
         $account = Account::factory()->create();
 
@@ -240,23 +240,25 @@ class RelationshipHelperTest extends TestCase
         $result = RelationshipHelper::searchPerson(
             accountId: $account->id,
             name: 'Rachel',
-            personId: $chandler->id
+            personId: $chandler->id,
         );
 
         $this->assertCount(1, $result);
         $resultPerson = $result->first();
 
-        $this->assertEquals([
-            'id' => $rachel->id,
-            'name' => 'Rachel Green',
-            'maiden_name' => 'Green',
-            'nickname' => 'Rach',
-            'slug' => $rachel->slug,
-            'avatar' => [
-                '40' => $rachel->getAvatar(40),
-                '80' => $rachel->getAvatar(80),
+        $this->assertEquals(
+            [
+                'id' => $rachel->id,
+                'name' => 'Rachel Green',
+                'maiden_name' => 'Green',
+                'nickname' => 'Rach',
+                'slug' => $rachel->slug,
+                'avatar' => [
+                    '40' => $rachel->getAvatar(40),
+                    '80' => $rachel->getAvatar(80),
+                ],
             ],
-        ], $resultPerson
+            $resultPerson,
         );
     }
 }

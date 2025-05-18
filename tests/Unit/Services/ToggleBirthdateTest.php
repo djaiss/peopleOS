@@ -37,7 +37,7 @@ class ToggleBirthdateTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -47,7 +47,7 @@ class ToggleBirthdateTest extends TestCase
                 return $job->action === 'display_age_toggle'
                     && $job->user->id === $user->id
                     && $job->description === 'Toggled display of age';
-            }
+            },
         );
     }
 }

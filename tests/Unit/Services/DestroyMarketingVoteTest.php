@@ -29,7 +29,7 @@ class DestroyMarketingVoteTest extends TestCase
 
         (new DestroyMarketingVote(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         ))->execute();
 
         $this->assertDatabaseMissing('marketing_page_user', [
@@ -55,7 +55,7 @@ class DestroyMarketingVoteTest extends TestCase
 
         (new DestroyMarketingVote(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         ))->execute();
 
         $this->assertDatabaseMissing('marketing_page_user', [
@@ -78,7 +78,7 @@ class DestroyMarketingVoteTest extends TestCase
 
         (new DestroyMarketingVote(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         ))->execute();
 
         $this->assertEquals(0, $marketingPage->fresh()->marked_helpful);

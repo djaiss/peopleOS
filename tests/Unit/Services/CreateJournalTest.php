@@ -40,11 +40,11 @@ class CreateJournalTest extends TestCase
         ]);
 
         $this->assertEquals('My Travel Journal', $journal->name);
-        $this->assertEquals($journal->id.'-my-travel-journal', $journal->slug);
+        $this->assertEquals($journal->id . '-my-travel-journal', $journal->slug);
 
         $this->assertInstanceOf(
             Journal::class,
-            $journal
+            $journal,
         );
 
         Queue::assertPushedOn(
@@ -52,7 +52,7 @@ class CreateJournalTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -62,7 +62,7 @@ class CreateJournalTest extends TestCase
                 return $job->action === 'journal_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created the journal called My Travel Journal';
-            }
+            },
         );
     }
 

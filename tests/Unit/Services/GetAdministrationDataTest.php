@@ -67,7 +67,7 @@ class GetAdministrationDataTest extends TestCase
                 'action',
                 'description',
                 'created_at',
-            ]
+            ],
         );
         $this->assertCount(1, $array['logs']);
         $this->assertEquals([
@@ -93,7 +93,7 @@ class GetAdministrationDataTest extends TestCase
                 'delivered_at',
                 'bounced_at',
                 'person',
-            ]
+            ],
         );
 
         $this->assertFalse($array['has_more_emails_sent']);

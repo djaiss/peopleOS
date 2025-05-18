@@ -41,7 +41,7 @@ class CreateTaskCategory
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_category_creation',
-            description: 'Created the task category called '.$taskCategory->name,
+            description: 'Created the task category called ' . $taskCategory->name,
         )->onQueue('low');
     }
 }

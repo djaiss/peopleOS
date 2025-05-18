@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gender;
 use App\Models\Person;
@@ -38,6 +39,7 @@ class CreatePerson
         $this->validate();
         $this->validateAccountLimit();
         $this->createPerson();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
         $this->generateSlug();
@@ -84,8 +86,8 @@ class CreatePerson
 
     private function generateSlug(): void
     {
-        $name = $this->person->first_name.' '.$this->person->last_name;
-        $slug = $this->person->id.'-'.Str::of($name)->slug('-');
+        $name = $this->person->first_name . ' ' . $this->person->last_name;
+        $slug = $this->person->id . '-' . Str::of($name)->slug('-');
 
         $this->person->slug = $slug;
         $this->person->save();
@@ -112,6 +114,11 @@ class CreatePerson
         return $colorPalette[array_rand($colorPalette)];
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -122,13 +129,13 @@ class CreatePerson
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_creation',
-            description: 'Created the person called '.$this->person->name,
+            description: 'Created the person called ' . $this->person->name,
         )->onQueue('low');
     }
 
     private function refreshCache(): void
     {
-        PeopleListCache::make(
+        PersonsListCache::make(
             accountId: $this->user->account_id,
         )->refresh();
     }

@@ -67,7 +67,7 @@ class AdministrationGenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/administration/genders/'.$gender->id, [
+        $response = $this->json('PUT', '/api/administration/genders/' . $gender->id, [
             'name' => 'Non-binary',
             'position' => 3,
         ]);
@@ -89,7 +89,7 @@ class AdministrationGenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/administration/genders/'.$gender->id, [
+        $response = $this->json('PUT', '/api/administration/genders/' . $gender->id, [
             'name' => 'Non-binary',
             'position' => 3,
         ]);
@@ -107,7 +107,7 @@ class AdministrationGenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/administration/genders/'.$gender->id);
+        $response = $this->json('DELETE', '/api/administration/genders/' . $gender->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('genders', [
@@ -123,7 +123,7 @@ class AdministrationGenderControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/administration/genders/'.$gender->id);
+        $response = $this->json('DELETE', '/api/administration/genders/' . $gender->id);
 
         $response->assertStatus(404);
     }

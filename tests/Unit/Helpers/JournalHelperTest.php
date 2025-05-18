@@ -12,11 +12,11 @@ use Tests\TestCase;
 class JournalHelperTest extends TestCase
 {
     #[Test]
-    public function it_returns_all_the_months_in_a_given_year()
+    public function it_returns_all_the_months_in_a_given_year(): void
     {
         $collection = JournalHelper::getMonths(
             year: 2023,
-            selectedMonth: 3
+            selectedMonth: 3,
         );
 
         $this->assertCount(12, $collection);
@@ -24,25 +24,25 @@ class JournalHelperTest extends TestCase
             'month' => 1,
             'month_name' => 'January',
             'is_selected' => false,
-            'url' => env('APP_URL').'/journal/2023/1/1',
+            'url' => env('APP_URL') . '/journal/2023/1/1',
         ], $collection[1]);
         $this->assertEquals([
             'month' => 3,
             'month_name' => 'March',
             'is_selected' => true,
-            'url' => env('APP_URL').'/journal/2023/3/1',
+            'url' => env('APP_URL') . '/journal/2023/3/1',
         ], $collection[3]);
     }
 
     #[Test]
-    public function it_returns_all_the_days_in_a_given_month()
+    public function it_returns_all_the_days_in_a_given_month(): void
     {
         Carbon::setTestNow(Carbon::create(2023, 2, 3));
 
         $collection = JournalHelper::getDaysInMonth(
             givenYear: 2023,
             givenMonth: 2,
-            givenDay: 3
+            givenDay: 3,
         );
 
         $this->assertCount(28, $collection);
@@ -50,13 +50,13 @@ class JournalHelperTest extends TestCase
             'day' => 3,
             'is_today' => true,
             'is_selected' => true,
-            'url' => env('APP_URL').'/journal/2023/2/3',
+            'url' => env('APP_URL') . '/journal/2023/2/3',
         ], $collection[3]);
         $this->assertEquals([
             'day' => 28,
             'is_today' => false,
             'is_selected' => false,
-            'url' => env('APP_URL').'/journal/2023/2/28',
+            'url' => env('APP_URL') . '/journal/2023/2/28',
         ], $collection[28]);
     }
 }

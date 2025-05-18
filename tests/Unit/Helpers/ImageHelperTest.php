@@ -18,9 +18,9 @@ class ImageHelperTest extends TestCase
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            'images/Ross_Geller_64x64.webp',
-            $variantPath
+        $this->assertStringContainsString(
+            '/storage/images/Ross_Geller_64x64.webp',
+            $variantPath,
         );
     }
 
@@ -32,9 +32,9 @@ class ImageHelperTest extends TestCase
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            'Ross_Geller_128x128.webp',
-            $variantPath
+        $this->assertStringContainsString(
+            '/storage/Ross_Geller_128x128.webp',
+            $variantPath,
         );
     }
 
@@ -46,9 +46,9 @@ class ImageHelperTest extends TestCase
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            'images/Ross_Geller_256x256.webp',
-            $variantPath
+        $this->assertStringContainsString(
+            '/storage/images/Ross_Geller_256x256.webp',
+            $variantPath,
         );
     }
 
@@ -60,9 +60,9 @@ class ImageHelperTest extends TestCase
 
         $variantPath = ImageHelper::getImageVariantPath($path, $size);
 
-        $this->assertEquals(
-            'images/avatars/Ross_Geller_64x64.webp',
-            $variantPath
+        $this->assertStringContainsString(
+            '/storage/images/avatars/Ross_Geller_64x64.webp',
+            $variantPath,
         );
     }
 }

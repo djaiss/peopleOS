@@ -18,7 +18,7 @@
   </div>
 
   <!-- Create new contact form -->
-  <form x-target="love-listing new-love-relationship persons" x-target.back="new-love-relationship" action="{{ route('person.love.store', $person) }}" method="POST">
+  <form x-target="love-listing marital-status new-love-relationship persons" x-target.back="new-love-relationship" action="{{ route('person.love.store', $person) }}" method="POST">
     @csrf
 
     <div class="mb-4 flex gap-4 px-4">

@@ -41,7 +41,7 @@ class CreateMagicLinkTest extends TestCase
         ))->execute();
 
         $appUrl = config('app.url');
-        $this->assertStringStartsWith($appUrl.'/magiclink/', $magicLinkUrl);
+        $this->assertStringStartsWith($appUrl . '/magiclink/', $magicLinkUrl);
         $this->assertMatchesRegularExpression('/\/magiclink\/[a-f0-9-]+%3A[A-Za-z0-9]+/', $magicLinkUrl);
     }
 

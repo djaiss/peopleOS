@@ -47,7 +47,7 @@ class DestroyPersonTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -57,7 +57,7 @@ class DestroyPersonTest extends TestCase
                 return $job->action === 'person_deletion'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted the person called Ross Geller';
-            }
+            },
         );
     }
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\Task;
@@ -37,7 +37,7 @@ class GetRemindersListing
 
     public function execute(): array
     {
-        $persons = PeopleListCache::make(
+        $persons = PersonsListCache::make(
             accountId: $this->user->account_id,
         )->value();
 
@@ -61,13 +61,13 @@ class GetRemindersListing
             ->pluck('month')
             ->unique()
             ->values()
-            ->map(fn ($monthNumber): array => [
+            ->map(fn($monthNumber): array => [
                 'number' => $monthNumber,
                 'name' => Carbon::create()->month($monthNumber)->translatedFormat('F'),
                 'color' => $this->monthColors[$monthNumber] ?? '#FFFFFF',
                 'reminders' => $specialDatesCollection
                     ->where('month', $monthNumber)
-                    ->map(fn (SpecialDate $specialDate): array => [
+                    ->map(fn(SpecialDate $specialDate): array => [
                         'id' => $specialDate->id,
                         'day' => $specialDate->day,
                         'date' => $specialDate->date,
@@ -93,8 +93,8 @@ class GetRemindersListing
     private function getTasks(Model $person, bool $completedStatus = false): Collection
     {
         return $person->tasks
-            ->filter(fn (Task $task): bool => $task->is_completed === ! $completedStatus)
-            ->map(fn (Task $task): array => [
+            ->filter(fn(Task $task): bool => $task->is_completed === ! $completedStatus)
+            ->map(fn(Task $task): array => [
                 'id' => $task->id,
                 'name' => $task->name,
                 'due_at' => $task->due_at?->format('Y-m-d'),

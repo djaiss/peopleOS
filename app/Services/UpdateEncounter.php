@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Encounter;
 use App\Models\Person;
@@ -26,6 +27,7 @@ class UpdateEncounter
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -51,6 +53,11 @@ class UpdateEncounter
         ]);
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->encounter->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -61,7 +68,7 @@ class UpdateEncounter
         LogUserAction::dispatch(
             user: $this->user,
             action: 'encounter_update',
-            description: 'Updated having seen '.$this->encounter->person->name,
+            description: 'Updated having seen ' . $this->encounter->person->name,
         )->onQueue('low');
     }
 }

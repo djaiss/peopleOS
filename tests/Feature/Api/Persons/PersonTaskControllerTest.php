@@ -37,7 +37,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/persons/'.$person->id.'/tasks', [
+        $response = $this->json('POST', '/api/persons/' . $person->id . '/tasks', [
             'name' => 'Send wishes',
             'is_completed' => false,
             'due_at' => '2021-01-01',
@@ -89,7 +89,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/tasks/'.$task->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/tasks/' . $task->id, [
             'name' => 'Unsend wishes',
             'due_at' => '2021-01-01',
             'task_category_id' => $taskCategory->id,
@@ -129,7 +129,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/tasks/'.$task->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/tasks/' . $task->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('tasks', [
@@ -154,7 +154,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/tasks/'.$task->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/tasks/' . $task->id);
 
         $response->assertStatus(200);
         $response->assertJson([
@@ -183,7 +183,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/tasks/'.$task->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/tasks/' . $task->id);
 
         $response->assertStatus(404);
     }
@@ -199,7 +199,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/tasks/'.$task->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/tasks/' . $task->id);
 
         $response->assertStatus(404);
     }
@@ -220,7 +220,7 @@ class PersonTaskControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/tasks');
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/tasks');
 
         $response->assertStatus(200);
         $response->assertJson([

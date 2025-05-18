@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LifeEvent;
 use App\Models\User;
@@ -38,6 +39,7 @@ class UpdateLifeEvent
             $this->updateSpecialDate();
         }
 
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -81,6 +83,11 @@ class UpdateLifeEvent
         $this->lifeEvent->save();
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->lifeEvent->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -91,7 +98,7 @@ class UpdateLifeEvent
         LogUserAction::dispatch(
             user: $this->user,
             action: 'life_event_update',
-            description: 'Updated a life event for '.$this->lifeEvent->person->name,
+            description: 'Updated a life event for ' . $this->lifeEvent->person->name,
         )->onQueue('low');
     }
 }

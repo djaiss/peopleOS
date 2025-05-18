@@ -9,6 +9,7 @@ use App\Enums\MaritalStatusType;
 use App\Http\Controllers\Controller;
 use App\Services\CreateLoveRelationship;
 use App\Services\CreatePerson;
+use App\Services\DestroyLoveRelationship;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,5 +66,19 @@ class PersonLoveController extends Controller
 
         return redirect()->route('person.family.index', $person->slug)
             ->with('status', __('Relationship created'));
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        $person = $request->attributes->get('person');
+        $loveRelationship = $request->attributes->get('loveRelationship');
+
+        (new DestroyLoveRelationship(
+            user: Auth::user(),
+            loveRelationship: $loveRelationship,
+        ))->execute();
+
+        return redirect()->route('person.family.index', $person->slug)
+            ->with('status', __('Relationship deleted'));
     }
 }

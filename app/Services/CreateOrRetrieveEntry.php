@@ -81,7 +81,7 @@ class CreateOrRetrieveEntry
         LogUserAction::dispatch(
             user: $this->user,
             action: 'entry_creation',
-            description: 'Created the entry for the journal called '.$this->journal->name,
+            description: 'Created the entry for the journal called ' . $this->journal->name,
         )->onQueue('low');
     }
 }

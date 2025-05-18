@@ -16,9 +16,6 @@ class CreateApiKey
         public string $label,
     ) {}
 
-    /**
-     * Create an API key for the user.
-     */
     public function execute(): string
     {
         $token = $this->user->createToken($this->label)->plainTextToken;

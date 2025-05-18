@@ -91,7 +91,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id, [
             'first_name' => 'Rachel',
             'last_name' => 'Green-Geller',
             'nickname' => 'Rach',
@@ -123,7 +123,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id, [
             'first_name' => 'Rachel',
             'last_name' => 'Green',
         ]);
@@ -142,7 +142,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('persons', [
@@ -158,7 +158,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id);
 
         $response->assertStatus(404);
     }
@@ -174,7 +174,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id);
 
         $response->assertStatus(403);
         $this->assertDatabaseHas('persons', [
@@ -195,7 +195,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -214,7 +214,7 @@ class PersonControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id);
 
         $response->assertStatus(404);
     }

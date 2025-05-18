@@ -56,7 +56,7 @@ class CreateEmailSentTest extends TestCase
 
         $this->assertInstanceOf(
             EmailSent::class,
-            $emailSent
+            $emailSent,
         );
     }
 

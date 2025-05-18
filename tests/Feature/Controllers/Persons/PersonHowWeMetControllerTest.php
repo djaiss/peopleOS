@@ -23,7 +23,7 @@ class PersonHowWeMetControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug);
+            ->get('/persons/' . $person->slug);
 
         $response->assertOk();
         $this->assertArrayHasKey('person', $response);
@@ -39,7 +39,7 @@ class PersonHowWeMetControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/how-we-met/toggle')
+            ->get('/persons/' . $person->slug . '/how-we-met/toggle')
             ->assertRedirectToRoute('person.show', $person->slug);
 
         $this->assertTrue($person->fresh()->how_we_met_shown);
@@ -54,7 +54,7 @@ class PersonHowWeMetControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/how-we-met', [
+            ->put('/persons/' . $person->slug . '/how-we-met', [
                 'how_we_met' => 'Met at college',
                 'how_we_met_location' => 'NYU',
                 'how_we_met_first_impressions' => 'Funny guy',

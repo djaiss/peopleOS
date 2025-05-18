@@ -22,10 +22,15 @@ class JournalHelper
      *      'is_selected' => false,
      *      'url' => '/journal/2023/01',
      *   ]
+     *
+     * @param int $year The year to get the months for.
+     * @param int $selectedMonth The month to mark as selected.
+     *
+     * @return \Illuminate\Support\Collection The months in the year.
      */
     public static function getMonths(int $year, int $selectedMonth): Collection
     {
-        return collect(range(1, 12))->mapWithKeys(fn (int $month) => [
+        return collect(range(1, 12))->mapWithKeys(fn(int $month) => [
             $month => [
                 'month' => $month,
                 'month_name' => date('F', mktime(0, 0, 0, $month, 1, $year)),
@@ -49,11 +54,17 @@ class JournalHelper
      *      'is_selected' => false,
      *      'url' => '/journal/2023/01/01',
      *   ]
+     *
+     * @param int $givenYear The year to get the days for.
+     * @param int $givenMonth The month to get the days for.
+     * @param int $givenDay The day to mark as selected.
+     *
+     * @return Collection The days in the month.
      */
     public static function getDaysInMonth(int $givenYear, int $givenMonth, int $givenDay): Collection
     {
         return collect(range(1, cal_days_in_month(CAL_GREGORIAN, $givenMonth, $givenYear)))
-            ->mapWithKeys(fn (int $day) => [
+            ->mapWithKeys(fn(int $day) => [
                 $day => [
                     'day' => $day,
                     'is_today' => Carbon::createFromDate($givenYear, $givenMonth, $day)->isToday(),

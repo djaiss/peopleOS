@@ -28,7 +28,7 @@ class MarketingVoteControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/some/page')
-            ->delete('/vote/'.$page->id);
+            ->delete('/vote/' . $page->id);
 
         $response->assertRedirect('/some/page');
 
@@ -45,7 +45,7 @@ class MarketingVoteControllerTest extends TestCase
     {
         $page = MarketingPage::factory()->create();
 
-        $response = $this->delete('/vote/'.$page->id);
+        $response = $this->delete('/vote/' . $page->id);
 
         $response->assertRedirect('/login');
 

@@ -25,10 +25,10 @@ class InstanceFreeAccountControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->from('/instance/accounts/'.$account->id)
-            ->put('/instance/accounts/'.$account->id.'/free');
+            ->from('/instance/accounts/' . $account->id)
+            ->put('/instance/accounts/' . $account->id . '/free');
 
-        $response->assertRedirect('/instance/accounts/'.$account->id);
+        $response->assertRedirect('/instance/accounts/' . $account->id);
 
         $this->assertDatabaseHas('accounts', [
             'id' => $account->id,
@@ -47,7 +47,7 @@ class InstanceFreeAccountControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/instance/accounts/'.$account->id.'/free');
+            ->put('/instance/accounts/' . $account->id . '/free');
 
         $response->assertStatus(403);
 
@@ -64,7 +64,7 @@ class InstanceFreeAccountControllerTest extends TestCase
             'has_lifetime_access' => false,
         ]);
 
-        $response = $this->put('/instance/accounts/'.$account->id.'/free');
+        $response = $this->put('/instance/accounts/' . $account->id . '/free');
 
         $response->assertRedirect('/login');
 

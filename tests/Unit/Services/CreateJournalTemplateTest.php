@@ -57,7 +57,7 @@ YAML;
 
         Queue::assertPushedOn(
             queue: 'low',
-            job: UpdateUserLastActivityDate::class
+            job: UpdateUserLastActivityDate::class,
         );
 
         Queue::assertPushedOn(
@@ -66,7 +66,7 @@ YAML;
             callback: function (LogUserAction $job) {
                 return $job->action === 'journal_template_creation' &&
                     $job->description === 'Created the journal template called Test template';
-            }
+            },
         );
     }
 }

@@ -13,6 +13,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Create an account for a user.
+ */
 class CreateAccount
 {
     private Account $account;
@@ -26,21 +29,22 @@ class CreateAccount
         public string $lastName,
     ) {}
 
-    /**
-     * Create an account.
-     */
     public function execute(): User
     {
-        $this->account = Account::create([
-            'trial_ends_at' => now()->addDays(30),
-        ]);
-
+        $this->create();
         $this->addFirstUser();
         $this->populateAccount();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
         return $this->user;
+    }
+
+    private function create(): void
+    {
+        $this->account = Account::create([
+            'trial_ends_at' => now()->addDays(30),
+        ]);
     }
 
     private function addFirstUser(): void

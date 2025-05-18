@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use App\Jobs\LogLastPersonSeen;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Models\Person;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -34,7 +35,11 @@ class CheckPerson
 
             LogLastPersonSeen::dispatch(
                 user: Auth::user(),
-                person: $person
+                person: $person,
+            )->onQueue('low');
+
+            UpdatePersonLastConsultedDate::dispatch(
+                person: $person,
             )->onQueue('low');
 
             return $next($request);

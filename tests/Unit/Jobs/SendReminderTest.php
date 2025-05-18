@@ -59,7 +59,7 @@ class SendReminderTest extends TestCase
 
         $this->assertEquals(EmailType::REMINDER_SENT->value, $emailSent->email_type);
         $this->assertEquals('ross.geller@friends.com', $emailSent->email_address);
-        $this->assertEquals('Reminder for '.$person->name, $emailSent->subject);
+        $this->assertEquals('Reminder for ' . $person->name, $emailSent->subject);
     }
 
     #[Test]

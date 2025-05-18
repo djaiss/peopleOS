@@ -68,7 +68,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/administration/task-categories/'.$taskCategory->id, [
+        $response = $this->json('PUT', '/api/administration/task-categories/' . $taskCategory->id, [
             'name' => 'Email',
             'color' => 'bg-blue-500',
         ]);
@@ -90,7 +90,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/administration/task-categories/'.$taskCategory->id, [
+        $response = $this->json('PUT', '/api/administration/task-categories/' . $taskCategory->id, [
             'name' => 'Email',
             'color' => 'bg-blue-500',
         ]);
@@ -108,7 +108,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/administration/task-categories/'.$taskCategory->id);
+        $response = $this->json('DELETE', '/api/administration/task-categories/' . $taskCategory->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('task_categories', [
@@ -124,7 +124,7 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/administration/task-categories/'.$taskCategory->id);
+        $response = $this->json('DELETE', '/api/administration/task-categories/' . $taskCategory->id);
 
         $response->assertStatus(404);
     }

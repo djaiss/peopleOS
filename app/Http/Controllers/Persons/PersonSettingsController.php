@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Persons;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
 use App\Services\DestroyPerson;
@@ -20,13 +20,13 @@ class PersonSettingsController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $persons = PeopleListCache::make(
+        $persons = PersonsListCache::make(
             accountId: Auth::user()->account_id,
         )->value();
 
         $genders = Gender::where('account_id', Auth::user()->account_id)
             ->get()
-            ->map(fn (Gender $gender): array => [
+            ->map(fn(Gender $gender): array => [
                 'id' => $gender->id,
                 'name' => $gender->name,
             ]);

@@ -7,11 +7,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
+/**
+ * Class WorkHistory
+ *
+ * @property int $id
+ * @property int $person_id
+ * @property string|null $company_name
+ * @property string|null $job_title
+ * @property string|null $duration
+ * @property string|null $estimated_salary
+ * @property bool $active
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
+ */
 class WorkHistory extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'work_information';
 
     /**
@@ -46,6 +65,8 @@ class WorkHistory extends Model
 
     /**
      * Get the person associated with the work history.
+     *
+     * @return BelongsTo<Person, $this>
      */
     public function person(): BelongsTo
     {

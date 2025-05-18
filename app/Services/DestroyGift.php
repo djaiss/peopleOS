@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Gift;
 use App\Models\User;
@@ -25,6 +26,7 @@ class DestroyGift
 
         $this->gift->delete();
 
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction($personName);
     }
@@ -34,6 +36,11 @@ class DestroyGift
         if ($this->user->account_id !== $this->gift->account_id) {
             throw new ModelNotFoundException();
         }
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->gift->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void
@@ -46,7 +53,7 @@ class DestroyGift
         LogUserAction::dispatch(
             user: $this->user,
             action: 'gift_deletion',
-            description: 'Deleted a gift for '.$personName,
+            description: 'Deleted a gift for ' . $personName,
         )->onQueue('low');
     }
 }

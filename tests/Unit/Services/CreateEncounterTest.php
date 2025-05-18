@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Encounter;
 use App\Models\Person;
@@ -51,7 +52,7 @@ class CreateEncounterTest extends TestCase
 
         $this->assertInstanceOf(
             Encounter::class,
-            $report
+            $report,
         );
 
         Queue::assertPushedOn(
@@ -59,7 +60,15 @@ class CreateEncounterTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
+                return $job->person->id === $person->id;
+            },
         );
 
         Queue::assertPushedOn(
@@ -69,7 +78,7 @@ class CreateEncounterTest extends TestCase
                 return $job->action === 'encounter_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Logged having seen Ross Geller';
-            }
+            },
         );
     }
 

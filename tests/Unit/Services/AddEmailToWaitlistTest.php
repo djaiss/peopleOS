@@ -40,7 +40,7 @@ class AddEmailToWaitlistTest extends TestCase
 
         $this->assertInstanceOf(
             UserWaitlist::class,
-            $waitlistEntry
+            $waitlistEntry,
         );
 
         Queue::assertPushedOn(
@@ -48,7 +48,7 @@ class AddEmailToWaitlistTest extends TestCase
             job: AskUserToConfirmInscriptionToWaitlist::class,
             callback: function (AskUserToConfirmInscriptionToWaitlist $job): bool {
                 return $job->email === 'chandler.bing@friends.com';
-            }
+            },
         );
     }
 

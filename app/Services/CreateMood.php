@@ -63,7 +63,7 @@ class CreateMood
         LogUserAction::dispatch(
             user: $this->user,
             action: 'mood_creation',
-            description: 'Created a mood entry for '.$this->entry->getDate(),
+            description: 'Created a mood entry for ' . $this->entry->getDate(),
         )->onQueue('low');
     }
 }

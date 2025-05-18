@@ -183,7 +183,7 @@ class InstanceWaitlistControllerTest extends TestCase
                 'created_at' => '2024-03-17 10:00:00',
                 'confirmed_at' => '2024-03-17 10:00:00',
             ],
-            $waitlistEntries[0]
+            $waitlistEntries[0],
         );
     }
 
@@ -201,7 +201,7 @@ class InstanceWaitlistControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/instance/waitlist/'.$waitlist->id.'/approve');
+            ->put('/instance/waitlist/' . $waitlist->id . '/approve');
 
         $response->assertRedirect();
         $response->assertSessionHas('status', __('Changes saved'));
@@ -221,7 +221,7 @@ class InstanceWaitlistControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/instance/waitlist/'.$waitlist->id.'/reject');
+            ->put('/instance/waitlist/' . $waitlist->id . '/reject');
 
         $response->assertRedirect();
         $response->assertSessionHas('status', __('Changes saved'));

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LoveRelationship;
 use App\Models\Person;
@@ -64,7 +65,7 @@ class CreateLoveRelationshipTest extends TestCase
 
         $this->assertInstanceOf(
             LoveRelationship::class,
-            $loveRelationship
+            $loveRelationship,
         );
 
         Queue::assertPushedOn(
@@ -72,7 +73,15 @@ class CreateLoveRelationshipTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function ($job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
+                return $job->person->id === $person->id;
+            },
         );
 
         Queue::assertPushedOn(
@@ -82,7 +91,7 @@ class CreateLoveRelationshipTest extends TestCase
                 return $job->action === 'love_relationship_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created a Married relationship between Ross Geller and Rachel Green';
-            }
+            },
         );
     }
 

@@ -22,7 +22,7 @@ class InstanceTestimonialsController extends Controller
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn(MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -39,7 +39,7 @@ class InstanceTestimonialsController extends Controller
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn(MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -56,7 +56,7 @@ class InstanceTestimonialsController extends Controller
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn(MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 
@@ -72,7 +72,7 @@ class InstanceTestimonialsController extends Controller
         $testimonials = MarketingTestimonial::with('user')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
+            ->map(fn(MarketingTestimonial $testimonial): array => $this->getMarketingTestimonial($testimonial));
 
         $counts = $this->getCount();
 

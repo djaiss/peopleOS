@@ -55,7 +55,7 @@ class UserTest extends TestCase
 
         $this->assertEquals(
             'Dwight Schrute',
-            $user->name
+            $user->name,
         );
     }
 
@@ -73,7 +73,7 @@ class UserTest extends TestCase
 
         $this->assertEquals(
             'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF&size=64',
-            $method->invoke($user)
+            $method->invoke($user),
         );
     }
 
@@ -87,7 +87,7 @@ class UserTest extends TestCase
 
         $this->assertEquals(
             'https://ui-avatars.com/api/?name=D+S&color=7F9CF5&background=EBF4FF&size=64',
-            $user->getAvatar(64)
+            $user->getAvatar(64),
         );
     }
 
@@ -100,7 +100,7 @@ class UserTest extends TestCase
 
         $this->assertEquals(
             '/storage/path/to/photo_64x64.webp',
-            $user->getAvatar(64)
+            $user->getAvatar(64),
         );
     }
 }

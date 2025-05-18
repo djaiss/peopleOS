@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LifeEvent;
 use App\Models\Person;
@@ -75,7 +76,15 @@ class UpdateLifeEventTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
+                return $job->person->id === $person->id;
+            },
         );
 
         Queue::assertPushedOn(
@@ -85,7 +94,7 @@ class UpdateLifeEventTest extends TestCase
                 return $job->user->id === $user->id &&
                     $job->action === 'life_event_update' &&
                     $job->description === 'Updated a life event for Joey Tribbiani';
-            }
+            },
         );
     }
 

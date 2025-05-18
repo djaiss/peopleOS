@@ -46,7 +46,7 @@ class DestroyTask
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_deletion',
-            description: 'Deleted a task called '.$taskName,
+            description: 'Deleted a task called ' . $taskName,
         )->onQueue('low');
     }
 }

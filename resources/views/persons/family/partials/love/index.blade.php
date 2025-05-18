@@ -54,7 +54,7 @@
           </h3>
           <div class="divide-y divide-gray-200 rounded-b-lg bg-white">
             @foreach ($currentRelationships as $relationship)
-              <div class="p-4 last:rounded-b-lg">
+              <div id="current-love-relationship-{{ $relationship['id'] }}" class="group flex items-center justify-between p-4 last:rounded-b-lg">
                 <div class="flex items-center gap-3">
                   <div class="shrink-0">
                     <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $relationship['person']['avatar']['40'] }}" srcset="{{ $relationship['person']['avatar']['40'] }}, {{ $relationship['person']['avatar']['80'] }} 2x" alt="{{ $relationship['person']['name'] }}" loading="lazy" />
@@ -67,6 +67,26 @@
                     @endif
                     <p class="text-sm text-gray-500">{{ $relationship['type'] }}</p>
                   </div>
+                </div>
+
+                <div class="flex gap-0">
+                  {{--
+                    <x-button.invisible x-target="past-love-relationship-{{ $relationship['id'] }}" href="{{ route('person.love.edit', [$person->slug, $relationship['id']]) }}" class="hidden text-sm group-hover:block">
+                    {{ __('Edit') }}
+                    </x-button.invisible>
+                  --}}
+
+                  <form x-target="current-love-relationship-{{ $relationship['id'] }} marital-status" x-on:ajax:before="
+                    confirm('Are you sure you want to proceed? This can not be undone.') ||
+                      $event.preventDefault()
+                  " action="{{ route('person.love.destroy', [$person->slug, $relationship['id']]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-button.invisible class="hidden text-sm group-hover:block">
+                      {{ __('Delete') }}
+                    </x-button.invisible>
+                  </form>
                 </div>
               </div>
             @endforeach
@@ -100,7 +120,7 @@
           <!-- list -->
           <div x-cloak x-show="pastRelationshipsExpanded" class="divide-y divide-gray-200 rounded-b-lg border-t border-gray-200 bg-white">
             @foreach ($pastRelationships as $relationship)
-              <div class="p-4 last:rounded-b-lg">
+              <div id="past-love-relationship-{{ $relationship['id'] }}" class="group flex items-center justify-between p-4 last:rounded-b-lg">
                 <div class="flex items-center gap-3">
                   <div class="shrink-0">
                     <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $relationship['person']['avatar']['40'] }}" srcset="{{ $relationship['person']['avatar']['40'] }}, {{ $relationship['person']['avatar']['80'] }} 2x" alt="{{ $relationship['person']['name'] }}" loading="lazy" />
@@ -113,6 +133,25 @@
                     @endif
                     <p class="text-sm text-gray-500">{{ $relationship['type'] }}</p>
                   </div>
+                </div>
+                <div class="flex gap-0">
+                  {{--
+                    <x-button.invisible x-target="past-love-relationship-{{ $relationship['id'] }}" href="{{ route('person.love.edit', [$person->slug, $relationship['id']]) }}" class="hidden text-sm group-hover:block">
+                    {{ __('Edit') }}
+                    </x-button.invisible>
+                  --}}
+
+                  <form x-target="past-love-relationship-{{ $relationship['id'] }} marital-status" x-on:ajax:before="
+                    confirm('Are you sure you want to proceed? This can not be undone.') ||
+                      $event.preventDefault()
+                  " action="{{ route('person.love.destroy', [$person->slug, $relationship['id']]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-button.invisible class="hidden text-sm group-hover:block">
+                      {{ __('Delete') }}
+                    </x-button.invisible>
+                  </form>
                 </div>
               </div>
             @endforeach

@@ -41,7 +41,7 @@ class DestroyImageAndVariants
         $baseName = pathinfo($this->path, PATHINFO_FILENAME);
         $directory = pathinfo($this->path, PATHINFO_DIRNAME);
 
-        $directoryPrefix = ($directory === '.' || $directory === '') ? '' : $directory.'/';
+        $directoryPrefix = ($directory === '.' || $directory === '') ? '' : $directory . '/';
 
         Log::info('Checking for predefined variants', [
             'baseName' => $baseName,
@@ -51,7 +51,7 @@ class DestroyImageAndVariants
         $variantsToDelete = [];
 
         foreach ($this->variantSuffixes as $suffix) {
-            $potentialVariantPath = $directoryPrefix.$baseName.'_'.$suffix.'.'.$this->variantExtension;
+            $potentialVariantPath = $directoryPrefix . $baseName . '_' . $suffix . '.' . $this->variantExtension;
 
             if (Storage::exists($potentialVariantPath)) {
                 Log::debug('Found existing variant to delete', ['variant' => $potentialVariantPath]);

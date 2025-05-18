@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LoveRelationship;
 use App\Models\Person;
@@ -27,6 +28,7 @@ class UpdateLoveRelationship
     {
         $this->validate();
         $this->update();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -59,6 +61,11 @@ class UpdateLoveRelationship
         ]);
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -69,7 +76,7 @@ class UpdateLoveRelationship
         LogUserAction::dispatch(
             user: $this->user,
             action: 'love_relationship_update',
-            description: "Updated the {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}"
+            description: "Updated the {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}",
         )->onQueue('low');
     }
 }

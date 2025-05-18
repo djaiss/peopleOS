@@ -29,7 +29,7 @@ class ToggleTaskControllerTest extends TestCase
         ]);
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/tasks/'.$task->id.'/toggle');
+        $response = $this->json('PUT', '/api/tasks/' . $task->id . '/toggle');
 
         $response->assertStatus(200);
         $response->assertJson([

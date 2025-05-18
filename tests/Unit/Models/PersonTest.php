@@ -102,7 +102,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             'Ross Geller',
-            $person->name
+            $person->name,
         );
     }
 
@@ -117,7 +117,7 @@ class PersonTest extends TestCase
 
         $this->assertEquals(
             '6:00 am',
-            $person->currentTime
+            $person->currentTime,
         );
     }
 
@@ -308,5 +308,73 @@ class PersonTest extends TestCase
         $ross->height = 180;
         $ross->save();
         $this->assertTrue($ross->hasPhysicalDetails());
+    }
+
+    #[Test]
+    public function it_gets_the_marital_status(): void
+    {
+        $ross = Person::factory()->create([
+            'marital_status' => 'Single',
+        ]);
+
+        // Test with no active relationships
+        $this->assertEquals(
+            'Single',
+            $ross->getMaritalStatus(),
+        );
+
+        // Test with one active relationship
+        $rachel = Person::factory()->create([
+            'account_id' => $ross->account_id,
+            'first_name' => 'Rachel',
+            'last_name' => 'Green',
+        ]);
+
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $rachel->id,
+            'is_current' => true,
+        ]);
+
+        $this->assertEquals(
+            'In a relationship with Rachel Green',
+            $ross->getMaritalStatus(),
+        );
+
+        // Test with multiple active relationships
+        $emily = Person::factory()->create([
+            'account_id' => $ross->account_id,
+            'first_name' => 'Emily',
+            'last_name' => 'Waltham',
+        ]);
+
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $emily->id,
+            'is_current' => true,
+        ]);
+
+        $this->assertEquals(
+            'In a relationship with Rachel Green and Emily Waltham',
+            $ross->getMaritalStatus(),
+        );
+
+        // Test when person is the related person in a relationship
+        $monica = Person::factory()->create([
+            'account_id' => $ross->account_id,
+            'first_name' => 'Monica',
+            'last_name' => 'Geller',
+        ]);
+
+        LoveRelationship::factory()->create([
+            'person_id' => $monica->id,
+            'related_person_id' => $ross->id,
+            'is_current' => true,
+        ]);
+
+        $this->assertEquals(
+            'In a relationship with Rachel Green, Emily Waltham and Monica Geller',
+            $ross->getMaritalStatus(),
+        );
     }
 }

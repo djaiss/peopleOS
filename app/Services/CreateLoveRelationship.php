@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LoveRelationship;
 use App\Models\Person;
@@ -28,6 +29,8 @@ class CreateLoveRelationship
     {
         $this->validate();
         $this->createLoveRelationship();
+        $this->changeMaritalStatus();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -75,6 +78,22 @@ class CreateLoveRelationship
         ]);
     }
 
+    private function changeMaritalStatus(): void
+    {
+        (new UpdateLoveRelationshipStatus(
+            person: $this->person,
+        ))->execute();
+
+        (new UpdateLoveRelationshipStatus(
+            person: $this->relatedPerson,
+        ))->execute();
+    }
+
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -85,7 +104,7 @@ class CreateLoveRelationship
         LogUserAction::dispatch(
             user: $this->user,
             action: 'love_relationship_creation',
-            description: "Created a {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}"
+            description: "Created a {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}",
         )->onQueue('low');
     }
 }

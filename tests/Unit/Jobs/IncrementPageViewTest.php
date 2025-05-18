@@ -15,7 +15,7 @@ class IncrementPageViewTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_should_increment_pageview_when_page_exists()
+    public function it_should_increment_pageview_when_page_exists(): void
     {
         $page = MarketingPage::factory()->create([
             'url' => 'https://friends.com',

@@ -22,7 +22,7 @@ class MarketingVoteHelpfulControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/some/page')
-            ->post('/vote/'.$page->id.'/helpful');
+            ->post('/vote/' . $page->id . '/helpful');
 
         $response->assertRedirect('/some/page');
         $response->assertSessionHas('hasVoted', true);
@@ -44,7 +44,7 @@ class MarketingVoteHelpfulControllerTest extends TestCase
     {
         $page = MarketingPage::factory()->create();
 
-        $response = $this->post('/vote/'.$page->id.'/helpful');
+        $response = $this->post('/vote/' . $page->id . '/helpful');
 
         $response->assertRedirect('/login');
 

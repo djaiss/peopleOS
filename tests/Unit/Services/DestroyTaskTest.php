@@ -44,7 +44,7 @@ class DestroyTaskTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -54,7 +54,7 @@ class DestroyTaskTest extends TestCase
                 return $job->action === 'task_deletion'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted a task called Birthday';
-            }
+            },
         );
     }
 

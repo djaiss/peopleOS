@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LifeEvent;
 use App\Models\Person;
@@ -57,7 +58,15 @@ class DestroyLifeEventTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
+        );
+
+        Queue::assertPushedOn(
+            queue: 'low',
+            job: UpdatePersonLastConsultedDate::class,
+            callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
+                return $job->person->id === $person->id;
+            },
         );
 
         Queue::assertPushedOn(
@@ -67,7 +76,7 @@ class DestroyLifeEventTest extends TestCase
                 return $job->user->id === $user->id &&
                     $job->action === 'life_event_deletion' &&
                     $job->description === 'Deleted a life event for Monica Geller';
-            }
+            },
         );
     }
 

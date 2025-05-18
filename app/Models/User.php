@@ -13,13 +13,50 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
+/**
+ * Class User
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property bool $is_instance_admin
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $nickname
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ * @property string|null $password
+ * @property string $locale
+ * @property bool $does_display_full_names
+ * @property bool $does_display_age
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property Carbon|null $two_factor_confirmed_at
+ * @property string|null $profile_photo_path
+ * @property Carbon|null $last_activity_at
+ * @property string|null $status
+ * @property Carbon|null $invited_at
+ * @property Carbon|null $invitation_accepted_at
+ * @property Carbon|null $born_at
+ * @property string|null $remember_token
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property int|null $last_person_seen_id
+ * @property string|null $timezone
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'users';
 
     /**
@@ -90,6 +127,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the account record associated with the user.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -98,6 +137,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the last person seen by the user.
+     *
+     * @return BelongsTo<Person, $this>
      */
     public function lastPersonSeen(): BelongsTo
     {
@@ -106,6 +147,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the logs associated with the user.
+     *
+     * @return HasMany<Log, $this>
      */
     public function logs(): HasMany
     {
@@ -114,15 +157,27 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the marketing pages associated with the user.
+     *
+     * @return BelongsToMany<MarketingPage, $this>
      */
     public function marketingPages(): BelongsToMany
     {
-        return $this->belongsToMany(MarketingPage::class, 'marketing_page_user', 'user_id', 'marketing_page_id')
+        return $this->belongsToMany(
+            related: MarketingPage::class,
+            table: 'marketing_page_user',
+            foreignPivotKey: 'user_id',
+            relatedPivotKey: 'marketing_page_id',
+        )
             ->using(MarketingPageUser::class)
             ->withPivot('helpful', 'comment')
             ->withTimestamps();
     }
 
+    /**
+     * Get the user's full name by combining first and last name.
+     *
+     * @return Attribute<string, string>
+     */
     protected function name(): Attribute
     {
         return Attribute::make(
@@ -131,11 +186,18 @@ class User extends Authenticatable implements MustVerifyEmail
                 $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName.$separator.$lastName;
-            }
+                return $firstName . $separator . $lastName;
+            },
         );
     }
 
+    /**
+     * Get the user's avatar image URL with the specified size.
+     *
+     * @param int<1, 1024> $size The size of the avatar image in pixels
+     *
+     * @return string The URL of the avatar image
+     */
     public function getAvatar(int $size = 64): string
     {
         return $this->profile_photo_path
@@ -143,15 +205,24 @@ class User extends Authenticatable implements MustVerifyEmail
             : $this->defaultAvatar($size);
     }
 
+    /**
+     * Get the URL for the user's uploaded avatar with the specified size.
+     *
+     * @param int<1, 1024> $size The size of the avatar image in pixels
+     *
+     * @return string The URL of the resized avatar image
+     */
     protected function resizedAvatar(int $size = 64): string
     {
-        $path = Storage::disk(config('filesystems.default'))->url($this->profile_photo_path);
-
-        return ImageHelper::getImageVariantPath($path, $size);
+        return ImageHelper::getImageVariantPath($this->profile_photo_path, $size);
     }
 
     /**
      * Get the default profile photo URL if no profile photo has been uploaded.
+     *
+     * @param int<1, 1024> $size The size of the avatar image in pixels
+     *
+     * @return string The URL of the default avatar image
      */
     protected function defaultAvatar(int $size = 64): string
     {
@@ -163,6 +234,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF&size='.$size;
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) .
+            '&color=7F9CF5&background=EBF4FF&size=' . $size;
     }
 }

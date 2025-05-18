@@ -11,12 +11,76 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
 
 class Person extends Model
 {
+    /**
+     * Class Person
+     *
+     * @property int $id
+     * @property int $account_id
+     * @property int|null $gender_id
+     * @property int|null $how_we_met_special_date_id
+     * @property int|null $age_special_date_id
+     * @property string|null $marital_status
+     * @property string|null $kids_status
+     * @property string|null $slug
+     * @property string|null $first_name
+     * @property string|null $middle_name
+     * @property string|null $last_name
+     * @property string|null $nickname
+     * @property string|null $maiden_name
+     * @property string|null $suffix
+     * @property string|null $prefix
+     * @property string|null $profile_photo_path
+     * @property bool $encounters_shown
+     * @property bool $how_we_met_shown
+     * @property string|null $how_we_met
+     * @property string|null $how_we_met_location
+     * @property string|null $how_we_met_first_impressions
+     * @property bool $can_be_deleted
+     * @property bool $is_listed
+     * @property string|null $timezone
+     * @property string|null $nationalities
+     * @property string|null $languages
+     * @property string|null $color
+     * @property string|null $height
+     * @property string|null $weight
+     * @property string|null $build
+     * @property string|null $skin_tone
+     * @property string|null $face_shape
+     * @property string|null $eye_color
+     * @property string|null $eye_shape
+     * @property string|null $hair_color
+     * @property string|null $hair_type
+     * @property string|null $hair_length
+     * @property string|null $facial_hair
+     * @property string|null $scars
+     * @property string|null $tatoos
+     * @property string|null $piercings
+     * @property string|null $distinctive_marks
+     * @property string|null $glasses
+     * @property string|null $dress_style
+     * @property string|null $voice
+     * @property string|null $gift_tab_shown
+     * @property string|null $age_type
+     * @property string|null $estimated_age
+     * @property string|null $age_bracket
+     * @property Carbon|null $age_estimated_at
+     * @property bool $show_past_love_relationships
+     * @property Carbon|null $last_consulted_at
+     * @property Carbon|null $created_at
+     * @property Carbon|null $updated_at
+     */
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'persons';
 
     /**
@@ -75,6 +139,7 @@ class Person extends Model
         'age_bracket',
         'age_estimated_at',
         'show_past_love_relationships',
+        'last_consulted_at',
     ];
 
     /**
@@ -128,11 +193,14 @@ class Person extends Model
             'dress_style' => 'encrypted',
             'voice' => 'encrypted',
             'show_past_love_relationships' => 'boolean',
+            'last_consulted_at' => 'datetime',
         ];
     }
 
     /**
      * Get the account associated with the person.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -141,6 +209,8 @@ class Person extends Model
 
     /**
      * Get the gender associated with the person.
+     *
+     * @return BelongsTo<Gender, $this>
      */
     public function gender(): BelongsTo
     {
@@ -149,6 +219,8 @@ class Person extends Model
 
     /**
      * Get the notes associated with the person.
+     *
+     * @return HasMany<Note, $this>
      */
     public function notes(): HasMany
     {
@@ -157,7 +229,8 @@ class Person extends Model
 
     /**
      * Get the work histories associated with the person.
-     * (I know it's not the best name)
+     *
+     * @return HasMany<WorkHistory, $this>
      */
     public function workHistories(): HasMany
     {
@@ -168,6 +241,8 @@ class Person extends Model
      * Get the love relationships associated with the person.
      * This includes relationships where the person is either
      * the main person or the related person.
+     *
+     * @return HasMany<LoveRelationship, $this>
      */
     public function loveRelationships(): HasMany
     {
@@ -176,6 +251,8 @@ class Person extends Model
 
     /**
      * Get the special dates associated with the person.
+     *
+     * @return HasMany<SpecialDate, $this>
      */
     public function specialDates(): HasMany
     {
@@ -183,8 +260,9 @@ class Person extends Model
     }
 
     /**
-     * Get the special date associated with the How I Met occasion with this
-     * person.
+     * Get the special date associated with how the person was met.
+     *
+     * @return BelongsTo<SpecialDate, $this>
      */
     public function howWeMetSpecialDate(): BelongsTo
     {
@@ -192,7 +270,9 @@ class Person extends Model
     }
 
     /**
-     * Get the special date associated with the age of the person.
+     * Get the special date associated with the person's age.
+     *
+     * @return BelongsTo<SpecialDate, $this>
      */
     public function ageSpecialDate(): BelongsTo
     {
@@ -200,7 +280,9 @@ class Person extends Model
     }
 
     /**
-     * Get the encounters associated with person.
+     * Get the encounters associated with the person.
+     *
+     * @return HasMany<Encounter, $this>
      */
     public function encounters(): HasMany
     {
@@ -209,6 +291,8 @@ class Person extends Model
 
     /**
      * Get the gifts associated with the person.
+     *
+     * @return HasMany<Gift, $this>
      */
     public function gifts(): HasMany
     {
@@ -217,6 +301,8 @@ class Person extends Model
 
     /**
      * Get the tasks associated with the person.
+     *
+     * @return HasMany<Task, $this>
      */
     public function tasks(): HasMany
     {
@@ -224,7 +310,9 @@ class Person extends Model
     }
 
     /**
-     * Get the lifeEvents associated with the person.
+     * Get the life events associated with the person.
+     *
+     * @return HasMany<LifeEvent, $this>
      */
     public function lifeEvents(): HasMany
     {
@@ -233,6 +321,8 @@ class Person extends Model
 
     /**
      * Get the emailsSent associated with the person.
+     *
+     * @return HasMany<EmailSent, $this>
      */
     public function emailsSent(): HasMany
     {
@@ -241,6 +331,8 @@ class Person extends Model
 
     /**
      * Get the person's full name.
+     *
+     * @return Attribute<string, never>
      */
     protected function name(): Attribute
     {
@@ -250,18 +342,20 @@ class Person extends Model
                 $lastName = $this->last_name;
                 $separator = $firstName && $lastName ? ' ' : '';
 
-                return $firstName.$separator.$lastName;
-            }
+                return $firstName . $separator . $lastName;
+            },
         );
     }
 
     /**
-     * Get the person's current time, based on their timezone.
+     * Get the person's current time based on their timezone.
+     *
+     * @return Attribute<string, never>
      */
     protected function currentTime(): Attribute
     {
         return Attribute::make(
-            get: fn (): string => now($this->timezone)->format('g:i a')
+            get: fn(): string => now($this->timezone)->format('g:i a'),
         );
     }
 
@@ -270,26 +364,27 @@ class Person extends Model
      * If the age type is exact, it will return the age from the special date.
      * If the age type is estimated, it will return the estimated age.
      * If the age type is unknown, it will return nothing.
+     *
+     * @return Attribute<string, never>
      */
     protected function age(): Attribute
     {
         return Attribute::make(
-            get: fn (): mixed => match ($this->age_type) {
+            get: fn(): mixed => match ($this->age_type) {
                 AgeType::EXACT->value => $this->ageSpecialDate ? $this->ageSpecialDate->ageOld : 'Unknown',
                 AgeType::ESTIMATED->value => $this->getEstimatedAge(),
                 default => $this->age_bracket,
-            }
+            },
         );
     }
 
     /**
-     * The estimated age of the person needs to be calculated
-     * based on the estimated age and the date it was estimated.
-     * Return "Probably 34".
+     * Calculate the estimated age based on when it was estimated.
+     *
+     * @return string The estimated age with "Probably" prefix
      */
     public function getEstimatedAge(): string
     {
-        // get the number of years between the age_estimated_at and now
         $years = (int) now()->diffInYears($this->age_estimated_at, true);
         $estimatedAge = (int) $this->estimated_age;
 
@@ -298,6 +393,8 @@ class Person extends Model
 
     /**
      * Check if the person has an active love relationship.
+     *
+     * @return bool True if the person has an active relationship
      */
     public function hasActiveLoveRelationship(): bool
     {
@@ -307,7 +404,60 @@ class Person extends Model
     }
 
     /**
-     * Get the person's job title, if they have an active job.
+     * Get the marital status of the person.
+     *
+     * @return string The marital status or relationship description
+     */
+    public function getMaritalStatus(): string
+    {
+        if (! $this->hasActiveLoveRelationship()) {
+            return __(Crypt::decryptString($this->attributes['marital_status'] ?? ''));
+        }
+
+        $activeRelationships = LoveRelationship::where(function ($query): void {
+            $query->where('person_id', $this->id)
+                ->orWhere('related_person_id', $this->id);
+        })
+            ->where('is_current', true)
+            ->with(['person', 'relatedPerson'])
+            ->get();
+
+        // Get unique partner names to avoid duplicates
+        $partnerNames = collect();
+        foreach ($activeRelationships as $relationship) {
+            $partnerName = $relationship->person_id === $this->id
+                ? $relationship->relatedPerson->name
+                : $relationship->person->name;
+
+            $partnerNames->push($partnerName);
+        }
+        $uniquePartnerNames = $partnerNames->unique()->values();
+
+        if ($uniquePartnerNames->isEmpty()) {
+            return __('In a relationship');
+        }
+
+        return __('In a relationship with :partners', [
+            'partners' => $uniquePartnerNames->join(', ', ' and '),
+        ]);
+    }
+
+    /**
+     * Get the person's marital status as an attribute.
+     *
+     * @return Attribute<string, never>
+     */
+    protected function marital(): Attribute
+    {
+        return Attribute::make(
+            get: fn(): mixed => $this->getMaritalStatus(),
+        );
+    }
+
+    /**
+     * Get the person's current job title if they have an active job.
+     *
+     * @return string|null The job title or null if no active job
      */
     public function job(): ?string
     {
@@ -318,6 +468,10 @@ class Person extends Model
 
     /**
      * Get the person's avatar URL.
+     *
+     * @param int $size The desired size of the avatar in pixels
+     *
+     * @return string The URL of the avatar
      */
     public function getAvatar(int $size = 64): string
     {
@@ -326,15 +480,23 @@ class Person extends Model
             : $this->defaultAvatar($size);
     }
 
+    /**
+     * Get the resized avatar URL for the person.
+     *
+     * @param int $size The desired size of the avatar in pixels
+     *
+     * @return string The URL of the resized avatar
+     */
     protected function resizedAvatar(int $size = 64): string
     {
-        $path = Storage::disk(config('filesystems.default'))->url($this->profile_photo_path);
-
-        return ImageHelper::getImageVariantPath($path, $size);
+        return ImageHelper::getImageVariantPath($this->profile_photo_path, $size);
     }
 
     /**
-     * Get the default profile photo URL if no profile photo has been uploaded.
+     * Get the default avatar URL if no profile photo has been uploaded.
+     *
+     * @param int $size The desired size of the avatar in pixels
+     * @return string The URL of the default avatar
      */
     protected function defaultAvatar(int $size = 64): string
     {
@@ -346,14 +508,22 @@ class Person extends Model
         }
         $name = mb_trim(implode(' ', $initials));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=333333&background='.$this->color.'&size='.$size;
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) .
+            '&color=333333&background=' . $this->color . '&size=' . $size;
     }
 
     /**
      * Check if the person has any physical details.
+     *
+     * @return bool True if any physical detail is set, false otherwise
      */
     public function hasPhysicalDetails(): bool
     {
-        return $this->height || $this->weight || $this->build || $this->skin_tone || $this->face_shape || $this->eye_color || $this->eye_shape || $this->hair_color || $this->hair_type || $this->hair_length || $this->facial_hair || $this->scars || $this->tatoos || $this->piercings || $this->distinctive_marks || $this->glasses || $this->dress_style || $this->voice;
+        return $this->height || $this->weight || $this->build ||
+            $this->skin_tone || $this->face_shape || $this->eye_color ||
+            $this->eye_shape || $this->hair_color || $this->hair_type ||
+            $this->hair_length || $this->facial_hair || $this->scars ||
+            $this->tatoos || $this->piercings || $this->distinctive_marks ||
+            $this->glasses || $this->dress_style || $this->voice;
     }
 }

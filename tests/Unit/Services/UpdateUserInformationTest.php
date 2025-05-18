@@ -39,7 +39,7 @@ class UpdateUserInformationTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -47,7 +47,7 @@ class UpdateUserInformationTest extends TestCase
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'personal_profile_update' && $job->user->id === $user->id;
-            }
+            },
         );
     }
 
@@ -144,7 +144,7 @@ class UpdateUserInformationTest extends TestCase
 
         $this->assertInstanceOf(
             User::class,
-            $updatedUser
+            $updatedUser,
         );
     }
 }

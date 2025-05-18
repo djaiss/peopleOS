@@ -216,6 +216,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::post('persons/{slug}/love', [PersonLoveController::class, 'store'])->name('person.love.store');
             Route::post('persons/{slug}/love/search', [PersonSearchLoveController::class, 'search'])->name('person.love.search');
             Route::get('persons/{slug}/love/toggle', [PersonPastLoveToggleController::class, 'create'])->name('person.love.toggle');
+            Route::middleware(['love_relationship'])->group(function (): void {
+                Route::delete('persons/{slug}/love/{loveRelationship}', [PersonLoveController::class, 'destroy'])->name('person.love.destroy');
+            });
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');
@@ -323,4 +326,4 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -10,16 +10,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * Class Entry
+ *
+ * @property int $id
+ * @property int $journal_id
+ * @property int $day
+ * @property int $month
+ * @property int $year
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
+ */
 class Entry extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'entries';
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int,string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'journal_id',
@@ -30,6 +46,8 @@ class Entry extends Model
 
     /**
      * Get the journal associated with the entry.
+     *
+     * @return BelongsTo<Journal, $this>
      */
     public function journal(): BelongsTo
     {
@@ -38,6 +56,8 @@ class Entry extends Model
 
     /**
      * Get the mood associated with the entry.
+     *
+     * @return HasOne<Mood, $this>
      */
     public function mood(): HasOne
     {
@@ -45,10 +65,13 @@ class Entry extends Model
     }
 
     /**
-     * Get the date of the entry, in a human readable format, like "2024/12/23".
+     * Get the date of the entry in a human readable format, like "2024/12/23".
+     *
+     * @return string
      */
     public function getDate(): string
     {
-        return Carbon::create($this->year, $this->month, $this->day)->format('Y/m/d');
+        return Carbon::create($this->year, $this->month, $this->day)
+            ->format('Y/m/d');
     }
 }

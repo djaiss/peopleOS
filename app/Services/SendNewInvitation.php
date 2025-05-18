@@ -49,7 +49,9 @@ class SendNewInvitation
     private function sendInvitation(): void
     {
         $temporarySignedRoute = URL::temporarySignedRoute(
-            'invitation.accept', now()->addDays(3), ['user' => $this->invitedUser->id]
+            'invitation.accept',
+            now()->addDays(3),
+            ['user' => $this->invitedUser->id],
         );
 
         Mail::to($this->invitedUser->email)
@@ -70,7 +72,7 @@ class SendNewInvitation
         LogUserAction::dispatch(
             user: $this->user,
             action: 'user_invitation_resend',
-            description: 'Resent invitation to '.$this->invitedUser->email,
+            description: 'Resent invitation to ' . $this->invitedUser->email,
         )->onQueue('low');
     }
 }

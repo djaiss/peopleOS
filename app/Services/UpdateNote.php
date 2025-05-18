@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Note;
 use App\Models\User;
@@ -26,6 +27,7 @@ class UpdateNote
             'content' => $this->content,
         ]);
 
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -39,6 +41,11 @@ class UpdateNote
         }
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->note->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -49,7 +56,7 @@ class UpdateNote
         LogUserAction::dispatch(
             user: $this->user,
             action: 'note_update',
-            description: 'Updated the note for '.$this->note->person->name,
+            description: 'Updated the note for ' . $this->note->person->name,
         )->onQueue('low');
     }
 }

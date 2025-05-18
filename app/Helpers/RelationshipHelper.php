@@ -22,6 +22,12 @@ class RelationshipHelper
      * should be visible to the user.
      * We also need to filter out the contacts that are already in the love
      * relationships for this persons.
+     *
+     * @param int $accountId The ID of the account to search for.
+     * @param string $name The name to search for.
+     * @param int $personId The ID of the person to exclude from the search.
+     *
+     * @return Collection The search results.
      */
     public static function searchPerson(int $accountId, string $name, int $personId): Collection
     {
@@ -34,11 +40,11 @@ class RelationshipHelper
                 'nickname',
                 'slug',
                 'profile_photo_path',
-                'color'
+                'color',
             )
             ->where('id', '!=', $personId)
             ->get()
-            ->map(fn (Person $person): array => [
+            ->map(fn(Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'maiden_name' => $person->maiden_name,
@@ -51,21 +57,21 @@ class RelationshipHelper
             ])
             ->sortBy('name');
 
-        $searchTerm = Str::lower(trim($name));
+        $searchTerm = Str::lower(mb_trim($name));
 
         // search for a person by name, maiden name or nickname
         return $persons->filter(function (array $person) use ($searchTerm): bool {
             $nameMatch = $searchTerm && Str::contains(
                 Str::lower($person['name']),
-                $searchTerm
+                $searchTerm,
             );
             $maidenNameMatch = $person['maiden_name'] && Str::contains(
                 Str::lower($person['maiden_name']),
-                $searchTerm
+                $searchTerm,
             );
             $nicknameMatch = $person['nickname'] && Str::contains(
                 Str::lower($person['nickname']),
-                $searchTerm
+                $searchTerm,
             );
 
             return $nameMatch || $maidenNameMatch || $nicknameMatch;

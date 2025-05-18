@@ -57,7 +57,7 @@ class PersonSettingsAgeControllerTest extends TestCase
 
         $this->assertEquals(
             AgeType::ESTIMATED->value,
-            $chandler->fresh()->age_type
+            $chandler->fresh()->age_type,
         );
         $this->assertEquals(35, $chandler->fresh()->estimated_age);
     }

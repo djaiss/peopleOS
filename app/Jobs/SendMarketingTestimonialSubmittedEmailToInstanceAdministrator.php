@@ -13,8 +13,6 @@ class SendMarketingTestimonialSubmittedEmailToInstanceAdministrator implements S
 {
     use Queueable;
 
-    private bool $valid = true;
-
     /**
      * Send an email to the instance administrator when a marketing testimonial
      * has been submitted.

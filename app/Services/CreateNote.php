@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Note;
 use App\Models\Person;
@@ -25,6 +26,7 @@ class CreateNote
     {
         $this->validate();
         $this->create();
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -46,6 +48,11 @@ class CreateNote
         ]);
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -56,7 +63,7 @@ class CreateNote
         LogUserAction::dispatch(
             user: $this->user,
             action: 'note_creation',
-            description: 'Created a note for '.$this->person->name,
+            description: 'Created a note for ' . $this->person->name,
         )->onQueue('low');
     }
 }

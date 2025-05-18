@@ -88,7 +88,7 @@ class AdministrationSecurityControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/administration/security')
-            ->delete('/administration/security/'.$token->accessToken->id);
+            ->delete('/administration/security/' . $token->accessToken->id);
 
         $response->assertRedirect('/administration/security');
         $response->assertSessionHas('status', 'API key deleted');

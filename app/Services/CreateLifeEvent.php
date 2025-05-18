@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Jobs\LogUserAction;
+use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\LifeEvent;
 use App\Models\Person;
@@ -12,6 +13,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Create a life event.
+ */
 class CreateLifeEvent
 {
     private LifeEvent $lifeEvent;
@@ -37,6 +41,7 @@ class CreateLifeEvent
             $this->createSpecialDate();
         }
 
+        $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -82,6 +87,11 @@ class CreateLifeEvent
         $this->lifeEvent->save();
     }
 
+    private function updatePersonLastConsultedDate(): void
+    {
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
+    }
+
     private function updateUserLastActivityDate(): void
     {
         UpdateUserLastActivityDate::dispatch($this->user)->onQueue('low');
@@ -92,7 +102,7 @@ class CreateLifeEvent
         LogUserAction::dispatch(
             user: $this->user,
             action: 'life_event_creation',
-            description: 'Logged a life event for '.$this->person->name,
+            description: 'Logged a life event for ' . $this->person->name,
         )->onQueue('low');
     }
 }

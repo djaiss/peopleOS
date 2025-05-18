@@ -9,6 +9,13 @@ use Illuminate\Support\Arr;
 
 class MarketingHelper
 {
+    /**
+     * Get the last modified date of a view file.
+     *
+     * @param string $view The view file to get the last modified date for.
+     *
+     * @return Carbon|null The last modified date of the view file.
+     */
     public static function getLastModified(string $view): ?Carbon
     {
         // Convert route name (dots) to file path (slashes)
@@ -21,6 +28,10 @@ class MarketingHelper
 
     /**
      * Count the words in a view file.
+     *
+     * @param string $view The view file to count the words for.
+     *
+     * @return int The number of words in the view file.
      */
     public static function countWords(string $view): int
     {
@@ -53,7 +64,7 @@ class MarketingHelper
 
         // Remove extra whitespace
         $content = preg_replace('/\s+/', ' ', (string) $content);
-        $content = trim((string) $content);
+        $content = mb_trim((string) $content);
 
         // Count words
         return str_word_count($content);
@@ -63,6 +74,11 @@ class MarketingHelper
      * Estimate reading time in minutes based on word count.
      *
      * Uses average reading speed of 200-250 words per minute.
+     *
+     * @param int $wordCount The number of words to estimate the reading time for.
+     * @param int $wordsPerMinute The average reading speed in words per minute.
+     *
+     * @return int The estimated reading time in minutes.
      */
     public static function estimateReadingTime(int $wordCount, int $wordsPerMinute = 225): int
     {
@@ -75,6 +91,10 @@ class MarketingHelper
 
     /**
      * Compare reading time to popular books.
+     *
+     * @param int $wordCount The number of words to compare the reading time to.
+     *
+     * @return array The comparison of the reading time to popular books.
      */
     public static function compareBookLength(int $wordCount): array
     {
@@ -142,6 +162,11 @@ class MarketingHelper
         ];
     }
 
+    /**
+     * Get a random fact about computers.
+     *
+     * @return string The random fact.
+     */
     public static function getRandomFact(): string
     {
         $facts = [
@@ -180,6 +205,13 @@ class MarketingHelper
         return Arr::random($facts);
     }
 
+    /**
+     * Get the statistics for a view file.
+     *
+     * @param string $view The view file to get the stats for.
+     *
+     * @return array<string, mixed> The stats for the view file.
+     */
     public static function getStats(string $view): array
     {
         $wordCount = self::countWords($view);

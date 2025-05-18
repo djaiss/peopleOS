@@ -30,7 +30,7 @@ class UpdateUserLastActivityDateTest extends TestCase
         $this->assertEqualsWithDelta(
             now(),
             $user->last_activity_at,
-            1 // Delta of 1 second
+            1, // Delta of 1 second
         );
     }
 
@@ -50,12 +50,12 @@ class UpdateUserLastActivityDateTest extends TestCase
         $this->assertNotNull($user->last_activity_at);
         $this->assertNotEquals(
             $oldDate,
-            $user->last_activity_at
+            $user->last_activity_at,
         );
         $this->assertEqualsWithDelta(
             now(),
             $user->last_activity_at,
-            1 // Delta of 1 second
+            1, // Delta of 1 second
         );
     }
 }

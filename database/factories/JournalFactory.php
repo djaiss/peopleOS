@@ -38,7 +38,7 @@ class JournalFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (Journal $journal): void {
-            $journal->slug = $journal->id.'-'.Str::lower($journal->name);
+            $journal->slug = $journal->id . '-' . Str::lower($journal->name);
             $journal->save();
         });
     }
