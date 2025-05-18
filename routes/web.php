@@ -43,6 +43,7 @@ use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
+use App\Http\Controllers\Persons\PersonExistingLoveController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
@@ -215,6 +216,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::get('persons/{slug}/love/existing', [PersonSearchLoveController::class, 'new'])->name('person.love.existing.new');
             Route::post('persons/{slug}/love', [PersonLoveController::class, 'store'])->name('person.love.store');
             Route::post('persons/{slug}/love/search', [PersonSearchLoveController::class, 'search'])->name('person.love.search');
+            Route::post('persons/{slug}/love/existing', [PersonExistingLoveController::class, 'store'])->name('person.love.existing.store');
             Route::get('persons/{slug}/love/toggle', [PersonPastLoveToggleController::class, 'create'])->name('person.love.toggle');
             Route::middleware(['love_relationship'])->group(function (): void {
                 Route::delete('persons/{slug}/love/{loveRelationship}', [PersonLoveController::class, 'destroy'])->name('person.love.destroy');
