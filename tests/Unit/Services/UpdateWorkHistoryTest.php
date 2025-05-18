@@ -58,7 +58,7 @@ class UpdateWorkHistoryTest extends TestCase
 
         $this->assertInstanceOf(
             WorkHistory::class,
-            $workHistory
+            $workHistory,
         );
 
         Queue::assertPushedOn(
@@ -66,7 +66,7 @@ class UpdateWorkHistoryTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -74,7 +74,7 @@ class UpdateWorkHistoryTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -84,7 +84,7 @@ class UpdateWorkHistoryTest extends TestCase
                 return $job->action === 'work_history_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated the work history entry for Chandler Bing';
-            }
+            },
         );
     }
 

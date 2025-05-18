@@ -53,7 +53,7 @@ class DestroyLifeEvent
         LogUserAction::dispatch(
             user: $this->user,
             action: 'life_event_deletion',
-            description: 'Deleted a life event for '.$personName,
+            description: 'Deleted a life event for ' . $personName,
         )->onQueue('low');
     }
 }

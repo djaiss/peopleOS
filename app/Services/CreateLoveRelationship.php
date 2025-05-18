@@ -104,7 +104,7 @@ class CreateLoveRelationship
         LogUserAction::dispatch(
             user: $this->user,
             action: 'love_relationship_creation',
-            description: "Created a {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}"
+            description: "Created a {$this->type} relationship between {$this->person->name} and {$this->relatedPerson->name}",
         )->onQueue('low');
     }
 }

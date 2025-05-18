@@ -55,7 +55,7 @@ class UpdateMood
         LogUserAction::dispatch(
             user: $this->user,
             action: 'mood_update',
-            description: 'Updated a mood entry for '.$this->mood->entry->getDate(),
+            description: 'Updated a mood entry for ' . $this->mood->entry->getDate(),
         )->onQueue('low');
     }
 }

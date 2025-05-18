@@ -21,7 +21,7 @@ class InstanceWaitlistController extends Controller
         $subscribedAndConfirmed = UserWaitlist::where('status', UserWaitlistStatus::SUBSCRIBED_AND_CONFIRMED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -37,7 +37,7 @@ class InstanceWaitlistController extends Controller
         $subscribedNotConfirmed = UserWaitlist::where('status', UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -53,7 +53,7 @@ class InstanceWaitlistController extends Controller
         $approved = UserWaitlist::where('status', UserWaitlistStatus::APPROVED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -69,7 +69,7 @@ class InstanceWaitlistController extends Controller
         $rejected = UserWaitlist::where('status', UserWaitlistStatus::REJECTED->value)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 
@@ -84,7 +84,7 @@ class InstanceWaitlistController extends Controller
     {
         $waitlistEntries = UserWaitlist::orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
+            ->map(fn(UserWaitlist $userWaitlist): array => $this->getUserWaitlist($userWaitlist));
 
         $counts = $this->getCount();
 

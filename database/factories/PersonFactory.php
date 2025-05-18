@@ -47,7 +47,7 @@ class PersonFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (Person $person): void {
-            $person->slug = $person->id.'-'.Str::lower($person->first_name);
+            $person->slug = $person->id . '-' . Str::lower($person->first_name);
             $person->save();
         });
     }

@@ -22,7 +22,7 @@ class SendReminder implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        public SpecialDate $specialDate
+        public SpecialDate $specialDate,
     ) {}
 
     /**
@@ -59,7 +59,7 @@ class SendReminder implements ShouldQueue
     public function prepareURLStopReminder(): string
     {
         return URL::signedRoute('reminder.stop', [
-            'hash' => Crypt::encryptString($this->specialDate->person->id),
+            'hash' => Crypt::encryptString((string) $this->specialDate->person->id),
             'id' => $this->specialDate->id,
         ]);
     }
@@ -90,7 +90,7 @@ class SendReminder implements ShouldQueue
                 user: $user,
                 person: $this->specialDate->person,
                 taskCategory: null,
-                name: $this->specialDate->name.' - '.$this->specialDate->date,
+                name: $this->specialDate->name . ' - ' . $this->specialDate->date,
                 dueAt: null,
             ))->execute();
         }
@@ -102,7 +102,7 @@ class SendReminder implements ShouldQueue
             user: $user,
             emailType: EmailType::REMINDER_SENT->value,
             emailAddress: $user->email,
-            subject: 'Reminder for '.$this->specialDate->person->name,
+            subject: 'Reminder for ' . $this->specialDate->person->name,
             body: (new ReminderSent(
                 name: $this->specialDate->name,
                 slug: route('person.show', $this->specialDate->person->slug),

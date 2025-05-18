@@ -24,12 +24,12 @@ class GetWorkInformationListing
 
         $workHistories = WorkHistory::where('person_id', $this->person->id)
             ->get()
-            ->map(fn (WorkHistory $history): array => [
+            ->map(fn(WorkHistory $history): array => [
                 'id' => $history->id,
                 'title' => $history->job_title,
-                'company' => $history?->company_name,
-                'duration' => $history?->duration,
-                'salary' => $history?->estimated_salary,
+                'company' => $history->company_name,
+                'duration' => $history->duration,
+                'salary' => $history->estimated_salary,
                 'is_current' => $history->active,
             ]);
 

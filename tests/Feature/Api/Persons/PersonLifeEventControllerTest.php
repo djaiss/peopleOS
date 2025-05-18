@@ -31,7 +31,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
 
-        $response = $this->json('POST', '/api/persons/'.$person->id.'/life-events', [
+        $response = $this->json('POST', '/api/persons/' . $person->id . '/life-events', [
             'description' => 'Rachel got a new job at Ralph Lauren.',
             'happened_at' => '2025-03-17',
             'comment' => 'She is very excited!',
@@ -71,7 +71,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/life-events/'.$lifeEvent->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/life-events/' . $lifeEvent->id, [
             'description' => 'Rachel got promoted to manager.',
             'happened_at' => '2025-03-18',
             'comment' => 'She is thrilled!',
@@ -103,7 +103,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/life-events/'.$lifeEvent->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/life-events/' . $lifeEvent->id, [
             'description' => 'Updated description',
         ]);
 
@@ -124,7 +124,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/life-events/'.$lifeEvent->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/life-events/' . $lifeEvent->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('life_events', [
@@ -143,7 +143,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/life-events/'.$lifeEvent->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/life-events/' . $lifeEvent->id);
 
         $response->assertStatus(404);
     }
@@ -162,7 +162,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/life-events/'.$lifeEvent->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/life-events/' . $lifeEvent->id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -182,7 +182,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/life-events/'.$lifeEvent->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/life-events/' . $lifeEvent->id);
 
         $response->assertStatus(404);
     }
@@ -201,7 +201,7 @@ class PersonLifeEventControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/life-events');
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/life-events');
 
         $response->assertStatus(200);
         $response->assertJsonFragment([

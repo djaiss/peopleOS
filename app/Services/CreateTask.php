@@ -67,7 +67,7 @@ class CreateTask
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_creation',
-            description: 'Created the task called '.$task->name,
+            description: 'Created the task called ' . $task->name,
         )->onQueue('low');
     }
 }

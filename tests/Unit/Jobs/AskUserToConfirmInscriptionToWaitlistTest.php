@@ -34,7 +34,7 @@ class AskUserToConfirmInscriptionToWaitlistTest extends TestCase
             InscriptionToWaitlistRequired::class,
             function (InscriptionToWaitlistRequired $mail) use ($link): bool {
                 return $mail->link === $link;
-            }
+            },
         );
     }
 }

@@ -26,7 +26,7 @@ class PersonSettingsController extends Controller
 
         $genders = Gender::where('account_id', Auth::user()->account_id)
             ->get()
-            ->map(fn (Gender $gender): array => [
+            ->map(fn(Gender $gender): array => [
                 'id' => $gender->id,
                 'name' => $gender->name,
             ]);

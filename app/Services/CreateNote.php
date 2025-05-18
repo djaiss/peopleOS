@@ -63,7 +63,7 @@ class CreateNote
         LogUserAction::dispatch(
             user: $this->user,
             action: 'note_creation',
-            description: 'Created a note for '.$this->person->name,
+            description: 'Created a note for ' . $this->person->name,
         )->onQueue('low');
     }
 }

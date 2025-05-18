@@ -23,7 +23,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug);
+            ->get('/persons/' . $person->slug);
 
         $response->assertOk();
         $response->assertSeeText('Record details of the physical appearance of this person.');
@@ -38,7 +38,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/physical-appearance/edit');
+            ->get('/persons/' . $person->slug . '/physical-appearance/edit');
 
         $response->assertOk();
     }
@@ -52,7 +52,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->json('PUT', '/persons/'.$person->slug.'/physical-appearance', [
+            ->json('PUT', '/persons/' . $person->slug . '/physical-appearance', [
                 'height' => '5\'9"',
                 'weight' => '150 lbs',
                 'build' => 'Athletic',
@@ -106,7 +106,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->json('PUT', '/persons/'.$person->slug.'/physical-appearance', [
+            ->json('PUT', '/persons/' . $person->slug . '/physical-appearance', [
                 'height' => '6\'0"',
                 'hair_color' => 'Brown',
                 'glasses' => 'Yes',
@@ -130,7 +130,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
 
         // Test with array values which should be strings
         $response = $this->actingAs($user)
-            ->json('PUT', '/persons/'.$person->slug.'/physical-appearance', [
+            ->json('PUT', '/persons/' . $person->slug . '/physical-appearance', [
                 'height' => ['invalid', 'value'],
                 'eye_color' => ['invalid'],
             ]);
@@ -150,7 +150,7 @@ class PersonPhysicalAppearanceControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->json('PUT', '/persons/'.$person->slug.'/physical-appearance', [
+            ->json('PUT', '/persons/' . $person->slug . '/physical-appearance', [
                 'height' => null,
                 'eye_color' => '',
             ]);

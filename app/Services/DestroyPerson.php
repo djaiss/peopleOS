@@ -53,7 +53,7 @@ class DestroyPerson
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_deletion',
-            description: 'Deleted the person called '.$personName,
+            description: 'Deleted the person called ' . $personName,
         )->onQueue('low');
     }
 

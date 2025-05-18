@@ -51,7 +51,7 @@ class DestroyWorkHistory
         LogUserAction::dispatch(
             user: $this->user,
             action: 'work_history_deletion',
-            description: 'Deleted a work history entry for '.$this->workHistory->person->name,
+            description: 'Deleted a work history entry for ' . $this->workHistory->person->name,
         )->onQueue('low');
     }
 }

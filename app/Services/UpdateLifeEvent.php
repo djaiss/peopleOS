@@ -98,7 +98,7 @@ class UpdateLifeEvent
         LogUserAction::dispatch(
             user: $this->user,
             action: 'life_event_update',
-            description: 'Updated a life event for '.$this->lifeEvent->person->name,
+            description: 'Updated a life event for ' . $this->lifeEvent->person->name,
         )->onQueue('low');
     }
 }

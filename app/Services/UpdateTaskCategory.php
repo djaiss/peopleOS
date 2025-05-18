@@ -51,7 +51,7 @@ class UpdateTaskCategory
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_category_update',
-            description: 'Updated the task category called '.$this->taskCategory->name,
+            description: 'Updated the task category called ' . $this->taskCategory->name,
         )->onQueue('low');
     }
 }

@@ -13,6 +13,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Create a life event.
+ */
 class CreateLifeEvent
 {
     private LifeEvent $lifeEvent;
@@ -99,7 +102,7 @@ class CreateLifeEvent
         LogUserAction::dispatch(
             user: $this->user,
             action: 'life_event_creation',
-            description: 'Logged a life event for '.$this->person->name,
+            description: 'Logged a life event for ' . $this->person->name,
         )->onQueue('low');
     }
 }

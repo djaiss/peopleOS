@@ -48,7 +48,7 @@ class LogTest extends TestCase
 
         $this->assertEquals(
             $log->user_name,
-            $log->name
+            $log->name,
         );
     }
 }

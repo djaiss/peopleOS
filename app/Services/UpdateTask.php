@@ -68,7 +68,7 @@ class UpdateTask
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_update',
-            description: 'Updated the task called '.$this->task->name,
+            description: 'Updated the task called ' . $this->task->name,
         )->onQueue('low');
     }
 }

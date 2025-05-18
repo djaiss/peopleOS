@@ -67,11 +67,11 @@ class UpdatePersonTest extends TestCase
         $this->assertEquals(KidsStatusType::UNKNOWN->value, $person->kids_status);
         $this->assertEquals('Monica', $person->first_name);
         $this->assertEquals('Geller', $person->last_name);
-        $this->assertEquals($person->id.'-monica-geller', $person->slug);
+        $this->assertEquals($person->id . '-monica-geller', $person->slug);
 
         $this->assertInstanceOf(
             Person::class,
-            $updatedPerson
+            $updatedPerson,
         );
 
         Queue::assertPushedOn(
@@ -79,7 +79,7 @@ class UpdatePersonTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -87,7 +87,7 @@ class UpdatePersonTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -97,7 +97,7 @@ class UpdatePersonTest extends TestCase
                 return $job->action === 'person_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated the person called Monica Geller';
-            }
+            },
         );
     }
 

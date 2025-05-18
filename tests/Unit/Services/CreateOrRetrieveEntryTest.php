@@ -50,7 +50,7 @@ class CreateOrRetrieveEntryTest extends TestCase
 
         $this->assertInstanceOf(
             Entry::class,
-            $entry
+            $entry,
         );
 
         Queue::assertPushedOn(
@@ -58,7 +58,7 @@ class CreateOrRetrieveEntryTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -68,7 +68,7 @@ class CreateOrRetrieveEntryTest extends TestCase
                 return $job->action === 'entry_creation'
                     && $job->user->id === $user->id
                     && $job->description === 'Created the entry for the journal called Test Journal';
-            }
+            },
         );
     }
 

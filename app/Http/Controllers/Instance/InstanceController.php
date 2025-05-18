@@ -22,10 +22,11 @@ class InstanceController extends Controller
             ->count();
 
         $accounts = Account::query()
-            ->with(['users' => function ($query): void {
-                $query->orderBy('created_at', 'asc')
-                    ->limit(1);
-            }]
+            ->with(
+                ['users' => function ($query): void {
+                    $query->orderBy('created_at', 'asc')
+                        ->limit(1);
+                }],
             )
             ->withCount('persons')
             ->get()
@@ -34,7 +35,7 @@ class InstanceController extends Controller
 
                 return [
                     'id' => $firstUser?->id,
-                    'name' => $firstUser ? mb_trim($firstUser->first_name.' '.$firstUser->last_name) : '',
+                    'name' => $firstUser ? mb_trim($firstUser->first_name . ' ' . $firstUser->last_name) : '',
                     'email' => $firstUser?->email,
                     'last_activity_at' => $firstUser?->last_activity_at?->format('Y-m-d H:i:s'),
                     'persons_count' => $account->persons_count,

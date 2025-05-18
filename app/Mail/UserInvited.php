@@ -12,7 +12,8 @@ use Illuminate\Queue\SerializesModels;
 
 class UserInvited extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public function __construct(
         public string $temporarySignedRoute,

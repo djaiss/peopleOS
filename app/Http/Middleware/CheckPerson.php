@@ -35,11 +35,11 @@ class CheckPerson
 
             LogLastPersonSeen::dispatch(
                 user: Auth::user(),
-                person: $person
+                person: $person,
             )->onQueue('low');
 
             UpdatePersonLastConsultedDate::dispatch(
-                person: $person
+                person: $person,
             )->onQueue('low');
 
             return $next($request);

@@ -12,14 +12,15 @@ use Illuminate\Queue\SerializesModels;
 
 class UserWaitlistApproved extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public function __construct() {}
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to '.config('app.name'),
+            subject: 'Welcome to ' . config('app.name'),
         );
     }
 

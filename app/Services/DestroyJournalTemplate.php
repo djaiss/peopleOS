@@ -46,7 +46,7 @@ class DestroyJournalTemplate
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_template_deletion',
-            description: 'Deleted the journal template called '.$name,
+            description: 'Deleted the journal template called ' . $name,
         )->onQueue('low');
     }
 }

@@ -12,9 +12,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('persons', function (Blueprint $table): void {
-            $table->string('color')->nullable()->after('languages');
-        });
+        Schema::dropIfExists('positions');
     }
 
     /**
@@ -22,8 +20,12 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('persons', function (Blueprint $table): void {
-            $table->dropColumn('color');
+        Schema::create('positions', function (Blueprint $table): void {
+            $table->id();
+            $table->unsignedBigInteger('account_id');
+            $table->string('name');
+            $table->timestamps();
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
     }
 };

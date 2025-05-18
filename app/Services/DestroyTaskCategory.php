@@ -46,7 +46,7 @@ class DestroyTaskCategory
         LogUserAction::dispatch(
             user: $this->user,
             action: 'task_category_deletion',
-            description: 'Deleted the task category called '.$taskCategoryName,
+            description: 'Deleted the task category called ' . $taskCategoryName,
         )->onQueue('low');
     }
 }

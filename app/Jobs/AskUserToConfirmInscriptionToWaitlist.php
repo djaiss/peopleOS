@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Mail;
  */
 class AskUserToConfirmInscriptionToWaitlist implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public function __construct(
         public readonly string $email,

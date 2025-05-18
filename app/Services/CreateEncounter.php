@@ -13,6 +13,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * An encounter is a record of a user seeing a person.
+ */
 class CreateEncounter
 {
     private Encounter $encounter;
@@ -67,7 +70,7 @@ class CreateEncounter
         LogUserAction::dispatch(
             user: $this->user,
             action: 'encounter_creation',
-            description: 'Logged having seen '.$this->person->name,
+            description: 'Logged having seen ' . $this->person->name,
         )->onQueue('low');
     }
 }

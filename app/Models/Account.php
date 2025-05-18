@@ -7,11 +7,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Carbon\Carbon;
 
+/**
+ * Class Account
+ *
+ * @property int $id
+ * @property bool $has_lifetime_access
+ * @property Carbon|null $trial_ends_at
+ * @property bool $auto_delete_account
+ * @property bool $create_task_on_reminder
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
+ */
 class Account extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'accounts';
 
     /**
@@ -43,6 +60,8 @@ class Account extends Model
 
     /**
      * Get the logs associated with the account.
+     *
+     * @return HasMany<Log, $this>
      */
     public function logs(): HasMany
     {
@@ -51,6 +70,8 @@ class Account extends Model
 
     /**
      * Get the users associated with the account.
+     *
+     * @return HasMany<User, $this>
      */
     public function users(): HasMany
     {
@@ -59,6 +80,8 @@ class Account extends Model
 
     /**
      * Get the genders associated with the account.
+     *
+     * @return HasMany<Gender, $this>
      */
     public function genders(): HasMany
     {
@@ -67,6 +90,8 @@ class Account extends Model
 
     /**
      * Get the persons associated with the account.
+     *
+     * @return HasMany<Person, $this>
      */
     public function persons(): HasMany
     {
@@ -75,6 +100,8 @@ class Account extends Model
 
     /**
      * Get the encounters associated with the account.
+     *
+     * @return HasMany<Encounter, $this>
      */
     public function encounters(): HasMany
     {
@@ -83,6 +110,8 @@ class Account extends Model
 
     /**
      * Get the task categories associated with the account.
+     *
+     * @return HasMany<TaskCategory, $this>
      */
     public function taskCategories(): HasMany
     {
@@ -91,6 +120,8 @@ class Account extends Model
 
     /**
      * Get the tasks associated with the account.
+     *
+     * @return HasMany<Task, $this>
      */
     public function tasks(): HasMany
     {
@@ -99,6 +130,8 @@ class Account extends Model
 
     /**
      * Get the journal templates associated with the account.
+     *
+     * @return HasMany<JournalTemplate, $this>
      */
     public function journalTemplates(): HasMany
     {
@@ -107,6 +140,8 @@ class Account extends Model
 
     /**
      * Get the lifeEvents associated with the account.
+     *
+     * @return HasMany<LifeEvent, $this>
      */
     public function lifeEvents(): HasMany
     {
@@ -115,6 +150,8 @@ class Account extends Model
 
     /**
      * Get the emailsSent associated with the account.
+     *
+     * @return HasMany<EmailSent, $this>
      */
     public function emailsSent(): HasMany
     {
@@ -123,6 +160,8 @@ class Account extends Model
 
     /**
      * Check if the account is in trial.
+     *
+     * @return bool
      */
     public function isInTrial(): bool
     {
@@ -133,6 +172,8 @@ class Account extends Model
 
     /**
      * Check if the account needs to pay to continue using the app.
+     *
+     * @return bool
      */
     public function needsToPay(): bool
     {
@@ -144,6 +185,8 @@ class Account extends Model
     /**
      * Check if the account is over the account limit.
      * By default, the account limit is 1000 persons.
+     *
+     * @return bool
      */
     public function isOverAccountLimit(): bool
     {

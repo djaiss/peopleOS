@@ -25,7 +25,7 @@ class SendUserWaitlistApprovedEmailTest extends TestCase
         ]);
 
         SendUserWaitlistApprovedEmail::dispatch(
-            'test@example.com'
+            'test@example.com',
         );
 
         Mail::assertQueued(UserWaitlistApproved::class, function (UserWaitlistApproved $mail) {
@@ -40,7 +40,7 @@ class SendUserWaitlistApprovedEmailTest extends TestCase
         Mail::fake();
 
         SendUserWaitlistApprovedEmail::dispatch(
-            'nonexistent@example.com'
+            'nonexistent@example.com',
         );
 
         Mail::assertNothingQueued();

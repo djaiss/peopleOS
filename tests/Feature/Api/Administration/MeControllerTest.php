@@ -26,7 +26,7 @@ class MeControllerTest extends TestCase
                 'email' => 'dwight.schrute@dundermifflin.com',
                 'nickname' => 'Dwight',
                 'born_at' => '1985-03-15',
-            ])
+            ]),
         );
 
         $response = $this->json('GET', '/api/me');
@@ -42,7 +42,7 @@ class MeControllerTest extends TestCase
                 'nickname' => 'Dwight',
                 'email' => 'dwight.schrute@dundermifflin.com',
                 'born_at' => 479692800,
-            ]
+            ],
         );
     }
 
@@ -78,7 +78,7 @@ class MeControllerTest extends TestCase
                 'nickname' => 'Michael',
                 'born_at' => 479692800,
             ],
-            $response->json()
+            $response->json(),
         );
     }
 

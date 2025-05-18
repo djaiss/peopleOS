@@ -58,7 +58,9 @@ class InviteUser
     private function sendInvitation(): void
     {
         $temporarySignedRoute = URL::temporarySignedRoute(
-            'invitation.accept', now()->addDays(3), ['user' => $this->invitedUser->id]
+            'invitation.accept',
+            now()->addDays(3),
+            ['user' => $this->invitedUser->id],
         );
 
         Mail::to($this->email)
@@ -75,7 +77,7 @@ class InviteUser
         LogUserAction::dispatch(
             user: $this->user,
             action: 'user_invitation',
-            description: 'Invited '.$this->email.' to the account',
+            description: 'Invited ' . $this->email . ' to the account',
         )->onQueue('low');
     }
 }

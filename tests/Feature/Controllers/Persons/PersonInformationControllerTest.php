@@ -23,7 +23,7 @@ class PersonInformationControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/information/edit');
+            ->get('/persons/' . $person->slug . '/information/edit');
 
         $response->assertOk();
     }
@@ -37,7 +37,7 @@ class PersonInformationControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/information', [
+            ->put('/persons/' . $person->slug . '/information', [
                 'timezone' => 'America/New_York',
                 'nationalities' => 'American',
                 'languages' => 'English, Spanish',
@@ -61,7 +61,7 @@ class PersonInformationControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->put('/persons/'.$person->slug.'/information', [
+            ->put('/persons/' . $person->slug . '/information', [
                 'timezone' => 'Invalid/Timezone',
             ])
             ->assertSessionHasErrors(['timezone']);

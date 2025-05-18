@@ -53,8 +53,8 @@ class UpdatePersonInformationTest extends TestCase
             callback: function (LogUserAction $job) use ($user, $person) {
                 return $job->action === 'person_information_update'
                     && $job->user->id === $user->id
-                    && $job->description === 'Updated general information about '.$person->name;
-            }
+                    && $job->description === 'Updated general information about ' . $person->name;
+            },
         );
 
         Queue::assertPushedOn(
@@ -62,7 +62,7 @@ class UpdatePersonInformationTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person) {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -70,7 +70,7 @@ class UpdatePersonInformationTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user) {
                 return $job->user->id === $user->id;
-            }
+            },
         );
     }
 

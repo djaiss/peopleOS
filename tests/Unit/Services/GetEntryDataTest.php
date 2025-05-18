@@ -41,12 +41,12 @@ class GetEntryDataTest extends TestCase
             $array,
             [
                 'entry', 'days', 'months',
-            ]
+            ],
         );
 
         $this->assertInstanceOf(
             Entry::class,
-            $array['entry']
+            $array['entry'],
         );
     }
 }

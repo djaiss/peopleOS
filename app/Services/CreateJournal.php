@@ -35,7 +35,9 @@ class CreateJournal
 
     private function validate(): void
     {
-        if ($this->journalTemplate && $this->journalTemplate->account_id !== $this->user->account_id) {
+        if ($this->journalTemplate
+            && $this->journalTemplate->account_id !== $this->user->account_id) {
+            // The journal template does not belong to the user's account.
             throw new ModelNotFoundException('Journal template not found');
         }
     }
@@ -51,7 +53,7 @@ class CreateJournal
 
     private function generateSlug(): void
     {
-        $slug = $this->journal->id.'-'.Str::of($this->name)->slug('-');
+        $slug = $this->journal->id . '-' . Str::of($this->name)->slug('-');
 
         $this->journal->slug = $slug;
         $this->journal->save();
@@ -67,7 +69,7 @@ class CreateJournal
         LogUserAction::dispatch(
             user: $this->user,
             action: 'journal_creation',
-            description: 'Created the journal called '.$this->journal->name,
+            description: 'Created the journal called ' . $this->journal->name,
         )->onQueue('low');
     }
 }

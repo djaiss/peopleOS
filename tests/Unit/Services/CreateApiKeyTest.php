@@ -41,7 +41,7 @@ class CreateApiKeyTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -49,7 +49,7 @@ class CreateApiKeyTest extends TestCase
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'api_key_creation' && $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -57,7 +57,7 @@ class CreateApiKeyTest extends TestCase
             job: SendAPICreatedEmail::class,
             callback: function (SendAPICreatedEmail $job) use ($user): bool {
                 return $job->email === $user->email && $job->label === 'Test API Key';
-            }
+            },
         );
     }
 }

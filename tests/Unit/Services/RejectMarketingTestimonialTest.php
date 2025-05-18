@@ -44,7 +44,7 @@ class RejectMarketingTestimonialTest extends TestCase
 
         $this->assertEquals(
             MarketingTestimonialStatus::REJECTED->value,
-            $updatedTestimonial->status
+            $updatedTestimonial->status,
         );
 
         Queue::assertPushedOn(
@@ -52,7 +52,7 @@ class RejectMarketingTestimonialTest extends TestCase
             job: SendMarketingTestimonialRejectedEmail::class,
             callback: function (SendMarketingTestimonialRejectedEmail $job) use ($user): bool {
                 return $job->email === $user->email;
-            }
+            },
         );
     }
 

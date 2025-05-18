@@ -77,7 +77,7 @@ class JournalControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->getJson('/api/journals/'.$journal->id);
+            ->getJson('/api/journals/' . $journal->id);
 
         $response->assertStatus(200)
             ->assertJsonPath('data.id', $journal->id)
@@ -94,7 +94,7 @@ class JournalControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->putJson('/api/journals/'.$journal->id, [
+            ->putJson('/api/journals/' . $journal->id, [
                 'name' => 'Updated Name',
             ]);
 
@@ -115,7 +115,7 @@ class JournalControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->putJson('/api/journals/'.$journal->id, [
+            ->putJson('/api/journals/' . $journal->id, [
                 'name' => 'Updated Name',
                 'journal_template_id' => $template->id,
             ]);
@@ -134,7 +134,7 @@ class JournalControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->deleteJson('/api/journals/'.$journal->id);
+            ->deleteJson('/api/journals/' . $journal->id);
 
         $response->assertStatus(204);
     }
@@ -146,19 +146,19 @@ class JournalControllerTest extends TestCase
         $journal = Journal::factory()->create();
 
         $response = $this->actingAs($user)
-            ->getJson('/api/journals/'.$journal->id);
+            ->getJson('/api/journals/' . $journal->id);
 
         $response->assertStatus(404);
 
         $response = $this->actingAs($user)
-            ->putJson('/api/journals/'.$journal->id, [
+            ->putJson('/api/journals/' . $journal->id, [
                 'name' => 'New name',
             ]);
 
         $response->assertStatus(404);
 
         $response = $this->actingAs($user)
-            ->deleteJson('/api/journals/'.$journal->id);
+            ->deleteJson('/api/journals/' . $journal->id);
 
         $response->assertStatus(404);
     }

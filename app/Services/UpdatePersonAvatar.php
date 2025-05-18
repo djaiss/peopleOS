@@ -79,7 +79,7 @@ class UpdatePersonAvatar
         LogUserAction::dispatch(
             user: $this->user,
             action: 'person_avatar_update',
-            description: 'Updated the avatar of '.$this->person->name,
+            description: 'Updated the avatar of ' . $this->person->name,
         )->onQueue('low');
     }
 

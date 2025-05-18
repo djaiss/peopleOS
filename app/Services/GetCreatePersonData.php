@@ -18,7 +18,7 @@ class GetCreatePersonData
         $genders = Gender::where('account_id', $this->user->account_id)
             ->orderBy('position')
             ->get()
-            ->map(fn (Gender $gender): array => [
+            ->map(fn(Gender $gender): array => [
                 'id' => $gender->id,
                 'name' => $gender->name,
             ]);

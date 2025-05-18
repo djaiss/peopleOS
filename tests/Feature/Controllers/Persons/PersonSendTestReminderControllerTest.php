@@ -39,7 +39,7 @@ class PersonSendTestReminderControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/reminders/'.$specialDate->id.'/test')
+            ->post('/persons/' . $person->slug . '/reminders/' . $specialDate->id . '/test')
             ->assertRedirectToroute('person.reminder.index', $person->slug);
 
         $response->assertSessionHas('status', __('Mail sent'));
@@ -65,7 +65,7 @@ class PersonSendTestReminderControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/reminders/'.$specialDate->id.'/test')
+            ->post('/persons/' . $person->slug . '/reminders/' . $specialDate->id . '/test')
             ->assertNotFound();
     }
 
@@ -78,7 +78,7 @@ class PersonSendTestReminderControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/reminders/999/test')
+            ->post('/persons/' . $person->slug . '/reminders/999/test')
             ->assertNotFound();
     }
 }

@@ -29,7 +29,7 @@ class GetRelationshipsListing
             ->with('relatedPerson')
             ->where('is_current', true)
             ->get()
-            ->map(fn (LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
+            ->map(fn(LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
     }
 
     public function getPastRelationships(): Collection
@@ -39,7 +39,7 @@ class GetRelationshipsListing
             ->with('relatedPerson')
             ->where('is_current', false)
             ->get()
-            ->map(fn (LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
+            ->map(fn(LoveRelationship $relationship): array => $this->getRelationshipDetails($relationship, false)));
     }
 
     public function getRelationshipDetails(LoveRelationship $relationship, bool $isNew): array

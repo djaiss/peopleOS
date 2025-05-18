@@ -17,7 +17,7 @@ class MarketingVoteHelpfulController extends Controller
     {
         (new MarkMarketingPageAsHelpful(
             user: Auth::user(),
-            marketingPage: $page
+            marketingPage: $page,
         ))->execute();
 
         return redirect()->back()->with('hasVoted', true);

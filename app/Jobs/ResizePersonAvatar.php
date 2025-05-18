@@ -19,7 +19,7 @@ class ResizePersonAvatar implements ShouldQueue
     private bool $valid = true;
 
     public function __construct(
-        public Person $person
+        public Person $person,
     ) {}
 
     /**

@@ -44,7 +44,7 @@ class DestroyGenderTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -54,7 +54,7 @@ class DestroyGenderTest extends TestCase
                 return $job->action === 'gender_deletion'
                     && $job->user->id === $user->id
                     && $job->description === 'Deleted the gender called Male';
-            }
+            },
         );
     }
 

@@ -53,7 +53,7 @@ class AdministrationMarketingTestimonialControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/administration/marketing/testimonials/'.$testimonial->id.'/edit');
+            ->get('/administration/marketing/testimonials/' . $testimonial->id . '/edit');
 
         $response->assertOk();
         $response->assertViewIs('administration.marketing.partials.edit-testimony');
@@ -71,8 +71,8 @@ class AdministrationMarketingTestimonialControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->from('/administration/marketing/testimonials/'.$testimonial->id.'/edit')
-            ->put('/administration/marketing/testimonials/'.$testimonial->id, [
+            ->from('/administration/marketing/testimonials/' . $testimonial->id . '/edit')
+            ->put('/administration/marketing/testimonials/' . $testimonial->id, [
                 'name' => 'Joey Tribbiani',
                 'testimony' => 'How you doin\'? This product is amazing!',
                 'url_to_point_to' => 'https://example.com',
@@ -92,7 +92,7 @@ class AdministrationMarketingTestimonialControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->from('/administration/marketing')
-            ->delete('/administration/marketing/testimonials/'.$testimonial->id);
+            ->delete('/administration/marketing/testimonials/' . $testimonial->id);
 
         $response->assertRedirect('/administration/marketing');
         $response->assertSessionHas('status', __('Changes saved'));

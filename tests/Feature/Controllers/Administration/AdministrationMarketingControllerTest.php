@@ -95,7 +95,7 @@ class AdministrationMarketingControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/administration/marketing/'.$page->id);
+            ->delete('/administration/marketing/' . $page->id);
 
         $response->assertStatus(302);
     }

@@ -95,7 +95,7 @@ class DestroyLoveRelationship
         LogUserAction::dispatch(
             user: $this->user,
             action: 'love_relationship_deletion',
-            description: "Deleted a {$this->loveRelationship->type} relationship between {$this->loveRelationship->person->name} and {$this->loveRelationship->relatedPerson->name}"
+            description: "Deleted a {$this->loveRelationship->type} relationship between {$this->loveRelationship->person->name} and {$this->loveRelationship->relatedPerson->name}",
         )->onQueue('low');
     }
 }

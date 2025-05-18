@@ -8,17 +8,33 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * A journal template is a template for a journal entry.
  * It has a name and a content, which is a YAML file.
- * The YAML file contains a number of columns, and each column has a number of questions.
+ * The YAML file contains a number of columns, and each column has
+ * a number of questions.
+ *
+ * Class JournalTemplate
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property string $name
+ * @property string $content
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
  */
 class JournalTemplate extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'journal_templates';
 
     /**
@@ -47,6 +63,8 @@ class JournalTemplate extends Model
 
     /**
      * Get the account associated with the journal template.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -57,6 +75,8 @@ class JournalTemplate extends Model
      * Get the details of the journal template:
      * - number of columns
      * - number of questions
+     *
+     * @return array<string, int>
      */
     public function getDetails(): array
     {

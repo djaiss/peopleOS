@@ -22,7 +22,7 @@ final class PeopleListCache extends CacheHelper
     protected int $ttl = 604800; // 1 week
 
     public function __construct(
-        private int $accountId,
+        int $accountId,
     ) {
         $this->identifier = $accountId;
     }
@@ -44,10 +44,10 @@ final class PeopleListCache extends CacheHelper
                 'nickname',
                 'slug',
                 'profile_photo_path',
-                'color'
+                'color',
             )
             ->get()
-            ->map(fn (Person $person): array => [
+            ->map(fn(Person $person): array => [
                 'id' => $person->id,
                 'name' => $person->name,
                 'maiden_name' => $person->maiden_name,

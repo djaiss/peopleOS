@@ -24,7 +24,7 @@ class PersonSettingsControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/settings')
+            ->get('/persons/' . $person->slug . '/settings')
             ->assertOk()
             ->assertSee('Delete person');
 
@@ -48,7 +48,7 @@ class PersonSettingsControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/persons/'.$person->slug)
+            ->delete('/persons/' . $person->slug)
             ->assertRedirectToRoute('person.index');
 
         $response->assertSessionHas('status', 'Person deleted successfully');

@@ -66,7 +66,7 @@ class CreateLifeEventTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -74,7 +74,7 @@ class CreateLifeEventTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -84,7 +84,7 @@ class CreateLifeEventTest extends TestCase
                 return $job->user->id === $user->id &&
                     $job->action === 'life_event_creation' &&
                     $job->description === 'Logged a life event for Phoebe Buffay';
-            }
+            },
         );
     }
 

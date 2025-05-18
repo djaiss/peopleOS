@@ -27,7 +27,7 @@ class PersonLoveControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/persons/'.$person->slug.'/love/new');
+            ->get('/persons/' . $person->slug . '/love/new');
 
         $response->assertOk();
         $this->assertArrayHasKey('person', $response);
@@ -44,7 +44,7 @@ class PersonLoveControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/love', [
+            ->post('/persons/' . $person->slug . '/love', [
                 'first_name' => 'Rachel',
                 'last_name' => 'Green',
                 'nature_of_relationship' => 'Dating',
@@ -65,7 +65,7 @@ class PersonLoveControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/persons/'.$person->slug.'/love', [
+            ->post('/persons/' . $person->slug . '/love', [
                 'first_name' => '',
                 'nature_of_relationship' => '',
             ]);
@@ -98,7 +98,7 @@ class PersonLoveControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->delete('/persons/'.$person->slug.'/love/'.$loveRelationship->id);
+            ->delete('/persons/' . $person->slug . '/love/' . $loveRelationship->id);
 
         $response->assertRedirect(route('person.family.index', $person->slug));
         $response->assertSessionHas('status', 'Relationship deleted');

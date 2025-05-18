@@ -32,7 +32,7 @@ class UpdatePersonLastConsultedDateTest extends TestCase
         $this->assertEqualsWithDelta(
             now(),
             $person->last_consulted_at,
-            1 // Delta of 1 second
+            1, // Delta of 1 second
         );
     }
 }

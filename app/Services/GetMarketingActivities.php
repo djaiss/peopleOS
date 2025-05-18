@@ -19,7 +19,7 @@ class GetMarketingActivities
         $marketingPages = $this->user->marketingPages()
             ->orderBy('updated_at', 'desc')
             ->get()
-            ->map(fn (MarketingPage $marketingPage): array => [
+            ->map(fn(MarketingPage $marketingPage): array => [
                 'id' => $marketingPage->id,
                 'url' => $marketingPage->url,
                 'helpful' => $marketingPage->pivot->helpful,
@@ -29,7 +29,7 @@ class GetMarketingActivities
 
         $testimonials = MarketingTestimonial::where('account_id', $this->user->account_id)
             ->get()
-            ->map(fn (MarketingTestimonial $testimony): array => [
+            ->map(fn(MarketingTestimonial $testimony): array => [
                 'id' => $testimony->id,
                 'name_to_display' => $testimony->name_to_display,
                 'status' => $testimony->status,

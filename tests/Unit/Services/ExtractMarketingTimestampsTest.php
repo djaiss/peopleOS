@@ -17,7 +17,7 @@ class ExtractMarketingTimestampsTest extends TestCase
         Mockery::close();
     }
 
-    public function test_it_generates_timestamp_file_for_marketing_pages()
+    public function test_it_generates_timestamp_file_for_marketing_pages(): void
     {
         $file1 = Mockery::mock();
         $file1->shouldReceive('getPathname')->andReturn(resource_path('views/marketing/about.blade.php'));

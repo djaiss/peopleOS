@@ -28,7 +28,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('POST', '/api/persons/'.$person->id.'/work-history', [
+        $response = $this->json('POST', '/api/persons/' . $person->id . '/work-history', [
             'company_name' => 'New York Museum of Prehistoric History',
             'job_title' => 'Paleontologist',
             'estimated_salary' => '$75,000',
@@ -68,7 +68,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/work-history/'.$workHistory->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/work-history/' . $workHistory->id, [
             'company_name' => 'New York University',
             'job_title' => 'Professor',
             'estimated_salary' => '$85,000',
@@ -83,7 +83,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         $this->assertEquals(
             'New York University',
-            $workHistory->refresh()->company_name
+            $workHistory->refresh()->company_name,
         );
         $this->assertEquals('2 years', $workHistory->refresh()->duration);
         $this->assertEquals('New York University', $response->json('data.company_name'));
@@ -103,7 +103,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('PUT', '/api/persons/'.$person->id.'/work-history/'.$workHistory->id, [
+        $response = $this->json('PUT', '/api/persons/' . $person->id . '/work-history/' . $workHistory->id, [
             'company_name' => 'Updated Company',
             'job_title' => 'Updated Title',
             'estimated_salary' => '$100,000',
@@ -126,7 +126,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/work-history/'.$workHistory->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/work-history/' . $workHistory->id);
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('work_information', [
@@ -145,7 +145,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('DELETE', '/api/persons/'.$person->id.'/work-history/'.$workHistory->id);
+        $response = $this->json('DELETE', '/api/persons/' . $person->id . '/work-history/' . $workHistory->id);
 
         $response->assertStatus(404);
     }
@@ -168,7 +168,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/work-history/'.$workHistory->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/work-history/' . $workHistory->id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -192,7 +192,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/work-history/'.$workHistory->id);
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/work-history/' . $workHistory->id);
 
         $response->assertStatus(404);
     }
@@ -215,7 +215,7 @@ class PersonWorkHistoryControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->json('GET', '/api/persons/'.$person->id.'/work-history');
+        $response = $this->json('GET', '/api/persons/' . $person->id . '/work-history');
 
         $response->assertStatus(200);
         $response->assertJsonFragment([

@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\UserWaitlist;
 use Exception;
 
+/**
+ * Approve a user waitlist entry. The user must be an instance administrator.
+ */
 class ApproveUserWaitlist
 {
     public function __construct(
@@ -30,7 +33,7 @@ class ApproveUserWaitlist
     {
         if (! $this->user->is_instance_admin) {
             throw new Exception(
-                'User must be an instance administrator to approve a waitlist entry.'
+                'User must be an instance administrator to approve a waitlist entry.',
             );
         }
     }
@@ -45,7 +48,7 @@ class ApproveUserWaitlist
     private function send(): void
     {
         SendUserWaitlistApprovedEmail::dispatch(
-            $this->waitlist->email
+            $this->waitlist->email,
         )->onQueue('high');
     }
 }

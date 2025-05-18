@@ -24,7 +24,7 @@ class EntryControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->getJson('/api/journals/'.$journal->id.'/2024/1/1');
+            ->getJson('/api/journals/' . $journal->id . '/2024/1/1');
 
         $entry = Entry::where('journal_id', $journal->id)
             ->first();
@@ -51,7 +51,7 @@ class EntryControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->getJson('/api/journals/'.$journal->id.'/2024/1/1');
+            ->getJson('/api/journals/' . $journal->id . '/2024/1/1');
 
         $response->assertStatus(200)
             ->assertJsonPath('data.id', $entry->id)

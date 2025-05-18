@@ -81,7 +81,7 @@ class CreateWorkHistory
         LogUserAction::dispatch(
             user: $this->user,
             action: 'work_history_creation',
-            description: 'Created a work history entry for '.$this->person->name,
+            description: 'Created a work history entry for ' . $this->person->name,
         )->onQueue('low');
     }
 }

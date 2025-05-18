@@ -20,14 +20,14 @@ class GetPersonnalizationContent
         $genders = Gender::where('account_id', $this->user->account_id)
             ->orderBy('position')
             ->get()
-            ->map(fn (Gender $gender): array => [
+            ->map(fn(Gender $gender): array => [
                 'id' => $gender->id,
                 'name' => $gender->name,
             ]);
 
         $taskCategories = TaskCategory::where('account_id', $this->user->account_id)
             ->get()
-            ->map(fn (TaskCategory $taskCategory): array => [
+            ->map(fn(TaskCategory $taskCategory): array => [
                 'id' => $taskCategory->id,
                 'name' => $taskCategory->name,
                 'color' => $taskCategory->color,
@@ -35,7 +35,7 @@ class GetPersonnalizationContent
 
         $journalTemplates = JournalTemplate::where('account_id', $this->user->account_id)
             ->get()
-            ->map(fn (JournalTemplate $journalTemplate): array => [
+            ->map(fn(JournalTemplate $journalTemplate): array => [
                 'id' => $journalTemplate->id,
                 'name' => $journalTemplate->name,
                 'columns' => $journalTemplate->getDetails()['columns'],

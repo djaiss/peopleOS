@@ -7,11 +7,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 
+/**
+ * Class Journal
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property int|null $journal_template_id
+ * @property string $name
+ * @property string|null $slug
+ * @property Carbon $created_at
+ * @property Carbon|null $updated_at
+ */
 class Journal extends Model
 {
     use HasFactory;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'journals';
 
     /**
@@ -41,6 +58,8 @@ class Journal extends Model
 
     /**
      * Get the account associated with the journal.
+     *
+     * @return BelongsTo<Account, $this>
      */
     public function account(): BelongsTo
     {
@@ -49,6 +68,8 @@ class Journal extends Model
 
     /**
      * Get the journal template associated with the journal.
+     *
+     * @return BelongsTo<JournalTemplate, $this>
      */
     public function journalTemplate(): BelongsTo
     {

@@ -57,12 +57,12 @@ class UpdateMarketingTestimonialTest extends TestCase
         $this->assertEquals('https://monica-cleaning-tips.com', $updatedTestimonial->url_to_point_to);
         $this->assertEquals(
             'I am so freakishly organized, and this product helps me stay that way!',
-            $updatedTestimonial->testimony
+            $updatedTestimonial->testimony,
         );
 
         $this->assertInstanceOf(
             MarketingTestimonial::class,
-            $updatedTestimonial
+            $updatedTestimonial,
         );
 
         Queue::assertPushedOn(
@@ -70,7 +70,7 @@ class UpdateMarketingTestimonialTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -80,7 +80,7 @@ class UpdateMarketingTestimonialTest extends TestCase
                 return $job->action === 'marketing_testimonial_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated a marketing testimonial';
-            }
+            },
         );
     }
 

@@ -25,7 +25,7 @@ class GetNotesListing
         $notes = Note::where('person_id', $this->person->id)
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn (Note $note): array => [
+            ->map(fn(Note $note): array => [
                 'id' => $note->id,
                 'content' => $note->content,
                 'created_at' => $note->created_at->format('M j, Y'),

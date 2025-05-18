@@ -23,7 +23,7 @@ class MarkMarketingPageAsUnhelpfulTest extends TestCase
 
         $service = new MarkMarketingPageAsUnhelpful(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         );
 
         $service->execute();
@@ -43,7 +43,7 @@ class MarkMarketingPageAsUnhelpfulTest extends TestCase
 
         $service = new MarkMarketingPageAsUnhelpful(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         );
 
         $service->execute();
@@ -68,7 +68,7 @@ class MarkMarketingPageAsUnhelpfulTest extends TestCase
 
         $service = new MarkMarketingPageAsUnhelpful(
             user: $user,
-            marketingPage: $marketingPage
+            marketingPage: $marketingPage,
         );
 
         $service->execute();

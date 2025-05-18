@@ -55,7 +55,7 @@ class UpdateAgeOfAPersonTest extends TestCase
 
         $this->assertInstanceOf(
             Person::class,
-            $updatedPerson
+            $updatedPerson,
         );
 
         $this->assertDatabaseMissing('special_dates', [
@@ -80,7 +80,7 @@ class UpdateAgeOfAPersonTest extends TestCase
             job: UpdateUserLastActivityDate::class,
             callback: function (UpdateUserLastActivityDate $job) use ($user): bool {
                 return $job->user->id === $user->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -88,7 +88,7 @@ class UpdateAgeOfAPersonTest extends TestCase
             job: UpdatePersonLastConsultedDate::class,
             callback: function (UpdatePersonLastConsultedDate $job) use ($person): bool {
                 return $job->person->id === $person->id;
-            }
+            },
         );
 
         Queue::assertPushedOn(
@@ -98,7 +98,7 @@ class UpdateAgeOfAPersonTest extends TestCase
                 return $job->action === 'age_update'
                     && $job->user->id === $user->id
                     && $job->description === 'Updated the age of Ross Geller';
-            }
+            },
         );
     }
 
