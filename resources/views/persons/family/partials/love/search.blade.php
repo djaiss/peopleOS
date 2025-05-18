@@ -5,7 +5,7 @@
  */
 ?>
 
-<div id="new-love-relationship" class="mb-8 rounded-lg border border-gray-200 bg-white">
+<div id="new-love-relationship" x-data="{ selectedContact: null }" class="mb-8 rounded-lg border border-gray-200 bg-white">
   <!-- Tabs -->
   <div class="mb-4 border-b border-gray-200">
     <nav class="-mb-px flex justify-center space-x-8">
@@ -31,6 +31,9 @@
             this.$el.form.requestSubmit()
           }, 300)
         },
+        selectContact(contact) {
+          this.selectedContact = contact
+        }
       }" x-target="search-results" x-target.back="new-love-relationship" action="{{ route('person.love.search', $person) }}" method="POST" class="relative">
         @csrf
         @method('POST')
@@ -41,19 +44,34 @@
 
       @if ($searchResults && $searchResults->isNotEmpty())
         <div id="search-results" class="divide-y divide-gray-200 rounded-md border border-gray-200">
-          @foreach ($searchResults as $result)
-            <button type="button" class="flex w-full justify-between p-3 text-left hover:bg-gray-50">
-              <div class="flex w-full items-center gap-3">
-                <div class="shrink-0">
-                  <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $result['avatar']['40'] }}" srcset="{{ $result['avatar']['40'] }}, {{ $result['avatar']['80'] }} 2x" alt="{{ $result['name'] }}" loading="lazy" />
+          <template x-if="!selectedContact">
+            @foreach ($searchResults as $result)
+              <button type="button" @click="selectContact({{ json_encode($result) }})" class="flex w-full justify-between p-3 text-left hover:bg-gray-50">
+                <div class="flex w-full items-center gap-3">
+                  <div class="shrink-0">
+                    <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $result['avatar']['40'] }}" srcset="{{ $result['avatar']['40'] }}, {{ $result['avatar']['80'] }} 2x" alt="{{ $result['name'] }}" loading="lazy" />
+                  </div>
+                  <div class="font-medium text-gray-900">{{ $result['name'] }}</div>
                 </div>
-                <div class="font-medium text-gray-900">{{ $result['name'] }}</div>
+                <div class="inline-flex cursor-pointer items-center rounded-md border border-gray-300 bg-white px-3 py-1 text-center font-semibold text-gray-700 transition duration-150 ease-in-out hover:bg-gray-50 hover:shadow-xs focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden disabled:opacity-25">
+                  {{ __('Choose') }}
+                </div>
+              </button>
+            @endforeach
+          </template>
+          <template x-if="selectedContact">
+            <div class="flex items-center justify-between p-3">
+              <div class="flex items-center gap-3">
+                <div class="shrink-0">
+                  <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" :src="selectedContact.avatar['40']" :srcset="`${selectedContact.avatar['40']}, ${selectedContact.avatar['80']} 2x`" :alt="selectedContact.name" loading="lazy" />
+                </div>
+                <div class="font-medium text-gray-900" x-text="selectedContact.name"></div>
               </div>
-              <div class="inline-flex cursor-pointer items-center rounded-md border border-gray-300 bg-white px-3 py-1 text-center font-semibold text-gray-700 transition duration-150 ease-in-out hover:bg-gray-50 hover:shadow-xs focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden disabled:opacity-25">
-                {{ __('Choose') }}
-              </div>
-            </button>
-          @endforeach
+              <button type="button" @click="selectedContact = null" class="inline-flex cursor-pointer items-center rounded-md border border-gray-300 bg-white px-3 py-1 text-center font-semibold text-gray-700 transition duration-150 ease-in-out hover:bg-gray-50 hover:shadow-xs focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden disabled:opacity-25">
+                {{ __('Change') }}
+              </button>
+            </div>
+          </template>
         </div>
       @else
         <div id="search-results"></div>
@@ -61,12 +79,12 @@
     </div>
   </div>
 
-  <form x-target="love-listing new-love-relationship persons" x-target.back="new-love-relationship" action="{{ route('person.love.store', $person) }}" method="POST">
+  <form x-data="{}" x-target="love-listing new-love-relationship persons" x-target.back="new-love-relationship" action="{{ route('person.love.store', $person) }}" method="POST">
     @csrf
 
-    <div class="mb-4 flex gap-4 px-4"></div>
-
     <div class="mb-4 flex gap-4 px-4">
+      {{-- <input type="hidden" name="contact_id" x-model="selectedContact?.id"> --}}
+      <input type="hidden" name="contact_id" :value="selectedContact ? selectedContact.id : ''">
       <div class="flex-1">
         <x-input-label for="nature_of_relationship" :value="__('Nature of relationship')" class="mb-1" />
         <x-text-input class="block w-full" id="nature_of_relationship" name="nature_of_relationship" placeholder="{{ __('Ex: Spouse, girlfriend, boyfriend, etc.') }}" type="text" required />
