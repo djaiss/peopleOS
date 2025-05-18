@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class Person extends Model
@@ -490,10 +489,7 @@ class Person extends Model
      */
     protected function resizedAvatar(int $size = 64): string
     {
-        $path = Storage::disk(config('filesystems.default'))
-            ->path($this->profile_photo_path);
-
-        return ImageHelper::getImageVariantPath($path, $size);
+        return ImageHelper::getImageVariantPath($this->profile_photo_path, $size);
     }
 
     /**
