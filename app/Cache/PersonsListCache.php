@@ -11,9 +11,9 @@ use App\Traits\CacheIdentifier;
 use Illuminate\Support\Collection;
 
 /**
- * All the people for the given account.
+ * Cache all the persons for the given account.
  */
-final class PeopleListCache extends CacheHelper
+final class PersonsListCache extends CacheHelper
 {
     use CacheIdentifier;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
-use App\Cache\PeopleListCache;
+use App\Cache\PersonsListCache;
 use App\Models\Person;
 use App\Services\ResizeImage;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -62,7 +62,7 @@ class ResizePersonAvatar implements ShouldQueue
 
     private function refreshCache(): void
     {
-        PeopleListCache::make(
+        PersonsListCache::make(
             accountId: $this->person->account_id,
         )->refresh();
     }
