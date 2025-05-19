@@ -20,10 +20,12 @@ class GetDashboardInformation
     {
         $reminders = $this->getReminders();
         $persons = $this->getLatestSeenPersons();
+        $quote = $this->getInspirationalQuote();
 
         return [
             'reminders' => $reminders,
             'persons' => $persons,
+            'quote' => $quote,
         ];
     }
 
@@ -83,6 +85,65 @@ class GetDashboardInformation
                 '40' => $person->getAvatar(40),
                 '80' => $person->getAvatar(80),
             ],
+            'last_consulted_at' => $person->last_consulted_at->diffForHumans(),
         ]);
+    }
+
+    public function getInspirationalQuote(): string
+    {
+        $kindMessages = [
+            trans_key("Hope you're doing great today."),
+            trans_key("Just checking in—hope all is well with you."),
+            trans_key("Wishing you a calm and happy day."),
+            trans_key("Sending good vibes your way."),
+            trans_key("Hope you’re feeling your best today."),
+            trans_key("We sincerely hope that you are fine."),
+            trans_key("Take it easy today—you deserve it."),
+            trans_key("Hope life’s being kind to you."),
+            trans_key("Thinking of you and hoping you’re well."),
+            trans_key("Hope you're surrounded by good energy."),
+            trans_key("Wishing you peace and clarity today."),
+            trans_key("Stay strong and keep shining."),
+            trans_key("Hope you're smiling right now."),
+            trans_key("We trust this note finds you in good spirits."),
+            trans_key("Hang in there—you're doing great."),
+            trans_key("Wishing you a moment to breathe and relax."),
+            trans_key("Hope something nice surprises you today."),
+            trans_key("Wishing you the little joys that make a big difference."),
+            trans_key("You're on our minds—hope things are going smoothly."),
+            trans_key("Hope your day has a little sparkle to it."),
+            trans_key("Take care of yourself—you matter."),
+            trans_key("Hope the sun's shining where you are."),
+            trans_key("Wishing you rest, laughter, and good coffee."),
+            trans_key("Stay cozy, stay kind."),
+            trans_key("We’re sending you a little kindness today."),
+            trans_key("Hope your inbox is light and your coffee is strong."),
+            trans_key("Just a little note to say we care."),
+            trans_key("Wishing you more smiles than emails today."),
+            trans_key("Hope you're catching your breath and taking it slow."),
+            trans_key("We’re rooting for you—always."),
+            trans_key("Hope you’re getting the break you need."),
+            trans_key("Thinking of you—hope today’s been gentle."),
+            trans_key("May your day be peaceful and your Wi-Fi strong."),
+            trans_key("You got this—whatever 'this' is."),
+            trans_key("Hope you’re laughing at least once today."),
+            trans_key("Hope your socks match and your plans go smoothly."),
+            trans_key("Here’s to a day that’s better than expected."),
+            trans_key("May your coffee be hot and your meetings short."),
+            trans_key("Hope something simple makes you smile today."),
+            trans_key("Sending a virtual high-five your way."),
+            trans_key("Hope your day feels just right."),
+            trans_key("Sending calm thoughts and friendly waves."),
+            trans_key("Wishing you a moment to do absolutely nothing."),
+            trans_key("We hope this finds you safe and sound."),
+            trans_key("Hope today brings you something sweet—even if it’s a cookie."),
+            trans_key("Sending a little reminder: you’re doing better than you think."),
+            trans_key("Wishing you patience, peace, and maybe a nap."),
+            trans_key("Just here to say: hope you’re okay."),
+            trans_key("Wishing you good luck, good timing, and good snacks."),
+            trans_key("Here’s to steady steps and quiet wins."),
+        ];
+
+        return __($kindMessages[array_rand($kindMessages)]);
     }
 }
