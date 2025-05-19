@@ -39,6 +39,10 @@
         </div>
       </div>
     </div>
+
+    <!-- required to refresh the listing once the new love relationship is created -->
+    <!-- otherwise, once alpine ajax tries to refresh the listing, it will not find the place to store this listing -->
+    <div id="love-listing"></div>
   @else
     <div id="new-love-relationship"></div>
 

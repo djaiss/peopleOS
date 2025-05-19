@@ -65,4 +65,44 @@ class GetDashboardInformationTest extends TestCase
         $this->assertEquals('Birthday', $service[0]['name']);
         $this->assertEquals('Anniversary', $service[1]['name']);
     }
+
+    #[Test]
+    public function it_should_return_an_inspirational_quote(): void
+    {
+        $user = User::factory()->create();
+        $service = new GetDashboardInformation(user: $user);
+
+        $quote = $service->getInspirationalQuote();
+
+        $this->assertIsString($quote);
+        $this->assertNotEmpty($quote);
+    }
+
+    #[Test]
+    public function it_should_return_latest_seen_persons(): void
+    {
+        $user = User::factory()->create();
+
+        // Create 7 persons with different last_consulted_at dates
+        $persons = collect();
+        for ($i = 0; $i < 7; $i++) {
+            $persons->push(Person::factory()->create([
+                'account_id' => $user->account_id,
+                'last_consulted_at' => now()->subHours($i),
+            ]));
+        }
+
+        $service = new GetDashboardInformation(user: $user);
+        $result = $service->getLatestSeenPersons();
+
+        $this->assertCount(5, $result);
+
+        $this->assertArrayHasKey('id', $result[0]);
+        $this->assertArrayHasKey('name', $result[0]);
+        $this->assertArrayHasKey('slug', $result[0]);
+        $this->assertArrayHasKey('avatar', $result[0]);
+        $this->assertArrayHasKey('40', $result[0]['avatar']);
+        $this->assertArrayHasKey('80', $result[0]['avatar']);
+        $this->assertArrayHasKey('last_consulted_at', $result[0]);
+    }
 }

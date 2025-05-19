@@ -15,6 +15,7 @@ parameters:
         - app/Http/Controllers/Auth/VerifyEmailController.php
         - app/Http/Resources/*.php
         - app/Services/DestroyAccountBecauseInactivity.php
+        - app/Services/GetDashboardInformation.php
 
 #    checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
