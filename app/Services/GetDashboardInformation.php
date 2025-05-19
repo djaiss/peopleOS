@@ -85,7 +85,7 @@ class GetDashboardInformation
                 '40' => $person->getAvatar(40),
                 '80' => $person->getAvatar(80),
             ],
-            'last_consulted_at' => $person->last_consulted_at->diffForHumans(),
+            'last_consulted_at' => $person->last_consulted_at ? $person->last_consulted_at->diffForHumans() : __('Never'),
         ]);
     }
 
