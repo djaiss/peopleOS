@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Enums\AgeType;
 use App\Models\Account;
+use App\Models\Child;
 use App\Models\EmailSent;
 use App\Models\Encounter;
 use App\Models\Gender;
@@ -175,6 +176,44 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertTrue($person->emailsSent()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_children_as_first_parent(): void
+    {
+        $person = Person::factory()->create();
+        Child::factory()->create([
+            'parent_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->childrenAsParent()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_children_as_second_parent(): void
+    {
+        $person = Person::factory()->create();
+        Child::factory()->create([
+            'second_parent_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->childrenAsSecondParent()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_children(): void
+    {
+        $ross = Person::factory()->create();
+        $rachel = Person::factory()->create();
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'second_parent_id' => $rachel->id,
+        ]);
+
+        $this->assertCount(1, $ross->children());
+        $this->assertCount(1, $rachel->children());
+        $this->assertNotEmpty($ross->children());
+        $this->assertNotEmpty($rachel->children());
     }
 
     #[Test]
