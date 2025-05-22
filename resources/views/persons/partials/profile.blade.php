@@ -93,6 +93,10 @@
         <x-lucide-briefcase class="{{ request()->routeIs('person.work.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.work.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Work') }}</span>
       </a>
+      <a href="{{ route('person.food.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.food.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
+        <x-lucide-cooking-pot class="{{ request()->routeIs('person.food.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
+        <span class="{{ request()->routeIs('person.food.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Food') }}</span>
+      </a>
       <a href="{{ route('person.settings.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.settings.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-settings class="{{ request()->routeIs('person.settings.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
         <span class="{{ request()->routeIs('person.settings.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Edit information') }}</span>
