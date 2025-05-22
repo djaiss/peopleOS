@@ -10,50 +10,37 @@
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <!-- Hero Section -->
   <div class="relative bg-white">
-    <div class="mx-auto max-w-7xl px-6 py-8 sm:py-32 lg:px-8 xl:px-0">
-      <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
-        <!-- Left side - Text content -->
-        <div class="max-w-2xl">
-          <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-600">
-            {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
+    <div class="mx-auto max-w-7xl px-6 py-8 text-center sm:pt-20 sm:pb-8 lg:px-8 xl:px-0">
+      <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
+      <p class="mt-6 text-lg leading-8 text-gray-600">
+        {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
+      </p>
+      <div class="mt-10 mb-5 flex items-center justify-center gap-x-6">
+        @if (config('peopleos.enable_waitlist'))
+          <a href="{{ route('waitlist.index') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            {{ __('Join waitlist') }}
+          </a>
+        @else
+          <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            {{ __('Get started for free') }}
+          </a>
+        @endif
+        <x-tooltip text="Just kidding. We have no sales teams.">
+          <p class="cursor-pointer text-sm leading-6 font-semibold text-gray-900">
+            {{ __('Talk to sales') }}
+            <span aria-hidden="true">→</span>
           </p>
-          <div class="mt-10 mb-5 flex items-center gap-x-6">
-            @if (config('peopleos.enable_waitlist'))
-              <a href="{{ route('waitlist.index') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                {{ __('Join waitlist') }}
-              </a>
-            @else
-              <a href="{{ route('register') }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                {{ __('Get started for free') }}
-              </a>
-            @endif
-            <x-tooltip text="Just kidding. We have no sales teams.">
-              <p class="cursor-pointer text-sm leading-6 font-semibold text-gray-900">
-                {{ __('Talk to sales') }}
-                <span aria-hidden="true">→</span>
-              </p>
-            </x-tooltip>
-          </div>
-
-          <p class="-rotate-2">
-            <span class="rounded-md bg-green-100 px-1.5 py-1 font-semibold text-green-600">{{ $accountNumbers }}</span>
-            crazy users like you registered in the last 7 days.
-          </p>
-        </div>
-
-        <!-- Right side - Image -->
-        <div class="relative">
-          <img src="{{ asset('marketing/homepage.png') }}" alt="PeopleOS Screenshot" class="rounded-xl shadow-xl ring-1 ring-gray-400/10" loading="lazy" />
-          <!-- Optional decorative elements -->
-          <div class="absolute -z-10 hidden lg:block">
-            <div class="absolute -top-16 -right-16 h-72 w-72 rounded-full bg-blue-50 opacity-70 mix-blend-multiply blur-2xl"></div>
-            <div class="absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-purple-50 opacity-70 mix-blend-multiply blur-2xl"></div>
-          </div>
-        </div>
+        </x-tooltip>
       </div>
+
+      <p class="-rotate-2">
+        <span class="rounded-md bg-green-100 px-1.5 py-1 font-semibold text-green-600">{{ $accountNumbers }}</span>
+        crazy users like you registered in the last 7 days.
+      </p>
     </div>
   </div>
+
+  @include('marketing.partials.app.index')
 
   <!-- Feature Section -->
   <div id="features" class="bg-gray-50 py-12">
