@@ -179,7 +179,7 @@ class PersonTest extends TestCase
     }
 
     #[Test]
-    public function it_should_have_food_allergies(): void
+    public function it_has_many_food_allergies(): void
     {
         $person = Person::factory()->create();
         FoodAllergy::factory()->count(3)->create([

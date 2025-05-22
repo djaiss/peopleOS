@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('person_id')->nullable();
             $table->text('name');
             $table->timestamps();
-            $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
         });
     }
 
