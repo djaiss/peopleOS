@@ -35,7 +35,7 @@
 
       <p class="-rotate-2">
         <span class="rounded-md bg-green-100 px-1.5 py-1 font-semibold text-green-600">{{ $accountNumbers }}</span>
-        crazy users like you registered in the last 7 days.
+        users like you registered in the last 7 days.
       </p>
     </div>
   </div>
