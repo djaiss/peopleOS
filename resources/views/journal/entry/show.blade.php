@@ -34,6 +34,216 @@
 
   <div class="mx-auto max-w-7xl">
 
+    <div class="mb-10" x-data="{ open: false }">
+      <h1 class="text-2xl font-normal text-center font-serif mb-4">{{ __('Your journal entry for :date', ['date' => $entry->getDate()]) }}</h1>
+      <div class="flex items-center justify-center mb-8">
+        <button
+          @click="open = !open"
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 hover:bg-indigo-200 transition-colors duration-200"
+          :class="{ 'rotate-45': open }"
+        >
+          <x-lucide-plus class="w-5 h-5 text-indigo-600 transition-transform duration-200" />
+        </button>
+      </div>
+
+      <!-- actions -->
+      <div
+        x-show="open"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 transform scale-95"
+        x-transition:enter-end="opacity-100 transform scale-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-95"
+        class="mt-6"
+      >
+        <div class="grid grid-cols-2 gap-4 mx-auto max-w-3xl">
+          <!-- left column -->
+          <div>
+            <!-- mental health -->
+            <div class="mb-6">
+              <div class="mb-2 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-brain class="h-4 w-4 text-indigo-500" />
+                  <h2 class="text-md font-semibold text-gray-900">{{ __('Mental health') }}</h2>
+                </div>
+              </div>
+
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-pen-tool class="group-hover:text-indigo-600 h-5 w-5 text-indigo-500" />
+                  <h2 class="text-sm">{{ __('Add your journal thoughts') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <a x-target="new-content" @click="open = false" href="{{ route('journal.entry.mood.new', ['year' => $entry->year, 'month' => $entry->month, 'day' => $entry->day]) }}" class="flex items-center gap-2">
+                  <x-lucide-smile class="group-hover:text-yellow-600 h-5 w-5 text-yellow-500" />
+                  <h2 class="text-sm">{{ __('Log your mood for the day') }}</h2>
+                </a>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-battery class="group-hover:text-emerald-600 h-5 w-5 text-emerald-500" />
+                  <h2 class="text-sm">{{ __('Log your energy level') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-waves class="group-hover:text-cyan-600 h-5 w-5 text-cyan-500" />
+                  <h2 class="text-sm">{{ __('Log your stress level') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-heart class="group-hover:text-rose-600 h-5 w-5 text-rose-500" />
+                  <h2 class="text-sm">{{ __('Log what you\'re grateful for') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-lightbulb class="group-hover:text-amber-600 h-5 w-5 text-amber-500" />
+                  <h2 class="text-sm">{{ __('Log your learnings') }}</h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- physical well-being -->
+            <div>
+              <div class="mb-2 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-dumbbell class="h-4 w-4 text-violet-500" />
+                  <h2 class="text-md font-semibold text-gray-900">{{ __('Physical well-being') }}</h2>
+                </div>
+              </div>
+
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-moon class="group-hover:text-indigo-600 h-5 w-5 text-indigo-500" />
+                  <h2 class="text-sm">{{ __('How did you sleep?') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-bike class="group-hover:text-violet-600 h-5 w-5 text-violet-500" />
+                  <h2 class="text-sm">{{ __('Log your physical activity') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-utensils class="group-hover:text-orange-600 h-5 w-5 text-orange-500" />
+                  <h2 class="text-sm">{{ __('Log what you ate') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-droplet class="group-hover:text-sky-600 h-5 w-5 text-sky-500" />
+                  <h2 class="text-sm">{{ __('Log your hydration') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-pill class="group-hover:text-purple-600 h-5 w-5 text-purple-500" />
+                  <h2 class="text-sm">{{ __('Log medication/supplement intake') }}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- right column -->
+          <div>
+            <!-- environment -->
+            <div class="mb-6">
+              <div class="mb-2 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-cloud-sun class="h-4 w-4 text-sky-500" />
+                  <h2 class="text-md font-semibold text-gray-900">{{ __('Environment') }}</h2>
+                </div>
+              </div>
+
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-cloud class="group-hover:text-sky-600 h-5 w-5 text-sky-500" />
+                  <h2 class="text-sm">{{ __('Record the weather') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-map-pin class="group-hover:text-emerald-600 h-5 w-5 text-emerald-500" />
+                  <h2 class="text-sm">{{ __('Log current location') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-volume-2 class="group-hover:text-cyan-600 h-5 w-5 text-cyan-500" />
+                  <h2 class="text-sm">{{ __('Log air quality/noise level') }}</h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- social and interaction -->
+            <div class="mb-6">
+              <div class="mb-2 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-users class="h-4 w-4 text-rose-500" />
+                  <h2 class="text-md font-semibold text-gray-900">{{ __('Social and interaction') }}</h2>
+                </div>
+              </div>
+
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-message-circle class="group-hover:text-rose-600 h-5 w-5 text-rose-500" />
+                  <h2 class="text-sm">{{ __('Log your social interactions') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-star class="group-hover:text-amber-600 h-5 w-5 text-amber-500" />
+                  <h2 class="text-sm">{{ __('Meaningful encounters') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-user class="group-hover:text-indigo-600 h-5 w-5 text-indigo-500" />
+                  <h2 class="text-sm">{{ __('Log your degree of solitude') }}</h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- creativity and leisure -->
+            <div>
+              <div class="mb-2 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-palette class="h-4 w-4 text-fuchsia-500" />
+                  <h2 class="text-md font-semibold text-gray-900">{{ __('Creativity and leisure') }}</h2>
+                </div>
+              </div>
+
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-paintbrush class="group-hover:text-fuchsia-600 h-5 w-5 text-fuchsia-500" />
+                  <h2 class="text-sm">{{ __('Log creative activities') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-gamepad class="group-hover:text-violet-600 h-5 w-5 text-violet-500" />
+                  <h2 class="text-sm">{{ __('Log hobbies/leisure time') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-book-open class="group-hover:text-amber-600 h-5 w-5 text-amber-500" />
+                  <h2 class="text-sm">{{ __('Track media consumption (books, movies, music)') }}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="new-content" x-show="!open" x-transition></div>
+    </div>
+
     <div class="grid grid-cols-2 gap-4">
       <!-- left column -->
       <div class="col-span-1">
@@ -49,7 +259,7 @@
             <!-- description -->
             <div class="relative flex flex-col gap-y-3 pl-6">
               <div class="group relative">
-                <a x-target="" href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
+                <a href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
                 <span class="ml-1 inline-block text-xs text-gray-500">2025-04-23</span>
               </div>
             </div>
@@ -63,7 +273,7 @@
             <!-- description -->
             <div class="relative flex flex-col gap-y-3 pl-6">
               <div class="group relative">
-                <a x-target="" href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
+                <a href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
                 <span class="ml-1 inline-block text-xs text-gray-500">2025-04-23</span>
               </div>
             </div>
@@ -77,7 +287,7 @@
             <!-- description -->
             <div class="relative flex flex-col gap-y-3 pl-6">
               <div class="group relative">
-                <a x-target="" href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
+                <a href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
                 <span class="ml-1 inline-block text-xs text-gray-500">2025-04-23</span>
               </div>
             </div>
@@ -91,7 +301,7 @@
             <!-- description -->
             <div class="relative flex flex-col gap-y-3 pl-6">
               <div class="group relative">
-                <a x-target="" href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
+                <a href="" class="rounded px-1 group-hover:bg-amber-100">Test</a>
                 <span class="ml-1 inline-block text-xs text-gray-500">2025-04-23</span>
               </div>
             </div>
@@ -102,32 +312,52 @@
       <!-- right column -->
       <div class="col-span-1">
         <div class="grid grid-cols-2 gap-4">
+
+          <!-- left column -->
           <div>
             <!-- mental health -->
-            <div>
+            <div class="mb-6">
               <div class="mb-2 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-brain class="h-4 w-4 text-blue-500" />
+                  <x-lucide-brain class="h-4 w-4 text-indigo-500" />
                   <h2 class="text-md font-semibold text-gray-900">{{ __('Mental health') }}</h2>
                 </div>
               </div>
 
               <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-smile class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-pen-tool class="group-hover:text-indigo-600 h-5 w-5 text-indigo-500" />
+                  <h2 class="text-sm">{{ __('Add your journal thoughts') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-smile class="group-hover:text-yellow-600 h-5 w-5 text-yellow-500" />
                   <h2 class="text-sm">{{ __('Log your mood for the day') }}</h2>
                 </div>
               </div>
               <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-bed-double class="group-hover:text-green-600 h-5 w-5 text-green-500" />
+                  <x-lucide-battery class="group-hover:text-emerald-600 h-5 w-5 text-emerald-500" />
                   <h2 class="text-sm">{{ __('Log your energy level') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-waves class="group-hover:text-cyan-600 h-5 w-5 text-cyan-500" />
+                  <h2 class="text-sm">{{ __('Log your stress level') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-heart class="group-hover:text-rose-600 h-5 w-5 text-rose-500" />
+                  <h2 class="text-sm">{{ __('Log what you\'re grateful for') }}</h2>
                 </div>
               </div>
               <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-cloud-rain class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
-                  <h2 class="text-sm">{{ __('Log your stress level') }}</h2>
+                  <x-lucide-lightbulb class="group-hover:text-amber-600 h-5 w-5 text-amber-500" />
+                  <h2 class="text-sm">{{ __('Log your learnings') }}</h2>
                 </div>
               </div>
             </div>
@@ -136,85 +366,132 @@
             <div>
               <div class="mb-2 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-dumbbell class="h-4 w-4 text-blue-500" />
+                  <x-lucide-dumbbell class="h-4 w-4 text-violet-500" />
                   <h2 class="text-md font-semibold text-gray-900">{{ __('Physical well-being') }}</h2>
                 </div>
               </div>
 
               <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-smile class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-moon class="group-hover:text-indigo-600 h-5 w-5 text-indigo-500" />
                   <h2 class="text-sm">{{ __('How did you sleep?') }}</h2>
                 </div>
               </div>
               <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-bed-double class="group-hover:text-green-600 h-5 w-5 text-green-500" />
+                  <x-lucide-bike class="group-hover:text-violet-600 h-5 w-5 text-violet-500" />
                   <h2 class="text-sm">{{ __('Log your physical activity') }}</h2>
                 </div>
               </div>
               <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-cloud-rain class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-utensils class="group-hover:text-orange-600 h-5 w-5 text-orange-500" />
                   <h2 class="text-sm">{{ __('Log what you ate') }}</h2>
                 </div>
               </div>
-              <div class="group mb-6 hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-cloud-rain class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-droplet class="group-hover:text-sky-600 h-5 w-5 text-sky-500" />
                   <h2 class="text-sm">{{ __('Log your hydration') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-pill class="group-hover:text-purple-600 h-5 w-5 text-purple-500" />
+                  <h2 class="text-sm">{{ __('Log medication/supplement intake') }}</h2>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- right column -->
           <div>
             <!-- environment -->
-            <div>
+            <div class="mb-6">
               <div class="mb-2 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-cloud-sun class="h-4 w-4 text-blue-500" />
+                  <x-lucide-cloud-sun class="h-4 w-4 text-sky-500" />
                   <h2 class="text-md font-semibold text-gray-900">{{ __('Environment') }}</h2>
                 </div>
               </div>
 
-              <div class="group hover:bg-blue-50 cursor-pointer rounded-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-smile class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-cloud class="group-hover:text-sky-600 h-5 w-5 text-sky-500" />
                   <h2 class="text-sm">{{ __('Record the weather') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-map-pin class="group-hover:text-emerald-600 h-5 w-5 text-emerald-500" />
+                  <h2 class="text-sm">{{ __('Log current location') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-volume-2 class="group-hover:text-cyan-600 h-5 w-5 text-cyan-500" />
+                  <h2 class="text-sm">{{ __('Log air quality/noise level') }}</h2>
                 </div>
               </div>
             </div>
 
             <!-- social and interaction -->
-            <div>
+            <div class="mb-6">
               <div class="mb-2 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-handshake class="h-4 w-4 text-blue-500" />
+                  <x-lucide-users class="h-4 w-4 text-rose-500" />
                   <h2 class="text-md font-semibold text-gray-900">{{ __('Social and interaction') }}</h2>
                 </div>
               </div>
 
               <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-smile class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-message-circle class="group-hover:text-rose-600 h-5 w-5 text-rose-500" />
                   <h2 class="text-sm">{{ __('Log your social interactions') }}</h2>
                 </div>
               </div>
               <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-bed-double class="group-hover:text-green-600 h-5 w-5 text-green-500" />
+                  <x-lucide-star class="group-hover:text-amber-600 h-5 w-5 text-amber-500" />
                   <h2 class="text-sm">{{ __('Meaningful encounters') }}</h2>
                 </div>
               </div>
               <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <x-lucide-cloud-rain class="group-hover:text-blue-600 h-5 w-5 text-blue-500" />
+                  <x-lucide-user class="group-hover:text-indigo-600 h-5 w-5 text-indigo-500" />
                   <h2 class="text-sm">{{ __('Log your degree of solitude') }}</h2>
                 </div>
               </div>
             </div>
 
+            <!-- creativity and leisure -->
+            <div>
+              <div class="mb-2 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-palette class="h-4 w-4 text-fuchsia-500" />
+                  <h2 class="text-md font-semibold text-gray-900">{{ __('Creativity and leisure') }}</h2>
+                </div>
+              </div>
+
+              <div class="group hover:bg-blue-50 cursor-pointer rounded-t-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-paintbrush class="group-hover:text-fuchsia-600 h-5 w-5 text-fuchsia-500" />
+                  <h2 class="text-sm">{{ __('Log creative activities') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-gamepad class="group-hover:text-violet-600 h-5 w-5 text-violet-500" />
+                  <h2 class="text-sm">{{ __('Log hobbies/leisure time') }}</h2>
+                </div>
+              </div>
+              <div class="group hover:bg-blue-50 rounded-b-lg cursor-pointer border-b border-r border-l border-gray-200 bg-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <x-lucide-book-open class="group-hover:text-amber-600 h-5 w-5 text-amber-500" />
+                  <h2 class="text-sm">{{ __('Track media consumption (books, movies, music)') }}</h2>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

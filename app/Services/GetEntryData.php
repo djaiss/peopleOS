@@ -7,58 +7,71 @@ namespace App\Services;
 use App\Helpers\JournalHelper;
 use App\Models\Entry;
 use App\Models\Journal;
+use App\Models\Mood;
 use App\Models\User;
+use Illuminate\Support\Collection;
 
 class GetEntryData
 {
-    private Journal $journal;
-
-    private Entry $entry;
+    private array $options = [
+        'mood' => false,
+    ];
 
     public function __construct(
         private readonly User $user,
-        private readonly int $day,
-        private readonly int $month,
-        private readonly int $year,
+        private readonly Entry $entry,
     ) {}
 
     public function execute(): array
     {
-        $this->getJournal();
-        $this->getEntry();
-        $days = JournalHelper::getDaysInMonth(
-            givenYear: $this->year,
-            givenMonth: $this->month,
-            givenDay: $this->day,
-        );
-        $months = JournalHelper::getMonths(
-            year: $this->year,
-            selectedMonth: $this->month,
-        );
+        $this->getAllContent();
 
         return [
+            'options' => $this->options,
             'entry' => $this->entry,
-            'days' => $days,
-            'months' => $months,
+            'days' => $this->getDays(),
+            'months' => $this->getMonths(),
         ];
     }
 
-    public function getJournal(): void
+    private function getAllContent(): void
     {
-        // get the first journal in the account
-        // currently, there is only one journal per account even though the
-        // account can have multiple journals
-        $this->journal = Journal::where('account_id', $this->user->account_id)->first();
+        $this->getMood();
     }
 
-    public function getEntry(): void
+    public function getDays(): Collection
     {
-        $this->entry = (new CreateOrRetrieveEntry(
-            user: $this->user,
-            journal: $this->journal,
-            day: $this->day,
-            month: $this->month,
-            year: $this->year,
-        ))->execute();
+        return JournalHelper::getDaysInMonth(
+            givenYear: $this->entry->year,
+            givenMonth: $this->entry->month,
+            givenDay: $this->entry->day,
+        );
+    }
+
+    public function getMonths(): Collection
+    {
+        return JournalHelper::getMonths(
+            year: $this->entry->year,
+            selectedMonth: $this->entry->month,
+        );
+    }
+
+    public function getMood(): array
+    {
+        $entryMood = $this->entry->mood;
+
+        if ($entryMood) {
+            $this->options['mood'] = true;
+        }
+
+        return [
+            'type' => 'mood',
+            'data' => [
+                'id' => $entryMood->id,
+                'mood' => $entryMood->mood,
+                'comment' => $entryMood->comment,
+            ],
+            'created_at' => $entryMood->created_at,
+        ];
     }
 }

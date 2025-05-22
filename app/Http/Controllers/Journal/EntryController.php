@@ -14,15 +14,11 @@ class EntryController extends Controller
 {
     public function show(Request $request): View
     {
-        $day = (int) $request->route()->parameter('day');
-        $month = (int) $request->route()->parameter('month');
-        $year = (int) $request->route()->parameter('year');
+        $entry = $request->attributes->get('entry');
 
         $viewData = (new GetEntryData(
             user: Auth::user(),
-            day: $day,
-            month: $month,
-            year: $year,
+            entry: $entry,
         ))->execute();
 
         return view('journal.entry.show', $viewData);
