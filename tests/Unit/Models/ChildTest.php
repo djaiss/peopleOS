@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
+use App\Models\Account;
 use App\Models\Child;
+use App\Models\Gender;
 use App\Models\Person;
+use App\Models\SpecialDate;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -15,14 +18,14 @@ class ChildTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
-    public function it_belongs_to_a_person(): void
+    public function it_belongs_to_an_account(): void
     {
-        $person = Person::factory()->create();
+        $account = Account::factory()->create();
         $child = Child::factory()->create([
-            'person_id' => $person->id,
+            'account_id' => $account->id,
         ]);
 
-        $this->assertTrue($child->person()->exists());
+        $this->assertTrue($child->account()->exists());
     }
 
     #[Test]
@@ -48,24 +51,24 @@ class ChildTest extends TestCase
     }
 
     #[Test]
-    public function it_can_have_null_second_parent(): void
+    public function it_belongs_to_an_age_special_date(): void
     {
+        $ageSpecialDate = SpecialDate::factory()->create();
         $child = Child::factory()->create([
-            'second_parent_id' => null,
+            'age_special_date_id' => $ageSpecialDate->id,
         ]);
 
-        $this->assertNull($child->second_parent_id);
-        $this->assertFalse($child->secondParent()->exists());
+        $this->assertTrue($child->ageSpecialDate()->exists());
     }
 
     #[Test]
-    public function it_can_have_null_parent(): void
+    public function it_belongs_to_a_gender(): void
     {
+        $gender = Gender::factory()->create();
         $child = Child::factory()->create([
-            'parent_id' => null,
+            'gender_id' => $gender->id,
         ]);
 
-        $this->assertNull($child->parent_id);
-        $this->assertFalse($child->parent()->exists());
+        $this->assertTrue($child->gender()->exists());
     }
 }

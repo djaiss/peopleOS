@@ -216,7 +216,7 @@ class PersonTest extends TestCase
         $this->assertNotEmpty($ross->children());
         $this->assertNotEmpty($rachel->children());
     }
-  
+
     #[Test]
     public function it_has_many_food_allergies(): void
     {

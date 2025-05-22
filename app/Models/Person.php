@@ -358,7 +358,7 @@ class Person extends Model
     {
         return $this->childrenAsParent->merge($this->childrenAsSecondParent);
     }
-  
+
     /**
      * Get the food allergies associated with the person.
      *

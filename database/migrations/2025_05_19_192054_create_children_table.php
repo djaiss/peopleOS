@@ -25,6 +25,8 @@ return new class extends Migration
             $table->datetime('age_estimated_at')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->text('notes')->nullable();
+            $table->boolean('is_born')->default(true);
+            $table->datetime('expected_birth_date_at')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('set null');
             $table->foreign('parent_id')->references('id')->on('persons')->onDelete('set null');

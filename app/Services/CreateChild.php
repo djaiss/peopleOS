@@ -8,8 +8,10 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Child;
+use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CreateChild
@@ -18,10 +20,17 @@ class CreateChild
 
     public function __construct(
         public User $user,
-        public Person $person,
         public Person $parent,
         public ?Person $secondParent = null,
+        public string $firstName,
+        public ?string $lastName = null,
         public ?string $notes = null,
+        public ?string $ageType = null,
+        public ?string $estimatedAge = null,
+        public ?Gender $gender = null,
+        public ?SpecialDate $ageSpecialDate = null,
+        public bool $isBorn = true,
+        public ?Carbon $expectedBirthDateAt = null,
     ) {}
 
     public function execute(): Child
