@@ -358,6 +358,16 @@ class Person extends Model
     {
         return $this->childrenAsParent->merge($this->childrenAsSecondParent);
     }
+  
+    /**
+     * Get the food allergies associated with the person.
+     *
+     * @return HasMany<FoodAllergy, $this>
+     */
+    public function foodAllergies(): HasMany
+    {
+        return $this->hasMany(FoodAllergy::class);
+    }
 
     /**
      * Get the person's full name.

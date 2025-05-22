@@ -18,6 +18,7 @@ use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\Task;
 use App\Models\WorkHistory;
+use App\Models\FoodAllergy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -214,6 +215,17 @@ class PersonTest extends TestCase
         $this->assertCount(1, $rachel->children());
         $this->assertNotEmpty($ross->children());
         $this->assertNotEmpty($rachel->children());
+    }
+  
+    #[Test]
+    public function it_has_many_food_allergies(): void
+    {
+        $person = Person::factory()->create();
+        FoodAllergy::factory()->count(3)->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->foodAllergies()->exists());
     }
 
     #[Test]
