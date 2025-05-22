@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
-
+use Illuminate\Database\Eloquent\Collection;
 class Person extends Model
 {
     /**
@@ -327,6 +327,36 @@ class Person extends Model
     public function emailsSent(): HasMany
     {
         return $this->hasMany(EmailSent::class);
+    }
+
+    /**
+     * Get the children where this person is the primary parent.
+     *
+     * @return HasMany<Child, $this>
+     */
+    public function childrenAsParent(): HasMany
+    {
+        return $this->hasMany(Child::class, 'parent_id', 'id');
+    }
+
+    /**
+     * Get the children where this person is the second parent.
+     *
+     * @return HasMany<Child, $this>
+     */
+    public function childrenAsSecondParent(): HasMany
+    {
+        return $this->hasMany(Child::class, 'second_parent_id', 'id');
+    }
+
+    /**
+     * Get all children related to this person (as either parent).
+     *
+     * @return Collection<Child>
+     */
+    public function children(): Collection
+    {
+        return $this->childrenAsParent->merge($this->childrenAsSecondParent);
     }
 
     /**

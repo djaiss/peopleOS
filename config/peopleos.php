@@ -170,5 +170,8 @@ return [
         'marketing_testimonial_creation' => 'Marketing testimonial creation',
         'marketing_testimonial_update' => 'Marketing testimonial update',
         'marketing_testimonial_deletion' => 'Marketing testimonial deletion',
+        'child_relationship_creation' => 'Child relationship creation',
+        'child_relationship_update' => 'Child relationship update',
+        'child_relationship_deletion' => 'Child relationship deletion',
     ],
 ];
