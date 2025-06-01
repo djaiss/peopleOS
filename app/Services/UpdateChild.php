@@ -78,13 +78,13 @@ class UpdateChild
     private function updatePersonLastConsultedDate(): void
     {
         $originalParent = Person::find($this->child->getOriginal('parent_id'));
-        $orginalSecondParent = Person::find($this->child->getOriginal('second_parent_id'));
+        $originalSecondParent = Person::find($this->child->getOriginal('second_parent_id'));
 
         if ($this->parent && $this->parent->id !== $originalParent?->id) {
             UpdatePersonLastConsultedDate::dispatch($this->parent)->onQueue('low');
         }
 
-        if ($this->secondParent && $this->secondParent->id !== $orginalSecondParent?->id) {
+        if ($this->secondParent && $this->secondParent->id !== $originalSecondParent?->id) {
             UpdatePersonLastConsultedDate::dispatch($this->secondParent)->onQueue('low');
         }
     }
