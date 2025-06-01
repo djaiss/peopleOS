@@ -49,26 +49,4 @@ class ChildTest extends TestCase
 
         $this->assertTrue($child->secondParent()->exists());
     }
-
-    #[Test]
-    public function it_belongs_to_an_age_special_date(): void
-    {
-        $ageSpecialDate = SpecialDate::factory()->create();
-        $child = Child::factory()->create([
-            'age_special_date_id' => $ageSpecialDate->id,
-        ]);
-
-        $this->assertTrue($child->ageSpecialDate()->exists());
-    }
-
-    #[Test]
-    public function it_belongs_to_a_gender(): void
-    {
-        $gender = Gender::factory()->create();
-        $child = Child::factory()->create([
-            'gender_id' => $gender->id,
-        ]);
-
-        $this->assertTrue($child->gender()->exists());
-    }
 }

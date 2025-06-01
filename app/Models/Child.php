@@ -50,17 +50,8 @@ class Child extends Model
         'account_id',
         'parent_id',
         'second_parent_id',
-        'age_special_date_id',
-        'gender_id',
         'first_name',
         'last_name',
-        'age_type',
-        'estimated_age',
-        'age_estimated_at',
-        'profile_photo_path',
-        'notes',
-        'is_born',
-        'expected_birth_date_at',
     ];
 
     /**
@@ -73,12 +64,6 @@ class Child extends Model
         return [
             'first_name' => 'encrypted',
             'last_name' => 'encrypted',
-            'age_type' => 'encrypted',
-            'estimated_age' => 'encrypted',
-            'age_estimated_at' => 'datetime',
-            'notes' => 'encrypted',
-            'is_born' => 'boolean',
-            'expected_birth_date_at' => 'datetime',
         ];
     }
 
@@ -110,25 +95,5 @@ class Child extends Model
     public function secondParent(): BelongsTo
     {
         return $this->belongsTo(Person::class, 'second_parent_id');
-    }
-
-    /**
-     * Get the age special date associated with the child.
-     *
-     * @return BelongsTo<SpecialDate, $this>
-     */
-    public function ageSpecialDate(): BelongsTo
-    {
-        return $this->belongsTo(SpecialDate::class, 'age_special_date_id');
-    }
-
-    /**
-     * Get the gender associated with the child.
-     *
-     * @return BelongsTo<Gender, $this>
-     */
-    public function gender(): BelongsTo
-    {
-        return $this->belongsTo(Gender::class, 'gender_id');
     }
 }

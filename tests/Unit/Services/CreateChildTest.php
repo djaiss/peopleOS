@@ -27,11 +27,6 @@ class CreateChildTest extends TestCase
         Queue::fake();
 
         $user = User::factory()->create();
-        $child = Person::factory()->create([
-            'account_id' => $user->account_id,
-            'first_name' => 'Emma',
-            'last_name' => 'Geller-Green',
-        ]);
         $parent = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Ross',
@@ -43,26 +38,27 @@ class CreateChildTest extends TestCase
             'last_name' => 'Green',
         ]);
 
-        $childRelationship = (new CreateChild(
+        $child = (new CreateChild(
             user: $user,
-            person: $child,
             parent: $parent,
             secondParent: $secondParent,
-            notes: 'Born in 2002',
+            firstName: 'Emma',
+            lastName: 'Geller-Green',
         ))->execute();
 
         $this->assertDatabaseHas('children', [
-            'id' => $childRelationship->id,
-            'person_id' => $child->id,
+            'id' => $child->id,
+            'account_id' => $user->account_id,
             'parent_id' => $parent->id,
             'second_parent_id' => $secondParent->id,
         ]);
 
-        $this->assertEquals('Born in 2002', $childRelationship->notes);
+        $this->assertEquals('Emma', $child->first_name);
+        $this->assertEquals('Geller-Green', $child->last_name);
 
         $this->assertInstanceOf(
             Child::class,
-            $childRelationship,
+            $child,
         );
 
         Queue::assertPushedOn(
@@ -87,7 +83,7 @@ class CreateChildTest extends TestCase
             callback: function ($job) use ($user): bool {
                 return $job->action === 'child_relationship_creation'
                     && $job->user->id === $user->id
-                    && $job->description === 'Created a child between Ross Geller and Rachel Green';
+                    && $job->description === 'Created a child for Ross Geller and Rachel Green';
             },
         );
     }
@@ -98,27 +94,21 @@ class CreateChildTest extends TestCase
         Queue::fake();
 
         $user = User::factory()->create();
-        $child = Person::factory()->create([
-            'account_id' => $user->account_id,
-            'first_name' => 'Emma',
-            'last_name' => 'Geller-Green',
-        ]);
         $parent = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Ross',
             'last_name' => 'Geller',
         ]);
 
-        $childRelationship = (new CreateChild(
+        $child = (new CreateChild(
             user: $user,
-            person: $child,
             parent: $parent,
-            notes: 'Born in 2002',
+            firstName: 'Emma',
+            lastName: 'Geller-Green',
         ))->execute();
 
         $this->assertDatabaseHas('children', [
-            'id' => $childRelationship->id,
-            'person_id' => $child->id,
+            'id' => $child->id,
             'parent_id' => $parent->id,
             'second_parent_id' => null,
         ]);
@@ -129,7 +119,7 @@ class CreateChildTest extends TestCase
             callback: function ($job) use ($user): bool {
                 return $job->action === 'child_relationship_creation'
                     && $job->user->id === $user->id
-                    && $job->description === 'Created a child between Ross Geller';
+                    && $job->description === 'Created a child for Ross Geller';
             },
         );
     }
@@ -138,9 +128,6 @@ class CreateChildTest extends TestCase
     public function it_fails_if_persons_dont_belong_to_user_account(): void
     {
         $user = User::factory()->create();
-        $child = Person::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
         $parent = Person::factory()->create();
 
         $this->expectException(ModelNotFoundException::class);
@@ -148,34 +135,9 @@ class CreateChildTest extends TestCase
 
         (new CreateChild(
             user: $user,
-            person: $child,
             parent: $parent,
-        ))->execute();
-    }
-
-    #[Test]
-    public function it_fails_if_relationship_already_exists(): void
-    {
-        $user = User::factory()->create();
-        $child = Person::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-        $parent = Person::factory()->create([
-            'account_id' => $user->account_id,
-        ]);
-
-        Child::create([
-            'person_id' => $child->id,
-            'parent_id' => $parent->id,
-        ]);
-
-        $this->expectException(ModelNotFoundException::class);
-        $this->expectExceptionMessage('Child relationship already exists');
-
-        (new CreateChild(
-            user: $user,
-            person: $child,
-            parent: $parent,
+            firstName: 'Emma',
+            lastName: 'Geller-Green',
         ))->execute();
     }
 }

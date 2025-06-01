@@ -8,10 +8,8 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Child;
-use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CreateChild
@@ -22,15 +20,8 @@ class CreateChild
         public User $user,
         public Person $parent,
         public ?Person $secondParent = null,
-        public string $firstName,
+        public ?string $firstName = null,
         public ?string $lastName = null,
-        public ?string $notes = null,
-        public ?string $ageType = null,
-        public ?string $estimatedAge = null,
-        public ?Gender $gender = null,
-        public ?SpecialDate $ageSpecialDate = null,
-        public bool $isBorn = true,
-        public ?Carbon $expectedBirthDateAt = null,
     ) {}
 
     public function execute(): Child
@@ -48,45 +39,26 @@ class CreateChild
     private function validate(): void
     {
         // Make sure all persons belong to the same account as the user
-        $count = Person::where('account_id', $this->user->account_id)
+        $exists = Person::where('account_id', $this->user->account_id)
             ->whereIn('id', [
                 $this->parent->id,
-                $this->person->id,
+                $this->secondParent?->id,
             ])
-            ->count();
+            ->exists();
 
-        if ($count !== 2) {
+        if (!$exists) {
             throw new ModelNotFoundException('One or more persons not found in user\'s account');
-        }
-
-        // Make sure that the child doesn't already exist
-        $existingChild = Child::where('parent_id', $this->parent->id)
-            ->where('second_parent_id', $this->secondParent?->id)
-            ->where('person_id', $this->person->id)
-            ->first();
-
-        if ($existingChild) {
-            throw new ModelNotFoundException('Child already exists');
-        }
-
-        // Make sure that the child doesn't already exist in the reverse relationship
-        $existingChild = Child::where('parent_id', $this->secondParent?->id)
-            ->where('second_parent_id', $this->parent->id)
-            ->where('person_id', $this->person->id)
-            ->first();
-
-        if ($existingChild) {
-            throw new ModelNotFoundException('Child already exists');
         }
     }
 
     private function create(): void
     {
         $this->child = Child::create([
-            'person_id' => $this->person->id,
+            'account_id' => $this->user->account_id,
             'parent_id' => $this->parent->id,
             'second_parent_id' => $this->secondParent?->id,
-            'notes' => $this->notes,
+            'first_name' => $this->firstName,
+            'last_name' => $this->lastName,
         ]);
     }
 
