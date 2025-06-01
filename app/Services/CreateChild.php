@@ -68,7 +68,7 @@ class CreateChild
             person: $this->parent,
         ))->execute();
 
-        if ($this->secondParent) {
+        if ($this->secondParent instanceof Person) {
             (new UpdateParentRelationshipStatus(
                 person: $this->secondParent,
             ))->execute();
@@ -78,6 +78,10 @@ class CreateChild
     private function updatePersonLastConsultedDate(): void
     {
         UpdatePersonLastConsultedDate::dispatch($this->parent)->onQueue('low');
+
+        if ($this->secondParent instanceof Person) {
+            UpdatePersonLastConsultedDate::dispatch($this->secondParent)->onQueue('low');
+        }
     }
 
     private function updateUserLastActivityDate(): void
@@ -89,7 +93,7 @@ class CreateChild
     {
         $description = "Created a child for {$this->parent->name}";
 
-        if ($this->secondParent) {
+        if ($this->secondParent instanceof Person) {
             $description .= " and {$this->secondParent->name}";
         }
 

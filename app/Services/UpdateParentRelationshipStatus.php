@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\KidsStatusType;
-use App\Enums\MaritalStatusType;
 use App\Models\Child;
-use App\Models\LoveRelationship;
 use App\Models\Person;
 
 class UpdateParentRelationshipStatus
@@ -24,11 +22,7 @@ class UpdateParentRelationshipStatus
         })
             ->exists();
 
-        if ($exists) {
-            $kidsStatus = KidsStatusType::HAS_KIDS->value;
-        } else {
-            $kidsStatus = KidsStatusType::NO_KIDS->value;
-        }
+        $kidsStatus = $exists ? KidsStatusType::HAS_KIDS->value : KidsStatusType::NO_KIDS->value;
 
         $this->person->kids_status = $kidsStatus;
         $this->person->save();
