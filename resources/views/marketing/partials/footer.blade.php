@@ -101,9 +101,9 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-0">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div class="flex flex-col gap-y-2">
-          <div class="flex items-center gap-x-4 sm:gap-x-2">
+          <div class="flex flex-col items-center gap-x-4 sm:flex-row sm:gap-x-2">
             <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
-              <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+              <div class="mb-4 flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3 sm:mb-0">
                 <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" loading="lazy" />
               </div>
             </a>
