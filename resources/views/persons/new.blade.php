@@ -160,9 +160,12 @@
               <input id="no-kids" value="no-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Do not have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
               <label for="no-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Do not have kids') }}</label>
             </div>
-            <div class="flex items-center gap-x-3 p-3">
-              <input id="have-kids" value="have-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
-              <label for="have-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Have kids') }}</label>
+            <div class="flex items-center justify-between p-3">
+              <div class="flex items-center gap-x-3">
+                <input id="have-kids" value="have-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+                <label for="have-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Have kids') }}</label>
+              </div>
+              sfs
             </div>
           </div>
 

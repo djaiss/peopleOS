@@ -31,14 +31,14 @@
             @csrf
 
             <!-- Name -->
-            <div class="flex flex-col gap-4 sm:flex-row">
-              <div class="mb-4 w-full">
+            <div class="flex flex-col gap-2 sm:gap-4 sm:flex-row mb-2 sm:mb-0">
+              <div class="mb-0 sm:mb-4 w-full">
                 <x-input-label for="first_name" :value="__('First name')" class="mb-2" />
                 <x-text-input id="first_name" class="block w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
                 <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
               </div>
 
-              <div class="mb-4 w-full">
+              <div class="mb-0 sm:mb-4 w-full">
                 <x-input-label for="last_name" :value="__('Last name')" class="mb-2" />
                 <x-text-input id="last_name" class="block w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
                 <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Email Address -->
-            <div class="mb-4">
+            <div class="mb-2">
               <x-input-label for="email" :value="__('Email')" class="mb-2" />
               <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
               <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -54,8 +54,8 @@
             </div>
 
             <!-- Password -->
-            <div class="flex flex-col gap-4 sm:flex-row">
-              <div class="mb-4 w-full">
+            <div class="flex flex-col gap-2 sm:gap-4 sm:flex-row mb-2 sm:mb-0">
+              <div class="w-full">
                 <x-input-label for="password" :value="__('Password')" class="mb-2" />
                 <x-text-input id="password" class="block w-full" type="password" name="password" required :avoidAutofill="false" autocomplete="password" passwordrules="minlength: 20; required: lower; required: upper; required: digit; required: [-];" />
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -63,7 +63,7 @@
               </div>
 
               <!-- Confirm Password -->
-              <div class="mb-4 w-full">
+              <div class="w-full">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="mb-2" />
                 <x-text-input id="password_confirmation" class="block w-full" type="password" name="password_confirmation" required :avoidAutofill="false" autocomplete="new-password" />
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />

@@ -62,12 +62,6 @@ class DestroyChild
 
     private function logUserAction(): void
     {
-        $description = "Deleted a child for {$this->child->parent?->name}";
-
-        if ($this->child->secondParent) {
-            $description .= " and {$this->child->secondParent->name}";
-        }
-
         LogUserAction::dispatch(
             user: $this->user,
             action: 'child_relationship_deletion',
