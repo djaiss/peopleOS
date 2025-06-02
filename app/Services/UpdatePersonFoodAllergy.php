@@ -8,45 +8,45 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\FoodAllergy;
+use App\Models\Person;
 use App\Models\User;
 use Exception;
 
-class UpdateFoodAllergy
+class UpdatePersonFoodAllergy
 {
     public function __construct(
         private readonly User $user,
-        private readonly FoodAllergy $foodAllergy,
+        private readonly Person $person,
         private readonly string $name,
     ) {}
 
-    public function execute(): FoodAllergy
+    public function execute(): Person
     {
         $this->validate();
-        $this->update();
+        $this->create();
         $this->updatePersonLastConsultedDate();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
-        return $this->foodAllergy;
+        return $this->person;
     }
 
     private function validate(): void
     {
-        if ($this->user->account_id !== $this->foodAllergy->person->account_id) {
+        if ($this->user->account_id !== $this->person->account_id) {
             throw new Exception('User and person are not in the same account');
         }
     }
 
-    private function update(): void
+    private function create(): void
     {
-        $this->foodAllergy->update([
-            'name' => $this->name,
-        ]);
+        $this->person->food_allergies = $this->name;
+        $this->person->save();
     }
 
     private function updatePersonLastConsultedDate(): void
     {
-        UpdatePersonLastConsultedDate::dispatch($this->foodAllergy->person)->onQueue('low');
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void
@@ -59,7 +59,7 @@ class UpdateFoodAllergy
         LogUserAction::dispatch(
             user: $this->user,
             action: 'food_allergy_updated',
-            description: 'Updated a food allergy for ' . $this->foodAllergy->person->name . ': ' . $this->name,
+            description: 'Updated a food allergy for ' . $this->person->name . ': ' . $this->name,
         )->onQueue('low');
     }
 }

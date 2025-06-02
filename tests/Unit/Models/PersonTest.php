@@ -218,17 +218,6 @@ class PersonTest extends TestCase
     }
 
     #[Test]
-    public function it_has_many_food_allergies(): void
-    {
-        $person = Person::factory()->create();
-        FoodAllergy::factory()->count(3)->create([
-            'person_id' => $person->id,
-        ]);
-
-        $this->assertTrue($person->foodAllergies()->exists());
-    }
-
-    #[Test]
     public function it_has_one_special_date_associated_with_the_how_i_met_occasion(): void
     {
         $person = Person::factory()->create();

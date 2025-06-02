@@ -25,44 +25,34 @@ class GetFoodListing
             accountId: $this->user->account_id,
         )->value();
 
-        $workHistories = WorkHistory::where('person_id', $this->person->id)
-            ->get()
-            ->map(fn(WorkHistory $history): array => [
-                'id' => $history->id,
-                'title' => $history->job_title,
-                'company' => $history->company_name,
-                'duration' => $history->duration,
-                'salary' => $history->estimated_salary,
-                'is_current' => $history->active,
-            ]);
-
         return [
             'persons' => $persons,
             'person' => $this->person,
-            'work_histories' => $workHistories,
+            'food_allergies' => $this->getFoodAllergies(),
         ];
     }
 
     public function getFoodAllergies()
     {
-        // get person allergies
-        $foodAllergies = $this->person->foodAllergies
-            ->map(fn(FoodAllergy $allergy): array => $this->allergy($allergy))
-            ->toArray();
+        $foodAllergiesCollection = collect();
+
+        $foodAllergiesCollection->push(
+            $this->allergy($this->person),
+        );
 
         // get lover allergies
-        $activeRelationships = LoveRelationship::where(function ($query) {
+        $activeRelationships = LoveRelationship::where(function ($query): void {
             $query->where('person_id', $this->person->id)
                 ->orWhere('related_person_id', $this->person->id);
         })
             ->where('is_current', true)
             ->with([
-                'person.foodAllergies',
-                'relatedPerson.foodAllergies',
+                'person',
+                'relatedPerson',
             ])
             ->get();
 
-        $allLoverFoodAllergies = $activeRelationships->flatMap(function (LoveRelationship $relationship) {
+        $activeRelationships->each(function (LoveRelationship $relationship) use ($foodAllergiesCollection): void {
             $lover = null;
 
             if ($relationship->person_id === $this->person->id && $relationship->relatedPerson) {
@@ -71,23 +61,32 @@ class GetFoodListing
                 $lover = $relationship->person;
             }
 
-            return $lover && $lover->foodAllergies ? $lover->foodAllergies : collect();
+            if ($lover) {
+                $foodAllergiesCollection->push(
+                    $this->allergy($lover)
+                );
+            }
         });
 
-        // $allLoverFoodAllergies is now a flat Collection of FoodAllergy models.
-        // If you need only unique names, you can do:
-        // $uniqueAllergyNames = $allLoverFoodAllergies->pluck('name')->unique()->values();
+        $uniqueAllergiesCollection = $foodAllergiesCollection->unique(function ($item) {
+            return $item['id'];
+        });
 
-        return $allLoverFoodAllergies;
-
-        return $foodAllergies;
+        return $uniqueAllergiesCollection->values()->toArray();
     }
 
-    public function allergy(FoodAllergy $allergy): array
+    public function allergy(Person $person): array
     {
         return [
-            'id' => $allergy->id,
-            'name' => $allergy->name,
+            'id' => $person->id,
+            'name' => $person->name,
+            'is_listed' => $person->is_listed,
+            'slug' => $person->slug,
+            'avatar' => [
+                '40' => $person->getAvatar(40),
+                '80' => $person->getAvatar(80),
+            ],
+            'food_allergies' => $person->food_allergies,
         ];
     }
 }

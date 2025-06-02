@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\WorkHistory;
 use App\Services\CreateWorkHistory;
 use App\Services\DestroyWorkHistory;
+use App\Services\GetFoodListing;
 use App\Services\GetWorkInformationListing;
 use App\Services\UpdateWorkHistory;
 use Illuminate\Http\Request;
@@ -20,12 +21,12 @@ class PersonFoodController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $viewData = (new GetWorkInformationListing(
+        $viewData = (new GetFoodListing(
             user: Auth::user(),
             person: $person,
         ))->execute();
 
-        return view('persons.work.index', $viewData);
+        return view('persons.food.index', $viewData);
     }
 
     public function new(Request $request): View

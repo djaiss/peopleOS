@@ -10,19 +10,19 @@ use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\FoodAllergy;
 use App\Models\Person;
 use App\Models\User;
-use App\Services\CreateFoodAllergy;
+use App\Services\UpdatePersonFoodAllergy;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class CreateFoodAllergyTest extends TestCase
+class UpdatePersonFoodAllergyTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_creates_a_food_allergy(): void
+    public function it_updates_a_food_allergy(): void
     {
         Queue::fake();
 
@@ -33,25 +33,20 @@ class CreateFoodAllergyTest extends TestCase
             'last_name' => 'Bing',
         ]);
 
-        $foodAllergy = (new CreateFoodAllergy(
+        $person = (new UpdatePersonFoodAllergy(
             user: $user,
             person: $person,
             name: 'Peanuts',
         ))->execute();
 
-        $this->assertDatabaseHas('food_allergies', [
-            'id' => $foodAllergy->id,
-            'person_id' => $person->id,
-        ]);
-
         $this->assertEquals(
             expected: 'Peanuts',
-            actual: $foodAllergy->name,
+            actual: $person->food_allergies,
         );
 
         $this->assertInstanceOf(
-            expected: FoodAllergy::class,
-            actual: $foodAllergy,
+            expected: Person::class,
+            actual: $person,
         );
 
         Queue::assertPushedOn(
@@ -74,9 +69,9 @@ class CreateFoodAllergyTest extends TestCase
             queue: 'low',
             job: LogUserAction::class,
             callback: function (LogUserAction $job) use ($user, $person): bool {
-                return $job->action === 'food_allergy_created'
+                return $job->action === 'food_allergy_updated'
                     && $job->user->id === $user->id
-                    && $job->description === 'Created a food allergy for Chandler Bing: Peanuts';
+                    && $job->description === 'Updated a food allergy for Chandler Bing: Peanuts';
             },
         );
     }
@@ -90,7 +85,7 @@ class CreateFoodAllergyTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('User and person are not in the same account');
 
-        (new CreateFoodAllergy(
+        (new UpdatePersonFoodAllergy(
             user: $user,
             person: $person,
             name: 'Peanuts',

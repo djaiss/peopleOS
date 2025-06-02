@@ -31,20 +31,15 @@ class DestroyFoodAllergyTest extends TestCase
             'account_id' => $user->account_id,
             'first_name' => 'Phoebe',
             'last_name' => 'Buffay',
-        ]);
-        $foodAllergy = FoodAllergy::factory()->create([
-            'person_id' => $person->id,
-            'name' => 'Milk',
+            'food_allergies' => 'Peanuts',
         ]);
 
         (new DestroyFoodAllergy(
             user: $user,
-            foodAllergy: $foodAllergy,
+            person: $person,
         ))->execute();
 
-        $this->assertDatabaseMissing('food_allergies', [
-            'id' => $foodAllergy->id,
-        ]);
+        $this->assertNull($person->fresh()->food_allergies);
 
         Queue::assertPushedOn(
             queue: 'low',
@@ -65,10 +60,10 @@ class DestroyFoodAllergyTest extends TestCase
         Queue::assertPushedOn(
             queue: 'low',
             job: LogUserAction::class,
-            callback: function (LogUserAction $job) use ($user, $person): bool {
+            callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'food_allergy_destroyed'
                     && $job->user->id === $user->id
-                    && $job->description === 'Deleted a food allergy for Phoebe Buffay: Milk';
+                    && $job->description === 'Deleted a food allergy for Phoebe Buffay';
             },
         );
     }
@@ -78,17 +73,13 @@ class DestroyFoodAllergyTest extends TestCase
     {
         $user = User::factory()->create();
         $person = Person::factory()->create();
-        $foodAllergy = FoodAllergy::factory()->create([
-            'person_id' => $person->id,
-            'name' => 'Milk',
-        ]);
 
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('User and person are not in the same account');
 
         (new DestroyFoodAllergy(
             user: $user,
-            foodAllergy: $foodAllergy,
+            person: $person,
         ))->execute();
     }
 }

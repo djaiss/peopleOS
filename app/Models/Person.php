@@ -72,6 +72,7 @@ class Person extends Model
      * @property Carbon|null $age_estimated_at
      * @property bool $show_past_love_relationships
      * @property Carbon|null $last_consulted_at
+     * @property string|null $food_allergies
      * @property Carbon|null $created_at
      * @property Carbon|null $updated_at
      */
@@ -141,6 +142,7 @@ class Person extends Model
         'age_estimated_at',
         'show_past_love_relationships',
         'last_consulted_at',
+        'food_allergies',
     ];
 
     /**
@@ -195,6 +197,7 @@ class Person extends Model
             'voice' => 'encrypted',
             'show_past_love_relationships' => 'boolean',
             'last_consulted_at' => 'datetime',
+            'food_allergies' => 'encrypted',
         ];
     }
 
@@ -358,16 +361,6 @@ class Person extends Model
     public function children(): Collection
     {
         return $this->childrenAsParent->merge($this->childrenAsSecondParent);
-    }
-
-    /**
-     * Get the food allergies associated with the person.
-     *
-     * @return HasMany<FoodAllergy, $this>
-     */
-    public function foodAllergies(): HasMany
-    {
-        return $this->hasMany(FoodAllergy::class);
     }
 
     /**
