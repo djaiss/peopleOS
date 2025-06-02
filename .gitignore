@@ -23,3 +23,4 @@ _ide_helper.php
 .env.dusk.local
 .DS_Store
 .php-cs-fixer.cache
+peopleOS.code-workspace
