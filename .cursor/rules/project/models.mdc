@@ -1,0 +1,14 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+Use these rules when dealing with models:
+
+- Always reference the table the model belongs to at the top.
+- Always describe in a docblock the structure of the model, so it helps with static analysis (we use PHPStan).
+- Always comment everything in the model.
+- When writing a model, find the associated migrations - the migration's filename usually contains the name of the table and make sure that every text field is encrypted. Encrypted fields are stored as text.
+- When creating a model, ALWAYS create a corresponding factory, which are stored under `/database/factories`.
+
+[Person.php](mdc:app/Models/Person.php) is a good example to follow to structure a model.
