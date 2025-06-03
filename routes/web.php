@@ -41,10 +41,12 @@ use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
 use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Marketing\WaitlistController;
+use App\Http\Controllers\Persons\PersonAllergiesFoodController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
 use App\Http\Controllers\Persons\PersonExistingLoveController;
+use App\Http\Controllers\Persons\PersonFoodController;
 use App\Http\Controllers\Persons\PersonGiftController;
 use App\Http\Controllers\Persons\PersonGiftTabController;
 use App\Http\Controllers\Persons\PersonHowWeMetController;
@@ -200,6 +202,11 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::get('persons/{slug}/work/{entry}/edit', [PersonWorkController::class, 'edit'])->name('person.work.edit');
             Route::put('persons/{slug}/work/{entry}', [PersonWorkController::class, 'update'])->name('person.work.update');
             Route::delete('persons/{slug}/work/{entry}', [PersonWorkController::class, 'destroy'])->name('person.work.destroy');
+
+            // food
+            Route::get('persons/{slug}/food', [PersonFoodController::class, 'index'])->name('person.food.index');
+            Route::get('persons/{slug}/food/allergies/edit', [PersonAllergiesFoodController::class, 'edit'])->name('person.food.allergies.edit');
+            Route::put('persons/{slug}/food/allergies', [PersonAllergiesFoodController::class, 'update'])->name('person.food.allergies.update');
 
             // life events
             Route::get('persons/{slug}/life-events', [PersonLifeEventController::class, 'index'])->name('person.life-event.index');

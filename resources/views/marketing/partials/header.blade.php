@@ -107,7 +107,7 @@
               @csrf
 
               <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                {{ __('Log Out') }}
+                {{ __('Log out') }}
               </x-dropdown-link>
             </form>
           </x-slot>
@@ -159,13 +159,13 @@
         </a>
         <a href="{{ route('person.index') }}" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
           <x-lucide-layout-grid class="h-5 w-5 text-purple-600" />
-          {{ __('Products') }}
+          {{ __('Features') }}
         </a>
-        <a href="" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
+        <a href="{{ route('marketing.pricing.index') }}" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
           <x-lucide-credit-card class="h-5 w-5 text-green-600" />
           {{ __('Pricing') }}
         </a>
-        <a href="" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
+        <a href="{{ route('marketing.docs.index') }}" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
           <x-lucide-book-open class="h-5 w-5 text-amber-600" />
           {{ __('Docs') }}
         </a>
@@ -173,7 +173,7 @@
           <x-lucide-users-2 class="h-5 w-5 text-rose-600" />
           {{ __('Community') }}
         </a>
-        <a href="" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
+        <a href="{{ route('marketing.company.index') }}" class="flex items-center gap-x-2 py-2 text-base leading-7 font-semibold text-gray-900">
           <x-lucide-building class="h-5 w-5 text-indigo-600" />
           {{ __('Company') }}
         </a>

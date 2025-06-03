@@ -14,4 +14,5 @@ enum EmailType: string
     case MARKETING_TESTIMONIAL_SUBMITTED_EMAIL = 'marketing_testimonial_submitted_email';
     case MARKETING_TESTIMONIAL_REVIEWED_EMAIL = 'marketing_testimonial_reviewed_email';
     case MARKETING_TESTIMONIAL_REJECTED_EMAIL = 'marketing_testimonial_rejected_email';
+    case TRIAL_ENDING_SOON = 'trial_ending_soon';
 }

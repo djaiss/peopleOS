@@ -6,6 +6,7 @@ namespace Tests\Unit\Models;
 
 use App\Enums\AgeType;
 use App\Models\Account;
+use App\Models\Child;
 use App\Models\EmailSent;
 use App\Models\Encounter;
 use App\Models\Gender;
@@ -178,6 +179,44 @@ class PersonTest extends TestCase
     }
 
     #[Test]
+    public function it_has_many_children_as_first_parent(): void
+    {
+        $person = Person::factory()->create();
+        Child::factory()->create([
+            'parent_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->childrenAsParent()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_children_as_second_parent(): void
+    {
+        $person = Person::factory()->create();
+        Child::factory()->create([
+            'second_parent_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->childrenAsSecondParent()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_children(): void
+    {
+        $ross = Person::factory()->create();
+        $rachel = Person::factory()->create();
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'second_parent_id' => $rachel->id,
+        ]);
+
+        $this->assertCount(1, $ross->children());
+        $this->assertCount(1, $rachel->children());
+        $this->assertNotEmpty($ross->children());
+        $this->assertNotEmpty($rachel->children());
+    }
+
+    #[Test]
     public function it_has_one_special_date_associated_with_the_how_i_met_occasion(): void
     {
         $person = Person::factory()->create();
@@ -235,6 +274,42 @@ class PersonTest extends TestCase
             'is_current' => false,
         ]);
         $this->assertFalse($monica->hasActiveLoveRelationship());
+    }
+
+    #[Test]
+    public function it_gets_the_active_partners_as_person_collection(): void
+    {
+        $ross = Person::factory()->create();
+        $rachel = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+        $monica = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+        $chandler = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $rachel->id,
+            'is_current' => true,
+        ]);
+        LoveRelationship::factory()->create([
+            'person_id' => $chandler->id,
+            'related_person_id' => $ross->id,
+            'is_current' => true,
+        ]);
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $monica->id,
+            'is_current' => false,
+        ]);
+
+        $collection = $ross->getActivePartnersAsPersonCollection();
+        $this->assertCount(2, $collection);
+        $this->assertEquals($rachel->id, $collection->first()->id);
+        $this->assertEquals($chandler->id, $collection->last()->id);
     }
 
     #[Test]

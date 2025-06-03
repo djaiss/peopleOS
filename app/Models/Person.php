@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 
 class Person extends Model
 {
@@ -71,6 +73,7 @@ class Person extends Model
      * @property Carbon|null $age_estimated_at
      * @property bool $show_past_love_relationships
      * @property Carbon|null $last_consulted_at
+     * @property string|null $food_allergies
      * @property Carbon|null $created_at
      * @property Carbon|null $updated_at
      */
@@ -140,6 +143,7 @@ class Person extends Model
         'age_estimated_at',
         'show_past_love_relationships',
         'last_consulted_at',
+        'food_allergies',
     ];
 
     /**
@@ -194,6 +198,7 @@ class Person extends Model
             'voice' => 'encrypted',
             'show_past_love_relationships' => 'boolean',
             'last_consulted_at' => 'datetime',
+            'food_allergies' => 'encrypted',
         ];
     }
 
@@ -330,6 +335,36 @@ class Person extends Model
     }
 
     /**
+     * Get the children where this person is the primary parent.
+     *
+     * @return HasMany<Child, $this>
+     */
+    public function childrenAsParent(): HasMany
+    {
+        return $this->hasMany(Child::class, 'parent_id', 'id');
+    }
+
+    /**
+     * Get the children where this person is the second parent.
+     *
+     * @return HasMany<Child, $this>
+     */
+    public function childrenAsSecondParent(): HasMany
+    {
+        return $this->hasMany(Child::class, 'second_parent_id', 'id');
+    }
+
+    /**
+     * Get all children related to this person (as either parent).
+     *
+     * @return Collection<Child>
+     */
+    public function children(): Collection
+    {
+        return $this->childrenAsParent->merge($this->childrenAsSecondParent);
+    }
+
+    /**
      * Get the person's full name.
      *
      * @return Attribute<string, never>
@@ -401,6 +436,37 @@ class Person extends Model
         return $this->loveRelationships()
             ->where('is_current', true)
             ->exists();
+    }
+
+    /**
+     * Get the active partners of the person as a collection of Person objects.
+     *
+     * @return SupportCollection The active partners of the person
+     */
+    public function getActivePartnersAsPersonCollection(): SupportCollection
+    {
+        $activeRelationships = LoveRelationship::where(function ($query): void {
+            $query->where('person_id', $this->id)
+                ->orWhere('related_person_id', $this->id);
+        })
+            ->where('is_current', true)
+            ->with(['person', 'relatedPerson'])
+            ->get();
+
+        // get a collection of active partners
+        $activePartners = collect();
+        foreach ($activeRelationships as $relationship) {
+            $partner = $relationship->person_id === $this->id
+                ? $relationship->relatedPerson
+                : $relationship->person;
+
+            $activePartners->push($partner);
+        }
+
+        // filter out duplicates by person ID
+        $activePartners = $activePartners->unique('id')->values();
+
+        return $activePartners;
     }
 
     /**
