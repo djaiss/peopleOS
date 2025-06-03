@@ -18,7 +18,6 @@ use App\Models\Person;
 use App\Models\SpecialDate;
 use App\Models\Task;
 use App\Models\WorkHistory;
-use App\Models\FoodAllergy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -218,17 +217,6 @@ class PersonTest extends TestCase
     }
 
     #[Test]
-    public function it_has_many_food_allergies(): void
-    {
-        $person = Person::factory()->create();
-        FoodAllergy::factory()->count(3)->create([
-            'person_id' => $person->id,
-        ]);
-
-        $this->assertTrue($person->foodAllergies()->exists());
-    }
-
-    #[Test]
     public function it_has_one_special_date_associated_with_the_how_i_met_occasion(): void
     {
         $person = Person::factory()->create();
@@ -286,6 +274,42 @@ class PersonTest extends TestCase
             'is_current' => false,
         ]);
         $this->assertFalse($monica->hasActiveLoveRelationship());
+    }
+
+    #[Test]
+    public function it_gets_the_active_partners_as_person_collection(): void
+    {
+        $ross = Person::factory()->create();
+        $rachel = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+        $monica = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+        $chandler = Person::factory()->create([
+            'account_id' => $ross->account_id,
+        ]);
+
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $rachel->id,
+            'is_current' => true,
+        ]);
+        LoveRelationship::factory()->create([
+            'person_id' => $chandler->id,
+            'related_person_id' => $ross->id,
+            'is_current' => true,
+        ]);
+        LoveRelationship::factory()->create([
+            'person_id' => $ross->id,
+            'related_person_id' => $monica->id,
+            'is_current' => false,
+        ]);
+
+        $collection = $ross->getActivePartnersAsPersonCollection();
+        $this->assertCount(2, $collection);
+        $this->assertEquals($rachel->id, $collection->first()->id);
+        $this->assertEquals($chandler->id, $collection->last()->id);
     }
 
     #[Test]

@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\FoodAllergy;
+use App\Models\Person;
 use App\Models\User;
 use Exception;
 
@@ -15,7 +15,7 @@ class DestroyFoodAllergy
 {
     public function __construct(
         private readonly User $user,
-        private readonly FoodAllergy $foodAllergy,
+        private readonly Person $person,
     ) {}
 
     public function execute(): void
@@ -29,19 +29,20 @@ class DestroyFoodAllergy
 
     private function validate(): void
     {
-        if ($this->user->account_id !== $this->foodAllergy->person->account_id) {
+        if ($this->user->account_id !== $this->person->account_id) {
             throw new Exception('User and person are not in the same account');
         }
     }
 
     private function destroy(): void
     {
-        $this->foodAllergy->delete();
+        $this->person->food_allergies = null;
+        $this->person->save();
     }
 
     private function updatePersonLastConsultedDate(): void
     {
-        UpdatePersonLastConsultedDate::dispatch($this->foodAllergy->person)->onQueue('low');
+        UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
     }
 
     private function updateUserLastActivityDate(): void
@@ -54,7 +55,7 @@ class DestroyFoodAllergy
         LogUserAction::dispatch(
             user: $this->user,
             action: 'food_allergy_destroyed',
-            description: 'Deleted a food allergy for ' . $this->foodAllergy->person->name . ': ' . $this->foodAllergy->name,
+            description: 'Deleted a food allergy for ' . $this->person->name,
         )->onQueue('low');
     }
 }

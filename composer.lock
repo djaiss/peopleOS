@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.343.22",
+            "version": "3.343.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "174cc187df3bde52c21e9c00a4e99610a08732a3"
+                "reference": "010869992129557cfbf2740d94d82ef3b5228462"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/174cc187df3bde52c21e9c00a4e99610a08732a3",
-                "reference": "174cc187df3bde52c21e9c00a4e99610a08732a3",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/010869992129557cfbf2740d94d82ef3b5228462",
+                "reference": "010869992129557cfbf2740d94d82ef3b5228462",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.343.22"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.343.23"
             },
-            "time": "2025-05-30T18:11:02+00:00"
+            "time": "2025-06-02T18:04:47+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -4290,16 +4290,16 @@
         },
         {
             "name": "orchestra/sidekick",
-            "version": "v1.2.10",
+            "version": "v1.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/sidekick.git",
-                "reference": "0beebe28b5f67840dad9b7a695f8015c6c2879f7"
+                "reference": "da310142e73935ca01de44104c64399b2da9fab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/sidekick/zipball/0beebe28b5f67840dad9b7a695f8015c6c2879f7",
-                "reference": "0beebe28b5f67840dad9b7a695f8015c6c2879f7",
+                "url": "https://api.github.com/repos/orchestral/sidekick/zipball/da310142e73935ca01de44104c64399b2da9fab1",
+                "reference": "da310142e73935ca01de44104c64399b2da9fab1",
                 "shasum": ""
             },
             "require": {
@@ -4341,9 +4341,9 @@
             "description": "Packages Toolkit Utilities and Helpers for Laravel",
             "support": {
                 "issues": "https://github.com/orchestral/sidekick/issues",
-                "source": "https://github.com/orchestral/sidekick/tree/v1.2.10"
+                "source": "https://github.com/orchestral/sidekick/tree/v1.2.11"
             },
-            "time": "2025-05-25T03:49:19+00:00"
+            "time": "2025-06-02T15:06:32+00:00"
         },
         {
             "name": "orchestra/testbench",
