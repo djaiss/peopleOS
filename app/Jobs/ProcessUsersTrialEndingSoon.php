@@ -21,6 +21,7 @@ class ProcessUsersTrialEndingSoon implements ShouldQueue
     {
         $accounts = Account::where('trial_ends_at', '>', now()->addDays(5)->startOfDay())
             ->where('trial_ends_at', '<', now()->addDays(5)->endOfDay())
+            ->where('has_lifetime_access', false)
             ->get();
 
         foreach ($accounts as $account) {

@@ -77,6 +77,30 @@ class ProcessUsersTrialEndingSoonTest extends TestCase
     }
 
     #[Test]
+    public function it_does_not_dispatch_for_accounts_with_lifetime_access(): void
+    {
+        Queue::fake();
+
+        Carbon::setTestNow(Carbon::parse('2024-06-01 10:00:00'));
+
+        $account = Account::factory()->create([
+            'trial_ends_at' => '2024-06-06 10:00:00',
+            'has_lifetime_access' => true,
+        ]);
+
+        User::factory()->create([
+            'account_id' => $account->id,
+            'email' => 'monica.geller@friends.com',
+        ]);
+
+        $job = new ProcessUsersTrialEndingSoon();
+        $job->dispatch();
+        $job->handle();
+
+        Queue::assertNotPushed(SendTrialEndingSoonEmail::class);
+    }
+
+    #[Test]
     public function it_does_not_dispatch_for_accounts_with_trial_end_dates_in_more_than_5_days_from_now(): void
     {
         Queue::fake();
