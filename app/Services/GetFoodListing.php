@@ -4,35 +4,33 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Cache\PersonsListCache;
-use App\Models\FoodAllergy;
-use App\Models\LoveRelationship;
 use App\Models\Person;
-use App\Models\User;
-use App\Models\WorkHistory;
 use Illuminate\Support\Collection;
 
 class GetFoodListing
 {
     public function __construct(
-        private readonly User $user,
         private readonly Person $person,
     ) {}
 
+    /**
+     * Execute the service and return the result.
+     *
+     * @return array The result of the service
+     */
     public function execute(): array
     {
-        $persons = PersonsListCache::make(
-            accountId: $this->user->account_id,
-        )->value();
-
         return [
-            'persons' => $persons,
-            'person' => $this->person,
             'food_allergies' => $this->getFoodAllergies(),
         ];
     }
 
-    public function getFoodAllergies()
+    /**
+     * Get the food allergies for the person.
+     *
+     * @return Collection The food allergies for the person
+     */
+    public function getFoodAllergies(): Collection
     {
         $foodAllergiesCollection = collect();
 
@@ -41,40 +39,25 @@ class GetFoodListing
         );
 
         // get lover allergies
-        $activeRelationships = LoveRelationship::where(function ($query): void {
-            $query->where('person_id', $this->person->id)
-                ->orWhere('related_person_id', $this->person->id);
-        })
-            ->where('is_current', true)
-            ->with([
-                'person',
-                'relatedPerson',
-            ])
-            ->get();
+        foreach ($this->person->getActivePartnersAsPersonCollection() as $partner) {
+            $foodAllergiesCollection->push($this->allergy($partner));
+        }
 
-        $activeRelationships->each(function (LoveRelationship $relationship) use ($foodAllergiesCollection): void {
-            $lover = null;
+        // remove potential duplicates entries
+        $uniqueAllergiesCollection = $foodAllergiesCollection->unique(fn(array $item) => $item['id']);
 
-            if ($relationship->person_id === $this->person->id && $relationship->relatedPerson) {
-                $lover = $relationship->relatedPerson;
-            } elseif ($relationship->related_person_id === $this->person->id && $relationship->person) {
-                $lover = $relationship->person;
-            }
+        // remove any entries without allergies
+        $uniqueAllergiesCollection = $uniqueAllergiesCollection->filter(fn($item): bool => !empty($item['food_allergies']));
 
-            if ($lover) {
-                $foodAllergiesCollection->push(
-                    $this->allergy($lover)
-                );
-            }
-        });
-
-        $uniqueAllergiesCollection = $foodAllergiesCollection->unique(function ($item) {
-            return $item['id'];
-        });
-
-        return $uniqueAllergiesCollection->values()->toArray();
+        return $uniqueAllergiesCollection->values();
     }
 
+    /**
+     * Get the allergy data for a person.
+     *
+     * @param Person $person The person to get the allergy data for
+     * @return array The allergy data
+     */
     public function allergy(Person $person): array
     {
         return [

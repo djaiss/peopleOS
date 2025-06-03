@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 
 class Person extends Model
 {
@@ -435,6 +436,37 @@ class Person extends Model
         return $this->loveRelationships()
             ->where('is_current', true)
             ->exists();
+    }
+
+    /**
+     * Get the active partners of the person as a collection of Person objects.
+     *
+     * @return SupportCollection The active partners of the person
+     */
+    public function getActivePartnersAsPersonCollection(): SupportCollection
+    {
+        $activeRelationships = LoveRelationship::where(function ($query): void {
+            $query->where('person_id', $this->id)
+                ->orWhere('related_person_id', $this->id);
+        })
+            ->where('is_current', true)
+            ->with(['person', 'relatedPerson'])
+            ->get();
+
+        // get a collection of active partners
+        $activePartners = collect();
+        foreach ($activeRelationships as $relationship) {
+            $partner = $relationship->person_id === $this->id
+                ? $relationship->relatedPerson
+                : $relationship->person;
+
+            $activePartners->push($partner);
+        }
+
+        // filter out duplicates by person ID
+        $activePartners = $activePartners->unique('id')->values();
+
+        return $activePartners;
     }
 
     /**

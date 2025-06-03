@@ -2,6 +2,7 @@
 /*
  * @var array $persons
  * @var \App\Models\Person $person
+ * @var \Illuminate\Support\Collection $food_allergies
  */
 ?>
 

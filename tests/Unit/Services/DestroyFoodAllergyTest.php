@@ -7,7 +7,6 @@ namespace Tests\Unit\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
-use App\Models\FoodAllergy;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\DestroyFoodAllergy;
