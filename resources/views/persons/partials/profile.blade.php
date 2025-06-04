@@ -43,7 +43,7 @@
       <!-- Children -->
       <div class="flex items-center gap-2">
         <x-lucide-baby class="h-4 w-4 text-blue-500" />
-        <span class="text-sm">Father of Arthur (8) and Heloise (5)</span>
+        <span class="text-sm">{{ $person->getChildrenStatus() }}</span>
       </div>
 
       <!-- Pets -->

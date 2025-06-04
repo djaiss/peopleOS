@@ -157,15 +157,27 @@
               <label for="unknown-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Unknown') }}</label>
             </div>
             <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
-              <input id="no-kids" value="no-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Do not have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
-              <label for="no-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Do not have kids') }}</label>
+              <input id="no_kids" value="no_kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Do not have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="no_kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Do not have kids') }}</label>
+            </div>
+            <div class="flex items-center gap-x-3 border-b border-gray-200 p-3 dark:border-gray-700">
+              <input id="maybe_kids" value="maybe_kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('I think this person has kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+              <label for="maybe_kids" class="block text-sm/6 font-medium text-gray-900">{{ __('I think this person has kids') }}</label>
             </div>
             <div class="flex items-center justify-between p-3">
               <div class="flex items-center gap-x-3">
-                <input id="have-kids" value="have-kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
-                <label for="have-kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Have kids') }}</label>
+                <input id="has_kids" value="has_kids" name="kids_status" type="radio" x-on:click="selectedKidsStatus = '{{ __('Have kids') }}'" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden" />
+                <label for="has_kids" class="block text-sm/6 font-medium text-gray-900">{{ __('Have kids') }}</label>
               </div>
-              sfs
+              <div x-show="selectedKidsStatus === '{{ __('Have kids') }}'" class="flex items-center gap-x-2">
+                <button type="button" x-on:click="$refs.kidsCount.value = Math.max(1, parseInt($refs.kidsCount.value) - 1)" class="inline-flex size-6 items-center justify-center rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+                  <x-lucide-minus class="size-4" />
+                </button>
+                <input type="number" x-ref="kidsCount" name="kids_count" min="1" max="10" value="1" class="block w-16 rounded-md border-gray-300 text-center shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300" />
+                <button type="button" x-on:click="$refs.kidsCount.value = Math.min(10, parseInt($refs.kidsCount.value) + 1)" class="inline-flex size-6 items-center justify-center rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+                  <x-lucide-plus class="size-4" />
+                </button>
+              </div>
             </div>
           </div>
 

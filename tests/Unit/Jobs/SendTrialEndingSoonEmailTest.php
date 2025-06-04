@@ -9,7 +9,6 @@ use App\Jobs\SendTrialEndingSoonEmail;
 use App\Mail\TrialEndingSoon;
 use App\Models\EmailSent;
 use App\Models\User;
-use App\Services\CreateEmailSent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\Attributes\Test;
