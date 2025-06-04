@@ -11,7 +11,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body class="font-sans antialiased">
-    <div class="min-h-screen bg-white dark:bg-gray-900">
+    <div class="min-h-screen {{ $classes }} dark:bg-gray-900">
       @include('layouts.header')
 
       <!-- Page Content -->
