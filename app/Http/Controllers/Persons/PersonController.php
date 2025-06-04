@@ -56,6 +56,13 @@ class PersonController extends Controller
         return view('persons.new', $viewData);
     }
 
+    /**
+     * Handles creation of a new person and associated children based on validated request data.
+     *
+     * Validates input fields for person attributes, creates a new person record, updates their age if provided, and, if indicated, creates the specified number of child records linked to the person. Redirects to the person's detail page with a success message.
+     *
+     * @return RedirectResponse Redirects to the newly created person's detail page.
+     */
     public function create(Request $request): RedirectResponse
     {
         $validated = $request->validate([

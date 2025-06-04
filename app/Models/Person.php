@@ -509,10 +509,10 @@ class Person extends Model
         ]);
     }
 
-    /**
-     * Get the person's marital status as an attribute.
+    /****
+     * Returns the person's marital status as an accessor attribute.
      *
-     * @return Attribute<string, never>
+     * @return Attribute<string, never> Attribute instance providing the marital status string.
      */
     protected function marital(): Attribute
     {
@@ -522,9 +522,11 @@ class Person extends Model
     }
 
     /**
-     * Get the person's children status.
+     * Returns a human-readable description of the person's children status.
      *
-     * @return string The children status
+     * If the status indicates the person has children, returns a string listing their children's names or a count of unnamed children. Otherwise, returns a localized string such as "May have kids," "Unknown," or "No kids" based on the `kids_status` attribute.
+     *
+     * @return string Description of the person's children status.
      */
     public function getChildrenStatus(): string
     {
@@ -538,12 +540,11 @@ class Person extends Model
     }
 
     /**
-     * Get the person's children names.
-     * Children can be created without names. We need to list the names of the
-     * children that have names, and the count of the children that don't have
-     * names.
+     * Returns a human-readable string listing the names of the person's children and counts unnamed children.
      *
-     * @return string The children names
+     * If all children are unnamed, returns the total count (e.g., "2 kids"). If all are named, returns their names joined with commas and "and". If both named and unnamed children exist, lists the names and appends the count of unnamed children (e.g., "Alice and Bob and 1 other kid").
+     *
+     * @return string Human-readable summary of children's names and unnamed count.
      */
     public function getChildrenNames(): string
     {
