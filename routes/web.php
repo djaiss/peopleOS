@@ -132,13 +132,13 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');
     Route::delete('/vote/{page}', [MarketingVoteController::class, 'update'])->name('marketing.destroy-vote');
 
-    // dashboard
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
     // upgrade
     Route::get('upgrade', [UpgradeAccountController::class, 'index'])->name('upgrade.index');
 
     Route::middleware(['subscription'])->group(function (): void {
+        // dashboard
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
         // persons
         Route::get('persons', [PersonController::class, 'index'])->name('person.index');
         Route::get('persons/new', [PersonController::class, 'new'])->name('person.new');
