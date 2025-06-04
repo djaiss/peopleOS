@@ -42,7 +42,7 @@ class ProcessUsersTrialEndingSoonTest extends TestCase
             SendTrialEndingSoonEmail::class,
             function (SendTrialEndingSoonEmail $queuedJob): bool {
                 return $queuedJob->email === 'monica.geller@friends.com';
-            }
+            },
         );
         Queue::assertPushedOn('low', SendTrialEndingSoonEmail::class);
     }
@@ -71,7 +71,7 @@ class ProcessUsersTrialEndingSoonTest extends TestCase
             SendTrialEndingSoonEmail::class,
             function (SendTrialEndingSoonEmail $queuedJob): bool {
                 return $queuedJob->email === 'monica.geller@friends.com';
-            }
+            },
         );
         Queue::assertPushedOn('low', SendTrialEndingSoonEmail::class);
     }
@@ -124,7 +124,7 @@ class ProcessUsersTrialEndingSoonTest extends TestCase
             SendTrialEndingSoonEmail::class,
             function (SendTrialEndingSoonEmail $queuedJob): bool {
                 return $queuedJob->email === 'ross.geller@friends.com';
-            }
+            },
         );
     }
 
@@ -152,7 +152,7 @@ class ProcessUsersTrialEndingSoonTest extends TestCase
             SendTrialEndingSoonEmail::class,
             function (SendTrialEndingSoonEmail $queuedJob): bool {
                 return $queuedJob->email === 'ross.geller@friends.com';
-            }
+            },
         );
     }
 }
