@@ -24,19 +24,20 @@ class GetEntryData
 
     public function execute(): array
     {
-        $this->getAllContent();
+        $content = $this->getAllContent();
 
         return [
             'options' => $this->options,
             'entry' => $this->entry,
             'days' => $this->getDays(),
             'months' => $this->getMonths(),
+            'content' => $content,
         ];
     }
 
-    private function getAllContent(): void
+    private function getAllContent(): array
     {
-        $this->getMood();
+        return $this->getMood();
     }
 
     public function getDays(): Collection
@@ -64,7 +65,7 @@ class GetEntryData
             $this->options['mood'] = true;
         }
 
-        return [
+        return $entryMood ? [
             'type' => 'mood',
             'data' => [
                 'id' => $entryMood->id,
@@ -72,6 +73,6 @@ class GetEntryData
                 'comment' => $entryMood->comment,
             ],
             'created_at' => $entryMood->created_at,
-        ];
+        ] : [];
     }
 }
