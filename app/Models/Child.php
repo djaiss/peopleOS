@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
  * @property int|null $second_parent_id
  * @property string $first_name
  * @property string|null $last_name
+ * @property string|null $food_allergies
  * @property Carbon $created_at
  * @property Carbon|null $updated_at
  */
@@ -44,6 +45,7 @@ class Child extends Model
         'second_parent_id',
         'first_name',
         'last_name',
+        'food_allergies',
     ];
 
     /**
@@ -56,6 +58,7 @@ class Child extends Model
         return [
             'first_name' => 'encrypted',
             'last_name' => 'encrypted',
+            'food_allergies' => 'encrypted',
         ];
     }
 

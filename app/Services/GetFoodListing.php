@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Child;
 use App\Models\Person;
 use Illuminate\Support\Collection;
 
@@ -49,6 +50,11 @@ class GetFoodListing
         // remove any entries without allergies
         $uniqueAllergiesCollection = $uniqueAllergiesCollection->filter(fn($item): bool => !empty($item['food_allergies']));
 
+        // get children allergies
+        foreach ($this->person->children() as $child) {
+            $uniqueAllergiesCollection->push($this->childAllergy($child));
+        }
+
         return $uniqueAllergiesCollection->values();
     }
 
@@ -62,6 +68,7 @@ class GetFoodListing
     {
         return [
             'id' => $person->id,
+            'type' => 'person',
             'name' => $person->name,
             'is_listed' => $person->is_listed,
             'slug' => $person->slug,
@@ -70,6 +77,22 @@ class GetFoodListing
                 '80' => $person->getAvatar(80),
             ],
             'food_allergies' => $person->food_allergies,
+        ];
+    }
+
+    /**
+     * Get the allergy data for a child.
+     *
+     * @param Child $child The child to get the allergy data for
+     * @return array The allergy data
+     */
+    public function childAllergy(Child $child): array
+    {
+        return [
+            'id' => $child->id,
+            'type' => 'child',
+            'name' => $child->name,
+            'food_allergies' => $child->food_allergies,
         ];
     }
 }
