@@ -47,13 +47,13 @@ class GetFoodListing
         // remove potential duplicates entries
         $uniqueAllergiesCollection = $foodAllergiesCollection->unique(fn(array $item) => $item['id']);
 
-        // remove any entries without allergies
-        $uniqueAllergiesCollection = $uniqueAllergiesCollection->filter(fn($item): bool => !empty($item['food_allergies']));
-
         // get children allergies
         foreach ($this->person->children() as $child) {
             $uniqueAllergiesCollection->push($this->childAllergy($child));
         }
+
+        // remove any entries without allergies
+        $uniqueAllergiesCollection = $uniqueAllergiesCollection->filter(fn($item): bool => !empty($item['food_allergies']));
 
         return $uniqueAllergiesCollection->values();
     }
