@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Child;
 use App\Models\LoveRelationship;
 use App\Models\Person;
 use Illuminate\Support\Collection;
@@ -19,6 +20,7 @@ class GetRelationshipsListing
         return [
             'currentRelationships' => $this->getCurrentRelationships(),
             'pastRelationships' => $this->getPastRelationships(),
+            'children' => $this->getChildren(),
         ];
     }
 
@@ -59,5 +61,16 @@ class GetRelationshipsListing
             'type' => $relationship->type,
             'is_new' => $isNew,
         ];
+    }
+
+    public function getChildren(): Collection
+    {
+        $children = $this->person->children();
+
+        return $children
+            ->map(fn(Child $child): array => [
+                'id' => $child->id,
+                'name' => $child->name,
+            ]);
     }
 }

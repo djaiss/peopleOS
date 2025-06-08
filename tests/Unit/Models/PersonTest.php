@@ -211,10 +211,12 @@ class PersonTest extends TestCase
             'second_parent_id' => $rachel->id,
         ]);
 
-        $this->assertCount(1, $ross->children());
-        $this->assertCount(1, $rachel->children());
-        $this->assertNotEmpty($ross->children());
-        $this->assertNotEmpty($rachel->children());
+        $children = $ross->children();
+
+        $this->assertCount(1, $children);
+        $this->assertNotEmpty($children);
+        $this->assertEquals($ross->id, $children->first()->parent_id);
+        $this->assertEquals($rachel->id, $children->first()->second_parent_id);
     }
 
     #[Test]

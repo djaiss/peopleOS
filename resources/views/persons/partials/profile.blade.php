@@ -72,7 +72,7 @@
 
       <a href="{{ route('person.family.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.family.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-person-standing class="{{ request()->routeIs('person.family.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
-        <span class="{{ request()->routeIs('person.family.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Love, family & friends') }}</span>
+        <span class="{{ request()->routeIs('person.family.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Love & family') }}</span>
       </a>
 
       <a href="{{ route('person.reminder.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.reminder.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
@@ -81,7 +81,7 @@
       </a>
       <a href="{{ route('person.gift.index', ['slug' => $person['slug']]) }}" class="{{ request()->routeIs('person.gift.index') ? 'border-blue-500 bg-blue-50' : '' }} group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
         <x-lucide-gift class="{{ request()->routeIs('person.gift.index') ? 'text-blue-500' : 'text-gray-500' }} h-4 w-4 transition-all duration-400 grouphover:-translate-y-0.5 group-hover:-rotate-3" />
-        <span class="{{ request()->routeIs('person.gift.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">Gifts</span>
+        <span class="{{ request()->routeIs('person.gift.index') ? 'text-blue-700' : 'text-gray-600' }} text-sm font-medium">{{ __('Gifts') }}</span>
       </a>
       {{--
         <a href="#" class="group flex items-center gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-gray-50">
