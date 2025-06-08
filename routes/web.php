@@ -41,6 +41,7 @@ use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonAllergiesFoodController;
+use App\Http\Controllers\Persons\PersonChildrenController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
@@ -228,6 +229,8 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::middleware(['love_relationship'])->group(function (): void {
                 Route::delete('persons/{slug}/love/{loveRelationship}', [PersonLoveController::class, 'destroy'])->name('person.love.destroy');
             });
+            Route::get('persons/{slug}/children/new', [PersonChildrenController::class, 'new'])->name('person.children.new');
+            Route::post('persons/{slug}/children', [PersonChildrenController::class, 'store'])->name('person.children.store');
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');

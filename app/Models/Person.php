@@ -342,7 +342,8 @@ class Person extends Model
      */
     public function childrenAsParent(): HasMany
     {
-        return $this->hasMany(Child::class, 'parent_id', 'id');
+        return $this->hasMany(Child::class, 'parent_id', 'id')
+            ->with('parent', 'secondParent');
     }
 
     /**
@@ -352,7 +353,8 @@ class Person extends Model
      */
     public function childrenAsSecondParent(): HasMany
     {
-        return $this->hasMany(Child::class, 'second_parent_id', 'id');
+        return $this->hasMany(Child::class, 'second_parent_id', 'id')
+            ->with('parent', 'secondParent');
     }
 
     /**

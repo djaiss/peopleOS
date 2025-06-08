@@ -16,6 +16,7 @@ parameters:
         - app/Http/Resources/*.php
         - app/Services/DestroyAccountBecauseInactivity.php
         - app/Services/GetDashboardInformation.php
+        - app/Services/GetRelationshipsListing.php
 
 #    checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
