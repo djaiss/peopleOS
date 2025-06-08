@@ -42,6 +42,7 @@ use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonAllergiesFoodController;
+use App\Http\Controllers\Persons\PersonChildrenController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
 use App\Http\Controllers\Persons\PersonEncounterToggleController;
@@ -133,13 +134,13 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::post('/vote/{page}/unhelpful', [MarketingVoteUnhelpfulController::class, 'update'])->name('marketing.vote-unhelpful');
     Route::delete('/vote/{page}', [MarketingVoteController::class, 'update'])->name('marketing.destroy-vote');
 
-    // dashboard
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
     // upgrade
     Route::get('upgrade', [UpgradeAccountController::class, 'index'])->name('upgrade.index');
 
     Route::middleware(['subscription'])->group(function (): void {
+        // dashboard
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
         // persons
         Route::get('persons', [PersonController::class, 'index'])->name('person.index');
         Route::get('persons/new', [PersonController::class, 'new'])->name('person.new');
@@ -228,6 +229,11 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::get('persons/{slug}/love/toggle', [PersonPastLoveToggleController::class, 'create'])->name('person.love.toggle');
             Route::middleware(['love_relationship'])->group(function (): void {
                 Route::delete('persons/{slug}/love/{loveRelationship}', [PersonLoveController::class, 'destroy'])->name('person.love.destroy');
+            });
+            Route::get('persons/{slug}/children/new', [PersonChildrenController::class, 'new'])->name('person.children.new');
+            Route::post('persons/{slug}/children', [PersonChildrenController::class, 'store'])->name('person.children.store');
+            Route::middleware(['child'])->group(function (): void {
+                Route::delete('persons/{slug}/children/{child}', [PersonChildrenController::class, 'destroy'])->name('person.children.destroy');
             });
 
             // gifts

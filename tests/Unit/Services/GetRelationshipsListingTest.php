@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
+use App\Models\Child;
 use App\Models\LoveRelationship;
 use App\Models\Person;
 use App\Models\User;
@@ -20,21 +21,21 @@ class GetRelationshipsListingTest extends TestCase
     public function it_returns_the_data_for_the_relationships_listing_page(): void
     {
         $user = User::factory()->create();
-        $person = Person::factory()->create([
+        $ross = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Ross',
             'last_name' => 'Geller',
         ]);
 
         // Create current relationship
-        $currentPerson = Person::factory()->create([
+        $rachel = Person::factory()->create([
             'account_id' => $user->account_id,
             'first_name' => 'Rachel',
             'last_name' => 'Green',
         ]);
         $currentRelationship = LoveRelationship::factory()->create([
-            'person_id' => $person->id,
-            'related_person_id' => $currentPerson->id,
+            'person_id' => $ross->id,
+            'related_person_id' => $rachel->id,
             'type' => 'Married',
             'is_current' => true,
         ]);
@@ -46,33 +47,43 @@ class GetRelationshipsListingTest extends TestCase
             'last_name' => 'Geller',
         ]);
         $pastRelationship = LoveRelationship::factory()->create([
-            'person_id' => $person->id,
+            'person_id' => $ross->id,
             'related_person_id' => $pastPerson->id,
             'type' => 'Dating',
             'is_current' => false,
         ]);
 
+        // create child
+        $child = Child::factory()->create([
+            'first_name' => 'Ben',
+            'last_name' => 'Geller',
+            'parent_id' => $ross->id,
+            'second_parent_id' => $rachel->id,
+        ]);
+
         $array = (new GetRelationshipsListing(
-            person: $person,
+            person: $ross,
         ))->execute();
 
         $this->assertArrayHasKey('currentRelationships', $array);
         $this->assertArrayHasKey('pastRelationships', $array);
+        $this->assertArrayHasKey('children', $array);
 
         $this->assertCount(1, $array['currentRelationships']);
         $this->assertCount(1, $array['pastRelationships']);
+        $this->assertCount(1, $array['children']);
 
         $currentRelationshipData = $array['currentRelationships']->first();
         $this->assertEquals([
             'id' => $currentRelationship->id,
             'person' => [
-                'id' => $currentPerson->id,
+                'id' => $rachel->id,
                 'name' => 'Rachel Green',
-                'slug' => $currentPerson->slug,
-                'is_listed' => $currentPerson->is_listed,
+                'slug' => $rachel->slug,
+                'is_listed' => $rachel->is_listed,
                 'avatar' => [
-                    '40' => $currentPerson->getAvatar(40),
-                    '80' => $currentPerson->getAvatar(80),
+                    '40' => $rachel->getAvatar(40),
+                    '80' => $rachel->getAvatar(80),
                 ],
             ],
             'type' => 'Married',
@@ -95,5 +106,11 @@ class GetRelationshipsListingTest extends TestCase
             'type' => 'Dating',
             'is_new' => false,
         ], $pastRelationshipData);
+
+        $childData = $array['children']->first();
+        $this->assertEquals([
+            'id' => $child->id,
+            'name' => 'Ben Geller',
+        ], $childData);
     }
 }

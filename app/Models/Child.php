@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 /**
  * Class Child
@@ -16,17 +17,9 @@ use Carbon\Carbon;
  * @property int $account_id
  * @property int|null $parent_id
  * @property int|null $second_parent_id
- * @property int|null $age_special_date_id
- * @property int|null $gender_id
  * @property string $first_name
  * @property string|null $last_name
- * @property string|null $age_type
- * @property string|null $estimated_age
- * @property Carbon|null $age_estimated_at
- * @property string|null $profile_photo_path
- * @property string|null $notes
- * @property bool $is_born
- * @property Carbon|null $expected_birth_date_at
+ * @property string|null $food_allergies
  * @property Carbon $created_at
  * @property Carbon|null $updated_at
  */
@@ -52,6 +45,7 @@ class Child extends Model
         'second_parent_id',
         'first_name',
         'last_name',
+        'food_allergies',
     ];
 
     /**
@@ -64,6 +58,7 @@ class Child extends Model
         return [
             'first_name' => 'encrypted',
             'last_name' => 'encrypted',
+            'food_allergies' => 'encrypted',
         ];
     }
 
@@ -95,5 +90,23 @@ class Child extends Model
     public function secondParent(): BelongsTo
     {
         return $this->belongsTo(Person::class, 'second_parent_id');
+    }
+
+    /**
+     * Get the person's full name.
+     *
+     * @return Attribute<string, never>
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: function (): string {
+                $firstName = $this->first_name;
+                $lastName = $this->last_name;
+                $separator = $firstName && $lastName ? ' ' : '';
+
+                return $firstName . $separator . $lastName;
+            },
+        );
     }
 }

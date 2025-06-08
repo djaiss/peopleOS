@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Enums\AgeType;
+use App\Enums\KidsStatusType;
 use App\Models\Account;
 use App\Models\Child;
 use App\Models\EmailSent;
@@ -210,10 +211,12 @@ class PersonTest extends TestCase
             'second_parent_id' => $rachel->id,
         ]);
 
-        $this->assertCount(1, $ross->children());
-        $this->assertCount(1, $rachel->children());
-        $this->assertNotEmpty($ross->children());
-        $this->assertNotEmpty($rachel->children());
+        $children = $ross->children();
+
+        $this->assertCount(1, $children);
+        $this->assertNotEmpty($children);
+        $this->assertEquals($ross->id, $children->first()->parent_id);
+        $this->assertEquals($rachel->id, $children->first()->second_parent_id);
     }
 
     #[Test]
@@ -451,5 +454,161 @@ class PersonTest extends TestCase
             'In a relationship with Rachel Green, Emily Waltham and Monica Geller',
             $ross->getMaritalStatus(),
         );
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_named_and_unnamed_children(): void
+    {
+        $ross = Person::factory()->create();
+
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'Regis',
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'John',
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+
+        $this->assertEquals('Regis and John and 2 other kids', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_one_named_and_one_unnamed_child(): void
+    {
+        $ross = Person::factory()->create();
+
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'Regis',
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+
+        $this->assertEquals('Regis and 1 other kid', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_all_unnamed_children(): void
+    {
+        $ross = Person::factory()->create();
+
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+
+        $this->assertEquals('3 kids', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_one_named_and_multiple_unnamed_children(): void
+    {
+        $ross = Person::factory()->create();
+
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'John',
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+
+        $this->assertEquals('John and 2 other kids', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_only_named_children(): void
+    {
+        $ross = Person::factory()->create();
+
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'John',
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'Jane',
+        ]);
+
+        $this->assertEquals('John and Jane', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_single_unnamed_child(): void
+    {
+        $ross = Person::factory()->create();
+
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => null,
+        ]);
+
+        $this->assertEquals('1 kid', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_children_names_with_no_children(): void
+    {
+        $ross = Person::factory()->create();
+
+        $this->assertEquals('0 kids', $ross->getChildrenNames());
+    }
+
+    #[Test]
+    public function it_gets_the_children_status(): void
+    {
+        $ross = Person::factory()->create();
+
+        // Test HAS_KIDS status
+        $ross->kids_status = KidsStatusType::HAS_KIDS->value;
+        $ross->save();
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'Emma',
+        ]);
+        Child::factory()->create([
+            'parent_id' => $ross->id,
+            'first_name' => 'Ben',
+        ]);
+        $this->assertEquals('Emma and Ben', $ross->getChildrenStatus());
+
+        // Test MAYBE_KIDS status
+        $ross->kids_status = KidsStatusType::MAYBE_KIDS->value;
+        $ross->save();
+        $this->assertEquals('May have kids', $ross->getChildrenStatus());
+
+        // Test UNKNOWN status
+        $ross->kids_status = KidsStatusType::UNKNOWN->value;
+        $ross->save();
+        $this->assertEquals('Unknown', $ross->getChildrenStatus());
+
+        // Test NO_KIDS status
+        $ross->kids_status = KidsStatusType::NO_KIDS->value;
+        $ross->save();
+        $this->assertEquals('No kids', $ross->getChildrenStatus());
     }
 }

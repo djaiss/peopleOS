@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\AgeType;
+use App\Enums\KidsStatusType;
 use App\Helpers\ImageHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -341,7 +342,8 @@ class Person extends Model
      */
     public function childrenAsParent(): HasMany
     {
-        return $this->hasMany(Child::class, 'parent_id', 'id');
+        return $this->hasMany(Child::class, 'parent_id', 'id')
+            ->with('parent', 'secondParent');
     }
 
     /**
@@ -351,7 +353,8 @@ class Person extends Model
      */
     public function childrenAsSecondParent(): HasMany
     {
-        return $this->hasMany(Child::class, 'second_parent_id', 'id');
+        return $this->hasMany(Child::class, 'second_parent_id', 'id')
+            ->with('parent', 'secondParent');
     }
 
     /**
@@ -518,6 +521,54 @@ class Person extends Model
         return Attribute::make(
             get: fn(): mixed => $this->getMaritalStatus(),
         );
+    }
+
+    /**
+     * Get the person's children status.
+     *
+     * @return string The children status
+     */
+    public function getChildrenStatus(): string
+    {
+        return match ($this->kids_status) {
+            KidsStatusType::HAS_KIDS->value => $this->getChildrenNames(),
+            KidsStatusType::MAYBE_KIDS->value => __('May have kids'),
+            KidsStatusType::UNKNOWN->value => __('Unknown'),
+            KidsStatusType::NO_KIDS->value => __('No kids'),
+            default => __('Unknown'),
+        };
+    }
+
+    /**
+     * Get the person's children names.
+     * Children can be created without names. We need to list the names of the
+     * children that have names, and the count of the children that don't have
+     * names.
+     *
+     * @return string The children names
+     */
+    public function getChildrenNames(): string
+    {
+        $children = $this->children();
+        $namedChildren = $children->whereNotNull('first_name')->pluck('first_name');
+        $unnamedCount = $children->whereNull('first_name')->count();
+        $totalCount = $children->count();
+
+        // If all children are unnamed
+        if ($namedChildren->isEmpty()) {
+            return $totalCount === 1 ? '1 kid' : $totalCount . ' kids';
+        }
+
+        // If there are no unnamed children
+        if ($unnamedCount === 0) {
+            return $namedChildren->join(', ', ' and ');
+        }
+
+        // If there are both named and unnamed children
+        $namedPart = $namedChildren->join(', ', ' and ');
+        return $unnamedCount === 1
+            ? $namedPart . ' and 1 other kid'
+            : $namedPart . ' and ' . $unnamedCount . ' other kids';
     }
 
     /**

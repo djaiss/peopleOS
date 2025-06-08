@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
+use App\Models\Child;
 use App\Models\Person;
+use App\Services\UpdateChildFoodAllergy;
 use App\Services\UpdatePersonFoodAllergy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,6 +25,9 @@ class PersonAllergiesFoodController extends Controller
         foreach ($person->getActivePartnersAsPersonCollection() as $partner) {
             $personsCollection->push($partner);
         }
+        foreach ($person->children() as $child) {
+            $personsCollection->push($child);
+        }
 
         return view('persons.food.partials.allergies.edit', [
             'person' => $person,
@@ -39,16 +44,33 @@ class PersonAllergiesFoodController extends Controller
         $validated = $request->validate([
             'person_allergies' => 'array',
             'person_allergies.*' => 'nullable|string|max:255',
+            'child_allergies' => 'array',
+            'child_allergies.*' => 'nullable|string|max:255',
         ]);
 
         if (isset($validated['person_allergies']) && is_array($validated['person_allergies'])) {
             foreach ($validated['person_allergies'] as $personId => $allergies) {
-                // Find the person by ID
                 $targetPerson = Person::find($personId);
 
                 (new UpdatePersonFoodAllergy(
                     user: $user,
                     person: $targetPerson,
+                    name: $allergies ?? '',
+                ))->execute();
+            }
+        }
+
+        if (isset($validated['child_allergies']) && is_array($validated['child_allergies'])) {
+            foreach ($validated['child_allergies'] as $childId => $allergies) {
+                $targetChild = Child::find($childId);
+
+                if (!$targetChild) {
+                    continue; // Skip invalid child IDs
+                }
+
+                (new UpdateChildFoodAllergy(
+                    user: $user,
+                    child: $targetChild,
                     name: $allergies ?? '',
                 ))->execute();
             }

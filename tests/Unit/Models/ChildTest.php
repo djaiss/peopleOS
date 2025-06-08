@@ -47,4 +47,18 @@ class ChildTest extends TestCase
 
         $this->assertTrue($child->secondParent()->exists());
     }
+
+    #[Test]
+    public function it_gets_the_name(): void
+    {
+        $child = Child::factory()->create([
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
+        ]);
+
+        $this->assertEquals(
+            'Ross Geller',
+            $child->name,
+        );
+    }
 }

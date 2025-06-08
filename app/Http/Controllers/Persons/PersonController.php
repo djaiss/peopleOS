@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Enums\AgeType;
+use App\Enums\KidsStatusType;
 use App\Http\Controllers\Controller;
 use App\Models\Gender;
 use App\Models\Person;
+use App\Services\CreateChild;
 use App\Services\CreatePerson;
 use App\Services\GetCreatePersonData;
 use App\Services\GetPersonDetails;
@@ -59,7 +61,7 @@ class PersonController extends Controller
         $validated = $request->validate([
             'gender_id' => 'nullable|exists:genders,id',
             'marital_status' => ['required', 'string', 'in:unknown,single,in-relationship'],
-            'kids_status' => ['required', 'string', 'in:unknown,no-kids,has-kids'],
+            'kids_status' => ['required', 'string', 'in:unknown,no_kids,maybe_kids,has_kids'],
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nickname' => 'nullable|string|max:255',
@@ -71,6 +73,7 @@ class PersonController extends Controller
             'age' => ['required', 'string', 'in:exact,estimated,unknown'],
             'estimated_age' => 'nullable|integer|min:0|max:120',
             'birthdate' => 'nullable|date_format:Y-m-d',
+            'kids_count' => 'nullable|integer|min:1|max:10',
         ]);
 
         $person = (new CreatePerson(
@@ -104,6 +107,18 @@ class PersonController extends Controller
                 ageDay: $day,
                 addYearlyReminder: false,
             ))->execute();
+        }
+
+        if ($validated['kids_status'] === KidsStatusType::HAS_KIDS->value) {
+            for ($i = 0; $i < $validated['kids_count']; $i++) {
+                (new CreateChild(
+                    user: Auth::user(),
+                    parent: $person,
+                    secondParent: null,
+                    firstName: null,
+                    lastName: null,
+                ))->execute();
+            }
         }
 
         return redirect()->route('person.show', [
