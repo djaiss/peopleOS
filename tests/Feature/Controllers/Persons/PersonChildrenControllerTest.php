@@ -202,7 +202,7 @@ class PersonChildrenControllerTest extends TestCase
         $this->assertDatabaseMissing('children', [
             'account_id' => $user->account_id,
             'parent_id' => $parent->id,
-            'child_id' => $child->id,
+            'id' => $child->id,
         ]);
     }
 }
