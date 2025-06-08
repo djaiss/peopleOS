@@ -175,5 +175,6 @@ return [
         'child_relationship_deletion' => 'Child relationship deletion',
         'food_allergy_destroyed' => 'Food allergy destroyed',
         'food_allergy_updated' => 'Food allergy update',
+        'child_food_allergy_updated' => 'Child food allergy update',
     ],
 ];
