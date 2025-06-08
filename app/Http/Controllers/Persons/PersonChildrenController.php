@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Models\LoveRelationship;
 use App\Models\Person;
 use App\Services\CreateChild;
+use App\Services\DestroyChild;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class PersonChildrenController extends Controller
@@ -61,6 +63,19 @@ class PersonChildrenController extends Controller
         ))->execute();
 
         return redirect()->route('person.family.index', $person)
+            ->with('status', trans('Changes saved'));
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        $child = $request->attributes->get('child');
+
+        (new DestroyChild(
+            user: Auth::user(),
+            child: $child,
+        ))->execute();
+
+        return redirect()->route('person.family.index', $child->parent)
             ->with('status', trans('Changes saved'));
     }
 }

@@ -22,16 +22,29 @@
   <div id="children-listing" class="rounded-lg border border-gray-200 bg-white">
     <div class="divide-y divide-gray-200">
       @forelse ($children as $child)
-        <div class="p-4">
-          <div class="flex items-center gap-3">
+        <div id="current-child-relationship-{{ $child['id'] }}" class="group p-4">
+          <div class="flex items-center justify-between gap-3 group">
             <div class="min-w-0 flex-1">
-              <div class="flex items-center gap-1 text-sm">
+              <div class="flex items-center gap-1 text-sm py-1 border border-transparent">
                 @if ($child['name'])
                   <p class="truncate font-medium text-gray-900">{{ $child['name'] }}</p>
                 @else
                   <p class="truncate text-gray-900 italic">{{ __('Unknown name') }}</p>
                 @endif
               </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <form x-target="current-child-relationship-{{ $child['id'] }} children-status children-listing" x-on:ajax:before="
+                    confirm('Are you sure you want to proceed? This can not be undone.') ||
+                      $event.preventDefault()
+                  " action="{{ route('person.children.destroy', ['slug' => $person->slug, 'child' => $child['id']]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-button.invisible class="hidden text-sm group-hover:block">
+                      {{ __('Delete') }}
+                    </x-button.invisible>
+                  </form>
             </div>
           </div>
         </div>

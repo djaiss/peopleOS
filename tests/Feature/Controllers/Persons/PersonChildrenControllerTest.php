@@ -171,4 +171,42 @@ class PersonChildrenControllerTest extends TestCase
             'second_parent_id' => $secondParent->id,
         ]);
     }
+
+    #[Test]
+    public function it_can_destroy_a_child(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-03-17 10:00:00'));
+
+        $user = User::factory()->create([
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
+        ]);
+        $parent = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Ross',
+            'last_name' => 'Geller',
+        ]);
+        $child = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Ben',
+            'last_name' => 'Geller',
+        ]);
+
+        $parent->children()->create([
+            'account_id' => $user->account_id,
+            'child_id' => $child->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->delete('/persons/' . $parent->slug . '/children/' . $child->id)
+            ->assertRedirectToRoute('person.family.index', $parent);
+
+        $response->assertSessionHas('status', trans('Changes saved'));
+
+        $this->assertDatabaseMissing('children', [
+            'account_id' => $user->account_id,
+            'parent_id' => $parent->id,
+            'child_id' => $child->id,
+        ]);
+    }
 }

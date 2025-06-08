@@ -231,6 +231,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             });
             Route::get('persons/{slug}/children/new', [PersonChildrenController::class, 'new'])->name('person.children.new');
             Route::post('persons/{slug}/children', [PersonChildrenController::class, 'store'])->name('person.children.store');
+            Route::middleware(['child'])->group(function (): void {
+                Route::delete('persons/{slug}/children/{child}', [PersonChildrenController::class, 'destroy'])->name('person.children.destroy');
+            });
 
             // gifts
             Route::get('persons/{slug}/gifts', [PersonGiftController::class, 'index'])->name('person.gift.index');
