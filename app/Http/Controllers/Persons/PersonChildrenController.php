@@ -45,12 +45,19 @@ class PersonChildrenController extends Controller
             'second_parent_id' => 'nullable|exists:persons,id',
         ]);
 
+        $secondParentId = $validated['second_parent_id'] ?? null;
+        $secondParent = null;
+
+        if ($secondParentId && $secondParentId !== '0') {
+            $secondParent = Person::find($secondParentId);
+        }
+
         (new CreateChild(
             user: Auth::user(),
             parent: $person,
             firstName: $validated['first_name'],
             lastName: $validated['last_name'],
-            secondParent: ($validated['second_parent_id'] ?? null) === '0' ? null : Person::find($validated['second_parent_id'] ?? null),
+            secondParent: $secondParent,
         ))->execute();
 
         return redirect()->route('person.family.index', $person)

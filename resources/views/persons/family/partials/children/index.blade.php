@@ -48,7 +48,7 @@
 
           <!-- Call to action -->
           <div class="mt-6">
-            <a x-target="new-child-relationship" href="{{ route('person.love.new', $person) }}" class="inline-flex items-center gap-1 rounded-md bg-rose-50 px-3 py-2 text-sm font-medium text-rose-600 hover:bg-rose-100">
+            <a x-target="new-child-relationship" href="{{ route('person.children.new', $person) }}" class="inline-flex items-center gap-1 rounded-md bg-rose-50 px-3 py-2 text-sm font-medium text-rose-600 hover:bg-rose-100">
               <x-lucide-plus class="h-4 w-4" />
               {{ __('Add first child') }}
             </a>
