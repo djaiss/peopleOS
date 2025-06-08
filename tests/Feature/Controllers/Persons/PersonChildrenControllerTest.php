@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Persons;
 
+use App\Models\Child;
 use App\Models\LoveRelationship;
 use App\Models\Person;
 use App\Models\User;
@@ -186,15 +187,10 @@ class PersonChildrenControllerTest extends TestCase
             'first_name' => 'Ross',
             'last_name' => 'Geller',
         ]);
-        $child = Person::factory()->create([
+        $child = Child::factory()->create([
             'account_id' => $user->account_id,
-            'first_name' => 'Ben',
-            'last_name' => 'Geller',
-        ]);
-
-        $parent->children()->create([
-            'account_id' => $user->account_id,
-            'child_id' => $child->id,
+            'parent_id' => $parent->id,
+            'second_parent_id' => null,
         ]);
 
         $response = $this->actingAs($user)
