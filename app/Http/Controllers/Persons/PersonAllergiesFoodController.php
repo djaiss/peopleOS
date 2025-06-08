@@ -64,6 +64,10 @@ class PersonAllergiesFoodController extends Controller
             foreach ($validated['child_allergies'] as $childId => $allergies) {
                 $targetChild = Child::find($childId);
 
+                if (!$targetChild) {
+                    continue; // Skip invalid child IDs
+                }
+
                 (new UpdateChildFoodAllergy(
                     user: $user,
                     child: $targetChild,
