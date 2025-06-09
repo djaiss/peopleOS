@@ -26,6 +26,7 @@ use App\Http\Controllers\Instance\InstanceFreeAccountController;
 use App\Http\Controllers\Instance\InstanceTestimonialsController;
 use App\Http\Controllers\Instance\InstanceWaitlistController;
 use App\Http\Controllers\Journal\EntryController;
+use App\Http\Controllers\Journal\EntryMoodController;
 use App\Http\Controllers\Journal\JournalController;
 use App\Http\Controllers\Journal\MonthController;
 use App\Http\Controllers\LocaleController;
@@ -250,7 +251,12 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
         // journal
         Route::get('journal', [JournalController::class, 'index'])->name('journal.index');
         Route::get('journal/{year}/{month}', [MonthController::class, 'show'])->name('journal.month.show');
-        Route::get('journal/{year}/{month}/{day}', [EntryController::class, 'show'])->name('journal.entry.show');
+
+        Route::middleware(['entry'])->group(function (): void {
+            Route::get('journal/{year}/{month}/{day}', [EntryController::class, 'show'])->name('journal.entry.show');
+            Route::get('journal/{year}/{month}/{day}/mood/new', [EntryMoodController::class, 'new'])->name('journal.entry.mood.new');
+            Route::post('journal/{year}/{month}/{day}/mood', [EntryMoodController::class, 'create'])->name('journal.entry.mood.create');
+        });
     });
 
     Route::get('administration', [AdministrationController::class, 'index'])->name('administration.index');

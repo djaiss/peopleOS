@@ -23,25 +23,25 @@
   <div id="food-allergies-listing" class="rounded-lg border border-gray-200 bg-white">
     @forelse ($food_allergies as $allergy)
       @if ($allergy['type'] === 'person')
-      <div class="items justify-between flex gap-x-4 border-b border-gray-200 p-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-gray-50">
-        <div class="flex items-center gap-x-2">
-          <div class="shrink-0">
-            <img class="h-6 w-6 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $allergy['avatar']['40'] }}" srcset="{{ $allergy['avatar']['40'] }}, {{ $allergy['avatar']['80'] }} 2x" alt="{{ $allergy['name'] }}" loading="lazy" />
-          </div>
+        <div class="items flex justify-between gap-x-4 border-b border-gray-200 p-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-gray-50">
+          <div class="flex items-center gap-x-2">
+            <div class="shrink-0">
+              <img class="h-6 w-6 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $allergy['avatar']['40'] }}" srcset="{{ $allergy['avatar']['40'] }}, {{ $allergy['avatar']['80'] }} 2x" alt="{{ $allergy['name'] }}" loading="lazy" />
+            </div>
 
-          @if ($allergy['is_listed'])
-            <a href="{{ route('person.show', $allergy['slug']) }}" class="truncate text-sm text-gray-900 underline">{{ $allergy['name'] }}</a>
-          @else
-            <p class="truncate text-sm text-gray-900">{{ $allergy['name'] }}</p>
-          @endif
+            @if ($allergy['is_listed'])
+              <a href="{{ route('person.show', $allergy['slug']) }}" class="truncate text-sm text-gray-900 underline">{{ $allergy['name'] }}</a>
+            @else
+              <p class="truncate text-sm text-gray-900">{{ $allergy['name'] }}</p>
+            @endif
+          </div>
+          <span class="text-normal">{{ $allergy['food_allergies'] }}</span>
         </div>
-        <span class="text-normal">{{ $allergy['food_allergies'] }}</span>
-      </div>
       @else
-      <div class="items-center justify-between flex gap-x-4 border-b border-gray-200 p-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-gray-50">
-        <p class="truncate text-sm text-gray-900">{{ $allergy['name'] }}</p>
-        <span class="text-normal">{{ $allergy['food_allergies'] }}</span>
-      </div>
+        <div class="flex items-center justify-between gap-x-4 border-b border-gray-200 p-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-gray-50">
+          <p class="truncate text-sm text-gray-900">{{ $allergy['name'] }}</p>
+          <span class="text-normal">{{ $allergy['food_allergies'] }}</span>
+        </div>
       @endif
     @empty
       <!-- blank state -->

@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use App\Jobs\LogLastPersonSeen;
-use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Models\Child;
-use App\Models\Person;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckChild
