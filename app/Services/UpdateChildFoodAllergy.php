@@ -8,7 +8,6 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Child;
-use App\Models\Person;
 use App\Models\User;
 use Exception;
 

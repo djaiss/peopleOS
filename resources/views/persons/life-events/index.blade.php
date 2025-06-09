@@ -45,7 +45,6 @@
           <div id="life-events-list" class="ml-3 flex flex-col gap-y-7 border-l border-gray-300">
             @foreach ($life_events as $lifeEvent)
               <div id="life-event-{{ $lifeEvent['id'] }}" class="relative flex gap-x-3">
-
                 <!-- icon -->
                 <div class="absolute -left-3 rounded-full bg-amber-300 p-1">
                   <x-lucide-activity class="h-4 w-4 text-white" />

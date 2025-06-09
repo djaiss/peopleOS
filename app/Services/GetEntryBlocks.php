@@ -6,38 +6,44 @@ namespace App\Services;
 
 use App\Helpers\JournalHelper;
 use App\Models\Entry;
-use App\Models\Journal;
+use App\Models\EntryBlock;
 use App\Models\Mood;
-use App\Models\User;
 use Illuminate\Support\Collection;
 
-class GetEntryData
+class GetEntryBlocks
 {
     private array $options = [
         'mood' => false,
     ];
 
     public function __construct(
-        private readonly User $user,
         private readonly Entry $entry,
     ) {}
 
     public function execute(): array
     {
-        $content = $this->getAllContent();
+        $blocks = $this->getAllBlocks();
 
         return [
             'options' => $this->options,
             'entry' => $this->entry,
             'days' => $this->getDays(),
             'months' => $this->getMonths(),
-            'content' => $content,
+            'blocks' => $blocks,
         ];
     }
 
-    private function getAllContent(): array
+    private function getAllBlocks(): Collection
     {
-        return $this->getMood();
+        $blocksCollection = collect();
+
+        foreach ($this->entry->blocks as $block) {
+            if ($block->blockable_type === Mood::class) {
+                $blocksCollection->push($this->getMood($block));
+            }
+        }
+
+        return $blocksCollection;
     }
 
     public function getDays(): Collection
@@ -57,22 +63,21 @@ class GetEntryData
         );
     }
 
-    public function getMood(): array
+    public function getMood(EntryBlock $block): array
     {
-        $entryMood = $this->entry->mood;
+        /** @var Mood $entryMood */
+        $entryMood = $block->blockable;
 
-        if ($entryMood) {
-            $this->options['mood'] = true;
-        }
+        $this->options['mood'] = true;
 
-        return $entryMood ? [
+        return [
             'type' => 'mood',
             'data' => [
                 'id' => $entryMood->id,
                 'mood' => $entryMood->mood,
                 'comment' => $entryMood->comment,
             ],
-            'created_at' => $entryMood->created_at,
-        ] : [];
+            'created_at' => $entryMood->created_at->format('Y-m-d H:i:s'),
+        ];
     }
 }

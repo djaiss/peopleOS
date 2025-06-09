@@ -59,6 +59,13 @@ class CreateMoodTest extends TestCase
         $this->assertEquals(7, $mood->mood);
         $this->assertEquals('Had a great day!', $mood->comment);
 
+        $this->assertDatabaseHas('entries_blocks', [
+            'entry_id' => $entry->id,
+            'position' => 1,
+            'blockable_type' => Mood::class,
+            'blockable_id' => $mood->id,
+        ]);
+
         $this->assertInstanceOf(
             Mood::class,
             $mood,
@@ -78,7 +85,7 @@ class CreateMoodTest extends TestCase
             callback: function (LogUserAction $job) use ($user): bool {
                 return $job->action === 'mood_creation'
                     && $job->user->id === $user->id
-                    && $job->description === 'Created a mood entry for 2024/03/17';
+                    && $job->description === 'Created a mood entry for Sunday March 17th, 2024';
             },
         );
     }
