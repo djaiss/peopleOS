@@ -6000,16 +6000,16 @@
         },
         {
             "name": "ryangjchandler/laravel-cloudflare-turnstile",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile.git",
-                "reference": "0c74b0174863329571e1dcef948a0e2601e5874d"
+                "reference": "7faaad7a0a82633485ce56b4bcae68acddd474ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryangjchandler/laravel-cloudflare-turnstile/zipball/0c74b0174863329571e1dcef948a0e2601e5874d",
-                "reference": "0c74b0174863329571e1dcef948a0e2601e5874d",
+                "url": "https://api.github.com/repos/ryangjchandler/laravel-cloudflare-turnstile/zipball/7faaad7a0a82633485ce56b4bcae68acddd474ac",
+                "reference": "7faaad7a0a82633485ce56b4bcae68acddd474ac",
                 "shasum": ""
             },
             "require": {
@@ -6068,9 +6068,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/issues",
-                "source": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/tree/v2.0.2"
+                "source": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/tree/v2.0.3"
             },
-            "time": "2025-05-16T13:12:49+00:00"
+            "time": "2025-06-08T20:08:45+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -13376,6 +13376,6 @@
     "platform": {
         "php": "^8.3"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
