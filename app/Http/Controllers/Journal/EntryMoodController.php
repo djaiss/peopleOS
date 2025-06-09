@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Services\CreateMood;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -32,7 +33,7 @@ class EntryMoodController extends Controller
         $entry = $request->attributes->get('entry');
 
         $validated = $request->validate([
-            'mood' => 'required|string',
+            'mood' => ['required', Rule::enum(MoodType::class)],
         ]);
 
         // find the mood type based on the string
