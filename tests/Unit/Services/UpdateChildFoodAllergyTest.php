@@ -11,7 +11,6 @@ use App\Models\Child;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\UpdateChildFoodAllergy;
-use App\Services\UpdatePersonFoodAllergy;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;

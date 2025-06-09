@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Mood
@@ -61,5 +62,15 @@ class Mood extends Model
     public function entry(): BelongsTo
     {
         return $this->belongsTo(Entry::class, 'entry_id');
+    }
+
+    /**
+     * Get the block associated with the mood.
+     *
+     * @return MorphOne<EntryBlock, $this>
+     */
+    public function block(): MorphOne
+    {
+        return $this->morphOne(EntryBlock::class, 'blockable');
     }
 }

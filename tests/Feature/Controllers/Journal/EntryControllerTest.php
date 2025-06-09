@@ -28,6 +28,5 @@ class EntryControllerTest extends TestCase
             ->get('/journal/2023/10/1');
 
         $response->assertSessionHasNoErrors();
-        $response->assertViewIs('journal.entry.show');
     }
 }

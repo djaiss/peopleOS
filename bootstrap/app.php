@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\CheckEntry;
 use App\Http\Middleware\CheckGift;
 use App\Http\Middleware\CheckInstanceAdministrator;
 use App\Http\Middleware\CheckJournal;
@@ -44,6 +45,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'set.locale' => SetLocale::class,
             'life_event' => CheckLifeEvent::class,
             'love_relationship' => CheckLoveRelationship::class,
+            'entry' => CheckEntry::class,
             'child' => CheckChild::class,
         ]);
     })

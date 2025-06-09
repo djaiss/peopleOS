@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Entry;
+use App\Models\EntryBlock;
 use App\Models\Journal;
 use App\Models\Mood;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -38,6 +39,17 @@ class EntryTest extends TestCase
     }
 
     #[Test]
+    public function it_has_blocks(): void
+    {
+        $entry = Entry::factory()->create();
+        EntryBlock::factory()->create([
+            'entry_id' => $entry->id,
+        ]);
+
+        $this->assertTrue($entry->blocks()->exists());
+    }
+
+    #[Test]
     public function it_gets_the_date(): void
     {
         $entry = Entry::factory()->create([
@@ -46,6 +58,6 @@ class EntryTest extends TestCase
             'day' => 23,
         ]);
 
-        $this->assertEquals('2024/12/23', $entry->getDate());
+        $this->assertEquals('Monday December 23rd, 2024', $entry->getDate());
     }
 }

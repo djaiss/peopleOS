@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -55,6 +56,17 @@ class Entry extends Model
     }
 
     /**
+     * Get the blocks associated with the entry.
+     *
+     * @return HasMany<EntryBlock, $this>
+     */
+    public function blocks(): HasMany
+    {
+        return $this->hasMany(EntryBlock::class, 'entry_id')
+            ->orderBy('position', 'asc');
+    }
+
+    /**
      * Get the mood associated with the entry.
      *
      * @return HasOne<Mood, $this>
@@ -72,6 +84,6 @@ class Entry extends Model
     public function getDate(): string
     {
         return Carbon::create($this->year, $this->month, $this->day)
-            ->format('Y/m/d');
+            ->format('l F jS, Y');
     }
 }

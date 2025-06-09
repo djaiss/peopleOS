@@ -45,9 +45,12 @@
           <div id="life-events-list" class="ml-3 flex flex-col gap-y-7 border-l border-gray-300">
             @foreach ($life_events as $lifeEvent)
               <div id="life-event-{{ $lifeEvent['id'] }}" class="relative flex gap-x-3">
+                <!-- icon -->
                 <div class="absolute -left-3 rounded-full bg-amber-300 p-1">
                   <x-lucide-activity class="h-4 w-4 text-white" />
                 </div>
+
+                <!-- description -->
                 <div class="relative flex flex-col gap-y-3 pl-6">
                   <div class="group relative">
                     <a x-target="life-event-{{ $lifeEvent['id'] }}" href="{{ route('person.life-event.edit', [$person->slug, $lifeEvent['id']]) }}" class="rounded px-1 group-hover:bg-amber-100">{{ $lifeEvent['description'] }}</a>

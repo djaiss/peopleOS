@@ -27,6 +27,7 @@ class CreateMood
     {
         $this->validate();
         $this->create();
+        $this->createEntryBlock();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
 
@@ -50,6 +51,17 @@ class CreateMood
             'entry_id' => $this->entry->id,
             'mood' => $this->moodType->getDetails(),
             'comment' => $this->comment,
+        ]);
+    }
+
+    private function createEntryBlock(): void
+    {
+        $position = $this->entry->blocks()->max('position') + 1;
+
+        $this->entry->blocks()->create([
+            'position' => $position,
+            'blockable_id' => $this->mood->id,
+            'blockable_type' => Mood::class,
         ]);
     }
 
