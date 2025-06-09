@@ -36,6 +36,7 @@ class GetEntryBlocksTest extends TestCase
 
         $array = (new GetEntryBlocks(
             entry: $entry,
+            user: $user,
         ))->execute();
 
         $this->assertArrayHasKeys(
@@ -79,6 +80,7 @@ class GetEntryBlocksTest extends TestCase
 
         $array = (new GetEntryBlocks(
             entry: $entry,
+            user: $user,
         ))->execute();
 
         $this->assertCount(1, $array['blocks']);

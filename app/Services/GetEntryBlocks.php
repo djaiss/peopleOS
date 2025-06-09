@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Helpers\JournalHelper;
+use App\Cache\JournalDaysCache;
+use App\Cache\JournalMonthsCache;
 use App\Models\Entry;
 use App\Models\EntryBlock;
 use App\Models\Mood;
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 class GetEntryBlocks
@@ -17,6 +19,7 @@ class GetEntryBlocks
     ];
 
     public function __construct(
+        private readonly User $user,
         private readonly Entry $entry,
     ) {}
 
@@ -48,19 +51,21 @@ class GetEntryBlocks
 
     public function getDays(): Collection
     {
-        return JournalHelper::getDaysInMonth(
-            givenYear: $this->entry->year,
-            givenMonth: $this->entry->month,
-            givenDay: $this->entry->day,
-        );
+        return JournalDaysCache::make(
+            accountId: $this->user->account_id,
+            year: $this->entry->year,
+            month: $this->entry->month,
+            day: $this->entry->day,
+        )->value();
     }
 
     public function getMonths(): Collection
     {
-        return JournalHelper::getMonths(
+        return JournalMonthsCache::make(
+            accountId: $this->user->account_id,
             year: $this->entry->year,
             selectedMonth: $this->entry->month,
-        );
+        )->value();
     }
 
     public function getMood(EntryBlock $block): array

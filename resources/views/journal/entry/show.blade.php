@@ -28,7 +28,7 @@
       </div>
 
       <!-- add action modal -->
-      <div x-cloak x-show="open" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="scale-95 transform opacity-0" x-transition:enter-end="scale-100 transform opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="scale-100 transform opacity-100" x-transition:leave-end="scale-95 transform opacity-0" class="mt-6">
+      <div x-cloak x-show="open" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="scale-95 transform opacity-0" x-transition:enter-end="scale-100 transform opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="scale-100 transform opacity-100" x-transition:leave-end="scale-95 transform opacity-0" class="mt-6 mb-6">
         <div class="mx-auto grid max-w-3xl grid-cols-2 gap-4">
           <!-- left column -->
           <div>

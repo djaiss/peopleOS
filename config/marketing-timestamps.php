@@ -46,7 +46,7 @@ return [
         'marketing/index' => '2025-06-02 00:45:52',
         'marketing/partials/app/index' => '2025-06-02 00:45:52',
         'marketing/partials/footer' => '2025-06-02 00:45:52',
-        'marketing/partials/header' => '2025-06-02 00:45:52',
+        'marketing/partials/header' => '2025-06-09 10:28:49',
         'marketing/pricing/index' => '2025-05-09 13:05:41',
         'marketing/waitlist/confirmation' => '2025-05-05 02:11:32',
         'marketing/waitlist/subscribe' => '2025-05-05 02:11:32',

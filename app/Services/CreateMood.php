@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Cache\JournalDaysCache;
+use App\Cache\JournalMonthsCache;
 use App\Enums\MoodType;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
@@ -30,6 +32,7 @@ class CreateMood
         $this->createEntryBlock();
         $this->updateUserLastActivityDate();
         $this->logUserAction();
+        $this->refreshCache();
 
         return $this->mood;
     }
@@ -77,5 +80,21 @@ class CreateMood
             action: 'mood_creation',
             description: 'Created a mood entry for ' . $this->entry->getDate(),
         )->onQueue('low');
+    }
+
+    private function refreshCache(): void
+    {
+        JournalMonthsCache::make(
+            accountId: $this->user->account_id,
+            year: $this->entry->year,
+            selectedMonth: $this->entry->month,
+        )->refresh();
+
+        JournalDaysCache::make(
+            accountId: $this->user->account_id,
+            year: $this->entry->year,
+            month: $this->entry->month,
+            day: $this->entry->day,
+        )->refresh();
     }
 }
