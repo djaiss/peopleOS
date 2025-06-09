@@ -9,11 +9,14 @@ use App\Models\Entry;
 use App\Models\EntryBlock;
 use App\Models\Mood;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class JournalHelperTest extends TestCase
 {
+    use DatabaseTransactions;
+
     #[Test]
     public function it_returns_all_the_months_in_a_given_year(): void
     {
