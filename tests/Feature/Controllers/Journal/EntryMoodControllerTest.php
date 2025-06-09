@@ -77,7 +77,7 @@ class EntryMoodControllerTest extends TestCase
 
         $this->assertEquals(
             MoodType::VERY_PLEASANT->getDetails(),
-            $mood->mood
+            $mood->mood,
         );
     }
 }
