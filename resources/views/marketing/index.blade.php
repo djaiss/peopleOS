@@ -11,7 +11,7 @@
   <!-- Hero Section -->
   <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 py-8 text-center sm:pt-20 sm:pb-8 lg:px-8 xl:px-0">
-      <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about') }}</h1>
+      <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{{ __('Remember what matters about the people you care about. Document your life.') }}</h1>
       <p class="mt-6 text-lg leading-8 text-gray-600">
         {{ __('PeopleOS helps you be more intentional with your relationships by keeping track of the important details about people in your life.') }}
       </p>
@@ -40,9 +40,10 @@
     </div>
   </div>
 
+  <!-- App section -->
   @include('marketing.partials.app.index')
 
-  <!-- Feature Section -->
+  <!-- Feature section -->
   <div id="features" class="bg-gray-50 py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <!-- Title -->
@@ -56,6 +57,7 @@
       <!-- 3 benefits -->
       <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:max-w-none">
         <dl class="mb-20 grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          <!-- Add information about family -->
           <div class="flex flex-col">
             <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
               <x-lucide-shield-check class="h-5 w-5 flex-none text-blue-600" />
@@ -66,6 +68,7 @@
             </dd>
           </div>
 
+          <!-- Document everything -->
           <div class="flex flex-col">
             <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
               <x-lucide-sparkles class="h-5 w-5 flex-none text-blue-600" />
@@ -76,6 +79,7 @@
             </dd>
           </div>
 
+          <!-- Reminders -->
           <div class="flex flex-col">
             <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
               <x-lucide-server class="h-5 w-5 flex-none text-blue-600" />
@@ -87,8 +91,43 @@
           </div>
         </dl>
 
+        <dl class="mb-20 grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          <!-- Food allergies -->
+          <div class="flex flex-col">
+            <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
+              <x-lucide-alert-triangle class="h-5 w-5 flex-none text-blue-600" />
+              {{ __('Record food allergies') }}
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">{{ __('Record food allergies, dietary restrictions, and other preferences for any person.') }}</p>
+            </dd>
+          </div>
+
+          <!-- Gifts -->
+          <div class="flex flex-col">
+            <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
+              <x-lucide-gift class="h-5 w-5 flex-none text-blue-600" />
+              {{ __('Record gifts') }}
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">{{ __('Record gifts received, gifts ideas and gifts given so you never forget to get a gift for someone.') }}</p>
+            </dd>
+          </div>
+
+          <!-- Life events -->
+          <div class="flex flex-col">
+            <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
+              <x-lucide-radical class="h-5 w-5 flex-none text-blue-600" />
+              {{ __('Life events') }}
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">{{ __('Record life events such as births, deaths, marriages, divorces, and other significant life events.') }}</p>
+            </dd>
+          </div>
+        </dl>
+
         <div class="mx-auto text-center">
-          <a href="" class="group mb-3 inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:bg-white">
+          <a href="" class="group mb-3 inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 bg-white px-3 py-2 transition-colors duration-150 hover:bg-white">
             <x-lucide-building class="h-4 w-4 text-indigo-600 group-hover:text-indigo-700" />
             <span class="text-sm text-gray-700 group-hover:text-gray-900">
               {{ __('See all the incredible features') }}
@@ -100,8 +139,49 @@
     </div>
   </div>
 
+  <!-- open source -->
+  <div id="open-source" class="bg-white py-12">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
+      <!-- Title -->
+      <div class="mx-auto mb-10 max-w-2xl lg:text-center">
+        <p class="mb-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          {{ __('We are proudly open source.') }}
+        </p>
+        <h2 class="text-base leading-7 font-semibold text-green-600">Like really. Not open core.</h2>
+      </div>
+
+      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:max-w-none">
+        <dl class="mx-auto grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-4xl lg:grid-cols-2">
+          <div class="flex flex-col">
+            <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
+              <x-lucide-clover class="h-5 w-5 flex-none text-blue-600" />
+              Our code is public.
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">
+                Everyone can read
+                <a href="https://github.com/djaiss/peopleos" target="_blank" class="text-blue-500 hover:underline">our code</a>
+                . Everyone can contribute. Everyone can change it. It's completely free to download, change and modify the software for your own use.
+              </p>
+            </dd>
+          </div>
+
+          <div class="flex flex-col">
+            <dt class="flex items-center gap-x-3 text-base leading-7 font-semibold text-gray-900">
+              <x-lucide-sparkles class="h-5 w-5 flex-none text-blue-600" />
+              MIT-licensed
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">Our code is released under the MIT license. Perhaps it means nothing to you, but it's one of the most respected licenses out there. Most other tools say they are open source, but they are not truly.</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
   <!-- why -->
-  <div id="why" class="bg-white py-12">
+  <div id="why" class="bg-gray-50 py-12">
     <div class="mx-auto max-w-2xl rounded-lg bg-green-100 px-6 py-4">
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:items-center">
         <div class="col-span-2">
@@ -110,25 +190,25 @@
           <p class="mb-2">I've created PeopleOS to remember all these little, but so important, things.</p>
           <p>
             Read more about
-            <a href="{{ route('marketing.why.index') }}" class="text-blue-600 hover:text-blue-500">{{ __('why this tool exists') }}</a>
+            <a href="{{ route('marketing.why.index') }}" class="text-blue-500 hover:underline">{{ __('why this tool exists') }}</a>
             .
           </p>
         </div>
         <div class="flex flex-col items-center lg:col-span-1 lg:items-start" x-data="{ isRotating: false }">
           <div class="relative">
-            <img src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }} 1x, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" loading="lazy" />
+            <img src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }} 1x, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" loading="lazy" width="187" height="187" />
 
             <!-- Tooltip -->
             <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 left-full ml-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Please stooooop this! 😵‍💫</div>
           </div>
-          <p class="text-xs text-gray-600 lg:rotate-4">Régis Freyd. I created PeopleOS. Sorry.</p>
+          <p class="text-xs text-gray-600 lg:rotate-4">I'm Régis. I created PeopleOS. Sorry.</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Github section -->
-  <div id="github" class="bg-gray-50 py-12 sm:py-20">
+  <div id="github" class="bg-white py-12 sm:py-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -175,7 +255,7 @@
           @endforeach
 
           <li class="mt-4 text-center text-gray-600">
-            <a href="https://github.com/djaiss/peopleOS/pulls" target="_blank" class="text-blue-600 hover:text-blue-500">{{ __('See all the features') }}</a>
+            <a href="https://github.com/djaiss/peopleOS/pulls" target="_blank" class="text-blue-500 hover:underline">{{ __('See all the features') }}</a>
           </li>
         </ul>
 
@@ -202,7 +282,7 @@
   </div>
 
   <!-- CTA Section -->
-  <div id="privacy" class="bg-white py-12 sm:py-20">
+  <div id="privacy" class="bg-gray-50 py-12 sm:py-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <h3 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         {{ __('Privacy and transparency is at the core of what we do.') }}
@@ -243,7 +323,7 @@
   </div>
 
   <!-- you will hate it -->
-  <div id="hate" class="bg-gray-50 py-12 sm:py-20">
+  <div id="hate" class="bg-white py-12 sm:py-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-16 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -290,7 +370,7 @@
   </div>
 
   <!-- Testimonials -->
-  <div class="bg-white">
+  <div class="bg-gray-50">
     <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-0">
       <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
         <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">

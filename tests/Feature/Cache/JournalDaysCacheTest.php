@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
+use ReflectionClass;
 
 class JournalDaysCacheTest extends TestCase
 {
@@ -44,7 +45,7 @@ class JournalDaysCacheTest extends TestCase
             day: 10,
         );
 
-        $reflection = new \ReflectionClass($cache);
+        $reflection = new ReflectionClass($cache);
         $ttlProperty = $reflection->getProperty('ttl');
         $ttlProperty->setAccessible(true);
 
@@ -63,7 +64,7 @@ class JournalDaysCacheTest extends TestCase
             day: 15,
         );
 
-        $reflection = new \ReflectionClass($cache);
+        $reflection = new ReflectionClass($cache);
         $generateMethod = $reflection->getMethod('generate');
         $generateMethod->setAccessible(true);
 
