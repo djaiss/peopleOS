@@ -40,6 +40,7 @@
     </div>
   </div>
 
+  <!-- App section -->
   @include('marketing.partials.app.index')
 
   <!-- Feature Section -->
@@ -88,7 +89,7 @@
         </dl>
 
         <div class="mx-auto text-center">
-          <a href="" class="group mb-3 inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:bg-white">
+          <a href="" class="group mb-3 inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 bg-white hover:bg-white">
             <x-lucide-building class="h-4 w-4 text-indigo-600 group-hover:text-indigo-700" />
             <span class="text-sm text-gray-700 group-hover:text-gray-900">
               {{ __('See all the incredible features') }}
@@ -116,12 +117,12 @@
         </div>
         <div class="flex flex-col items-center lg:col-span-1 lg:items-start" x-data="{ isRotating: false }">
           <div class="relative">
-            <img src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }} 1x, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" loading="lazy" />
+            <img src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }} 1x, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" loading="lazy" width="187" height="187" />
 
             <!-- Tooltip -->
             <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 left-full ml-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Please stooooop this! 😵‍💫</div>
           </div>
-          <p class="text-xs text-gray-600 lg:rotate-4">Régis Freyd. I created PeopleOS. Sorry.</p>
+          <p class="text-xs text-gray-600 lg:rotate-4">I'm Régis. I created PeopleOS. Sorry.</p>
         </div>
       </div>
     </div>
