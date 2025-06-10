@@ -483,10 +483,10 @@
           </div>
         </div>
 
-        <div class="p-6">
+        <div x-cloak x-show="activeTab === 'notes'" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="translate-x-2 transform opacity-0" x-transition:enter-end="translate-x-0 transform opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-x-0 transform opacity-100" x-transition:leave-end="translate-x-2 transform opacity-0" class="mx-auto max-w-2xl p-6">
           <!-- Add note form -->
           <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4">
-            <form id="add-note-form" x-target="notes-list add-note-form" >
+            <form id="add-note-form" x-target="notes-list add-note-form">
               <div class="mb-4">
                 <div class="w-full">
                   <textarea type="text" x-data="{
