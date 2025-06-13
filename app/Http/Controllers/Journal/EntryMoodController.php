@@ -51,4 +51,13 @@ class EntryMoodController extends Controller
             'day' => $entry->day,
         ])->with('status', trans('Mood logged'));
     }
+
+    public function edit(Request $request): View
+    {
+        $mood = $request->attributes->get('mood');
+
+        return view('journal.entry.partials.mood.edit', [
+            'mood' => $mood,
+        ]);
+    }
 }
