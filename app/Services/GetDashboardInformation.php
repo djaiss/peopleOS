@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Person;
 use App\Models\SpecialDate;
+use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -21,11 +22,13 @@ class GetDashboardInformation
         $reminders = $this->getReminders();
         $persons = $this->getLatestSeenPersons();
         $quote = $this->getInspirationalQuote();
+        $tasks = $this->getTasks();
 
         return [
             'reminders' => $reminders,
             'persons' => $persons,
             'quote' => $quote,
+            'tasks' => $tasks,
         ];
     }
 
@@ -145,5 +148,29 @@ class GetDashboardInformation
         ];
 
         return __($kindMessages[array_rand($kindMessages)]);
+    }
+
+    public function getTasks(): Collection
+    {
+        $tasks = Task::where('account_id', $this->user->account_id)
+            ->with('person')
+            ->where('is_completed', false)
+            ->orderBy('due_at', 'asc')
+            ->get();
+
+        return $tasks->map(fn(Task $task): array => [
+            'id' => $task->id,
+            'name' => $task->name,
+            'due_at' => $task->due_at?->format('Y-m-d'),
+            'person' => [
+                'id' => $task->person->id,
+                'name' => $task->person->name,
+                'slug' => $task->person->slug,
+                'avatar' => [
+                    '40' => $task->person->getAvatar(40),
+                    '80' => $task->person->getAvatar(80),
+                ],
+            ],
+        ]);
     }
 }
