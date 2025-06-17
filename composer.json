@@ -15,6 +15,7 @@
     "cesargb/laravel-magiclink": "^2.24",
     "intervention/image-laravel": "^1.5",
     "laravel/framework": "^11.9",
+    "laravel/nightwatch": "^1.7",
     "laravel/octane": "^2.8",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
