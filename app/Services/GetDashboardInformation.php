@@ -168,17 +168,15 @@ class GetDashboardInformation
                 'color' => $task->taskCategory?->color,
             ],
             'due_at' => $task->due_at?->format('Y-m-d'),
-            'person' => [
-                'person' => $task->person ? [
-                    'id'     => $task->person->id,
-                    'name'   => $task->person->name,
-                    'slug'   => $task->person->slug,
-                    'avatar' => [
-                        '40' => $task->person->getAvatar(40),
-                        '80' => $task->person->getAvatar(80),
-                    ],
-                ] : null,
-            ],
+            'person' => $task->person ? [
+                'id'     => $task->person->id,
+                'name'   => $task->person->name,
+                'slug'   => $task->person->slug,
+                'avatar' => [
+                    '40' => $task->person->getAvatar(40),
+                    '80' => $task->person->getAvatar(80),
+                ],
+            ] : null,
         ]);
     }
 }

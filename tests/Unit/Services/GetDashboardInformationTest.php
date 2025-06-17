@@ -158,69 +158,45 @@ class GetDashboardInformationTest extends TestCase
 
         $this->assertCount(2, $tasks);
 
-        $this->assertEquals(
-            $task1->id,
-            $tasks[0]['id'],
-        );
-        $this->assertEquals(
-            $task1->name,
-            $tasks[0]['name'],
-        );
-        $this->assertEquals(
-            $category->id,
-            $tasks[0]['task_category']['id'],
-        );
-        $this->assertEquals(
-            $category->name,
-            $tasks[0]['task_category']['name'],
-        );
-        $this->assertEquals(
-            $category->color,
-            $tasks[0]['task_category']['color'],
-        );
-        $this->assertEquals(
-            '2025-06-11',
-            $tasks[0]['due_at'],
-        );
-        $this->assertEquals(
-            $person->id,
-            $tasks[0]['person']['id'],
-        );
-        $this->assertEquals(
-            $person->name,
-            $tasks[0]['person']['name'],
-        );
-        $this->assertEquals(
-            $person->slug,
-            $tasks[0]['person']['slug'],
-        );
-        $this->assertArrayHasKey('40', $tasks[0]['person']['avatar']);
-        $this->assertArrayHasKey('80', $tasks[0]['person']['avatar']);
-
-        $this->assertEquals(
-            $task2->id,
-            $tasks[1]['id'],
-        );
-        $this->assertEquals(
-            $task2->name,
-            $tasks[1]['name'],
-        );
-        $this->assertNull($tasks[1]['task_category']['id']);
-        $this->assertNull($tasks[1]['task_category']['name']);
-        $this->assertNull($tasks[1]['task_category']['color']);
-        $this->assertEquals(
-            $person->id,
-            $tasks[1]['person']['id'],
-        );
-        $this->assertEquals(
-            $person->name,
-            $tasks[1]['person']['name'],
-        );
-        $this->assertEquals(
-            $person->slug,
-            $tasks[1]['person']['slug'],
-        );
-        $this->assertArrayHasKey('40', $tasks[1]['person']['avatar']);
-        $this->assertArrayHasKey('80', $tasks[1]['person']['avatar']);
+        $this->assertEquals([
+            0 =>[
+                'id' => $task1->id,
+                'name' => 'Send follow-up',
+                'task_category' => [
+                    'id' => $category->id,
+                    'name' => 'Email',
+                    'color' => 'bg-green-100',
+                ],
+                'due_at' => '2025-06-11',
+                'person' => [
+                    'id' => $person->id,
+                    'name' => 'Rachel Green',
+                    'slug' => $person->slug,
+                    'avatar' => [
+                        '40' => $person->getAvatar(40),
+                        '80' => $person->getAvatar(80),
+                    ],
+                ],
+            ],
+            1 => [
+                'id' => $task2->id,
+                'name' => 'Call back',
+                'task_category' => [
+                    'id' => null,
+                    'name' => null,
+                    'color' => null,
+                ],
+                'due_at' => '2025-06-12',
+                'person' => [
+                    'id' => $person->id,
+                    'name' => 'Rachel Green',
+                    'slug' => $person->slug,
+                    'avatar' => [
+                        '40' => $person->getAvatar(40),
+                        '80' => $person->getAvatar(80),
+                    ],
+                ],
+            ],
+        ], $tasks->toArray());
     }
 }
