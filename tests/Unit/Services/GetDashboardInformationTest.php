@@ -6,6 +6,8 @@ namespace Tests\Unit\Services;
 
 use App\Models\Person;
 use App\Models\SpecialDate;
+use App\Models\Task;
+use App\Models\TaskCategory;
 use App\Models\User;
 use App\Services\GetDashboardInformation;
 use Carbon\Carbon;
@@ -104,5 +106,97 @@ class GetDashboardInformationTest extends TestCase
         $this->assertArrayHasKey('40', $result[0]['avatar']);
         $this->assertArrayHasKey('80', $result[0]['avatar']);
         $this->assertArrayHasKey('last_consulted_at', $result[0]);
+    }
+
+    #[Test]
+    public function it_should_return_incomplete_tasks(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-06-13 10:00:00'));
+
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Rachel',
+            'last_name' => 'Green',
+        ]);
+        $category = TaskCategory::factory()->create([
+            'account_id' => $user->account_id,
+            'name' => 'Email',
+            'color' => 'bg-green-100',
+        ]);
+
+        // Incomplete task with category and due date
+        $task1 = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'task_category_id' => $category->id,
+            'name' => 'Send follow-up',
+            'is_completed' => false,
+            'due_at' => Carbon::parse('2025-06-11'),
+        ]);
+        // Incomplete task without category
+        $task2 = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'task_category_id' => null,
+            'name' => 'Call back',
+            'is_completed' => false,
+            'due_at' => Carbon::parse('2025-06-12'),
+        ]);
+        // Completed task (should not be returned)
+        Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'task_category_id' => $category->id,
+            'name' => 'Already done',
+            'is_completed' => true,
+            'due_at' => Carbon::parse('2025-06-10'),
+        ]);
+
+        $service = new GetDashboardInformation(user: $user);
+        $tasks = $service->getTasks();
+
+        $this->assertCount(2, $tasks);
+
+        $this->assertEquals([
+            0 =>[
+                'id' => $task1->id,
+                'name' => 'Send follow-up',
+                'task_category' => [
+                    'id' => $category->id,
+                    'name' => 'Email',
+                    'color' => 'bg-green-100',
+                ],
+                'due_at' => '2025-06-11',
+                'person' => [
+                    'id' => $person->id,
+                    'name' => 'Rachel Green',
+                    'slug' => $person->slug,
+                    'avatar' => [
+                        '40' => $person->getAvatar(40),
+                        '80' => $person->getAvatar(80),
+                    ],
+                ],
+            ],
+            1 => [
+                'id' => $task2->id,
+                'name' => 'Call back',
+                'task_category' => [
+                    'id' => null,
+                    'name' => null,
+                    'color' => null,
+                ],
+                'due_at' => '2025-06-12',
+                'person' => [
+                    'id' => $person->id,
+                    'name' => 'Rachel Green',
+                    'slug' => $person->slug,
+                    'avatar' => [
+                        '40' => $person->getAvatar(40),
+                        '80' => $person->getAvatar(80),
+                    ],
+                ],
+            ],
+        ], $tasks->toArray());
     }
 }
