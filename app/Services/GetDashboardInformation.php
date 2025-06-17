@@ -178,6 +178,7 @@ class GetDashboardInformation
                         '80' => $task->person->getAvatar(80),
                     ],
                 ] : null,
+            ],
         ]);
     }
 }
