@@ -74,10 +74,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/invitations/{user}/accept', [AdministrationController::class, 'accept'])->name('invitation.accept');
 
-Route::get('/refresh-csrf', function () {
-    return response()->json(['csrfToken' => csrf_token()]);
-});
-
 Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update');
 
 // stop a reminder from happening again
