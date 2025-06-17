@@ -3,11 +3,11 @@
     <div class="mx-auto mb-6 max-w-md overflow-hidden rounded-lg border border-gray-200 bg-white p-10 shadow-md dark:border-gray-700 dark:bg-gray-900">
       <!-- Text content -->
       <h3 class="text-2xl font-semibold text-gray-900">
-        {{ __('Your trial is over') }}
+        {{ __('We truly hope you’ve enjoyed your time with us.') }}
       </h3>
 
       <p class="mt-4 text-base text-gray-600">
-        {{ __('You can upgrade your account to continue using the app.') }}
+        {{ __('Your trial is over. You can upgrade your account to continue using the app.') }}
       </p>
 
       <p class="mt-4 text-base text-gray-600">
