@@ -6,6 +6,8 @@ namespace Tests\Unit\Services;
 
 use App\Models\Person;
 use App\Models\SpecialDate;
+use App\Models\Task;
+use App\Models\TaskCategory;
 use App\Models\User;
 use App\Services\GetDashboardInformation;
 use Carbon\Carbon;
@@ -104,5 +106,121 @@ class GetDashboardInformationTest extends TestCase
         $this->assertArrayHasKey('40', $result[0]['avatar']);
         $this->assertArrayHasKey('80', $result[0]['avatar']);
         $this->assertArrayHasKey('last_consulted_at', $result[0]);
+    }
+
+    #[Test]
+    public function it_should_return_incomplete_tasks(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-06-13 10:00:00'));
+
+        $user = User::factory()->create();
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+            'first_name' => 'Rachel',
+            'last_name' => 'Green',
+        ]);
+        $category = TaskCategory::factory()->create([
+            'account_id' => $user->account_id,
+            'name' => 'Email',
+            'color' => 'bg-green-100',
+        ]);
+
+        // Incomplete task with category and due date
+        $task1 = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'task_category_id' => $category->id,
+            'name' => 'Send follow-up',
+            'is_completed' => false,
+            'due_at' => Carbon::parse('2025-06-11'),
+        ]);
+        // Incomplete task without category
+        $task2 = Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'task_category_id' => null,
+            'name' => 'Call back',
+            'is_completed' => false,
+            'due_at' => Carbon::parse('2025-06-12'),
+        ]);
+        // Completed task (should not be returned)
+        Task::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $person->id,
+            'task_category_id' => $category->id,
+            'name' => 'Already done',
+            'is_completed' => true,
+            'due_at' => Carbon::parse('2025-06-10'),
+        ]);
+
+        $service = new GetDashboardInformation(user: $user);
+        $tasks = $service->getTasks();
+
+        $this->assertCount(2, $tasks);
+
+        $this->assertEquals(
+            $task1->id,
+            $tasks[0]['id']
+        );
+        $this->assertEquals(
+            $task1->name,
+            $tasks[0]['name']
+        );
+        $this->assertEquals(
+            $category->id,
+            $tasks[0]['task_category']['id']
+        );
+        $this->assertEquals(
+            $category->name,
+            $tasks[0]['task_category']['name']
+        );
+        $this->assertEquals(
+            $category->color,
+            $tasks[0]['task_category']['color']
+        );
+        $this->assertEquals(
+            '2025-06-11',
+            $tasks[0]['due_at']
+        );
+        $this->assertEquals(
+            $person->id,
+            $tasks[0]['person']['id']
+        );
+        $this->assertEquals(
+            $person->name,
+            $tasks[0]['person']['name']
+        );
+        $this->assertEquals(
+            $person->slug,
+            $tasks[0]['person']['slug']
+        );
+        $this->assertArrayHasKey('40', $tasks[0]['person']['avatar']);
+        $this->assertArrayHasKey('80', $tasks[0]['person']['avatar']);
+
+        $this->assertEquals(
+            $task2->id,
+            $tasks[1]['id']
+        );
+        $this->assertEquals(
+            $task2->name,
+            $tasks[1]['name']
+        );
+        $this->assertNull($tasks[1]['task_category']['id']);
+        $this->assertNull($tasks[1]['task_category']['name']);
+        $this->assertNull($tasks[1]['task_category']['color']);
+        $this->assertEquals(
+            $person->id,
+            $tasks[1]['person']['id']
+        );
+        $this->assertEquals(
+            $person->name,
+            $tasks[1]['person']['name']
+        );
+        $this->assertEquals(
+            $person->slug,
+            $tasks[1]['person']['slug']
+        );
+        $this->assertArrayHasKey('40', $tasks[1]['person']['avatar']);
+        $this->assertArrayHasKey('80', $tasks[1]['person']['avatar']);
     }
 }
