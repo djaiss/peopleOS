@@ -154,6 +154,7 @@ class GetDashboardInformation
     {
         $tasks = Task::where('account_id', $this->user->account_id)
             ->with('person')
+            ->with('taskCategory')
             ->where('is_completed', false)
             ->orderBy('due_at', 'asc')
             ->get();
@@ -161,6 +162,11 @@ class GetDashboardInformation
         return $tasks->map(fn(Task $task): array => [
             'id' => $task->id,
             'name' => $task->name,
+            'task_category' => [
+                'id' => $task->taskCategory?->id,
+                'name' => $task->taskCategory?->name,
+                'color' => $task->taskCategory?->color,
+            ],
             'due_at' => $task->due_at?->format('Y-m-d'),
             'person' => [
                 'id' => $task->person->id,
