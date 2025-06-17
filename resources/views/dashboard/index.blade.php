@@ -34,9 +34,13 @@
             <!-- Welcome box -->
             <div class="rounded-lg border border-gray-200 bg-white p-4">
               <div class="flex items-center gap-3">
-                <img class="h-12 w-12 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ auth()->user()->getAvatar(64) }}" alt="{{ auth()->user()->name }}" />
+                <img class="h-12 w-12 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10"
+                     src="{{ auth()->user()->getAvatar(64) }}"
+                     alt="{{ auth()->user()->name }}" />
                 <div>
-                  <h3 class="text-basefont-semibold text-gray-900">{{ __('Hey :name 👋', ['name' => auth()->user()->name]) }}</h3>
+                  <h3 class="text-base font-semibold text-gray-900">
+                    {{ __('Hey :name 👋', ['name' => auth()->user()->name]) }}
+                  </h3>
                   <p class="text-sm text-gray-500">{{ $quote }}</p>
                 </div>
               </div>
