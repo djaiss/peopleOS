@@ -10,6 +10,7 @@ use App\Models\Person;
 use App\Services\CreateChild;
 use App\Services\CreatePet;
 use App\Services\DestroyChild;
+use App\Services\DestroyPet;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,14 +54,15 @@ class PersonPetController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
-        $child = $request->attributes->get('child');
+        $person = $request->attributes->get('person');
+        $pet = $request->attributes->get('pet');
 
-        (new DestroyChild(
+        (new DestroyPet(
             user: Auth::user(),
-            child: $child,
+            pet: $pet,
         ))->execute();
 
-        return redirect()->route('person.family.index', $child->parent)
+        return redirect()->route('person.family.index', $person)
             ->with('status', trans('Changes saved'));
     }
 }
