@@ -73,7 +73,13 @@
             <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Community') }}</a>
           </li>
           <li>
-            <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Status') }}</a>
+            <a href="https://status.peopleos.cloud/" target="_blank" class="flex items-center gap-x-2 text-sm text-gray-600 hover:text-gray-900">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 duration-1000"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+              </span>
+              {{ __('Status') }}
+            </a>
           </li>
         </ul>
       </div>
