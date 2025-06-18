@@ -23,9 +23,14 @@
       </div>
 
       <!-- Help text -->
-      <p class="mt-4 text-sm text-gray-500">
+      <p class="mt-4 mb-4 text-sm text-gray-500">
         {{ __('We use LemonSqueezy to handle payments. You can pay with credit card, Apple Pay, Google Pay, or PayPal.') }}
       </p>
+
+      <!-- logo -->
+      <a href="https://lemonsqueezy.com" target="_blank" class="flex justify-center">
+        <img src="{{ asset('marketing/lemonsqueezy.svg') }}" alt="LemonSqueezy" class="h-6">
+      </a>
     </div>
   </div>
 </x-app-layout>
