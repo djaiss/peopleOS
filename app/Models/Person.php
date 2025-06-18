@@ -368,6 +368,16 @@ class Person extends Model
     }
 
     /**
+     * Get the pets associated with the person.
+     *
+     * @return HasMany<Pet, $this>
+     */
+    public function pets(): HasMany
+    {
+        return $this->hasMany(Pet::class);
+    }
+
+    /**
      * Get the person's full name.
      *
      * @return Attribute<string, never>
