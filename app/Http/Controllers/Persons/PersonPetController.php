@@ -11,6 +11,7 @@ use App\Services\CreateChild;
 use App\Services\CreatePet;
 use App\Services\DestroyChild;
 use App\Services\DestroyPet;
+use App\Services\UpdatePet;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,42 @@ class PersonPetController extends Controller
             user: Auth::user(),
             account: $person->account,
             person: $person,
+            name: $validated['name'],
+            species: $validated['species'],
+            breed: $validated['breed'],
+            gender: $validated['gender'],
+        ))->execute();
+
+        return redirect()->route('person.family.index', $person)
+            ->with('status', trans('Changes saved'));
+    }
+
+    public function edit(Request $request): View
+    {
+        $person = $request->attributes->get('person');
+        $pet = $request->attributes->get('pet');
+
+        return view('persons.family.partials.pets.edit', [
+            'person' => $person,
+            'pet' => $pet,
+        ]);
+    }
+
+    public function update(Request $request): RedirectResponse
+    {
+        $person = $request->attributes->get('person');
+        $pet = $request->attributes->get('pet');
+
+        $validated = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'species' => 'nullable|string|max:255',
+            'breed' => 'nullable|string|max:255',
+            'gender' => 'nullable|string|max:255',
+        ]);
+
+        (new UpdatePet(
+            user: Auth::user(),
+            pet: $pet,
             name: $validated['name'],
             species: $validated['species'],
             breed: $validated['breed'],
