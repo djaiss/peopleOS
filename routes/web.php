@@ -56,6 +56,7 @@ use App\Http\Controllers\Persons\PersonLifeEventController;
 use App\Http\Controllers\Persons\PersonLoveController;
 use App\Http\Controllers\Persons\PersonNoteController;
 use App\Http\Controllers\Persons\PersonPastLoveToggleController;
+use App\Http\Controllers\Persons\PersonPetController;
 use App\Http\Controllers\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Persons\PersonRelationshipController;
 use App\Http\Controllers\Persons\PersonReminderController;
@@ -230,6 +231,15 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::post('persons/{slug}/children', [PersonChildrenController::class, 'store'])->name('person.children.store');
             Route::middleware(['child'])->group(function (): void {
                 Route::delete('persons/{slug}/children/{child}', [PersonChildrenController::class, 'destroy'])->name('person.children.destroy');
+            });
+
+            // pet
+            Route::get('persons/{slug}/pets/new', [PersonPetController::class, 'new'])->name('person.pet.new');
+            Route::post('persons/{slug}/pets', [PersonPetController::class, 'store'])->name('person.pet.store');
+            Route::middleware(['pet'])->group(function (): void {
+                Route::get('persons/{slug}/pets/{pet}', [PersonPetController::class, 'edit'])->name('person.pet.edit');
+                Route::put('persons/{slug}/pets/{pet}', [PersonPetController::class, 'update'])->name('person.pet.update');
+                Route::delete('persons/{slug}/pets/{pet}', [PersonPetController::class, 'destroy'])->name('person.pet.destroy');
             });
 
             // gifts

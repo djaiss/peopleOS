@@ -37,6 +37,15 @@
             'children' => $children,
           ]
         )
+
+        <!-- Pets -->
+        @include(
+          'persons.family.partials.pets.index',
+          [
+            'person' => $person,
+            'pets' => $pets ?? collect(),
+          ]
+        )
       </div>
     </div>
   </div>
