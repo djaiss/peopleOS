@@ -6,6 +6,7 @@ namespace Tests\Unit\Services;
 
 use App\Models\Account;
 use App\Models\Entry;
+use App\Models\EntryBlock;
 use App\Models\Journal;
 use App\Models\Mood;
 use App\Models\User;
@@ -33,6 +34,11 @@ class DestroyMoodTest extends \Tests\TestCase
         ]);
         $mood = Mood::factory()->create([
             'entry_id' => $entry->id,
+        ]);
+        $moodBlock = EntryBlock::factory()->create([
+            'entry_id' => $entry->id,
+            'blockable_id' => $mood->id,
+            'blockable_type' => Mood::class,
         ]);
 
         (new DestroyMood(
