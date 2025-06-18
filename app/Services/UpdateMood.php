@@ -9,8 +9,6 @@ use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Mood;
 use App\Models\User;
-use App\Services\JournalDaysCache;
-use App\Services\JournalMonthsCache;
 use Exception;
 
 class UpdateMood

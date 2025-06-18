@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  *
  * @property int $id
  * @property int $entry_id
- * @property string $mood
+ * @property int $mood
  * @property string|null $comment
  * @property Carbon $created_at
  * @property Carbon|null $updated_at

@@ -1,17 +1,19 @@
 <?php
 /*
  * @var array $block
+ * @var Entry $entry
  */
 ?>
+
 <div class="group">
-  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 mb-1 text-sm mx-auto max-w-xl items-center justify-between flex transition-opacity duration-200">
-    <p>Mood</p>
+  <div class="invisible mx-auto mb-1 flex max-w-xl items-center justify-between text-sm opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100">
+    <p>{{ __('Mood') }}</p>
     <div class="flex gap-x-3">
-      <a href="" class="text-gray-500 hover:text-gray-700">Edit</a>
+      <a x-target="edit-mood-{{ $block['data']['id'] }}" href="{{ route('journal.entry.mood.edit', ['year' => $entry->year, 'month' => $entry->month, 'day' => $entry->day, 'mood' => $block['data']['id']]) }}" class="text-gray-500 hover:text-gray-700">Edit</a>
       <a href="" class="text-gray-500 hover:text-gray-700">Delete</a>
     </div>
   </div>
-  <div class="mx-auto max-w-xl rounded-lg border border-gray-200 bg-white transition-all duration-800 ease-in-out">
+  <div id="edit-mood-{{ $block['data']['id'] }}" class="mx-auto max-w-xl rounded-lg border border-gray-200 bg-white transition-all duration-800 ease-in-out">
     <div class="flex items-center gap-x-3 p-4">
       <div
         class="h-20 w-20 rounded-full border-2 transition-all duration-800 ease-in-out"

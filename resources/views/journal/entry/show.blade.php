@@ -218,7 +218,7 @@
 
       <!-- blocks -->
       @foreach ($blocks as $block)
-        @include('journal.entry.partials.' . $block['type'] . '.show', ['block' => $block])
+        @include('journal.entry.partials.' . $block['type'] . '.show', ['block' => $block, 'entry' => $entry])
       @endforeach
     </div>
   </div>
