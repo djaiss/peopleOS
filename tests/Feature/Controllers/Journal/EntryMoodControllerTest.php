@@ -80,4 +80,78 @@ class EntryMoodControllerTest extends TestCase
             $mood->mood,
         );
     }
+
+    #[Test]
+    public function it_displays_the_edit_mood_form(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-01-17 10:00:00'));
+
+        $user = User::factory()->create([
+            'first_name' => 'Monica',
+            'last_name' => 'Geller',
+        ]);
+        $journal = Journal::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $entry = Entry::factory()->create([
+            'journal_id' => $journal->id,
+            'year' => 2025,
+            'month' => 1,
+            'day' => 17,
+        ]);
+        $mood = Mood::factory()->create([
+            'entry_id' => $entry->id,
+            'mood' => MoodType::PLEASANT->getDetails(),
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get("/journal/2025/1/17/mood/{$mood->id}/edit");
+
+        $response->assertOk();
+        $response->assertViewIs('journal.entry.partials.mood.edit');
+        $response->assertViewHas('mood', $mood);
+        $response->assertViewHas('day', 17);
+        $response->assertViewHas('month', 1);
+        $response->assertViewHas('year', 2025);
+    }
+
+    #[Test]
+    public function it_updates_an_existing_mood(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-01-17 10:00:00'));
+
+        $user = User::factory()->create();
+        $journal = Journal::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $entry = Entry::factory()->create([
+            'journal_id' => $journal->id,
+            'year' => 2025,
+            'month' => 1,
+            'day' => 17,
+        ]);
+        $mood = Mood::factory()->create([
+            'entry_id' => $entry->id,
+            'mood' => MoodType::PLEASANT->getDetails(),
+        ]);
+
+        $response = $this->actingAs($user)
+            ->json('PUT', "/journal/2025/1/17/mood/{$mood->id}", [
+                'mood' => 'very_pleasant',
+            ]);
+
+        $response->assertRedirectToRoute('journal.entry.show', [
+            'year' => 2025,
+            'month' => 1,
+            'day' => 17,
+        ]);
+
+        $response->assertSessionHas('status', trans('Mood updated'));
+
+        $mood = $mood->fresh();
+        $this->assertEquals(
+            MoodType::VERY_PLEASANT->getDetails(),
+            $mood->mood,
+        );
+    }
 }

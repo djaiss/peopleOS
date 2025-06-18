@@ -10,6 +10,7 @@ use App\Http\Middleware\CheckLifeEvent;
 use App\Http\Middleware\CheckLoveRelationship;
 use App\Http\Middleware\CheckMarketingPage;
 use App\Http\Middleware\CheckMarketingSiteEnabled;
+use App\Http\Middleware\CheckMood;
 use App\Http\Middleware\CheckNote;
 use App\Http\Middleware\CheckPerson;
 use App\Http\Middleware\CheckPersonApi;
@@ -49,6 +50,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'entry' => CheckEntry::class,
             'child' => CheckChild::class,
             'pet' => CheckPet::class,
+            'mood' => CheckMood::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
