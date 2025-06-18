@@ -16,6 +16,7 @@ use App\Models\LifeEvent;
 use App\Models\LoveRelationship;
 use App\Models\Note;
 use App\Models\Person;
+use App\Models\Pet;
 use App\Models\SpecialDate;
 use App\Models\Task;
 use App\Models\WorkHistory;
@@ -217,6 +218,17 @@ class PersonTest extends TestCase
         $this->assertNotEmpty($children);
         $this->assertEquals($ross->id, $children->first()->parent_id);
         $this->assertEquals($rachel->id, $children->first()->second_parent_id);
+    }
+
+    #[Test]
+    public function it_has_many_pets(): void
+    {
+        $person = Person::factory()->create();
+        Pet::factory()->create([
+            'person_id' => $person->id,
+        ]);
+
+        $this->assertTrue($person->pets()->exists());
     }
 
     #[Test]

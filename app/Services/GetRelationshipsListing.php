@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\Child;
 use App\Models\LoveRelationship;
 use App\Models\Person;
+use App\Models\Pet;
 use Illuminate\Support\Collection;
 
 class GetRelationshipsListing
@@ -21,6 +22,7 @@ class GetRelationshipsListing
             'currentRelationships' => $this->getCurrentRelationships(),
             'pastRelationships' => $this->getPastRelationships(),
             'children' => $this->getChildren(),
+            'pets' => $this->getPets(),
         ];
     }
 
@@ -72,5 +74,16 @@ class GetRelationshipsListing
                 'id' => $child->id,
                 'name' => $child->name,
             ]);
+    }
+
+    public function getPets(): Collection
+    {
+        return $this->person->pets()->get()->map(fn(Pet $pet): array => [
+            'id' => $pet->id,
+            'name' => $pet->name,
+            'species' => $pet->species,
+            'breed' => $pet->breed,
+            'gender' => $pet->gender,
+        ]);
     }
 }

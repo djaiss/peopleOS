@@ -66,7 +66,7 @@
       </x-button.secondary>
 
       <x-button.primary>
-        {{ __('Create relationship') }}
+        {{ __('Save') }}
       </x-button.primary>
     </div>
   </form>

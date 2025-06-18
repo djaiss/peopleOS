@@ -12,6 +12,7 @@ use App\Models\JournalTemplate;
 use App\Models\LifeEvent;
 use App\Models\Log;
 use App\Models\Person;
+use App\Models\Pet;
 use App\Models\Task;
 use App\Models\TaskCategory;
 use App\Models\User;
@@ -131,6 +132,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->emailsSent()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_pets(): void
+    {
+        $account = Account::factory()->create();
+        Pet::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->pets()->exists());
     }
 
     public function it_checks_if_the_account_is_in_trial(): void

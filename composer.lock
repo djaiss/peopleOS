@@ -2257,16 +2257,16 @@
         },
         {
             "name": "laravel/nightwatch",
-            "version": "v1.7.2",
+            "version": "v1.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/nightwatch.git",
-                "reference": "a3eb15c4c853b63ebf2317ac13f4789fa2f890de"
+                "reference": "01744b7de3a8d6c334f03fab4509ab46c5a5706d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/nightwatch/zipball/a3eb15c4c853b63ebf2317ac13f4789fa2f890de",
-                "reference": "a3eb15c4c853b63ebf2317ac13f4789fa2f890de",
+                "url": "https://api.github.com/repos/laravel/nightwatch/zipball/01744b7de3a8d6c334f03fab4509ab46c5a5706d",
+                "reference": "01744b7de3a8d6c334f03fab4509ab46c5a5706d",
                 "shasum": ""
             },
             "require": {
@@ -2282,6 +2282,7 @@
                 "symfony/http-foundation": "^6.0|^7.0"
             },
             "require-dev": {
+                "ext-pdo": "*",
                 "guzzlehttp/guzzle": "^7.0",
                 "guzzlehttp/psr7": "^2.0",
                 "laravel/horizon": "^5.4",
@@ -2333,7 +2334,7 @@
                 "issues": "https://github.com/laravel/nightwatch/issues",
                 "source": "https://github.com/laravel/nightwatch"
             },
-            "time": "2025-06-17T05:59:26+00:00"
+            "time": "2025-06-17T23:43:41+00:00"
         },
         {
             "name": "laravel/octane",
@@ -12667,16 +12668,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.13.1",
+            "version": "3.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "1b71b4dd7e7ef651ac749cea67e513c0c832f4bd"
+                "reference": "5b5e3821314f947dd040c70f7992a64eac89025c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/1b71b4dd7e7ef651ac749cea67e513c0c832f4bd",
-                "reference": "1b71b4dd7e7ef651ac749cea67e513c0c832f4bd",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/5b5e3821314f947dd040c70f7992a64eac89025c",
+                "reference": "5b5e3821314f947dd040c70f7992a64eac89025c",
                 "shasum": ""
             },
             "require": {
@@ -12747,7 +12748,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-06-12T15:04:34+00:00"
+            "time": "2025-06-17T22:17:01+00:00"
         },
         {
             "name": "symfony/cache",

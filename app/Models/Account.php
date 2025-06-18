@@ -159,6 +159,16 @@ class Account extends Model
     }
 
     /**
+     * Get the pets associated with the account.
+     *
+     * @return HasMany<Pet, $this>
+     */
+    public function pets(): HasMany
+    {
+        return $this->hasMany(Pet::class);
+    }
+
+    /**
      * Check if the account is in trial.
      *
      * @return bool

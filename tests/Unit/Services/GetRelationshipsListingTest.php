@@ -7,6 +7,7 @@ namespace Tests\Unit\Services;
 use App\Models\Child;
 use App\Models\LoveRelationship;
 use App\Models\Person;
+use App\Models\Pet;
 use App\Models\User;
 use App\Services\GetRelationshipsListing;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -61,6 +62,16 @@ class GetRelationshipsListingTest extends TestCase
             'second_parent_id' => $rachel->id,
         ]);
 
+        // create pet
+        $pet = Pet::factory()->create([
+            'account_id' => $user->account_id,
+            'person_id' => $ross->id,
+            'name' => 'Phoebe',
+            'species' => 'cat',
+            'breed' => 'Siamese',
+            'gender' => 'female',
+        ]);
+
         $array = (new GetRelationshipsListing(
             person: $ross,
         ))->execute();
@@ -68,10 +79,12 @@ class GetRelationshipsListingTest extends TestCase
         $this->assertArrayHasKey('currentRelationships', $array);
         $this->assertArrayHasKey('pastRelationships', $array);
         $this->assertArrayHasKey('children', $array);
+        $this->assertArrayHasKey('pets', $array);
 
         $this->assertCount(1, $array['currentRelationships']);
         $this->assertCount(1, $array['pastRelationships']);
         $this->assertCount(1, $array['children']);
+        $this->assertCount(1, $array['pets']);
 
         $currentRelationshipData = $array['currentRelationships']->first();
         $this->assertEquals([
@@ -112,5 +125,14 @@ class GetRelationshipsListingTest extends TestCase
             'id' => $child->id,
             'name' => 'Ben Geller',
         ], $childData);
+
+        $petData = $array['pets']->first();
+        $this->assertEquals([
+            'id' => $pet->id,
+            'name' => 'Phoebe',
+            'species' => 'cat',
+            'breed' => 'Siamese',
+            'gender' => 'female',
+        ], $petData);
     }
 }
