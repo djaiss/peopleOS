@@ -265,6 +265,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
             Route::middleware(['mood'])->group(function (): void {
                 Route::get('journal/{year}/{month}/{day}/mood/{mood}/edit', [EntryMoodController::class, 'edit'])->name('journal.entry.mood.edit');
                 Route::put('journal/{year}/{month}/{day}/mood/{mood}', [EntryMoodController::class, 'update'])->name('journal.entry.mood.update');
+                Route::delete('journal/{year}/{month}/{day}/mood/{mood}', [EntryMoodController::class, 'destroy'])->name('journal.entry.mood.destroy');
             });
         });
     });

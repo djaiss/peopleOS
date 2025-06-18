@@ -6,6 +6,7 @@ namespace Tests\Feature\Controllers\Journal;
 
 use App\Enums\MoodType;
 use App\Models\Entry;
+use App\Models\EntryBlock;
 use App\Models\Journal;
 use App\Models\Mood;
 use App\Models\User;
@@ -153,5 +154,49 @@ class EntryMoodControllerTest extends TestCase
             MoodType::VERY_PLEASANT->getDetails(),
             $mood->mood,
         );
+    }
+
+    #[Test]
+    public function it_deletes_an_existing_mood(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2025-01-17 10:00:00'));
+
+        $user = User::factory()->create([
+            'first_name' => 'Phoebe',
+            'last_name' => 'Buffay',
+        ]);
+        $journal = Journal::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+        $entry = Entry::factory()->create([
+            'journal_id' => $journal->id,
+            'year' => 2025,
+            'month' => 1,
+            'day' => 17,
+        ]);
+        $mood = Mood::factory()->create([
+            'entry_id' => $entry->id,
+            'mood' => MoodType::PLEASANT->getDetails(),
+        ]);
+        EntryBlock::factory()->create([
+            'entry_id' => $entry->id,
+            'blockable_id' => $mood->id,
+            'blockable_type' => Mood::class,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->json('DELETE', "/journal/2025/1/17/mood/{$mood->id}");
+
+        $response->assertRedirectToRoute('journal.entry.show', [
+            'year' => 2025,
+            'month' => 1,
+            'day' => 17,
+        ]);
+
+        $response->assertSessionHas('status', trans('Mood deleted'));
+
+        $this->assertDatabaseMissing('entries_mood', [
+            'id' => $mood->id,
+        ]);
     }
 }

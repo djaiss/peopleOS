@@ -15,7 +15,7 @@
   {{-- Days grid --}}
   @include('journal.entry.partials.days', ['days' => $days])
 
-  <div class="mx-auto max-w-7xl">
+  <div id="block-listing" class="mx-auto max-w-7xl">
     <div class="mb-10" x-data="{ open: false }">
       <!-- title -->
       <h1 class="mb-4 text-center font-serif text-2xl font-normal">{{ $entry->getDate() }}</h1>

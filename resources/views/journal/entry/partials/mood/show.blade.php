@@ -9,8 +9,16 @@
   <div class="invisible mx-auto mb-1 flex max-w-xl items-center justify-between text-sm opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100">
     <p>{{ __('Mood') }}</p>
     <div class="flex gap-x-3">
-      <a x-target="edit-mood-{{ $block['data']['id'] }}" href="{{ route('journal.entry.mood.edit', ['year' => $entry->year, 'month' => $entry->month, 'day' => $entry->day, 'mood' => $block['data']['id']]) }}" class="text-gray-500 hover:text-gray-700">Edit</a>
-      <a href="" class="text-gray-500 hover:text-gray-700">Delete</a>
+      <a x-target="edit-mood-{{ $block['data']['id'] }}" href="{{ route('journal.entry.mood.edit', ['year' => $entry->year, 'month' => $entry->month, 'day' => $entry->day, 'mood' => $block['data']['id']]) }}" class="text-gray-500 hover:text-gray-700">{{ __('Edit') }}</a>
+      <form x-target="block-listing edit-mood-{{ $block['data']['id'] }}" x-on:ajax:before="
+        confirm(
+          '{{ __('Are you sure you want to proceed? This can not be undone.') }}',
+        ) || $event.preventDefault()
+      " action="{{ route('journal.entry.mood.destroy', ['year' => $entry->year, 'month' => $entry->month, 'day' => $entry->day, 'mood' => $block['data']['id']]) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="text-gray-500 hover:text-gray-700">{{ __('Delete') }}</button>
+      </form>
     </div>
   </div>
   <div id="edit-mood-{{ $block['data']['id'] }}" class="mx-auto max-w-xl rounded-lg border border-gray-200 bg-white transition-all duration-800 ease-in-out">
@@ -41,4 +49,5 @@
       </div>
     </div>
   </div>
+  <div id="mood-{{ $block['data']['id'] }}"></div>
 </div>

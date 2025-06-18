@@ -8,6 +8,7 @@ use App\Enums\MoodType;
 use App\Http\Controllers\Controller;
 use App\Models\Mood;
 use App\Services\CreateMood;
+use App\Services\DestroyMood;
 use App\Services\UpdateMood;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -90,5 +91,22 @@ class EntryMoodController extends Controller
             'month' => $entry->month,
             'day' => $entry->day,
         ])->with('status', trans('Mood updated'));
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        $mood = $request->attributes->get('mood');
+        $entry = $request->attributes->get('entry');
+
+        (new DestroyMood(
+            user: Auth::user(),
+            mood: $mood,
+        ))->execute();
+
+        return redirect()->route('journal.entry.show', [
+            'year' => $entry->year,
+            'month' => $entry->month,
+            'day' => $entry->day,
+        ])->with('status', trans('Mood deleted'));
     }
 }
