@@ -176,5 +176,8 @@ return [
         'food_allergy_destroyed' => 'Food allergy destroyed',
         'food_allergy_updated' => 'Food allergy update',
         'child_food_allergy_updated' => 'Child food allergy update',
+        'pet_creation' => 'Pet creation',
+        'pet_update' => 'Pet update',
+        'pet_deletion' => 'Pet deletion',
     ],
 ];

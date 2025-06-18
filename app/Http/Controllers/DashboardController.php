@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         return view('dashboard.index', [
             'user' => Auth::user(),
-            'viewData' => $viewData,
+            ...$viewData,
         ]);
     }
 }

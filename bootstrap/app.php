@@ -16,6 +16,7 @@ use App\Http\Middleware\CheckPersonApi;
 use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\CheckTask;
 use App\Http\Middleware\CheckChild;
+use App\Http\Middleware\CheckPet;
 use App\Http\Middleware\CheckWorkHistory;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
@@ -47,6 +48,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'love_relationship' => CheckLoveRelationship::class,
             'entry' => CheckEntry::class,
             'child' => CheckChild::class,
+            'pet' => CheckPet::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
