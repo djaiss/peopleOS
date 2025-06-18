@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
-use App\Models\LoveRelationship;
-use App\Models\Person;
-use App\Services\CreateChild;
 use App\Services\CreatePet;
-use App\Services\DestroyChild;
 use App\Services\DestroyPet;
 use App\Services\UpdatePet;
 use Illuminate\Http\RedirectResponse;
@@ -42,14 +38,14 @@ class PersonPetController extends Controller
         (new CreatePet(
             user: Auth::user(),
             account: $person->account,
-            person: $person,
             name: $validated['name'],
+            person: $person,
             species: $validated['species'],
             breed: $validated['breed'],
             gender: $validated['gender'],
         ))->execute();
 
-        return redirect()->route('person.family.index', $person)
+        return redirect()->route('person.family.index', $person->slug)
             ->with('status', trans('Changes saved'));
     }
 
@@ -85,7 +81,7 @@ class PersonPetController extends Controller
             gender: $validated['gender'],
         ))->execute();
 
-        return redirect()->route('person.family.index', $person)
+        return redirect()->route('person.family.index', $person->slug)
             ->with('status', trans('Changes saved'));
     }
 
@@ -99,7 +95,7 @@ class PersonPetController extends Controller
             pet: $pet,
         ))->execute();
 
-        return redirect()->route('person.family.index', $person)
+        return redirect()->route('person.family.index', $person->slug)
             ->with('status', trans('Changes saved'));
     }
 }

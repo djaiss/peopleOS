@@ -11,7 +11,6 @@ use App\Models\Account;
 use App\Models\Pet;
 use App\Models\Person;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
@@ -24,8 +23,8 @@ class CreatePet
     public function __construct(
         public User $user,
         public Account $account,
-        public ?string $name = null,
         public string $species,
+        public ?string $name = null,
         public ?string $breed = null,
         public ?string $gender = null,
         public ?Person $person = null,
@@ -87,7 +86,7 @@ class CreatePet
      */
     private function updatePersonLastConsultedDate(): void
     {
-        if ($this->person) {
+        if ($this->person instanceof Person) {
             UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
         }
     }

@@ -159,7 +159,7 @@ class GetDashboardInformationTest extends TestCase
         $this->assertCount(2, $tasks);
 
         $this->assertEquals([
-            0 =>[
+            0 => [
                 'id' => $task1->id,
                 'name' => 'Send follow-up',
                 'task_category' => [

@@ -37,6 +37,7 @@
                   <span class="text-gray-500">•</span>
                   <span class="truncate text-gray-500">{{ $pet['breed'] }}</span>
                 @endif
+
                 @if ($pet['gender'])
                   <span class="text-gray-500">•</span>
                   <span class="truncate text-gray-500">{{ ucfirst($pet['gender']) }}</span>

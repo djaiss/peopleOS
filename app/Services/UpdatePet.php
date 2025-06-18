@@ -59,7 +59,7 @@ class UpdatePet
 
     private function updatePersonLastConsultedDate(): void
     {
-        if ($this->person) {
+        if ($this->person instanceof Person) {
             UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
         }
     }
