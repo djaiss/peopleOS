@@ -217,9 +217,11 @@
       <div id="new-content" x-show="!open" x-transition></div>
 
       <!-- blocks -->
-      @foreach ($blocks as $block)
-        @include('journal.entry.partials.' . $block['type'] . '.show', ['block' => $block, 'entry' => $entry])
-      @endforeach
+      <div id="blocks-listing">
+        @foreach ($blocks as $block)
+          @include('journal.entry.partials.' . $block['type'] . '.show', ['block' => $block, 'entry' => $entry])
+        @endforeach
+      </div>
     </div>
   </div>
 </x-app-layout>

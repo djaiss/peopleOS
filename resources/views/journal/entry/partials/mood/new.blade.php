@@ -1,4 +1,4 @@
-<form action="{{ route('journal.entry.mood.create', ['year' => $year, 'month' => $month, 'day' => $day]) }}" method="POST" id="new-content" x-data="{ mood: 4 }" class="mx-auto max-w-xl rounded-lg border border-gray-200 bg-white text-center transition-all duration-800 ease-in-out">
+<form x-target="days-listing months-listing blocks-listing new-content" action="{{ route('journal.entry.mood.create', ['year' => $year, 'month' => $month, 'day' => $day]) }}" method="POST" id="new-content" x-data="{ mood: 4 }" class="mx-auto max-w-xl rounded-lg border border-gray-200 bg-white text-center transition-all duration-800 ease-in-out">
   @csrf
 
   <!-- mood -->

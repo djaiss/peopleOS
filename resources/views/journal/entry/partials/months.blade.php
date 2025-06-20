@@ -4,7 +4,7 @@
  */
 ?>
 
-<div class="bg-white">
+<div id="months-listing" class="bg-white">
   <div class="mx-auto grid grid-cols-12 divide-x divide-gray-200">
     @foreach ($months as $month)
       <a href="{{ $month['url'] }}" class="group {{ $month['is_selected'] ? 'border-indigo-200 bg-indigo-50' : '' }} relative cursor-pointer px-2 py-1 text-center transition-colors hover:bg-indigo-50">
