@@ -7,10 +7,13 @@
 
 <div class="group">
   <div class="invisible mx-auto mb-1 flex max-w-xl items-center justify-between text-sm opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100">
-    <p>{{ __('Mood') }}</p>
+    <div class="flex items-center gap-x-2">
+      <x-lucide-smile class="h-4 w-4 text-yellow-500" />
+      <p>{{ __('Mood') }}</p>
+    </div>
     <div class="flex gap-x-3">
       <a x-target="edit-mood-{{ $block['data']['id'] }}" href="{{ route('journal.entry.mood.edit', ['year' => $entry->year, 'month' => $entry->month, 'day' => $entry->day, 'mood' => $block['data']['id']]) }}" class="text-gray-500 hover:text-gray-700">{{ __('Edit') }}</a>
-      <form x-target="block-listing edit-mood-{{ $block['data']['id'] }}" x-on:ajax:before="
+      <form x-target="block-listing days-listing months-listing edit-mood-{{ $block['data']['id'] }}" x-on:ajax:before="
         confirm(
           '{{ __('Are you sure you want to proceed? This can not be undone.') }}',
         ) || $event.preventDefault()
