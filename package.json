@@ -18,7 +18,7 @@
     "laravel-vite-plugin": "^1.2.0",
     "lint-staged": "^16.0.0",
     "postcss": "^8.5.3",
-    "prettier": "^3.5.2",
+    "prettier": "^3.6.0",
     "prettier-plugin-blade": "^2.1.19",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.14",
