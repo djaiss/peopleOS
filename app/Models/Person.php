@@ -603,7 +603,7 @@ class Person extends Model
 
         // If all pets are unnamed
         if ($namedPets->isEmpty()) {
-            return trans_choice('pets.count', $totalCount, ['count' => $totalCount]);
+            return $totalCount === 1 ? __('1 pet') : __(':count pets', ['count' => $totalCount]);
         }
 
         // If there are no unnamed pets
