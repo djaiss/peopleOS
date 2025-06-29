@@ -37,10 +37,26 @@ class GetPersonDetails
                 ->get(),
         ];
 
+        $addresses = $this->person->addresses()
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(fn($address): array => [
+                'id' => $address->id,
+                'address_line_1' => $address->address_line_1,
+                'address_line_2' => $address->address_line_2,
+                'city' => $address->city,
+                'state' => $address->state,
+                'postal_code' => $address->postal_code,
+                'country' => $address->country,
+                'is_active' => $address->is_active,
+                'created_at' => $address->created_at->format('M j, Y'),
+            ]);
+
         return [
             'person' => $this->person,
             'persons' => $persons,
             'encounters' => $encounters,
+            'addresses' => $addresses,
             'physicalAppearance' => $this->getPhysicalAppearanceDetails(),
         ];
     }

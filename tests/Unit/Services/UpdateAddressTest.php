@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Jobs\LogUserAction;
-use App\Jobs\UpdatePersonLastConsultedDate;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Address;
 use App\Models\Person;

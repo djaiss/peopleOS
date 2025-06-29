@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Persons;
 use App\Http\Controllers\Controller;
 use App\Services\CreateAddress;
 use App\Services\DestroyAddress;
-use App\Services\GetAddressesListing;
 use App\Services\UpdateAddress;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,12 +19,9 @@ class PersonAddressController extends Controller
     {
         $person = $request->attributes->get('person');
 
-        $viewData = (new GetAddressesListing(
-            user: Auth::user(),
-            person: $person,
-        ))->execute();
-
-        return view('persons.addresses.index', $viewData);
+        return view('persons.addresses.index', [
+            'person' => $person,
+        ]);
     }
 
     public function new(Request $request): View
@@ -60,10 +56,10 @@ class PersonAddressController extends Controller
             state: $validated['state'] ?? null,
             postalCode: $validated['postal_code'] ?? null,
             country: $validated['country'] ?? null,
-            isActive: $validated['is_active'] ?? true,
+            isActive: (bool) ($validated['is_active'] ?? true),
         ))->execute();
 
-        return redirect()->route('person.address.index', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', __('Address created'));
     }
 
@@ -102,10 +98,10 @@ class PersonAddressController extends Controller
             state: $validated['state'] ?? null,
             postalCode: $validated['postal_code'] ?? null,
             country: $validated['country'] ?? null,
-            isActive: $validated['is_active'] ?? null,
+            isActive: isset($validated['is_active']) ? (bool) $validated['is_active'] : null,
         ))->execute();
 
-        return redirect()->route('person.address.index', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', __('Address updated'));
     }
 
@@ -119,7 +115,7 @@ class PersonAddressController extends Controller
             address: $address,
         ))->execute();
 
-        return redirect()->route('person.address.index', $person->slug)
+        return redirect()->route('person.show', $person->slug)
             ->with('status', __('Address deleted'));
     }
 }

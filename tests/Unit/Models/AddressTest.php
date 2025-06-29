@@ -7,7 +7,6 @@ namespace Tests\Unit\Models;
 use App\Models\Account;
 use App\Models\Address;
 use App\Models\Person;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;

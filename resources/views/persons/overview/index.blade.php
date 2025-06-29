@@ -2,6 +2,7 @@
 /*
  * @var Person $person
  * @var array $encounters
+ * @var array $addresses
  */
 ?>
 
@@ -29,6 +30,14 @@
   [
     'person' => $person,
     'physicalAppearance' => $physicalAppearance,
+  ]
+)
+
+@include(
+  'persons.overview.partials.addresses',
+  [
+    'person' => $person,
+    'addresses' => $addresses,
   ]
 )
 

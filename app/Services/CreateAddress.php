@@ -66,7 +66,7 @@ class CreateAddress
 
     private function updatePersonLastConsultedDate(): void
     {
-        if ($this->person) {
+        if ($this->person instanceof Person) {
             UpdatePersonLastConsultedDate::dispatch($this->person)->onQueue('low');
         }
     }
@@ -80,7 +80,7 @@ class CreateAddress
     {
         $description = 'Created an address';
 
-        if ($this->person) {
+        if ($this->person instanceof Person) {
             $description .= ' for ' . $this->person->name;
         }
 
