@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\CheckAddress;
 use App\Http\Middleware\CheckEntry;
 use App\Http\Middleware\CheckGift;
 use App\Http\Middleware\CheckInstanceAdministrator;
@@ -50,6 +51,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'entry' => CheckEntry::class,
             'child' => CheckChild::class,
             'pet' => CheckPet::class,
+            'address' => CheckAddress::class,
             'mood' => CheckMood::class,
         ]);
     })

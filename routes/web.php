@@ -252,6 +252,14 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
                 Route::put('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'update'])->name('person.gift.update');
                 Route::delete('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'destroy'])->name('person.gift.destroy');
             });
+
+            // addresses
+            Route::get('persons/{slug}/addresses', [PersonAddressController::class, 'index'])->name('person.address.index');
+            Route::get('persons/{slug}/addresses/new', [PersonAddressController::class, 'new'])->name('person.address.new');
+            Route::post('persons/{slug}/addresses', [PersonAddressController::class, 'create'])->name('person.address.create');
+            Route::middleware(['address'])->group(function (): void {
+                Route::get('persons/{slug}/addresses/{address}', [PersonAddressController::class, 'edit'])->name('person.address.edit');
+            });
         });
 
         // journal
