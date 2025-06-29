@@ -50,7 +50,7 @@
                   {{ __('Edit') }}
                 </x-button.invisible>
               </a>
-              <form x-target="current-pet-{{ $pet['id'] }} pets-listing" x-on:ajax:before="
+              <form x-target="current-pet-{{ $pet['id'] }} pets-listing pets-status" x-on:ajax:before="
                 confirm('Are you sure you want to proceed? This can not be undone.') ||
                   $event.preventDefault()
               " action="{{ route('person.pet.destroy', ['slug' => $person->slug, 'pet' => $pet['id']]) }}" method="POST">

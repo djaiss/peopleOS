@@ -582,6 +582,43 @@ class Person extends Model
     }
 
     /**
+     * Get the person's pets.
+     * Pets can be created without names. We need to list the names of the
+     * pets that have names, and the count of the pets that don't have
+     * names.
+     *
+     * @return string The pets
+     */
+    public function getPets(): string
+    {
+        $pets = $this->pets;
+        $namedPets = $pets->whereNotNull('name')->pluck('name');
+        $unnamedCount = $pets->whereNull('name')->count();
+        $totalCount = $pets->count();
+
+        // If no pets
+        if ($totalCount === 0) {
+            return __('No pets');
+        }
+
+        // If all pets are unnamed
+        if ($namedPets->isEmpty()) {
+            return $totalCount === 1 ? __('1 pet') : __(':count pets', ['count' => $totalCount]);
+        }
+
+        // If there are no unnamed pets
+        if ($unnamedCount === 0) {
+            return $namedPets->join(', ', ' and ');
+        }
+
+        // If there are both named and unnamed pets
+        $namedPart = $namedPets->join(', ', ' and ');
+        return $unnamedCount === 1
+            ? $namedPart . ' and ' . __('1 other pet')
+            : $namedPart . ' and ' . __(':count other pets', ['count' => $unnamedCount]);
+    }
+
+    /**
      * Get the person's current job title if they have an active job.
      *
      * @return string|null The job title or null if no active job
