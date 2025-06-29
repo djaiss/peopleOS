@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Cache\PersonsListCache;
+use App\Models\Address;
 use App\Models\Person;
 use App\Models\User;
+use Illuminate\Support\Collection;
 
 class GetPersonDetails
 {
@@ -41,6 +43,7 @@ class GetPersonDetails
             'person' => $this->person,
             'persons' => $persons,
             'encounters' => $encounters,
+            'addresses' => $this->getAddressesDetails(),
             'physicalAppearance' => $this->getPhysicalAppearanceDetails(),
         ];
     }
@@ -79,5 +82,23 @@ class GetPersonDetails
         }
 
         return $details;
+    }
+
+    public function getAddressesDetails(): Collection
+    {
+        return $this->person->addresses()
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(fn(Address $address): array => [
+                'id' => $address->id,
+                'address_line_1' => $address->address_line_1,
+                'address_line_2' => $address->address_line_2,
+                'city' => $address->city,
+                'state' => $address->state,
+                'postal_code' => $address->postal_code,
+                'country' => $address->country,
+                'is_active' => $address->is_active,
+                'created_at' => $address->created_at->format('M j, Y'),
+            ]);
     }
 }

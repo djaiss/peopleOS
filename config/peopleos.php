@@ -179,5 +179,8 @@ return [
         'pet_creation' => 'Pet creation',
         'pet_update' => 'Pet update',
         'pet_deletion' => 'Pet deletion',
+        'address_creation' => 'Address creation',
+        'address_update' => 'Address update',
+        'address_deletion' => 'Address deletion',
     ],
 ];

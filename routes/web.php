@@ -42,6 +42,7 @@ use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
 use App\Http\Controllers\Marketing\MarketingWhyController;
 use App\Http\Controllers\Marketing\WaitlistController;
 use App\Http\Controllers\Persons\PersonAllergiesFoodController;
+use App\Http\Controllers\Persons\PersonAddressController;
 use App\Http\Controllers\Persons\PersonChildrenController;
 use App\Http\Controllers\Persons\PersonController;
 use App\Http\Controllers\Persons\PersonEncounterController;
@@ -251,6 +252,16 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
                 Route::get('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'edit'])->name('person.gift.edit');
                 Route::put('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'update'])->name('person.gift.update');
                 Route::delete('persons/{slug}/gifts/{gift}', [PersonGiftController::class, 'destroy'])->name('person.gift.destroy');
+            });
+
+            // addresses
+            Route::get('persons/{slug}/addresses', [PersonAddressController::class, 'index'])->name('person.address.index');
+            Route::get('persons/{slug}/addresses/new', [PersonAddressController::class, 'new'])->name('person.address.new');
+            Route::post('persons/{slug}/addresses', [PersonAddressController::class, 'create'])->name('person.address.create');
+            Route::middleware(['address'])->group(function (): void {
+                Route::get('persons/{slug}/addresses/{address}', [PersonAddressController::class, 'edit'])->name('person.address.edit');
+                Route::put('persons/{slug}/addresses/{address}', [PersonAddressController::class, 'update'])->name('person.address.update');
+                Route::delete('persons/{slug}/addresses/{address}', [PersonAddressController::class, 'destroy'])->name('person.address.destroy');
             });
         });
 

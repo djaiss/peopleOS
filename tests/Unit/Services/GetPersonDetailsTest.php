@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
+use App\Models\Address;
 use App\Models\Encounter;
 use App\Models\Person;
 use App\Models\User;
@@ -79,5 +80,51 @@ class GetPersonDetailsTest extends TestCase
             'face_shape',
             'eye_color',
         ]);
+    }
+
+    #[Test]
+    public function it_returns_the_addresses_details(): void
+    {
+        $user = User::factory()->create();
+
+        $person = Person::factory()->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $address = Address::factory()->create([
+            'person_id' => $person->id,
+            'address_line_1' => '123 Main St',
+            'city' => 'Anytown',
+            'state' => 'CA',
+            'postal_code' => '12345',
+            'country' => 'USA',
+            'is_active' => true,
+        ]);
+
+        $collection = (new GetPersonDetails(
+            user: $user,
+            person: $person,
+        ))->getAddressesDetails();
+
+        $this->assertArrayHasKeys($collection->first(), [
+            'id',
+            'address_line_1',
+            'address_line_2',
+            'city',
+            'state',
+            'postal_code',
+            'country',
+            'is_active',
+        ]);
+
+        $this->assertEquals(1, $collection->count());
+        $this->assertEquals($address->id, $collection->first()['id']);
+        $this->assertEquals('123 Main St', $collection->first()['address_line_1']);
+        $this->assertEquals('Anytown', $collection->first()['city']);
+        $this->assertEquals('CA', $collection->first()['state']);
+        $this->assertEquals('12345', $collection->first()['postal_code']);
+        $this->assertEquals('USA', $collection->first()['country']);
+        $this->assertEquals(true, $collection->first()['is_active']);
+        $this->assertEquals('Jun 29, 2025', $collection->first()['created_at']);
     }
 }

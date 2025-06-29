@@ -3,6 +3,7 @@
  * @var Person $person
  * @var Collection $persons
  * @var array $encounters
+ * @var Collection $addresses
  */
 ?>
 
@@ -17,7 +18,7 @@
     <!-- Section C: Detail View -->
     <div class="h-[calc(100vh-48px)] overflow-y-auto bg-gray-50">
       <div class="mx-auto max-w-3xl p-6">
-        @include('persons.overview.index', ['person' => $person, 'encounters' => $encounters])
+        @include('persons.overview.index', ['person' => $person, 'encounters' => $encounters, 'addresses' => $addresses])
       </div>
     </div>
   </div>
