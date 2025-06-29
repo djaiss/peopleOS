@@ -29,7 +29,7 @@
 
       <!-- logo -->
       <a href="https://lemonsqueezy.com" target="_blank" class="flex justify-center">
-        <img src="{{ asset('marketing/lemonsqueezy.svg') }}" alt="LemonSqueezy" class="h-6">
+        <img src="{{ asset('marketing/lemonsqueezy.svg') }}" alt="LemonSqueezy" class="h-6" />
       </a>
     </div>
   </div>
