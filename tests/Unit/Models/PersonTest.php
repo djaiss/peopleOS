@@ -623,4 +623,139 @@ class PersonTest extends TestCase
         $ross->save();
         $this->assertEquals('No kids', $ross->getChildrenStatus());
     }
+
+    #[Test]
+    public function it_gets_pets_with_named_and_unnamed_pets(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Fluffy',
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Rex',
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+
+        $this->assertEquals('Fluffy and Rex and 2 other pets', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_one_named_and_one_unnamed_pet(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Fluffy',
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+
+        $this->assertEquals('Fluffy and 1 other pet', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_all_unnamed_pets(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+
+        $this->assertEquals('3 pets', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_one_named_and_multiple_unnamed_pets(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Rex',
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+
+        $this->assertEquals('Rex and 2 other pets', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_only_named_pets(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Fluffy',
+        ]);
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Rex',
+        ]);
+
+        $this->assertEquals('Fluffy and Rex', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_single_unnamed_pet(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => null,
+        ]);
+
+        $this->assertEquals('1 pet', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_no_pets(): void
+    {
+        $ross = Person::factory()->create();
+
+        $this->assertEquals('No pets', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_gets_pets_with_single_named_pet(): void
+    {
+        $ross = Person::factory()->create();
+
+        Pet::factory()->create([
+            'person_id' => $ross->id,
+            'name' => 'Fluffy',
+        ]);
+
+        $this->assertEquals('Fluffy', $ross->getPets());
+    }
 }

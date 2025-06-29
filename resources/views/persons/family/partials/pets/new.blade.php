@@ -6,7 +6,7 @@
 ?>
 
 <div id="new-pet" class="mb-8 rounded-lg border border-gray-200 bg-white">
-  <form x-target="pets-listing new-pet" x-target.back="new-pet" action="{{ route('person.pet.store', $person) }}" method="POST">
+  <form x-target="pets-listing new-pet pets-status" x-target.back="new-pet" action="{{ route('person.pet.store', $person) }}" method="POST" class="flex flex-col gap-4">
     @csrf
 
     <div class="mb-4 flex gap-4 px-4 pt-4">

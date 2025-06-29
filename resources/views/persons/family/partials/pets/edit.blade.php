@@ -7,7 +7,7 @@
 ?>
 
 <div id="pet-{{ $pet->id }}" class="rounded-lg bg-white">
-  <form x-target="pets-listing pet-{{ $pet->id }}" x-target.back="pet-{{ $pet->id }}" action="{{ route('person.pet.update', ['slug' => $person->slug, 'pet' => $pet->id]) }}" method="POST">
+  <form x-target="pets-listing pet-{{ $pet->id }} pets-status" x-target.back="pet-{{ $pet->id }}" action="{{ route('person.pet.update', ['slug' => $person->slug, 'pet' => $pet->id]) }}" method="POST" class="flex flex-col gap-4">
     @csrf
     @method('PUT')
 

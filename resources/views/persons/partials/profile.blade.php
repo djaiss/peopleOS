@@ -47,9 +47,9 @@
       </div>
 
       <!-- Pets -->
-      <div class="flex items-center gap-2">
+      <div id="pets-status" class="flex items-center gap-2">
         <x-lucide-dog class="h-4 w-4 text-amber-500" />
-        <span class="text-sm">Pet parent of Max (Golden Retriever)</span>
+        <span class="text-sm">{{ $person->getPets() }}</span>
       </div>
     </div>
   </div>
