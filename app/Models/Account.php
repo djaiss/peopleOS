@@ -169,6 +169,16 @@ class Account extends Model
     }
 
     /**
+     * Get the addresses associated with the account.
+     *
+     * @return HasMany<Address, $this>
+     */
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    /**
      * Check if the account is in trial.
      *
      * @return bool

@@ -7,6 +7,7 @@ namespace Tests\Unit\Models;
 use App\Enums\AgeType;
 use App\Enums\KidsStatusType;
 use App\Models\Account;
+use App\Models\Address;
 use App\Models\Child;
 use App\Models\EmailSent;
 use App\Models\Encounter;
@@ -757,5 +758,16 @@ class PersonTest extends TestCase
         ]);
 
         $this->assertEquals('Fluffy', $ross->getPets());
+    }
+
+    #[Test]
+    public function it_has_many_addresses(): void
+    {
+        $ross = Person::factory()->create();
+        Address::factory()->create([
+            'person_id' => $ross->id,
+        ]);
+
+        $this->assertTrue($ross->addresses()->exists());
     }
 }

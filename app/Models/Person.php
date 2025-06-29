@@ -378,6 +378,16 @@ class Person extends Model
     }
 
     /**
+     * Get the addresses associated with the person.
+     *
+     * @return HasMany<Address, $this>
+     */
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    /**
      * Get the person's full name.
      *
      * @return Attribute<string, never>

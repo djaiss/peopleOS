@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Models;
 
 use App\Models\Account;
+use App\Models\Address;
 use App\Models\EmailSent;
 use App\Models\Encounter;
 use App\Models\Gender;
@@ -143,6 +144,17 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->pets()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_addresses(): void
+    {
+        $account = Account::factory()->create();
+        Address::factory()->count(2)->create([
+            'account_id' => $account->id,
+        ]);
+
+        $this->assertTrue($account->addresses()->exists());
     }
 
     public function it_checks_if_the_account_is_in_trial(): void
