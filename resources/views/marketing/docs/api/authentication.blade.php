@@ -40,7 +40,7 @@
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <h3 id="login" class="mb-2 text-lg font-bold">Login</h3>
-      <p class="mb-10">This endpoint logs in a user and returns an API key.</p>
+      <p class="mb-10">This endpoint logs in a user and returns an API key. This is the only endpoint that lets you use your email and password to authenticate your requests.</p>
 
       <!-- query parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-8">
