@@ -9,6 +9,7 @@ use App\Models\Encounter;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\GetPersonDetails;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -86,6 +87,7 @@ class GetPersonDetailsTest extends TestCase
     public function it_returns_the_addresses_details(): void
     {
         $user = User::factory()->create();
+        Carbon::setTestNow(Carbon::create(2025, 6, 30));
 
         $person = Person::factory()->create([
             'account_id' => $user->account_id,
@@ -125,6 +127,6 @@ class GetPersonDetailsTest extends TestCase
         $this->assertEquals('12345', $collection->first()['postal_code']);
         $this->assertEquals('USA', $collection->first()['country']);
         $this->assertEquals(true, $collection->first()['is_active']);
-        $this->assertEquals('Jun 29, 2025', $collection->first()['created_at']);
+        $this->assertEquals('Jun 30, 2025', $collection->first()['created_at']);
     }
 }
