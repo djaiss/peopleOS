@@ -34,14 +34,20 @@ class MeControllerTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertEquals(
-            $response->json(),
+            $response->json()['data'],
             [
-                'id' => $user->id,
-                'first_name' => 'Dwight',
-                'last_name' => 'Schrute',
-                'nickname' => 'Dwight',
-                'email' => 'dwight.schrute@dundermifflin.com',
-                'born_at' => 479692800,
+                'type' => 'user',
+                'id' => (string) $user->id,
+                'attributes' => [
+                    'first_name' => 'Dwight',
+                    'last_name' => 'Schrute',
+                    'email' => 'dwight.schrute@dundermifflin.com',
+                    'nickname' => 'Dwight',
+                    'born_at' => 479692800,
+                ],
+                'links' => [
+                    'self' => config('app.url') . '/api/me',
+                ],
             ],
         );
     }
@@ -64,21 +70,27 @@ class MeControllerTest extends TestCase
             'last_name' => 'Scott',
             'email' => 'michael.scott@dundermifflin.com',
             'nickname' => 'Michael',
-            'born_at' => '03/15/1985',
+            'born_at' => '1985-03-15',
         ]);
 
         $response->assertStatus(200);
 
         $this->assertEquals(
             [
-                'id' => $user->id,
-                'first_name' => 'Michael',
-                'last_name' => 'Scott',
-                'email' => 'michael.scott@dundermifflin.com',
-                'nickname' => 'Michael',
-                'born_at' => 479692800,
+                'type' => 'user',
+                'id' => (string) $user->id,
+                'attributes' => [
+                    'first_name' => 'Michael',
+                    'last_name' => 'Scott',
+                    'email' => 'michael.scott@dundermifflin.com',
+                    'nickname' => 'Michael',
+                    'born_at' => 479692800,
+                ],
+                'links' => [
+                    'self' => config('app.url') . '/api/me',
+                ],
             ],
-            $response->json(),
+            $response->json()['data'],
         );
     }
 
@@ -102,7 +114,7 @@ class MeControllerTest extends TestCase
             'last_name' => 'Scott',
             'email' => 'michael.scott@dundermifflin.com',
             'nickname' => 'Michael',
-            'born_at' => '03/15/1985',
+            'born_at' => '1985-03-15',
         ]);
 
         Event::assertDispatched(Registered::class);

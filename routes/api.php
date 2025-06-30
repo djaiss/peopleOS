@@ -25,20 +25,20 @@ use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\Api\ToggleTaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('health', [HealthController::class, 'show'])->middleware('throttle:60,1');
+Route::get('health', [HealthController::class, 'show'])->middleware('throttle:60,1')->name('health');
 
 // login
-Route::post('login', [LoginController::class, 'store']);
+Route::post('login', [LoginController::class, 'store'])->name('login');
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     // logout
-    Route::delete('logout', [LoginController::class, 'destroy']);
+    Route::delete('logout', [LoginController::class, 'destroy'])->name('logout');
 
     // logged user
-    Route::get('me', [MeController::class, 'show']);
-    Route::put('me', [MeController::class, 'update']);
-    Route::get('me/timezone', [MeTimezoneController::class, 'show']);
-    Route::put('me/timezone', [MeTimezoneController::class, 'update']);
+    Route::get('me', [MeController::class, 'show'])->name('me');
+    Route::put('me', [MeController::class, 'update'])->name('me.update');
+    Route::get('me/timezone', [MeTimezoneController::class, 'show'])->name('me.timezone');
+    Route::put('me/timezone', [MeTimezoneController::class, 'update'])->name('me.timezone.update');
 
     // persons
     Route::get('persons', [PersonController::class, 'index']);

@@ -30,7 +30,7 @@
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <p class="mb-2">The profile endpoint is used to get and set the current user's profile information.</p>
-      <p class="mb-2">This should not be used often, but it can be useful.</p>
+      <p class="mb-2">This will probably not be used often, but it can be useful.</p>
     </div>
     <div>
       <x-marketing.code title="Endpoints">
@@ -82,47 +82,64 @@
         </div>
 
         <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the user." />
+          <x-marketing.attribute name="type" type="string" description="The type of the resource." />
+          <x-marketing.attribute name="id" type="string" description="The ID of the user." />
           <x-marketing.attribute name="first_name" type="string" description="The first name of the user." />
           <x-marketing.attribute name="last_name" type="string" description="The last name of the user." />
           <x-marketing.attribute name="nickname" type="string" description="The nickname of the user." />
           <x-marketing.attribute name="email" type="string" description="The email of the user." />
           <x-marketing.attribute name="born_at" type="integer" description="The birth date of the user, in Unix timestamp format." />
+          <x-marketing.attribute name="links" type="object" description="The link to access the user." />
         </div>
       </div>
     </div>
     <div>
       <x-marketing.code title="/api/me" verb="GET" verbClass="text-blue-700">
         <div>{</div>
-        <div class="pl-4">
+        <div class="pl-4">"data": {</div>
+        <div class="pl-8">
+          "type":
+          <span class="text-lime-700">"user"</span>
+          ,
+        </div>
+        <div class="pl-8">
           "id":
-          <span class="text-rose-800">4</span>
+          <span class="text-rose-800">"1"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-8">"attributes": {</div>
+        <div class="pl-12">
           "first_name":
-          <span class="text-lime-700">"Ross"</span>
+          <span class="text-lime-700">"Monica"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "last_name":
           <span class="text-lime-700">"Geller"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "nickname":
-          <span class="text-lime-700">"Ross"</span>
+          <span class="text-lime-700">"Godzilla"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "email":
-          <span class="text-lime-700">"ross.geller@friends.com"</span>
+          <span class="text-lime-700">"admin@admin.com"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "born_at":
-          <span class="text-rose-800">479692800</span>
+          <span class="text-rose-800">1715145600</span>
         </div>
+        <div class="pl-8">},</div>
+        <div class="pl-8">"links": {</div>
+        <div class="pl-12">
+          "self":
+          <span class="text-lime-700">"{{ config('app.url') }}/api/me"</span>
+        </div>
+        <div class="pl-8">}</div>
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -161,47 +178,64 @@
         </div>
 
         <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the user." />
+          <x-marketing.attribute name="type" type="string" description="The type of the resource." />
+          <x-marketing.attribute name="id" type="string" description="The ID of the user." />
           <x-marketing.attribute name="first_name" type="string" description="The first name of the user." />
           <x-marketing.attribute name="last_name" type="string" description="The last name of the user." />
           <x-marketing.attribute name="nickname" type="string" description="The nickname of the user." />
           <x-marketing.attribute name="email" type="string" description="The email of the user." />
           <x-marketing.attribute name="born_at" type="integer" description="The birth date of the user, in Unix timestamp format." />
+          <x-marketing.attribute name="links" type="object" description="The link to access the user." />
         </div>
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/me" verb="PUT" verbClass="text-orange-500">
+      <x-marketing.code title="/api/me" verb="PUT" verbClass="text-yellow-700">
         <div>{</div>
-        <div class="pl-4">
+        <div class="pl-4">"data": {</div>
+        <div class="pl-8">
+          "type":
+          <span class="text-lime-700">"user"</span>
+          ,
+        </div>
+        <div class="pl-8">
           "id":
-          <span class="text-rose-800">4</span>
+          <span class="text-rose-800">"1"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-8">"attributes": {</div>
+        <div class="pl-12">
           "first_name":
-          <span class="text-lime-700">"Ross"</span>
+          <span class="text-lime-700">"Dwight"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "last_name":
-          <span class="text-lime-700">"Geller"</span>
+          <span class="text-lime-700">"Schrute"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "nickname":
-          <span class="text-lime-700">"Ross"</span>
+          <span class="text-lime-700">"Dwightchou"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "email":
-          <span class="text-lime-700">"ross.geller@friends.com"</span>
+          <span class="text-lime-700">"dwight.schrute@dundermifflin.com"</span>
           ,
         </div>
-        <div class="pl-4">
+        <div class="pl-12">
           "born_at":
           <span class="text-rose-800">479692800</span>
         </div>
+        <div class="pl-8">},</div>
+        <div class="pl-8">"links": {</div>
+        <div class="pl-12">
+          "self":
+          <span class="text-lime-700">"{{ config('app.url') }}/api/me"</span>
+        </div>
+        <div class="pl-8">}</div>
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>

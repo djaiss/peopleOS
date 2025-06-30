@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\GetAdministrationData;
 use App\Services\UpdateUserInformation;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,10 @@ class AdministrationController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore(Auth::user()->id)],
             'born_at' => ['nullable', 'date'],
         ]);
+
+        if ($validated['born_at'] !== null) {
+            $validated['born_at'] = Carbon::createFromFormat('m/d/Y', $validated['born_at'])->format('Y-m-d');
+        }
 
         (new UpdateUserInformation(
             user: Auth::user(),
