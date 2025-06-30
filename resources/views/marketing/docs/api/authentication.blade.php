@@ -95,6 +95,59 @@
     </div>
   </div>
 
+  <!-- GET /api/logout -->
+  <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
+    <div>
+      <h3 id="logout" class="mb-2 text-lg font-bold">Logout</h3>
+      <p class="mb-10">
+        This endpoint logs out a user and
+        <strong>deletes the API key that was used to authenticate the request</strong>
+        . Please be certain.
+      </p>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">This endpoint does not have any parameters.</p>
+        </div>
+      </div>
+
+      <!-- response attributes -->
+      <div x-cloak x-data="{ open: false }">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Response attributes</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition>
+          <x-marketing.attribute name="message" type="string" description="The message of the response." />
+          <x-marketing.attribute name="status" type="integer" description="The status code of the response." />
+        </div>
+      </div>
+    </div>
+    <div>
+      <x-marketing.code title="/api/me" verb="GET" verbClass="text-blue-700">
+        <div>{</div>
+        <div class="pl-4">
+          "message":
+          <span class="text-rose-800">"Logged out successfully"</span>
+          ,
+        </div>
+        <div class="pl-4">
+          "status":
+          <span class="text-lime-700">200</span>
+          ,
+        </div>
+        <div>}</div>
+      </x-marketing.code>
+    </div>
+  </div>
+
   <div>
     <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
   </div>
