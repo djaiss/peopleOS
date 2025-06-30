@@ -42,33 +42,24 @@
       <h3 id="login" class="mb-2 text-lg font-bold">Login</h3>
       <p class="mb-10">This endpoint logs in a user and returns an API key. This is the only endpoint that lets you use your email and password to authenticate your requests.</p>
 
-      <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
+      <!-- url parameters -->
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="email" type="string" description="The email of the user. Maximum 255 characters." />
-          <x-marketing.attribute required name="password" type="string" description="The password of the user. Maximum 255 characters." />
-        </div>
-      </div>
+      <!-- query parameters -->
+      <x-marketing.query-parameters>
+        <x-marketing.attribute required name="email" type="string" description="The email of the user. Maximum 255 characters." />
+        <x-marketing.attribute required name="password" type="string" description="The password of the user. Maximum 255 characters." />
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="message" type="string" description="The message of the response." />
-          <x-marketing.attribute name="status" type="integer" description="The status code of the response." />
-          <x-marketing.attribute name="data" type="object" description="The data of the response." />
-          <x-marketing.attribute name="token" type="string" description="The API key of the user." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="message" type="string" description="The message of the response." />
+        <x-marketing.attribute name="status" type="integer" description="The status code of the response." />
+        <x-marketing.attribute name="data" type="object" description="The data of the response." />
+        <x-marketing.attribute name="token" type="string" description="The API key of the user." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/login" verb="POST" verbClass="text-green-700">
@@ -105,30 +96,21 @@
         . Please be certain.
       </p>
 
-      <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
+      <!-- url parameters -->
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
-        </div>
-      </div>
+      <!-- query parameters -->
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="message" type="string" description="The message of the response." />
-          <x-marketing.attribute name="status" type="integer" description="The status code of the response." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="message" type="string" description="The message of the response." />
+        <x-marketing.attribute name="status" type="integer" description="The status code of the response." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/logout" verb="DELETE" verbClass="text-red-700">

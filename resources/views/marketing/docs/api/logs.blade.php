@@ -45,48 +45,27 @@
       <p class="mb-10">This call is paginated, and the default page size is 10. This can not be changed.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute name="page" type="integer" description="The page number to retrieve. The first page is 1. If you don't provide this parameter, the first page will be returned." />
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <x-marketing.attribute name="page" type="integer" description="The page number to retrieve. The first page is 1. If you don't provide this parameter, the first page will be returned." />
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="type" type="string" description="The type of the resource." />
-          <x-marketing.attribute name="id" type="string" description="The ID of the log." />
-          <x-marketing.attribute name="attributes" type="object" description="The attributes of the log." />
-          <x-marketing.attribute name="attributes.name" type="string" description="The name of the Person the action was performed on." />
-          <x-marketing.attribute name="attributes.action" type="string" description="The action that was performed. There are many actions." />
-          <x-marketing.attribute name="attributes.description" type="string" description="The description of the action." />
-          <x-marketing.attribute name="attributes.created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
-          <x-marketing.attribute name="attributes.updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
-          <x-marketing.attribute name="links" type="object" description="The links to access the log." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="type" type="string" description="The type of the resource." />
+        <x-marketing.attribute name="id" type="string" description="The ID of the log." />
+        <x-marketing.attribute name="attributes" type="object" description="The attributes of the log." />
+        <x-marketing.attribute name="attributes.name" type="string" description="The name of the Person the action was performed on." />
+        <x-marketing.attribute name="attributes.action" type="string" description="The action that was performed. There are many actions." />
+        <x-marketing.attribute name="attributes.description" type="string" description="The description of the action." />
+        <x-marketing.attribute name="attributes.created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
+        <x-marketing.attribute name="attributes.updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
+        <x-marketing.attribute name="links" type="object" description="The links to access the log." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/logs" verb="GET" verbClass="text-blue-700">
@@ -262,48 +241,27 @@
       <p class="mb-10">This endpoint gets a specific log.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="log" type="integer" description="The ID of the log to get." />
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <x-marketing.attribute required name="log" type="integer" description="The ID of the log to get." />
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="type" type="string" description="The type of the resource." />
-          <x-marketing.attribute name="id" type="string" description="The ID of the log." />
-          <x-marketing.attribute name="attributes" type="object" description="The attributes of the log." />
-          <x-marketing.attribute name="attributes.name" type="string" description="The name of the Person the action was performed on." />
-          <x-marketing.attribute name="attributes.action" type="string" description="The action that was performed. There are many actions." />
-          <x-marketing.attribute name="attributes.description" type="string" description="The description of the action." />
-          <x-marketing.attribute name="attributes.created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
-          <x-marketing.attribute name="attributes.updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
-          <x-marketing.attribute name="links" type="object" description="The links to access the log." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="type" type="string" description="The type of the resource." />
+        <x-marketing.attribute name="id" type="string" description="The ID of the log." />
+        <x-marketing.attribute name="attributes" type="object" description="The attributes of the log." />
+        <x-marketing.attribute name="attributes.name" type="string" description="The name of the Person the action was performed on." />
+        <x-marketing.attribute name="attributes.action" type="string" description="The action that was performed. There are many actions." />
+        <x-marketing.attribute name="attributes.description" type="string" description="The description of the action." />
+        <x-marketing.attribute name="attributes.created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
+        <x-marketing.attribute name="attributes.updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
+        <x-marketing.attribute name="links" type="object" description="The links to access the log." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/logs/{log}" verb="GET" verbClass="text-blue-700">
