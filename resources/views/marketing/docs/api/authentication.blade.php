@@ -86,7 +86,7 @@
         <div class="pl-4">"data": {</div>
         <div class="pl-8">
           "token":
-          <span class="text-lime-700">"1|1234567890"</span>
+          <span class="text-rose-700">"1|1234567890"</span>
           ,
         </div>
         <div class="pl-4">}</div>

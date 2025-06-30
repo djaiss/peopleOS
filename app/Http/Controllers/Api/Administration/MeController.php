@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Administration;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\UpdateUserInformation;
 use Illuminate\Http\JsonResponse;
@@ -17,18 +18,9 @@ class MeController extends Controller
     /**
      * Get the information about the logged user.
      */
-    public function show(Request $request): JsonResponse
+    public function show(): UserResource
     {
-        $response = [
-            'id' => Auth::user()->id,
-            'first_name' => Auth::user()->first_name,
-            'last_name' => Auth::user()->last_name,
-            'nickname' => Auth::user()->nickname,
-            'email' => Auth::user()->email,
-            'born_at' => Auth::user()->born_at?->timestamp,
-        ];
-
-        return response()->json($response);
+        return new UserResource(Auth::user());
     }
 
     /**

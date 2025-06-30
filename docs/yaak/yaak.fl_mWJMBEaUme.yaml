@@ -2,12 +2,12 @@ type: folder
 model: folder
 id: fl_mWJMBEaUme
 createdAt: 2025-03-07T22:15:13.295286
-updatedAt: 2025-06-30T14:28:06.764905
+updatedAt: 2025-06-30T15:21:26.443434
 workspaceId: wk_IQZH5RHjkM
 folderId: null
 authentication: {}
 authenticationType: null
 description: ''
 headers: []
-name: Settings
+name: Account management
 sortPriority: 2000.0

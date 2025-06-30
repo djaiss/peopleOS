@@ -41,6 +41,11 @@
     <p>Why these tools? Because they're fresh, new, free and open source under the MIT license, and I really like their ethos.</p>
   </div>
 
+  <div class="mb-10 sm:grid-cols-2">
+    <h3 id="test-the-api-yourself" class="mb-2 text-lg font-bold">Conventions of the API</h3>
+    <p class="mb-2">There is no strict standard for JSON payloads, but we do try to follow <a href="https://jsonapi.org/" target="_blank" class="text-blue-500 hover:underline">the JSON:API specification</a>, which defines a structured format for responses.</p>
+  </div>
+
   <div>
     <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
   </div>
