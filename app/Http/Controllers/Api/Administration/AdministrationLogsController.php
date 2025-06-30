@@ -24,6 +24,7 @@ class AdministrationLogsController extends Controller
 
     public function show(Log $log): LogResource
     {
+        $log->loadMissing('user');
         return new LogResource($log);
     }
 }
