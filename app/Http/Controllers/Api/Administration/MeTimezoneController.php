@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Administration;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TimezoneResource;
 use App\Services\UpdateTimezone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,15 +15,15 @@ class MeTimezoneController extends Controller
     /**
      * Get the current user's timezone.
      */
-    public function show(Request $request)
+    public function show(): TimezoneResource
     {
-        return response()->json(['timezone' => Auth::user()->timezone]);
+        return new TimezoneResource(Auth::user());
     }
 
     /**
      * Update your timezone.
      */
-    public function update(Request $request)
+    public function update(Request $request): TimezoneResource
     {
         $validated = $request->validate([
             'timezone' => ['required', 'string', 'timezone:all'],
@@ -33,11 +34,6 @@ class MeTimezoneController extends Controller
             timezone: $validated['timezone'],
         ))->execute();
 
-        $response = [
-            'id' => Auth::user()->id,
-            'timezone' => Auth::user()->timezone,
-        ];
-
-        return response()->json($response);
+        return new TimezoneResource(Auth::user()->refresh());
     }
 }

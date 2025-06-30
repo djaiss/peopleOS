@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_PD4ALSeKYi
 createdAt: 2025-03-07T22:15:04.471681
-updatedAt: 2025-04-06T21:36:38.905339
+updatedAt: 2025-06-30T17:48:22.928066
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_3vEyB3eXJj
 authentication:
@@ -12,32 +12,32 @@ body: {}
 bodyType: null
 description: ''
 headers:
-  - enabled: true
-    name: Accept
-    value: application/json
-    id: null
-  - enabled: true
-    name: ''
-    value: ''
-    id: null
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
 method: PUT
-name: ''
+name: Update my information
 sortPriority: 1000.0
-url: https://peopleos.test/api/me
+url: ${[ URL ]}/me
 urlParameters:
-  - enabled: true
-    name: first_name
-    value: Henri
-    id: uiufsHbJpJ
-  - enabled: true
-    name: last_name
-    value: Troyattese
-    id: J8dSSy4C7Y
-  - enabled: true
-    name: email
-    value: henri@troyat.com
-    id: 4JNPIiJkNT
-  - enabled: true
-    name: ''
-    value: ''
-    id: bSGVXqKdY8
+- enabled: true
+  name: first_name
+  value: Henri
+  id: uiufsHbJpJ
+- enabled: true
+  name: last_name
+  value: Troyattese
+  id: J8dSSy4C7Y
+- enabled: true
+  name: email
+  value: henri@troyat.com
+  id: 4JNPIiJkNT
+- enabled: true
+  name: ''
+  value: ''
+  id: bSGVXqKdY8

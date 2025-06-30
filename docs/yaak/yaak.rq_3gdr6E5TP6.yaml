@@ -1,8 +1,8 @@
 type: http_request
 model: http_request
-id: rq_YCh2fteZUd
-createdAt: 2025-03-07T22:43:40.231616
-updatedAt: 2025-06-30T17:48:22.926015
+id: rq_3gdr6E5TP6
+createdAt: 2025-06-30T17:44:29.925266
+updatedAt: 2025-06-30T17:48:22.929284
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_3vEyB3eXJj
 authentication:
@@ -21,7 +21,7 @@ headers:
   value: ''
   id: null
 method: GET
-name: Me
-sortPriority: 0.0
-url: ${[ URL ]}/me
+name: Get timezone
+sortPriority: 2000.0
+url: ${[ URL ]}/me/timezone
 urlParameters: []

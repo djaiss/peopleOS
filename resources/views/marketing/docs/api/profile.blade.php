@@ -245,7 +245,15 @@
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <h3 id="get-the-timezone-of-the-logged-user" class="mb-2 text-lg font-bold">Get the timezone of the logged user</h3>
-      <p class="mb-10">This endpoint retrieves the timezone information of the currently logged in user.</p>
+      <p class="mb-10">
+        This endpoint retrieves the timezone information of the currently logged in user. The timezone is stored in the database as a string, and is in
+        <a href="https://timeie.com/iana-timezones" target="_blank" class="text-blue-500 hover:underline">IANA format</a>
+        (e.g.,
+        <code class="text-sm">America/New_York</code>
+        ,
+        <code class="text-sm">Europe/London</code>
+        ).
+      </p>
 
       <!-- parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
@@ -274,10 +282,25 @@
     <div>
       <x-marketing.code title="/api/me/timezone" verb="GET" verbClass="text-blue-700">
         <div>{</div>
-        <div class="pl-4">
+        <div class="pl-4">"data": {</div>
+        <div class="pl-8">
+          "type":
+          <span class="text-lime-700">"timezone"</span>
+          ,
+        </div>
+        <div class="pl-8">"attributes": {</div>
+        <div class="pl-12">
           "timezone":
           <span class="text-lime-700">"America/New_York"</span>
         </div>
+        <div class="pl-8">},</div>
+        <div class="pl-8">"links": {</div>
+        <div class="pl-12">
+          "self":
+          <span class="text-lime-700">"{{ config('app.url') }}/api/me"</span>
+        </div>
+        <div class="pl-8">}</div>
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
@@ -288,7 +311,15 @@
     <div>
       <h3 id="update-the-timezone-of-the-logged-user" class="mb-2 text-lg font-bold">Update the timezone of the logged user</h3>
       <p class="mb-2">This endpoint updates the timezone of the currently logged in user.</p>
-      <p class="mb-10">The timezone must be a valid IANA timezone identifier (e.g., "America/New_York", "Europe/London").</p>
+      <p class="mb-10">
+        The timezone must be a valid
+        <a href="https://timeie.com/iana-timezones" target="_blank" class="text-blue-500 hover:underline">IANA timezone identifier</a>
+        (e.g.,
+        <code class="text-sm">America/New_York</code>
+        ,
+        <code class="text-sm">Europe/London</code>
+        ).
+      </p>
 
       <!-- parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
@@ -315,12 +346,27 @@
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/me/timezone" verb="PUT" verbClass="text-orange-500">
+      <x-marketing.code title="/api/me/timezone" verb="PUT" verbClass="text-yellow-700">
         <div>{</div>
-        <div class="pl-4">
-          "timezone":
-          <span class="text-lime-700">"Europe/London"</span>
+        <div class="pl-4">"data": {</div>
+        <div class="pl-8">
+          "type":
+          <span class="text-lime-700">"timezone"</span>
+          ,
         </div>
+        <div class="pl-8">"attributes": {</div>
+        <div class="pl-12">
+          "timezone":
+          <span class="text-lime-700">"Europe/Paris"</span>
+        </div>
+        <div class="pl-8">},</div>
+        <div class="pl-8">"links": {</div>
+        <div class="pl-12">
+          "self":
+          <span class="text-lime-700">"{{ config('app.url') }}/api/me"</span>
+        </div>
+        <div class="pl-8">}</div>
+        <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
     </div>
