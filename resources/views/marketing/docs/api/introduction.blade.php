@@ -11,7 +11,11 @@
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <p class="mb-2">The PeopleOS API is organized around REST. Our API has predictable resource-oriented URLs.</p>
-      <p class="mb-2">You can not use the PeopleOS API in test mode. This means all requests will be processed towards your production account. Please be cautious.</p>
+      <p class="mb-2">
+        You
+        <strong>can not</strong>
+        use the PeopleOS API in test mode. This means all requests will be processed towards your production account. Please be cautious.
+      </p>
       <p>The PeopleOS API doesn’t support bulk updates. You can work on only one object per request.</p>
     </div>
 

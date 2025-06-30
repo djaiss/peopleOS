@@ -1,0 +1,30 @@
+type: http_request
+model: http_request
+id: rq_bfpoyQjvzy
+createdAt: 2025-06-30T14:27:21.293536
+updatedAt: 2025-06-30T14:27:44.341781
+workspaceId: wk_IQZH5RHjkM
+folderId: fl_aq9RM6mq5S
+authentication: {}
+authenticationType: null
+body: {}
+bodyType: null
+description: ''
+headers: []
+method: POST
+name: ''
+sortPriority: -870700200000.0001
+url: ${[ URL ]}/login
+urlParameters:
+- enabled: true
+  name: email
+  value: admin@admin.com
+  id: fzJxb9Cz0U
+- enabled: true
+  name: password
+  value: admin123
+  id: 2MYrSkeENs
+- enabled: true
+  name: ''
+  value: ''
+  id: 9wiVdbfH0Q
