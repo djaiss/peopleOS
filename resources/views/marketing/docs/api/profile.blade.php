@@ -99,28 +99,34 @@
         <div class="pl-4">"data": {</div>
         <div class="pl-8">
           "type":
-          <span class="text-lime-700">"user"</span>,
+          <span class="text-lime-700">"user"</span>
+          ,
         </div>
         <div class="pl-8">
           "id":
-          <span class="text-rose-800">"1"</span>,
+          <span class="text-rose-800">"1"</span>
+          ,
         </div>
         <div class="pl-8">"attributes": {</div>
         <div class="pl-12">
           "first_name":
-          <span class="text-lime-700">"Monica"</span>,
+          <span class="text-lime-700">"Monica"</span>
+          ,
         </div>
         <div class="pl-12">
           "last_name":
-          <span class="text-lime-700">"Geller"</span>,
+          <span class="text-lime-700">"Geller"</span>
+          ,
         </div>
         <div class="pl-12">
           "nickname":
-          <span class="text-lime-700">"Godzilla"</span>,
+          <span class="text-lime-700">"Godzilla"</span>
+          ,
         </div>
         <div class="pl-12">
           "email":
-          <span class="text-lime-700">"admin@admin.com"</span>,
+          <span class="text-lime-700">"admin@admin.com"</span>
+          ,
         </div>
         <div class="pl-12">
           "born_at":
@@ -189,28 +195,34 @@
         <div class="pl-4">"data": {</div>
         <div class="pl-8">
           "type":
-          <span class="text-lime-700">"user"</span>,
+          <span class="text-lime-700">"user"</span>
+          ,
         </div>
         <div class="pl-8">
           "id":
-          <span class="text-rose-800">"1"</span>,
+          <span class="text-rose-800">"1"</span>
+          ,
         </div>
         <div class="pl-8">"attributes": {</div>
         <div class="pl-12">
           "first_name":
-          <span class="text-lime-700">"Dwight"</span>,
+          <span class="text-lime-700">"Dwight"</span>
+          ,
         </div>
         <div class="pl-12">
           "last_name":
-          <span class="text-lime-700">"Schrute"</span>,
+          <span class="text-lime-700">"Schrute"</span>
+          ,
         </div>
         <div class="pl-12">
           "nickname":
-          <span class="text-lime-700">"Dwightchou"</span>,
+          <span class="text-lime-700">"Dwightchou"</span>
+          ,
         </div>
         <div class="pl-12">
           "email":
-          <span class="text-lime-700">"admin@admin.coms"</span>,
+          <span class="text-lime-700">"admin@admin.coms"</span>
+          ,
         </div>
         <div class="pl-12">
           "born_at":

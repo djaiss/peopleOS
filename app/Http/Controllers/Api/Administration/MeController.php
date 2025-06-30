@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\UpdateUserInformation;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -26,7 +25,7 @@ class MeController extends Controller
     /**
      * Update your profile.
      */
-    public function update(Request $request)
+    public function update(Request $request): UserResource
     {
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],

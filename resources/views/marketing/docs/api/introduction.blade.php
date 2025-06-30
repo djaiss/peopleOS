@@ -31,7 +31,8 @@
       If you want to test the API yourself, we provide two convenient tools for you to use:
       <a href="https://yaak.app/" target="_blank" class="text-blue-500 hover:underline">Yaak</a>
       and
-      <a href="https://www.usebruno.com/" target="_blank" class="text-blue-500 hover:underline">Bruno</a>.
+      <a href="https://www.usebruno.com/" target="_blank" class="text-blue-500 hover:underline">Bruno</a>
+      .
     </p>
     <p class="mb-2">
       The documentation is included in the Github repository, under the
@@ -43,7 +44,11 @@
 
   <div class="mb-10 sm:grid-cols-2">
     <h3 id="test-the-api-yourself" class="mb-2 text-lg font-bold">Conventions of the API</h3>
-    <p class="mb-2">There is no strict standard for JSON payloads, but we do try to follow <a href="https://jsonapi.org/" target="_blank" class="text-blue-500 hover:underline">the JSON:API specification</a>, which defines a structured format for responses.</p>
+    <p class="mb-2">
+      There is no strict standard for JSON payloads, but we do try to follow
+      <a href="https://jsonapi.org/" target="_blank" class="text-blue-500 hover:underline">the JSON:API specification</a>
+      , which defines a structured format for responses.
+    </p>
   </div>
 
   <div>
