@@ -62,15 +62,27 @@
       <h3 id="get-the-information-about-the-logged-user" class="mb-2 text-lg font-bold">Get the information about the logged user</h3>
       <p class="mb-10">This endpoint gets the information about the logged user. This endpoint is there to make sure that the API works.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <p class="text-gray-500">This endpoint does not have any parameters.</p>
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
@@ -154,10 +166,22 @@
       <p class="mb-2">If the email is changed, the system will send a new verification email to verify the new email address, and unless the user verifies the new email address, he/she will not be able to access the account.</p>
       <p class="mb-10">Please note that your password can not be changed through the API at the moment.</p>
 
-      <!-- parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
+      <!-- url parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">This endpoint does not have any parameters.</p>
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
@@ -255,15 +279,27 @@
         ).
       </p>
 
-      <!-- parameters -->
+      <!-- url parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 
         <div x-show="open" x-transition class="mt-2">
           <p class="text-gray-500">This endpoint does not have any parameters.</p>
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-8">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
         </div>
       </div>
 
@@ -321,10 +357,22 @@
         ).
       </p>
 
-      <!-- parameters -->
+      <!-- url parameters -->
       <div x-cloak x-data="{ open: false }" class="mb-10">
         <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Parameters</p>
+          <p class="font-semibold">URL parameters</p>
+          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
+        </div>
+
+        <div x-show="open" x-transition class="mt-2">
+          <p class="text-gray-500">This endpoint does not have any parameters.</p>
+        </div>
+      </div>
+
+      <!-- query parameters -->
+      <div x-cloak x-data="{ open: false }" class="mb-10">
+        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
+          <p class="font-semibold">Query parameters</p>
           <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
         </div>
 

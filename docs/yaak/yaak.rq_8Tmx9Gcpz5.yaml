@@ -1,8 +1,8 @@
 type: http_request
 model: http_request
-id: rq_1QlZo3MfcI
-createdAt: 2024-03-22T13:06:57
-updatedAt: 2025-06-30T18:35:53.424556
+id: rq_8Tmx9Gcpz5
+createdAt: 2025-06-30T18:34:15.351689
+updatedAt: 2025-06-30T18:34:31.354231
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_w5ueuBsFSG
 authentication:
@@ -21,15 +21,7 @@ headers:
   value: ''
   id: null
 method: GET
-name: List of logs
-sortPriority: 0.0
-url: ${[ URL ]}/administration/logs
-urlParameters:
-- enabled: true
-  name: page
-  value: '2'
-  id: JU9pEhqAma
-- enabled: true
-  name: ''
-  value: ''
-  id: jgRUijNtEm
+name: Detail of a log
+sortPriority: 0.001
+url: ${[ URL ]}/administration/logs/663
+urlParameters: []

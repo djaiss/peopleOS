@@ -125,7 +125,8 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::put('administration/prune', [AdministrationPruneAccountController::class, 'update']);
 
     // logs
-    Route::get('administration/logs', [AdministrationLogsController::class, 'index']);
+    Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs');
+    Route::get('administration/logs/{log}', [AdministrationLogsController::class, 'show'])->name('administration.logs.show');
 
     // users
     Route::put('administration/users/{user}/invite', [AdministrationInviteUserAgainController::class, 'update']);

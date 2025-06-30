@@ -17,13 +17,18 @@ class LogResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'object' => 'log',
-            'name' => $this->user->name,
-            'action' => $this->action,
-            'description' => $this->description,
-            'created_at' => $this->created_at->timestamp,
-            'updated_at' => $this->updated_at->timestamp,
+            'type' => 'log',
+            'id' => (string) $this->id,
+            'attributes' => [
+                'name' => $this->user->name,
+                'action' => $this->action,
+                'description' => $this->description,
+                'created_at' => $this->created_at->timestamp,
+                'updated_at' => $this->updated_at->timestamp,
+            ],
+            'links' => [
+                'self' => route('administration.logs.show', $this->id),
+            ],
         ];
     }
 }

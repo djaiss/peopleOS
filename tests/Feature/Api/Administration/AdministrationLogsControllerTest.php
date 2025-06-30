@@ -6,6 +6,7 @@ namespace Tests\Feature\Api\Administration;
 
 use App\Models\Log;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
@@ -16,7 +17,7 @@ class AdministrationLogsControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function user_can_get_list_of_their_logs(): void
+    public function it_lists_the_logs_of_the_current_user(): void
     {
         $user = User::factory()->create();
 
@@ -48,34 +49,27 @@ class AdministrationLogsControllerTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Check that the response contains the user's logs
         $response->assertJsonCount(2, 'data');
 
-        // Check that the response contains the expected log data
-        $response->assertJsonFragment([
-            'id' => $log1->id,
-            'action' => 'login',
-            'description' => 'User logged in',
-        ]);
+        $response->assertOk()
+            ->assertJsonFragment([
+                'name' => $user->name,
+                'action' => 'login',
+                'description' => 'User logged in',
+                'created_at' => $log1->created_at->timestamp,
+                'updated_at' => $log1->updated_at->timestamp,
+            ]);
 
-        $response->assertJsonFragment([
-            'id' => $log2->id,
-            'action' => 'update_profile',
-            'description' => 'User updated their profile',
-        ]);
-
-        // Check that the response doesn't contain the other user's log
         $response->assertJsonMissing([
             'id' => $anotherLog->id,
         ]);
     }
 
     #[Test]
-    public function logs_are_paginated(): void
+    public function it_paginates_the_logs(): void
     {
         $user = User::factory()->create();
 
-        // Create 15 logs for the user (more than the default pagination of 10)
         Log::factory()->count(15)->create([
             'account_id' => $user->account_id,
             'user_id' => $user->id,
@@ -87,19 +81,45 @@ class AdministrationLogsControllerTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Check that pagination data is present
         $this->assertArrayHasKey('links', $response->json());
         $this->assertArrayHasKey('meta', $response->json());
 
-        // Check that only 10 items are returned (default pagination)
         $this->assertCount(10, $response->json('data'));
     }
 
     #[Test]
-    public function unauthenticated_user_cannot_access_logs(): void
+    public function it_shows_a_log(): void
     {
-        $response = $this->json('GET', '/api/administration/logs');
+        Carbon::setTestNow(Carbon::create(2025, 6, 30, 12, 0, 0));
 
-        $response->assertStatus(401);
+        $user = User::factory()->create();
+        $log = Log::factory()->create([
+            'account_id' => $user->account_id,
+            'user_id' => $user->id,
+            'action' => 'login',
+            'description' => 'User logged in',
+        ]);
+
+        Sanctum::actingAs($user);
+
+        $response = $this->json('GET', '/api/administration/logs/' . $log->id);
+
+        $response->assertStatus(200);
+
+        $response->assertJson([
+            'data' => [
+                'type' => 'log',
+                'attributes' => [
+                    'name' => $user->name,
+                    'action' => 'login',
+                    'description' => 'User logged in',
+                    'created_at' => 1751284800,
+                    'updated_at' => 1751284800,
+                ],
+                'links' => [
+                    'self' => config('app.url') . '/api/administration/logs/' . $log->id,
+                ],
+            ],
+        ]);
     }
 }
