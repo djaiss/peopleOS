@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Task;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
