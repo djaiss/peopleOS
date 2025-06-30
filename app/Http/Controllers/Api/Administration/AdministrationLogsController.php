@@ -5,19 +5,25 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Administration;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\LogCollection;
+use App\Http\Resources\LogResource;
 use App\Models\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AdministrationLogsController extends Controller
 {
-    public function index(): LogCollection
+    public function index(): AnonymousResourceCollection
     {
         $logs = Log::where('user_id', Auth::user()->id)
             ->with('user')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return new LogCollection($logs);
+        return LogResource::collection($logs);
+    }
+
+    public function show(Log $log): LogResource
+    {
+        return new LogResource($log);
     }
 }

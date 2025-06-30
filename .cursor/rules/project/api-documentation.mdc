@@ -9,6 +9,23 @@ The documentation for the API is in HTML, inside Blade views.
 
 You will get the raw json as a parameter and you need to format it properly in HTML.
 
+## Rules to follow
+
+It's really important to follow these rules:
+
+- if it's a GET action, the verbClass must be `text-blue-700`
+- if it's a POST action, the verbClass must be `text-green-700`
+- if it's a PUT action, the verbClass must be `text-yellow-700`
+- if it's a DELETE action, the verbClass must be `text-red-700`
+
+Each indentation SHOULD be done by 4, meaning the first level should be pl-4, then pl-8 etc.
+
+Numbers SHOULD be highlighted by the color "text-rose-800", and strings by "text-lime-700".
+
+`http://peopleos.test/api` should ALWAYS be replaced by `{{ config('app.url') }}/api`.
+
+When the payload is a collection of multiple objects, please follow the guidelines shown at the bottom of this page.
+
 ## Here are an example.
 
 Here is the initial JSON payload
@@ -46,13 +63,178 @@ and here is the Blade version
 </x-marketing.code>
 ```
 
-It's really important to follow these rules:
+Here is another example:
 
-- if it's a GET action, the verbClass must be `text-blue-700`
-- if it's a POST action, the verbClass must be `text-green-700`
-- if it's a PUT action, the verbClass must be `text-yellow-700`
-- if it's a DELETE action, the verbClass must be `text-red-700`
+Payload:
+```
+<x-marketing.code title="/api/administration/logs" verb="GET" verbClass="text-blue-700">
+    <div>{</div>
+    <div class="pl-4">"data": [</div>
+    <div class="pl-8">{</div>
+    <div class="pl-12">
+        "type":
+        <span class="text-lime-700">"log"</span>
+        ,
+    </div>
+    <div class="pl-12">
+        "id":
+        <span class="text-rose-800">"663"</span>
+        ,
+    </div>
+    <div class="pl-12">"attributes": {</div>
+    <div class="pl-16">
+        "name":
+        <span class="text-lime-700">"Dwight Schrute"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "action":
+        <span class="text-lime-700">"timezone_update"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "description":
+        <span class="text-lime-700">"Updated their timezone"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "created_at":
+        <span class="text-rose-800">1751305720</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "updated_at":
+        <span class="text-rose-800">1751305720</span>
+    </div>
+    <div class="pl-12">},</div>
+    <div class="pl-12">"links": {</div>
+    <div class="pl-16">
+        "self":
+        <span class="text-lime-700">"{{ config('app.url') }}/api/administration/logs/663"</span>
+    </div>
+    <div class="pl-12">}</div>
+    <div class="pl-8">},</div>
+    <div class="pl-8">{</div>
+    <div class="pl-12">...</div>
+    <div class="pl-8">}</div>
+    <div class="pl-4">],</div>
+    <div class="pl-4">"links": {</div>
+    <div class="pl-8">
+        "first":
+        <span class="text-lime-700">"{{ config('app.url') }}/api/administration/logs?page=1"</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "last":
+        <span class="text-lime-700">"{{ config('app.url') }}/api/administration/logs?page=66"</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "prev":
+        <span class="text-gray-500">null</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "next":
+        <span class="text-lime-700">"{{ config('app.url') }}/api/administration/logs?page=2"</span>
+    </div>
+    <div class="pl-4">},</div>
+    <div class="pl-4">"meta": {</div>
+    <div class="pl-8">
+        "current_page":
+        <span class="text-rose-800">1</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "from":
+        <span class="text-rose-800">1</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "last_page":
+        <span class="text-rose-800">66</span>
+        ,
+    </div>
+    <div class="pl-8">"links": [</div>
+    <div class="pl-12">{</div>
+    <div class="pl-16">
+        "url":
+        <span class="text-gray-500">null</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "label":
+        <span class="text-lime-700">"&laquo; Previous"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "active":
+        <span class="text-gray-500">false</span>
+    </div>
+    <div class="pl-12">},</div>
+    <div class="pl-12">{</div>
+    <div class="pl-16">
+        "url":
+        <span class="text-lime-700">"{{ config('app.url') }}/api/administration/logs?page=1"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "label":
+        <span class="text-lime-700">"1"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "active":
+        <span class="text-gray-500">true</span>
+    </div>
+    <div class="pl-12">},</div>
+    <div class="pl-12">{</div>
+    <div class="pl-16">...</div>
+    <div class="pl-12">},</div>
+    <div class="pl-12">{</div>
+    <div class="pl-16">
+        "url":
+        <span class="text-gray-500">{{ config('app.url') }}/api/administration/logs?page=1</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "label":
+        <span class="text-lime-700">"Next &raquo;"</span>
+        ,
+    </div>
+    <div class="pl-16">
+        "active":
+        <span class="text-gray-500">false</span>
+    </div>
+    <div class="pl-12">}</div>
+    <div class="pl-8">],</div>
+    <div class="pl-8">
+        "path":
+        <span class="text-lime-700">"{{ config('app.url') }}/api/administration/logs"</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "per_page":
+        <span class="text-rose-800">10</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "to":
+        <span class="text-rose-800">10</span>
+        ,
+    </div>
+    <div class="pl-8">
+        "total":
+        <span class="text-rose-800">660</span>
+    </div>
+    <div class="pl-4">}</div>
+    <div>}</div>
+</x-marketing.code>
+```
 
-Each indentation should be done by 4, meaning the first level should be pl-4, then pl-8 etc.
+Sometimes, like the json payload above, the payload is about a collection of objects.
+In this case, we dont need the full description in the Blade version. It would be too long.
 
-Numbers should be highlighted by the color "text-rose-800", and strings by "text-lime-700".
+We just need
+- three examples of objects in the data field: the first one, another where we only write `...`, and the last one.
+- in the meta part of the payload, in the links section, we also list many links. We don't need them all. The links always contain the previous and next link, which we SHOULD keep, but we should only take one item between those two.
