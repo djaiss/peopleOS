@@ -20,8 +20,11 @@ use App\Http\Controllers\Api\Persons\PersonNoteController;
 use App\Http\Controllers\Api\Persons\PersonPhysicalAppearanceController;
 use App\Http\Controllers\Api\Persons\PersonTaskController;
 use App\Http\Controllers\Api\Persons\PersonWorkHistoryController;
+use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\Api\ToggleTaskController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('health', [HealthController::class, 'show'])->middleware('throttle:60,1');
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     // logged user
