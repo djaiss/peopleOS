@@ -28,16 +28,17 @@
   <div class="mb-10 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <h3 id="test-the-api-yourself" class="mb-2 text-lg font-bold">Test the API yourself</h3>
     <p class="mb-2">
-      If you want to test the API yourself, we provide a
-      <a href="https://yaak.app/" target="_blank" class="text-blue-500 hover:underline">Yaak collection</a>
-      for you to use, as a workspace.
+      If you want to test the API yourself, we provide two convenient tools for you to use:
+      <a href="https://yaak.app/" target="_blank" class="text-blue-500 hover:underline">Yaak</a>
+      and
+      <a href="https://www.usebruno.com/" target="_blank" class="text-blue-500 hover:underline">Bruno</a>.
     </p>
     <p class="mb-2">
       The documentation is included in the Github repository, under the
-      <a href="https://github.com/djaiss/peopleOS/tree/main/docs/yaak" target="_blank" class="text-blue-500 hover:underline">docs/yaak</a>
+      <a href="https://github.com/djaiss/peopleOS/tree/main/docs" target="_blank" class="text-blue-500 hover:underline">docs</a>
       folder.
     </p>
-    <p>Why Yaak? Because it's a fresh, new approach to API clients, it's free and open source under the MIT license, and I really like the ethos of the main developer. You should give it a try.</p>
+    <p>Why these tools? Because they're fresh, new, free and open source under the MIT license, and I really like their ethos.</p>
   </div>
 
   <div>
