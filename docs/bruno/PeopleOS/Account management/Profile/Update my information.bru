@@ -1,0 +1,19 @@
+meta {
+  name: Update my information
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{URL}}/me?first_name=Dwight&last_name=Schrute&email=admin@admin.coms&nickname=Dwightchou&born_at=1985-03-15
+  body: none
+  auth: inherit
+}
+
+params:query {
+  first_name: Dwight
+  last_name: Schrute
+  email: admin@admin.coms
+  nickname: Dwightchou
+  born_at: 1985-03-15
+}

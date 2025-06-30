@@ -33,7 +33,7 @@ class MeController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore(Auth::user()->id)],
             'nickname' => ['nullable', 'string', 'max:255'],
-            'born_at' => ['nullable', 'date'],
+            'born_at' => ['nullable', 'date_format:Y-m-d'],
         ]);
 
         (new UpdateUserInformation(
@@ -45,15 +45,6 @@ class MeController extends Controller
             bornAt: $validated['born_at'] ?? null,
         ))->execute();
 
-        $response = [
-            'id' => Auth::user()->id,
-            'first_name' => Auth::user()->first_name,
-            'last_name' => Auth::user()->last_name,
-            'email' => Auth::user()->email,
-            'nickname' => Auth::user()->nickname,
-            'born_at' => Auth::user()->born_at?->timestamp,
-        ];
-
-        return response()->json($response);
+        return new UserResource(Auth::user()->refresh());
     }
 }

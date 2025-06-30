@@ -44,13 +44,13 @@ class UpdateUserInformation
     {
         if ($this->bornAt !== null) {
             try {
-                $bornAt = Carbon::createFromFormat('m/d/Y', $this->bornAt);
+                $bornAt = Carbon::createFromFormat('Y-m-d', $this->bornAt);
 
                 if ($bornAt->isFuture()) {
                     throw new InvalidArgumentException('Birth date cannot be in the future');
                 }
             } catch (InvalidFormatException) {
-                throw new InvalidArgumentException('Birth date must be in MM/DD/YYYY format');
+                throw new InvalidArgumentException('Birth date must be in YYYY-MM-DD format');
             } catch (InvalidDateException) {
                 throw new InvalidArgumentException('Invalid birth date');
             }

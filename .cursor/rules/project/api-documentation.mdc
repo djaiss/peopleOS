@@ -54,3 +54,5 @@ It's really important to follow these rules:
 - if it's a DELETE action, the verbClass must be `text-red-700`
 
 Each indentation should be done by 4, meaning the first level should be pl-4, then pl-8 etc.
+
+Numbers should be highlighted by the color "text-rose-800", and strings by "text-lime-700".

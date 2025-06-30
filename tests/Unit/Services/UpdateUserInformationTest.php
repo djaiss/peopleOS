@@ -92,7 +92,7 @@ class UpdateUserInformationTest extends TestCase
             'born_at' => null,
         ]);
 
-        $this->executeService($user, 'ross.geller@friends.com', '03/15/1985');
+        $this->executeService($user, 'ross.geller@friends.com', '1985-03-15');
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
@@ -108,7 +108,7 @@ class UpdateUserInformationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Birth date cannot be in the future');
 
-        $this->executeService($user, 'ross.geller@friends.com', Carbon::now()->addDay()->format('m/d/Y'));
+        $this->executeService($user, 'ross.geller@friends.com', Carbon::now()->addDay()->format('Y-m-d'));
     }
 
     #[Test]
@@ -117,9 +117,9 @@ class UpdateUserInformationTest extends TestCase
         $user = User::factory()->create();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Birth date must be in MM/DD/YYYY format');
+        $this->expectExceptionMessage('Birth date must be in YYYY-MM-DD format');
 
-        $this->executeService($user, 'ross.geller@friends.com', Carbon::now()->addDay()->format('d-m-Y'));
+        $this->executeService($user, 'ross.geller@friends.com', Carbon::now()->addDay()->format('Y.d.m'));
     }
 
     private function executeService(User $user, string $email = 'dwight@dundermifflin.com', ?string $bornAt = null): void
