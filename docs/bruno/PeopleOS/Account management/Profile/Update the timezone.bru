@@ -1,0 +1,15 @@
+meta {
+  name: Update the timezone
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/me/timezone?timezone=Europe/Paris
+  body: none
+  auth: inherit
+}
+
+params:query {
+  timezone: Europe/Paris
+}

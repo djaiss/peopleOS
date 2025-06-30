@@ -25,7 +25,19 @@ class MeTimezoneControllerTest extends TestCase
         ]);
 
         $response->assertOk();
-        $this->assertEquals('America/New_York', $user->refresh()->timezone);
+
+        $this->assertEquals(
+            $response->json()['data'],
+            [
+                'type' => 'timezone',
+                'attributes' => [
+                    'timezone' => 'America/New_York',
+                ],
+                'links' => [
+                    'self' => config('app.url') . '/api/me',
+                ],
+            ],
+        );
     }
 
     #[Test]
@@ -62,7 +74,15 @@ class MeTimezoneControllerTest extends TestCase
 
         $response->assertOk()
             ->assertJson([
-                'timezone' => 'Europe/Paris',
+                'data' => [
+                    'type' => 'timezone',
+                    'attributes' => [
+                        'timezone' => 'Europe/Paris',
+                    ],
+                    'links' => [
+                        'self' => config('app.url') . '/api/me',
+                    ],
+                ],
             ]);
     }
 }
