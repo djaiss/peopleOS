@@ -63,47 +63,26 @@
       <p class="mb-10">This endpoint gets the information about the logged user. This endpoint is there to make sure that the API works.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="type" type="string" description="The type of the resource." />
-          <x-marketing.attribute name="id" type="string" description="The ID of the user." />
-          <x-marketing.attribute name="first_name" type="string" description="The first name of the user." />
-          <x-marketing.attribute name="last_name" type="string" description="The last name of the user." />
-          <x-marketing.attribute name="nickname" type="string" description="The nickname of the user." />
-          <x-marketing.attribute name="email" type="string" description="The email of the user." />
-          <x-marketing.attribute name="born_at" type="integer" description="The birth date of the user, in Unix timestamp format." />
-          <x-marketing.attribute name="links" type="object" description="The link to access the user." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="type" type="string" description="The type of the resource." />
+        <x-marketing.attribute name="id" type="string" description="The ID of the user." />
+        <x-marketing.attribute name="first_name" type="string" description="The first name of the user." />
+        <x-marketing.attribute name="last_name" type="string" description="The last name of the user." />
+        <x-marketing.attribute name="nickname" type="string" description="The nickname of the user." />
+        <x-marketing.attribute name="email" type="string" description="The email of the user." />
+        <x-marketing.attribute name="born_at" type="integer" description="The birth date of the user, in Unix timestamp format." />
+        <x-marketing.attribute name="links" type="object" description="The link to access the user." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/me" verb="GET" verbClass="text-blue-700">
@@ -167,51 +146,30 @@
       <p class="mb-10">Please note that your password can not be changed through the API at the moment.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="first_name" required="true" type="string" description="The first name of the user. Max 255 characters." />
-          <x-marketing.attribute name="last_name" required="true" type="string" description="The last name of the user. Max 255 characters." />
-          <x-marketing.attribute name="nickname" type="string" description="The nickname of the user. Max 255 characters." />
-          <x-marketing.attribute name="email" required="true" type="string" description="The email of the user. This email should be unique in the instance, and we will validate the email format. Max 255 characters." />
-          <x-marketing.attribute name="born_at" type="string" description="The birth date of the user. Format: YYYY-MM-DD. Example: 1985-03-15" />
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <x-marketing.attribute name="first_name" required="true" type="string" description="The first name of the user. Max 255 characters." />
+        <x-marketing.attribute name="last_name" required="true" type="string" description="The last name of the user. Max 255 characters." />
+        <x-marketing.attribute name="nickname" type="string" description="The nickname of the user. Max 255 characters." />
+        <x-marketing.attribute name="email" required="true" type="string" description="The email of the user. This email should be unique in the instance, and we will validate the email format. Max 255 characters." />
+        <x-marketing.attribute name="born_at" type="string" description="The birth date of the user. Format: YYYY-MM-DD. Example: 1985-03-15" />
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="type" type="string" description="The type of the resource." />
-          <x-marketing.attribute name="id" type="string" description="The ID of the user." />
-          <x-marketing.attribute name="first_name" type="string" description="The first name of the user." />
-          <x-marketing.attribute name="last_name" type="string" description="The last name of the user." />
-          <x-marketing.attribute name="nickname" type="string" description="The nickname of the user." />
-          <x-marketing.attribute name="email" type="string" description="The email of the user." />
-          <x-marketing.attribute name="born_at" type="integer" description="The birth date of the user, in Unix timestamp format." />
-          <x-marketing.attribute name="links" type="object" description="The link to access the user." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="type" type="string" description="The type of the resource." />
+        <x-marketing.attribute name="id" type="string" description="The ID of the user." />
+        <x-marketing.attribute name="first_name" type="string" description="The first name of the user." />
+        <x-marketing.attribute name="last_name" type="string" description="The last name of the user." />
+        <x-marketing.attribute name="nickname" type="string" description="The nickname of the user." />
+        <x-marketing.attribute name="email" type="string" description="The email of the user." />
+        <x-marketing.attribute name="born_at" type="integer" description="The birth date of the user, in Unix timestamp format." />
+        <x-marketing.attribute name="links" type="object" description="The link to access the user." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/me" verb="PUT" verbClass="text-yellow-700">
@@ -280,40 +238,19 @@
       </p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="timezone" type="string" description="The timezone of the user in IANA format." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="timezone" type="string" description="The timezone of the user in IANA format." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/me/timezone" verb="GET" verbClass="text-blue-700">
@@ -358,40 +295,19 @@
       </p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint does not have any parameters.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">This endpoint does not have any parameters.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-10">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="timezone" required="true" type="string" description="The timezone of the user in IANA format (e.g., 'America/New_York', 'Europe/London')." />
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <x-marketing.attribute name="timezone" required="true" type="string" description="The timezone of the user in IANA format (e.g., 'America/New_York', 'Europe/London')." />
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="timezone" type="string" description="The updated timezone of the user in IANA format." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="timezone" type="string" description="The updated timezone of the user in IANA format." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/me/timezone" verb="PUT" verbClass="text-yellow-700">
