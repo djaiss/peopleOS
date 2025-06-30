@@ -31,6 +31,8 @@ Route::get('health', [HealthController::class, 'show'])->middleware('throttle:60
 Route::post('login', [LoginController::class, 'store']);
 
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
+    // logout
+    Route::delete('logout', [LoginController::class, 'destroy']);
 
     // logged user
     Route::get('me', [MeController::class, 'show']);
