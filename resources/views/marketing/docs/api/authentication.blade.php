@@ -71,7 +71,7 @@
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/me" verb="GET" verbClass="text-blue-700">
+      <x-marketing.code title="/api/login" verb="POST" verbClass="text-green-700">
         <div>{</div>
         <div class="pl-4">
           "message":
@@ -131,7 +131,7 @@
       </div>
     </div>
     <div>
-      <x-marketing.code title="/api/me" verb="GET" verbClass="text-blue-700">
+      <x-marketing.code title="/api/logout" verb="DELETE" verbClass="text-red-700">
         <div>{</div>
         <div class="pl-4">
           "message":
