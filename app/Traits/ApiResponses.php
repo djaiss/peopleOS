@@ -11,10 +11,9 @@ trait ApiResponses
     /**
      * Return a 200 OK response.
      *
-     * @param string $message
      * @return JsonResponse
      */
-    protected function ok($message): JsonResponse
+    protected function ok(string $message): JsonResponse
     {
         return $this->success($message, 200);
     }
@@ -22,8 +21,6 @@ trait ApiResponses
     /**
      * Return a success response.
      *
-     * @param string $message
-     * @param int $statusCode
      * @return JsonResponse
      */
     protected function success(string $message, int $statusCode = 200): JsonResponse
