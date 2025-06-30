@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_jvz9bogZCW
 createdAt: 2025-03-07T23:13:56.910162
-updatedAt: 2025-03-08T14:27:39.779054
+updatedAt: 2025-06-30T11:37:52.054584
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_uoyBjdELSB
 authentication:
@@ -12,24 +12,24 @@ body: {}
 bodyType: null
 description: ''
 headers:
-  - enabled: true
-    name: Accept
-    value: application/json
-    id: null
-  - enabled: true
-    name: ''
-    value: ''
-    id: null
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
 method: POST
 name: ''
 sortPriority: 1000.0
-url: https://peopleos.test/api/administration/api
+url: https://${[ URL ]}/administration/api
 urlParameters:
-  - enabled: true
-    name: label
-    value: production
-    id: 82q43xK3J8
-  - enabled: true
-    name: ''
-    value: ''
-    id: EQem2B0RQ8
+- enabled: true
+  name: label
+  value: production
+  id: 82q43xK3J8
+- enabled: true
+  name: ''
+  value: ''
+  id: EQem2B0RQ8

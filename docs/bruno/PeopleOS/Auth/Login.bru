@@ -1,0 +1,16 @@
+meta {
+  name: Login
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/login?email=admin@admin.com&password=admin123
+  body: none
+  auth: inherit
+}
+
+params:query {
+  email: admin@admin.com
+  password: admin123
+}

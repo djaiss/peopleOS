@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Administration\AdministrationPruneAccountController
 use App\Http\Controllers\Api\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Api\Administration\MeController;
 use App\Http\Controllers\Api\Administration\MeTimezoneController;
+use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Journal\EntryController;
 use App\Http\Controllers\Api\Journal\JournalController;
 use App\Http\Controllers\Api\Persons\PersonAgeController;
@@ -26,7 +27,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('health', [HealthController::class, 'show'])->middleware('throttle:60,1');
 
+// login
+Route::post('login', [LoginController::class, 'store']);
+
 Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
+
     // logged user
     Route::get('me', [MeController::class, 'show']);
     Route::put('me', [MeController::class, 'update']);
