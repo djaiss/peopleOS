@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <!-- GET /api/login -->
+  <!-- POST /api/login -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <h3 id="login" class="mb-2 text-lg font-bold">Login</h3>
@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <!-- GET /api/logout -->
+  <!-- DELETE /api/logout -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
       <h3 id="logout" class="mb-2 text-lg font-bold">Logout</h3>
