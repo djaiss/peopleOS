@@ -5,28 +5,25 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Administration;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ApiCollection;
+use App\Http\Resources\ApiResource;
 use App\Services\CreateApiKey;
 use App\Services\DestroyApiKey;
+use App\Traits\ApiResponses;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class AdministrationApiController extends Controller
 {
-    public function index(): ApiCollection
-    {
-        $apiKeys = Auth::user()->tokens
-            ->map(fn(PersonalAccessToken $token): array => [
-                'id' => $token->id,
-                'name' => $token->name,
-                'last_used_at' => $token->last_used_at ? $token->last_used_at->diffForHumans() : trans('Never'),
-                'created_at' => $token->created_at->timestamp,
-                'updated_at' => $token->updated_at?->timestamp,
-            ]);
+    use ApiResponses;
 
-        return new ApiCollection($apiKeys);
+    public function index(): AnonymousResourceCollection
+    {
+        $apiKeys = Auth::user()->tokens;
+
+        return ApiResource::collection($apiKeys);
     }
 
     public function create(Request $request): JsonResponse
@@ -42,31 +39,37 @@ class AdministrationApiController extends Controller
 
         $apiKey = Auth::user()->tokens()->latest()->first();
 
-        $response = [
-            'id' => $apiKey->id,
-            'object' => 'api_key',
-            'token' => $token,
-            'name' => $apiKey->name,
-            'last_used_at' => $apiKey->last_used_at,
-            'created_at' => $apiKey->created_at->timestamp,
-            'updated_at' => $apiKey->updated_at?->timestamp,
-        ];
-
-        return response()->json($response);
+        return (new ApiResource($apiKey))
+            ->additional(['token' => $token])
+            ->response()
+            ->setStatusCode(201);
     }
 
-    public function destroy(Request $request): JsonResponse
+    public function show(Request $request): JsonResponse
+    {
+        $id = (int) $request->route()->parameter('id');
+
+        $apiKey = Auth::user()->tokens()->find($id);
+
+        if (! $apiKey) {
+            return $this->error('API key not found', 404);
+        }
+
+        return (new ApiResource($apiKey))->response()->setStatusCode(200);
+    }
+
+    public function destroy(Request $request): Response|JsonResponse
     {
         $id = (int) $request->route()->parameter('id');
 
         if ($id === 0) {
-            return response()->json(['error' => 'API key not found'], 404);
+            return $this->error('API key not found', 404);
         }
 
         $apiKey = Auth::user()->tokens()->find($id);
 
         if (! $apiKey) {
-            return response()->json(['error' => 'API key not found'], 404);
+            return $this->error('API key not found', 404);
         }
 
         (new DestroyApiKey(
@@ -74,6 +77,6 @@ class AdministrationApiController extends Controller
             tokenId: $id,
         ))->execute();
 
-        return response()->json(['message' => 'API key deleted']);
+        return response()->noContent(204);
     }
 }

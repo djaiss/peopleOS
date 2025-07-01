@@ -1,0 +1,15 @@
+meta {
+  name: Create API key
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/administration/api?label=Angel
+  body: none
+  auth: inherit
+}
+
+params:query {
+  label: Angel
+}

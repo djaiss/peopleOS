@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_jvz9bogZCW
 createdAt: 2025-03-07T23:13:56.910162
-updatedAt: 2025-06-30T11:37:52.054584
+updatedAt: 2025-07-01T22:41:27.166109
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_uoyBjdELSB
 authentication:
@@ -21,9 +21,9 @@ headers:
   value: ''
   id: null
 method: POST
-name: ''
+name: Create API key
 sortPriority: 1000.0
-url: https://${[ URL ]}/administration/api
+url: ${[ URL ]}/administration/api
 urlParameters:
 - enabled: true
   name: label
