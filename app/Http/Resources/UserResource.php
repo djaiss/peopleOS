@@ -27,7 +27,7 @@ class UserResource extends JsonResource
                 'born_at' => $this->born_at?->timestamp,
             ],
             'links' => [
-                'self' => route('me'),
+                'self' => route('api.me'),
             ],
         ];
     }

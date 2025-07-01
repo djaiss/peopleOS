@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.348.2",
+            "version": "3.349.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6acc8e4f8b7468e604d6f0442284937398c2959a"
+                "reference": "6bc013005c2c8df186abc823754deb1bb6c0f1ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6acc8e4f8b7468e604d6f0442284937398c2959a",
-                "reference": "6acc8e4f8b7468e604d6f0442284937398c2959a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6bc013005c2c8df186abc823754deb1bb6c0f1ca",
+                "reference": "6bc013005c2c8df186abc823754deb1bb6c0f1ca",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.348.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.349.0"
             },
-            "time": "2025-06-30T18:12:03+00:00"
+            "time": "2025-07-01T18:04:21+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -1991,16 +1991,16 @@
         },
         {
             "name": "laravel/nightwatch",
-            "version": "v1.10.1",
+            "version": "v1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/nightwatch.git",
-                "reference": "d0296be0016fe6995665badc5cdf88f949081a04"
+                "reference": "41d99c16b5c4a5f36fac73229f07ec804e2c52f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/nightwatch/zipball/d0296be0016fe6995665badc5cdf88f949081a04",
-                "reference": "d0296be0016fe6995665badc5cdf88f949081a04",
+                "url": "https://api.github.com/repos/laravel/nightwatch/zipball/41d99c16b5c4a5f36fac73229f07ec804e2c52f2",
+                "reference": "41d99c16b5c4a5f36fac73229f07ec804e2c52f2",
                 "shasum": ""
             },
             "require": {
@@ -2022,9 +2022,10 @@
                 "laravel/horizon": "^5.4",
                 "laravel/pint": "1.21.0",
                 "mockery/mockery": "^1.0",
-                "mongodb/laravel-mongodb": "^5.0",
+                "mongodb/laravel-mongodb": "^4.0|^5.0",
                 "orchestra/testbench": "^8.0|^9.0|^10.0",
                 "orchestra/testbench-core": "^8.0|^9.0|^10.0",
+                "orchestra/workbench": "^8.0|^9.0|^10.0",
                 "phpstan/phpstan": "^1.0",
                 "phpunit/phpunit": "^10.0|^11.0",
                 "ramsey/uuid": "^4.0",
@@ -2068,7 +2069,7 @@
                 "issues": "https://github.com/laravel/nightwatch/issues",
                 "source": "https://github.com/laravel/nightwatch"
             },
-            "time": "2025-06-30T06:47:53+00:00"
+            "time": "2025-07-01T01:22:49+00:00"
         },
         {
             "name": "laravel/octane",

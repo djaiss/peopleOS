@@ -27,7 +27,7 @@ class LogResource extends JsonResource
                 'updated_at' => $this->updated_at->timestamp,
             ],
             'links' => [
-                'self' => route('administration.logs.show', $this->id),
+                'self' => route('api.administration.logs.show', $this->id),
             ],
         ];
     }
