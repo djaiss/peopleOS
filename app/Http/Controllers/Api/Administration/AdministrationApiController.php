@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class AdministrationApiController extends Controller
 {
@@ -57,18 +58,18 @@ class AdministrationApiController extends Controller
         return (new ApiResource($apiKey))->response()->setStatusCode(200);
     }
 
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request): Response|JsonResponse
     {
         $id = (int) $request->route()->parameter('id');
 
         if ($id === 0) {
-            return response()->json(['error' => 'API key not found'], 404);
+            return $this->error('API key not found', 404);
         }
 
         $apiKey = Auth::user()->tokens()->find($id);
 
         if (! $apiKey) {
-            return response()->json(['error' => 'API key not found'], 404);
+            return $this->error('API key not found', 404);
         }
 
         (new DestroyApiKey(
