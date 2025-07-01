@@ -235,18 +235,12 @@
 
       <!-- response attributes -->
       <x-marketing.response-attributes>
-        <x-marketing.attribute name="message" type="string" description="The success message." />
+        <p class="text-gray-500">No response attributes are available for this endpoint.</p>
       </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/api/{id}" verb="DELETE" verbClass="text-red-700">
-        <div>{</div>
-        <div class="pl-4">
-          "message":
-          <span class="text-rose-800">"API key deleted"</span>
-          ,
-        </div>
-        <div>}</div>
+        <div>No response body</div>
       </x-marketing.code>
     </div>
   </div>
