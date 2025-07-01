@@ -76,6 +76,6 @@ class AdministrationApiController extends Controller
             tokenId: $id,
         ))->execute();
 
-        return $this->success('API key deleted', 204);
+        return response()->noContent(204);
     }
 }
