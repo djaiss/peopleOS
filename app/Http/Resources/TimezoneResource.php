@@ -22,7 +22,7 @@ class TimezoneResource extends JsonResource
                 'timezone' => $this->timezone,
             ],
             'links' => [
-                'self' => route('me'),
+                'self' => route('api.me'),
             ],
         ];
     }
