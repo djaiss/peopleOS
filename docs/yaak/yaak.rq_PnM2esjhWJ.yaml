@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_PnM2esjhWJ
 createdAt: 2025-03-07T23:22:50.553461
-updatedAt: 2025-03-08T14:27:43.483140
+updatedAt: 2025-07-01T22:57:04.289393
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_uoyBjdELSB
 authentication:
@@ -12,24 +12,24 @@ body: {}
 bodyType: null
 description: ''
 headers:
-  - enabled: true
-    name: Accept
-    value: application/json
-    id: null
-  - enabled: true
-    name: ''
-    value: ''
-    id: null
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
 method: DELETE
-name: ''
+name: Delete API key
 sortPriority: 2000.0
-url: https://peopleos.test/api/administration/api/7
+url: ${[ URL ]}/administration/api/11
 urlParameters:
-  - enabled: true
-    name: label
-    value: production
-    id: 82q43xK3J8
-  - enabled: true
-    name: ''
-    value: ''
-    id: EQem2B0RQ8
+- enabled: true
+  name: label
+  value: production
+  id: 82q43xK3J8
+- enabled: true
+  name: ''
+  value: ''
+  id: EQem2B0RQ8

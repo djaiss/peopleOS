@@ -17,12 +17,18 @@ class ApiResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this['id'],
-            'object' => 'api_key',
-            'name' => $this['name'],
-            'last_used_at' => $this['last_used_at'],
-            'created_at' => $this['created_at'],
-            'updated_at' => $this['updated_at'],
+            'type' => 'api_key',
+            'id' => (string) $this->id,
+            'attributes' => [
+                'name' => $this->name,
+                'token' => $this->additional['token'] ?? null,
+                'last_used_at' => $this->last_used_at ? $this->last_used_at->timestamp : null,
+                'created_at' => $this->created_at->timestamp,
+                'updated_at' => $this->updated_at->timestamp,
+            ],
+            'links' => [
+                'self' => route('api.administration.api.show', $this->id),
+            ],
         ];
     }
 }

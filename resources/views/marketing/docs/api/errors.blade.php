@@ -6,7 +6,7 @@
 ?>
 
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
-  <h1 class="mb-6 text-2xl font-bold">Errors</h1>
+  <h1 class="mb-6 text-2xl font-bold">HTTP status codes</h1>
 
   <div class="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
     <div>
@@ -28,6 +28,18 @@
           <div class="flex flex-col">
             <span class="font-semibold">OK</span>
             <span class="text-gray-600">Everything worked as expected.</span>
+          </div>
+
+          <div class="rounded-md bg-gray-50 px-3 py-2 font-mono">201</div>
+          <div class="flex flex-col">
+            <span class="font-semibold">Created</span>
+            <span class="text-gray-600">The request was successful and a new resource was created.</span>
+          </div>
+
+          <div class="rounded-md bg-gray-50 px-3 py-2 font-mono">204</div>
+          <div class="flex flex-col">
+            <span class="font-semibold">No Content</span>
+            <span class="text-gray-600">The request was successful and the response contains no content.</span>
           </div>
 
           <div class="rounded-md bg-gray-50 px-3 py-2 font-mono">400</div>

@@ -118,9 +118,10 @@ Route::name('api.')->group(function (): void {
         });
 
         // api keys
-        Route::get('administration/api', [AdministrationApiController::class, 'index']);
-        Route::post('administration/api', [AdministrationApiController::class, 'create']);
-        Route::delete('administration/api/{id}', [AdministrationApiController::class, 'destroy']);
+        Route::get('administration/api', [AdministrationApiController::class, 'index'])->name('administration.api');
+        Route::get('administration/api/{id}', [AdministrationApiController::class, 'show'])->name('administration.api.show');
+        Route::post('administration/api', [AdministrationApiController::class, 'create'])->name('administration.api.create');
+        Route::delete('administration/api/{id}', [AdministrationApiController::class, 'destroy'])->name('administration.api.destroy');
 
         // prune account
         Route::put('administration/prune', [AdministrationPruneAccountController::class, 'update']);

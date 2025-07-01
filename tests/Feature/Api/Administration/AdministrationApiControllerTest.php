@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Api\Administration;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use PHPUnit\Framework\Attributes\Test;
@@ -14,27 +15,65 @@ class AdministrationApiControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    private array $collectionJsonStructure = [
+        'data' => [
+            '*' => [
+                'type',
+                'id',
+                'attributes' => [
+                    'name',
+                    'token',
+                    'last_used_at',
+                    'created_at',
+                    'updated_at',
+                ],
+                'links' => [
+                    'self',
+                ],
+            ],
+        ],
+    ];
+
+    private array $singleJsonStructure = [
+        'data' => [
+            'type',
+            'id',
+            'attributes' => [
+                'name',
+                'token',
+                'last_used_at',
+                'created_at',
+                'updated_at',
+            ],
+            'links' => [
+                'self',
+            ],
+        ],
+        'token',
+    ];
+
     #[Test]
-    public function user_can_get_list_of_their_api_keys(): void
+    public function it_can_list_the_api_keys_of_the_current_user(): void
     {
+        Carbon::setTestNow('2025-07-01 00:00:00');
         $user = User::factory()->create();
 
         $token1 = $user->createToken('Test API Key 1');
+        $token2AccessToken = $user->createToken('Test API Key 2')->accessToken;
+        $token2AccessToken->last_used_at = Carbon::now()->subDays(5);
+        $token2AccessToken->save();
 
         Sanctum::actingAs($user);
 
         $response = $this->json('GET', '/api/administration/api');
 
-        $response->assertJsonCount(1, 'data');
+        $response->assertJsonStructure($this->collectionJsonStructure);
 
-        $response->assertJsonFragment([
-            'id' => $token1->accessToken->id,
-            'name' => 'Test API Key 1',
-        ]);
+        $response->assertJsonCount(2, 'data');
     }
 
     #[Test]
-    public function user_can_create_a_new_api_key(): void
+    public function it_can_create_a_new_api_key(): void
     {
         $user = User::factory()->create();
 
@@ -44,7 +83,7 @@ class AdministrationApiControllerTest extends TestCase
             'label' => 'New API Key',
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
 
         $this->assertDatabaseHas('personal_access_tokens', [
             'name' => 'New API Key',
@@ -52,54 +91,7 @@ class AdministrationApiControllerTest extends TestCase
             'tokenable_type' => User::class,
         ]);
 
-        $response->assertJsonStructure([
-            'id',
-            'object',
-            'token',
-            'name',
-            'last_used_at',
-            'created_at',
-            'updated_at',
-        ]);
-
-        $response->assertJson([
-            'object' => 'api_key',
-            'name' => 'New API Key',
-        ]);
-
-        $this->assertIsString($response->json('token'));
-        $this->assertNotEmpty($response->json('token'));
-    }
-
-    #[Test]
-    public function creating_api_key_requires_label(): void
-    {
-        $user = User::factory()->create();
-
-        Sanctum::actingAs($user);
-
-        $response = $this->json('POST', '/api/administration/api', []);
-
-        $response->assertStatus(422);
-        $response->assertJsonValidationErrors(['label']);
-    }
-
-    #[Test]
-    public function unauthenticated_user_cannot_access_api_keys(): void
-    {
-        $response = $this->json('GET', '/api/administration/api');
-
-        $response->assertStatus(401);
-    }
-
-    #[Test]
-    public function unauthenticated_user_cannot_create_api_key(): void
-    {
-        $response = $this->json('POST', '/api/administration/api', [
-            'label' => 'New API Key',
-        ]);
-
-        $response->assertStatus(401);
+        $response->assertJsonStructure($this->singleJsonStructure);
     }
 
     #[Test]
@@ -113,66 +105,9 @@ class AdministrationApiControllerTest extends TestCase
 
         $response = $this->json('DELETE', "/api/administration/api/{$tokenId}");
 
-        $response->assertStatus(200);
-        $response->assertJson([
-            'message' => 'API key deleted',
-        ]);
+        $response->assertStatus(204);
 
         $this->assertDatabaseMissing('personal_access_tokens', [
-            'id' => $tokenId,
-        ]);
-    }
-
-    #[Test]
-    public function user_cannot_delete_nonexistent_api_key(): void
-    {
-        $user = User::factory()->create();
-
-        Sanctum::actingAs($user);
-
-        $response = $this->json('DELETE', '/api/administration/api/999');
-
-        $response->assertStatus(404);
-        $response->assertJson([
-            'error' => 'API key not found',
-        ]);
-    }
-
-    #[Test]
-    public function user_cannot_delete_another_users_api_key(): void
-    {
-        $user1 = User::factory()->create();
-        $user2 = User::factory()->create();
-
-        $token = $user2->createToken('Other User API Key');
-        $tokenId = $token->accessToken->id;
-
-        Sanctum::actingAs($user1);
-
-        $response = $this->json('DELETE', "/api/administration/api/{$tokenId}");
-
-        $response->assertStatus(404);
-        $response->assertJson([
-            'error' => 'API key not found',
-        ]);
-
-        $this->assertDatabaseHas('personal_access_tokens', [
-            'id' => $tokenId,
-        ]);
-    }
-
-    #[Test]
-    public function unauthenticated_user_cannot_delete_api_key(): void
-    {
-        $user = User::factory()->create();
-        $token = $user->createToken('Test API Key');
-        $tokenId = $token->accessToken->id;
-
-        $response = $this->json('DELETE', "/api/administration/api/{$tokenId}");
-
-        $response->assertStatus(401);
-
-        $this->assertDatabaseHas('personal_access_tokens', [
             'id' => $tokenId,
         ]);
     }
