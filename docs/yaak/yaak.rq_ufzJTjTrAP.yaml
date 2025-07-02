@@ -1,8 +1,8 @@
 type: http_request
 model: http_request
-id: rq_Q4w9vcXgFt
-createdAt: 2025-03-08T14:31:16.393696
-updatedAt: 2025-07-02T17:36:56.647377
+id: rq_ufzJTjTrAP
+createdAt: 2025-07-02T17:44:26.840268
+updatedAt: 2025-07-02T17:44:32.610108
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_v6SALLBwmt
 authentication:
@@ -20,10 +20,10 @@ headers:
   name: ''
   value: ''
   id: null
-method: POST
-name: Create a gender
-sortPriority: 0.0010000000474974513
-url: ${[ URL ]}/administration/genders
+method: GET
+name: Show a gender
+sortPriority: 0.0020000000474974513
+url: ${[ URL ]}/administration/genders/3
 urlParameters:
 - enabled: true
   name: name

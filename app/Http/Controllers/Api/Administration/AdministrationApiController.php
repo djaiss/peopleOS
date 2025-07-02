@@ -29,7 +29,7 @@ class AdministrationApiController extends Controller
     public function create(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'label' => 'required|string|max:255',
+            'label' => ['required', 'string', 'max:255'],
         ]);
 
         $token = (new CreateApiKey(

@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_qbqYroPHGv
 createdAt: 2025-03-08T14:35:14.343819
-updatedAt: 2025-03-08T14:35:23.299331
+updatedAt: 2025-07-02T17:43:05.217478
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_v6SALLBwmt
 authentication:
@@ -12,20 +12,20 @@ body: {}
 bodyType: null
 description: ''
 headers:
-  - enabled: true
-    name: Accept
-    value: application/json
-    id: null
-  - enabled: true
-    name: ''
-    value: ''
-    id: null
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
 method: DELETE
-name: ''
-sortPriority: 0.003
-url: https://peopleos.test/api/administration/genders/7
+name: Delete a gender
+sortPriority: 0.003000000026077032
+url: ${[ URL ]}/administration/genders/8
 urlParameters:
-  - enabled: true
-    name: ''
-    value: ''
-    id: k8dQFVsm2j
+- enabled: true
+  name: ''
+  value: ''
+  id: k8dQFVsm2j
