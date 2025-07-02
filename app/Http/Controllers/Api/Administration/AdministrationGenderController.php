@@ -10,14 +10,19 @@ use App\Models\Gender;
 use App\Services\CreateGender;
 use App\Services\DestroyGender;
 use App\Services\UpdateGender;
+use App\Traits\ApiResponses;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AdministrationGenderController extends Controller
 {
-    public function index(): JsonResource
+    use ApiResponses;
+
+    public function index(): AnonymousResourceCollection
     {
         $genders = Gender::where('account_id', Auth::user()->account_id)
             ->orderBy('position', 'asc')
@@ -26,7 +31,7 @@ class AdministrationGenderController extends Controller
         return GenderResource::collection($genders);
     }
 
-    public function create(Request $request): JsonResource
+    public function create(Request $request): JsonResponse
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -36,6 +41,15 @@ class AdministrationGenderController extends Controller
             user: $request->user(),
             name: $data['name'],
         ))->execute();
+
+        return (new GenderResource($gender))->response()->setStatusCode(201);
+    }
+
+    public function show(Gender $gender): JsonResource|JsonResponse
+    {
+        if ($gender->account_id !== Auth::user()->account_id) {
+            return $this->error('Gender not found', 404);
+        }
 
         return new GenderResource($gender);
     }
@@ -64,6 +78,6 @@ class AdministrationGenderController extends Controller
             gender: $gender,
         ))->execute();
 
-        return response()->noContent();
+        return response()->noContent(204);
     }
 }

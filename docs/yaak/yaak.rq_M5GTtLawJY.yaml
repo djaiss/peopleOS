@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_M5GTtLawJY
 createdAt: 2025-03-08T02:21:20.008979
-updatedAt: 2025-03-08T14:27:25.129940
+updatedAt: 2025-07-02T17:36:31.602529
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_v6SALLBwmt
 authentication:
@@ -12,16 +12,16 @@ body: {}
 bodyType: null
 description: ''
 headers:
-  - enabled: true
-    name: Accept
-    value: application/json
-    id: null
-  - enabled: true
-    name: ''
-    value: ''
-    id: null
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
 method: GET
-name: ''
+name: List of genders
 sortPriority: 0.0
-url: https://peopleos.test/api/administration/genders
+url: ${[ URL ]}/administration/genders
 urlParameters: []

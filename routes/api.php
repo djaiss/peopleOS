@@ -136,6 +136,7 @@ Route::name('api.')->group(function (): void {
         // genders
         Route::get('administration/genders', [AdministrationGenderController::class, 'index']);
         Route::post('administration/genders', [AdministrationGenderController::class, 'create']);
+        Route::get('administration/genders/{gender}', [AdministrationGenderController::class, 'show'])->name('administration.genders.show');
         Route::put('administration/genders/{gender}', [AdministrationGenderController::class, 'update']);
         Route::delete('administration/genders/{gender}', [AdministrationGenderController::class, 'destroy']);
 

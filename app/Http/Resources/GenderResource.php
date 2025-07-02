@@ -17,12 +17,17 @@ class GenderResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'object' => 'gender',
-            'name' => $this->name,
-            'position' => $this->position,
-            'created_at' => $this->created_at->timestamp,
-            'updated_at' => $this->updated_at?->timestamp,
+            'type' => 'gender',
+            'id' => (string) $this->id,
+            'attributes' => [
+                'name' => $this->name,
+                'position' => $this->position,
+                'created_at' => $this->created_at->timestamp,
+                'updated_at' => $this->updated_at?->timestamp,
+            ],
+            'links' => [
+                'self' => route('api.administration.genders.show', $this->id),
+            ],
         ];
     }
 }

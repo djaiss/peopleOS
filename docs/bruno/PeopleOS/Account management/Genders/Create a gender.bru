@@ -1,0 +1,15 @@
+meta {
+  name: Create a gender
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/administration/genders?name=Non binary
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: Non binary
+}

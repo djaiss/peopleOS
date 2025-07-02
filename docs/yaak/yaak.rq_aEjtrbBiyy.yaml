@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_aEjtrbBiyy
 createdAt: 2025-03-08T14:32:09.952309
-updatedAt: 2025-03-08T14:34:19.581065
+updatedAt: 2025-07-02T17:42:51.981165
 workspaceId: wk_IQZH5RHjkM
 folderId: fl_v6SALLBwmt
 authentication:
@@ -12,28 +12,28 @@ body: {}
 bodyType: null
 description: ''
 headers:
-  - enabled: true
-    name: Accept
-    value: application/json
-    id: null
-  - enabled: true
-    name: ''
-    value: ''
-    id: null
+- enabled: true
+  name: Accept
+  value: application/json
+  id: null
+- enabled: true
+  name: ''
+  value: ''
+  id: null
 method: PUT
-name: ''
-sortPriority: 0.002
-url: https://peopleos.test/api/administration/genders/7
+name: Update a gender
+sortPriority: 0.0020000000949949026
+url: ${[ URL ]}/administration/genders/8
 urlParameters:
-  - enabled: true
-    name: name
-    value: Fuckers
-    id: e9qu0PzTED
-  - enabled: true
-    name: position
-    value: '4'
-    id: c70tVZT6MY
-  - enabled: true
-    name: ''
-    value: ''
-    id: KAdWuDFGtr
+- enabled: true
+  name: name
+  value: Fuckers
+  id: e9qu0PzTED
+- enabled: true
+  name: position
+  value: '4'
+  id: c70tVZT6MY
+- enabled: true
+  name: ''
+  value: ''
+  id: KAdWuDFGtr
