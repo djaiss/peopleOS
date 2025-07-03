@@ -1,0 +1,16 @@
+meta {
+  name: Update a task category
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/administration/genders/7?name=Female&position=4
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: Female
+  position: 4
+}

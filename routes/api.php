@@ -143,6 +143,7 @@ Route::name('api.')->group(function (): void {
         // task categories
         Route::get('administration/task-categories', [AdministrationTaskCategoryController::class, 'index']);
         Route::post('administration/task-categories', [AdministrationTaskCategoryController::class, 'create']);
+        Route::get('administration/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'show'])->name('administration.task-categories.show');
         Route::put('administration/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'update']);
         Route::delete('administration/task-categories/{taskCategory}', [AdministrationTaskCategoryController::class, 'destroy']);
     });

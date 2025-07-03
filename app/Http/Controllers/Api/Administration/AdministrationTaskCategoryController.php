@@ -10,13 +10,17 @@ use App\Models\TaskCategory;
 use App\Services\CreateTaskCategory;
 use App\Services\DestroyTaskCategory;
 use App\Services\UpdateTaskCategory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Traits\ApiResponses;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AdministrationTaskCategoryController extends Controller
 {
+    use ApiResponses;
+
     public function index(): JsonResource
     {
         $taskCategories = TaskCategory::where('account_id', Auth::user()->account_id)
@@ -25,7 +29,7 @@ class AdministrationTaskCategoryController extends Controller
         return TaskCategoryResource::collection($taskCategories);
     }
 
-    public function create(Request $request): JsonResource
+    public function create(Request $request): JsonResponse
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -37,6 +41,15 @@ class AdministrationTaskCategoryController extends Controller
             name: $data['name'],
             color: $data['color'],
         ))->execute();
+
+        return (new TaskCategoryResource($taskCategory))->response()->setStatusCode(201);
+    }
+
+    public function show(TaskCategory $taskCategory): JsonResource|JsonResponse
+    {
+        if ($taskCategory->account_id !== Auth::user()->account_id) {
+            return $this->error('Task category not found', 404);
+        }
 
         return new TaskCategoryResource($taskCategory);
     }

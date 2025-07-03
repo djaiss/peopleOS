@@ -3,7 +3,7 @@
 <div class="pl-8">{</div>
 <div class="pl-12">
   "type":
-  <span class="text-lime-700">"task_category"</span>
+  <span class="text-lime-700">"gender"</span>
   ,
 </div>
 <div class="pl-12">
@@ -14,12 +14,12 @@
 <div class="pl-12">"attributes": {</div>
 <div class="pl-16">
   "name":
-  <span class="text-lime-700">"Birthday"</span>
+  <span class="text-lime-700">"Man"</span>
   ,
 </div>
 <div class="pl-16">
-  "color":
-  <span class="text-lime-700">"bg-purple-100"</span>
+  "position":
+  <span class="text-rose-800">1</span>
   ,
 </div>
 <div class="pl-16">
@@ -35,7 +35,7 @@
 <div class="pl-12">"links": {</div>
 <div class="pl-16">
   "self":
-  <span class="text-lime-700">"{{ config('app.url') }}/api/administration/task-categories/1"</span>
+  <span class="text-lime-700">"{{ config('app.url') }}/api/administration/genders/1"</span>
 </div>
 <div class="pl-12">}</div>
 <div class="pl-8">
