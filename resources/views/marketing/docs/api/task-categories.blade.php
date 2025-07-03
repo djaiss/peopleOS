@@ -13,13 +13,13 @@
 
     <ul>
       <li>
-        <a href="#task-category-object" class="text-blue-500 hover:underline">The Task category object</a>
-      </li>
-      <li>
         <a href="#get-the-list-of-task-categories" class="text-blue-500 hover:underline">Get the list of task categories in the account</a>
       </li>
       <li>
         <a href="#create-a-new-task-category" class="text-blue-500 hover:underline">Create a new task category</a>
+      </li>
+      <li>
+        <a href="#show-a-task-category" class="text-blue-500 hover:underline">Show a task category</a>
       </li>
       <li>
         <a href="#update-a-task-category" class="text-blue-500 hover:underline">Update a task category</a>
@@ -46,6 +46,10 @@
             <span class="text-green-700">POST</span>
             /api/administration/task-categories
           </a>
+          <a href="#show-a-task-category">
+            <span class="text-blue-700">GET</span>
+            /api/administration/task-categories/{id}
+          </a>
           <a href="#update-a-task-category">
             <span class="text-yellow-700">PUT</span>
             /api/administration/task-categories/{id}
@@ -59,38 +63,6 @@
     </div>
   </div>
 
-  <!-- Task category object -->
-  <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
-    <div>
-      <h3 id="task-category-object" class="mb-2 text-lg font-bold">The Task category object</h3>
-      <p class="mb-10">This object represents a category of tasks.</p>
-
-      <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
-          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
-          <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
-          <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
-        </div>
-      </div>
-    </div>
-    <div>
-      <x-marketing.code title="Example" verbClass="text-blue-700">
-        <div>{</div>
-        @include('marketing.docs.api.partials.task-category-response')
-        <div>}</div>
-      </x-marketing.code>
-    </div>
-  </div>
-
   <!-- GET /api/administration/task-categories -->
   <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
     <div>
@@ -99,52 +71,32 @@
       <p class="mb-10">This call is not paginated, since there should not be too many task categories in the account.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No URL parameters are required for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">No URL parameters are required for this endpoint.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
-          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
-          <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
-          <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+        <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+        <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+        <x-marketing.attribute name="color" type="string" description="The color of the task category." />
+        <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
+        <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/task-categories" verb="GET" verbClass="text-blue-700">
         <div>{</div>
         <div class="pl-4">"data": [</div>
+        @include('marketing.docs.api.partials.task-category-response', ['with_comma' => true])
         <div class="pl-8">{</div>
-        @include('marketing.docs.api.partials.task-category-response')
+        <div class="pl-12">...</div>
         <div class="pl-8">}</div>
         <div class="pl-4">]</div>
         <div>}</div>
@@ -159,49 +111,65 @@
       <p class="mb-10">This endpoint creates a new task category. It will return the task category in the response.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No URL parameters are required for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <p class="text-gray-500">No URL parameters are required for this endpoint.</p>
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="name" type="string" description="The name of the task category. Maximum 255 characters." />
-          <x-marketing.attribute required name="color" type="string" description="The color of the task category. Maximum 30 characters." />
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <x-marketing.attribute required name="name" type="string" description="The name of the task category. Maximum 255 characters." />
+        <x-marketing.attribute required name="color" type="string" description="The color of the task category. Maximum 30 characters." />
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
-          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
-          <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
-          <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+        <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+        <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+        <x-marketing.attribute name="color" type="string" description="The color of the task category." />
+        <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
+        <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/task-categories" verb="POST" verbClass="text-green-700">
+        <div>{</div>
+        <div class="pl-4">"data": {</div>
+        @include('marketing.docs.api.partials.task-category-response')
+        <div class="pl-4">}</div>
+        <div>}</div>
+      </x-marketing.code>
+    </div>
+  </div>
+
+  <!-- GET /api/administration/task-categories/{id} -->
+  <div class="mb-10 grid grid-cols-1 gap-6 border-b border-gray-200 pb-10 sm:grid-cols-2">
+    <div>
+      <h3 id="show-a-task-category" class="mb-2 text-lg font-bold">Show a task category</h3>
+      <p class="mb-10">This endpoint shows a task category.</p>
+
+      <!-- url parameters -->
+      <x-marketing.url-parameters>
+        <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to show." />
+      </x-marketing.url-parameters>
+
+      <!-- query parameters -->
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
+
+      <!-- response attributes -->
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+        <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+        <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+        <x-marketing.attribute name="color" type="string" description="The color of the task category." />
+        <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
+        <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
+      </x-marketing.response-attributes>
+    </div>
+    <div>
+      <x-marketing.code title="/api/administration/task-categories/{id}" verb="GET" verbClass="text-blue-700">
         <div>{</div>
         <div class="pl-4">"data": {</div>
         @include('marketing.docs.api.partials.task-category-response')
@@ -218,46 +186,25 @@
       <p class="mb-10">This endpoint updates a task category. It will return the task category in the response.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to update." />
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to update." />
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="name" type="string" description="The name of the task category. Maximum 255 characters." />
-          <x-marketing.attribute required name="color" type="string" description="The color of the task category. Maximum 30 characters." />
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <x-marketing.attribute required name="name" type="string" description="The name of the task category. Maximum 255 characters." />
+        <x-marketing.attribute required name="color" type="string" description="The color of the task category. Maximum 30 characters." />
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition>
-          <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
-          <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
-          <x-marketing.attribute name="name" type="string" description="The name of the task category." />
-          <x-marketing.attribute name="color" type="string" description="The color of the task category." />
-          <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
-          <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <x-marketing.attribute name="id" type="integer" description="The ID of the task category." />
+        <x-marketing.attribute name="object" type="string" description="The object type. Always 'task_category'." />
+        <x-marketing.attribute name="name" type="string" description="The name of the task category." />
+        <x-marketing.attribute name="color" type="string" description="The color of the task category." />
+        <x-marketing.attribute name="created_at" type="integer" description="The date and time the object was created, in Unix timestamp format." />
+        <x-marketing.attribute name="updated_at" type="integer" description="The date and time the object was last updated, in Unix timestamp format." />
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/task-categories/{id}" verb="PUT" verbClass="text-yellow-700">
@@ -277,40 +224,19 @@
       <p class="mb-10">This endpoint deletes a task category. It will return a 204 No Content response.</p>
 
       <!-- url parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">URL parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to delete." />
-        </div>
-      </div>
+      <x-marketing.url-parameters>
+        <x-marketing.attribute required name="id" type="integer" description="The ID of the task category to delete." />
+      </x-marketing.url-parameters>
 
       <!-- query parameters -->
-      <div x-cloak x-data="{ open: false }" class="mb-8">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="mb-2 flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Query parameters</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">No query parameters are available for this endpoint.</p>
-        </div>
-      </div>
+      <x-marketing.query-parameters>
+        <p class="text-gray-500">No query parameters are available for this endpoint.</p>
+      </x-marketing.query-parameters>
 
       <!-- response attributes -->
-      <div x-cloak x-data="{ open: false }">
-        <div @click="open = !open" x-bind:class="open ? 'border-b border-gray-200' : ''" class="flex cursor-pointer items-center justify-between pb-2">
-          <p class="font-semibold">Response attributes</p>
-          <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-        </div>
-
-        <div x-show="open" x-transition class="mt-2">
-          <p class="text-gray-500">This endpoint returns a 204 No Content response with no body.</p>
-        </div>
-      </div>
+      <x-marketing.response-attributes>
+        <p class="text-gray-500">This endpoint returns a 204 No Content response with no body.</p>
+      </x-marketing.response-attributes>
     </div>
     <div>
       <x-marketing.code title="/api/administration/task-categories/{id}" verb="DELETE" verbClass="text-red-700">

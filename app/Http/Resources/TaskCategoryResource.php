@@ -17,12 +17,17 @@ class TaskCategoryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'object' => 'task_category',
-            'name' => $this->name,
-            'color' => $this->color,
-            'created_at' => $this->created_at->timestamp,
-            'updated_at' => $this->updated_at?->timestamp,
+            'type' => 'task_category',
+            'id' => (string) $this->id,
+            'attributes' => [
+                'name' => $this->name,
+                'color' => $this->color,
+                'created_at' => $this->created_at->timestamp,
+                'updated_at' => $this->updated_at?->timestamp,
+            ],
+            'links' => [
+                'self' => route('api.administration.task-categories.show', $this->id),
+            ],
         ];
     }
 }

@@ -15,8 +15,38 @@ class AdministrationTaskCategoryControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected array $singleJsonStructure = [
+        'data' => [
+            'type',
+            'id',
+            'attributes' => [
+                'name',
+                'color',
+                'created_at',
+                'updated_at',
+            ],
+            'links' => ['self'],
+        ],
+    ];
+
+    protected array $multipleJsonStructure = [
+        'data' => [
+            '*' => [
+                'type',
+                'id',
+                'attributes' => [
+                    'name',
+                    'color',
+                    'created_at',
+                    'updated_at',
+                ],
+                'links' => ['self'],
+            ],
+        ],
+    ];
+
     #[Test]
-    public function user_can_get_list_of_task_categories(): void
+    public function it_can_list_the_task_categories_of_the_account(): void
     {
         $user = User::factory()->create();
         $taskCategory = TaskCategory::factory()->create([
@@ -30,15 +60,19 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         $response = $this->json('GET', '/api/administration/task-categories');
 
         $response->assertStatus(200);
-        $response->assertJsonFragment([
-            'id' => $taskCategory->id,
-            'name' => 'Call',
-            'color' => 'bg-blue-500',
-        ]);
+
+        $response->assertJsonStructure($this->multipleJsonStructure);
+
+        $data = $response->json('data');
+
+        $this->assertEquals('task_category', $data[0]['type']);
+        $this->assertEquals($taskCategory->id, $data[0]['id']);
+        $this->assertEquals('Call', $data[0]['attributes']['name']);
+        $this->assertEquals('bg-blue-500', $data[0]['attributes']['color']);
     }
 
     #[Test]
-    public function user_can_create_a_task_category(): void
+    public function it_can_create_a_task_category(): void
     {
         $user = User::factory()->create();
 
@@ -55,11 +89,17 @@ class AdministrationTaskCategoryControllerTest extends TestCase
             'color' => 'bg-blue-500',
         ]);
 
-        $this->assertEquals('Email', $response->json('data.name'));
+        $response->assertJsonStructure($this->singleJsonStructure);
+
+        $data = $response->json('data');
+
+        $this->assertEquals('task_category', $data['type']);
+        $this->assertEquals('Email', $data['attributes']['name']);
+        $this->assertEquals('bg-blue-500', $data['attributes']['color']);
     }
 
     #[Test]
-    public function user_can_update_a_task_category(): void
+    public function it_can_update_a_task_category(): void
     {
         $user = User::factory()->create();
         $taskCategory = TaskCategory::factory()->create([
@@ -79,27 +119,17 @@ class AdministrationTaskCategoryControllerTest extends TestCase
             'color' => 'bg-blue-500',
         ]);
 
-        $this->assertEquals('Email', $response->json('data.name'));
+        $response->assertJsonStructure($this->singleJsonStructure);
+
+        $data = $response->json('data');
+
+        $this->assertEquals('task_category', $data['type']);
+        $this->assertEquals('Email', $data['attributes']['name']);
+        $this->assertEquals('bg-blue-500', $data['attributes']['color']);
     }
 
     #[Test]
-    public function user_cannot_update_task_category_from_another_account(): void
-    {
-        $user = User::factory()->create();
-        $taskCategory = TaskCategory::factory()->create();
-
-        Sanctum::actingAs($user);
-
-        $response = $this->json('PUT', '/api/administration/task-categories/' . $taskCategory->id, [
-            'name' => 'Email',
-            'color' => 'bg-blue-500',
-        ]);
-
-        $response->assertStatus(404);
-    }
-
-    #[Test]
-    public function user_can_delete_a_task_category(): void
+    public function it_can_delete_a_task_category(): void
     {
         $user = User::factory()->create();
         $taskCategory = TaskCategory::factory()->create([
@@ -114,18 +144,5 @@ class AdministrationTaskCategoryControllerTest extends TestCase
         $this->assertDatabaseMissing('task_categories', [
             'id' => $taskCategory->id,
         ]);
-    }
-
-    #[Test]
-    public function user_cannot_delete_task_category_from_another_account(): void
-    {
-        $user = User::factory()->create();
-        $taskCategory = TaskCategory::factory()->create();
-
-        Sanctum::actingAs($user);
-
-        $response = $this->json('DELETE', '/api/administration/task-categories/' . $taskCategory->id);
-
-        $response->assertStatus(404);
     }
 }

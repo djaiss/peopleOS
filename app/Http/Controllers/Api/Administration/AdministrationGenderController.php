@@ -13,7 +13,6 @@ use App\Services\UpdateGender;
 use App\Traits\ApiResponses;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +21,7 @@ class AdministrationGenderController extends Controller
 {
     use ApiResponses;
 
-    public function index(): AnonymousResourceCollection
+    public function index(): JsonResource
     {
         $genders = Gender::where('account_id', Auth::user()->account_id)
             ->orderBy('position', 'asc')

@@ -1,0 +1,16 @@
+meta {
+  name: Create a task category
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/administration/task-categories?name=Non binary&color=text-red-600
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: Non binary
+  color: text-red-600
+}

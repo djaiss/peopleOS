@@ -46,6 +46,10 @@
             <span class="text-green-700">POST</span>
             /api/administration/genders
           </a>
+          <a href="#show-a-gender">
+            <span class="text-blue-700">GET</span>
+            /api/administration/genders/{id}
+          </a>
           <a href="#update-a-gender">
             <span class="text-yellow-700">PUT</span>
             /api/administration/genders/{id}
@@ -93,49 +97,10 @@
       <x-marketing.code title="/api/administration/genders" verb="GET" verbClass="text-blue-700">
         <div>{</div>
         <div class="pl-4">"data": [</div>
-        <div class="pl-8">{</div>
-        <div class="pl-12">
-          "type":
-          <span class="text-lime-700">"gender"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "id":
-          <span class="text-rose-800">"1"</span>
-          ,
-        </div>
-        <div class="pl-12">"attributes": {</div>
-        <div class="pl-16">
-          "name":
-          <span class="text-lime-700">"Man"</span>
-          ,
-        </div>
-        <div class="pl-16">
-          "position":
-          <span class="text-rose-800">1</span>
-          ,
-        </div>
-        <div class="pl-16">
-          "created_at":
-          <span class="text-rose-800">1746615348</span>
-          ,
-        </div>
-        <div class="pl-16">
-          "updated_at":
-          <span class="text-gray-500">null</span>
-        </div>
-        <div class="pl-12">},</div>
-        <div class="pl-12">"links": {</div>
-        <div class="pl-16">
-          "self":
-          <span class="text-lime-700">"{{ config('app.url') }}/api/administration/genders/1"</span>
-        </div>
-        <div class="pl-12">}</div>
-        <div class="pl-8">},</div>
+        @include('marketing.docs.api.partials.gender-response', ['with_comma' => true])
         <div class="pl-8">{</div>
         <div class="pl-12">...</div>
-        <div class="pl-8">},</div>
-
+        <div class="pl-8">}</div>
         <div class="pl-4">]</div>
         <div>}</div>
       </x-marketing.code>
@@ -172,43 +137,7 @@
       <x-marketing.code title="/api/administration/genders" verb="POST" verbClass="text-green-700">
         <div>{</div>
         <div class="pl-4">"data": {</div>
-        <div class="pl-8">
-          "type":
-          <span class="text-lime-700">"gender"</span>
-          ,
-        </div>
-        <div class="pl-8">
-          "id":
-          <span class="text-rose-800">"8"</span>
-          ,
-        </div>
-        <div class="pl-8">"attributes": {</div>
-        <div class="pl-12">
-          "name":
-          <span class="text-lime-700">"Non binary"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "position":
-          <span class="text-rose-800">5</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "created_at":
-          <span class="text-rose-800">1751477818</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "updated_at":
-          <span class="text-rose-800">1751477818</span>
-        </div>
-        <div class="pl-8">},</div>
-        <div class="pl-8">"links": {</div>
-        <div class="pl-12">
-          "self":
-          <span class="text-lime-700">"{{ config('app.url') }}/api/administration/genders/8"</span>
-        </div>
-        <div class="pl-8">}</div>
+        @include('marketing.docs.api.partials.gender-response')
         <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
@@ -245,43 +174,7 @@
       <x-marketing.code title="/api/administration/genders/{id}" verb="GET" verbClass="text-blue-700">
         <div>{</div>
         <div class="pl-4">"data": {</div>
-        <div class="pl-8">
-          "type":
-          <span class="text-lime-700">"gender"</span>
-          ,
-        </div>
-        <div class="pl-8">
-          "id":
-          <span class="text-rose-800">"8"</span>
-          ,
-        </div>
-        <div class="pl-8">"attributes": {</div>
-        <div class="pl-12">
-          "name":
-          <span class="text-lime-700">"Non binary"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "position":
-          <span class="text-rose-800">5</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "created_at":
-          <span class="text-rose-800">1751477818</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "updated_at":
-          <span class="text-rose-800">1751477818</span>
-        </div>
-        <div class="pl-8">},</div>
-        <div class="pl-8">"links": {</div>
-        <div class="pl-12">
-          "self":
-          <span class="text-lime-700">"{{ config('app.url') }}/api/administration/genders/8"</span>
-        </div>
-        <div class="pl-8">}</div>
+        @include('marketing.docs.api.partials.gender-response')
         <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
@@ -319,43 +212,7 @@
       <x-marketing.code title="/api/administration/genders/{id}" verb="PUT" verbClass="text-yellow-700">
         <div>{</div>
         <div class="pl-4">"data": {</div>
-        <div class="pl-8">
-          "type":
-          <span class="text-lime-700">"gender"</span>
-          ,
-        </div>
-        <div class="pl-8">
-          "id":
-          <span class="text-rose-800">"8"</span>
-          ,
-        </div>
-        <div class="pl-8">"attributes": {</div>
-        <div class="pl-12">
-          "name":
-          <span class="text-lime-700">"Non binary"</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "position":
-          <span class="text-rose-800">5</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "created_at":
-          <span class="text-rose-800">1751477818</span>
-          ,
-        </div>
-        <div class="pl-12">
-          "updated_at":
-          <span class="text-rose-800">1751477818</span>
-        </div>
-        <div class="pl-8">},</div>
-        <div class="pl-8">"links": {</div>
-        <div class="pl-12">
-          "self":
-          <span class="text-lime-700">"{{ config('app.url') }}/api/administration/genders/8"</span>
-        </div>
-        <div class="pl-8">}</div>
+        @include('marketing.docs.api.partials.gender-response')
         <div class="pl-4">}</div>
         <div>}</div>
       </x-marketing.code>
