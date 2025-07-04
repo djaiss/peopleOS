@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Enable strict mode for Eloquent models in non-production environments
-        //Model::shouldBeStrict(! app()->isProduction());
+        Model::shouldBeStrict(! app()->isProduction());
 
         // Enable prohibition of destructive commands in production environments
         DB::prohibitDestructiveCommands(
