@@ -22,7 +22,7 @@
     "prettier-plugin-blade": "^2.1.19",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.14",
-    "vite": "^6.2.1"
+    "vite": "^7.0.2"
   },
   "dependencies": {
     "@alpinejs/intersect": "^3.14.8"
