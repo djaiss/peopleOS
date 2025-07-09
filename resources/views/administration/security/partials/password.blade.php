@@ -24,7 +24,7 @@
   <div class="grid grid-cols-3 items-center border-b border-gray-200 p-3 hover:bg-blue-50">
     <x-input-label for="new_password" :value="__('New password')" class="col-span-2" />
     <div class="w-full justify-self-end">
-      <x-text-input class="block w-full" id="new_password" name="new_password" type="password" required @focus="showActions = true" @blur="showActions = false" />
+      <x-text-input class="block w-full" id="new_password" name="new_password" type="password" required passwordrules="minlength: 8" @focus="showActions = true" @blur="showActions = false" />
       <x-input-error class="mt-2" :messages="$errors->get('new_password')" />
       <x-help>{{ __('Mininum 8 characters.') }}</x-help>
     </div>
