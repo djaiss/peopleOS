@@ -12,6 +12,7 @@ use App\Http\Controllers\Administration\AdministrationGenderController;
 use App\Http\Controllers\Administration\AdministrationLogsController;
 use App\Http\Controllers\Administration\AdministrationMarketingController;
 use App\Http\Controllers\Administration\AdministrationMarketingTestimonialController;
+use App\Http\Controllers\Administration\AdministrationPasswordController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
@@ -292,6 +293,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');
     Route::get('administration/security/new', [AdministrationSecurityController::class, 'new'])->name('administration.security.new');
     Route::post('administration/security', [AdministrationSecurityController::class, 'create'])->name('administration.security.create');
+    Route::put('administration/password', [AdministrationPasswordController::class, 'update'])->name('administration.password.update');
     Route::delete('administration/security/{apiKeyId}', [AdministrationSecurityController::class, 'destroy'])->name('administration.security.destroy');
 
     // auto delete account

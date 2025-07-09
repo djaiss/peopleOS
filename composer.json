@@ -85,7 +85,7 @@
       "@peopleos:prettier",
       "@peopleos:update"
     ],
-    "peopleos:lint": "./vendor/bin/pint",
+    "peopleos:lint": "./vendor/bin/pint --parallel",
     "peopleos:locale": "php artisan localize en,fr --remove-missing",
     "peopleos:marketing": "php artisan marketing:update-timestamps",
     "peopleos:prettier": "npx prettier --write resources/",
