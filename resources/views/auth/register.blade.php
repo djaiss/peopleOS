@@ -59,7 +59,7 @@
                 <x-input-label for="password" :value="__('Password')" class="mb-2" />
                 <x-text-input id="password" class="block w-full" type="password" name="password" required :avoidAutofill="false" autocomplete="password" passwordrules="minlength: 20; required: lower; required: upper; required: digit; required: [-];" />
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                <x-help>{{ __('Mininum 3 characters.') }}</x-help>
+                <x-help>{{ __('Mininum 8 characters.') }}</x-help>
               </div>
 
               <!-- Confirm Password -->
