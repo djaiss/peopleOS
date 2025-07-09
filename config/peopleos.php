@@ -182,5 +182,6 @@ return [
         'address_creation' => 'Address creation',
         'address_update' => 'Address update',
         'address_deletion' => 'Address deletion',
+        'update_user_password' => 'Update user password',
     ],
 ];
