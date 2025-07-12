@@ -24,6 +24,7 @@ use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use PragmaRX\Google2FALaravel\Middleware as Google2FAMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -53,6 +54,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'pet' => CheckPet::class,
             'address' => CheckAddress::class,
             'mood' => CheckMood::class,
+            '2fa' => Google2FAMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
