@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Administration\Administration2faController;
 use App\Http\Controllers\Administration\AdministrationAccountController;
 use App\Http\Controllers\Administration\AdministrationAutoDeleteAccountController;
 use App\Http\Controllers\Administration\AdministrationAvatarController;
@@ -295,6 +296,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::post('administration/security', [AdministrationSecurityController::class, 'create'])->name('administration.security.create');
     Route::put('administration/password', [AdministrationPasswordController::class, 'update'])->name('administration.password.update');
     Route::delete('administration/security/{apiKeyId}', [AdministrationSecurityController::class, 'destroy'])->name('administration.security.destroy');
+
+    // security - 2fa
+    Route::get('administration/security/2fa/new', [Administration2faController::class, 'new'])->name('administration.security.2fa.new');
 
     // auto delete account
     Route::put('administration/security/auto-delete-account', [AdministrationAutoDeleteAccountController::class, 'update'])->name('administration.security.auto-delete.update');
