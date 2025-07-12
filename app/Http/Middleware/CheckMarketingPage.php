@@ -23,7 +23,7 @@ class CheckMarketingPage
 
         // make sure the URL is not longer than 255 characters
         // 414 HTTP Request-URI Too Long
-        if (strlen($url) > 255) {
+        if (mb_strlen($url) > 255) {
             abort(414);
         }
 
