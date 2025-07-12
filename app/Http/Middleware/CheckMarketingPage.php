@@ -21,6 +21,12 @@ class CheckMarketingPage
     {
         $url = $request->fullUrl();
 
+        // make sure the URL is not longer than 255 characters
+        // 414 HTTP Request-URI Too Long
+        if (strlen($url) > 255) {
+            abort(414);
+        }
+
         $page = MarketingPage::where('url', $url)->firstOrCreate([
             'url' => $url,
         ]);
