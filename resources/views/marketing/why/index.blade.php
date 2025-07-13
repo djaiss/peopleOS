@@ -46,7 +46,7 @@
             We do things in the open
           </h2>
 
-          <p>Even though we pioneered the personal CRM concept, we now face a lot of competition. However, all of them are closed source. Being closed source means that you don't know what they do with the code, and therefore your data. I wouldn't trust a closed solution to store such personal and intimate details about my friends and family.</p>
+          <p>Even though we pioneered the personal CRM concept, we now face a lot of competition. However, all of them are closed source. Being closed source means that you don't know what they do with the code, and therefore, your data. I wouldn't trust a closed solution to store such personal and intimate details about my friends and family.</p>
 
           <p>
             PeopleOS is
@@ -61,11 +61,11 @@
             We do not track you
           </h2>
 
-          <p>The only thing that we track is the page views on our website to improve it. For this we use Pirsch Analytics and these metrics are public. We do not use track you in any other way.</p>
+          <p>The only thing that we track is the page views on our website to improve it. For this we use Pirsch Analytics and these metrics are public. We do not track you in any other way.</p>
 
           <p>We do not use AI or anything silly like that. If we did, that would constitute a major privacy risk. Also, we believe that maintaining relationships is a human activity, and should be kept that way.</p>
 
-          <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look. We are humans like you. We personally hate all the shitshows that big companies do with our data. We would never do that to you.</p>
+          <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look, we are humans like you. We personally hate all the terrible things that big companies do with our data. We would never do that to you.</p>
         </div>
 
         <x-marketing-page-widget :marketing-page="$marketingPage" :view-name="$viewName" />
