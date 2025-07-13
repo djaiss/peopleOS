@@ -31,11 +31,10 @@
       @foreach ($persons as $currentPerson)
         <a href="{{ route('person.show', $currentPerson['slug']) }}" class="{{ isset($person) && $person && $currentPerson['id'] === $person->id ? 'bg-blue-50' : '' }} flex cursor-pointer items-center gap-3 p-3 hover:bg-blue-50">
           <div class="shrink-0">
-            <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $currentPerson['avatar']['40'] }}" srcset="{{ $currentPerson['avatar']['40'] }}, {{ $currentPerson['avatar']['80'] }} 2x" alt="{{ $currentPerson['name'] }}" loading="lazy" />
+            <img class="h-6 w-6 rounded-full object-cover p-[0.1375rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $currentPerson['avatar']['40'] }}" srcset="{{ $currentPerson['avatar']['40'] }}, {{ $currentPerson['avatar']['80'] }} 2x" alt="{{ $currentPerson['name'] }}" loading="lazy" />
           </div>
           <div class="min-w-0">
             <p class="truncate font-medium">{{ $currentPerson['name'] }}</p>
-            <p class="truncate text-sm text-gray-600">{{ $currentPerson['slug'] }}</p>
           </div>
         </a>
       @endforeach
