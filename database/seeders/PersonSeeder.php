@@ -2,150 +2,81 @@
 
 declare(strict_types=1);
 
-namespace App\Console\Commands;
+namespace Database\Seeders;
 
 use App\Enums\KidsStatusType;
 use App\Enums\MaritalStatusType;
-use App\Enums\UserWaitlistStatus;
 use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
-use App\Services\CreateAccount;
 use App\Services\CreateNote;
 use App\Services\CreatePerson;
-use Carbon\Carbon;
 use Faker\Factory as Faker;
-use Illuminate\Console\Command;
-use Illuminate\Console\ConfirmableTrait;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
 
-class SetupDummyAccount extends Command
+class PersonSeeder extends Seeder
 {
-    use ConfirmableTrait;
-
     protected ?\Faker\Generator $faker = null;
 
-    protected User $firstUser;
-
-    protected User $secondUser;
-
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
+     * Run the database seeds.
      */
-    protected $signature = 'peopleos:dummy
-                            {--migrate : Use migrate command instead of migrate:fresh.}
-                            {--force : Force the operation to run.}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Prepare an account with fake data so users can play with it';
-
-    /**
-     * Execute the console command.
-     */
-    public function handle(): void
+    public function run(): void
     {
-        // remove queue
-        config(['queue.default' => 'sync']);
-
-        $this->start();
-        $this->wipeAndMigrateDB();
-        $this->createUserWaitlistItems();
-        $this->createFirstUsers();
-        $this->createPersons();
-        $this->createSecondBlankUser();
-        $this->stop();
-    }
-
-    private function start(): void
-    {
-        if (! $this->confirmToProceed('Are you sure you want to proceed? This will delete ALL data in your environment.', true)) {
-            exit;
-        }
-
-        $this->line('This process will take a few minutes to complete. Be patient and read a book in the meantime.');
         $this->faker = Faker::create();
+        $adminUser = User::where('email', 'admin@admin.com')->first();
+
+        if (!$adminUser) {
+            return;
+        }
+
+        $this->seedTheOfficeCharacters($adminUser);
+        $this->seedParksAndRecCharacters($adminUser);
+        $this->seedFriendsCharacters($adminUser);
     }
 
-    private function wipeAndMigrateDB(): void
+    /**
+     * Create a person with the given character details.
+     */
+    private function createPerson(array $character, User $user): void
     {
-        if ($this->option('migrate')) {
-            $this->artisan('☐ Migration of the database', 'migrate', ['--force' => true]);
-        } else {
-            $this->artisan('☐ Migration of the database', 'migrate:fresh', ['--force' => true]);
+        $person = (new CreatePerson(
+            user: $user,
+            gender: $user->account->genders()->inRandomOrder()->first(),
+            maritalStatus: MaritalStatusType::UNKNOWN->value,
+            kidsStatus: KidsStatusType::UNKNOWN->value,
+            firstName: $character['first_name'],
+            lastName: $character['last_name'],
+            middleName: null,
+            nickname: $character['nickname'],
+            maidenName: $character['maiden_name'],
+            prefix: null,
+            suffix: null,
+            canBeDeleted: true,
+        ))->execute();
+
+        $this->createNotes($person, $user);
+    }
+
+    /**
+     * Create random notes for a person.
+     */
+    private function createNotes(Person $person, User $user): void
+    {
+        for ($i = 0; $i < random_int(0, 93); $i++) {
+            (new CreateNote(
+                user: $user,
+                person: $person,
+                content: $this->faker->paragraphs(random_int(1, 3), true),
+            ))->execute();
         }
     }
 
-    private function stop(): void
+    /**
+     * Seed characters from The Office.
+     */
+    private function seedTheOfficeCharacters(User $user): void
     {
-        $this->line('');
-        $this->line('-----------------------------');
-        $this->line('|');
-        $this->line('| Welcome to PeopleOS');
-        $this->line('|');
-        $this->line('-----------------------------');
-        $this->info('| You can now sign in with one of these two accounts:');
-        $this->line('| An account with a lot of data:');
-        $this->line('| username: admin@admin.com');
-        $this->line('| password: admin123');
-        $this->line('|----------------------------');
-        $this->line('|A blank account:');
-        $this->line('| username: blank@blank.com');
-        $this->line('| password: blank123');
-        $this->line('|----------------------------');
-        $this->line('| URL:      ' . config('app.url'));
-        $this->line('-----------------------------');
-
-        $this->info('Setup is done. Have fun.');
-    }
-
-    private function createUserWaitlistItems(): void
-    {
-        $this->info('☐ Create user waitlist items');
-
-        DB::table('user_waitlist')->insert([
-            'email' => Crypt::encryptString('chandler.bing@friends.com'),
-            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
-            'created_at' => Carbon::now()->subDays(2),
-        ]);
-
-        DB::table('user_waitlist')->insert([
-            'email' => Crypt::encryptString('monica.geller@friends.com'),
-            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
-            'created_at' => Carbon::now()->subDays(19),
-        ]);
-
-        DB::table('user_waitlist')->insert([
-            'email' => Crypt::encryptString('ross.geller@friends.com'),
-            'status' => UserWaitlistStatus::SUBSCRIBED_NOT_CONFIRMED->value,
-            'created_at' => Carbon::now()->subDays(1),
-        ]);
-    }
-
-    private function createFirstUsers(): void
-    {
-        $this->info('☐ Create first user of the account');
-
-        $this->firstUser = (new CreateAccount(
-            email: 'admin@admin.com',
-            password: 'admin123',
-            firstName: 'Monica',
-            lastName: 'Geller',
-        ))->execute();
-        $this->firstUser->email_verified_at = Carbon::now();
-        $this->firstUser->save();
-    }
-
-    private function createPersons(): void
-    {
-        $this->info('☐ Create persons');
-
         $theOfficeCharacters = [
             [
                 'first_name' => 'Dwight',
@@ -411,6 +342,16 @@ class SetupDummyAccount extends Command
             ],
         ];
 
+        foreach ($theOfficeCharacters as $character) {
+            $this->createPerson($character, $user);
+        }
+    }
+
+    /**
+     * Seed characters from Parks and Recreation.
+     */
+    private function seedParksAndRecCharacters(User $user): void
+    {
         $parksAndRecCharacters = [
             [
                 'first_name' => 'Leslie',
@@ -651,6 +592,20 @@ class SetupDummyAccount extends Command
             ],
         ];
 
+        foreach ($parksAndRecCharacters as $character) {
+            // Skip characters with incomplete data
+            if (!isset($character['first_name']) || !isset($character['last_name'])) {
+                continue;
+            }
+            $this->createPerson($character, $user);
+        }
+    }
+
+    /**
+     * Seed characters from Friends.
+     */
+    private function seedFriendsCharacters(User $user): void
+    {
         $friendsCharacters = [
             [
                 'first_name' => 'Rachel',
@@ -785,66 +740,8 @@ class SetupDummyAccount extends Command
             ],
         ];
 
-        foreach ($theOfficeCharacters as $character) {
-            $this->createPerson($character);
-        }
-
-        foreach ($parksAndRecCharacters as $character) {
-            $this->createPerson($character);
-        }
-
         foreach ($friendsCharacters as $character) {
-            $this->createPerson($character);
+            $this->createPerson($character, $user);
         }
-    }
-
-    private function createPerson(array $character): void
-    {
-        $person = (new CreatePerson(
-            user: $this->firstUser,
-            gender: Gender::inRandomOrder()->first(),
-            maritalStatus: MaritalStatusType::UNKNOWN->value,
-            kidsStatus: KidsStatusType::UNKNOWN->value,
-            firstName: $character['first_name'],
-            lastName: $character['last_name'],
-            middleName: null,
-            nickname: $character['nickname'],
-            maidenName: $character['maiden_name'],
-            prefix: null,
-            suffix: null,
-            canBeDeleted: true,
-        ))->execute();
-
-        $this->createNotes($person);
-    }
-
-    private function createNotes(Person $person): void
-    {
-        for ($i = 0; $i < random_int(0, 93); $i++) {
-            (new CreateNote(
-                user: $this->firstUser,
-                person: $person,
-                content: $this->faker->paragraphs(random_int(1, 3), true),
-            ))->execute();
-        }
-    }
-
-    private function createSecondBlankUser(): void
-    {
-        $this->secondUser = (new CreateAccount(
-            email: 'blank@blank.com',
-            password: 'blank123',
-            firstName: 'Rachel',
-            lastName: 'Green',
-        ))->execute();
-
-        $this->secondUser->email_verified_at = Carbon::now();
-        $this->secondUser->save();
-    }
-
-    private function artisan(string $message, string $command, array $arguments = []): void
-    {
-        $this->info($message);
-        $this->callSilent($command, $arguments);
     }
 }
