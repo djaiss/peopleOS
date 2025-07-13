@@ -6,6 +6,14 @@
 ?>
 
 <x-marketing-handbook-layout :marketing-page="$marketingPage" :view-name="$viewName">
+  <x-slot name="breadcrumb">
+    <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>
+    <span class="text-gray-500">&gt;</span>
+    <a href="{{ route('marketing.company.index') }}" class="text-blue-500 hover:underline">{{ __('Company') }}</a>
+    <span class="text-gray-500">&gt;</span>
+    <span class="text-gray-600">{{ __('Handbook') }}</span>
+  </x-slot>
+
   <h1 class="mb-6 text-2xl font-bold">Our handbook</h1>
 
   <p class="mb-6">This handbook explains what I do, how I think and how I want to move this project forward. Brace yourself, it's very good. At least I think so.</p>
@@ -47,28 +55,32 @@
     </div>
     <div class="flex items-center justify-between">
       <p class="font-semibold">Marketing</p>
-      <div class="mx-4 flex-grow border-b border-dashed border-gray-800"></div>
-      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.index') }} words</p>
+      <div class="ml-4 flex-grow border-b border-dashed border-gray-800"></div>
     </div>
-    <div class="flex items-center justify-between">
-      <p class="font-semibold">Product management</p>
+    <div class="flex items-center justify-between pl-6">
+      <a href="{{ route('marketing.company.handbook.marketing.envision') }}" class="text-blue-500 hover:underline">How do I envision marketing</a>
       <div class="mx-4 flex-grow border-b border-dashed border-gray-800"></div>
-      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.index') }} words</p>
+      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.marketing') }} words</p>
     </div>
-    <div class="flex items-center justify-between">
-      <p class="font-semibold">Support</p>
+    <div class="flex items-center justify-between pl-6">
+      <a href="{{ route('marketing.company.handbook.marketing.social-media') }}" class="text-blue-500 hover:underline">Social media</a>
       <div class="mx-4 flex-grow border-b border-dashed border-gray-800"></div>
-      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.index') }} words</p>
+      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.social-media') }} words</p>
     </div>
-    <div class="flex items-center justify-between">
-      <p class="font-semibold">Sales</p>
+    <div class="flex items-center justify-between pl-6">
+      <a href="{{ route('marketing.company.handbook.marketing.writing') }}" class="text-blue-500 hover:underline">Writing for PeopleOS</a>
       <div class="mx-4 flex-grow border-b border-dashed border-gray-800"></div>
-      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.index') }} words</p>
+      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.writing') }} words</p>
     </div>
-    <div class="mb-10 flex items-center justify-between">
-      <p class="font-semibold">Development</p>
+    <div class="flex items-center justify-between pl-6">
+      <a href="{{ route('marketing.company.handbook.marketing.product-philosophy') }}" class="text-blue-500 hover:underline">Product philosophy</a>
       <div class="mx-4 flex-grow border-b border-dashed border-gray-800"></div>
-      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.index') }} words</p>
+      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.product-philosophy') }} words</p>
+    </div>
+    <div class="mb-10 flex items-center justify-between pl-6">
+      <a href="{{ route('marketing.company.handbook.marketing.prioritize') }}" class="text-blue-500 hover:underline">How do we prioritize features?</a>
+      <div class="mx-4 flex-grow border-b border-dashed border-gray-800"></div>
+      <p class="text-gray-600">{{ \App\Helpers\MarketingHelper::countWords('marketing.company.handbook.prioritize') }} words</p>
     </div>
 
     <div>
