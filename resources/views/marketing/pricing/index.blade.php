@@ -52,7 +52,7 @@
             </svg>
             <div>
               <span class="font-semibold">You host it yourself</span>
-              <p class="text-sm text-gray-500">There can not be any privacy issues</p>
+              <p class="text-sm text-gray-500">There cannot be any privacy issues</p>
             </div>
           </li>
           <li class="flex items-start gap-x-3">
@@ -253,7 +253,7 @@
           </h4>
           <div class="mt-2 text-gray-600">
             <p class="mb-2">If the case you have an existing local PeopleOS instance, you would want to import your data to our instance of PeopleOS. Short answer: you can't do that. We only do an export, not an import. Why? Because of security issues. Honestly, it would be too much of a risk to insert the data directly into the database.</p>
-            <p>For all the complotists out there, no, it's not because I want to keep your data forever. I actually want everyone to run their own instances of PeopleOS, so I'm free of the responsability of your data.</p>
+            <p>For all the conspiracy theorists out there, no, it's not because I want to keep your data forever. I actually want everyone to run their own instances of PeopleOS, so I'm free of the responsibility of your data.</p>
           </div>
         </div>
 
