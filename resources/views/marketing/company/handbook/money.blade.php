@@ -32,11 +32,11 @@
 
     <h3 class="mb-2 text-lg font-bold">A note on VC</h3>
 
-    <p class="mb-2">How can I put this as delicately as possible? Fuck VC money. Yeah, I think it's a delicate way of putting it.</p>
+    <p class="mb-2">How can I put this as delicately as possible? Fuck VC money. Yeah, I think that's a delicate way of putting it.</p>
 
     <p class="mb-2">In my previous project, I spent some time answering emails and attending calls with VCs. This is such a waste of time. They don't ever want to actually invest. They just want to understand why the product is a success and what is the market size. Not a single one of them had an ounce of respect for user privacy.</p>
 
-    <p class="mb-10">Money is great, but independance and having to answer to no one is invaluable. Or is worth 50 millions, but no less.</p>
+    <p class="mb-10">Money is great, but independence and having to answer to no one is invaluable. Or is worth 50 millions, but no less.</p>
   </div>
 
   <div>
