@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 use App\Enums\KidsStatusType;
 use App\Enums\MaritalStatusType;
-use App\Models\Gender;
 use App\Models\Person;
 use App\Models\User;
 use App\Services\CreateNote;
@@ -594,7 +593,10 @@ class PersonSeeder extends Seeder
 
         foreach ($parksAndRecCharacters as $character) {
             // Skip characters with incomplete data
-            if (!isset($character['first_name']) || !isset($character['last_name'])) {
+            if (!isset($character['first_name'])) {
+                continue;
+            }
+            if (!isset($character['last_name'])) {
                 continue;
             }
             $this->createPerson($character, $user);

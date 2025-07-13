@@ -1,40 +1,10 @@
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
-  <div class="border-b border-gray-200 py-3 text-sm">
-    <div class="mx-auto flex max-w-7xl items-center justify-center gap-x-4 px-6 lg:px-8 xl:px-0">
-      <div class="group flex cursor-pointer flex-col items-center justify-center gap-x-2 gap-y-1 rounded-sm border border-b-3 border-transparent px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
-        <x-lucide-book-open class="h-4 w-4 text-gray-500" />
-        <span class="text-gray-600">{{ __('Handbook') }}</span>
-      </div>
-      <a href="{{ route('marketing.company.handbook.index') }}" class="{{ request()->routeIs('marketing.company.handbook.*') ? 'border-b-3 border-blue-400' : 'border-b-3 border-transparent' }} group flex cursor-pointer flex-col items-center justify-center gap-x-2 gap-y-1 rounded-sm border px-2 py-1 transition-colors duration-150 hover:border-gray-400 hover:bg-white">
-        <x-lucide-book-open class="h-4 w-4 text-gray-500" />
-        <span class="text-gray-600">{{ __('Handbook') }}</span>
-      </a>
-    </div>
-  </div>
+  @include('marketing.company.partials.company-header')
 
   <!-- breadcrumb -->
   <div class="border-b border-gray-200 py-3 text-sm">
     <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-8 xl:px-0">
-      {!!
-        $breadcrumb ??
-          '
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <a href="' .
-            route('marketing.index') .
-            '" class="text-blue-500 hover:underline">' .
-            __('Home') .
-            '</a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="text-gray-500">&gt;</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <a href="' .
-            route('marketing.company.index') .
-            '" class="text-blue-500 hover:underline">' .
-            __('Company') .
-            '</a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="text-gray-500">&gt;</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="text-gray-600">' .
-            __('Handbook') .
-            '</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              '
-      !!}
+      {!! $breadcrumb !!}
     </div>
   </div>
 
@@ -114,26 +84,6 @@
                 <a href="{{ route('marketing.company.handbook.marketing.prioritize') }}" class="{{ request()->routeIs('marketing.company.handbook.marketing.prioritize') ? 'border-l-blue-400' : 'border-l-transparent' }} block border-l-3 pl-3 hover:border-l-blue-400 hover:underline">{{ __('How do we prioritize features?') }}</a>
               </div>
             </div>
-          </div>
-
-          <div @click="open = !open" class="mb-2 flex items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
-            <h3>{{ __('Product management') }}</h3>
-            <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-          </div>
-
-          <div @click="open = !open" class="mb-2 flex items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
-            <h3>{{ __('Support') }}</h3>
-            <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-          </div>
-
-          <div @click="open = !open" class="mb-2 flex items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
-            <h3>{{ __('Sales') }}</h3>
-            <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
-          </div>
-
-          <div @click="open = !open" class="mb-10 flex items-center justify-between rounded-md border border-transparent px-2 py-1 hover:border-gray-200">
-            <h3>{{ __('Development') }}</h3>
-            <x-lucide-chevron-right x-bind:class="open ? 'rotate-90' : ''" class="h-4 w-4 text-gray-500 transition-transform duration-300" />
           </div>
         </div>
       </div>

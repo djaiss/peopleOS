@@ -21,6 +21,8 @@
 
 PeopleOS is the spiritual successor to Monica, the personal CRM.
 
+<img src="docs/github/screenshot.png" alt="Screenshot of the application" loading="lazy">
+
 ### Features
 
 - A powerful contact management system with features like adding family information, work information, etc.
