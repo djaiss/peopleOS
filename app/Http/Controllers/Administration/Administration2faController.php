@@ -5,48 +5,39 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
-use App\Services\CreateApiKey;
-use App\Services\DestroyApiKey;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Services\Generate2faQRCode;
+use App\Services\Validate2faQRCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Laravel\Sanctum\PersonalAccessToken;
+use PragmaRX\Google2FALaravel\Google2FA;
+use Illuminate\Http\Request;
 
 class Administration2faController extends Controller
 {
     public function new(): View
     {
+        $code = (new Generate2faQRCode(
+            user: Auth::user(),
+        ))->execute();
 
-        return view('administration.security.partials.2fa-new');
+        return view('administration.security.partials.2fa-new', [
+            'secret' => $code['secret'],
+            'qrCodeSvg' => $code['qrCodeSvg'],
+        ]);
     }
 
-    public function create(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $validated = $request->validate([
-            'label' => 'required|string|min:3|max:255',
+        $request->validate([
+            'token' => 'required|numeric|digits:6',
         ]);
 
-        $apiKey = (new CreateApiKey(
+        (new Validate2faQRCode(
             user: Auth::user(),
-            label: $validated['label'],
+            token: (string) $request->input('token'),
         ))->execute();
 
         return redirect()->route('administration.security.index')
-            ->with('apiKey', $apiKey)
-            ->with('status', trans('API key created'));
-    }
-
-    public function destroy(Request $request, int $apiKeyId): RedirectResponse
-    {
-        $apiKey = Auth::user()->tokens()->where('id', $apiKeyId)->first();
-
-        (new DestroyApiKey(
-            user: Auth::user(),
-            tokenId: $apiKey->id,
-        ))->execute();
-
-        return redirect()->route('administration.security.index')
-            ->with('status', trans('API key deleted'));
+            ->with('status', __('Two-factor authentication has been enabled successfully.'));
     }
 }

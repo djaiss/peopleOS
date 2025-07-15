@@ -28,6 +28,7 @@ class AdministrationSecurityController extends Controller
 
         return view('administration.security.index', [
             'apiKeys' => $apiKeys,
+            'has_2fa' => Auth::user()->two_factor_confirmed_at !== null,
         ]);
     }
 

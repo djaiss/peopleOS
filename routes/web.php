@@ -299,6 +299,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
 
     // security - 2fa
     Route::get('administration/security/2fa/new', [Administration2faController::class, 'new'])->name('administration.security.2fa.new');
+    Route::post('administration/security/2fa', [Administration2faController::class, 'store'])->name('administration.security.2fa.store');
 
     // auto delete account
     Route::put('administration/security/auto-delete-account', [AdministrationAutoDeleteAccountController::class, 'update'])->name('administration.security.auto-delete.update');
