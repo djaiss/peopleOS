@@ -6,6 +6,7 @@ use App\Http\Controllers\Administration\AdministrationAccountController;
 use App\Http\Controllers\Administration\AdministrationAutoDeleteAccountController;
 use App\Http\Controllers\Administration\AdministrationAvatarController;
 use App\Http\Controllers\Administration\AdministrationController;
+use App\Http\Controllers\Administration\AdministrationExportController;
 use App\Http\Controllers\Administration\AdministrationCreateTaskOnReminderController;
 use App\Http\Controllers\Administration\AdministrationEmailsSentController;
 use App\Http\Controllers\Administration\AdministrationGenderController;
@@ -288,6 +289,11 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::put('administration/avatar', [AdministrationAvatarController::class, 'update'])->name('administration.avatar.update');
     Route::get('administration/logs', [AdministrationLogsController::class, 'index'])->name('administration.logs.index');
     Route::get('administration/emails-sent', [AdministrationEmailsSentController::class, 'index'])->name('administration.emails-sent.index');
+    
+    // Export data
+    Route::get('administration/export', [AdministrationExportController::class, 'index'])->name('administration.export.index');
+    Route::post('administration/export', [AdministrationExportController::class, 'create'])->name('administration.export.create');
+    Route::get('administration/export/download', [AdministrationExportController::class, 'download'])->name('administration.export.download');
 
     // security
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');
