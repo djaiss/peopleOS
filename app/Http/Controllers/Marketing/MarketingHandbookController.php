@@ -149,7 +149,7 @@ class MarketingHandbookController extends Controller
     public function prioritize(Request $request): View
     {
         $marketingPage = $request->attributes->get('marketingPage');
-        $stats = MarketingHelper::getStats('marketing.company.handbook.marketing.prioritize');
+        $stats = MarketingHelper::getStats('marketing.company.handbook.prioritize');
 
         return view('marketing.company.handbook.prioritize', [
             'stats' => $stats,

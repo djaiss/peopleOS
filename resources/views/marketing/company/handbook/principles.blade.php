@@ -33,8 +33,8 @@
         . Everything they do is genuine, simple and funny. It has been a huge source of inspiration.
       </li>
       <li>
-        <a href="https://about.gitlab.com/handbook">Gitlab's handbook</a>
-        . Gitlab is a shitty company that treats its employees very badly and take advantage of the community. That being said, their handbook is still a great way to document what's going on in a company.
+        <a href="https://about.gitlab.com/handbook">GitLab's handbook</a>
+        . GitLab is a company that has controversial employment practices and takes advantage of the community. That being said, their handbook is still a great way to document what's going on in a company.
       </li>
     </ul>
 

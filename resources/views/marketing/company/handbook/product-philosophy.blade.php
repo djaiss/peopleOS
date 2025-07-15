@@ -32,7 +32,7 @@
       . Read this.
     </p>
 
-    <p class="mb-10">Finally, we will never, ever implement a feature tool that will remove the need to make the effort of keeping healthy relationships. What do I mean by that? Having a social circle requires time and effort. There is no easy way in for having great relationships. PeopleOS will help you document but it won't replace the need to, you know, actually work on your relationships.</p>
+    <p class="mb-10">Finally, we will never implement a feature that removes the need to make an effort in maintaining healthy relationships. What do I mean by that? Having a social circle requires time and effort. There is no easy way to have great relationships. PeopleOS will help you document but it won't replace the need to, you know, actually work on your relationships.</p>
   </div>
 
   <div>

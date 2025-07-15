@@ -35,7 +35,7 @@
       .
     </p>
     <p class="mb-2">
-      The documentation is included in the Github repository, under the
+      The documentation is included in the GitHub repository, under the
       <a href="https://github.com/djaiss/peopleOS/tree/main/docs" target="_blank" class="text-blue-500 hover:underline">docs</a>
       folder.
     </p>

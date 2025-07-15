@@ -64,7 +64,7 @@
               {{ __('Add information about family') }}
             </dt>
             <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-              <p class="flex-auto">{{ __('Record everything you know about family members, friends, pets and even mistresses. You can add context, indicate the age of the person even if you just know partial information.') }}</p>
+              <p class="flex-auto">{{ __('Record everything you know about family members, friends, pets and even close acquaintances. You can add context, indicate the age of the person even if you just know partial information.') }}</p>
             </dd>
           </div>
 
@@ -75,7 +75,7 @@
               {{ __('Document everything') }}
             </dt>
             <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-              <p class="flex-auto">{{ __('Add notes to any person. Record work history, hobbies, interests, and more. Do not be like me - document so you do not forget.') }}</p>
+              <p class="flex-auto">{{ __('Add notes to any person. Record work history, hobbies, interests, and more. Do not be like me—document so you don\'t forget.') }}</p>
             </dd>
           </div>
 
@@ -110,7 +110,7 @@
               {{ __('Record gifts') }}
             </dt>
             <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-              <p class="flex-auto">{{ __('Record gifts received, gifts ideas and gifts given so you never forget to get a gift for someone.') }}</p>
+              <p class="flex-auto">{{ __('Record gifts received, gift ideas and gifts given so you never forget to get a gift for someone.') }}</p>
             </dd>
           </div>
 
@@ -186,7 +186,7 @@
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:items-center">
         <div class="col-span-2">
           <h2 class="mb-3 text-xl leading-7 font-semibold text-green-600">{{ __('Why should you use PeopleOS?') }}</h2>
-          <p class="mb-2">PeopleOS is designed for people with jobs, families, and busy lives who are striving to maintain a good work–life balance. They're often so busy that they forget to call a friend, wish a nephew a happy birthday, or invite someone special to dinner next week. As we grow older, life increasingly gets in the way. It's unfortunate, but it's the reality.</p>
+          <p class="mb-2">PeopleOS is designed for people with jobs, families, and busy lives who are striving to maintain a good work-life balance. They're often so busy that they forget to call a friend, wish a nephew a happy birthday, or invite someone special to dinner next week. As we grow older, life increasingly gets in the way. It's unfortunate, but it's the reality.</p>
           <p class="mb-2">I've created PeopleOS to remember all these little, but so important, things.</p>
           <p>
             Read more about
@@ -207,14 +207,14 @@
     </div>
   </div>
 
-  <!-- Github section -->
+  <!-- GitHub section -->
   <div id="github" class="bg-white py-12 sm:py-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <div class="mx-auto mb-10 max-w-7xl">
         <h3 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          {{ __('We deliver features so fast that Github can\'t keep up.') }}
+          {{ __('We deliver features so fast that GitHub can\'t keep up.') }}
         </h3>
-        <p class="text-xl">{{ __('We release code every day. Nothing is worse than a software that doesn\'t evolve, except war, famine and TikTok.') }}</p>
+        <p class="text-xl">{{ __('We release code every day. Nothing is worse than software that doesn\'t evolve, except war, famine and TikTok.') }}</p>
       </div>
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2" x-data="{
         selectedPR: {
@@ -255,7 +255,7 @@
           @endforeach
 
           <li class="mt-4 text-center text-gray-600">
-            <a href="https://github.com/djaiss/peopleOS/pulls" target="_blank" class="text-blue-500 hover:underline">{{ __('See all the features') }}</a>
+            <a href="https://github.com/djaiss/peopleOS/pulls" target="_blank" class="text-blue-500 hover:underline">{{ __('See all features') }}</a>
           </li>
         </ul>
 
@@ -272,7 +272,7 @@
             <a :href="selectedPR.url" target="_blank" class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:bg-gray-50">
               <x-lucide-github class="h-4 w-4 text-gray-600" />
               <span class="text-sm text-gray-700 group-hover:text-gray-900">
-                {{ __('View on Github') }}
+                {{ __('View on GitHub') }}
               </span>
             </a>
           </div>
@@ -309,7 +309,7 @@
             <x-lucide-eye-off class="h-6 w-6 text-green-600" />
           </div>
           <h4 class="mb-3 text-center text-lg font-bold">{{ __('We do not track you') }}</h4>
-          <p>{{ __('There is no javascript trackers or ads on this website. We do not try to upsell you anything. We do track the number of page views to improve the website, but that\'s it.') }}</p>
+          <p>{{ __('There are no JavaScript trackers or ads on this website. We do not try to upsell you anything. We do track the number of page views to improve the website, but that\'s it.') }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4">
           <div class="mb-2 flex justify-center">
@@ -345,8 +345,8 @@
             <div class="mb-2 flex items-center justify-center">
               <img src="{{ asset('marketing/recurring.webp') }}" srcset="{{ asset('marketing/recurring.webp') }} 1x, {{ asset('marketing/recurring@2x.webp') }} 2x" alt="Expensive subscriptions" width="167" height="250" loading="lazy" />
             </div>
-            <p class="mb-3 text-xl">You like expensive, reccuring subscriptions</p>
-            <p class="text-sm">We offer the a one-time payment for the software. No subscriptions, no hidden fees.</p>
+            <p class="mb-3 text-xl">You like expensive, recurring subscriptions</p>
+            <p class="text-sm">We offer a one-time payment for the software. No subscriptions, no hidden fees.</p>
           </div>
 
           <div class="-rotate-1 rounded-lg border border-gray-200 bg-white p-4">
@@ -354,7 +354,7 @@
               <img src="{{ asset('marketing/ads.webp') }}" srcset="{{ asset('marketing/ads.webp') }} 1x, {{ asset('marketing/ads@2x.webp') }} 2x" alt="Ads" width="167" height="250" loading="lazy" />
             </div>
             <p class="mb-3 text-xl">You like being tracked for ads purposes</p>
-            <p class="text-sm">We do track users to serve ads, and don't profile our users. We hate ads as much as you do.</p>
+            <p class="text-sm">We don't track users to serve ads, and don't profile our users. We hate ads as much as you do.</p>
           </div>
 
           <div class="rotate-2 rounded-lg border border-gray-200 bg-white p-4">
