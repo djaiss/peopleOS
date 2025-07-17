@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Administration\Administration2faController;
 use App\Http\Controllers\Administration\AdministrationAccountController;
 use App\Http\Controllers\Administration\AdministrationAutoDeleteAccountController;
 use App\Http\Controllers\Administration\AdministrationAvatarController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
+use App\Http\Controllers\Administration\AdministrationSecurityRecoveryCodeController;
 use App\Http\Controllers\Administration\AdministrationTaskCategoryController;
 use App\Http\Controllers\Administration\AdministrationTimezoneController;
 use App\Http\Controllers\DashboardController;
@@ -292,9 +294,14 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     // security
     Route::get('administration/security', [AdministrationSecurityController::class, 'index'])->name('administration.security.index');
     Route::get('administration/security/new', [AdministrationSecurityController::class, 'new'])->name('administration.security.new');
+    Route::get('administration/security/recoveryCodes', [AdministrationSecurityRecoveryCodeController::class, 'show'])->name('administration.security.recoverycodes.show');
     Route::post('administration/security', [AdministrationSecurityController::class, 'create'])->name('administration.security.create');
     Route::put('administration/password', [AdministrationPasswordController::class, 'update'])->name('administration.password.update');
     Route::delete('administration/security/{apiKeyId}', [AdministrationSecurityController::class, 'destroy'])->name('administration.security.destroy');
+
+    // security - 2fa
+    Route::get('administration/security/2fa/new', [Administration2faController::class, 'new'])->name('administration.security.2fa.new');
+    Route::post('administration/security/2fa', [Administration2faController::class, 'store'])->name('administration.security.2fa.store');
 
     // auto delete account
     Route::put('administration/security/auto-delete-account', [AdministrationAutoDeleteAccountController::class, 'update'])->name('administration.security.auto-delete.update');

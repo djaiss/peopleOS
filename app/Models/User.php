@@ -77,6 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'locale',
         'does_display_full_names',
         'does_display_age',
+        'two_factor_preferred_method',
         'two_factor_secret',
         'two_factor_recovery_codes',
         'two_factor_confirmed_at',
@@ -122,6 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'invitation_accepted_at' => 'datetime',
             'born_at' => 'date',
             'is_instance_admin' => 'boolean',
+            'two_factor_recovery_codes' => 'array',
         ];
     }
 

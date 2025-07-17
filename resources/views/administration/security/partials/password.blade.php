@@ -1,9 +1,3 @@
-<?php
-/*
- * @var Collection $apiKeys
- */
-?>
-
 <h2 class="font-semi-bold mb-1 text-lg">{{ __('Change password') }}</h2>
 <p class="mb-4 text-sm text-zinc-500">{{ __('Make it as secure as it can be.') }}</p>
 

@@ -18,6 +18,8 @@
 
         @include('administration.security.partials.password')
 
+        @include('administration.security.partials.2fa')
+
         @include('administration.security.partials.api-keys', ['apiKeys' => $apiKeys])
 
         @include('administration.security.partials.auto-delete-account')
