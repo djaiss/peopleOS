@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use Illuminate\Support\Str;
 use PragmaRX\Google2FALaravel\Google2FA;
+use InvalidArgumentException;
 
 /**
  * Validate the code from the QR code for 2FA setup.
@@ -31,8 +31,8 @@ class Validate2faQRCode
     {
         $google2fa = new Google2FA(request());
 
-        if (!$google2fa->verifyKey($this->user->two_factor_secret, (string) $this->token)) {
-            throw new \InvalidArgumentException(__('The provided token is invalid.'));
+        if (!$google2fa->verifyKey($this->user->two_factor_secret, $this->token)) {
+            throw new InvalidArgumentException(__('The provided token is invalid.'));
         }
 
         $this->user->update(['two_factor_confirmed_at' => now()]);
@@ -45,7 +45,7 @@ class Validate2faQRCode
 
     private function generateRandomCodes(): array
     {
-        return collect()->times(8)->map(fn () => Str::random(10))->all();
+        return collect()->times(8)->map(fn() => Str::random(10))->all();
     }
 
     private function updateUserLastActivityDate(): void

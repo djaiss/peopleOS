@@ -5,13 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
-use App\Services\CreateApiKey;
-use App\Services\DestroyApiKey;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Laravel\Sanctum\PersonalAccessToken;
 
 class AdministrationSecurityRecoveryCodeController extends Controller
 {

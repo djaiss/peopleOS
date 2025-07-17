@@ -50,7 +50,7 @@
         <p class="font-semibold">
           {{ __('Authenticator app') }}
           @if ($has_2fa)
-          <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">{{ __('Configured') }}</span>
+            <span class="me-2 rounded-sm bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">{{ __('Configured') }}</span>
           @endif
         </p>
         <p class="text-xs text-gray-600">{{ __('Use an authentication app to get two-factor authentication codes when prompted.') }}</p>
@@ -70,21 +70,21 @@
 
   <!-- recovery codes -->
   @if ($has_2fa)
-  <div id="recovery-codes" class="flex items-center border-b border-gray-200 p-3 hover:bg-blue-50">
-    <x-lucide-container class="h-5 w-5 text-gray-500" />
-    <div class="ms-5 flex w-full items-center justify-between">
-      <div>
-        <p class="font-semibold">
-          {{ __('Recovery codes') }}
-        </p>
-        <p class="text-xs text-gray-600">{{ __('Use these codes to access your account if you lose access to your authenticator app.') }}</p>
-      </div>
+    <div id="recovery-codes" class="flex items-center border-b border-gray-200 p-3 hover:bg-blue-50">
+      <x-lucide-container class="h-5 w-5 text-gray-500" />
+      <div class="ms-5 flex w-full items-center justify-between">
+        <div>
+          <p class="font-semibold">
+            {{ __('Recovery codes') }}
+          </p>
+          <p class="text-xs text-gray-600">{{ __('Use these codes to access your account if you lose access to your authenticator app.') }}</p>
+        </div>
 
-      <x-button.secondary href="{{ route('administration.security.recoverycodes.show') }}" x-target="recovery-codes" class="mr-2 text-sm">
-        {{ __('Show') }}
-      </x-button.secondary>
+        <x-button.secondary href="{{ route('administration.security.recoverycodes.show') }}" x-target="recovery-codes" class="mr-2 text-sm">
+          {{ __('Show') }}
+        </x-button.secondary>
+      </div>
     </div>
-  </div>
   @endif
 
   <!-- Code by email -->

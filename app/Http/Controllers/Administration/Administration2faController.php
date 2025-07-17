@@ -9,7 +9,6 @@ use App\Services\Generate2faQRCode;
 use App\Services\Validate2faQRCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use PragmaRX\Google2FALaravel\Google2FA;
 use Illuminate\Http\Request;
 
 class Administration2faController extends Controller

@@ -11,10 +11,7 @@ use App\Services\Generate2faQRCode;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Queue;
-use Mockery;
-use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
-use PragmaRX\Google2FALaravel\Google2FA;
 use Tests\TestCase;
 
 class Generate2faQRCodeTest extends TestCase
