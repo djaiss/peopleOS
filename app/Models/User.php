@@ -123,6 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'invitation_accepted_at' => 'datetime',
             'born_at' => 'date',
             'is_instance_admin' => 'boolean',
+            'two_factor_recovery_codes' => 'array',
         ];
     }
 

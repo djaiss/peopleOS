@@ -26,9 +26,12 @@ class AdministrationSecurityController extends Controller
                 'token' => $token->token,
             ]);
 
+        $recoveryCodes = Auth::user()->two_factor_recovery_codes ?? [];
+
         return view('administration.security.index', [
             'apiKeys' => $apiKeys,
             'has_2fa' => Auth::user()->two_factor_confirmed_at !== null,
+            'recoveryCodes' => $recoveryCodes,
         ]);
     }
 
