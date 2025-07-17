@@ -43,6 +43,7 @@ class UserFactory extends Factory
             'timezone' => 'UTC',
             'last_person_seen_id' => null,
             'locale' => 'en',
+            'two_factor_confirmed_at' => null,
         ];
     }
 

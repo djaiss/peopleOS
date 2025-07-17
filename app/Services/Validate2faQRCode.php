@@ -15,10 +15,6 @@ use PragmaRX\Google2FALaravel\Google2FA;
  */
 class Validate2faQRCode
 {
-    private string $secret;
-
-    private string $qrCodeSvg;
-
     public function __construct(
         private readonly User $user,
         private readonly string $token,
