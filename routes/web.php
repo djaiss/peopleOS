@@ -16,6 +16,7 @@ use App\Http\Controllers\Administration\AdministrationMarketingTestimonialContro
 use App\Http\Controllers\Administration\AdministrationPasswordController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationController;
 use App\Http\Controllers\Administration\AdministrationPersonalizationJournalTemplateController;
+use App\Http\Controllers\Administration\AdministrationPreferred2FAController;
 use App\Http\Controllers\Administration\AdministrationPruneAccountController;
 use App\Http\Controllers\Administration\AdministrationSecurityController;
 use App\Http\Controllers\Administration\AdministrationSecurityRecoveryCodeController;
@@ -296,6 +297,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::get('administration/security/new', [AdministrationSecurityController::class, 'new'])->name('administration.security.new');
     Route::get('administration/security/recoveryCodes', [AdministrationSecurityRecoveryCodeController::class, 'show'])->name('administration.security.recoverycodes.show');
     Route::post('administration/security', [AdministrationSecurityController::class, 'create'])->name('administration.security.create');
+    Route::put('administration/security/2fa', [AdministrationPreferred2FAController::class, 'update'])->name('administration.security.2fa.update');
     Route::put('administration/password', [AdministrationPasswordController::class, 'update'])->name('administration.password.update');
     Route::delete('administration/security/{apiKeyId}', [AdministrationSecurityController::class, 'destroy'])->name('administration.security.destroy');
 

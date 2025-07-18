@@ -32,6 +32,7 @@ class AdministrationSecurityController extends Controller
             'apiKeys' => $apiKeys,
             'has_2fa' => Auth::user()->two_factor_confirmed_at !== null,
             'recoveryCodes' => $recoveryCodes,
+            'preferred2faMethod' => Auth::user()->two_factor_preferred_method,
         ]);
     }
 

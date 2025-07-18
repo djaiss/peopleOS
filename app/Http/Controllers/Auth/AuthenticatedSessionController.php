@@ -43,7 +43,6 @@ class AuthenticatedSessionController extends Controller
         try {
             $request->authenticate();
         } catch (ValidationException $e) {
-
             SendFailedLoginEmail::dispatch($request->input('email'))
                 ->onQueue('high');
 
