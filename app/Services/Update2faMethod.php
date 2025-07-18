@@ -11,8 +11,8 @@ use App\Models\User;
 class Update2faMethod
 {
     public function __construct(
-        public User $user,
-        public string $preferredMethods,
+        private readonly User $user,
+        private readonly string $preferredMethods,
     ) {}
 
     /**
