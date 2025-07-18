@@ -29,6 +29,7 @@ class AdministrationSecurityControllerTest extends TestCase
         $this->assertArrayHasKey('apiKeys', $response);
         $this->assertArrayHasKey('has_2fa', $response);
         $this->assertArrayHasKey('recoveryCodes', $response);
+        $this->assertArrayHasKey('preferred2faMethod', $response);
 
         $apiKeys = $response['apiKeys'];
         $this->assertCount(1, $apiKeys);

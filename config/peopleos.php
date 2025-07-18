@@ -184,5 +184,6 @@ return [
         'address_deletion' => 'Address deletion',
         'update_user_password' => 'Update user password',
         '2fa_qr_code_generation' => '2FA QR code generation',
+        'update_preferred_method' => 'Update preferred method',
     ],
 ];

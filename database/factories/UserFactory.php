@@ -44,6 +44,7 @@ class UserFactory extends Factory
             'last_person_seen_id' => null,
             'locale' => 'en',
             'two_factor_confirmed_at' => null,
+            'two_factor_preferred_method' => 'none',
         ];
     }
 
