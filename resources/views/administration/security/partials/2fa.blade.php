@@ -25,7 +25,7 @@
         <option value="{{ App\Enums\TwoFactorType::EMAIL }}" @selected($preferred2faMethod == App\Enums\TwoFactorType::EMAIL->value)>{{ __('Code by email') }}</option>
       </select>
 
-      <x-input-error class="mt-2" :messages="$errors->get('timezone')" />
+      <x-input-error class="mt-2" :messages="$errors->get('method')" />
     </div>
   </div>
 
