@@ -16,7 +16,7 @@ class Update2faMethod
     ) {}
 
     /**
-     * Update the user password.
+     * Update the user's preferred 2FA method, log the action, and update the user's last activity date.
      */
     public function execute(): User
     {
