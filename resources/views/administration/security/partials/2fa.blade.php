@@ -2,6 +2,7 @@
 /*
  * @var Collection $apiKeys
  * @var bool $has_2fa
+ * @var string $preferredMethod
  */
 ?>
 
@@ -9,23 +10,22 @@
 <p class="mb-2 text-sm text-zinc-500">{{ __('Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to sign in.') }}</p>
 <p class="mb-4 text-sm text-zinc-500">{{ __('Set your preferred method to use for two-factor authentication when signing into PeopleOS.') }}</p>
 
-<form x-target="timezone-form" x-target.back="timezone-form" id="timezone-form" action="{{ route('administration.timezone.update') }}" method="post" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
+<form action="{{ route('administration.security.2fa.update') }}" method="post" class="mb-8 border border-gray-200 bg-white sm:rounded-lg" x-data="{ showActions: false }">
   @csrf
   @method('put')
 
-  <!-- timezone -->
   <div class="grid grid-cols-3 items-center rounded-t-lg p-3 last:rounded-b-lg hover:bg-blue-50">
     <div class="col-span-2">
-      <x-input-label for="timezone" :value="__('Preferred methods')" />
+      <x-input-label for="method" :value="__('Preferred methods')" />
     </div>
     <div class="col-span-1 w-full justify-self-end">
-      <select @focus="showActions = true" @blur="showActions = false" id="timezone" name="timezone" class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600">
-        <option value="{{ App\Enums\TwoFactorType::NONE }}">{{ __('None') }}</option>
-        <option value="{{ App\Enums\TwoFactorType::AUTHENTICATOR }}">{{ __('Authenticator app') }}</option>
-        <option value="{{ App\Enums\TwoFactorType::EMAIL }}">{{ __('Code by email') }}</option>
+      <select @focus="showActions = true" @blur="showActions = false" id="method" name="method" class="mt-1 block w-full rounded-md border-gray-300 shadow-xs focus:border-indigo-500 focus:ring-indigo-500 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600">
+        <option value="{{ App\Enums\TwoFactorType::NONE }}" @selected($preferred2faMethod == App\Enums\TwoFactorType::NONE->value)>{{ __('None') }}</option>
+        <option value="{{ App\Enums\TwoFactorType::AUTHENTICATOR }}" @selected($preferred2faMethod == App\Enums\TwoFactorType::AUTHENTICATOR->value)>{{ __('Authenticator app') }}</option>
+        <option value="{{ App\Enums\TwoFactorType::EMAIL }}" @selected($preferred2faMethod == App\Enums\TwoFactorType::EMAIL->value)>{{ __('Code by email') }}</option>
       </select>
 
-      <x-input-error class="mt-2" :messages="$errors->get('timezone')" />
+      <x-input-error class="mt-2" :messages="$errors->get('method')" />
     </div>
   </div>
 
