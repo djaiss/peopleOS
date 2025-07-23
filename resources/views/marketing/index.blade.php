@@ -2,6 +2,7 @@
 /*
  * @var int $accountNumbers
  * @var array $pullRequests
+ * @var int $stars
  * @var \App\Models\MarketingPage $marketingPage
  * @var string $viewName
  */
@@ -145,9 +146,35 @@
       <!-- Title -->
       <div class="mx-auto mb-10 max-w-2xl lg:text-center">
         <p class="mb-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          {{ __('We are proudly open source.') }}
+          {{ __('PeopleOS is proudly open source.') }}
         </p>
         <h2 class="text-base leading-7 font-semibold text-green-600">Like really. Not open core.</h2>
+      </div>
+
+      <div class="mx-auto mb-10 max-w-2xl lg:text-center">
+        <div class="flex items-center justify-center gap-x-8">
+          <a href="https://github.com/djaiss/peopleos" target="_blank" class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 bg-white px-3 py-2 transition-colors duration-150 hover:bg-gray-50">
+            <x-lucide-github class="h-4 w-4 text-gray-600" />
+            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+              {{ __('Read the code on GitHub') }}
+            </span>
+          </a>
+
+          <a href="https://github.com/djaiss/peopleos" target="_blank" class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 bg-white px-3 py-2 transition-colors duration-150 hover:bg-gray-50">
+            <x-lucide-star class="h-4 w-4 text-gray-600" />
+            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+              {{ __('Stars') }}
+            </span>
+            <span class="rounded-full bg-gray-100 px-2 py-0.5 font-mono text-xs text-gray-700">{{ $stars }}</span>
+          </a>
+
+          <a href="https://github.com/djaiss/peopleos" target="_blank" class="group inline-flex items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 bg-white px-3 py-2 transition-colors duration-150 hover:bg-gray-50">
+            <x-lucide-scale class="h-4 w-4 text-gray-600" />
+            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+              {{ __('MIT licensed') }}
+            </span>
+          </a>
+        </div>
       </div>
 
       <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:max-w-none">

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Marketing;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Services\FetchMergedPRs;
+use App\Services\FetchStars;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
@@ -25,9 +26,16 @@ class MarketingController extends Controller
             callback: fn(): mixed => (new FetchMergedPRs())->execute(),
         );
 
+        $stars = Cache::remember(
+            key: 'github_stars',
+            ttl: now()->addHours(24),
+            callback: fn(): mixed => (new FetchStars())->execute(),
+        );
+
         return view('marketing.index', [
             'accountNumbers' => $accountNumbers,
             'pullRequests' => $pullRequests,
+            'stars' => $stars,
             'marketingPage' => $marketingPage,
             'viewName' => 'marketing.index',
         ]);

@@ -34,11 +34,20 @@ class MarketingControllerTest extends TestCase
             ->once()
             ->andReturn($mockPRs);
 
+        Cache::partialMock()
+            ->shouldReceive('remember')
+            ->withArgs(function ($key, $ttl, $callback) {
+                return $key === 'github_stars';
+            })
+            ->once()
+            ->andReturn(1234);
+
         $response = $this->get('/')
             ->assertOk();
 
         $response->assertViewHasAll([
             'pullRequests' => $mockPRs,
+            'stars' => 1234,
             'accountNumbers',
             'marketingPage',
             'viewName' => 'marketing.index',
