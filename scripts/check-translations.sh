@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check Translations Script
 # This script checks that all translation keys in language files are properly translated
