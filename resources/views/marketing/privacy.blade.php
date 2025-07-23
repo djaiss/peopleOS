@@ -14,6 +14,10 @@
       <div class="mx-auto max-w-2xl">
         <h1 class="mb-10 text-center text-3xl font-normal tracking-tight text-gray-900 sm:text-4xl">Privacy policy</h1>
 
+        <div class="flex justify-center mb-10">
+          <img src="{{ asset('marketing/privacy.webp') }}" alt="PeopleOS privacy policy" width="600" height="188" srcset="{{ asset('marketing/privacy.webp') }} 1x, {{ asset('marketing/privacy@2x.webp') }} 2x" />
+        </div>
+
         <div class="flex max-w-none flex-col gap-y-4">
           <p class="">PeopleOS is an open-source project. The hosted version has a premium plan that lets us collect money so we can pay for the servers and additional services, but the main goal is not to make money (otherwise we wouldn't have open-sourced it).</p>
 
