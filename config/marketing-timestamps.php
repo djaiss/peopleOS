@@ -44,7 +44,7 @@ return [
         'marketing/docs/api/update-age' => '2025-04-05 00:03:42',
         'marketing/docs/api/update-physical-appearance' => '2025-04-05 21:57:12',
         'marketing/docs/index' => '2025-04-05 00:03:42',
-        'marketing/index' => '2025-07-15 20:57:48',
+        'marketing/index' => '2025-07-23 22:51:35',
         'marketing/partials/app/index' => '2025-06-10 02:07:05',
         'marketing/partials/footer' => '2025-06-18 02:38:35',
         'marketing/partials/header' => '2025-06-09 10:28:49',
