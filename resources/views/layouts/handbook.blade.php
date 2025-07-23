@@ -4,7 +4,6 @@
   <!-- breadcrumb -->
   <div class="border-b border-gray-200 py-3 text-sm">
     <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-8 xl:px-0">
-      <<<<<<< Updated upstream {!! $breadcrumb !!} =======
       {!!
         $breadcrumb ??
           '
@@ -25,7 +24,6 @@
             '</span>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       '
       !!}
-      >>>>>>> Stashed changes
     </div>
   </div>
 
