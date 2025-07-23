@@ -19,4 +19,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check French translations
-        run: ./scripts/check-translations.sh
+        run: bash ./scripts/check-translations.sh
