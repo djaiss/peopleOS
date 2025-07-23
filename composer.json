@@ -84,6 +84,7 @@
       "@peopleos:static",
       "@peopleos:lint",
       "@peopleos:prettier",
+      "@peopleos:translations",
       "@peopleos:update"
     ],
     "peopleos:lint": "./vendor/bin/pint --parallel",
@@ -92,6 +93,7 @@
     "peopleos:prettier": "npx prettier --write resources/",
     "peopleos:rector": "./vendor/bin/rector",
     "peopleos:static": "./vendor/bin/phpstan analyse --memory-limit=256M",
+    "peopleos:translations": "./scripts/check-translations.sh",
     "peopleos:unit": "rm -f database/test.sqlite_test* && php artisan migrate:fresh --database=testing && php artisan test --parallel --processes=12 --recreate-databases",
     "peopleos:update": "composer update && npm update && npm upgrade"
   },

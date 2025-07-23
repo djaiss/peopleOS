@@ -147,6 +147,14 @@ We believe this project is a nice project to learn how to code and to contribute
 - We have two queues: `high` and `low`. High priority is strictly for time-sensitive tasks, like sending emails. Low priority is for any other tasks.
 - We have set up PHPUnit so it identifies slow tests. This only works when you run phpunit directly. It does not work when you use Paratest.
 
+### Translation guidelines
+
+- English is the base language and should not be checked for completeness.
+- All other language files (currently French) must have complete translations.
+- Empty translation values (like `"key": ""`) are not allowed and will cause CI to fail.
+- You can run `./scripts/check-translations.sh` locally to check translations before committing.
+- The GitHub Actions workflow `Check translations` will automatically verify translation completeness on pull requests.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
