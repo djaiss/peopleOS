@@ -1,8 +1,5 @@
 <?php
 /*
- * @var int $accountNumbers
- * @var array $pullRequests
- * @var int $stars
  * @var \App\Models\MarketingPage $marketingPage
  * @var string $viewName
  */
