@@ -24,7 +24,7 @@ class FetchMergedPRs
         $client = new Client();
         $owner = 'djaiss';
         $repo = 'peopleos';
-        $token = env('GITHUB_TOKEN');
+        $token = config('peopleos.github_token');
 
         $response = $client->request('GET', "https://api.github.com/repos/{$owner}/{$repo}/pulls", [
             'headers' => [
