@@ -16,35 +16,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check French translations
-        run: |
-          echo "🔍 Checking French translations for empty values..."
-
-          # Check if fr.json exists
-          if [ ! -f "lang/fr.json" ]; then
-            echo "❌ Error: lang/fr.json not found"
-            exit 1
-          fi
-
-          # Validate JSON structure
-          if ! jq empty lang/fr.json 2>/dev/null; then
-            echo "❌ Error: lang/fr.json is not valid JSON"
-            exit 1
-          fi
-
-          # Find empty translation values
-          empty_translations=$(jq -r 'to_entries[] | select(.value == "") | .key' lang/fr.json)
-
-          if [ -n "$empty_translations" ]; then
-            echo "❌ Found empty translation values in fr.json:"
-            echo ""
-            echo "$empty_translations" | while read -r key; do
-              echo "  - \"$key\": \"\""
-            done
-            echo ""
-            echo "Please translate these keys or remove them if they're not needed."
-            echo "Empty translation values indicate missing translations."
-            exit 1
-          else
-            echo "✅ All French translations are complete!"
-            echo "📊 Total translations checked: $(jq 'length' lang/fr.json)"
-          fi
+        run: ./scripts/check-translations.sh
