@@ -32,7 +32,8 @@ use Carbon\Carbon;
  * @property bool $does_display_full_names
  * @property bool $does_display_age
  * @property string|null $two_factor_secret
- * @property string|null $two_factor_recovery_codes
+ * @property array|null $two_factor_recovery_codes
+ * @property string|null $two_factor_preferred_method
  * @property Carbon|null $two_factor_confirmed_at
  * @property string|null $profile_photo_path
  * @property Carbon|null $last_activity_at

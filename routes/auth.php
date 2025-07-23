@@ -44,6 +44,12 @@ Route::middleware('guest')->group(function (): void {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+    Route::get('/2fa-challenge', [AuthenticatedSessionController::class, 'show2faForm'])
+        ->name('2fa.challenge');
+
+    Route::post('/2fa-challenge', [AuthenticatedSessionController::class, 'verify2fa'])
+        ->name('2fa.verify');
 });
 
 Route::middleware('auth')->group(function (): void {

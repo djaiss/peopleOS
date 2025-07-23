@@ -28,14 +28,14 @@ class AdministrationPreferred2FAControllerTest extends TestCase
         $response = $this->actingAs($this->user)
             ->from('/administration/security')
             ->put('/administration/security/2fa', [
-                'method' => 'authenticator_app',
+                'method' => 'authenticator',
             ]);
 
         $response->assertRedirect('/administration/security');
         $response->assertSessionHas('status', trans('Changes saved'));
 
         $this->assertEquals(
-            'authenticator_app',
+            'authenticator',
             $this->user->fresh()->two_factor_preferred_method,
         );
     }

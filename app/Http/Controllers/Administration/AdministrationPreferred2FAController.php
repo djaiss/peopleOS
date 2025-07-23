@@ -15,7 +15,7 @@ class AdministrationPreferred2FAController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'method' => 'required|string|in:none,authenticator_app,email',
+            'method' => 'required|string|in:none,authenticator,email',
         ]);
 
         (new Update2faMethod(
