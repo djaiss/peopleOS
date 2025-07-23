@@ -8,14 +8,14 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class MarketingCompanyControllerTest extends TestCase
+class MarketingPrivacyControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_returns_ok_response_for_company_index(): void
+    public function it_returns_ok_response_for_privacy_index(): void
     {
-        $response = $this->get('/company')
+        $response = $this->get('/privacy')
             ->assertOk();
 
         $response->assertViewHasAll([

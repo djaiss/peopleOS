@@ -6,13 +6,13 @@ namespace Tests\Feature\Controllers\Marketing;
 
 use App\Models\MarketingPage;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class MarketingVoteUnhelpfulControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     #[Test]
     public function it_marks_a_page_as_unhelpful(): void
