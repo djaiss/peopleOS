@@ -94,8 +94,9 @@ class AuthenticatedSessionController extends Controller
         }
 
         if (Auth::user()->two_factor_preferred_method === TwoFactorType::AUTHENTICATOR->value) {
+            $userId = Auth::user()->id; // Retrieve the user's ID before logging out
             Auth::logout();
-            session(['2fa:user:id' => Auth::user()->id]);
+            session(['2fa:user:id' => $userId]); // Use the stored ID to set the session value
             return redirect()->route('2fa.challenge');
         }
 
