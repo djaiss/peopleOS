@@ -81,7 +81,7 @@
 
         <div class="mt-8">
           <a href="#" class="group inline-flex w-full items-center gap-x-2 rounded-sm border border-b-3 border-gray-400 px-3 py-2 transition-colors duration-150 hover:bg-white">
-            <img src="{{ asset('marketing/docker.svg') }}" class="mr-2 inline-block h-8 w-8" loading="lazy" />
+            <img src="{{ asset('marketing/docker.svg') }}" width="32" height="32" alt="Docker" class="mr-2 inline-block h-8 w-8" loading="lazy" />
             Download the Docker image
           </a>
         </div>

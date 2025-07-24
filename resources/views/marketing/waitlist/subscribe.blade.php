@@ -15,7 +15,7 @@
           <div class="flex items-center gap-x-2">
             <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
               <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
-                <img src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" />
+                <x-image src="{{ asset('marketing/logo.webp') }}" alt="PeopleOS logo" width="25" height="25" srcset="{{ asset('marketing/logo.webp') }} 1x, {{ asset('marketing/logo@2x.webp') }} 2x" />
               </div>
             </a>
             <h1 class="text-2xl font-semibold text-gray-900">
@@ -69,7 +69,7 @@
             <p class="mb-4 text-xl font-medium text-gray-900">"I can not wait to use PeopleOS."</p>
 
             <div class="flex items-center gap-x-2">
-              <img src="{{ asset('marketing/quotes/michael.webp') }}" srcset="{{ asset('marketing/quotes/michael.webp') }}, {{ asset('marketing/quotes/michael@2x.webp') }} 2x" height="48" width="48" alt="Michael Scott" class="h-12 w-12 rounded-full border border-gray-200" />
+              <x-image src="{{ asset('marketing/quotes/michael.webp') }}" srcset="{{ asset('marketing/quotes/michael.webp') }}, {{ asset('marketing/quotes/michael@2x.webp') }} 2x" height="48" width="48" alt="Michael Scott" class="h-12 w-12 rounded-full border border-gray-200" />
               <div class="flex flex-col gap-y-1">
                 <p class="text-sm font-semibold text-gray-600">Michael Scott</p>
                 <p class="text-sm text-gray-600">

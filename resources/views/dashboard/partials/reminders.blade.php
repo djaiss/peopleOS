@@ -24,7 +24,7 @@
             <p class="text-gray-500">{{ $reminder['name'] }}</p>
             <a href="{{ route('person.show', $reminder['person']['slug']) }}" class="text-xs font-medium text-gray-900 hover:underline">{{ $reminder['person']['name'] }}</a>
           </div>
-          <img class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $reminder['person']['avatar']['40'] }}" srcset="{{ $reminder['person']['avatar']['40'] }}, {{ $reminder['person']['avatar']['80'] }} 2x" alt="{{ $reminder['person']['name'] }}" loading="lazy" />
+          <x-image class="h-10 w-10 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $reminder['person']['avatar']['40'] }}" srcset="{{ $reminder['person']['avatar']['40'] }}, {{ $reminder['person']['avatar']['80'] }} 2x" alt="{{ $reminder['person']['name'] }}" />
         </div>
       </div>
     @empty
