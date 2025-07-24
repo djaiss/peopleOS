@@ -283,7 +283,7 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::delete('administration/personalization/task-categories/{taskCategory}', [Administration\AdministrationTaskCategoryController::class, 'destroy'])->name('administration.personalization.task-categories.destroy');
 
     // journal templates
-    Route::get('administratibon/personalization/journal-templates/new', [Administration\AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
+    Route::get('administration/personalization/journal-templates/new', [Administration\AdministrationPersonalizationJournalTemplateController::class, 'new'])->name('administration.personalization.journal-templates.new');
     Route::post('administration/personalization/journal-templates', [Administration\AdministrationPersonalizationJournalTemplateController::class, 'create'])->name('administration.personalization.journal-templates.create');
     Route::get('administration/personalization/journal-templates/{journalTemplate}/edit', [Administration\AdministrationPersonalizationJournalTemplateController::class, 'edit'])->name('administration.personalization.journal-templates.edit');
     Route::put('administration/personalization/journal-templates/{journalTemplate}', [Administration\AdministrationPersonalizationJournalTemplateController::class, 'update'])->name('administration.personalization.journal-templates.update');
