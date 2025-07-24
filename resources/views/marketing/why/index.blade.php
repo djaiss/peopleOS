@@ -20,9 +20,9 @@
       <!-- Main content -->
       <div class="py-16 sm:border-r sm:border-gray-200 sm:pr-10">
         <div class="mb-5 max-w-none">
-          <h1 id="introduction" class="text-2xl font-normal mb-6">Why should you use PeopleOS?</h1>
+          <h1 id="introduction" class="mb-6 text-2xl font-normal">Why should you use PeopleOS?</h1>
 
-          <h2 id="problems" class="flex items-center gap-x-3 mb-4 text-lg font-semibold">
+          <h2 id="problems" class="mb-4 flex items-center gap-x-3 text-lg font-semibold">
             <x-lucide-frown class="h-6 w-6 flex-shrink-0 text-amber-500" />
             What kind of problem does PeopleOS solve?
           </h2>
@@ -31,7 +31,7 @@
 
           <div class="flex items-center gap-x-2">
             <x-image src="{{ asset('marketing/sherlock.webp') }}" srcset="{{ asset('marketing/sherlock.webp') }}, {{ asset('marketing/sherlock@2x.webp') }} 2x" height="300" width="200" alt="Sherlock Holmes" class="hidden md:block" />
-            <ul class="list-disc list-inside">
+            <ul class="list-inside list-disc">
               <li>You meet a friend's partner at a dinner party, have a great conversation about their recent trip to Japan, but completely forget these details the next time you meet.</li>
               <li>Your colleague mentions their child's upcoming school play, but you forget to follow up and ask how it went.</li>
               <li>You want to buy the perfect birthday gift for your nephew, but can't remember if he's still into dinosaurs or has moved on to space exploration.</li>
@@ -41,7 +41,7 @@
 
           <p class="mb-4">These missed opportunities for connection add up over time, gradually eroding the quality of our relationships. We're not failing because we don't care - we're failing because our brains aren't wired to keep track of hundreds of meaningful details about dozens of people.</p>
 
-          <h2 id="open-source" class="flex items-center gap-x-3 mb-4 text-lg font-semibold">
+          <h2 id="open-source" class="mb-4 flex items-center gap-x-3 text-lg font-semibold">
             <x-lucide-lightbulb class="h-6 w-6 text-green-500" />
             We do things in the open
           </h2>
@@ -56,7 +56,7 @@
 
           <p class="mb-4">From our revenues page, to our roadmap, everything we do is done in public.</p>
 
-          <h2 id="no-tracking" class="flex items-center gap-x-3 mb-4 text-lg font-semibold">
+          <h2 id="no-tracking" class="mb-4 flex items-center gap-x-3 text-lg font-semibold">
             <x-lucide-shield class="h-6 w-6 text-blue-500" />
             We do not track you
           </h2>
