@@ -4,13 +4,13 @@
     <li>
       <a href="{{ route('instance.index') }}" class="{{ request()->routeIs('instance.index') ? 'bg-gray-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }} flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
         <x-lucide-users class="h-4 w-4" />
-        {{ __('User management') }}
+        {{ __('Users') }}
       </a>
     </li>
     <li>
       <a href="{{ route('instance.testimonial.index') }}" class="{{ request()->routeIs('instance.testimonial.index') ? 'bg-gray-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }} flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
         <x-lucide-message-square class="h-4 w-4" />
-        {{ __('Testimonials management') }}
+        {{ __('Testimonials') }}
       </a>
     </li>
     <li>
@@ -22,7 +22,13 @@
     <li>
       <a href="{{ route('instance.waitlist.index') }}" class="{{ request()->routeIs('instance.waitlist.index') ? 'bg-gray-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }} flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
         <x-lucide-list-ordered class="h-4 w-4" />
-        {{ __('Waitlist management') }}
+        {{ __('Waitlist') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ route('instance.changelog.index') }}" class="{{ request()->routeIs('instance.changelog.index') ? 'bg-gray-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }} flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
+        <x-lucide-history class="h-4 w-4" />
+        {{ __('Changelog') }}
       </a>
     </li>
   </ul>

@@ -8,6 +8,12 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
+/**
+ * Create a llms.txt file so LLMs can crawl the documentation more easily.
+ * It reads the @llms-title, @llms-route and @llms-description tags from the
+ * blade files in the marketing directory.
+ * It then writes the title, route and description to the llms.txt file.
+ */
 class GenerateLlmsTxt extends Command
 {
     /**
