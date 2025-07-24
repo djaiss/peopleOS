@@ -6,6 +6,9 @@
  */
 ?>
 
+{{-- @llms-title: Prioritize --}}
+{{-- @llms-description: How do we prioritize features? --}}
+{{-- @llms-route: /company/handbook/prioritize --}}
 <x-marketing-handbook-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <x-slot name="breadcrumb">
     <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>

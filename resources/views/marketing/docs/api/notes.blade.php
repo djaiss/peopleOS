@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Notes --}}
+{{-- @llms-description: Learn how to manage notes --}}
+{{-- @llms-route: /docs/api/notes --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Notes</h1>
 

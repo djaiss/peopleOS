@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Update a person's physical appearance --}}
+{{-- @llms-description: Learn how to update a person's physical appearance --}}
+{{-- @llms-route: /docs/api/update-physical-appearance --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Update a person's physical appearance</h1>
 

@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Terms of use --}}
+{{-- @llms-description: Terms of use --}}
+{{-- @llms-route: /terms --}}
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <div class="bg-gray-50 py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">

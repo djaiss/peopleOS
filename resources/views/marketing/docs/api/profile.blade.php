@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Profile --}}
+{{-- @llms-description: Learn how to manage the profile of the user --}}
+{{-- @llms-route: /docs/api/profile --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Profile</h1>
 

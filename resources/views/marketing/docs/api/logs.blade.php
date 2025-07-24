@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Logs --}}
+{{-- @llms-description: Learn how to query the logs --}}
+{{-- @llms-route: /docs/api/logs --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Logs</h1>
 

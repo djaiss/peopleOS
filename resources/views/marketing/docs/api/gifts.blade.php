@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Gifts --}}
+{{-- @llms-description: Learn how to manage gifts --}}
+{{-- @llms-route: /docs/api/gifts --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Gifts</h1>
 

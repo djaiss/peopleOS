@@ -8,6 +8,9 @@
  */
 ?>
 
+{{-- @llms-title: Homepage --}}
+{{-- @llms-description: Welcome page for PeopleOS. --}}
+{{-- @llms-route: / --}}
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   @section('json-ld')
     <script type="application/ld+json">

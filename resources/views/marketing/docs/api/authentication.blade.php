@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Authentication --}}
+{{-- @llms-description: Learn how to authenticate requests --}}
+{{-- @llms-route: /docs/api/authentication --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Authentication</h1>
 

@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Journals --}}
+{{-- @llms-description: Learn how to manage journals --}}
+{{-- @llms-route: /docs/api/journals --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Journals</h1>
 

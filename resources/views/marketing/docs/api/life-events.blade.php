@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Life Events --}}
+{{-- @llms-description: Learn how to manage life events --}}
+{{-- @llms-route: /docs/api/life-events --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Life Events</h1>
 
