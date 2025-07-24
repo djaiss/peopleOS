@@ -41,6 +41,7 @@ use App\Http\Controllers\Marketing\MarketingDocsController;
 use App\Http\Controllers\Marketing\MarketingHandbookController;
 use App\Http\Controllers\Marketing\MarketingPricingController;
 use App\Http\Controllers\Marketing\MarketingPrivacyController;
+use App\Http\Controllers\Marketing\MarketingTermsController;
 use App\Http\Controllers\Marketing\MarketingVoteController;
 use App\Http\Controllers\Marketing\MarketingVoteHelpfulController;
 use App\Http\Controllers\Marketing\MarketingVoteUnhelpfulController;
@@ -100,6 +101,7 @@ Route::middleware(['marketing', 'marketing.page'])->group(function (): void {
     Route::get('/pricing', [MarketingPricingController::class, 'index'])->name('marketing.pricing.index');
     Route::get('/company', [MarketingCompanyController::class, 'index'])->name('marketing.company.index');
     Route::get('/privacy', [MarketingPrivacyController::class, 'index'])->name('marketing.privacy.index');
+    Route::get('/terms', [MarketingTermsController::class, 'index'])->name('marketing.terms.index');
     Route::get('/company/handbook', [MarketingHandbookController::class, 'index'])->name('marketing.company.handbook.index');
     Route::get('/company/handbook/project', [MarketingHandbookController::class, 'project'])->name('marketing.company.handbook.project');
     Route::get('/company/handbook/principles', [MarketingHandbookController::class, 'principles'])->name('marketing.company.handbook.principles');
