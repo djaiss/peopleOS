@@ -19,10 +19,10 @@
     <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[1fr_250px]">
       <!-- Main content -->
       <div class="py-16 sm:border-r sm:border-gray-200 sm:pr-10">
-        <div class="prose mb-5 max-w-none">
-          <h1 id="introduction" class="text-xl font-normal">Why should you use PeopleOS?</h1>
+        <div class="mb-5 max-w-none">
+          <h1 id="introduction" class="text-2xl font-normal mb-6">Why should you use PeopleOS?</h1>
 
-          <h2 id="problems" class="flex items-center gap-x-3">
+          <h2 id="problems" class="flex items-center gap-x-3 mb-4 text-lg font-semibold">
             <x-lucide-frown class="h-6 w-6 flex-shrink-0 text-amber-500" />
             What kind of problem does PeopleOS solve?
           </h2>
@@ -31,7 +31,7 @@
 
           <div class="flex items-center gap-x-2">
             <x-image src="{{ asset('marketing/sherlock.webp') }}" srcset="{{ asset('marketing/sherlock.webp') }}, {{ asset('marketing/sherlock@2x.webp') }} 2x" height="300" width="200" alt="Sherlock Holmes" class="hidden md:block" />
-            <ul>
+            <ul class="list-disc list-inside">
               <li>You meet a friend's partner at a dinner party, have a great conversation about their recent trip to Japan, but completely forget these details the next time you meet.</li>
               <li>Your colleague mentions their child's upcoming school play, but you forget to follow up and ask how it went.</li>
               <li>You want to buy the perfect birthday gift for your nephew, but can't remember if he's still into dinosaurs or has moved on to space exploration.</li>
@@ -39,31 +39,31 @@
             </ul>
           </div>
 
-          <p>These missed opportunities for connection add up over time, gradually eroding the quality of our relationships. We're not failing because we don't care - we're failing because our brains aren't wired to keep track of hundreds of meaningful details about dozens of people.</p>
+          <p class="mb-4">These missed opportunities for connection add up over time, gradually eroding the quality of our relationships. We're not failing because we don't care - we're failing because our brains aren't wired to keep track of hundreds of meaningful details about dozens of people.</p>
 
-          <h2 id="open-source" class="flex items-center gap-x-3">
+          <h2 id="open-source" class="flex items-center gap-x-3 mb-4 text-lg font-semibold">
             <x-lucide-lightbulb class="h-6 w-6 text-green-500" />
             We do things in the open
           </h2>
 
-          <p>Even though we pioneered the personal CRM concept, we now face a lot of competition. However, all of them are closed source. Being closed source means that you don't know what they do with the code, and therefore, your data. I wouldn't trust a closed solution to store such personal and intimate details about my friends and family.</p>
+          <p class="mb-4">Even though we pioneered the personal CRM concept, we now face a lot of competition. However, all of them are closed source. Being closed source means that you don't know what they do with the code, and therefore, your data. I wouldn't trust a closed solution to store such personal and intimate details about my friends and family.</p>
 
-          <p>
+          <p class="mb-4">
             PeopleOS is
             <a href="https://github.com/djaiss/peopleos" class="text-blue-500 hover:underline">100% open source</a>
             . This means the source code is available for everyone to see, contribute or change.
           </p>
 
-          <p>From our revenues page, to our roadmap, everything we do is done in public.</p>
+          <p class="mb-4">From our revenues page, to our roadmap, everything we do is done in public.</p>
 
-          <h2 id="no-tracking" class="flex items-center gap-x-3">
+          <h2 id="no-tracking" class="flex items-center gap-x-3 mb-4 text-lg font-semibold">
             <x-lucide-shield class="h-6 w-6 text-blue-500" />
             We do not track you
           </h2>
 
-          <p>The only thing that we track is the page views on our website to improve it. For this we use Pirsch Analytics and these metrics are public. We do not track you in any other way.</p>
+          <p class="mb-4">The only thing that we track is the page views on our website to improve it. For this we use Pirsch Analytics and these metrics are public. We do not track you in any other way.</p>
 
-          <p>We do not use AI or anything silly like that. If we did, that would constitute a major privacy risk. Also, we believe that maintaining relationships is a human activity, and should be kept that way.</p>
+          <p class="mb-4">We do not use AI or anything silly like that. If we did, that would constitute a major privacy risk. Also, we believe that maintaining relationships is a human activity, and should be kept that way.</p>
 
           <p>We also do not sell your data to third parties, and we do not use your data to sell ads. We do not use your data to sell you anything. Look, we are humans like you. We personally hate all the terrible things that big companies do with our data. We would never do that to you.</p>
         </div>

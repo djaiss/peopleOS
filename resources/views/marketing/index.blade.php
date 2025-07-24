@@ -34,7 +34,7 @@
         </x-tooltip>
       </div>
 
-      <p class="-rotate-2">
+      <p>
         <span class="rounded-md bg-green-100 px-1.5 py-1 font-semibold text-green-600">{{ $accountNumbers }}</span>
         users like you registered in the last 7 days.
       </p>
