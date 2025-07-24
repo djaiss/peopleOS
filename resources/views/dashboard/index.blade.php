@@ -34,7 +34,7 @@
             <!-- Welcome box -->
             <div class="rounded-lg border border-gray-200 bg-white p-4">
               <div class="flex items-center gap-3">
-                <img class="h-12 w-12 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ auth()->user()->getAvatar(64) }}" alt="{{ auth()->user()->name }}" />
+                <x-image class="h-12 w-12 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ auth()->user()->getAvatar(64) }}" alt="{{ auth()->user()->name }}" />
                 <div>
                   <h3 class="text-base font-semibold text-gray-900">
                     {{ __('Hey :name 👋', ['name' => auth()->user()->name]) }}
@@ -56,7 +56,7 @@
                 @forelse ($persons as $person)
                   <div class="flex items-center justify-between px-4 py-2 hover:bg-gray-50">
                     <div class="flex items-center gap-2">
-                      <img class="h-7 w-7 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person['avatar']['40'] }}" srcset="{{ $person['avatar']['40'] }}, {{ $person['avatar']['80'] }} 2x" alt="{{ $person['name'] }}" loading="lazy" />
+                      <x-image class="h-7 w-7 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ $person['avatar']['40'] }}" srcset="{{ $person['avatar']['40'] }}, {{ $person['avatar']['80'] }} 2x" alt="{{ $person['name'] }}" />
                       <div>
                         <a href="{{ route('person.show', $person['slug']) }}" class="text-sm font-medium text-gray-900 hover:underline">{{ $person['name'] }}</a>
                       </div>

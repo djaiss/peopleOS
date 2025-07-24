@@ -12,7 +12,7 @@
         <h1 class="mb-10 text-center text-3xl font-normal tracking-tight text-gray-900 sm:text-4xl">Terms of use</h1>
 
         <div class="mb-10 flex justify-center">
-          <img src="{{ asset('marketing/terms.webp') }}" alt="PeopleOS terms of use" width="600" height="188" srcset="{{ asset('marketing/terms.webp') }} 1x, {{ asset('marketing/terms@2x.webp') }} 2x" />
+          <x-image src="{{ asset('marketing/terms.webp') }}" alt="PeopleOS terms of use" width="600" height="188" srcset="{{ asset('marketing/terms.webp') }} 1x, {{ asset('marketing/terms@2x.webp') }} 2x" />
         </div>
 
         <div class="flex max-w-none flex-col gap-y-4">
