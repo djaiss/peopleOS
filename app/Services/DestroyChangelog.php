@@ -12,7 +12,7 @@ use App\Models\Changelog;
 class DestroyChangelog
 {
     public function __construct(
-        public int $id,
+        private readonly int $id,
     ) {}
 
     public function execute(): void
