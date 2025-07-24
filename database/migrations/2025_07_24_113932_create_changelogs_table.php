@@ -1,17 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('changelogs', function (Blueprint $table) {
+        Schema::create('changelogs', function (Blueprint $table): void {
             $table->id();
             $table->string('pull_request_url')->unique();
             $table->string('title');
