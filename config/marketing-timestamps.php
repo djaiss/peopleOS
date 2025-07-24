@@ -50,6 +50,7 @@ return [
         'marketing/partials/header' => '2025-06-09 10:28:49',
         'marketing/pricing/index' => '2025-07-15 20:57:48',
         'marketing/privacy' => '2025-07-23 23:47:19',
+        'marketing/terms' => '2025-07-23 23:47:19',
         'marketing/waitlist/confirmation' => '2025-05-05 02:11:32',
         'marketing/waitlist/subscribe' => '2025-05-05 02:11:32',
         'marketing/waitlist/waiting' => '2025-05-05 02:11:32',

@@ -116,13 +116,15 @@
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually, our trademark is not registered, but we probably should write that to do like the big boys.') }}</p>
           </div>
 
+          <p class="text-xs text-gray-600">This site is inspired by the magnificent and funny <a href="https://posthog.com" target="_blank" class="text-blue-500 hover:text-blue-700">Posthog website</a>.</p>
+
           <x-marketing.marketing-footer-data :marketing-page="$marketingPage" :view-name="$viewName" />
         </div>
 
         <div class="mt-6 sm:mt-0">
           <div class="mb-2 flex gap-x-4">
             <a href="{{ route('marketing.privacy.index') }}" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Privacy') }}</a>
-            <a href="#" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Terms') }}</a>
+            <a href="{{ route('marketing.terms.index') }}" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Terms') }}</a>
           </div>
 
           <p class="flex gap-x-2 text-xs text-gray-500">
