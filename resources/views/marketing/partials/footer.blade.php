@@ -116,7 +116,11 @@
             <p class="text-xs text-gray-600">&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved. Actually, our trademark is not registered, but we probably should write that to do like the big boys.') }}</p>
           </div>
 
-          <p class="text-xs text-gray-600">This site is inspired by the magnificent and funny <a href="https://posthog.com" target="_blank" class="text-blue-500 hover:text-blue-700">Posthog website</a>.</p>
+          <p class="text-xs text-gray-600">
+            This site is inspired by the magnificent and funny
+            <a href="https://posthog.com" target="_blank" class="text-blue-500 hover:text-blue-700">Posthog website</a>
+            .
+          </p>
 
           <x-marketing.marketing-footer-data :marketing-page="$marketingPage" :view-name="$viewName" />
         </div>

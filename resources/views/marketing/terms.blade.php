@@ -6,13 +6,12 @@
 ?>
 
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
-
   <div class="bg-gray-50 py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:px-0">
       <div class="mx-auto max-w-2xl">
         <h1 class="mb-10 text-center text-3xl font-normal tracking-tight text-gray-900 sm:text-4xl">Terms of use</h1>
 
-        <div class="flex justify-center mb-10">
+        <div class="mb-10 flex justify-center">
           <img src="{{ asset('marketing/terms.webp') }}" alt="PeopleOS terms of use" width="600" height="188" srcset="{{ asset('marketing/terms.webp') }} 1x, {{ asset('marketing/terms@2x.webp') }} 2x" />
         </div>
 
@@ -21,7 +20,7 @@
 
           <p class="">PeopleOS supports the following browsers:</p>
 
-          <ul class="list-disc pl-6 space-y-1">
+          <ul class="list-disc space-y-1 pl-6">
             <li>Firefox (140+)</li>
             <li>Chrome (latest)</li>
             <li>Safari (latest)</li>
