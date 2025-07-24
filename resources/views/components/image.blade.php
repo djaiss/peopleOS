@@ -3,8 +3,8 @@
     'alt',
     'width',
     'height',
-    'srcset',
+    'srcset' => null,
     'loading' => 'lazy',
 ])
 
-<img src="{{ $src }}" alt="{{ $alt }}" width="{{ $width }}" height="{{ $height }}" srcset="{{ $srcset }}" loading="{{ $loading }}" {{ $attributes }}>
+<img src="{{ $src }}" alt="{{ $alt }}" width="{{ $width }}" height="{{ $height }}" @if ($srcset) srcset="{{ $srcset }}" @endif loading="{{ $loading }}" {{ $attributes }}>

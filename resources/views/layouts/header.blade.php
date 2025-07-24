@@ -45,7 +45,7 @@
                 {{ __('Unlock') }}
               </a>
               <div x-cloak x-show="showTooltip" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="translate-y-1 opacity-0" x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-1 opacity-0" class="absolute top-full right-0 z-50 mt-2 flex w-96 items-center gap-x-3 rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
-                <x-image src="{{ asset('marketing/vandamme.webp') }}" alt="One-time fee" class="h-20 w-20 rounded-full" srcset="{{ asset('marketing/vandamme.webp') }} 1x, {{ asset('marketing/vandamme@2x.webp') }} 2x" />
+                <x-image src="{{ asset('marketing/vandamme.webp') }}" alt="One-time fee" width="80" height="80" class="h-20 w-20 rounded-full" srcset="{{ asset('marketing/vandamme.webp') }} 1x, {{ asset('marketing/vandamme@2x.webp') }} 2x" />
                 <div class="flex flex-col">
                   <p class="text-sm text-gray-600">{{ __("It's a one-time fee, and will unlock everything!") }}</p>
                   <p class="text-sm text-gray-600">{{ __('It kicks ass.') }}</p>
@@ -62,7 +62,7 @@
       <x-dropdown align="right" width="48">
         <x-slot name="trigger">
           <button class="flex cursor-pointer rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden">
-            <x-image class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" src="{{ Auth::user()->getAvatar(32) }}" srcset="{{ Auth::user()->getAvatar(32) }} 1x, {{ Auth::user()->getAvatar(64) }} 2x" alt="{{ Auth::user()->name }}" />
+            <x-image class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow-sm ring-1 ring-slate-900/10" width="32" height="32" src="{{ Auth::user()->getAvatar(32) }}" srcset="{{ Auth::user()->getAvatar(32) }} 1x, {{ Auth::user()->getAvatar(64) }} 2x" alt="{{ Auth::user()->name }}" />
           </button>
         </x-slot>
 
