@@ -51,7 +51,7 @@ class GenerateLlmsTxt extends Command
             $output[] = "- [{$tags['title']}]({$url}): {$tags['description']}";
         }
 
-        File::put(base_path('llms.txt'), implode("\n", $output) . "\n");
+        File::put(public_path('llms.txt'), implode("\n", $output) . "\n");
         $this->info('llms.txt generated successfully.');
         return 0;
     }
