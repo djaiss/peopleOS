@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Company --}}
+{{-- @llms-description: Our handbook --}}
+{{-- @llms-route: /company --}}
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   @include('marketing.company.partials.company-header')
 

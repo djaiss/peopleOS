@@ -80,6 +80,7 @@
     ],
     "precommit": [
       "@peopleos:rector",
+      "@peopleos:llms",
       "@peopleos:marketing",
       "@peopleos:sitemap",
       "@test",
@@ -90,6 +91,7 @@
       "@peopleos:update"
     ],
     "peopleos:lint": "./vendor/bin/pint --parallel",
+    "peopleos:llms": "php artisan marketing:llms-txt",
     "peopleos:locale": "php artisan localize en,fr --remove-missing",
     "peopleos:marketing": "php artisan marketing:update-timestamps",
     "peopleos:prettier": "npx prettier --write resources/",

@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Pricing --}}
+{{-- @llms-description: Pricing information --}}
+{{-- @llms-route: /pricing --}}
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   @section('json-ld')
     <script type="application/ld+json">

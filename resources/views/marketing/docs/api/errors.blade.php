@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: HTTP status codes --}}
+{{-- @llms-description: Learn about HTTP status codes --}}
+{{-- @llms-route: /docs/api/errors --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">HTTP status codes</h1>
 

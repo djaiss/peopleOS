@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Tasks --}}
+{{-- @llms-description: Learn how to manage tasks --}}
+{{-- @llms-route: /docs/api/tasks --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Tasks linked to a person</h1>
 

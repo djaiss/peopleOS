@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Why --}}
+{{-- @llms-description: Why use PeopleOS? --}}
+{{-- @llms-route: /why --}}
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
   @section('json-ld')
     <script type="application/ld+json">

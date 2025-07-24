@@ -6,6 +6,9 @@
  */
 ?>
 
+{{-- @llms-title: Writing --}}
+{{-- @llms-description: Writing for PeopleOS --}}
+{{-- @llms-route: /company/handbook/writing --}}
 <x-marketing-handbook-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <x-slot name="breadcrumb">
     <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>

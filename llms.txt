@@ -1,0 +1,41 @@
+# PeopleOS Documentation
+
+> PeopleOS is an open-source personal CRM to help you remember the details that matter about your relationships.
+
+## Marketing Pages
+
+- [Handbook](https://peopleos.cloud/company/handbook): Our handbook
+- [Marketing](https://peopleos.cloud/company/handbook/marketing): How do I envision marketing
+- [Money](https://peopleos.cloud/company/handbook/money): How does this project make money
+- [Principles](https://peopleos.cloud/company/handbook/principles): Principles
+- [Prioritize](https://peopleos.cloud/company/handbook/prioritize): How do we prioritize features?
+- [Product philosophy](https://peopleos.cloud/company/handbook/product-philosophy): Product philosophy
+- [Project](https://peopleos.cloud/company/handbook/project): Who I am and what is this project
+- [Shipping](https://peopleos.cloud/company/handbook/shipping): Shipping is better than not shipping
+- [Social media](https://peopleos.cloud/company/handbook/social-media): Social media
+- [Where](https://peopleos.cloud/company/handbook/where): Where am I going with this
+- [Why open source](https://peopleos.cloud/company/handbook/why-open-source): Why open source
+- [Writing](https://peopleos.cloud/company/handbook/writing): Writing for PeopleOS
+- [Company](https://peopleos.cloud/company): Our handbook
+- [API management](https://peopleos.cloud/docs/api/api-management): Learn how to manage API keys
+- [Authentication](https://peopleos.cloud/docs/api/authentication): Learn how to authenticate requests
+- [Entries](https://peopleos.cloud/docs/api/entries): Learn how to manage journal entries
+- [HTTP status codes](https://peopleos.cloud/docs/api/errors): Learn about HTTP status codes
+- [Genders](https://peopleos.cloud/docs/api/genders): Learn how to manage genders
+- [Gifts](https://peopleos.cloud/docs/api/gifts): Learn how to manage gifts
+- [API](https://peopleos.cloud/docs/api/introduction): API reference
+- [Journals](https://peopleos.cloud/docs/api/journals): Learn how to manage journals
+- [Life Events](https://peopleos.cloud/docs/api/life-events): Learn how to manage life events
+- [Logs](https://peopleos.cloud/docs/api/logs): Learn how to query the logs
+- [Notes](https://peopleos.cloud/docs/api/notes): Learn how to manage notes
+- [Profile](https://peopleos.cloud/docs/api/profile): Learn how to manage the profile of the user
+- [Task categories](https://peopleos.cloud/docs/api/task-categories): Learn how to manage task categories
+- [Tasks](https://peopleos.cloud/docs/api/tasks): Learn how to manage tasks
+- [Update a person's age](https://peopleos.cloud/docs/api/update-age): Learn how to update a person's age
+- [Update a person's physical appearance](https://peopleos.cloud/docs/api/update-physical-appearance): Learn how to update a person's physical appearance
+- [Documentation](https://peopleos.cloud/docs): PeopleOS documentation
+- [Homepage](https://peopleos.cloud/): Welcome page for PeopleOS.
+- [Pricing](https://peopleos.cloud/pricing): Pricing information
+- [Privacy policy](https://peopleos.cloud/privacy): Privacy policy
+- [Terms of use](https://peopleos.cloud/terms): Terms of use
+- [Why](https://peopleos.cloud/why): Why use PeopleOS?

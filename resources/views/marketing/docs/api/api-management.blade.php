@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: API management --}}
+{{-- @llms-description: Learn how to manage API keys --}}
+{{-- @llms-route: /docs/api/api-management --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">API management</h1>
 

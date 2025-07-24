@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Task categories --}}
+{{-- @llms-description: Learn how to manage task categories --}}
+{{-- @llms-route: /docs/api/task-categories --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Task categories</h1>
 

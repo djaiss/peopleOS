@@ -6,6 +6,9 @@
  */
 ?>
 
+{{-- @llms-title: Where --}}
+{{-- @llms-description: Where am I going with this --}}
+{{-- @llms-route: /company/handbook/where --}}
 <x-marketing-handbook-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <x-slot name="breadcrumb">
     <a href="{{ route('marketing.index') }}" class="text-blue-500 hover:underline">{{ __('Home') }}</a>

@@ -5,6 +5,9 @@
  */
 ?>
 
+{{-- @llms-title: Genders --}}
+{{-- @llms-description: Learn how to manage genders --}}
+{{-- @llms-route: /docs/api/genders --}}
 <x-marketing-docs-layout :marketing-page="$marketingPage" :view-name="$viewName">
   <h1 class="mb-6 text-2xl font-bold">Genders</h1>
 
