@@ -12,3 +12,5 @@
 
 <title>{{ config('app.name', 'PeopleOS') }}</title>
 <meta name="description" content="PeopleOS is a software to document your life and relationships." />
+
+<link rel="canonical" href="{{ url()->current() }}" />

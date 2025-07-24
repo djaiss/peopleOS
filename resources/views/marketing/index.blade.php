@@ -9,6 +9,36 @@
 ?>
 
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
+  @section('json-ld')
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PeopleOS",
+        "url": "https://peopleos.cloud",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "logo": "https://peopleos.cloud/marketing/logo-full.png",
+        "softwareHelp": "https://peopleos.cloud/docs",
+        "offers": {
+          "@type": "Offer",
+          "price": "99.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "PeopleOS",
+          "url": "https://peopleos.cloud",
+          "logo": "https://peopleos.cloud/marketing/logo-full.png"
+        },
+        "description": "PeopleOS is a personal CRM software that helps you remember and manage your relationships.",
+        "inLanguage": "en",
+        "screenshot": "https://peopleos.cloud/images/screenshot.png"
+      }
+    </script>
+  @endsection
+
   <!-- Hero Section -->
   <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 py-8 text-center sm:pt-20 sm:pb-8 lg:px-8 xl:px-0">
