@@ -6,6 +6,74 @@
 ?>
 
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
+  @section('json-ld')
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Product",
+            "name": "PeopleOS - Free Docker Edition",
+            "description": "Free Docker image of PeopleOS for self-hosted personal use.",
+            "brand": {
+              "@type": "Brand",
+              "name": "PeopleOS"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://peopleos.cloud/download"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "PeopleOS - Solo Plan",
+            "description": "One-time purchase of PeopleOS for individuals. Includes packaged setup and basic support.",
+            "brand": {
+              "@type": "Brand",
+              "name": "PeopleOS"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "99.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://peopleos.cloud/pricing#solo",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "99.00",
+                "priceCurrency": "USD"
+              }
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "PeopleOS - Business Plan",
+            "description": "One-time license for companies. Includes all features, extended support, and team usage rights.",
+            "brand": {
+              "@type": "Brand",
+              "name": "PeopleOS"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "299.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://peopleos.cloud/pricing#business",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "299.00",
+                "priceCurrency": "USD"
+              }
+            }
+          }
+        ]
+      }
+    </script>
+  @endsection
+
   <!-- breadcrumb -->
   <div class="border-b border-gray-200 py-3 text-sm">
     <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-8 xl:px-0">

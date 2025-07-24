@@ -6,6 +6,32 @@
 ?>
 
 <x-marketing-layout :marketing-page="$marketingPage" :view-name="$viewName">
+  @section('json-ld')
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "Why use PeopleOS?",
+        "url": "https://peopleos.cloud/why",
+        "description": "Discover how PeopleOS helps you remember the small but important details about people you care about, and why open-source matters for your relationships.",
+        "mainEntity": {
+          "@type": "SoftwareApplication",
+          "name": "PeopleOS",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "url": "https://peopleos.cloud",
+          "description": "PeopleOS is an open-source personal CRM that helps you remember and manage the details that matter about your friends, family, and colleagues."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "PeopleOS",
+          "url": "https://peopleos.cloud",
+          "logo": "https://peopleos.cloud/marketing/logo-full.png"
+        }
+      }
+    </script>
+  @endsection
+
   <!-- breadcrumb -->
   <div class="border-b border-gray-200 py-3 text-sm">
     <div class="mx-auto flex max-w-7xl items-center gap-x-2 px-6 lg:px-8 xl:px-0">
