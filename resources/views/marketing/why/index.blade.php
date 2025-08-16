@@ -49,7 +49,7 @@
       <!-- Main content -->
       <div class="py-16 sm:border-r sm:border-gray-200 sm:pr-10">
         <div class="mb-5 max-w-none">
-          <h1 id="introduction" class="mb-6 text-2xl font-normal">Why should you use PeopleOS?</h1>
+          <h1 id="introduction" class="mb-12 text-2xl font-semibold text-center">Why should you use PeopleOS?</h1>
 
           <h2 id="problems" class="mb-4 flex items-center gap-x-3 text-lg font-semibold">
             <x-lucide-frown class="h-6 w-6 flex-shrink-0 text-amber-500" />
@@ -68,7 +68,7 @@
             </ul>
           </div>
 
-          <p class="mb-4">These missed opportunities for connection add up over time, gradually eroding the quality of our relationships. We're not failing because we don't care - we're failing because our brains aren't wired to keep track of hundreds of meaningful details about dozens of people.</p>
+          <p class="mb-8">These missed opportunities for connection add up over time, gradually eroding the quality of our relationships. We're not failing because we don't care - we're failing because our brains aren't wired to keep track of hundreds of meaningful details about dozens of people.</p>
 
           <h2 id="open-source" class="mb-4 flex items-center gap-x-3 text-lg font-semibold">
             <x-lucide-lightbulb class="h-6 w-6 text-green-500" />
@@ -83,7 +83,7 @@
             . This means the source code is available for everyone to see, contribute or change.
           </p>
 
-          <p class="mb-4">From our revenues page, to our roadmap, everything we do is done in public.</p>
+          <p class="mb-8">From our revenues page, to our roadmap, everything we do is done in public.</p>
 
           <h2 id="no-tracking" class="mb-4 flex items-center gap-x-3 text-lg font-semibold">
             <x-lucide-shield class="h-6 w-6 text-blue-500" />
