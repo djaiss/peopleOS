@@ -55,7 +55,7 @@ class FetchMergedPRs
                 ],
             ]);
 
-            $batch = json_decode($response->getBody()->getContents(), true, flags: JSON_THROW_ON_ERROR);
+            $batch = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
 
             if (empty($batch)) {
                 break; // no more results
