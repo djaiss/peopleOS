@@ -261,7 +261,7 @@
             <!-- Tooltip -->
             <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 left-full ml-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Please stooooop this! 😵‍💫</div>
           </div>
-          <p class="text-xs text-gray-600 lg:rotate-4">I'm Régis. I created PeopleOS. Sorry.</p>
+          <p class="text-xs text-gray-600 lg:rotate-4">I'm one of the creator of PeopleOS.</p>
         </div>
       </div>
     </div>
