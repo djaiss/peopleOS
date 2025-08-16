@@ -8,7 +8,7 @@
 ?>
 
 <div class="col-span-3">
-  <div class="rounded-lg border border-gray-200 bg-white shadow-sm">
+  <div class="rounded-lg border border-gray-200 bg-white">
     <div class="border-b border-gray-200 px-4 py-3">
       <h2 class="text-base font-semibold text-gray-900">{{ __('Testimonials') }}</h2>
     </div>
