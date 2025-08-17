@@ -18,9 +18,11 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-_ide_helper_models.php
-_ide_helper.php
 .env.dusk.local
 .DS_Store
 .php-cs-fixer.cache
 peopleOS.code-workspace
+CLAUDE.md
+/.github/prompts
+/.github/copilot-instructions.md
+/.cursor
