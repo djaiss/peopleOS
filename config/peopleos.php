@@ -42,6 +42,28 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Turnstile site key
+    |--------------------------------------------------------------------------
+    |
+    | This value is the site key of the Cloudflare turnstile anti spam bot.
+    |
+    */
+
+    'turnstile_site_key' => env('TURNSTILE_SITE_KEY', null),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Turnstile secret key
+    |--------------------------------------------------------------------------
+    |
+    | This value is the secretkey of the Cloudflare turnstile anti spam bot.
+    |
+    */
+
+    'turnstile_secret_key' => env('TURNSTILE_SECRET_KEY', null),
+
+    /*
+    |--------------------------------------------------------------------------
     | Enable waitlist
     |--------------------------------------------------------------------------
     |
