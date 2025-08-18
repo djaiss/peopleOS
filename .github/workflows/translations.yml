@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check French translations
         run: bash ./scripts/check-translations.sh

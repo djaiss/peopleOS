@@ -20,7 +20,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # This ensures we have the git history
           ref: ${{ github.head_ref }} # Checkout the PR branch
