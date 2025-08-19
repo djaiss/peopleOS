@@ -79,13 +79,9 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         if (config('peopleos.enable_anti_spam')) {
-            $validated = $request->validate([
-                'token' => ['required', new TurnstileRule()],
+            $request->validate([
+                'cf-turnstile-response' => ['required', new TurnstileRule()],
             ]);
-
-            if ($validated['token'] !== 'success') {
-                return redirect()->back()->withErrors(['token' => 'Invalid captcha']);
-            }
         }
 
         try {

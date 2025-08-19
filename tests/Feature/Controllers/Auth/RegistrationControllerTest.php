@@ -55,4 +55,22 @@ class RegistrationControllerTest extends TestCase
 
         $response->assertSessionHasErrors(['email' => 'You are not part of the beta yet.']);
     }
+
+    #[Test]
+    public function it_does_not_register_a_user_if_anti_spam_is_enabled_and_turnstile_response_is_missing(): void
+    {
+        config(['peopleos.show_marketing_site' => false]);
+        config(['peopleos.enable_waitlist' => false]);
+        config(['peopleos.enable_anti_spam' => true]);
+
+        $response = $this->post('/register', [
+            'first_name' => 'Test User',
+            'last_name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response->assertSessionHasErrors(['cf-turnstile-response']);
+    }
 }

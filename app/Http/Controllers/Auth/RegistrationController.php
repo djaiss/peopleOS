@@ -35,13 +35,9 @@ class RegistrationController extends Controller
         ]);
 
         if (config('peopleos.enable_anti_spam')) {
-            $validated = $request->validate([
-                'token' => ['required', new TurnstileRule()],
+            $request->validate([
+                'cf-turnstile-response' => ['required', new TurnstileRule()],
             ]);
-
-            if ($validated['cf-turnstile-response'] !== 'success') {
-                return redirect()->back()->withErrors(['token' => 'Invalid captcha']);
-            }
         }
 
         if (config('peopleos.enable_waitlist')) {
