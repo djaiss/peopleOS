@@ -14,9 +14,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use NjoguAmos\Turnstile\Rules\TurnstileRule;
 
 class RegistrationController extends Controller
 {
@@ -36,11 +36,11 @@ class RegistrationController extends Controller
 
         if (config('peopleos.enable_anti_spam')) {
             $validated = $request->validate([
-                'cf-turnstile-response' => ['required', Rule::turnstile()],
+                'token' => ['required', new TurnstileRule()],
             ]);
 
             if ($validated['cf-turnstile-response'] !== 'success') {
-                return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+                return redirect()->back()->withErrors(['token' => 'Invalid captcha']);
             }
         }
 
