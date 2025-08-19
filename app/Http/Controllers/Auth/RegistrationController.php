@@ -40,7 +40,7 @@ class RegistrationController extends Controller
             ]);
 
             if ($validated['cf-turnstile-response'] !== 'success') {
-                return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+                return redirect()->back()->withErrors(['token' => 'Invalid captcha']);
             }
         }
 

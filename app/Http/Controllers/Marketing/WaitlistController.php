@@ -9,8 +9,8 @@ use App\Services\AddEmailToWaitlist;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use NjoguAmos\Turnstile\Rules\TurnstileRule;
 
 class WaitlistController extends Controller
 {
@@ -27,11 +27,11 @@ class WaitlistController extends Controller
 
         if (config('peopleos.enable_anti_spam')) {
             $validated = $request->validate([
-                'cf-turnstile-response' => ['required', Rule::turnstile()],
+                'token' => ['required', new TurnstileRule()],
             ]);
 
-            if ($validated['cf-turnstile-response'] !== 'success') {
-                return redirect()->back()->withErrors(['cf-turnstile-response' => 'Invalid captcha']);
+            if ($validated['token'] !== 'success') {
+                return redirect()->back()->withErrors(['token' => 'Invalid captcha']);
             }
         }
 
