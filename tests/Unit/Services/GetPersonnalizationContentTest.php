@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Services;
 
 use App\Models\Gender;
-use App\Models\JournalTemplate;
 use App\Models\TaskCategory;
 use App\Models\User;
 use App\Services\GetPersonnalizationContent;
@@ -36,28 +35,11 @@ class GetPersonnalizationContentTest extends TestCase
             'color' => '#000000',
         ]);
 
-        $journalTemplate = JournalTemplate::factory()->create([
-            'account_id' => $user->account_id,
-            'name' => 'Work',
-            'content' => '<<<YAML
-template:
-  name: "Daily Reflection"
-  columns:
-    - name: "General Overview"
-      questions:
-        - name: "Test Question"
-          answers:
-            type: "range"
-            range: [1, 4]
-            comment_allowed: false
-YAML',
-        ]);
-
         $array = (new GetPersonnalizationContent(
             user: $user,
         ))->execute();
 
-        $this->assertArrayHasKeys($array, ['genders', 'taskCategories', 'journalTemplates']);
+        $this->assertArrayHasKeys($array, ['genders', 'taskCategories']);
 
         $this->assertCount(1, $array['genders']);
         $this->assertEquals(
@@ -76,17 +58,6 @@ YAML',
                 'color' => '#000000',
             ],
             $array['taskCategories'][0],
-        );
-
-        $this->assertCount(1, $array['journalTemplates']);
-        $this->assertEquals(
-            [
-                'id' => $journalTemplate->id,
-                'name' => 'Work',
-                'columns' => 0,
-                'questions' => 0,
-            ],
-            $array['journalTemplates'][0],
         );
     }
 }

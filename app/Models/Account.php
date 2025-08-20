@@ -129,16 +129,6 @@ class Account extends Model
     }
 
     /**
-     * Get the journal templates associated with the account.
-     *
-     * @return HasMany<JournalTemplate, $this>
-     */
-    public function journalTemplates(): HasMany
-    {
-        return $this->hasMany(JournalTemplate::class);
-    }
-
-    /**
      * Get the lifeEvents associated with the account.
      *
      * @return HasMany<LifeEvent, $this>

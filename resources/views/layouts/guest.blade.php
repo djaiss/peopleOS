@@ -7,8 +7,8 @@
 
     @include('components.meta')
 
-    @if (config('peopleos.show_marketing_site'))
-      @turnstileScripts()
+    @if (config('peopleos.enable_anti_spam'))
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     @endif
 
     <!-- Scripts -->

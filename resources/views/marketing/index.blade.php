@@ -242,26 +242,37 @@
 
   <!-- why -->
   <div id="why" class="bg-gray-50 py-12">
-    <div class="mx-auto max-w-2xl rounded-lg bg-green-100 px-6 py-4">
+    <div class="mx-auto max-w-4xl rounded-lg bg-green-100 px-6 py-4">
       <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:items-center">
         <div class="col-span-2">
           <h2 class="mb-3 text-xl leading-7 font-semibold text-green-600">{{ __('Why should you use PeopleOS?') }}</h2>
           <p class="mb-2">PeopleOS is designed for people with jobs, families, and busy lives who are striving to maintain a good work-life balance. They're often so busy that they forget to call a friend, wish a nephew a happy birthday, or invite someone special to dinner next week. As we grow older, life increasingly gets in the way. It's unfortunate, but it's the reality.</p>
-          <p class="mb-2">I've created PeopleOS to remember all these little, but so important, things.</p>
+          <p class="mb-2">We've created PeopleOS to remember all these little, but so important, things.</p>
           <p>
             Read more about
             <a href="{{ route('marketing.why.index') }}" class="text-blue-500 hover:underline">{{ __('why this tool exists') }}</a>
             .
           </p>
         </div>
-        <div class="flex flex-col items-center lg:col-span-1 lg:items-start" x-data="{ isRotating: false }">
-          <div class="relative">
-            <x-image src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }} 1x, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" width="187" height="187" />
+        <div class="flex items-center lg:col-span-1 lg:items-start">
+          <div class="flex flex-col " x-data="{ isRotating: false }">
+            <div class="relative">
+              <x-image src="{{ asset('marketing/regis.webp') }}" srcset="{{ asset('marketing/regis.webp') }} 1x, {{ asset('marketing/regis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" width="187" height="187" />
 
-            <!-- Tooltip -->
-            <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 left-full ml-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Please stooooop this! 😵‍💫</div>
+              <!-- Tooltip -->
+                <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 right-full mr-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Please stooooop this! 😵‍💫</div>
+            </div>
+            <p class="text-xs text-gray-600 lg:rotate-4">Régis</p>
           </div>
-          <p class="text-xs text-gray-600 lg:rotate-4">I'm one of the creators of PeopleOS.</p>
+          <div class="flex flex-col " x-data="{ isRotating: false }">
+            <div class="relative">
+              <x-image src="{{ asset('marketing/alexis.webp') }}" srcset="{{ asset('marketing/alexis.webp') }} 1x, {{ asset('marketing/alexis@2x.webp') }} 2x" alt="Monica" class="mb-3 w-40 rounded-lg transition-all duration-[2000ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:rotate-[360deg] lg:-rotate-4" @mouseenter="isRotating = true" @mouseleave="isRotating = false" @transitionend="isRotating = false" width="187" height="187" />
+
+              <!-- Tooltip -->
+              <div x-show="isRotating" x-transition.opacity class="bg-opacity-75 absolute top-1/2 left-full ml-3 -translate-y-1/2 rounded-lg bg-black px-3 py-2 text-sm whitespace-nowrap text-white">Crazy! 😵‍💫</div>
+            </div>
+            <p class="text-xs text-gray-600 lg:rotate-4">Alexis</p>
+          </div>
         </div>
       </div>
     </div>

@@ -12,10 +12,10 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use App\Services\VerifyTwoFactorCode;
+use NjoguAmos\Turnstile\Rules\TurnstileRule;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -80,7 +80,7 @@ class AuthenticatedSessionController extends Controller
     {
         if (config('peopleos.enable_anti_spam')) {
             $request->validate([
-                'cf-turnstile-response' => ['required', Rule::turnstile()],
+                'cf-turnstile-response' => ['required', new TurnstileRule()],
             ]);
         }
 
