@@ -16,7 +16,6 @@ class JournalResource extends JsonResource
             'object' => 'journal',
             'name' => $this->name,
             'slug' => $this->slug,
-            'journal_template_id' => $this->journal_template_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

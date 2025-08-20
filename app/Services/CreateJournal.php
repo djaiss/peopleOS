@@ -7,9 +7,7 @@ namespace App\Services;
 use App\Jobs\LogUserAction;
 use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\Journal;
-use App\Models\JournalTemplate;
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
 class CreateJournal
@@ -18,13 +16,11 @@ class CreateJournal
 
     public function __construct(
         public User $user,
-        public ?JournalTemplate $journalTemplate,
         public string $name,
     ) {}
 
     public function execute(): Journal
     {
-        $this->validate();
         $this->createJournal();
         $this->generateSlug();
         $this->updateUserLastActivityDate();
@@ -33,21 +29,11 @@ class CreateJournal
         return $this->journal;
     }
 
-    private function validate(): void
-    {
-        if ($this->journalTemplate
-            && $this->journalTemplate->account_id !== $this->user->account_id) {
-            // The journal template does not belong to the user's account.
-            throw new ModelNotFoundException('Journal template not found');
-        }
-    }
-
     private function createJournal(): void
     {
         $this->journal = Journal::create([
             'account_id' => $this->user->account_id,
             'name' => $this->name,
-            'journal_template_id' => $this->journalTemplate?->id,
         ]);
     }
 

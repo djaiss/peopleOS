@@ -2,7 +2,6 @@
 /*
  * @var array $genders
  * @var array $taskCategories
- * @var array $journalTemplates
  */
 ?>
 
@@ -23,8 +22,6 @@
         @include('administration.personalization.partials.genders', ['genders' => $genders])
 
         @include('administration.personalization.partials.task-categories', ['taskCategories' => $taskCategories])
-
-        @include('administration.personalization.partials.journal-templates', ['journalTemplates' => $journalTemplates])
       </div>
     </div>
   </div>
