@@ -15,10 +15,12 @@ return new class extends Migration {
         Schema::create('journals', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->unsignedBigInteger('journal_template_id')->nullable();
             $table->text('name');
             $table->text('slug')->nullable();
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->foreign('journal_template_id')->references('id')->on('journal_templates')->onDelete('set null');
         });
     }
 
