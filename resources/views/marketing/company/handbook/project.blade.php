@@ -23,7 +23,7 @@
   <h1 class="mb-6 text-2xl font-bold">Who I am and what is this project</h1>
 
   <div class="prose">
-    <p class="mb-2">PeopleOS is a side project that I've started in Decembre 2024. I worked a lot on another very successful side project called Monica, which I believe was the first personal CRM. After 8 years on this project, I wanted to change and do something different. I think I got completely burned out by Monica, its success in the community, and I let the community down despite them being generally super nice with me.</p>
+    <p class="mb-2">PeopleOS is a side project that I've started in Decembre 2024. I worked a lot on another very successful side project called Monica, which I believe was the first personal CRM. After 8 years on this project, I wanted to change and do something different.</p>
 
     <p class="mb-2">My passion, when I get back from my real work (the one that pays the bills), is to code and learn new things every day. This is how I relieve my stress from a challenging day job (which is not about code at all). So even though I stopped working on Monica, I still wanted to code every day.</p>
 
