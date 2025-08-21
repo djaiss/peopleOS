@@ -9,7 +9,6 @@ use App\Models\Address;
 use App\Models\EmailSent;
 use App\Models\Encounter;
 use App\Models\Gender;
-use App\Models\JournalTemplate;
 use App\Models\LifeEvent;
 use App\Models\Log;
 use App\Models\Person;
@@ -100,17 +99,6 @@ class AccountTest extends TestCase
         ]);
 
         $this->assertTrue($account->tasks()->exists());
-    }
-
-    #[Test]
-    public function it_has_many_journal_templates(): void
-    {
-        $account = Account::factory()->create();
-        JournalTemplate::factory()->count(2)->create([
-            'account_id' => $account->id,
-        ]);
-
-        $this->assertTrue($account->journalTemplates()->exists());
     }
 
     #[Test]

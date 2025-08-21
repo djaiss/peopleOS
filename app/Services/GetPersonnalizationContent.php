@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Gender;
-use App\Models\JournalTemplate;
 use App\Models\TaskCategory;
 use App\Models\User;
 
@@ -33,19 +32,9 @@ class GetPersonnalizationContent
                 'color' => $taskCategory->color,
             ]);
 
-        $journalTemplates = JournalTemplate::where('account_id', $this->user->account_id)
-            ->get()
-            ->map(fn(JournalTemplate $journalTemplate): array => [
-                'id' => $journalTemplate->id,
-                'name' => $journalTemplate->name,
-                'columns' => $journalTemplate->getDetails()['columns'],
-                'questions' => $journalTemplate->getDetails()['questions'],
-            ]);
-
         return [
             'genders' => $genders,
             'taskCategories' => $taskCategories,
-            'journalTemplates' => $journalTemplates,
         ];
     }
 }

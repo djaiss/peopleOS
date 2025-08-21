@@ -14,7 +14,6 @@ use Carbon\Carbon;
  *
  * @property int $id
  * @property int $account_id
- * @property int|null $journal_template_id
  * @property string $name
  * @property string|null $slug
  * @property Carbon $created_at
@@ -38,7 +37,6 @@ class Journal extends Model
      */
     protected $fillable = [
         'account_id',
-        'journal_template_id',
         'name',
         'slug',
     ];
@@ -64,15 +62,5 @@ class Journal extends Model
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
-    }
-
-    /**
-     * Get the journal template associated with the journal.
-     *
-     * @return BelongsTo<JournalTemplate, $this>
-     */
-    public function journalTemplate(): BelongsTo
-    {
-        return $this->belongsTo(JournalTemplate::class);
     }
 }

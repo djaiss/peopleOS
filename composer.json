@@ -22,9 +22,9 @@
     "laravel/tinker": "^2.9",
     "league/flysystem-aws-s3-v3": "^3.0",
     "mallardduck/blade-lucide-icons": "^1.23",
+    "njoguamos/laravel-turnstile": "^3.2",
     "pragmarx/google2fa": "^8.0",
     "pragmarx/google2fa-laravel": "^2.3",
-    "ryangjchandler/laravel-cloudflare-turnstile": "^2.0",
     "spatie/laravel-sitemap": "^7.3"
   },
   "require-dev": {

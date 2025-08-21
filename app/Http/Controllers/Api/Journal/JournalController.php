@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\JournalCollection;
 use App\Http\Resources\JournalResource;
 use App\Models\Journal;
-use App\Models\JournalTemplate;
 use App\Services\CreateJournal;
 use App\Services\DestroyJournal;
 use App\Services\UpdateJournal;
@@ -32,18 +31,10 @@ class JournalController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'journal_template_id' => ['nullable', 'exists:journal_templates,id'],
         ]);
-
-        $template = null;
-        if (array_key_exists('journal_template_id', $data) && $data['journal_template_id']) {
-            $template = JournalTemplate::where('account_id', Auth::user()->account_id)
-                ->findOrFail($data['journal_template_id']);
-        }
 
         $journal = (new CreateJournal(
             user: Auth::user(),
-            journalTemplate: $template,
             name: $data['name'],
         ))->execute();
 
@@ -63,19 +54,11 @@ class JournalController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'journal_template_id' => ['nullable', 'exists:journal_templates,id'],
         ]);
-
-        $template = null;
-        if (array_key_exists('journal_template_id', $data) && $data['journal_template_id']) {
-            $template = JournalTemplate::where('account_id', Auth::user()->account_id)
-                ->findOrFail($data['journal_template_id']);
-        }
 
         $journal = (new UpdateJournal(
             user: Auth::user(),
             journal: $journal,
-            journalTemplate: $template,
             name: $data['name'],
         ))->execute();
 
