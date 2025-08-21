@@ -17,6 +17,7 @@ use App\Http\Controllers\Journal\MonthController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Marketing;
 use App\Http\Controllers\Persons;
+use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\StopReminderController;
 use App\Http\Controllers\UpgradeAccountController;
 use Illuminate\Support\Facades\Route;
@@ -87,6 +88,9 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::middleware(['subscription'])->group(function (): void {
         // dashboard
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+        // reminders
+        Route::get('reminders', [ReminderController::class, 'index'])->name('reminder.index');
 
         // persons
         Route::get('persons', [Persons\PersonController::class, 'index'])->name('person.index');
