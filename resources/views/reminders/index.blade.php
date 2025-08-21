@@ -1,9 +1,6 @@
 <?php
 /*
  * @var array $reminders
- * @var array $persons
- * @var string $quote
- * @var array $tasks
  */
 ?>
 
