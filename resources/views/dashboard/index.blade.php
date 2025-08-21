@@ -19,10 +19,7 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <!-- Left column -->
-          <div>
-            <!-- reminders -->
-            @include('dashboard.partials.reminders', ['reminders' => $reminders])
-          </div>
+
 
           <!-- Middle column -->
           <div>
