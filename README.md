@@ -170,6 +170,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Regis Freyd](https://github.com/djaiss)
+- [Alexis Saettler](https://github.com/asbiin)
 - [All Contributors](../../contributors)
 
 ## License
