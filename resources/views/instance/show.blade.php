@@ -172,7 +172,6 @@
                     <span class="text-gray-500">|</span>
                     <span class="font-mono text-xs">{{ $log->action }}</span>
                   </p>
-                  <p class="text-sm text-gray-600">{{ $log->description }}</p>
                 </div>
               </div>
               <p class="font-mono text-xs text-gray-500">{{ $log->created_at->diffForHumans() }}</p>
