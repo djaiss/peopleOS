@@ -7,6 +7,9 @@ namespace App\Providers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (Config::get('app.force_url') === true) {
+            URL::forceRootUrl(Str::of(config('app.url'))->ltrim('/'));
+            URL::forceScheme('https');
+        }
+
         // Enable strict mode for Eloquent models in non-production environments
         Model::shouldBeStrict(! app()->isProduction());
 
