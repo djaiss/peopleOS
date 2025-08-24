@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Administration;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Instance\InstanceCancellationReasonsController;
-use App\Http\Controllers\Instance\InstanceController;
-use App\Http\Controllers\Instance\InstanceDestroyAccountController;
-use App\Http\Controllers\Instance\InstanceFreeAccountController;
-use App\Http\Controllers\Instance\InstanceTestimonialsController;
-use App\Http\Controllers\Instance\InstanceWaitlistController;
+use App\Http\Controllers\Instance;
 use App\Http\Controllers\Journal\EntryController;
 use App\Http\Controllers\Journal\EntryMoodController;
 use App\Http\Controllers\Journal\JournalController;
@@ -294,33 +289,41 @@ Route::middleware(['auth:sanctum', 'verified', 'throttle:60,1', 'set.locale'])->
     Route::delete('administration/account', [Administration\AdministrationAccountController::class, 'destroy'])->name('administration.account.destroy');
 
     Route::middleware(['instance.admin'])->group(function (): void {
-        Route::get('instance', [InstanceController::class, 'index'])->name('instance.index');
+        Route::get('instance', [Instance\InstanceController::class, 'index'])->name('instance.index');
 
         // accounts
-        Route::get('instance/accounts/{account}', [InstanceController::class, 'show'])->name('instance.show');
-        Route::delete('instance/accounts/{account}', [InstanceDestroyAccountController::class, 'destroy'])->name('instance.destroy');
-        Route::put('instance/accounts/{account}/free', [InstanceFreeAccountController::class, 'update'])->name('instance.accounts.free');
+        Route::get('instance/accounts/{account}', [Instance\InstanceController::class, 'show'])->name('instance.show');
+        Route::delete('instance/accounts/{account}', [Instance\InstanceDestroyAccountController::class, 'destroy'])->name('instance.destroy');
+        Route::put('instance/accounts/{account}/free', [Instance\InstanceFreeAccountController::class, 'update'])->name('instance.accounts.free');
 
         // testimonials
-        Route::get('instance/testimonials', [InstanceTestimonialsController::class, 'index'])->name('instance.testimonial.index');
-        Route::get('instance/testimonials/approved', [InstanceTestimonialsController::class, 'approved'])->name('instance.testimonial.approved');
-        Route::get('instance/testimonials/rejected', [InstanceTestimonialsController::class, 'rejected'])->name('instance.testimonial.rejected');
-        Route::get('instance/testimonials/all', [InstanceTestimonialsController::class, 'all'])->name('instance.testimonial.all');
-        Route::put('instance/testimonials/{testimonial}/accept', [InstanceTestimonialsController::class, 'accept'])->name('instance.testimonial.accept');
-        Route::get('instance/testimonials/{testimonial}/edit', [InstanceTestimonialsController::class, 'edit'])->name('instance.testimonial.edit');
-        Route::put('instance/testimonials/{testimonial}/reject', [InstanceTestimonialsController::class, 'reject'])->name('instance.testimonial.reject');
+        Route::get('instance/testimonials', [Instance\InstanceTestimonialsController::class, 'index'])->name('instance.testimonial.index');
+        Route::get('instance/testimonials/approved', [Instance\InstanceTestimonialsController::class, 'approved'])->name('instance.testimonial.approved');
+        Route::get('instance/testimonials/rejected', [Instance\InstanceTestimonialsController::class, 'rejected'])->name('instance.testimonial.rejected');
+        Route::get('instance/testimonials/all', [Instance\InstanceTestimonialsController::class, 'all'])->name('instance.testimonial.all');
+        Route::put('instance/testimonials/{testimonial}/accept', [Instance\InstanceTestimonialsController::class, 'accept'])->name('instance.testimonial.accept');
+        Route::get('instance/testimonials/{testimonial}/edit', [Instance\InstanceTestimonialsController::class, 'edit'])->name('instance.testimonial.edit');
+        Route::put('instance/testimonials/{testimonial}/reject', [Instance\InstanceTestimonialsController::class, 'reject'])->name('instance.testimonial.reject');
 
         // account deletion reasons
-        Route::get('instance/cancellation-reasons', [InstanceCancellationReasonsController::class, 'index'])->name('instance.cancellation-reasons.index');
+        Route::get('instance/cancellation-reasons', [Instance\InstanceCancellationReasonsController::class, 'index'])->name('instance.cancellation-reasons.index');
 
         // waitlist
-        Route::get('instance/waitlist', [InstanceWaitlistController::class, 'index'])->name('instance.waitlist.index');
-        Route::get('instance/waitlist/not-confirmed', [InstanceWaitlistController::class, 'notConfirmed'])->name('instance.waitlist.not-confirmed');
-        Route::get('instance/waitlist/approved', [InstanceWaitlistController::class, 'approved'])->name('instance.waitlist.approved');
-        Route::get('instance/waitlist/rejected', [InstanceWaitlistController::class, 'rejected'])->name('instance.waitlist.rejected');
-        Route::get('instance/waitlist/all', [InstanceWaitlistController::class, 'all'])->name('instance.waitlist.all');
-        Route::put('instance/waitlist/{waitlist}/approve', [InstanceWaitlistController::class, 'approve'])->name('instance.waitlist.approve');
-        Route::put('instance/waitlist/{waitlist}/reject', [InstanceWaitlistController::class, 'reject'])->name('instance.waitlist.reject');
+        Route::get('instance/waitlist', [Instance\InstanceWaitlistController::class, 'index'])->name('instance.waitlist.index');
+        Route::get('instance/waitlist/not-confirmed', [Instance\InstanceWaitlistController::class, 'notConfirmed'])->name('instance.waitlist.not-confirmed');
+        Route::get('instance/waitlist/approved', [Instance\InstanceWaitlistController::class, 'approved'])->name('instance.waitlist.approved');
+        Route::get('instance/waitlist/rejected', [Instance\InstanceWaitlistController::class, 'rejected'])->name('instance.waitlist.rejected');
+        Route::get('instance/waitlist/all', [Instance\InstanceWaitlistController::class, 'all'])->name('instance.waitlist.all');
+        Route::put('instance/waitlist/{waitlist}/approve', [Instance\InstanceWaitlistController::class, 'approve'])->name('instance.waitlist.approve');
+        Route::put('instance/waitlist/{waitlist}/reject', [Instance\InstanceWaitlistController::class, 'reject'])->name('instance.waitlist.reject');
+
+        // changelog
+        Route::get('instance/changelog', [Instance\InstanceChangelogController::class, 'index'])->name('instance.changelog.index');
+        Route::get('instance/changelog/new', [Instance\InstanceChangelogController::class, 'new'])->name('instance.changelog.new');
+        Route::post('instance/changelog', [Instance\InstanceChangelogController::class, 'create'])->name('instance.changelog.create');
+        Route::get('instance/changelog/{changelog}/edit', [Instance\InstanceChangelogController::class, 'edit'])->name('instance.changelog.edit');
+        Route::put('instance/changelog/{changelog}', [Instance\InstanceChangelogController::class, 'update'])->name('instance.changelog.update');
+        Route::delete('instance/changelog/{changelog}', [Instance\InstanceChangelogController::class, 'destroy'])->name('instance.changelog.destroy');
     });
 });
 
